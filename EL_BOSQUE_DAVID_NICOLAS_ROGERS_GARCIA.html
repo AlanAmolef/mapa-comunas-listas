@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_41f41243a8666bdc3a95fd324256c342 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_41f41243a8666bdc3a95fd324256c342" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_41f41243a8666bdc3a95fd324256c342 = L.map(
+                "map_41f41243a8666bdc3a95fd324256c342",
+                {
+                    center: [-33.563024285714285, -70.67460952380952],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ad1a58655de3e3bc22eb97808c4b4bfc = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_ad1a58655de3e3bc22eb97808c4b4bfc.addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+    var color_map_5a1a83a7ebed88a806b102d2ecbeb29f = {};
+
+    
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.color = d3.scale.threshold()
+              .domain([10.0, 10.124248496993989, 10.248496993987976, 10.372745490981965, 10.496993987975952, 10.62124248496994, 10.745490981963927, 10.869739478957916, 10.993987975951903, 11.118236472945892, 11.24248496993988, 11.366733466933868, 11.490981963927856, 11.615230460921843, 11.739478957915832, 11.863727454909819, 11.987975951903808, 12.112224448897795, 12.236472945891784, 12.360721442885772, 12.48496993987976, 12.609218436873748, 12.733466933867735, 12.857715430861724, 12.98196392785571, 13.1062124248497, 13.230460921843687, 13.354709418837675, 13.478957915831664, 13.603206412825651, 13.72745490981964, 13.851703406813627, 13.975951903807616, 14.100200400801604, 14.224448897795591, 14.348697394789578, 14.472945891783567, 14.597194388777556, 14.721442885771543, 14.84569138276553, 14.969939879759519, 15.094188376753507, 15.218436873747496, 15.342685370741483, 15.46693386773547, 15.591182364729459, 15.715430861723448, 15.839679358717435, 15.963927855711422, 16.08817635270541, 16.2124248496994, 16.336673346693388, 16.460921843687373, 16.585170340681362, 16.70941883767535, 16.83366733466934, 16.95791583166333, 17.082164328657313, 17.206412825651302, 17.33066132264529, 17.45490981963928, 17.57915831663327, 17.703406813627254, 17.827655310621243, 17.95190380761523, 18.076152304609217, 18.20040080160321, 18.324649298597194, 18.448897795591183, 18.57314629258517, 18.697394789579157, 18.821643286573146, 18.945891783567134, 19.070140280561123, 19.194388777555112, 19.318637274549097, 19.442885771543086, 19.567134268537075, 19.69138276553106, 19.815631262525052, 19.939879759519037, 20.064128256513026, 20.188376753507015, 20.312625250501, 20.436873747494992, 20.561122244488978, 20.685370741482966, 20.809619238476955, 20.93386773547094, 21.05811623246493, 21.182364729458918, 21.306613226452907, 21.430861723446895, 21.55511022044088, 21.67935871743487, 21.803607214428858, 21.927855711422843, 22.052104208416836, 22.17635270541082, 22.30060120240481, 22.4248496993988, 22.549098196392784, 22.673346693386776, 22.79759519038076, 22.92184368737475, 23.04609218436874, 23.170340681362724, 23.294589178356713, 23.4188376753507, 23.54308617234469, 23.66733466933868, 23.791583166332664, 23.915831663326653, 24.04008016032064, 24.164328657314627, 24.28857715430862, 24.412825651302605, 24.537074148296593, 24.661322645290582, 24.785571142284567, 24.90981963927856, 25.034068136272545, 25.158316633266534, 25.282565130260522, 25.406813627254508, 25.531062124248496, 25.655310621242485, 25.77955911823647, 25.903807615230463, 26.028056112224448, 26.152304609218437, 26.276553106212425, 26.400801603206414, 26.5250501002004, 26.649298597194388, 26.773547094188377, 26.897795591182366, 27.022044088176354, 27.14629258517034, 27.27054108216433, 27.394789579158317, 27.519038076152306, 27.64328657314629, 27.76753507014028, 27.89178356713427, 28.016032064128257, 28.140280561122246, 28.26452905811623, 28.38877755511022, 28.51302605210421, 28.637274549098198, 28.761523046092183, 28.88577154308617, 29.01002004008016, 29.13426853707415, 29.258517034068138, 29.382765531062123, 29.507014028056112, 29.6312625250501, 29.75551102204409, 29.879759519038075, 30.004008016032063, 30.128256513026052, 30.25250501002004, 30.37675350701403, 30.501002004008015, 30.625250501002004, 30.749498997995993, 30.87374749498998, 30.997995991983966, 31.122244488977955, 31.246492985971944, 31.370741482965933, 31.49498997995992, 31.619238476953907, 31.743486973947896, 31.867735470941884, 31.991983967935873, 32.11623246492986, 32.24048096192385, 32.364729458917836, 32.48897795591182, 32.61322645290581, 32.7374749498998, 32.86172344689379, 32.985971943887776, 33.11022044088176, 33.23446893787575, 33.35871743486974, 33.48296593186373, 33.607214428857716, 33.7314629258517, 33.85571142284569, 33.97995991983968, 34.10420841683367, 34.22845691382766, 34.35270541082164, 34.47695390781563, 34.60120240480962, 34.72545090180361, 34.8496993987976, 34.97394789579158, 35.09819639278557, 35.22244488977956, 35.34669338677355, 35.47094188376754, 35.59519038076152, 35.71943887775551, 35.8436873747495, 35.96793587174349, 36.09218436873748, 36.21643286573146, 36.34068136272545, 36.46492985971944, 36.589178356713425, 36.71342685370742, 36.8376753507014, 36.96192384769539, 37.08617234468938, 37.210420841683366, 37.33466933867736, 37.45891783567134, 37.58316633266533, 37.707414829659314, 37.831663326653306, 37.9559118236473, 38.08016032064128, 38.20440881763527, 38.328657314629254, 38.452905811623246, 38.57715430861724, 38.701402805611224, 38.82565130260521, 38.949899799599194, 39.07414829659319, 39.19839679358718, 39.322645290581164, 39.44689378757515, 39.571142284569135, 39.69539078156313, 39.81963927855712, 39.943887775551104, 40.06813627254509, 40.192384769539075, 40.31663326653307, 40.44088176352706, 40.565130260521045, 40.68937875751503, 40.813627254509015, 40.93787575150301, 41.06212424849699, 41.186372745490985, 41.31062124248497, 41.434869739478955, 41.55911823647294, 41.68336673346693, 41.807615230460925, 41.93186372745491, 42.056112224448896, 42.18036072144289, 42.30460921843687, 42.42885771543086, 42.55310621242485, 42.677354709418836, 42.80160320641283, 42.92585170340681, 43.0501002004008, 43.17434869739479, 43.298597194388776, 43.42284569138277, 43.547094188376754, 43.67134268537074, 43.79559118236473, 43.91983967935872, 44.04408817635271, 44.168336673346694, 44.29258517034068, 44.41683366733467, 44.54108216432866, 44.66533066132264, 44.789579158316634, 44.91382765531062, 45.03807615230461, 45.1623246492986, 45.28657314629258, 45.410821643286575, 45.53507014028056, 45.65931863727455, 45.78356713426854, 45.90781563126252, 46.032064128256515, 46.1563126252505, 46.28056112224449, 46.40480961923848, 46.52905811623246, 46.653306613226455, 46.77755511022044, 46.901803607214426, 47.02605210420842, 47.1503006012024, 47.274549098196395, 47.39879759519038, 47.523046092184366, 47.64729458917836, 47.77154308617234, 47.895791583166336, 48.02004008016032, 48.144288577154306, 48.2685370741483, 48.392785571142284, 48.517034068136276, 48.64128256513026, 48.765531062124246, 48.88977955911824, 49.014028056112224, 49.13827655310621, 49.2625250501002, 49.38677354709419, 49.51102204408818, 49.635270541082164, 49.75951903807615, 49.88376753507014, 50.00801603206413, 50.13226452905812, 50.256513026052104, 50.38076152304609, 50.50501002004008, 50.62925851703407, 50.75350701402806, 50.877755511022045, 51.00200400801603, 51.12625250501002, 51.25050100200401, 51.37474949899799, 51.498997995991985, 51.62324649298597, 51.74749498997996, 51.87174348697395, 51.99599198396793, 52.120240480961925, 52.24448897795591, 52.3687374749499, 52.49298597194389, 52.61723446893787, 52.741482965931866, 52.86573146292585, 52.98997995991984, 53.11422845691383, 53.23847695390781, 53.362725450901806, 53.48697394789579, 53.611222444889776, 53.73547094188377, 53.859719438877754, 53.983967935871746, 54.10821643286573, 54.23246492985972, 54.35671342685371, 54.480961923847694, 54.605210420841686, 54.72945891783567, 54.85370741482966, 54.97795591182365, 55.102204408817634, 55.22645290581163, 55.35070140280561, 55.4749498997996, 55.59919839679359, 55.723446893787575, 55.84769539078156, 55.97194388777555, 56.09619238476954, 56.22044088176353, 56.344689378757515, 56.4689378757515, 56.59318637274549, 56.71743486973948, 56.84168336673347, 56.965931863727455, 57.09018036072144, 57.21442885771543, 57.33867735470942, 57.46292585170341, 57.587174348697395, 57.71142284569138, 57.83567134268537, 57.95991983967936, 58.08416833667334, 58.208416833667336, 58.33266533066132, 58.45691382765531, 58.5811623246493, 58.705410821643284, 58.829659318637276, 58.95390781563126, 59.078156312625254, 59.20240480961924, 59.326653306613224, 59.450901803607216, 59.5751503006012, 59.699398797595194, 59.82364729458918, 59.947895791583164, 60.07214428857716, 60.19639278557114, 60.32064128256513, 60.44488977955912, 60.569138276553105, 60.6933867735471, 60.81763527054108, 60.94188376753507, 61.06613226452906, 61.190380761523045, 61.31462925851704, 61.43887775551102, 61.56312625250501, 61.687374749499, 61.811623246492985, 61.93587174348698, 62.06012024048096, 62.18436873747495, 62.30861723446894, 62.432865731462925, 62.55711422845691, 62.6813627254509, 62.80561122244489, 62.92985971943888, 63.054108216432866, 63.17835671342685, 63.30260521042084, 63.42685370741483, 63.55110220440882, 63.675350701402806, 63.79959919839679, 63.92384769539078, 64.04809619238478, 64.17234468937876, 64.29659318637275, 64.42084168336673, 64.54509018036072, 64.66933867735472, 64.79358717434869, 64.91783567134269, 65.04208416833667, 65.16633266533066, 65.29058116232466, 65.41482965931863, 65.53907815631263, 65.66332665330661, 65.7875751503006, 65.9118236472946, 66.03607214428857, 66.16032064128257, 66.28456913827655, 66.40881763527054, 66.53306613226454, 66.65731462925851, 66.78156312625251, 66.90581162324649, 67.03006012024048, 67.15430861723448, 67.27855711422845, 67.40280561122245, 67.52705410821643, 67.65130260521042, 67.77555110220442, 67.89979959919839, 68.02404809619239, 68.14829659318637, 68.27254509018036, 68.39679358717436, 68.52104208416833, 68.64529058116233, 68.76953907815631, 68.8937875751503, 69.0180360721443, 69.14228456913827, 69.26653306613227, 69.39078156312625, 69.51503006012024, 69.63927855711424, 69.76352705410821, 69.88777555110221, 70.0120240480962, 70.13627254509018, 70.26052104208418, 70.38476953907815, 70.50901803607215, 70.63326653306613, 70.75751503006012, 70.88176352705412, 71.00601202404809, 71.13026052104209, 71.25450901803607, 71.37875751503006, 71.50300601202404, 71.62725450901803, 71.75150300601203, 71.87575150300601, 72.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.x = d3.scale.linear()
+              .domain([10.0, 72.0])
+              .range([0, 450 - 50]);
+
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.legend = L.control({position: 'topright'});
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.legend.addTo(map_41f41243a8666bdc3a95fd324256c342);
+
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.xAxis = d3.svg.axis()
+        .scale(color_map_5a1a83a7ebed88a806b102d2ecbeb29f.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([10.0, 17.75, 25.5, 33.25, 41.0, 48.75, 56.5, 64.25, 72.0]);
+
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.g = color_map_5a1a83a7ebed88a806b102d2ecbeb29f.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.g.selectAll("rect")
+        .data(color_map_5a1a83a7ebed88a806b102d2ecbeb29f.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_5a1a83a7ebed88a806b102d2ecbeb29f.x(color_map_5a1a83a7ebed88a806b102d2ecbeb29f.color.domain()[i - 1]) : color_map_5a1a83a7ebed88a806b102d2ecbeb29f.x.range()[0],
+            x1: i < color_map_5a1a83a7ebed88a806b102d2ecbeb29f.color.domain().length ? color_map_5a1a83a7ebed88a806b102d2ecbeb29f.x(color_map_5a1a83a7ebed88a806b102d2ecbeb29f.color.domain()[i]) : color_map_5a1a83a7ebed88a806b102d2ecbeb29f.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_5a1a83a7ebed88a806b102d2ecbeb29f.g.call(color_map_5a1a83a7ebed88a806b102d2ecbeb29f.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista DAVID NICOLAS ROGERS GARCIA por local");
+    
+            var circle_marker_7fb9241d37ce927dd3668b82034f74a4 = L.circleMarker(
+                [-33.5571, -70.6637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffea99ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.032258064516128, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_db3cea2873b1a9b9e31f5f56aa6da534 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6d743370238c12a28a99e001da604a69 = $(`<div id="html_6d743370238c12a28a99e001da604a69" style="width: 100.0%; height: 100.0%;"><b>centro civico el bosque</b><br>ELEUTERIO RAMIREZ 10264<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>19</b></div>`)[0];
+                popup_db3cea2873b1a9b9e31f5f56aa6da534.setContent(html_6d743370238c12a28a99e001da604a69);
+            
+        
+
+        circle_marker_7fb9241d37ce927dd3668b82034f74a4.bindPopup(popup_db3cea2873b1a9b9e31f5f56aa6da534)
+        ;
+
+        
+    
+    
+            circle_marker_7fb9241d37ce927dd3668b82034f74a4.bindTooltip(
+                `<div>
+                     centro civico el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dabd87164916c6cbb1286f8106f79e43 = L.marker(
+                [-33.5571, -70.6637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_fa859b52fca6ce3708590920f39cfdc4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e19\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dabd87164916c6cbb1286f8106f79e43.setIcon(div_icon_fa859b52fca6ce3708590920f39cfdc4);
+        
+    
+            var circle_marker_91011116192b41894edc59b05615d276 = L.circleMarker(
+                [-33.5803, -70.6701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#be0025ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.193548387096776, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_8dab657c921a0f05f082ef094d4eea6d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e6e6c44b101065c5c6c345c04731ea00 = $(`<div id="html_e6e6c44b101065c5c6c345c04731ea00" style="width: 100.0%; height: 100.0%;"><b>colegio batalla de la concepcion</b><br>VECINAL SUR 1380<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>64</b></div>`)[0];
+                popup_8dab657c921a0f05f082ef094d4eea6d.setContent(html_e6e6c44b101065c5c6c345c04731ea00);
+            
+        
+
+        circle_marker_91011116192b41894edc59b05615d276.bindPopup(popup_8dab657c921a0f05f082ef094d4eea6d)
+        ;
+
+        
+    
+    
+            circle_marker_91011116192b41894edc59b05615d276.bindTooltip(
+                `<div>
+                     colegio batalla de la concepcion
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c51c766dfcf9db2abe902111b058d50e = L.marker(
+                [-33.5803, -70.6701],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_e3b2cf912a94fa017b3f9aa0eb5ad84d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e64\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c51c766dfcf9db2abe902111b058d50e.setIcon(div_icon_e3b2cf912a94fa017b3f9aa0eb5ad84d);
+        
+    
+            var circle_marker_c0441106c29e643644e5ba45486ee689 = L.circleMarker(
+                [-33.57584, -70.692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec35dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.516129032258064, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_bd382a4073fd418e27176ea4a0ad58e6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a35e4a172da9e5997865f6354e3cca7a = $(`<div id="html_a35e4a172da9e5997865f6354e3cca7a" style="width: 100.0%; height: 100.0%;"><b>colegio santo tomas de aquino</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 13231<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>30</b></div>`)[0];
+                popup_bd382a4073fd418e27176ea4a0ad58e6.setContent(html_a35e4a172da9e5997865f6354e3cca7a);
+            
+        
+
+        circle_marker_c0441106c29e643644e5ba45486ee689.bindPopup(popup_bd382a4073fd418e27176ea4a0ad58e6)
+        ;
+
+        
+    
+    
+            circle_marker_c0441106c29e643644e5ba45486ee689.bindTooltip(
+                `<div>
+                     colegio santo tomas de aquino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73aae96d7f18d598fb2e4e9f77d1d391 = L.marker(
+                [-33.57584, -70.692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_3f904558864121964f24337635456fc6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e30\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_73aae96d7f18d598fb2e4e9f77d1d391.setIcon(div_icon_3f904558864121964f24337635456fc6);
+        
+    
+            var circle_marker_15bfd307c067f75005623ed6be5dc420 = L.circleMarker(
+                [-33.5603, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecd68ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.064516129032258, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_690be3f27e104556dee2b5aee4129171 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c988ee50da05a87a01a51620e7580a03 = $(`<div id="html_c988ee50da05a87a01a51620e7580a03" style="width: 100.0%; height: 100.0%;"><b>complejo educacional felipe herrera lane</b><br>LOS CUERVOS 866<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>28</b></div>`)[0];
+                popup_690be3f27e104556dee2b5aee4129171.setContent(html_c988ee50da05a87a01a51620e7580a03);
+            
+        
+
+        circle_marker_15bfd307c067f75005623ed6be5dc420.bindPopup(popup_690be3f27e104556dee2b5aee4129171)
+        ;
+
+        
+    
+    
+            circle_marker_15bfd307c067f75005623ed6be5dc420.bindTooltip(
+                `<div>
+                     complejo educacional felipe herrera lane
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b1edc7825016899d23f86675cf8fee00 = L.marker(
+                [-33.5603, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_7b480ab83cb0cb8a9223d59c7beba0c2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e28\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b1edc7825016899d23f86675cf8fee00.setIcon(div_icon_7b480ab83cb0cb8a9223d59c7beba0c2);
+        
+    
+            var circle_marker_8b405bf84d9b1361175d85581ac0024f = L.circleMarker(
+                [-33.5691, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd5c2eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.35483870967742, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_c9bdddccb7b6b76581f9a953b5dd48cd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6d15d2c33393e9a01d5d13cf254791fb = $(`<div id="html_6d15d2c33393e9a01d5d13cf254791fb" style="width: 100.0%; height: 100.0%;"><b>complejo educacional las acacias</b><br>LAS ESMERALDAS 11475<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>47</b></div>`)[0];
+                popup_c9bdddccb7b6b76581f9a953b5dd48cd.setContent(html_6d15d2c33393e9a01d5d13cf254791fb);
+            
+        
+
+        circle_marker_8b405bf84d9b1361175d85581ac0024f.bindPopup(popup_c9bdddccb7b6b76581f9a953b5dd48cd)
+        ;
+
+        
+    
+    
+            circle_marker_8b405bf84d9b1361175d85581ac0024f.bindTooltip(
+                `<div>
+                     complejo educacional las acacias
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7465a1a2abb27f4505f7601468587a6d = L.marker(
+                [-33.5691, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_61bd1c83b329476c5adda35d400a0064 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e47\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7465a1a2abb27f4505f7601468587a6d.setIcon(div_icon_61bd1c83b329476c5adda35d400a0064);
+        
+    
+            var circle_marker_f365f3b1a12cf680ca83fd03d002086f = L.circleMarker(
+                [-33.5501, -70.6645],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea044ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.096774193548388, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_9e73fe91c9b1d292211e85e7c4982786 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_10a0910bc644e1d6eda42689c47f98dd = $(`<div id="html_10a0910bc644e1d6eda42689c47f98dd" style="width: 100.0%; height: 100.0%;"><b>escuela aviadores</b><br>BAQUEDANO 9820<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>37</b></div>`)[0];
+                popup_9e73fe91c9b1d292211e85e7c4982786.setContent(html_10a0910bc644e1d6eda42689c47f98dd);
+            
+        
+
+        circle_marker_f365f3b1a12cf680ca83fd03d002086f.bindPopup(popup_9e73fe91c9b1d292211e85e7c4982786)
+        ;
+
+        
+    
+    
+            circle_marker_f365f3b1a12cf680ca83fd03d002086f.bindTooltip(
+                `<div>
+                     escuela aviadores
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fb958a8a3639dbfe281c92a7c4cbc600 = L.marker(
+                [-33.5501, -70.6645],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_75a62b02a8ca6cebc4a8f51ae42b15b6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e37\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fb958a8a3639dbfe281c92a7c4cbc600.setIcon(div_icon_75a62b02a8ca6cebc4a8f51ae42b15b6);
+        
+    
+            var circle_marker_30f1e97249c6cdc43a390dff21737d93 = L.circleMarker(
+                [-33.5622, -70.6754],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec863ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.29032258064516, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_775ba8d372f9bca34613aedb70647447 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c9252d1e9228e1fc5ff72a4bf34949d3 = $(`<div id="html_c9252d1e9228e1fc5ff72a4bf34949d3" style="width: 100.0%; height: 100.0%;"><b>escuela base el bosque</b><br>MARIANO LATORRE 11600<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>29</b></div>`)[0];
+                popup_775ba8d372f9bca34613aedb70647447.setContent(html_c9252d1e9228e1fc5ff72a4bf34949d3);
+            
+        
+
+        circle_marker_30f1e97249c6cdc43a390dff21737d93.bindPopup(popup_775ba8d372f9bca34613aedb70647447)
+        ;
+
+        
+    
+    
+            circle_marker_30f1e97249c6cdc43a390dff21737d93.bindTooltip(
+                `<div>
+                     escuela base el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dc3570ee8a505db44a9a9b2caae6be2c = L.marker(
+                [-33.5622, -70.6754],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_37c9686bb4323d8d24d76e4ac88128d9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dc3570ee8a505db44a9a9b2caae6be2c.setIcon(div_icon_37c9686bb4323d8d24d76e4ac88128d9);
+        
+    
+            var circle_marker_47002a5823e653e3b7aed218b6c2c5dd = L.circleMarker(
+                [-33.5561, -70.6571],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecd68ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.064516129032258, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_b4ce6b71dd03f1f3dec3645a7702ebb8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_694864a0735e6426b3b23340107be03b = $(`<div id="html_694864a0735e6426b3b23340107be03b" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de lyon</b><br>ALMIRANTE RIVEROS 10122<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>28</b></div>`)[0];
+                popup_b4ce6b71dd03f1f3dec3645a7702ebb8.setContent(html_694864a0735e6426b3b23340107be03b);
+            
+        
+
+        circle_marker_47002a5823e653e3b7aed218b6c2c5dd.bindPopup(popup_b4ce6b71dd03f1f3dec3645a7702ebb8)
+        ;
+
+        
+    
+    
+            circle_marker_47002a5823e653e3b7aed218b6c2c5dd.bindTooltip(
+                `<div>
+                     escuela ciudad de lyon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a0918aecf6aaff080db2b50d94ad35fa = L.marker(
+                [-33.5561, -70.6571],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_aa68c7a35c3765189245ea2f6d8d85a0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e28\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a0918aecf6aaff080db2b50d94ad35fa.setIcon(div_icon_aa68c7a35c3765189245ea2f6d8d85a0);
+        
+    
+            var circle_marker_c07435ce12543ac5d1e46a7835fe0be2 = L.circleMarker(
+                [-33.5717, -70.6808],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe084ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.935483870967742, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_2533588a9f05930b77bb1a651df92eae = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6cb242180f5f25b60f9cdf50861d57d1 = $(`<div id="html_6cb242180f5f25b60f9cdf50861d57d1" style="width: 100.0%; height: 100.0%;"><b>escuela claudio arrau leon</b><br>LOS CAROLINOS 530<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>23</b></div>`)[0];
+                popup_2533588a9f05930b77bb1a651df92eae.setContent(html_6cb242180f5f25b60f9cdf50861d57d1);
+            
+        
+
+        circle_marker_c07435ce12543ac5d1e46a7835fe0be2.bindPopup(popup_2533588a9f05930b77bb1a651df92eae)
+        ;
+
+        
+    
+    
+            circle_marker_c07435ce12543ac5d1e46a7835fe0be2.bindTooltip(
+                `<div>
+                     escuela claudio arrau leon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ed7ab8cf352fd182240cae4df1bc5c13 = L.marker(
+                [-33.5717, -70.6808],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_f63faf9cd4e981767b87054e62e9d7b8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ed7ab8cf352fd182240cae4df1bc5c13.setIcon(div_icon_f63faf9cd4e981767b87054e62e9d7b8);
+        
+    
+            var circle_marker_0e89cf908d684347a280e84b1eea6834 = L.circleMarker(
+                [-33.57981, -70.67892],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c30424ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.967741935483872, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_0582e30be90f26acb7d470afec04f1d3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_426bff7c924f5755890fd67262cb8069 = $(`<div id="html_426bff7c924f5755890fd67262cb8069" style="width: 100.0%; height: 100.0%;"><b>escuela club hipico</b><br>RODRIGO ORDOÑEZ 13150<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>63</b></div>`)[0];
+                popup_0582e30be90f26acb7d470afec04f1d3.setContent(html_426bff7c924f5755890fd67262cb8069);
+            
+        
+
+        circle_marker_0e89cf908d684347a280e84b1eea6834.bindPopup(popup_0582e30be90f26acb7d470afec04f1d3)
+        ;
+
+        
+    
+    
+            circle_marker_0e89cf908d684347a280e84b1eea6834.bindTooltip(
+                `<div>
+                     escuela club hipico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_182ce815872db83b64f52cc5e1f79ea6 = L.marker(
+                [-33.57981, -70.67892],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_46980c00b76217e277d4bb0dccc1fc4c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e63\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_182ce815872db83b64f52cc5e1f79ea6.setIcon(div_icon_46980c00b76217e277d4bb0dccc1fc4c);
+        
+    
+            var circle_marker_cc758f4b21a81614620e0909d9d1ea96 = L.circleMarker(
+                [-33.56621, -70.68102],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8539ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.225806451612904, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_4850e7b4434a3ed636166034e8345308 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e22dfb47374fb6425d0eaee4210e1017 = $(`<div id="html_e22dfb47374fb6425d0eaee4210e1017" style="width: 100.0%; height: 100.0%;"><b>escuela general alberto bachelet </b><br>ALBENIZ  12021<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>42</b></div>`)[0];
+                popup_4850e7b4434a3ed636166034e8345308.setContent(html_e22dfb47374fb6425d0eaee4210e1017);
+            
+        
+
+        circle_marker_cc758f4b21a81614620e0909d9d1ea96.bindPopup(popup_4850e7b4434a3ed636166034e8345308)
+        ;
+
+        
+    
+    
+            circle_marker_cc758f4b21a81614620e0909d9d1ea96.bindTooltip(
+                `<div>
+                     escuela general alberto bachelet 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0bc9d4c094cf87e3378e8d10657575ec = L.marker(
+                [-33.56621, -70.68102],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_1a7b968137e56a9a9ff6b31a947aabb5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e42\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0bc9d4c094cf87e3378e8d10657575ec.setIcon(div_icon_1a7b968137e56a9a9ff6b31a947aabb5);
+        
+    
+            var circle_marker_692145bf101bf5425da442ce929d239b = L.circleMarker(
+                [-33.5418, -70.6841],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_6528772fd51776bc2dc6c19d0ea5ac7c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5530ea76e8d65f7f71aa584b3e17f8a1 = $(`<div id="html_5530ea76e8d65f7f71aa584b3e17f8a1" style="width: 100.0%; height: 100.0%;"><b>escuela jose marti</b><br>18 DE SEPTIEMBRE 1080<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>10</b></div>`)[0];
+                popup_6528772fd51776bc2dc6c19d0ea5ac7c.setContent(html_5530ea76e8d65f7f71aa584b3e17f8a1);
+            
+        
+
+        circle_marker_692145bf101bf5425da442ce929d239b.bindPopup(popup_6528772fd51776bc2dc6c19d0ea5ac7c)
+        ;
+
+        
+    
+    
+            circle_marker_692145bf101bf5425da442ce929d239b.bindTooltip(
+                `<div>
+                     escuela jose marti
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6fb91570ee795c7cafc3daa81bcbec51 = L.marker(
+                [-33.5418, -70.6841],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_99c6b8c675236db56914982a25f18e00 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e10\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6fb91570ee795c7cafc3daa81bcbec51.setIcon(div_icon_99c6b8c675236db56914982a25f18e00);
+        
+    
+            var circle_marker_9b282ef91fe79672d5f3728aced1f920 = L.circleMarker(
+                [-33.57056, -70.68746],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdb79ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.387096774193548, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_a6ad0c3c4d080b1b50c0bf232a73f0bf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_16b829fb9c48ca3b2418d4b3a08edc93 = $(`<div id="html_16b829fb9c48ca3b2418d4b3a08edc93" style="width: 100.0%; height: 100.0%;"><b>escuela marcial martinez ferrari</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 12552<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>25</b></div>`)[0];
+                popup_a6ad0c3c4d080b1b50c0bf232a73f0bf.setContent(html_16b829fb9c48ca3b2418d4b3a08edc93);
+            
+        
+
+        circle_marker_9b282ef91fe79672d5f3728aced1f920.bindPopup(popup_a6ad0c3c4d080b1b50c0bf232a73f0bf)
+        ;
+
+        
+    
+    
+            circle_marker_9b282ef91fe79672d5f3728aced1f920.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0f77118a0b344dca4e6d90acda67f5aa = L.marker(
+                [-33.57056, -70.68746],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_6313922a4008c088f0766db30b357455 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e25\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0f77118a0b344dca4e6d90acda67f5aa.setIcon(div_icon_6313922a4008c088f0766db30b357455);
+        
+    
+            var circle_marker_036b61ba740b6bfc04dbb96387e7c615 = L.circleMarker(
+                [-33.5628, -70.6647],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe289ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.709677419354838, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_391577f618eb25b15a5109a6697d2920 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_99f33ea5e3765ce5fa5f6c40da8da53a = $(`<div id="html_99f33ea5e3765ce5fa5f6c40da8da53a" style="width: 100.0%; height: 100.0%;"><b>escuela mario arce gatica</b><br>LOS AVELLANOS 10958<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>22</b></div>`)[0];
+                popup_391577f618eb25b15a5109a6697d2920.setContent(html_99f33ea5e3765ce5fa5f6c40da8da53a);
+            
+        
+
+        circle_marker_036b61ba740b6bfc04dbb96387e7c615.bindPopup(popup_391577f618eb25b15a5109a6697d2920)
+        ;
+
+        
+    
+    
+            circle_marker_036b61ba740b6bfc04dbb96387e7c615.bindTooltip(
+                `<div>
+                     escuela mario arce gatica
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_402a89ce06e9beeba311854d1a1f553a = L.marker(
+                [-33.5628, -70.6647],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_c22207af16397945b4c4fe87cea30a8a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e22\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_402a89ce06e9beeba311854d1a1f553a.setIcon(div_icon_c22207af16397945b4c4fe87cea30a8a);
+        
+    
+            var circle_marker_79358fab2ab9d90924130d67e7c7502b = L.circleMarker(
+                [-33.58528, -70.69938],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_d392eab49b0cbebe9ab1fc310f7782e7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c0d9c7d56a13625cad6e736b5426ade5 = $(`<div id="html_c0d9c7d56a13625cad6e736b5426ade5" style="width: 100.0%; height: 100.0%;"><b>escuela nemesio antunez l1</b><br>El Libertador 1001<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>72</b></div>`)[0];
+                popup_d392eab49b0cbebe9ab1fc310f7782e7.setContent(html_c0d9c7d56a13625cad6e736b5426ade5);
+            
+        
+
+        circle_marker_79358fab2ab9d90924130d67e7c7502b.bindPopup(popup_d392eab49b0cbebe9ab1fc310f7782e7)
+        ;
+
+        
+    
+    
+            circle_marker_79358fab2ab9d90924130d67e7c7502b.bindTooltip(
+                `<div>
+                     escuela nemesio antunez l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b27033cc3e1ebaf336f6a94997eb62f5 = L.marker(
+                [-33.58528, -70.69938],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_5d797b3a0abaeaffe339d400be7d9e7b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e72\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b27033cc3e1ebaf336f6a94997eb62f5.setIcon(div_icon_5d797b3a0abaeaffe339d400be7d9e7b);
+        
+    
+            var circle_marker_4aa3db262ff1d6f5f447247954cf1a56 = L.circleMarker(
+                [-33.5521, -70.6878],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff2aaff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.35483870967742, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_30f302f7d0d3ed70fca58ea1c78bc242 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_feeb7a9699e03a804e50f9fa963c6167 = $(`<div id="html_feeb7a9699e03a804e50f9fa963c6167" style="width: 100.0%; height: 100.0%;"><b>escuela orlando letelier</b><br>EL PILLAN 1214<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>16</b></div>`)[0];
+                popup_30f302f7d0d3ed70fca58ea1c78bc242.setContent(html_feeb7a9699e03a804e50f9fa963c6167);
+            
+        
+
+        circle_marker_4aa3db262ff1d6f5f447247954cf1a56.bindPopup(popup_30f302f7d0d3ed70fca58ea1c78bc242)
+        ;
+
+        
+    
+    
+            circle_marker_4aa3db262ff1d6f5f447247954cf1a56.bindTooltip(
+                `<div>
+                     escuela orlando letelier
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4763233ac3a4b55b57d041eb976c2449 = L.marker(
+                [-33.5521, -70.6878],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_12e55d6b427582d8bacfd2c46d1129db = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e16\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4763233ac3a4b55b57d041eb976c2449.setIcon(div_icon_12e55d6b427582d8bacfd2c46d1129db);
+        
+    
+            var circle_marker_0a5d75523700a2c2cb58369ccab77ab1 = L.circleMarker(
+                [-33.56703, -70.66032],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff2aaff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.35483870967742, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_a23485eddb215aa0c4fbdcd2afe5e4a4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8d67dcfe0f8901f2f3c5079fc88dff6c = $(`<div id="html_8d67dcfe0f8901f2f3c5079fc88dff6c" style="width: 100.0%; height: 100.0%;"><b>escuela paul harris</b><br>SANTA AGUEDA 1382<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>16</b></div>`)[0];
+                popup_a23485eddb215aa0c4fbdcd2afe5e4a4.setContent(html_8d67dcfe0f8901f2f3c5079fc88dff6c);
+            
+        
+
+        circle_marker_0a5d75523700a2c2cb58369ccab77ab1.bindPopup(popup_a23485eddb215aa0c4fbdcd2afe5e4a4)
+        ;
+
+        
+    
+    
+            circle_marker_0a5d75523700a2c2cb58369ccab77ab1.bindTooltip(
+                `<div>
+                     escuela paul harris
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ccc9bcc7139ffec9bd111afa26dd13fc = L.marker(
+                [-33.56703, -70.66032],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_87f8c23f9cbbef279b411b963eeff286 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e16\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ccc9bcc7139ffec9bd111afa26dd13fc.setIcon(div_icon_87f8c23f9cbbef279b411b963eeff286);
+        
+    
+            var circle_marker_891e3efefd5e520c757088bb45cc676a = L.circleMarker(
+                [-33.5651, -70.6669],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffea99ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.032258064516128, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_44fcaca99fa096004afa663f84db41ba = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ed1264f95dda34f415678c2b1177c846 = $(`<div id="html_ed1264f95dda34f415678c2b1177c846" style="width: 100.0%; height: 100.0%;"><b>escuela villa santa elena</b><br>PASAJE LOS PLATINOS 11169<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>19</b></div>`)[0];
+                popup_44fcaca99fa096004afa663f84db41ba.setContent(html_ed1264f95dda34f415678c2b1177c846);
+            
+        
+
+        circle_marker_891e3efefd5e520c757088bb45cc676a.bindPopup(popup_44fcaca99fa096004afa663f84db41ba)
+        ;
+
+        
+    
+    
+            circle_marker_891e3efefd5e520c757088bb45cc676a.bindTooltip(
+                `<div>
+                     escuela villa santa elena
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5c862272fcfd1a8555a55b8881e7c2fe = L.marker(
+                [-33.5651, -70.6669],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_a911e03c838be4eb66a4d3f5ddff3f76 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e19\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5c862272fcfd1a8555a55b8881e7c2fe.setIcon(div_icon_a911e03c838be4eb66a4d3f5ddff3f76);
+        
+    
+            var circle_marker_f37b5e614c45851e064b08ff8f324094 = L.circleMarker(
+                [-33.54865, -70.67053],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#880026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.774193548387096, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_c9c8341d311f4a6be75a262408fa5781 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_42931f8753a3a88ae72ce73153cab270 = $(`<div id="html_42931f8753a3a88ae72ce73153cab270" style="width: 100.0%; height: 100.0%;"><b>liceo christia mc auliffe l1</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9730<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>71</b></div>`)[0];
+                popup_c9c8341d311f4a6be75a262408fa5781.setContent(html_42931f8753a3a88ae72ce73153cab270);
+            
+        
+
+        circle_marker_f37b5e614c45851e064b08ff8f324094.bindPopup(popup_c9c8341d311f4a6be75a262408fa5781)
+        ;
+
+        
+    
+    
+            circle_marker_f37b5e614c45851e064b08ff8f324094.bindTooltip(
+                `<div>
+                     liceo christia mc auliffe l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c86387f652d13167a75f9e0f420c717b = L.marker(
+                [-33.54865, -70.67053],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_79d0e18484c9b85123eca61f4e48928f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e71\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c86387f652d13167a75f9e0f420c717b.setIcon(div_icon_79d0e18484c9b85123eca61f4e48928f);
+        
+    
+            var circle_marker_d46b5f094d7de32c633f6b75d0abbfef = L.circleMarker(
+                [-33.54918, -70.67083],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9b42ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.32258064516129, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_2590d03a6ef36febb8199472630992cd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_79fae336ebe66f7859a4282c55c442fd = $(`<div id="html_79fae336ebe66f7859a4282c55c442fd" style="width: 100.0%; height: 100.0%;"><b>liceo juan gomez milla</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9740<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>38</b></div>`)[0];
+                popup_2590d03a6ef36febb8199472630992cd.setContent(html_79fae336ebe66f7859a4282c55c442fd);
+            
+        
+
+        circle_marker_d46b5f094d7de32c633f6b75d0abbfef.bindPopup(popup_2590d03a6ef36febb8199472630992cd)
+        ;
+
+        
+    
+    
+            circle_marker_d46b5f094d7de32c633f6b75d0abbfef.bindTooltip(
+                `<div>
+                     liceo juan gomez milla
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26f6bf5015f6a75c114145548f3d5fbc = L.marker(
+                [-33.54918, -70.67083],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_48236b0e897ae08bc21e8c34a6f335bb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_26f6bf5015f6a75c114145548f3d5fbc.setIcon(div_icon_48236b0e897ae08bc21e8c34a6f335bb);
+        
+    
+            var circle_marker_3869373150b10984b51ef2336f07f470 = L.circleMarker(
+                [-33.55225, -70.67474],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecd68ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.064516129032258, "stroke": false, "weight": 3}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+        var popup_8729152d4d104f1c18021d186f563a4b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b8ec209c727acdc73beb76d94d6c0153 = $(`<div id="html_b8ec209c727acdc73beb76d94d6c0153" style="width: 100.0%; height: 100.0%;"><b>liceo nuestra señora maria inmaculada</b><br>LUIS BARROS BORGOÑO 92<br>Votos Lista DAVID NICOLAS ROGERS GARCIA: <b>28</b></div>`)[0];
+                popup_8729152d4d104f1c18021d186f563a4b.setContent(html_b8ec209c727acdc73beb76d94d6c0153);
+            
+        
+
+        circle_marker_3869373150b10984b51ef2336f07f470.bindPopup(popup_8729152d4d104f1c18021d186f563a4b)
+        ;
+
+        
+    
+    
+            circle_marker_3869373150b10984b51ef2336f07f470.bindTooltip(
+                `<div>
+                     liceo nuestra señora maria inmaculada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ebf649a6fe52ee290eb642682f916ed = L.marker(
+                [-33.55225, -70.67474],
+                {"zIndexOffset": 9999}
+            ).addTo(map_41f41243a8666bdc3a95fd324256c342);
+        
+    
+            var div_icon_e07d3b23ad5547d08869aee25c2a6dd3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e28\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5ebf649a6fe52ee290eb642682f916ed.setIcon(div_icon_e07d3b23ad5547d08869aee25c2a6dd3);
+        
+    
+            map_41f41243a8666bdc3a95fd324256c342.fitBounds(
+                [[-33.5571, -70.6637], [-33.5803, -70.6701], [-33.57584, -70.692], [-33.5603, -70.6665], [-33.5691, -70.67], [-33.5501, -70.6645], [-33.5622, -70.6754], [-33.5561, -70.6571], [-33.5717, -70.6808], [-33.57981, -70.67892], [-33.56621, -70.68102], [-33.5418, -70.6841], [-33.57056, -70.68746], [-33.5628, -70.6647], [-33.58528, -70.69938], [-33.5521, -70.6878], [-33.56703, -70.66032], [-33.5651, -70.6669], [-33.54865, -70.67053], [-33.54918, -70.67083], [-33.55225, -70.67474]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

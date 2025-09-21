@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6bad8f566e31a892351cb4a2c7d5c0b1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6bad8f566e31a892351cb4a2c7d5c0b1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6bad8f566e31a892351cb4a2c7d5c0b1 = L.map(
+                "map_6bad8f566e31a892351cb4a2c7d5c0b1",
+                {
+                    center: [-33.563024285714285, -70.67460952380952],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_633d4a898ae50287af4877bae38141ee = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_633d4a898ae50287af4877bae38141ee.addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+    var color_map_3f2d27c0a4cdf35644e295af5bbc7338 = {};
+
+    
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.color = d3.scale.threshold()
+              .domain([27.0, 27.216432865731463, 27.432865731462925, 27.649298597194388, 27.86573146292585, 28.082164328657313, 28.298597194388776, 28.51503006012024, 28.7314629258517, 28.947895791583168, 29.16432865731463, 29.380761523046093, 29.597194388777556, 29.81362725450902, 30.03006012024048, 30.246492985971944, 30.462925851703407, 30.67935871743487, 30.895791583166332, 31.112224448897795, 31.328657314629258, 31.54509018036072, 31.761523046092186, 31.97795591182365, 32.19438877755511, 32.410821643286575, 32.62725450901804, 32.8436873747495, 33.06012024048096, 33.276553106212425, 33.49298597194389, 33.70941883767535, 33.92585170340681, 34.142284569138276, 34.35871743486974, 34.5751503006012, 34.791583166332664, 35.00801603206413, 35.22444889779559, 35.44088176352705, 35.657314629258515, 35.87374749498998, 36.09018036072144, 36.30661322645291, 36.52304609218437, 36.739478957915836, 36.9559118236473, 37.17234468937876, 37.388777555110224, 37.605210420841686, 37.82164328657315, 38.03807615230461, 38.254509018036075, 38.47094188376754, 38.687374749499, 38.90380761523046, 39.120240480961925, 39.33667334669339, 39.55310621242485, 39.76953907815631, 39.985971943887776, 40.20240480961924, 40.4188376753507, 40.635270541082164, 40.85170340681363, 41.06813627254509, 41.28456913827655, 41.501002004008015, 41.71743486973948, 41.93386773547094, 42.1503006012024, 42.366733466933866, 42.58316633266533, 42.79959919839679, 43.016032064128254, 43.23246492985972, 43.44889779559118, 43.66533066132264, 43.881763527054105, 44.09819639278557, 44.31462925851703, 44.53106212424849, 44.747494989979955, 44.96392785571142, 45.18036072144288, 45.39679358717434, 45.61322645290581, 45.829659318637276, 46.04609218436874, 46.2625250501002, 46.478957915831664, 46.69539078156313, 46.91182364729459, 47.12825651302605, 47.344689378757515, 47.56112224448898, 47.77755511022044, 47.9939879759519, 48.210420841683366, 48.42685370741483, 48.64328657314629, 48.859719438877754, 49.076152304609224, 49.292585170340686, 49.50901803607215, 49.72545090180361, 49.941883767535074, 50.15831663326654, 50.374749498998, 50.59118236472946, 50.807615230460925, 51.02404809619239, 51.24048096192385, 51.45691382765531, 51.673346693386776, 51.88977955911824, 52.1062124248497, 52.322645290581164, 52.53907815631263, 52.75551102204409, 52.97194388777555, 53.188376753507015, 53.40480961923848, 53.62124248496994, 53.8376753507014, 54.054108216432866, 54.27054108216433, 54.48697394789579, 54.703406813627254, 54.91983967935872, 55.13627254509018, 55.35270541082164, 55.569138276553105, 55.78557114228457, 56.00200400801603, 56.21843687374749, 56.434869739478955, 56.65130260521042, 56.86773547094188, 57.08416833667334, 57.300601202404806, 57.51703406813627, 57.73346693386773, 57.949899799599194, 58.16633266533066, 58.38276553106212, 58.59919839679358, 58.815631262525045, 59.032064128256515, 59.24849699398798, 59.46492985971944, 59.6813627254509, 59.897795591182366, 60.11422845691383, 60.33066132264529, 60.547094188376754, 60.763527054108216, 60.97995991983968, 61.19639278557114, 61.412825651302605, 61.62925851703407, 61.84569138276553, 62.06212424849699, 62.278557114228455, 62.49498997995992, 62.71142284569138, 62.92785571142284, 63.144288577154306, 63.36072144288577, 63.57715430861723, 63.793587174348694, 64.01002004008015, 64.22645290581163, 64.44288577154309, 64.65931863727455, 64.87575150300601, 65.09218436873748, 65.30861723446894, 65.5250501002004, 65.74148296593187, 65.95791583166333, 66.17434869739479, 66.39078156312625, 66.60721442885772, 66.82364729458918, 67.04008016032064, 67.2565130260521, 67.47294589178357, 67.68937875751503, 67.90581162324649, 68.12224448897796, 68.33867735470942, 68.55511022044088, 68.77154308617234, 68.9879759519038, 69.20440881763527, 69.42084168336673, 69.6372745490982, 69.85370741482966, 70.07014028056112, 70.28657314629258, 70.50300601202404, 70.71943887775551, 70.93587174348698, 71.15230460921845, 71.36873747494991, 71.58517034068137, 71.80160320641284, 72.0180360721443, 72.23446893787576, 72.45090180360722, 72.66733466933869, 72.88376753507015, 73.10020040080161, 73.31663326653307, 73.53306613226454, 73.749498997996, 73.96593186372746, 74.18236472945893, 74.39879759519039, 74.61523046092185, 74.83166332665331, 75.04809619238478, 75.26452905811624, 75.4809619238477, 75.69739478957916, 75.91382765531063, 76.13026052104209, 76.34669338677355, 76.56312625250501, 76.77955911823648, 76.99599198396794, 77.2124248496994, 77.42885771543087, 77.64529058116233, 77.86172344689379, 78.07815631262525, 78.29458917835672, 78.51102204408818, 78.72745490981964, 78.9438877755511, 79.16032064128257, 79.37675350701403, 79.59318637274549, 79.80961923847696, 80.02605210420842, 80.24248496993988, 80.45891783567134, 80.6753507014028, 80.89178356713427, 81.10821643286573, 81.3246492985972, 81.54108216432866, 81.75751503006012, 81.97394789579158, 82.19038076152304, 82.40681362725451, 82.62324649298597, 82.83967935871743, 83.0561122244489, 83.27254509018036, 83.48897795591182, 83.70541082164328, 83.92184368737475, 84.13827655310621, 84.35470941883767, 84.57114228456913, 84.7875751503006, 85.00400801603206, 85.22044088176352, 85.43687374749499, 85.65330661322645, 85.86973947895791, 86.08617234468937, 86.30260521042084, 86.5190380761523, 86.73547094188376, 86.95190380761522, 87.16833667334669, 87.38476953907815, 87.60120240480961, 87.81763527054107, 88.03406813627254, 88.250501002004, 88.46693386773546, 88.68336673346693, 88.89979959919839, 89.11623246492985, 89.33266533066131, 89.54909819639278, 89.76553106212424, 89.9819639278557, 90.19839679358716, 90.41482965931863, 90.63126252505009, 90.84769539078155, 91.06412825651303, 91.28056112224449, 91.49699398797596, 91.71342685370742, 91.92985971943888, 92.14629258517034, 92.3627254509018, 92.57915831663327, 92.79559118236473, 93.0120240480962, 93.22845691382766, 93.44488977955912, 93.66132264529058, 93.87775551102204, 94.09418837675351, 94.31062124248497, 94.52705410821643, 94.7434869739479, 94.95991983967936, 95.17635270541082, 95.39278557114228, 95.60921843687375, 95.82565130260521, 96.04208416833667, 96.25851703406813, 96.4749498997996, 96.69138276553106, 96.90781563126252, 97.12424849699399, 97.34068136272545, 97.55711422845691, 97.77354709418837, 97.98997995991984, 98.2064128256513, 98.42284569138276, 98.63927855711422, 98.85571142284569, 99.07214428857715, 99.28857715430861, 99.50501002004007, 99.72144288577154, 99.937875751503, 100.15430861723446, 100.37074148296593, 100.58717434869739, 100.80360721442885, 101.02004008016031, 101.23647294589178, 101.45290581162325, 101.66933867735472, 101.88577154308618, 102.10220440881764, 102.3186372745491, 102.53507014028057, 102.75150300601203, 102.96793587174349, 103.18436873747495, 103.40080160320642, 103.61723446893788, 103.83366733466934, 104.0501002004008, 104.26653306613227, 104.48296593186373, 104.6993987975952, 104.91583166332666, 105.13226452905812, 105.34869739478958, 105.56513026052104, 105.78156312625251, 105.99799599198397, 106.21442885771543, 106.4308617234469, 106.64729458917836, 106.86372745490982, 107.08016032064128, 107.29659318637275, 107.51302605210421, 107.72945891783567, 107.94589178356713, 108.1623246492986, 108.37875751503006, 108.59519038076152, 108.81162324649299, 109.02805611222445, 109.24448897795591, 109.46092184368737, 109.67735470941884, 109.8937875751503, 110.11022044088176, 110.32665330661322, 110.54308617234469, 110.75951903807615, 110.97595190380761, 111.19238476953907, 111.40881763527054, 111.625250501002, 111.84168336673346, 112.05811623246493, 112.27454909819639, 112.49098196392785, 112.70741482965931, 112.92384769539078, 113.14028056112224, 113.3567134268537, 113.57314629258516, 113.78957915831663, 114.00601202404809, 114.22244488977955, 114.43887775551102, 114.65531062124248, 114.87174348697395, 115.08817635270542, 115.30460921843688, 115.52104208416834, 115.7374749498998, 115.95390781563127, 116.17034068136273, 116.3867735470942, 116.60320641282566, 116.81963927855712, 117.03607214428858, 117.25250501002004, 117.46893787575151, 117.68537074148297, 117.90180360721443, 118.1182364729459, 118.33466933867736, 118.55110220440882, 118.76753507014028, 118.98396793587175, 119.20040080160321, 119.41683366733467, 119.63326653306613, 119.8496993987976, 120.06613226452906, 120.28256513026052, 120.49899799599199, 120.71543086172345, 120.93186372745491, 121.14829659318637, 121.36472945891784, 121.5811623246493, 121.79759519038076, 122.01402805611222, 122.23046092184369, 122.44689378757515, 122.66332665330661, 122.87975951903807, 123.09619238476954, 123.312625250501, 123.52905811623246, 123.74549098196393, 123.96192384769539, 124.17835671342685, 124.39478957915831, 124.61122244488978, 124.82765531062124, 125.0440881763527, 125.26052104208416, 125.47695390781563, 125.69338677354709, 125.90981963927855, 126.12625250501002, 126.34268537074148, 126.55911823647294, 126.7755511022044, 126.99198396793587, 127.20841683366733, 127.42484969939879, 127.64128256513025, 127.85771543086172, 128.0741482965932, 128.29058116232466, 128.50701402805612, 128.72344689378758, 128.93987975951904, 129.1563126252505, 129.37274549098197, 129.58917835671343, 129.8056112224449, 130.02204408817636, 130.23847695390782, 130.45490981963928, 130.67134268537075, 130.8877755511022, 131.10420841683367, 131.32064128256513, 131.5370741482966, 131.75350701402806, 131.96993987975952, 132.18637274549098, 132.40280561122245, 132.6192384769539, 132.83567134268537, 133.05210420841684, 133.2685370741483, 133.48496993987976, 133.70140280561122, 133.9178356713427, 134.13426853707415, 134.3507014028056, 134.56713426853707, 134.78356713426854, 135.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.x = d3.scale.linear()
+              .domain([27.0, 135.0])
+              .range([0, 450 - 50]);
+
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.legend = L.control({position: 'topright'});
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.legend.addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.xAxis = d3.svg.axis()
+        .scale(color_map_3f2d27c0a4cdf35644e295af5bbc7338.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([27.0, 40.5, 54.0, 67.5, 81.0, 94.5, 108.0, 121.5, 135.0]);
+
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.g = color_map_3f2d27c0a4cdf35644e295af5bbc7338.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.g.selectAll("rect")
+        .data(color_map_3f2d27c0a4cdf35644e295af5bbc7338.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_3f2d27c0a4cdf35644e295af5bbc7338.x(color_map_3f2d27c0a4cdf35644e295af5bbc7338.color.domain()[i - 1]) : color_map_3f2d27c0a4cdf35644e295af5bbc7338.x.range()[0],
+            x1: i < color_map_3f2d27c0a4cdf35644e295af5bbc7338.color.domain().length ? color_map_3f2d27c0a4cdf35644e295af5bbc7338.x(color_map_3f2d27c0a4cdf35644e295af5bbc7338.color.domain()[i]) : color_map_3f2d27c0a4cdf35644e295af5bbc7338.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_3f2d27c0a4cdf35644e295af5bbc7338.g.call(color_map_3f2d27c0a4cdf35644e295af5bbc7338.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES por local");
+    
+            var circle_marker_f2736c0bb18d178fd82807bc7ad0c2ea = L.circleMarker(
+                [-33.5571, -70.6637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.907407407407408, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_d14dfc2710dfc08cf5fccaa119874e86 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ba856fa1eef25f3aa8c8b1557a7ca3b1 = $(`<div id="html_ba856fa1eef25f3aa8c8b1557a7ca3b1" style="width: 100.0%; height: 100.0%;"><b>centro civico el bosque</b><br>ELEUTERIO RAMIREZ 10264<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>34</b></div>`)[0];
+                popup_d14dfc2710dfc08cf5fccaa119874e86.setContent(html_ba856fa1eef25f3aa8c8b1557a7ca3b1);
+            
+        
+
+        circle_marker_f2736c0bb18d178fd82807bc7ad0c2ea.bindPopup(popup_d14dfc2710dfc08cf5fccaa119874e86)
+        ;
+
+        
+    
+    
+            circle_marker_f2736c0bb18d178fd82807bc7ad0c2ea.bindTooltip(
+                `<div>
+                     centro civico el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_149e2e45fa99ef325d243e8cf6219ed3 = L.marker(
+                [-33.5571, -70.6637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_fe612dc12e23ef3de2b65ae81d76ae95 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e34\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_149e2e45fa99ef325d243e8cf6219ed3.setIcon(div_icon_fe612dc12e23ef3de2b65ae81d76ae95);
+        
+    
+            var circle_marker_167881e95fa4f1a4d02c1979c93c46de = L.circleMarker(
+                [-33.5803, -70.6701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#febf5aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.666666666666668, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_22150cbc1e01dd4cb48f089e1a402514 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_594d13db6ff0fc1ac81e4ba3ce290ee9 = $(`<div id="html_594d13db6ff0fc1ac81e4ba3ce290ee9" style="width: 100.0%; height: 100.0%;"><b>colegio batalla de la concepcion</b><br>VECINAL SUR 1380<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>63</b></div>`)[0];
+                popup_22150cbc1e01dd4cb48f089e1a402514.setContent(html_594d13db6ff0fc1ac81e4ba3ce290ee9);
+            
+        
+
+        circle_marker_167881e95fa4f1a4d02c1979c93c46de.bindPopup(popup_22150cbc1e01dd4cb48f089e1a402514)
+        ;
+
+        
+    
+    
+            circle_marker_167881e95fa4f1a4d02c1979c93c46de.bindTooltip(
+                `<div>
+                     colegio batalla de la concepcion
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dc31432b71f1aad05ed1ed5b04ccb705 = L.marker(
+                [-33.5803, -70.6701],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_054233b070646ef8cb872fa7959b6249 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e63\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dc31432b71f1aad05ed1ed5b04ccb705.setIcon(div_icon_054233b070646ef8cb872fa7959b6249);
+        
+    
+            var circle_marker_6e9dd4e0c21c696e4fde0615c3186432 = L.circleMarker(
+                [-33.57584, -70.692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec863ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.277777777777779, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_375842bf4bc5acd5f29325157843665b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_73f0dca767565cb76b442a65a4a285c8 = $(`<div id="html_73f0dca767565cb76b442a65a4a285c8" style="width: 100.0%; height: 100.0%;"><b>colegio santo tomas de aquino</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 13231<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>60</b></div>`)[0];
+                popup_375842bf4bc5acd5f29325157843665b.setContent(html_73f0dca767565cb76b442a65a4a285c8);
+            
+        
+
+        circle_marker_6e9dd4e0c21c696e4fde0615c3186432.bindPopup(popup_375842bf4bc5acd5f29325157843665b)
+        ;
+
+        
+    
+    
+            circle_marker_6e9dd4e0c21c696e4fde0615c3186432.bindTooltip(
+                `<div>
+                     colegio santo tomas de aquino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_38d5ab75d1d25293f5b14a0a8ec400f8 = L.marker(
+                [-33.57584, -70.692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_c13495bf3fafa3792cbc73d34e425eb0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e60\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_38d5ab75d1d25293f5b14a0a8ec400f8.setIcon(div_icon_c13495bf3fafa3792cbc73d34e425eb0);
+        
+    
+            var circle_marker_4d5ec2db3b584e9cc50f806ab7b20409 = L.circleMarker(
+                [-33.5603, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdc7cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.24074074074074, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_6e70049489f71a99abbf3e135bda3d09 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e38af215b3f0e5e336b1f1d94a6f3036 = $(`<div id="html_e38af215b3f0e5e336b1f1d94a6f3036" style="width: 100.0%; height: 100.0%;"><b>complejo educacional felipe herrera lane</b><br>LOS CUERVOS 866<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>52</b></div>`)[0];
+                popup_6e70049489f71a99abbf3e135bda3d09.setContent(html_e38af215b3f0e5e336b1f1d94a6f3036);
+            
+        
+
+        circle_marker_4d5ec2db3b584e9cc50f806ab7b20409.bindPopup(popup_6e70049489f71a99abbf3e135bda3d09)
+        ;
+
+        
+    
+    
+            circle_marker_4d5ec2db3b584e9cc50f806ab7b20409.bindTooltip(
+                `<div>
+                     complejo educacional felipe herrera lane
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28ac1de321e627cad79a430580b9f0bd = L.marker(
+                [-33.5603, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_a303eb51cae86ba5bab3f013b87811b6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e52\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_28ac1de321e627cad79a430580b9f0bd.setIcon(div_icon_a303eb51cae86ba5bab3f013b87811b6);
+        
+    
+            var circle_marker_d367f901ec4e9b26d2bc89c880960b9d = L.circleMarker(
+                [-33.5691, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb14bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.314814814814815, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_4a2c1be83919d6587a2d2a318dc07f59 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b09dfc662bd53826851dcd8d750e2868 = $(`<div id="html_b09dfc662bd53826851dcd8d750e2868" style="width: 100.0%; height: 100.0%;"><b>complejo educacional las acacias</b><br>LAS ESMERALDAS 11475<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>68</b></div>`)[0];
+                popup_4a2c1be83919d6587a2d2a318dc07f59.setContent(html_b09dfc662bd53826851dcd8d750e2868);
+            
+        
+
+        circle_marker_d367f901ec4e9b26d2bc89c880960b9d.bindPopup(popup_4a2c1be83919d6587a2d2a318dc07f59)
+        ;
+
+        
+    
+    
+            circle_marker_d367f901ec4e9b26d2bc89c880960b9d.bindTooltip(
+                `<div>
+                     complejo educacional las acacias
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9f5b415d9c9585f7c7e21a6dcc3e72bf = L.marker(
+                [-33.5691, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_6a253bb938195330cd6741b90a0ee50b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e68\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9f5b415d9c9585f7c7e21a6dcc3e72bf.setIcon(div_icon_6a253bb938195330cd6741b90a0ee50b);
+        
+    
+            var circle_marker_e5f4266b555761b1f3a75b0e20e8aa31 = L.circleMarker(
+                [-33.5501, -70.6645],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9840ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.481481481481481, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_f5f8b18aff5c34ca757462e9e32e953e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7bf67ca78ca185f3ecc923099aee0b68 = $(`<div id="html_7bf67ca78ca185f3ecc923099aee0b68" style="width: 100.0%; height: 100.0%;"><b>escuela aviadores</b><br>BAQUEDANO 9820<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>77</b></div>`)[0];
+                popup_f5f8b18aff5c34ca757462e9e32e953e.setContent(html_7bf67ca78ca185f3ecc923099aee0b68);
+            
+        
+
+        circle_marker_e5f4266b555761b1f3a75b0e20e8aa31.bindPopup(popup_f5f8b18aff5c34ca757462e9e32e953e)
+        ;
+
+        
+    
+    
+            circle_marker_e5f4266b555761b1f3a75b0e20e8aa31.bindTooltip(
+                `<div>
+                     escuela aviadores
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d32a2086fd3a8c90a979c0e42a9a8b2b = L.marker(
+                [-33.5501, -70.6645],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_886450b0d403dfb2eaaf438e2a9712c2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e77\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d32a2086fd3a8c90a979c0e42a9a8b2b.setIcon(div_icon_886450b0d403dfb2eaaf438e2a9712c2);
+        
+    
+            var circle_marker_ef24e31ac3bfd1abf050f7cd476408c0 = L.circleMarker(
+                [-33.5622, -70.6754],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeea2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.685185185185185, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_54f792988deb622bbb932f8d562658ec = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7525f21e40ed38f653ab79f5897c0b30 = $(`<div id="html_7525f21e40ed38f653ab79f5897c0b30" style="width: 100.0%; height: 100.0%;"><b>escuela base el bosque</b><br>MARIANO LATORRE 11600<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>40</b></div>`)[0];
+                popup_54f792988deb622bbb932f8d562658ec.setContent(html_7525f21e40ed38f653ab79f5897c0b30);
+            
+        
+
+        circle_marker_ef24e31ac3bfd1abf050f7cd476408c0.bindPopup(popup_54f792988deb622bbb932f8d562658ec)
+        ;
+
+        
+    
+    
+            circle_marker_ef24e31ac3bfd1abf050f7cd476408c0.bindTooltip(
+                `<div>
+                     escuela base el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7fa726d8bd8581c4520fcef59841dc42 = L.marker(
+                [-33.5622, -70.6754],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_9dd1eff292f99800bcc515faf4d512aa = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e40\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7fa726d8bd8581c4520fcef59841dc42.setIcon(div_icon_9dd1eff292f99800bcc515faf4d512aa);
+        
+    
+            var circle_marker_7119c956abfbc007903377e9e0d0644f = L.circleMarker(
+                [-33.5561, -70.6571],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdf82ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.981481481481481, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_42390ff4eae625f6dfd96a6e43310df0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8b7e8be051990c01090c9555c1dbc076 = $(`<div id="html_8b7e8be051990c01090c9555c1dbc076" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de lyon</b><br>ALMIRANTE RIVEROS 10122<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>50</b></div>`)[0];
+                popup_42390ff4eae625f6dfd96a6e43310df0.setContent(html_8b7e8be051990c01090c9555c1dbc076);
+            
+        
+
+        circle_marker_7119c956abfbc007903377e9e0d0644f.bindPopup(popup_42390ff4eae625f6dfd96a6e43310df0)
+        ;
+
+        
+    
+    
+            circle_marker_7119c956abfbc007903377e9e0d0644f.bindTooltip(
+                `<div>
+                     escuela ciudad de lyon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_272a33bb2e9933c5aa06dccd1087ea4e = L.marker(
+                [-33.5561, -70.6571],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_436969bfcafe5ac50503369e420de61b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e50\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_272a33bb2e9933c5aa06dccd1087ea4e.setIcon(div_icon_436969bfcafe5ac50503369e420de61b);
+        
+    
+            var circle_marker_50c61f8b3972269116c425c13b584ed5 = L.circleMarker(
+                [-33.5717, -70.6808],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdc7cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.24074074074074, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_a53e6d5949e91e4aac18fdf3ccdb8013 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_199cdef4c2bce199893951336441f947 = $(`<div id="html_199cdef4c2bce199893951336441f947" style="width: 100.0%; height: 100.0%;"><b>escuela claudio arrau leon</b><br>LOS CAROLINOS 530<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>52</b></div>`)[0];
+                popup_a53e6d5949e91e4aac18fdf3ccdb8013.setContent(html_199cdef4c2bce199893951336441f947);
+            
+        
+
+        circle_marker_50c61f8b3972269116c425c13b584ed5.bindPopup(popup_a53e6d5949e91e4aac18fdf3ccdb8013)
+        ;
+
+        
+    
+    
+            circle_marker_50c61f8b3972269116c425c13b584ed5.bindTooltip(
+                `<div>
+                     escuela claudio arrau leon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3886e1fe882783d4ceee79b8d6d42d38 = L.marker(
+                [-33.5717, -70.6808],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_8760ea65fcc0625c98125276c1699014 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e52\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3886e1fe882783d4ceee79b8d6d42d38.setIcon(div_icon_8760ea65fcc0625c98125276c1699014);
+        
+    
+            var circle_marker_1eca024b7a2739ba09ef3f3d736c5769 = L.circleMarker(
+                [-33.57981, -70.67892],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed673ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.62962962962963, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_b7515b3c3138fca77c0d6498638cc8a4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a94da0753405f91918788c3105569728 = $(`<div id="html_a94da0753405f91918788c3105569728" style="width: 100.0%; height: 100.0%;"><b>escuela club hipico</b><br>RODRIGO ORDOÑEZ 13150<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>55</b></div>`)[0];
+                popup_b7515b3c3138fca77c0d6498638cc8a4.setContent(html_a94da0753405f91918788c3105569728);
+            
+        
+
+        circle_marker_1eca024b7a2739ba09ef3f3d736c5769.bindPopup(popup_b7515b3c3138fca77c0d6498638cc8a4)
+        ;
+
+        
+    
+    
+            circle_marker_1eca024b7a2739ba09ef3f3d736c5769.bindTooltip(
+                `<div>
+                     escuela club hipico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_703407a9a2ca7bacc76b407fddd23c18 = L.marker(
+                [-33.57981, -70.67892],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_ae49ebb3adfd00803fbeb66b03673851 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e55\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_703407a9a2ca7bacc76b407fddd23c18.setIcon(div_icon_ae49ebb3adfd00803fbeb66b03673851);
+        
+    
+            var circle_marker_bf9091485b18527abd91f8355d21d654 = L.circleMarker(
+                [-33.56621, -70.68102],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec863ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.277777777777779, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_6dd2ab4e2e6759576bacda032b47ee19 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0671a5c88696de79d4cdcdb12871b03c = $(`<div id="html_0671a5c88696de79d4cdcdb12871b03c" style="width: 100.0%; height: 100.0%;"><b>escuela general alberto bachelet </b><br>ALBENIZ  12021<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>60</b></div>`)[0];
+                popup_6dd2ab4e2e6759576bacda032b47ee19.setContent(html_0671a5c88696de79d4cdcdb12871b03c);
+            
+        
+
+        circle_marker_bf9091485b18527abd91f8355d21d654.bindPopup(popup_6dd2ab4e2e6759576bacda032b47ee19)
+        ;
+
+        
+    
+    
+            circle_marker_bf9091485b18527abd91f8355d21d654.bindTooltip(
+                `<div>
+                     escuela general alberto bachelet 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f3e2040ab06b211b6e38fb92540095b0 = L.marker(
+                [-33.56621, -70.68102],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_99b444c28098431010f8940ea6862626 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e60\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f3e2040ab06b211b6e38fb92540095b0.setIcon(div_icon_99b444c28098431010f8940ea6862626);
+        
+    
+            var circle_marker_e900fc232b82c77003e77f39ce41fbc8 = L.circleMarker(
+                [-33.5418, -70.6841],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_6c5aac7acb4a9e4051b369142e597df2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_785cb381eb31fc4edab80d8b3609d955 = $(`<div id="html_785cb381eb31fc4edab80d8b3609d955" style="width: 100.0%; height: 100.0%;"><b>escuela jose marti</b><br>18 DE SEPTIEMBRE 1080<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>27</b></div>`)[0];
+                popup_6c5aac7acb4a9e4051b369142e597df2.setContent(html_785cb381eb31fc4edab80d8b3609d955);
+            
+        
+
+        circle_marker_e900fc232b82c77003e77f39ce41fbc8.bindPopup(popup_6c5aac7acb4a9e4051b369142e597df2)
+        ;
+
+        
+    
+    
+            circle_marker_e900fc232b82c77003e77f39ce41fbc8.bindTooltip(
+                `<div>
+                     escuela jose marti
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b5ea52e760d89a91b91c3fd083fb8b15 = L.marker(
+                [-33.5418, -70.6841],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_b85b0dc47fe486bf94308a66340f5098 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e27\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b5ea52e760d89a91b91c3fd083fb8b15.setIcon(div_icon_b85b0dc47fe486bf94308a66340f5098);
+        
+    
+            var circle_marker_6dff341f1b4e0f7ee0633a5b27e34c48 = L.circleMarker(
+                [-33.57056, -70.68746],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feab49ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.574074074074074, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_f96cdc515fc8666667ee93dc6c9dfb2c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9b9d9fa4e95f7de28407d426bcbc691f = $(`<div id="html_9b9d9fa4e95f7de28407d426bcbc691f" style="width: 100.0%; height: 100.0%;"><b>escuela marcial martinez ferrari</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 12552<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>70</b></div>`)[0];
+                popup_f96cdc515fc8666667ee93dc6c9dfb2c.setContent(html_9b9d9fa4e95f7de28407d426bcbc691f);
+            
+        
+
+        circle_marker_6dff341f1b4e0f7ee0633a5b27e34c48.bindPopup(popup_f96cdc515fc8666667ee93dc6c9dfb2c)
+        ;
+
+        
+    
+    
+            circle_marker_6dff341f1b4e0f7ee0633a5b27e34c48.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7a49769d348f4b4924dc8c4f6f30d558 = L.marker(
+                [-33.57056, -70.68746],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_7e442bf4280bc5571d1dcf11dc6d2b47 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e70\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7a49769d348f4b4924dc8c4f6f30d558.setIcon(div_icon_7e442bf4280bc5571d1dcf11dc6d2b47);
+        
+    
+            var circle_marker_a396f6677d907b11f633f21296deeb0a = L.circleMarker(
+                [-33.5628, -70.6647],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe289ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.722222222222221, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_d4b95d94606e9cb583f492ba463ab871 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0bfaee237ce96e08ea913903f839f7ae = $(`<div id="html_0bfaee237ce96e08ea913903f839f7ae" style="width: 100.0%; height: 100.0%;"><b>escuela mario arce gatica</b><br>LOS AVELLANOS 10958<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>48</b></div>`)[0];
+                popup_d4b95d94606e9cb583f492ba463ab871.setContent(html_0bfaee237ce96e08ea913903f839f7ae);
+            
+        
+
+        circle_marker_a396f6677d907b11f633f21296deeb0a.bindPopup(popup_d4b95d94606e9cb583f492ba463ab871)
+        ;
+
+        
+    
+    
+            circle_marker_a396f6677d907b11f633f21296deeb0a.bindTooltip(
+                `<div>
+                     escuela mario arce gatica
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d6f8adbb8114f1ab346df168a3869cb5 = L.marker(
+                [-33.5628, -70.6647],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_5f03fbfbbd175016fae554073da9ad12 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e48\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d6f8adbb8114f1ab346df168a3869cb5.setIcon(div_icon_5f03fbfbbd175016fae554073da9ad12);
+        
+    
+            var circle_marker_d513b7dbaa19371bfb9ab8bfd90c3563 = L.circleMarker(
+                [-33.58528, -70.69938],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bf0025ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.185185185185183, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_1a8beb9d5d321760fde22f4ed0ce2fae = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4b416f3fb330e714987200756157b69e = $(`<div id="html_4b416f3fb330e714987200756157b69e" style="width: 100.0%; height: 100.0%;"><b>escuela nemesio antunez l1</b><br>El Libertador 1001<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>121</b></div>`)[0];
+                popup_1a8beb9d5d321760fde22f4ed0ce2fae.setContent(html_4b416f3fb330e714987200756157b69e);
+            
+        
+
+        circle_marker_d513b7dbaa19371bfb9ab8bfd90c3563.bindPopup(popup_1a8beb9d5d321760fde22f4ed0ce2fae)
+        ;
+
+        
+    
+    
+            circle_marker_d513b7dbaa19371bfb9ab8bfd90c3563.bindTooltip(
+                `<div>
+                     escuela nemesio antunez l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c72818d525c13914d46630a27e3978e7 = L.marker(
+                [-33.58528, -70.69938],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_9a02b2c142b0432446547903554d8d4e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e121\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c72818d525c13914d46630a27e3978e7.setIcon(div_icon_9a02b2c142b0432446547903554d8d4e);
+        
+    
+            var circle_marker_dd101f53cc141c86acdd763e4cbf4cda = L.circleMarker(
+                [-33.5521, -70.6878],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe289ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.722222222222221, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_05abc162daef48aea513b4fd98c42da4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_914eadd6b5d755b40cac8734eaaaf5c8 = $(`<div id="html_914eadd6b5d755b40cac8734eaaaf5c8" style="width: 100.0%; height: 100.0%;"><b>escuela orlando letelier</b><br>EL PILLAN 1214<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>48</b></div>`)[0];
+                popup_05abc162daef48aea513b4fd98c42da4.setContent(html_914eadd6b5d755b40cac8734eaaaf5c8);
+            
+        
+
+        circle_marker_dd101f53cc141c86acdd763e4cbf4cda.bindPopup(popup_05abc162daef48aea513b4fd98c42da4)
+        ;
+
+        
+    
+    
+            circle_marker_dd101f53cc141c86acdd763e4cbf4cda.bindTooltip(
+                `<div>
+                     escuela orlando letelier
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_221f4101c34e41feb2559d7226ca81d3 = L.marker(
+                [-33.5521, -70.6878],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_020f22db0accecb6c8f1c27bccae354f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e48\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_221f4101c34e41feb2559d7226ca81d3.setIcon(div_icon_020f22db0accecb6c8f1c27bccae354f);
+        
+    
+            var circle_marker_7ec1502c7922be0c9994997f3e6ff243 = L.circleMarker(
+                [-33.56703, -70.66032],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff1a8ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.425925925925926, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_d7c8fdaa1bec2f149acdb8e104579c9e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0079ef6156617524c02b64f431911792 = $(`<div id="html_0079ef6156617524c02b64f431911792" style="width: 100.0%; height: 100.0%;"><b>escuela paul harris</b><br>SANTA AGUEDA 1382<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>38</b></div>`)[0];
+                popup_d7c8fdaa1bec2f149acdb8e104579c9e.setContent(html_0079ef6156617524c02b64f431911792);
+            
+        
+
+        circle_marker_7ec1502c7922be0c9994997f3e6ff243.bindPopup(popup_d7c8fdaa1bec2f149acdb8e104579c9e)
+        ;
+
+        
+    
+    
+            circle_marker_7ec1502c7922be0c9994997f3e6ff243.bindTooltip(
+                `<div>
+                     escuela paul harris
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8abb782744b6f62f4e615c3cf4edbe54 = L.marker(
+                [-33.56703, -70.66032],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_e5b135a14d789543d82bfc1b3569cbd8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8abb782744b6f62f4e615c3cf4edbe54.setIcon(div_icon_e5b135a14d789543d82bfc1b3569cbd8);
+        
+    
+            var circle_marker_2ed83d6ba1fb45f35b66a874e4188976 = L.circleMarker(
+                [-33.5651, -70.6669],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff1a8ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.425925925925926, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_1b535fa1e8a2e09a4d9f8c087bd968a2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0b42aea7a3363020f84e424c4198b1e2 = $(`<div id="html_0b42aea7a3363020f84e424c4198b1e2" style="width: 100.0%; height: 100.0%;"><b>escuela villa santa elena</b><br>PASAJE LOS PLATINOS 11169<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>38</b></div>`)[0];
+                popup_1b535fa1e8a2e09a4d9f8c087bd968a2.setContent(html_0b42aea7a3363020f84e424c4198b1e2);
+            
+        
+
+        circle_marker_2ed83d6ba1fb45f35b66a874e4188976.bindPopup(popup_1b535fa1e8a2e09a4d9f8c087bd968a2)
+        ;
+
+        
+    
+    
+            circle_marker_2ed83d6ba1fb45f35b66a874e4188976.bindTooltip(
+                `<div>
+                     escuela villa santa elena
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5b85cf8eb1045f13a79d2f7743026afb = L.marker(
+                [-33.5651, -70.6669],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_d63ac88bb2073c4e4e47e183925e773c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5b85cf8eb1045f13a79d2f7743026afb.setIcon(div_icon_d63ac88bb2073c4e4e47e183925e773c);
+        
+    
+            var circle_marker_8cd26e04646174d85ed771ae1467cae0 = L.circleMarker(
+                [-33.54865, -70.67053],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_725be9f2b5dbc16f620df8271948e26a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8e27455dd4a0efef9ea79d05e858fff6 = $(`<div id="html_8e27455dd4a0efef9ea79d05e858fff6" style="width: 100.0%; height: 100.0%;"><b>liceo christia mc auliffe l1</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9730<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>135</b></div>`)[0];
+                popup_725be9f2b5dbc16f620df8271948e26a.setContent(html_8e27455dd4a0efef9ea79d05e858fff6);
+            
+        
+
+        circle_marker_8cd26e04646174d85ed771ae1467cae0.bindPopup(popup_725be9f2b5dbc16f620df8271948e26a)
+        ;
+
+        
+    
+    
+            circle_marker_8cd26e04646174d85ed771ae1467cae0.bindTooltip(
+                `<div>
+                     liceo christia mc auliffe l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_12f14eb52cec259223845baa3806b56a = L.marker(
+                [-33.54865, -70.67053],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_55c97fbc99865197970db061ee8ae4ab = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e135\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_12f14eb52cec259223845baa3806b56a.setIcon(div_icon_55c97fbc99865197970db061ee8ae4ab);
+        
+    
+            var circle_marker_e03ca85f9ccd777234d0a134ddacb5c7 = L.circleMarker(
+                [-33.54918, -70.67083],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef3122ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.72222222222222, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_42294944dcceae5915cfcc27927b6e22 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_96bc7d25efb2e41f582c31aa97c800bc = $(`<div id="html_96bc7d25efb2e41f582c31aa97c800bc" style="width: 100.0%; height: 100.0%;"><b>liceo juan gomez milla</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9740<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>102</b></div>`)[0];
+                popup_42294944dcceae5915cfcc27927b6e22.setContent(html_96bc7d25efb2e41f582c31aa97c800bc);
+            
+        
+
+        circle_marker_e03ca85f9ccd777234d0a134ddacb5c7.bindPopup(popup_42294944dcceae5915cfcc27927b6e22)
+        ;
+
+        
+    
+    
+            circle_marker_e03ca85f9ccd777234d0a134ddacb5c7.bindTooltip(
+                `<div>
+                     liceo juan gomez milla
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3a6511a9d1450a82374f9a163e132fec = L.marker(
+                [-33.54918, -70.67083],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_cc750d91871f1243ee57cfe25fd15b3f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e102\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3a6511a9d1450a82374f9a163e132fec.setIcon(div_icon_cc750d91871f1243ee57cfe25fd15b3f);
+        
+    
+            var circle_marker_5da836fef7f659c5adcb4f55096d385b = L.circleMarker(
+                [-33.55225, -70.67474],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed976ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.5, "stroke": false, "weight": 3}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+        var popup_3ccf6a276914619d785d80441e6d3b65 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_289a78fb3f2709d42b147abc7a86b5e7 = $(`<div id="html_289a78fb3f2709d42b147abc7a86b5e7" style="width: 100.0%; height: 100.0%;"><b>liceo nuestra señora maria inmaculada</b><br>LUIS BARROS BORGOÑO 92<br>Votos Lista CONSTANZA JEANNETTE CASTILLO OLIVARES: <b>54</b></div>`)[0];
+                popup_3ccf6a276914619d785d80441e6d3b65.setContent(html_289a78fb3f2709d42b147abc7a86b5e7);
+            
+        
+
+        circle_marker_5da836fef7f659c5adcb4f55096d385b.bindPopup(popup_3ccf6a276914619d785d80441e6d3b65)
+        ;
+
+        
+    
+    
+            circle_marker_5da836fef7f659c5adcb4f55096d385b.bindTooltip(
+                `<div>
+                     liceo nuestra señora maria inmaculada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_27fec09f368575440d784b31464b2c56 = L.marker(
+                [-33.55225, -70.67474],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6bad8f566e31a892351cb4a2c7d5c0b1);
+        
+    
+            var div_icon_a844fdb1a7e8662ad700145c9ac0125d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e54\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_27fec09f368575440d784b31464b2c56.setIcon(div_icon_a844fdb1a7e8662ad700145c9ac0125d);
+        
+    
+            map_6bad8f566e31a892351cb4a2c7d5c0b1.fitBounds(
+                [[-33.5571, -70.6637], [-33.5803, -70.6701], [-33.57584, -70.692], [-33.5603, -70.6665], [-33.5691, -70.67], [-33.5501, -70.6645], [-33.5622, -70.6754], [-33.5561, -70.6571], [-33.5717, -70.6808], [-33.57981, -70.67892], [-33.56621, -70.68102], [-33.5418, -70.6841], [-33.57056, -70.68746], [-33.5628, -70.6647], [-33.58528, -70.69938], [-33.5521, -70.6878], [-33.56703, -70.66032], [-33.5651, -70.6669], [-33.54865, -70.67053], [-33.54918, -70.67083], [-33.55225, -70.67474]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_386a700eabeea445488ced10f386f5e5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_386a700eabeea445488ced10f386f5e5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_386a700eabeea445488ced10f386f5e5 = L.map(
+                "map_386a700eabeea445488ced10f386f5e5",
+                {
+                    center: [-33.563024285714285, -70.67460952380952],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_1563ca531ee18e2e4345d2302d0259f0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_1563ca531ee18e2e4345d2302d0259f0.addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+    var color_map_34eb13ea96fb411f58b4c635271e5929 = {};
+
+    
+    color_map_34eb13ea96fb411f58b4c635271e5929.color = d3.scale.threshold()
+              .domain([6.0, 6.118236472945892, 6.236472945891784, 6.354709418837675, 6.472945891783567, 6.591182364729459, 6.709418837675351, 6.8276553106212425, 6.945891783567134, 7.064128256513026, 7.182364729458918, 7.30060120240481, 7.4188376753507015, 7.537074148296593, 7.655310621242485, 7.773547094188377, 7.891783567134269, 8.01002004008016, 8.128256513026052, 8.246492985971944, 8.364729458917836, 8.482965931863728, 8.60120240480962, 8.719438877755511, 8.837675350701403, 8.955911823647295, 9.074148296593187, 9.192384769539078, 9.31062124248497, 9.428857715430862, 9.547094188376754, 9.665330661322646, 9.783567134268537, 9.901803607214429, 10.02004008016032, 10.138276553106213, 10.256513026052104, 10.374749498997996, 10.492985971943888, 10.61122244488978, 10.729458917835672, 10.847695390781563, 10.965931863727455, 11.084168336673347, 11.202404809619239, 11.32064128256513, 11.438877755511022, 11.557114228456914, 11.675350701402806, 11.793587174348698, 11.91182364729459, 12.030060120240481, 12.148296593186373, 12.266533066132265, 12.384769539078157, 12.503006012024048, 12.62124248496994, 12.739478957915832, 12.857715430861724, 12.975951903807616, 13.094188376753507, 13.2124248496994, 13.330661322645291, 13.448897795591183, 13.567134268537075, 13.685370741482966, 13.803607214428858, 13.92184368737475, 14.040080160320642, 14.158316633266534, 14.276553106212425, 14.394789579158317, 14.513026052104209, 14.6312625250501, 14.749498997995993, 14.867735470941884, 14.985971943887776, 15.104208416833668, 15.22244488977956, 15.340681362725451, 15.458917835671343, 15.577154308617235, 15.695390781563127, 15.813627254509019, 15.93186372745491, 16.050100200400802, 16.168336673346694, 16.286573146292586, 16.404809619238478, 16.52304609218437, 16.64128256513026, 16.759519038076153, 16.877755511022045, 16.995991983967937, 17.11422845691383, 17.23246492985972, 17.350701402805612, 17.468937875751504, 17.587174348697395, 17.705410821643287, 17.82364729458918, 17.94188376753507, 18.060120240480963, 18.178356713426854, 18.296593186372746, 18.414829659318638, 18.53306613226453, 18.65130260521042, 18.769539078156313, 18.887775551102205, 19.006012024048097, 19.12424849699399, 19.24248496993988, 19.360721442885772, 19.478957915831664, 19.597194388777556, 19.715430861723448, 19.83366733466934, 19.95190380761523, 20.070140280561123, 20.188376753507015, 20.306613226452907, 20.4248496993988, 20.54308617234469, 20.661322645290582, 20.77955911823647, 20.897795591182366, 21.016032064128254, 21.13426853707415, 21.252505010020037, 21.370741482965933, 21.48897795591182, 21.607214428857716, 21.725450901803605, 21.8436873747495, 21.961923847695388, 22.080160320641284, 22.198396793587175, 22.316633266533067, 22.43486973947896, 22.55310621242485, 22.671342685370742, 22.789579158316634, 22.907815631262526, 23.026052104208418, 23.14428857715431, 23.2625250501002, 23.380761523046093, 23.498997995991985, 23.617234468937877, 23.73547094188377, 23.85370741482966, 23.971943887775552, 24.090180360721444, 24.208416833667336, 24.326653306613228, 24.44488977955912, 24.56312625250501, 24.681362725450903, 24.799599198396795, 24.917835671342687, 25.03607214428858, 25.15430861723447, 25.272545090180362, 25.390781563126254, 25.509018036072145, 25.627254509018037, 25.74549098196393, 25.86372745490982, 25.981963927855713, 26.100200400801604, 26.218436873747496, 26.336673346693388, 26.45490981963928, 26.57314629258517, 26.691382765531063, 26.809619238476955, 26.927855711422847, 27.04609218436874, 27.16432865731463, 27.282565130260522, 27.400801603206414, 27.519038076152306, 27.637274549098198, 27.75551102204409, 27.87374749498998, 27.991983967935873, 28.110220440881765, 28.228456913827657, 28.34669338677355, 28.46492985971944, 28.583166332665332, 28.701402805611224, 28.819639278557116, 28.937875751503007, 29.0561122244489, 29.17434869739479, 29.292585170340683, 29.410821643286575, 29.529058116232466, 29.647294589178358, 29.76553106212425, 29.88376753507014, 30.002004008016034, 30.120240480961925, 30.238476953907817, 30.35671342685371, 30.4749498997996, 30.593186372745492, 30.711422845691384, 30.829659318637276, 30.947895791583168, 31.06613226452906, 31.18436873747495, 31.302605210420843, 31.420841683366735, 31.539078156312627, 31.65731462925852, 31.77555110220441, 31.893787575150302, 32.012024048096194, 32.13026052104209, 32.24849699398798, 32.366733466933866, 32.48496993987976, 32.60320641282566, 32.721442885771545, 32.83967935871743, 32.95791583166333, 33.076152304609224, 33.19438877755511, 33.312625250501, 33.430861723446895, 33.54909819639279, 33.66733466933868, 33.78557114228457, 33.90380761523046, 34.02204408817636, 34.140280561122246, 34.258517034068134, 34.37675350701403, 34.494989979959925, 34.61322645290581, 34.7314629258517, 34.8496993987976, 34.96793587174349, 35.08617234468938, 35.20440881763527, 35.322645290581164, 35.44088176352706, 35.55911823647294, 35.677354709418836, 35.79559118236473, 35.91382765531062, 36.03206412825651, 36.1503006012024, 36.2685370741483, 36.38677354709419, 36.505010020040075, 36.62324649298597, 36.741482965931866, 36.859719438877754, 36.97795591182364, 37.09619238476954, 37.21442885771543, 37.33266533066132, 37.45090180360721, 37.569138276553105, 37.687374749499, 37.80561122244489, 37.923847695390776, 38.04208416833667, 38.16032064128257, 38.278557114228455, 38.39679358717435, 38.51503006012024, 38.633266533066134, 38.75150300601202, 38.86973947895792, 38.987975951903806, 39.1062124248497, 39.22444889779559, 39.342685370741485, 39.46092184368737, 39.57915831663327, 39.69739478957916, 39.81563126252505, 39.93386773547094, 40.052104208416836, 40.170340681362724, 40.28857715430862, 40.40681362725451, 40.5250501002004, 40.64328657314629, 40.76152304609219, 40.879759519038075, 40.99799599198397, 41.11623246492986, 41.234468937875754, 41.35270541082164, 41.47094188376754, 41.589178356713425, 41.70741482965932, 41.82565130260521, 41.943887775551104, 42.06212424849699, 42.18036072144289, 42.298597194388776, 42.41683366733467, 42.53507014028056, 42.653306613226455, 42.77154308617234, 42.88977955911824, 43.00801603206413, 43.12625250501002, 43.24448897795591, 43.362725450901806, 43.480961923847694, 43.59919839679359, 43.71743486973948, 43.83567134268537, 43.95390781563126, 44.07214428857716, 44.190380761523045, 44.30861723446894, 44.42685370741483, 44.545090180360724, 44.66332665330661, 44.78156312625251, 44.899799599198396, 45.01803607214429, 45.13627254509018, 45.254509018036075, 45.37274549098196, 45.49098196392786, 45.609218436873746, 45.72745490981964, 45.84569138276553, 45.963927855711425, 46.08216432865731, 46.20040080160321, 46.3186372745491, 46.43687374749499, 46.55511022044088, 46.673346693386776, 46.791583166332664, 46.90981963927856, 47.02805611222445, 47.14629258517034, 47.26452905811623, 47.38276553106213, 47.501002004008015, 47.61923847695391, 47.7374749498998, 47.855711422845694, 47.97394789579158, 48.09218436873748, 48.210420841683366, 48.32865731462926, 48.44689378757515, 48.565130260521045, 48.68336673346693, 48.80160320641283, 48.91983967935872, 49.03807615230461, 49.1563126252505, 49.274549098196395, 49.392785571142284, 49.51102204408818, 49.62925851703407, 49.74749498997996, 49.86573146292585, 49.983967935871746, 50.102204408817634, 50.22044088176353, 50.33867735470942, 50.45691382765531, 50.5751503006012, 50.6933867735471, 50.811623246492985, 50.92985971943888, 51.04809619238477, 51.166332665330664, 51.28456913827655, 51.40280561122245, 51.521042084168336, 51.63927855711423, 51.75751503006012, 51.875751503006015, 51.9939879759519, 52.1122244488978, 52.23046092184369, 52.34869739478958, 52.46693386773547, 52.585170340681366, 52.703406813627254, 52.82164328657315, 52.93987975951904, 53.05811623246493, 53.17635270541082, 53.294589178356716, 53.412825651302605, 53.5310621242485, 53.64929859719439, 53.76753507014028, 53.88577154308617, 54.00400801603207, 54.122244488977955, 54.24048096192385, 54.35871743486974, 54.476953907815634, 54.59519038076152, 54.71342685370742, 54.831663326653306, 54.9498997995992, 55.06813627254509, 55.186372745490985, 55.30460921843687, 55.42284569138277, 55.54108216432866, 55.65931863727455, 55.77755511022044, 55.895791583166336, 56.014028056112224, 56.13226452905812, 56.25050100200401, 56.3687374749499, 56.48697394789579, 56.605210420841686, 56.723446893787575, 56.84168336673347, 56.95991983967936, 57.078156312625254, 57.19639278557114, 57.31462925851704, 57.432865731462925, 57.55110220440882, 57.66933867735471, 57.787575150300604, 57.90581162324649, 58.02404809619239, 58.142284569138276, 58.26052104208417, 58.37875751503006, 58.496993987975955, 58.61523046092184, 58.73346693386774, 58.85170340681363, 58.96993987975952, 59.08817635270541, 59.206412825651306, 59.324649298597194, 59.44288577154309, 59.56112224448898, 59.67935871743487, 59.79759519038076, 59.91583166332666, 60.034068136272545, 60.15230460921844, 60.27054108216433, 60.388777555110224, 60.50701402805611, 60.62525050100201, 60.743486973947896, 60.86172344689379, 60.97995991983968, 61.098196392785574, 61.21643286573146, 61.33466933867736, 61.452905811623246, 61.57114228456914, 61.68937875751503, 61.807615230460925, 61.92585170340681, 62.04408817635271, 62.1623246492986, 62.28056112224449, 62.39879759519038, 62.517034068136276, 62.635270541082164, 62.75350701402806, 62.87174348697395, 62.98997995991984, 63.10821643286573, 63.22645290581163, 63.344689378757515, 63.46292585170341, 63.5811623246493, 63.699398797595194, 63.81763527054108, 63.93587174348698, 64.05410821643287, 64.17234468937876, 64.29058116232466, 64.40881763527054, 64.52705410821643, 64.64529058116233, 64.76352705410821, 64.88176352705412, 65.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_34eb13ea96fb411f58b4c635271e5929.x = d3.scale.linear()
+              .domain([6.0, 65.0])
+              .range([0, 450 - 50]);
+
+    color_map_34eb13ea96fb411f58b4c635271e5929.legend = L.control({position: 'topright'});
+    color_map_34eb13ea96fb411f58b4c635271e5929.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_34eb13ea96fb411f58b4c635271e5929.legend.addTo(map_386a700eabeea445488ced10f386f5e5);
+
+    color_map_34eb13ea96fb411f58b4c635271e5929.xAxis = d3.svg.axis()
+        .scale(color_map_34eb13ea96fb411f58b4c635271e5929.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([6.0, 13.375, 20.75, 28.125, 35.5, 42.875, 50.25, 57.625, 65.0]);
+
+    color_map_34eb13ea96fb411f58b4c635271e5929.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_34eb13ea96fb411f58b4c635271e5929.g = color_map_34eb13ea96fb411f58b4c635271e5929.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_34eb13ea96fb411f58b4c635271e5929.g.selectAll("rect")
+        .data(color_map_34eb13ea96fb411f58b4c635271e5929.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_34eb13ea96fb411f58b4c635271e5929.x(color_map_34eb13ea96fb411f58b4c635271e5929.color.domain()[i - 1]) : color_map_34eb13ea96fb411f58b4c635271e5929.x.range()[0],
+            x1: i < color_map_34eb13ea96fb411f58b4c635271e5929.color.domain().length ? color_map_34eb13ea96fb411f58b4c635271e5929.x(color_map_34eb13ea96fb411f58b4c635271e5929.color.domain()[i]) : color_map_34eb13ea96fb411f58b4c635271e5929.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_34eb13ea96fb411f58b4c635271e5929.g.call(color_map_34eb13ea96fb411f58b4c635271e5929.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista HEINLEIN DOMINGO BENAVIDES por local");
+    
+            var circle_marker_1572e7e5e10e16c177d0f7b45d42962d = L.circleMarker(
+                [-33.5571, -70.6637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b4ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.94915254237288, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_851f81943494463d252eb2ec783b8023 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7139745f94cf4e5adc835b229acc8b6e = $(`<div id="html_7139745f94cf4e5adc835b229acc8b6e" style="width: 100.0%; height: 100.0%;"><b>centro civico el bosque</b><br>ELEUTERIO RAMIREZ 10264<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>10</b></div>`)[0];
+                popup_851f81943494463d252eb2ec783b8023.setContent(html_7139745f94cf4e5adc835b229acc8b6e);
+            
+        
+
+        circle_marker_1572e7e5e10e16c177d0f7b45d42962d.bindPopup(popup_851f81943494463d252eb2ec783b8023)
+        ;
+
+        
+    
+    
+            circle_marker_1572e7e5e10e16c177d0f7b45d42962d.bindTooltip(
+                `<div>
+                     centro civico el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3201500c92dedb78a94d86b44aba6b35 = L.marker(
+                [-33.5571, -70.6637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_c7be9817e364e930017569bcee84b807 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e10\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3201500c92dedb78a94d86b44aba6b35.setIcon(div_icon_c7be9817e364e930017569bcee84b807);
+        
+    
+            var circle_marker_1477b7ba4f4a705e967d274b4c992409 = L.circleMarker(
+                [-33.5803, -70.6701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_0a2236cb6ce2f754bb5ed4f444ed42c7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c6500c70a74ca85f2e0a362ac81205a5 = $(`<div id="html_c6500c70a74ca85f2e0a362ac81205a5" style="width: 100.0%; height: 100.0%;"><b>colegio batalla de la concepcion</b><br>VECINAL SUR 1380<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>65</b></div>`)[0];
+                popup_0a2236cb6ce2f754bb5ed4f444ed42c7.setContent(html_c6500c70a74ca85f2e0a362ac81205a5);
+            
+        
+
+        circle_marker_1477b7ba4f4a705e967d274b4c992409.bindPopup(popup_0a2236cb6ce2f754bb5ed4f444ed42c7)
+        ;
+
+        
+    
+    
+            circle_marker_1477b7ba4f4a705e967d274b4c992409.bindTooltip(
+                `<div>
+                     colegio batalla de la concepcion
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4d2bba26fffccf4109ab12ff3c4a5c48 = L.marker(
+                [-33.5803, -70.6701],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_ef3afb894afdaee26d1db5bcf2feb0e0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e65\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4d2bba26fffccf4109ab12ff3c4a5c48.setIcon(div_icon_ef3afb894afdaee26d1db5bcf2feb0e0);
+        
+    
+            var circle_marker_bfa21a2a9b60fdd2e18ded9db9bd932e = L.circleMarker(
+                [-33.57584, -70.692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecd69ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.033898305084746, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_6d97134303ef59705894d6fd09dc46ec = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_457116f139393982eddfdee9b7fd00df = $(`<div id="html_457116f139393982eddfdee9b7fd00df" style="width: 100.0%; height: 100.0%;"><b>colegio santo tomas de aquino</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 13231<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>23</b></div>`)[0];
+                popup_6d97134303ef59705894d6fd09dc46ec.setContent(html_457116f139393982eddfdee9b7fd00df);
+            
+        
+
+        circle_marker_bfa21a2a9b60fdd2e18ded9db9bd932e.bindPopup(popup_6d97134303ef59705894d6fd09dc46ec)
+        ;
+
+        
+    
+    
+            circle_marker_bfa21a2a9b60fdd2e18ded9db9bd932e.bindTooltip(
+                `<div>
+                     colegio santo tomas de aquino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1424dd5d1ba835a21becbe683eeeeb74 = L.marker(
+                [-33.57584, -70.692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_7900a8241f5228bb45d56e2f58f97b28 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1424dd5d1ba835a21becbe683eeeeb74.setIcon(div_icon_7900a8241f5228bb45d56e2f58f97b28);
+        
+    
+            var circle_marker_02d3c5515e597cefcb7bc636a7758576 = L.circleMarker(
+                [-33.5603, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.610169491525424, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_4275c7f891bc86e3dc9df7c17137becb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_73dd99aeb3e00a7ff5039c982aed73c1 = $(`<div id="html_73dd99aeb3e00a7ff5039c982aed73c1" style="width: 100.0%; height: 100.0%;"><b>complejo educacional felipe herrera lane</b><br>LOS CUERVOS 866<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>17</b></div>`)[0];
+                popup_4275c7f891bc86e3dc9df7c17137becb.setContent(html_73dd99aeb3e00a7ff5039c982aed73c1);
+            
+        
+
+        circle_marker_02d3c5515e597cefcb7bc636a7758576.bindPopup(popup_4275c7f891bc86e3dc9df7c17137becb)
+        ;
+
+        
+    
+    
+            circle_marker_02d3c5515e597cefcb7bc636a7758576.bindTooltip(
+                `<div>
+                     complejo educacional felipe herrera lane
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_18288990304d721c66e27e2c278d7f29 = L.marker(
+                [-33.5603, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_c9785c3b3d34b4d3c0768c33fb336a2e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e17\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_18288990304d721c66e27e2c278d7f29.setIcon(div_icon_c9785c3b3d34b4d3c0768c33fb336a2e);
+        
+    
+            var circle_marker_841072f5e5bf3378af453b2426a3940e = L.circleMarker(
+                [-33.5691, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec35eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.508474576271187, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_7c3a76cf51e5c8169aa51f690ae4d523 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_172bd4d1cdba5073ad55f29846c65a60 = $(`<div id="html_172bd4d1cdba5073ad55f29846c65a60" style="width: 100.0%; height: 100.0%;"><b>complejo educacional las acacias</b><br>LAS ESMERALDAS 11475<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>25</b></div>`)[0];
+                popup_7c3a76cf51e5c8169aa51f690ae4d523.setContent(html_172bd4d1cdba5073ad55f29846c65a60);
+            
+        
+
+        circle_marker_841072f5e5bf3378af453b2426a3940e.bindPopup(popup_7c3a76cf51e5c8169aa51f690ae4d523)
+        ;
+
+        
+    
+    
+            circle_marker_841072f5e5bf3378af453b2426a3940e.bindTooltip(
+                `<div>
+                     complejo educacional las acacias
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fea7b3bbffea9f4b7d0a6939b902d050 = L.marker(
+                [-33.5691, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_8840d71d3b0b582a1dabb4e02a2690bc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e25\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fea7b3bbffea9f4b7d0a6939b902d050.setIcon(div_icon_8840d71d3b0b582a1dabb4e02a2690bc);
+        
+    
+            var circle_marker_fedd3f1b78dce02bfb70a5bbb658c0f6 = L.circleMarker(
+                [-33.5501, -70.6645],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe997ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.135593220338983, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_2972a822d52407d4b735fa6dfb9350b9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_65ebec135ac78d9103a6712b9e169dd1 = $(`<div id="html_65ebec135ac78d9103a6712b9e169dd1" style="width: 100.0%; height: 100.0%;"><b>escuela aviadores</b><br>BAQUEDANO 9820<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>15</b></div>`)[0];
+                popup_2972a822d52407d4b735fa6dfb9350b9.setContent(html_65ebec135ac78d9103a6712b9e169dd1);
+            
+        
+
+        circle_marker_fedd3f1b78dce02bfb70a5bbb658c0f6.bindPopup(popup_2972a822d52407d4b735fa6dfb9350b9)
+        ;
+
+        
+    
+    
+            circle_marker_fedd3f1b78dce02bfb70a5bbb658c0f6.bindTooltip(
+                `<div>
+                     escuela aviadores
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d27f52efffadbe05edce87ac3a0b93f0 = L.marker(
+                [-33.5501, -70.6645],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_3e075b52e60271041e39cc5ecb63cdfa = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d27f52efffadbe05edce87ac3a0b93f0.setIcon(div_icon_3e075b52e60271041e39cc5ecb63cdfa);
+        
+    
+            var circle_marker_fe2739ae66d6e1fe7709468a8cf4bdd2 = L.circleMarker(
+                [-33.5622, -70.6754],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec9dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.898305084745763, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_418f0d06dd26177b5de931250db80bf8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_609834dc40f61e5f6b7b5ec3140aa962 = $(`<div id="html_609834dc40f61e5f6b7b5ec3140aa962" style="width: 100.0%; height: 100.0%;"><b>escuela base el bosque</b><br>MARIANO LATORRE 11600<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>14</b></div>`)[0];
+                popup_418f0d06dd26177b5de931250db80bf8.setContent(html_609834dc40f61e5f6b7b5ec3140aa962);
+            
+        
+
+        circle_marker_fe2739ae66d6e1fe7709468a8cf4bdd2.bindPopup(popup_418f0d06dd26177b5de931250db80bf8)
+        ;
+
+        
+    
+    
+            circle_marker_fe2739ae66d6e1fe7709468a8cf4bdd2.bindTooltip(
+                `<div>
+                     escuela base el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_63ba42f8f7609a8d16d7b0657667507d = L.marker(
+                [-33.5622, -70.6754],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_2f9057d4aa5f14af4e9785f0485d2ba6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e14\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_63ba42f8f7609a8d16d7b0657667507d.setIcon(div_icon_2f9057d4aa5f14af4e9785f0485d2ba6);
+        
+    
+            var circle_marker_b860c3e151833dc8821840161c996173 = L.circleMarker(
+                [-33.5561, -70.6571],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.610169491525424, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_3f922aec702dc794234e00c370f18850 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ab18e4205e5c135a3f369e554a08be75 = $(`<div id="html_ab18e4205e5c135a3f369e554a08be75" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de lyon</b><br>ALMIRANTE RIVEROS 10122<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>17</b></div>`)[0];
+                popup_3f922aec702dc794234e00c370f18850.setContent(html_ab18e4205e5c135a3f369e554a08be75);
+            
+        
+
+        circle_marker_b860c3e151833dc8821840161c996173.bindPopup(popup_3f922aec702dc794234e00c370f18850)
+        ;
+
+        
+    
+    
+            circle_marker_b860c3e151833dc8821840161c996173.bindTooltip(
+                `<div>
+                     escuela ciudad de lyon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e023014ea3a965ea95bde802328a7da0 = L.marker(
+                [-33.5561, -70.6571],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_14da4bd2407cd08ebfc9e604eabe00d6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e17\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e023014ea3a965ea95bde802328a7da0.setIcon(div_icon_14da4bd2407cd08ebfc9e604eabe00d6);
+        
+    
+            var circle_marker_bffb43b8a43e90d01b9c8e276de7cdac = L.circleMarker(
+                [-33.5717, -70.6808],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc0ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.474576271186441, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_e183af6a22d54b5dd74ec16a0a2fc7f5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d102f39b3487c2c2ddf4195591f0e779 = $(`<div id="html_d102f39b3487c2c2ddf4195591f0e779" style="width: 100.0%; height: 100.0%;"><b>escuela claudio arrau leon</b><br>LOS CAROLINOS 530<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>8</b></div>`)[0];
+                popup_e183af6a22d54b5dd74ec16a0a2fc7f5.setContent(html_d102f39b3487c2c2ddf4195591f0e779);
+            
+        
+
+        circle_marker_bffb43b8a43e90d01b9c8e276de7cdac.bindPopup(popup_e183af6a22d54b5dd74ec16a0a2fc7f5)
+        ;
+
+        
+    
+    
+            circle_marker_bffb43b8a43e90d01b9c8e276de7cdac.bindTooltip(
+                `<div>
+                     escuela claudio arrau leon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c72f105c82916c8c90708091ebfa80ca = L.marker(
+                [-33.5717, -70.6808],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_a12f9d3f6b7308aba87c08e5d44d6c09 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e8\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c72f105c82916c8c90708091ebfa80ca.setIcon(div_icon_a12f9d3f6b7308aba87c08e5d44d6c09);
+        
+    
+            var circle_marker_1affc8b1da8b34913b9d940d0c703194 = L.circleMarker(
+                [-33.57981, -70.67892],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb852ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.983050847457626, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_92274b651b4f011af45aeed6402250d0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_95610613ee80fdccc9f2f6da57b6ea31 = $(`<div id="html_95610613ee80fdccc9f2f6da57b6ea31" style="width: 100.0%; height: 100.0%;"><b>escuela club hipico</b><br>RODRIGO ORDOÑEZ 13150<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>27</b></div>`)[0];
+                popup_92274b651b4f011af45aeed6402250d0.setContent(html_95610613ee80fdccc9f2f6da57b6ea31);
+            
+        
+
+        circle_marker_1affc8b1da8b34913b9d940d0c703194.bindPopup(popup_92274b651b4f011af45aeed6402250d0)
+        ;
+
+        
+    
+    
+            circle_marker_1affc8b1da8b34913b9d940d0c703194.bindTooltip(
+                `<div>
+                     escuela club hipico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8d13cb6f3b1bba2a42c7ca6ede846274 = L.marker(
+                [-33.57981, -70.67892],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_325708a2973301adf0ecec5b9884d5e6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e27\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8d13cb6f3b1bba2a42c7ca6ede846274.setIcon(div_icon_325708a2973301adf0ecec5b9884d5e6);
+        
+    
+            var circle_marker_a5a9352553cacd0adecdf332a0497281 = L.circleMarker(
+                [-33.56621, -70.68102],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.610169491525424, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_7c4c8185e2bf808dc4b0f09bc3263140 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_aa7a8828e1c92cb4df790e99496135f8 = $(`<div id="html_aa7a8828e1c92cb4df790e99496135f8" style="width: 100.0%; height: 100.0%;"><b>escuela general alberto bachelet </b><br>ALBENIZ  12021<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>17</b></div>`)[0];
+                popup_7c4c8185e2bf808dc4b0f09bc3263140.setContent(html_aa7a8828e1c92cb4df790e99496135f8);
+            
+        
+
+        circle_marker_a5a9352553cacd0adecdf332a0497281.bindPopup(popup_7c4c8185e2bf808dc4b0f09bc3263140)
+        ;
+
+        
+    
+    
+            circle_marker_a5a9352553cacd0adecdf332a0497281.bindTooltip(
+                `<div>
+                     escuela general alberto bachelet 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9031dbd716c01df1100e1641e6f81fd5 = L.marker(
+                [-33.56621, -70.68102],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_7125f378fb22eb449a53be6005d50592 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e17\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9031dbd716c01df1100e1641e6f81fd5.setIcon(div_icon_7125f378fb22eb449a53be6005d50592);
+        
+    
+            var circle_marker_f84d1123ba9dba7b4e43c6190bc90fbe = L.circleMarker(
+                [-33.5418, -70.6841],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff1a8ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.423728813559322, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_e128cf5e6241b5089d52d77a4f8da961 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bd2f3e8616695bd8c0743184667d5bfc = $(`<div id="html_bd2f3e8616695bd8c0743184667d5bfc" style="width: 100.0%; height: 100.0%;"><b>escuela jose marti</b><br>18 DE SEPTIEMBRE 1080<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>12</b></div>`)[0];
+                popup_e128cf5e6241b5089d52d77a4f8da961.setContent(html_bd2f3e8616695bd8c0743184667d5bfc);
+            
+        
+
+        circle_marker_f84d1123ba9dba7b4e43c6190bc90fbe.bindPopup(popup_e128cf5e6241b5089d52d77a4f8da961)
+        ;
+
+        
+    
+    
+            circle_marker_f84d1123ba9dba7b4e43c6190bc90fbe.bindTooltip(
+                `<div>
+                     escuela jose marti
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9a32f0189e4fbc966f115764520c3410 = L.marker(
+                [-33.5418, -70.6841],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_264507ea9a86684bfd67c71e6e5cc50f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e12\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9a32f0189e4fbc966f115764520c3410.setIcon(div_icon_264507ea9a86684bfd67c71e6e5cc50f);
+        
+    
+            var circle_marker_370701faa0adb8b712d9d471cac213fe = L.circleMarker(
+                [-33.57056, -70.68746],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed36fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.796610169491526, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_00f4ed9c8c067e92bd5d4e08219a561d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1e858c259152a77f9581cdc1b89ffc99 = $(`<div id="html_1e858c259152a77f9581cdc1b89ffc99" style="width: 100.0%; height: 100.0%;"><b>escuela marcial martinez ferrari</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 12552<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>22</b></div>`)[0];
+                popup_00f4ed9c8c067e92bd5d4e08219a561d.setContent(html_1e858c259152a77f9581cdc1b89ffc99);
+            
+        
+
+        circle_marker_370701faa0adb8b712d9d471cac213fe.bindPopup(popup_00f4ed9c8c067e92bd5d4e08219a561d)
+        ;
+
+        
+    
+    
+            circle_marker_370701faa0adb8b712d9d471cac213fe.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_392c61523fb62da8955f136080e64a37 = L.marker(
+                [-33.57056, -70.68746],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_12928d5e13a4f0dc4edc37384a4f6261 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e22\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_392c61523fb62da8955f136080e64a37.setIcon(div_icon_12928d5e13a4f0dc4edc37384a4f6261);
+        
+    
+            var circle_marker_1a7c9bc66642b9033082bb9e700a683a = L.circleMarker(
+                [-33.5628, -70.6647],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff8baff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.711864406779661, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_4893a27c37fcae0e8c593b938c102a15 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8a8b7527fd6334352b05483066ec1e9b = $(`<div id="html_8a8b7527fd6334352b05483066ec1e9b" style="width: 100.0%; height: 100.0%;"><b>escuela mario arce gatica</b><br>LOS AVELLANOS 10958<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>9</b></div>`)[0];
+                popup_4893a27c37fcae0e8c593b938c102a15.setContent(html_8a8b7527fd6334352b05483066ec1e9b);
+            
+        
+
+        circle_marker_1a7c9bc66642b9033082bb9e700a683a.bindPopup(popup_4893a27c37fcae0e8c593b938c102a15)
+        ;
+
+        
+    
+    
+            circle_marker_1a7c9bc66642b9033082bb9e700a683a.bindTooltip(
+                `<div>
+                     escuela mario arce gatica
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c73aa8b000e4790aafaacdca617fb992 = L.marker(
+                [-33.5628, -70.6647],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_a6565046849c13be685892e61092fc0c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e9\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c73aa8b000e4790aafaacdca617fb992.setIcon(div_icon_a6565046849c13be685892e61092fc0c);
+        
+    
+            var circle_marker_1cb7e25a25e797241f795e9ad352b63e = L.circleMarker(
+                [-33.58528, -70.69938],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe953fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.64406779661017, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_5f11db9254bdf15c4c9ac0b372f33efb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6363e030d08b1b1117873c38966408ba = $(`<div id="html_6363e030d08b1b1117873c38966408ba" style="width: 100.0%; height: 100.0%;"><b>escuela nemesio antunez l1</b><br>El Libertador 1001<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>34</b></div>`)[0];
+                popup_5f11db9254bdf15c4c9ac0b372f33efb.setContent(html_6363e030d08b1b1117873c38966408ba);
+            
+        
+
+        circle_marker_1cb7e25a25e797241f795e9ad352b63e.bindPopup(popup_5f11db9254bdf15c4c9ac0b372f33efb)
+        ;
+
+        
+    
+    
+            circle_marker_1cb7e25a25e797241f795e9ad352b63e.bindTooltip(
+                `<div>
+                     escuela nemesio antunez l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9d596a0de4d222454c76540c6663c6f8 = L.marker(
+                [-33.58528, -70.69938],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_850495d37fdb7eedaf75c4236c6821c8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e34\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9d596a0de4d222454c76540c6663c6f8.setIcon(div_icon_850495d37fdb7eedaf75c4236c6821c8);
+        
+    
+            var circle_marker_0972e08f05fd7ce27385881630432bfb = L.circleMarker(
+                [-33.5521, -70.6878],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe997ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.135593220338983, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_d493374d74abfed764e6ab3aaa5e5491 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_609b9c401c32503b57a401a6b3fe77b5 = $(`<div id="html_609b9c401c32503b57a401a6b3fe77b5" style="width: 100.0%; height: 100.0%;"><b>escuela orlando letelier</b><br>EL PILLAN 1214<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>15</b></div>`)[0];
+                popup_d493374d74abfed764e6ab3aaa5e5491.setContent(html_609b9c401c32503b57a401a6b3fe77b5);
+            
+        
+
+        circle_marker_0972e08f05fd7ce27385881630432bfb.bindPopup(popup_d493374d74abfed764e6ab3aaa5e5491)
+        ;
+
+        
+    
+    
+            circle_marker_0972e08f05fd7ce27385881630432bfb.bindTooltip(
+                `<div>
+                     escuela orlando letelier
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fe3f3d75efdd154a30f8c630509d082b = L.marker(
+                [-33.5521, -70.6878],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_5308c0ac88ebacf202cbfd0947d1b191 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fe3f3d75efdd154a30f8c630509d082b.setIcon(div_icon_5308c0ac88ebacf202cbfd0947d1b191);
+        
+    
+            var circle_marker_afa140aff463bddf93e135465cb7fe36 = L.circleMarker(
+                [-33.56703, -70.66032],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff3aeff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.186440677966102, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_c19619379e9aeb31d076997980e180d1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a5bc631646d5d8e6ececa444f9e510ff = $(`<div id="html_a5bc631646d5d8e6ececa444f9e510ff" style="width: 100.0%; height: 100.0%;"><b>escuela paul harris</b><br>SANTA AGUEDA 1382<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>11</b></div>`)[0];
+                popup_c19619379e9aeb31d076997980e180d1.setContent(html_a5bc631646d5d8e6ececa444f9e510ff);
+            
+        
+
+        circle_marker_afa140aff463bddf93e135465cb7fe36.bindPopup(popup_c19619379e9aeb31d076997980e180d1)
+        ;
+
+        
+    
+    
+            circle_marker_afa140aff463bddf93e135465cb7fe36.bindTooltip(
+                `<div>
+                     escuela paul harris
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_40a2a0d189caf116b8d54668f79571f5 = L.marker(
+                [-33.56703, -70.66032],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_02b5028300521da4b8844744140d6442 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e11\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_40a2a0d189caf116b8d54668f79571f5.setIcon(div_icon_02b5028300521da4b8844744140d6442);
+        
+    
+            var circle_marker_ebd3a791033c68463cf7987ab476a664 = L.circleMarker(
+                [-33.5651, -70.6669],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_831fcc0600e7af481fed5614e26e08ed = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e45599712a8a6a6fb9cc0d303c601e82 = $(`<div id="html_e45599712a8a6a6fb9cc0d303c601e82" style="width: 100.0%; height: 100.0%;"><b>escuela villa santa elena</b><br>PASAJE LOS PLATINOS 11169<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>6</b></div>`)[0];
+                popup_831fcc0600e7af481fed5614e26e08ed.setContent(html_e45599712a8a6a6fb9cc0d303c601e82);
+            
+        
+
+        circle_marker_ebd3a791033c68463cf7987ab476a664.bindPopup(popup_831fcc0600e7af481fed5614e26e08ed)
+        ;
+
+        
+    
+    
+            circle_marker_ebd3a791033c68463cf7987ab476a664.bindTooltip(
+                `<div>
+                     escuela villa santa elena
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_aac75cc8d03c8bf84d609b72c6e6d867 = L.marker(
+                [-33.5651, -70.6669],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_db8e6552e4638d32e07191bc174f89c7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e6\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_aac75cc8d03c8bf84d609b72c6e6d867.setIcon(div_icon_db8e6552e4638d32e07191bc174f89c7);
+        
+    
+            var circle_marker_20f86401355f9f02ef2e5957ef10ad28 = L.circleMarker(
+                [-33.54865, -70.67053],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6f33ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.83050847457627, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_93b1b87631d53f45844b56bbb93edf40 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f08a194b2a1b9d499cc4538582e82122 = $(`<div id="html_f08a194b2a1b9d499cc4538582e82122" style="width: 100.0%; height: 100.0%;"><b>liceo christia mc auliffe l1</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9730<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>39</b></div>`)[0];
+                popup_93b1b87631d53f45844b56bbb93edf40.setContent(html_f08a194b2a1b9d499cc4538582e82122);
+            
+        
+
+        circle_marker_20f86401355f9f02ef2e5957ef10ad28.bindPopup(popup_93b1b87631d53f45844b56bbb93edf40)
+        ;
+
+        
+    
+    
+            circle_marker_20f86401355f9f02ef2e5957ef10ad28.bindTooltip(
+                `<div>
+                     liceo christia mc auliffe l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_62ae684f99106ea6c27b24a2ec920434 = L.marker(
+                [-33.54865, -70.67053],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_81922e856d5aed3f969f1b12b56fa257 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e39\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_62ae684f99106ea6c27b24a2ec920434.setIcon(div_icon_81922e856d5aed3f969f1b12b56fa257);
+        
+    
+            var circle_marker_8ccfdb5b2ed56cf4bfb941bc2bf57171 = L.circleMarker(
+                [-33.54918, -70.67083],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe691ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.372881355932204, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_b55a949e4b60cb7161e905f3d73457cb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d9e549834737852c56c5c1762a13f609 = $(`<div id="html_d9e549834737852c56c5c1762a13f609" style="width: 100.0%; height: 100.0%;"><b>liceo juan gomez milla</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9740<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>16</b></div>`)[0];
+                popup_b55a949e4b60cb7161e905f3d73457cb.setContent(html_d9e549834737852c56c5c1762a13f609);
+            
+        
+
+        circle_marker_8ccfdb5b2ed56cf4bfb941bc2bf57171.bindPopup(popup_b55a949e4b60cb7161e905f3d73457cb)
+        ;
+
+        
+    
+    
+            circle_marker_8ccfdb5b2ed56cf4bfb941bc2bf57171.bindTooltip(
+                `<div>
+                     liceo juan gomez milla
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0458ed7adeb09372ac00d7e6cb9c0d21 = L.marker(
+                [-33.54918, -70.67083],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_5b9b1a2cbeb2a7897f4b516577690003 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e16\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0458ed7adeb09372ac00d7e6cb9c0d21.setIcon(div_icon_5b9b1a2cbeb2a7897f4b516577690003);
+        
+    
+            var circle_marker_97e4759e4440f346b8b180231616a11c = L.circleMarker(
+                [-33.55225, -70.67474],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeea2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.661016949152543, "stroke": false, "weight": 3}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+        var popup_05a6937426acb9b467593bab2027b316 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d894f1f9aec771c542ab82c86efc299f = $(`<div id="html_d894f1f9aec771c542ab82c86efc299f" style="width: 100.0%; height: 100.0%;"><b>liceo nuestra señora maria inmaculada</b><br>LUIS BARROS BORGOÑO 92<br>Votos Lista HEINLEIN DOMINGO BENAVIDES: <b>13</b></div>`)[0];
+                popup_05a6937426acb9b467593bab2027b316.setContent(html_d894f1f9aec771c542ab82c86efc299f);
+            
+        
+
+        circle_marker_97e4759e4440f346b8b180231616a11c.bindPopup(popup_05a6937426acb9b467593bab2027b316)
+        ;
+
+        
+    
+    
+            circle_marker_97e4759e4440f346b8b180231616a11c.bindTooltip(
+                `<div>
+                     liceo nuestra señora maria inmaculada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bf7ee80e102371484c925fc657640c13 = L.marker(
+                [-33.55225, -70.67474],
+                {"zIndexOffset": 9999}
+            ).addTo(map_386a700eabeea445488ced10f386f5e5);
+        
+    
+            var div_icon_91e3e492a5d49f31186b1d8116ccb01f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e13\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bf7ee80e102371484c925fc657640c13.setIcon(div_icon_91e3e492a5d49f31186b1d8116ccb01f);
+        
+    
+            map_386a700eabeea445488ced10f386f5e5.fitBounds(
+                [[-33.5571, -70.6637], [-33.5803, -70.6701], [-33.57584, -70.692], [-33.5603, -70.6665], [-33.5691, -70.67], [-33.5501, -70.6645], [-33.5622, -70.6754], [-33.5561, -70.6571], [-33.5717, -70.6808], [-33.57981, -70.67892], [-33.56621, -70.68102], [-33.5418, -70.6841], [-33.57056, -70.68746], [-33.5628, -70.6647], [-33.58528, -70.69938], [-33.5521, -70.6878], [-33.56703, -70.66032], [-33.5651, -70.6669], [-33.54865, -70.67053], [-33.54918, -70.67083], [-33.55225, -70.67474]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_05a38aca88723ff15ba35dd13d24b527 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_05a38aca88723ff15ba35dd13d24b527" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_05a38aca88723ff15ba35dd13d24b527 = L.map(
+                "map_05a38aca88723ff15ba35dd13d24b527",
+                {
+                    center: [-33.563024285714285, -70.67460952380952],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0027acf15b783fa32ebd4e3aa3a9ca38 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_0027acf15b783fa32ebd4e3aa3a9ca38.addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+    var color_map_709fc4fdbeddea7e5ba63b5659b32359 = {};
+
+    
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.color = d3.scale.threshold()
+              .domain([7.0, 7.218436873747495, 7.43687374749499, 7.655310621242485, 7.8737474949899795, 8.092184368737476, 8.31062124248497, 8.529058116232465, 8.747494989979959, 8.965931863727455, 9.18436873747495, 9.402805611222444, 9.62124248496994, 9.839679358717435, 10.05811623246493, 10.276553106212425, 10.49498997995992, 10.713426853707414, 10.93186372745491, 11.150300601202405, 11.3687374749499, 11.587174348697395, 11.80561122244489, 12.024048096192384, 12.24248496993988, 12.460921843687375, 12.67935871743487, 12.897795591182366, 13.11623246492986, 13.334669338677354, 13.55310621242485, 13.771543086172345, 13.98997995991984, 14.208416833667336, 14.426853707414828, 14.645290581162325, 14.86372745490982, 15.082164328657315, 15.30060120240481, 15.519038076152304, 15.7374749498998, 15.955911823647295, 16.17434869739479, 16.392785571142284, 16.61122244488978, 16.829659318637276, 17.04809619238477, 17.266533066132265, 17.48496993987976, 17.703406813627254, 17.92184368737475, 18.140280561122246, 18.35871743486974, 18.577154308617235, 18.79559118236473, 19.014028056112224, 19.23246492985972, 19.450901803607216, 19.66933867735471, 19.887775551102205, 20.1062124248497, 20.324649298597194, 20.54308617234469, 20.761523046092186, 20.97995991983968, 21.19839679358717, 21.41683366733467, 21.635270541082164, 21.853707414829657, 22.072144288577157, 22.29058116232465, 22.509018036072142, 22.72745490981964, 22.945891783567134, 23.16432865731463, 23.382765531062123, 23.60120240480962, 23.819639278557116, 24.03807615230461, 24.256513026052104, 24.4749498997996, 24.693386773547093, 24.91182364729459, 25.130260521042086, 25.34869739478958, 25.567134268537075, 25.78557114228457, 26.004008016032063, 26.22244488977956, 26.440881763527056, 26.65931863727455, 26.877755511022045, 27.096192384769537, 27.314629258517034, 27.53306613226453, 27.751503006012022, 27.96993987975952, 28.188376753507015, 28.406813627254508, 28.625250501002004, 28.8436873747495, 29.062124248496993, 29.28056112224449, 29.498997995991985, 29.717434869739478, 29.935871743486974, 30.15430861723447, 30.372745490981963, 30.59118236472946, 30.809619238476955, 31.028056112224448, 31.246492985971944, 31.46492985971944, 31.683366733466933, 31.90180360721443, 32.120240480961925, 32.33867735470942, 32.55711422845691, 32.77555110220441, 32.9939879759519, 33.2124248496994, 33.430861723446895, 33.64929859719439, 33.86773547094188, 34.08617234468938, 34.30460921843687, 34.52304609218437, 34.741482965931866, 34.95991983967936, 35.17835671342685, 35.39679358717434, 35.61523046092184, 35.83366733466934, 36.052104208416836, 36.27054108216433, 36.48897795591182, 36.707414829659314, 36.92585170340681, 37.14428857715431, 37.362725450901806, 37.5811623246493, 37.79959919839679, 38.018036072144284, 38.236472945891784, 38.45490981963928, 38.673346693386776, 38.89178356713427, 39.11022044088176, 39.32865731462926, 39.547094188376754, 39.765531062124246, 39.983967935871746, 40.20240480961924, 40.42084168336673, 40.63927855711423, 40.857715430861724, 41.07615230460922, 41.294589178356716, 41.51302605210421, 41.7314629258517, 41.9498997995992, 42.168336673346694, 42.38677354709419, 42.605210420841686, 42.82364729458918, 43.04208416833667, 43.26052104208417, 43.478957915831664, 43.69739478957916, 43.91583166332666, 44.13426853707415, 44.35270541082164, 44.57114228456914, 44.789579158316634, 45.00801603206413, 45.22645290581163, 45.44488977955912, 45.66332665330661, 45.88176352705411, 46.100200400801604, 46.3186372745491, 46.53707414829659, 46.75551102204409, 46.97394789579158, 47.192384769539075, 47.410821643286575, 47.62925851703407, 47.84769539078156, 48.06613226452906, 48.28456913827655, 48.503006012024045, 48.721442885771545, 48.93987975951904, 49.15831663326653, 49.37675350701403, 49.59519038076152, 49.813627254509015, 50.032064128256515, 50.25050100200401, 50.4689378757515, 50.687374749499, 50.90581162324649, 51.124248496993985, 51.342685370741485, 51.56112224448898, 51.77955911823647, 51.99799599198397, 52.21643286573146, 52.434869739478955, 52.653306613226455, 52.87174348697395, 53.09018036072144, 53.30861723446894, 53.52705410821643, 53.745490981963925, 53.963927855711425, 54.18236472945892, 54.40080160320641, 54.61923847695391, 54.8376753507014, 55.056112224448896, 55.274549098196395, 55.49298597194389, 55.71142284569138, 55.92985971943888, 56.14829659318637, 56.366733466933866, 56.585170340681366, 56.80360721442886, 57.02204408817635, 57.24048096192385, 57.45891783567134, 57.677354709418836, 57.895791583166336, 58.11422845691383, 58.33266533066132, 58.55110220440882, 58.76953907815631, 58.987975951903806, 59.206412825651306, 59.4248496993988, 59.64328657314629, 59.86172344689379, 60.08016032064128, 60.298597194388776, 60.517034068136276, 60.73547094188377, 60.95390781563126, 61.17234468937876, 61.390781563126254, 61.609218436873746, 61.82765531062124, 62.04609218436874, 62.26452905811623, 62.482965931863724, 62.701402805611224, 62.91983967935872, 63.13827655310621, 63.35671342685371, 63.5751503006012, 63.793587174348694, 64.0120240480962, 64.23046092184369, 64.44889779559118, 64.66733466933869, 64.88577154308618, 65.10420841683367, 65.32264529058116, 65.54108216432866, 65.75951903807615, 65.97795591182364, 66.19639278557113, 66.41482965931863, 66.63326653306613, 66.85170340681363, 67.07014028056112, 67.28857715430863, 67.50701402805612, 67.72545090180361, 67.9438877755511, 68.1623246492986, 68.38076152304609, 68.59919839679358, 68.81763527054107, 69.03607214428857, 69.25450901803607, 69.47294589178357, 69.69138276553106, 69.90981963927857, 70.12825651302606, 70.34669338677355, 70.56513026052104, 70.78356713426854, 71.00200400801603, 71.22044088176352, 71.43887775551102, 71.65731462925852, 71.87575150300601, 72.09418837675351, 72.312625250501, 72.53106212424849, 72.74949899799599, 72.96793587174349, 73.18637274549098, 73.40480961923848, 73.62324649298597, 73.84168336673346, 74.06012024048096, 74.27855711422846, 74.49699398797596, 74.71543086172345, 74.93386773547094, 75.15230460921843, 75.37074148296593, 75.58917835671343, 75.80761523046093, 76.02605210420842, 76.24448897795591, 76.4629258517034, 76.6813627254509, 76.8997995991984, 77.1182364729459, 77.33667334669339, 77.55511022044088, 77.77354709418837, 77.99198396793587, 78.21042084168337, 78.42885771543087, 78.64729458917836, 78.86573146292585, 79.08416833667334, 79.30260521042084, 79.52104208416834, 79.73947895791584, 79.95791583166333, 80.17635270541082, 80.39478957915831, 80.6132264529058, 80.83166332665331, 81.0501002004008, 81.2685370741483, 81.48697394789579, 81.70541082164328, 81.92384769539078, 82.14228456913828, 82.36072144288578, 82.57915831663327, 82.79759519038076, 83.01603206412825, 83.23446893787575, 83.45290581162325, 83.67134268537075, 83.88977955911824, 84.10821643286573, 84.32665330661322, 84.54509018036072, 84.76352705410822, 84.98196392785572, 85.20040080160321, 85.4188376753507, 85.6372745490982, 85.85571142284569, 86.07414829659318, 86.29258517034069, 86.51102204408818, 86.72945891783567, 86.94789579158316, 87.16633266533066, 87.38476953907815, 87.60320641282566, 87.82164328657315, 88.04008016032064, 88.25851703406813, 88.47695390781563, 88.69539078156312, 88.91382765531063, 89.13226452905812, 89.35070140280561, 89.5691382765531, 89.7875751503006, 90.00601202404809, 90.2244488977956, 90.44288577154309, 90.66132264529058, 90.87975951903807, 91.09819639278557, 91.31663326653306, 91.53507014028057, 91.75350701402806, 91.97194388777555, 92.19038076152304, 92.40881763527054, 92.62725450901803, 92.84569138276554, 93.06412825651303, 93.28256513026052, 93.50100200400801, 93.71943887775551, 93.937875751503, 94.15631262525051, 94.374749498998, 94.59318637274549, 94.81162324649299, 95.03006012024048, 95.24849699398797, 95.46693386773548, 95.68537074148297, 95.90380761523046, 96.12224448897796, 96.34068136272545, 96.55911823647294, 96.77755511022045, 96.99599198396794, 97.21442885771543, 97.43286573146293, 97.65130260521042, 97.86973947895791, 98.08817635270542, 98.30661322645291, 98.5250501002004, 98.7434869739479, 98.96192384769539, 99.18036072144288, 99.39879759519039, 99.61723446893788, 99.83567134268537, 100.05410821643287, 100.27254509018036, 100.49098196392785, 100.70941883767534, 100.92785571142285, 101.14629258517034, 101.36472945891784, 101.58316633266533, 101.80160320641282, 102.02004008016031, 102.23847695390782, 102.45691382765531, 102.6753507014028, 102.8937875751503, 103.11222444889779, 103.33066132264528, 103.54909819639279, 103.76753507014028, 103.98597194388778, 104.20440881763527, 104.42284569138276, 104.64128256513025, 104.85971943887776, 105.07815631262525, 105.29659318637275, 105.51503006012024, 105.73346693386773, 105.95190380761522, 106.17034068136273, 106.38877755511022, 106.60721442885772, 106.82565130260521, 107.0440881763527, 107.2625250501002, 107.4809619238477, 107.6993987975952, 107.91783567134269, 108.13627254509018, 108.35470941883767, 108.57314629258516, 108.79158316633267, 109.01002004008016, 109.22845691382766, 109.44689378757515, 109.66533066132264, 109.88376753507013, 110.10220440881764, 110.32064128256513, 110.53907815631263, 110.75751503006012, 110.97595190380761, 111.1943887775551, 111.41282565130261, 111.6312625250501, 111.8496993987976, 112.06813627254509, 112.28657314629258, 112.50501002004007, 112.72344689378758, 112.94188376753507, 113.16032064128257, 113.37875751503006, 113.59719438877755, 113.81563126252505, 114.03406813627255, 114.25250501002004, 114.47094188376754, 114.68937875751503, 114.90781563126252, 115.12625250501002, 115.34468937875752, 115.56312625250501, 115.78156312625251, 116.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.x = d3.scale.linear()
+              .domain([7.0, 116.0])
+              .range([0, 450 - 50]);
+
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.legend = L.control({position: 'topright'});
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.legend.addTo(map_05a38aca88723ff15ba35dd13d24b527);
+
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.xAxis = d3.svg.axis()
+        .scale(color_map_709fc4fdbeddea7e5ba63b5659b32359.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([7.0, 20.625, 34.25, 47.875, 61.5, 75.125, 88.75, 102.375, 116.0]);
+
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.g = color_map_709fc4fdbeddea7e5ba63b5659b32359.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.g.selectAll("rect")
+        .data(color_map_709fc4fdbeddea7e5ba63b5659b32359.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_709fc4fdbeddea7e5ba63b5659b32359.x(color_map_709fc4fdbeddea7e5ba63b5659b32359.color.domain()[i - 1]) : color_map_709fc4fdbeddea7e5ba63b5659b32359.x.range()[0],
+            x1: i < color_map_709fc4fdbeddea7e5ba63b5659b32359.color.domain().length ? color_map_709fc4fdbeddea7e5ba63b5659b32359.x(color_map_709fc4fdbeddea7e5ba63b5659b32359.color.domain()[i]) : color_map_709fc4fdbeddea7e5ba63b5659b32359.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_709fc4fdbeddea7e5ba63b5659b32359.g.call(color_map_709fc4fdbeddea7e5ba63b5659b32359.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista OSCAR EDGARDO CAVIERES MOREAU por local");
+    
+            var circle_marker_5ba24690e740ccca25ac1cd815f29f19 = L.circleMarker(
+                [-33.5571, -70.6637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc6ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.256880733944953, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_c3cb207d3660bbadc48924416b29c47a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_008d50790abf34534160e119f86707b2 = $(`<div id="html_008d50790abf34534160e119f86707b2" style="width: 100.0%; height: 100.0%;"><b>centro civico el bosque</b><br>ELEUTERIO RAMIREZ 10264<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>9</b></div>`)[0];
+                popup_c3cb207d3660bbadc48924416b29c47a.setContent(html_008d50790abf34534160e119f86707b2);
+            
+        
+
+        circle_marker_5ba24690e740ccca25ac1cd815f29f19.bindPopup(popup_c3cb207d3660bbadc48924416b29c47a)
+        ;
+
+        
+    
+    
+            circle_marker_5ba24690e740ccca25ac1cd815f29f19.bindTooltip(
+                `<div>
+                     centro civico el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9fc8e6610b4163ab4fa1f6dde910833a = L.marker(
+                [-33.5571, -70.6637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_0183d165226b56c17c0819912455057f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e9\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9fc8e6610b4163ab4fa1f6dde910833a.setIcon(div_icon_0183d165226b56c17c0819912455057f);
+        
+    
+            var circle_marker_2799695544634b28772ded9d5cdc01de = L.circleMarker(
+                [-33.5803, -70.6701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe083ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.954128440366972, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_ec3e4d488da29f8807fd715b7dbb81bb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_52ced5810d3d8e087a12906f1a4fd99d = $(`<div id="html_52ced5810d3d8e087a12906f1a4fd99d" style="width: 100.0%; height: 100.0%;"><b>colegio batalla de la concepcion</b><br>VECINAL SUR 1380<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>30</b></div>`)[0];
+                popup_ec3e4d488da29f8807fd715b7dbb81bb.setContent(html_52ced5810d3d8e087a12906f1a4fd99d);
+            
+        
+
+        circle_marker_2799695544634b28772ded9d5cdc01de.bindPopup(popup_ec3e4d488da29f8807fd715b7dbb81bb)
+        ;
+
+        
+    
+    
+            circle_marker_2799695544634b28772ded9d5cdc01de.bindTooltip(
+                `<div>
+                     colegio batalla de la concepcion
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6df01be25bcdb69affc97432c5190d24 = L.marker(
+                [-33.5803, -70.6701],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_bfde32ef3f6a4df93478ffee1bdcd8f6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e30\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6df01be25bcdb69affc97432c5190d24.setIcon(div_icon_bfde32ef3f6a4df93478ffee1bdcd8f6);
+        
+    
+            var circle_marker_5d8f58a0e7c37984f0a6076517f3cd77 = L.circleMarker(
+                [-33.57584, -70.692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe186ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.825688073394495, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_940cf20f751474aefe89e46a86ceb396 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_407f45f974ba04ac10ae49dc8b9feecd = $(`<div id="html_407f45f974ba04ac10ae49dc8b9feecd" style="width: 100.0%; height: 100.0%;"><b>colegio santo tomas de aquino</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 13231<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>29</b></div>`)[0];
+                popup_940cf20f751474aefe89e46a86ceb396.setContent(html_407f45f974ba04ac10ae49dc8b9feecd);
+            
+        
+
+        circle_marker_5d8f58a0e7c37984f0a6076517f3cd77.bindPopup(popup_940cf20f751474aefe89e46a86ceb396)
+        ;
+
+        
+    
+    
+            circle_marker_5d8f58a0e7c37984f0a6076517f3cd77.bindTooltip(
+                `<div>
+                     colegio santo tomas de aquino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7243a68dc17c090decf40b9e3892d9a1 = L.marker(
+                [-33.57584, -70.692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_a5f2b3436014cf99c4ed831e2f4eed28 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7243a68dc17c090decf40b9e3892d9a1.setIcon(div_icon_a5f2b3436014cf99c4ed831e2f4eed28);
+        
+    
+            var circle_marker_3834fa0062f33ec4bdaf207d48d52a1a = L.circleMarker(
+                [-33.5603, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_0a4dd40aa3019f6a3e2dbfad249fb221 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cc5f10692f662937315cb8314dcab8fb = $(`<div id="html_cc5f10692f662937315cb8314dcab8fb" style="width: 100.0%; height: 100.0%;"><b>complejo educacional felipe herrera lane</b><br>LOS CUERVOS 866<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>7</b></div>`)[0];
+                popup_0a4dd40aa3019f6a3e2dbfad249fb221.setContent(html_cc5f10692f662937315cb8314dcab8fb);
+            
+        
+
+        circle_marker_3834fa0062f33ec4bdaf207d48d52a1a.bindPopup(popup_0a4dd40aa3019f6a3e2dbfad249fb221)
+        ;
+
+        
+    
+    
+            circle_marker_3834fa0062f33ec4bdaf207d48d52a1a.bindTooltip(
+                `<div>
+                     complejo educacional felipe herrera lane
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_628715b79476c3c58157ded3b0390287 = L.marker(
+                [-33.5603, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_89bc1ccc3febbd9b8c10b60e57e22fc3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e7\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_628715b79476c3c58157ded3b0390287.setIcon(div_icon_89bc1ccc3febbd9b8c10b60e57e22fc3);
+        
+    
+            var circle_marker_d2b42ed0c7410f9b18af042f8c259267 = L.circleMarker(
+                [-33.5691, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed774ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.596330275229358, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_67f0ae2cd5b6483c5721ce96ae6482f4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0e19fa946b9e0061911ae3fbeb3e3cf7 = $(`<div id="html_0e19fa946b9e0061911ae3fbeb3e3cf7" style="width: 100.0%; height: 100.0%;"><b>complejo educacional las acacias</b><br>LAS ESMERALDAS 11475<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>35</b></div>`)[0];
+                popup_67f0ae2cd5b6483c5721ce96ae6482f4.setContent(html_0e19fa946b9e0061911ae3fbeb3e3cf7);
+            
+        
+
+        circle_marker_d2b42ed0c7410f9b18af042f8c259267.bindPopup(popup_67f0ae2cd5b6483c5721ce96ae6482f4)
+        ;
+
+        
+    
+    
+            circle_marker_d2b42ed0c7410f9b18af042f8c259267.bindTooltip(
+                `<div>
+                     complejo educacional las acacias
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_51b072a25830be5612aeb5a7c91cf400 = L.marker(
+                [-33.5691, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_79262a0a3b4595255c5fa803d9efe069 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e35\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_51b072a25830be5612aeb5a7c91cf400.setIcon(div_icon_79262a0a3b4595255c5fa803d9efe069);
+        
+    
+            var circle_marker_f47a6aafc7fadc2e4ea1eb7d941d11cd = L.circleMarker(
+                [-33.5501, -70.6645],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe389ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.697247706422019, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_3aa14818324076205872d789ca607276 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d86fd7d5fb4b84082a47970cdbc1ac38 = $(`<div id="html_d86fd7d5fb4b84082a47970cdbc1ac38" style="width: 100.0%; height: 100.0%;"><b>escuela aviadores</b><br>BAQUEDANO 9820<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>28</b></div>`)[0];
+                popup_3aa14818324076205872d789ca607276.setContent(html_d86fd7d5fb4b84082a47970cdbc1ac38);
+            
+        
+
+        circle_marker_f47a6aafc7fadc2e4ea1eb7d941d11cd.bindPopup(popup_3aa14818324076205872d789ca607276)
+        ;
+
+        
+    
+    
+            circle_marker_f47a6aafc7fadc2e4ea1eb7d941d11cd.bindTooltip(
+                `<div>
+                     escuela aviadores
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5edf1d6338e2bcf9edb1d9be9363d1a6 = L.marker(
+                [-33.5501, -70.6645],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_1f94eda2328979a4a44df257d3d22fbf = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e28\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5edf1d6338e2bcf9edb1d9be9363d1a6.setIcon(div_icon_1f94eda2328979a4a44df257d3d22fbf);
+        
+    
+            var circle_marker_7631ddafc82dc1013f2384ee37b31565 = L.circleMarker(
+                [-33.5622, -70.6754],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff5b2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.027522935779817, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_d9f691250c76308556882189fb2547b2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_43b893aa129b86f199f84cec8dad187a = $(`<div id="html_43b893aa129b86f199f84cec8dad187a" style="width: 100.0%; height: 100.0%;"><b>escuela base el bosque</b><br>MARIANO LATORRE 11600<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>15</b></div>`)[0];
+                popup_d9f691250c76308556882189fb2547b2.setContent(html_43b893aa129b86f199f84cec8dad187a);
+            
+        
+
+        circle_marker_7631ddafc82dc1013f2384ee37b31565.bindPopup(popup_d9f691250c76308556882189fb2547b2)
+        ;
+
+        
+    
+    
+            circle_marker_7631ddafc82dc1013f2384ee37b31565.bindTooltip(
+                `<div>
+                     escuela base el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e4f2904e2d05438203264257d0417c63 = L.marker(
+                [-33.5622, -70.6754],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_4059e790b6d67bfc203cd9bbb48769af = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e4f2904e2d05438203264257d0417c63.setIcon(div_icon_4059e790b6d67bfc203cd9bbb48769af);
+        
+    
+            var circle_marker_1815580f3d578488012b684e8a63bddf = L.circleMarker(
+                [-33.5561, -70.6571],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.568807339449542, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_2ba605460ceb7be19b25ac5f4e5e4489 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9978feae45bf83a201950632fac67f1c = $(`<div id="html_9978feae45bf83a201950632fac67f1c" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de lyon</b><br>ALMIRANTE RIVEROS 10122<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>27</b></div>`)[0];
+                popup_2ba605460ceb7be19b25ac5f4e5e4489.setContent(html_9978feae45bf83a201950632fac67f1c);
+            
+        
+
+        circle_marker_1815580f3d578488012b684e8a63bddf.bindPopup(popup_2ba605460ceb7be19b25ac5f4e5e4489)
+        ;
+
+        
+    
+    
+            circle_marker_1815580f3d578488012b684e8a63bddf.bindTooltip(
+                `<div>
+                     escuela ciudad de lyon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1205cc53b037f6c9eee50b55c7115733 = L.marker(
+                [-33.5561, -70.6571],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_3df32dc8cada0366c95b3718e58e8c1a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e27\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1205cc53b037f6c9eee50b55c7115733.setIcon(div_icon_3df32dc8cada0366c95b3718e58e8c1a);
+        
+    
+            var circle_marker_20b010225524e1c4408a3a34281e7fdb = L.circleMarker(
+                [-33.5717, -70.6808],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe186ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.825688073394495, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_0e61704714cacb0713d8933d149158cb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_14fa7bfb6434540ebfb74982acdefa08 = $(`<div id="html_14fa7bfb6434540ebfb74982acdefa08" style="width: 100.0%; height: 100.0%;"><b>escuela claudio arrau leon</b><br>LOS CAROLINOS 530<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>29</b></div>`)[0];
+                popup_0e61704714cacb0713d8933d149158cb.setContent(html_14fa7bfb6434540ebfb74982acdefa08);
+            
+        
+
+        circle_marker_20b010225524e1c4408a3a34281e7fdb.bindPopup(popup_0e61704714cacb0713d8933d149158cb)
+        ;
+
+        
+    
+    
+            circle_marker_20b010225524e1c4408a3a34281e7fdb.bindTooltip(
+                `<div>
+                     escuela claudio arrau leon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1cc42e00a54113dc30fa03119de1b27c = L.marker(
+                [-33.5717, -70.6808],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_fd5f244142641c577b6a739f0ab1eec8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1cc42e00a54113dc30fa03119de1b27c.setIcon(div_icon_fd5f244142641c577b6a739f0ab1eec8);
+        
+    
+            var circle_marker_e4adb37dcc3ae67be4735ea7dbbbad41 = L.circleMarker(
+                [-33.57981, -70.67892],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe083ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.954128440366972, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_fe31f7857f29b95af17c427aae2a60d0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_935268fb2d6e3c55ff297c41b0528c52 = $(`<div id="html_935268fb2d6e3c55ff297c41b0528c52" style="width: 100.0%; height: 100.0%;"><b>escuela club hipico</b><br>RODRIGO ORDOÑEZ 13150<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>30</b></div>`)[0];
+                popup_fe31f7857f29b95af17c427aae2a60d0.setContent(html_935268fb2d6e3c55ff297c41b0528c52);
+            
+        
+
+        circle_marker_e4adb37dcc3ae67be4735ea7dbbbad41.bindPopup(popup_fe31f7857f29b95af17c427aae2a60d0)
+        ;
+
+        
+    
+    
+            circle_marker_e4adb37dcc3ae67be4735ea7dbbbad41.bindTooltip(
+                `<div>
+                     escuela club hipico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c05ab3ff69d801cd858ed71186eb5ca9 = L.marker(
+                [-33.57981, -70.67892],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_6bf164152915704a202c84725d317991 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e30\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c05ab3ff69d801cd858ed71186eb5ca9.setIcon(div_icon_6bf164152915704a202c84725d317991);
+        
+    
+            var circle_marker_abbfa09bc3dc527eeef9a7e81c12b16d = L.circleMarker(
+                [-33.56621, -70.68102],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe793ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.311926605504587, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_a33c980e96b036742cb19e9e154840e5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a97a3353353f5691e9311204a2fc4821 = $(`<div id="html_a97a3353353f5691e9311204a2fc4821" style="width: 100.0%; height: 100.0%;"><b>escuela general alberto bachelet </b><br>ALBENIZ  12021<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>25</b></div>`)[0];
+                popup_a33c980e96b036742cb19e9e154840e5.setContent(html_a97a3353353f5691e9311204a2fc4821);
+            
+        
+
+        circle_marker_abbfa09bc3dc527eeef9a7e81c12b16d.bindPopup(popup_a33c980e96b036742cb19e9e154840e5)
+        ;
+
+        
+    
+    
+            circle_marker_abbfa09bc3dc527eeef9a7e81c12b16d.bindTooltip(
+                `<div>
+                     escuela general alberto bachelet 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_09ab7c9b5f1d0a4bcc5e56f3075cd70a = L.marker(
+                [-33.56621, -70.68102],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_3f1f41f50b082664a27c3df67af58303 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e25\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_09ab7c9b5f1d0a4bcc5e56f3075cd70a.setIcon(div_icon_3f1f41f50b082664a27c3df67af58303);
+        
+    
+            var circle_marker_0cf00eb7f1fea5e0f8053e432af86eef = L.circleMarker(
+                [-33.5418, -70.6841],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff4afff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.155963302752294, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_257c68bd037a6fdc23deea20127833f6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_01f93362e0cbaedcd6ab9621fd0cb2f2 = $(`<div id="html_01f93362e0cbaedcd6ab9621fd0cb2f2" style="width: 100.0%; height: 100.0%;"><b>escuela jose marti</b><br>18 DE SEPTIEMBRE 1080<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>16</b></div>`)[0];
+                popup_257c68bd037a6fdc23deea20127833f6.setContent(html_01f93362e0cbaedcd6ab9621fd0cb2f2);
+            
+        
+
+        circle_marker_0cf00eb7f1fea5e0f8053e432af86eef.bindPopup(popup_257c68bd037a6fdc23deea20127833f6)
+        ;
+
+        
+    
+    
+            circle_marker_0cf00eb7f1fea5e0f8053e432af86eef.bindTooltip(
+                `<div>
+                     escuela jose marti
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_905b1bdf92e0466738ef547d414bb512 = L.marker(
+                [-33.5418, -70.6841],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_51222504748db46294557c60a3e04f3c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e16\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_905b1bdf92e0466738ef547d414bb512.setIcon(div_icon_51222504748db46294557c60a3e04f3c);
+        
+    
+            var circle_marker_5e2e683d87bc4687b38094a58e35239b = L.circleMarker(
+                [-33.57056, -70.68746],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff5b2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.027522935779817, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_fc19055970c14c118014237b6929afc1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_00dbb0c836b5aaf0b47517bb6f018b8f = $(`<div id="html_00dbb0c836b5aaf0b47517bb6f018b8f" style="width: 100.0%; height: 100.0%;"><b>escuela marcial martinez ferrari</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 12552<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>15</b></div>`)[0];
+                popup_fc19055970c14c118014237b6929afc1.setContent(html_00dbb0c836b5aaf0b47517bb6f018b8f);
+            
+        
+
+        circle_marker_5e2e683d87bc4687b38094a58e35239b.bindPopup(popup_fc19055970c14c118014237b6929afc1)
+        ;
+
+        
+    
+    
+            circle_marker_5e2e683d87bc4687b38094a58e35239b.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8a6288abbb4116323b39046ecabfb4df = L.marker(
+                [-33.57056, -70.68746],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_ee0e185a615f5e4bc6c6c63cc696666e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8a6288abbb4116323b39046ecabfb4df.setIcon(div_icon_ee0e185a615f5e4bc6c6c63cc696666e);
+        
+    
+            var circle_marker_f20ce1b9bb2efbe37dea9eb5c5c9c8cb = L.circleMarker(
+                [-33.5628, -70.6647],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdd7dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.211009174311926, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_02f35bf6de0b0b7d1e33d121ce6904bb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_87f2e1ac6ca29b6807e15ea6848fd831 = $(`<div id="html_87f2e1ac6ca29b6807e15ea6848fd831" style="width: 100.0%; height: 100.0%;"><b>escuela mario arce gatica</b><br>LOS AVELLANOS 10958<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>32</b></div>`)[0];
+                popup_02f35bf6de0b0b7d1e33d121ce6904bb.setContent(html_87f2e1ac6ca29b6807e15ea6848fd831);
+            
+        
+
+        circle_marker_f20ce1b9bb2efbe37dea9eb5c5c9c8cb.bindPopup(popup_02f35bf6de0b0b7d1e33d121ce6904bb)
+        ;
+
+        
+    
+    
+            circle_marker_f20ce1b9bb2efbe37dea9eb5c5c9c8cb.bindTooltip(
+                `<div>
+                     escuela mario arce gatica
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ce72b04493e8eb1e5fdae539ca923832 = L.marker(
+                [-33.5628, -70.6647],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_f8a99770cc18eb6076e3c600267c524e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e32\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ce72b04493e8eb1e5fdae539ca923832.setIcon(div_icon_f8a99770cc18eb6076e3c600267c524e);
+        
+    
+            var circle_marker_cd7f30128e59b28f49b74fd353a6b422 = L.circleMarker(
+                [-33.58528, -70.69938],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9740ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.550458715596331, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_2bfc7993583c3f5fcca5812133e4cd13 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bc519c49709c921041ca9f9804ae7fbc = $(`<div id="html_bc519c49709c921041ca9f9804ae7fbc" style="width: 100.0%; height: 100.0%;"><b>escuela nemesio antunez l1</b><br>El Libertador 1001<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>58</b></div>`)[0];
+                popup_2bfc7993583c3f5fcca5812133e4cd13.setContent(html_bc519c49709c921041ca9f9804ae7fbc);
+            
+        
+
+        circle_marker_cd7f30128e59b28f49b74fd353a6b422.bindPopup(popup_2bfc7993583c3f5fcca5812133e4cd13)
+        ;
+
+        
+    
+    
+            circle_marker_cd7f30128e59b28f49b74fd353a6b422.bindTooltip(
+                `<div>
+                     escuela nemesio antunez l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_be5b72d55da5d5ea8517af42d5b46a09 = L.marker(
+                [-33.58528, -70.69938],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_161dabef78a7051e63d8ce661844077c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e58\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_be5b72d55da5d5ea8517af42d5b46a09.setIcon(div_icon_161dabef78a7051e63d8ce661844077c);
+        
+    
+            var circle_marker_aa189d1c8be210f05a06eed36e2ffae7 = L.circleMarker(
+                [-33.5521, -70.6878],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff5b2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.027522935779817, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_60868f7358ea27de4e3ab670a66410ff = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6c4e0d4ca0fd0761f3dd6a32f6476428 = $(`<div id="html_6c4e0d4ca0fd0761f3dd6a32f6476428" style="width: 100.0%; height: 100.0%;"><b>escuela orlando letelier</b><br>EL PILLAN 1214<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>15</b></div>`)[0];
+                popup_60868f7358ea27de4e3ab670a66410ff.setContent(html_6c4e0d4ca0fd0761f3dd6a32f6476428);
+            
+        
+
+        circle_marker_aa189d1c8be210f05a06eed36e2ffae7.bindPopup(popup_60868f7358ea27de4e3ab670a66410ff)
+        ;
+
+        
+    
+    
+            circle_marker_aa189d1c8be210f05a06eed36e2ffae7.bindTooltip(
+                `<div>
+                     escuela orlando letelier
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f81836b3ed2762a9c2cdb658e6f76966 = L.marker(
+                [-33.5521, -70.6878],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_56a3256154101b13c4eac6f9731c7fda = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f81836b3ed2762a9c2cdb658e6f76966.setIcon(div_icon_56a3256154101b13c4eac6f9731c7fda);
+        
+    
+            var circle_marker_d8992331ee9f5613008eaca8f14dc952 = L.circleMarker(
+                [-33.56703, -70.66032],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffea99ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.055045871559633, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_237346950e1f728a34fe28ab02a5a65a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0aadf07ade0c8487e997426b969f219c = $(`<div id="html_0aadf07ade0c8487e997426b969f219c" style="width: 100.0%; height: 100.0%;"><b>escuela paul harris</b><br>SANTA AGUEDA 1382<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>23</b></div>`)[0];
+                popup_237346950e1f728a34fe28ab02a5a65a.setContent(html_0aadf07ade0c8487e997426b969f219c);
+            
+        
+
+        circle_marker_d8992331ee9f5613008eaca8f14dc952.bindPopup(popup_237346950e1f728a34fe28ab02a5a65a)
+        ;
+
+        
+    
+    
+            circle_marker_d8992331ee9f5613008eaca8f14dc952.bindTooltip(
+                `<div>
+                     escuela paul harris
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ff07ab342cb51acc7adab88cb2157f26 = L.marker(
+                [-33.56703, -70.66032],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_265aa52052d37735d78ba705c9fed4eb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ff07ab342cb51acc7adab88cb2157f26.setIcon(div_icon_265aa52052d37735d78ba705c9fed4eb);
+        
+    
+            var circle_marker_4f4f8e5fe41c39ab550e6deefb07ff04 = L.circleMarker(
+                [-33.5651, -70.6669],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff4afff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.155963302752294, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_2ffcbac7b61da96a609433239d11dafa = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2ebb504ca083f3f9cf3f892b3fd9747e = $(`<div id="html_2ebb504ca083f3f9cf3f892b3fd9747e" style="width: 100.0%; height: 100.0%;"><b>escuela villa santa elena</b><br>PASAJE LOS PLATINOS 11169<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>16</b></div>`)[0];
+                popup_2ffcbac7b61da96a609433239d11dafa.setContent(html_2ebb504ca083f3f9cf3f892b3fd9747e);
+            
+        
+
+        circle_marker_4f4f8e5fe41c39ab550e6deefb07ff04.bindPopup(popup_2ffcbac7b61da96a609433239d11dafa)
+        ;
+
+        
+    
+    
+            circle_marker_4f4f8e5fe41c39ab550e6deefb07ff04.bindTooltip(
+                `<div>
+                     escuela villa santa elena
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f545ba401f2d1dc66618bac3aadab04a = L.marker(
+                [-33.5651, -70.6669],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_9d717d4b6b597ece91736885eaeeb1af = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e16\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f545ba401f2d1dc66618bac3aadab04a.setIcon(div_icon_9d717d4b6b597ece91736885eaeeb1af);
+        
+    
+            var circle_marker_9cca7959bced9a6448284f90fa58d3a1 = L.circleMarker(
+                [-33.54865, -70.67053],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_56f607525878c8eb87bc469f5b7e5645 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_aed2ecb38afe454dc6d375add7cf5444 = $(`<div id="html_aed2ecb38afe454dc6d375add7cf5444" style="width: 100.0%; height: 100.0%;"><b>liceo christia mc auliffe l1</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9730<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>116</b></div>`)[0];
+                popup_56f607525878c8eb87bc469f5b7e5645.setContent(html_aed2ecb38afe454dc6d375add7cf5444);
+            
+        
+
+        circle_marker_9cca7959bced9a6448284f90fa58d3a1.bindPopup(popup_56f607525878c8eb87bc469f5b7e5645)
+        ;
+
+        
+    
+    
+            circle_marker_9cca7959bced9a6448284f90fa58d3a1.bindTooltip(
+                `<div>
+                     liceo christia mc auliffe l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b37c0c940c03c4c5d638d47d12ceebfc = L.marker(
+                [-33.54865, -70.67053],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_6ccdc65ae4c5f37d6ae7a866e5386426 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e116\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b37c0c940c03c4c5d638d47d12ceebfc.setIcon(div_icon_6ccdc65ae4c5f37d6ae7a866e5386426);
+        
+    
+            var circle_marker_26ab41d0c50ab94256d20acaa715a128 = L.circleMarker(
+                [-33.54918, -70.67083],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe68fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.440366972477065, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_062776a6c774efd46eacc531e96810b1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a63a7e585227a287a40e22dd291d5702 = $(`<div id="html_a63a7e585227a287a40e22dd291d5702" style="width: 100.0%; height: 100.0%;"><b>liceo juan gomez milla</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9740<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>26</b></div>`)[0];
+                popup_062776a6c774efd46eacc531e96810b1.setContent(html_a63a7e585227a287a40e22dd291d5702);
+            
+        
+
+        circle_marker_26ab41d0c50ab94256d20acaa715a128.bindPopup(popup_062776a6c774efd46eacc531e96810b1)
+        ;
+
+        
+    
+    
+            circle_marker_26ab41d0c50ab94256d20acaa715a128.bindTooltip(
+                `<div>
+                     liceo juan gomez milla
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9393e6bc1e3e2e70f3a6a3142fc99422 = L.marker(
+                [-33.54918, -70.67083],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_0e194be71651c960d7de64f667347399 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e26\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9393e6bc1e3e2e70f3a6a3142fc99422.setIcon(div_icon_0e194be71651c960d7de64f667347399);
+        
+    
+            var circle_marker_bb28b17fdf2aca17aefb6a9686eaaf25 = L.circleMarker(
+                [-33.55225, -70.67474],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff1a9ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.412844036697248, "stroke": false, "weight": 3}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+        var popup_5eca8898be88c09b8dd4633ed3d67d39 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6d22fbfdc3896b0fab2fdb16a96bee12 = $(`<div id="html_6d22fbfdc3896b0fab2fdb16a96bee12" style="width: 100.0%; height: 100.0%;"><b>liceo nuestra señora maria inmaculada</b><br>LUIS BARROS BORGOÑO 92<br>Votos Lista OSCAR EDGARDO CAVIERES MOREAU: <b>18</b></div>`)[0];
+                popup_5eca8898be88c09b8dd4633ed3d67d39.setContent(html_6d22fbfdc3896b0fab2fdb16a96bee12);
+            
+        
+
+        circle_marker_bb28b17fdf2aca17aefb6a9686eaaf25.bindPopup(popup_5eca8898be88c09b8dd4633ed3d67d39)
+        ;
+
+        
+    
+    
+            circle_marker_bb28b17fdf2aca17aefb6a9686eaaf25.bindTooltip(
+                `<div>
+                     liceo nuestra señora maria inmaculada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3e8fe84d6063116114778ec7539fe132 = L.marker(
+                [-33.55225, -70.67474],
+                {"zIndexOffset": 9999}
+            ).addTo(map_05a38aca88723ff15ba35dd13d24b527);
+        
+    
+            var div_icon_9badeb73ebf0b3b64b856f1d51aeefd7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e18\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3e8fe84d6063116114778ec7539fe132.setIcon(div_icon_9badeb73ebf0b3b64b856f1d51aeefd7);
+        
+    
+            map_05a38aca88723ff15ba35dd13d24b527.fitBounds(
+                [[-33.5571, -70.6637], [-33.5803, -70.6701], [-33.57584, -70.692], [-33.5603, -70.6665], [-33.5691, -70.67], [-33.5501, -70.6645], [-33.5622, -70.6754], [-33.5561, -70.6571], [-33.5717, -70.6808], [-33.57981, -70.67892], [-33.56621, -70.68102], [-33.5418, -70.6841], [-33.57056, -70.68746], [-33.5628, -70.6647], [-33.58528, -70.69938], [-33.5521, -70.6878], [-33.56703, -70.66032], [-33.5651, -70.6669], [-33.54865, -70.67053], [-33.54918, -70.67083], [-33.55225, -70.67474]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_af0a585ff36de903a89b461965a1a7a7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_af0a585ff36de903a89b461965a1a7a7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_af0a585ff36de903a89b461965a1a7a7 = L.map(
+                "map_af0a585ff36de903a89b461965a1a7a7",
+                {
+                    center: [-33.563024285714285, -70.67460952380952],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_47ea85650317783a8fa6f52f7c2e7234 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_47ea85650317783a8fa6f52f7c2e7234.addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+    var color_map_8202f1904f20878a29e121942b959c4b = {};
+
+    
+    color_map_8202f1904f20878a29e121942b959c4b.color = d3.scale.threshold()
+              .domain([5.0, 5.134268537074148, 5.268537074148297, 5.402805611222445, 5.537074148296593, 5.671342685370742, 5.80561122244489, 5.939879759519038, 6.074148296593187, 6.208416833667335, 6.342685370741483, 6.4769539078156315, 6.61122244488978, 6.745490981963928, 6.8797595190380765, 7.014028056112224, 7.148296593186373, 7.2825651302605205, 7.41683366733467, 7.551102204408817, 7.685370741482966, 7.819639278557114, 7.953907815631263, 8.08817635270541, 8.22244488977956, 8.356713426853707, 8.490981963927856, 8.625250501002004, 8.759519038076153, 8.8937875751503, 9.028056112224448, 9.162324649298597, 9.296593186372746, 9.430861723446894, 9.565130260521041, 9.69939879759519, 9.83366733466934, 9.967935871743487, 10.102204408817634, 10.236472945891784, 10.370741482965933, 10.50501002004008, 10.639278557114228, 10.773547094188377, 10.907815631262526, 11.042084168336673, 11.176352705410821, 11.31062124248497, 11.44488977955912, 11.579158316633267, 11.713426853707414, 11.847695390781563, 11.981963927855713, 12.11623246492986, 12.250501002004007, 12.384769539078157, 12.519038076152306, 12.653306613226453, 12.7875751503006, 12.92184368737475, 13.056112224448897, 13.190380761523047, 13.324649298597194, 13.458917835671343, 13.59318637274549, 13.72745490981964, 13.861723446893787, 13.995991983967937, 14.130260521042084, 14.264529058116233, 14.39879759519038, 14.53306613226453, 14.667334669338677, 14.801603206412826, 14.935871743486974, 15.070140280561123, 15.20440881763527, 15.338677354709418, 15.472945891783567, 15.607214428857715, 15.741482965931864, 15.875751503006011, 16.01002004008016, 16.144288577154306, 16.278557114228455, 16.412825651302605, 16.547094188376754, 16.681362725450903, 16.815631262525052, 16.949899799599198, 17.084168336673347, 17.218436873747493, 17.352705410821642, 17.48697394789579, 17.62124248496994, 17.75551102204409, 17.88977955911824, 18.024048096192384, 18.158316633266534, 18.29258517034068, 18.42685370741483, 18.561122244488978, 18.695390781563127, 18.829659318637276, 18.963927855711425, 19.09819639278557, 19.23246492985972, 19.366733466933866, 19.501002004008015, 19.635270541082164, 19.769539078156313, 19.903807615230463, 20.038076152304612, 20.172344689378757, 20.306613226452907, 20.440881763527052, 20.5751503006012, 20.70941883767535, 20.8436873747495, 20.97795591182365, 21.112224448897795, 21.246492985971944, 21.380761523046093, 21.51503006012024, 21.649298597194388, 21.783567134268537, 21.917835671342687, 22.052104208416832, 22.18637274549098, 22.32064128256513, 22.45490981963928, 22.589178356713425, 22.723446893787575, 22.857715430861724, 22.991983967935873, 23.12625250501002, 23.260521042084168, 23.394789579158317, 23.529058116232466, 23.663326653306612, 23.79759519038076, 23.93186372745491, 24.06613226452906, 24.200400801603205, 24.334669338677354, 24.468937875751504, 24.603206412825653, 24.7374749498998, 24.871743486973948, 25.006012024048097, 25.140280561122246, 25.274549098196392, 25.40881763527054, 25.54308617234469, 25.677354709418836, 25.811623246492985, 25.945891783567134, 26.080160320641284, 26.21442885771543, 26.34869739478958, 26.482965931863728, 26.617234468937877, 26.751503006012022, 26.88577154308617, 27.02004008016032, 27.15430861723447, 27.288577154308616, 27.422845691382765, 27.557114228456914, 27.691382765531063, 27.82565130260521, 27.95991983967936, 28.094188376753507, 28.228456913827657, 28.362725450901802, 28.49699398797595, 28.6312625250501, 28.76553106212425, 28.899799599198396, 29.034068136272545, 29.168336673346694, 29.302605210420843, 29.43687374749499, 29.571142284569138, 29.705410821643287, 29.839679358717436, 29.973947895791582, 30.10821643286573, 30.24248496993988, 30.37675350701403, 30.511022044088175, 30.645290581162325, 30.779559118236474, 30.91382765531062, 31.04809619238477, 31.182364729458918, 31.316633266533067, 31.450901803607213, 31.585170340681362, 31.71943887775551, 31.85370741482966, 31.987975951903806, 32.122244488977955, 32.256513026052104, 32.390781563126254, 32.5250501002004, 32.65931863727455, 32.7935871743487, 32.92785571142285, 33.06212424849699, 33.19639278557114, 33.33066132264529, 33.46492985971944, 33.59919839679358, 33.73346693386773, 33.86773547094188, 34.00200400801603, 34.13627254509018, 34.27054108216433, 34.40480961923848, 34.53907815631263, 34.673346693386776, 34.807615230460925, 34.941883767535074, 35.076152304609224, 35.210420841683366, 35.344689378757515, 35.478957915831664, 35.61322645290581, 35.747494989979955, 35.881763527054105, 36.016032064128254, 36.1503006012024, 36.28456913827655, 36.4188376753507, 36.55310621242485, 36.687374749499, 36.82164328657315, 36.9559118236473, 37.09018036072144, 37.22444889779559, 37.35871743486974, 37.49298597194389, 37.62725450901804, 37.76152304609219, 37.895791583166336, 38.03006012024048, 38.16432865731463, 38.298597194388776, 38.432865731462925, 38.567134268537075, 38.701402805611224, 38.83567134268537, 38.96993987975952, 39.104208416833664, 39.23847695390781, 39.37274549098196, 39.50701402805611, 39.64128256513026, 39.77555110220441, 39.90981963927856, 40.04408817635271, 40.17835671342685, 40.312625250501, 40.44689378757515, 40.5811623246493, 40.71543086172345, 40.8496993987976, 40.983967935871746, 41.11823647294589, 41.25250501002004, 41.38677354709419, 41.521042084168336, 41.655310621242485, 41.789579158316634, 41.92384769539078, 42.05811623246493, 42.192384769539075, 42.326653306613224, 42.46092184368737, 42.59519038076152, 42.72945891783567, 42.86372745490982, 42.99799599198397, 43.13226452905812, 43.26653306613226, 43.40080160320641, 43.53507014028056, 43.66933867735471, 43.80360721442886, 43.93787575150301, 44.07214428857716, 44.206412825651306, 44.34068136272545, 44.4749498997996, 44.609218436873746, 44.743486973947896, 44.877755511022045, 45.012024048096194, 45.14629258517034, 45.28056112224449, 45.414829659318634, 45.549098196392784, 45.68336673346693, 45.81763527054108, 45.95190380761523, 46.08617234468938, 46.22044088176353, 46.35470941883767, 46.48897795591182, 46.62324649298597, 46.75751503006012, 46.89178356713427, 47.02605210420842, 47.16032064128257, 47.294589178356716, 47.42885771543086, 47.56312625250501, 47.69739478957916, 47.831663326653306, 47.965931863727455, 48.100200400801604, 48.234468937875754, 48.3687374749499, 48.503006012024045, 48.637274549098194, 48.77154308617234, 48.90581162324649, 49.04008016032064, 49.17434869739479, 49.30861723446894, 49.44288577154309, 49.57715430861723, 49.71142284569138, 49.84569138276553, 49.97995991983968, 50.11422845691383, 50.24849699398798, 50.38276553106213, 50.517034068136276, 50.65130260521042, 50.78557114228457, 50.91983967935872, 51.054108216432866, 51.188376753507015, 51.322645290581164, 51.45691382765531, 51.591182364729455, 51.725450901803605, 51.859719438877754, 51.9939879759519, 52.12825651302605, 52.2625250501002, 52.39679358717435, 52.5310621242485, 52.66533066132264, 52.79959919839679, 52.93386773547094, 53.06813627254509, 53.20240480961924, 53.33667334669339, 53.47094188376754, 53.605210420841686, 53.73947895791583, 53.87374749498998, 54.00801603206413, 54.142284569138276, 54.276553106212425, 54.410821643286575, 54.545090180360724, 54.67935871743487, 54.813627254509015, 54.947895791583164, 55.08216432865731, 55.21643286573146, 55.35070140280561, 55.48496993987976, 55.61923847695391, 55.75350701402806, 55.8877755511022, 56.02204408817635, 56.1563126252505, 56.29058116232465, 56.4248496993988, 56.55911823647295, 56.6933867735471, 56.82765531062124, 56.96192384769539, 57.09619238476954, 57.23046092184369, 57.364729458917836, 57.498997995991985, 57.633266533066134, 57.76753507014028, 57.901803607214426, 58.036072144288575, 58.170340681362724, 58.30460921843687, 58.43887775551102, 58.57314629258517, 58.70741482965932, 58.84168336673347, 58.97595190380761, 59.11022044088176, 59.24448897795591, 59.37875751503006, 59.51302605210421, 59.64729458917836, 59.78156312625251, 59.91583166332666, 60.0501002004008, 60.18436873747495, 60.3186372745491, 60.452905811623246, 60.587174348697395, 60.721442885771545, 60.855711422845694, 60.98997995991984, 61.124248496993985, 61.258517034068134, 61.392785571142284, 61.52705410821643, 61.66132264529058, 61.79559118236473, 61.92985971943888, 62.06412825651302, 62.19839679358717, 62.33266533066132, 62.46693386773547, 62.60120240480962, 62.73547094188377, 62.86973947895792, 63.00400801603207, 63.13827655310621, 63.27254509018036, 63.40681362725451, 63.54108216432866, 63.675350701402806, 63.809619238476955, 63.943887775551104, 64.07815631262525, 64.2124248496994, 64.34669338677355, 64.4809619238477, 64.61523046092185, 64.749498997996, 64.88376753507015, 65.0180360721443, 65.15230460921845, 65.28657314629258, 65.42084168336673, 65.55511022044088, 65.68937875751503, 65.82364729458918, 65.95791583166333, 66.09218436873748, 66.22645290581163, 66.36072144288576, 66.49498997995991, 66.62925851703406, 66.76352705410821, 66.89779559118236, 67.03206412825651, 67.16633266533066, 67.3006012024048, 67.43486973947896, 67.5691382765531, 67.70340681362725, 67.8376753507014, 67.97194388777555, 68.1062124248497, 68.24048096192385, 68.374749498998, 68.50901803607215, 68.6432865731463, 68.77755511022045, 68.9118236472946, 69.04609218436873, 69.18036072144288, 69.31462925851703, 69.44889779559118, 69.58316633266533, 69.71743486973948, 69.85170340681363, 69.98597194388778, 70.12024048096193, 70.25450901803607, 70.38877755511022, 70.52304609218437, 70.65731462925852, 70.79158316633267, 70.92585170340682, 71.06012024048096, 71.1943887775551, 71.32865731462925, 71.4629258517034, 71.59719438877755, 71.7314629258517, 71.86573146292585, 72.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_8202f1904f20878a29e121942b959c4b.x = d3.scale.linear()
+              .domain([5.0, 72.0])
+              .range([0, 450 - 50]);
+
+    color_map_8202f1904f20878a29e121942b959c4b.legend = L.control({position: 'topright'});
+    color_map_8202f1904f20878a29e121942b959c4b.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_8202f1904f20878a29e121942b959c4b.legend.addTo(map_af0a585ff36de903a89b461965a1a7a7);
+
+    color_map_8202f1904f20878a29e121942b959c4b.xAxis = d3.svg.axis()
+        .scale(color_map_8202f1904f20878a29e121942b959c4b.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([5.0, 13.375, 21.75, 30.125, 38.5, 46.875, 55.25, 63.625, 72.0]);
+
+    color_map_8202f1904f20878a29e121942b959c4b.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_8202f1904f20878a29e121942b959c4b.g = color_map_8202f1904f20878a29e121942b959c4b.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_8202f1904f20878a29e121942b959c4b.g.selectAll("rect")
+        .data(color_map_8202f1904f20878a29e121942b959c4b.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_8202f1904f20878a29e121942b959c4b.x(color_map_8202f1904f20878a29e121942b959c4b.color.domain()[i - 1]) : color_map_8202f1904f20878a29e121942b959c4b.x.range()[0],
+            x1: i < color_map_8202f1904f20878a29e121942b959c4b.color.domain().length ? color_map_8202f1904f20878a29e121942b959c4b.x(color_map_8202f1904f20878a29e121942b959c4b.color.domain()[i]) : color_map_8202f1904f20878a29e121942b959c4b.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_8202f1904f20878a29e121942b959c4b.g.call(color_map_8202f1904f20878a29e121942b959c4b.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista EVELYN ESTER PEREZ CISTERNAS por local");
+    
+            var circle_marker_1e2a743d5a1773d053ef740f88cf7516 = L.circleMarker(
+                [-33.5571, -70.6637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe084ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.925373134328359, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_5a3230cf5a47052a6a1ad449904b9d8c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_546e2e404f8dbbf1557d227b5d8300a7 = $(`<div id="html_546e2e404f8dbbf1557d227b5d8300a7" style="width: 100.0%; height: 100.0%;"><b>centro civico el bosque</b><br>ELEUTERIO RAMIREZ 10264<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>19</b></div>`)[0];
+                popup_5a3230cf5a47052a6a1ad449904b9d8c.setContent(html_546e2e404f8dbbf1557d227b5d8300a7);
+            
+        
+
+        circle_marker_1e2a743d5a1773d053ef740f88cf7516.bindPopup(popup_5a3230cf5a47052a6a1ad449904b9d8c)
+        ;
+
+        
+    
+    
+            circle_marker_1e2a743d5a1773d053ef740f88cf7516.bindTooltip(
+                `<div>
+                     centro civico el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11bf93a5163b80ee83fc32dcf078b190 = L.marker(
+                [-33.5571, -70.6637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_6b49b39b38ca52ba337843365a77d1d7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e19\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_11bf93a5163b80ee83fc32dcf078b190.setIcon(div_icon_6b49b39b38ca52ba337843365a77d1d7);
+        
+    
+            var circle_marker_c27f74a666614b83de5ce63e363ba421 = L.circleMarker(
+                [-33.5803, -70.6701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea546ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.850746268656717, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_4981625c7cd75fc20c38f0212a032f44 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_96afa0072968a3d7370c47c0640d03e3 = $(`<div id="html_96afa0072968a3d7370c47c0640d03e3" style="width: 100.0%; height: 100.0%;"><b>colegio batalla de la concepcion</b><br>VECINAL SUR 1380<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>33</b></div>`)[0];
+                popup_4981625c7cd75fc20c38f0212a032f44.setContent(html_96afa0072968a3d7370c47c0640d03e3);
+            
+        
+
+        circle_marker_c27f74a666614b83de5ce63e363ba421.bindPopup(popup_4981625c7cd75fc20c38f0212a032f44)
+        ;
+
+        
+    
+    
+            circle_marker_c27f74a666614b83de5ce63e363ba421.bindTooltip(
+                `<div>
+                     colegio batalla de la concepcion
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8a7e9974bf8b87b3655dffbb2de0f230 = L.marker(
+                [-33.5803, -70.6701],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_b26b1acccdbb6680b2d10972fca5e8d1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e33\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8a7e9974bf8b87b3655dffbb2de0f230.setIcon(div_icon_b26b1acccdbb6680b2d10972fca5e8d1);
+        
+    
+            var circle_marker_e86b8f80d138890753443055e71dee7b = L.circleMarker(
+                [-33.57584, -70.692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd893bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.104477611940299, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_532f294bfbdd906caa83abe91ccae306 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3ef7a24a1c69f168c6d03c245ad46a40 = $(`<div id="html_3ef7a24a1c69f168c6d03c245ad46a40" style="width: 100.0%; height: 100.0%;"><b>colegio santo tomas de aquino</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 13231<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>39</b></div>`)[0];
+                popup_532f294bfbdd906caa83abe91ccae306.setContent(html_3ef7a24a1c69f168c6d03c245ad46a40);
+            
+        
+
+        circle_marker_e86b8f80d138890753443055e71dee7b.bindPopup(popup_532f294bfbdd906caa83abe91ccae306)
+        ;
+
+        
+    
+    
+            circle_marker_e86b8f80d138890753443055e71dee7b.bindTooltip(
+                `<div>
+                     colegio santo tomas de aquino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d2ef2e8717de67d6fa4741da961c4de2 = L.marker(
+                [-33.57584, -70.692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_9570f5028e8642c14ea2bd00aeb449bd = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e39\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d2ef2e8717de67d6fa4741da961c4de2.setIcon(div_icon_9570f5028e8642c14ea2bd00aeb449bd);
+        
+    
+            var circle_marker_a075464f9e8f7ce8ff069824dd55e8e0 = L.circleMarker(
+                [-33.5603, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe58eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.507462686567164, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_d1a23bc59ae7e1bfb1e8e5ea528c6d82 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e05c473ad5986defc0253bb0a60236f2 = $(`<div id="html_e05c473ad5986defc0253bb0a60236f2" style="width: 100.0%; height: 100.0%;"><b>complejo educacional felipe herrera lane</b><br>LOS CUERVOS 866<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>17</b></div>`)[0];
+                popup_d1a23bc59ae7e1bfb1e8e5ea528c6d82.setContent(html_e05c473ad5986defc0253bb0a60236f2);
+            
+        
+
+        circle_marker_a075464f9e8f7ce8ff069824dd55e8e0.bindPopup(popup_d1a23bc59ae7e1bfb1e8e5ea528c6d82)
+        ;
+
+        
+    
+    
+            circle_marker_a075464f9e8f7ce8ff069824dd55e8e0.bindTooltip(
+                `<div>
+                     complejo educacional felipe herrera lane
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fb1aa0130d564a3f7c4f8282c1715a67 = L.marker(
+                [-33.5603, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_0b54494861e878ec3396ed25084d9696 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e17\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fb1aa0130d564a3f7c4f8282c1715a67.setIcon(div_icon_0b54494861e878ec3396ed25084d9696);
+        
+    
+            var circle_marker_2d0b6f0d838c08d1331d925a9f2ca712 = L.circleMarker(
+                [-33.5691, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea144ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.059701492537314, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_a9e830693016615f4109ad4a2933fcde = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_754fac8d4ca71175e5fe78315601fefa = $(`<div id="html_754fac8d4ca71175e5fe78315601fefa" style="width: 100.0%; height: 100.0%;"><b>complejo educacional las acacias</b><br>LAS ESMERALDAS 11475<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>34</b></div>`)[0];
+                popup_a9e830693016615f4109ad4a2933fcde.setContent(html_754fac8d4ca71175e5fe78315601fefa);
+            
+        
+
+        circle_marker_2d0b6f0d838c08d1331d925a9f2ca712.bindPopup(popup_a9e830693016615f4109ad4a2933fcde)
+        ;
+
+        
+    
+    
+            circle_marker_2d0b6f0d838c08d1331d925a9f2ca712.bindTooltip(
+                `<div>
+                     complejo educacional las acacias
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e561e98c8ba6511dab62d16b9160434f = L.marker(
+                [-33.5691, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_0cdacc269f416d1d1bb0e75169ca7227 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e34\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e561e98c8ba6511dab62d16b9160434f.setIcon(div_icon_0cdacc269f416d1d1bb0e75169ca7227);
+        
+    
+            var circle_marker_f3a5173e9d11d387f410015419a0a43e = L.circleMarker(
+                [-33.5501, -70.6645],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc4d29ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.776119402985074, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_4f1284ea9aa39697378c6dafdd1a7674 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_87eeda3324e47b6bf7ef5ec6607f6413 = $(`<div id="html_87eeda3324e47b6bf7ef5ec6607f6413" style="width: 100.0%; height: 100.0%;"><b>escuela aviadores</b><br>BAQUEDANO 9820<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>47</b></div>`)[0];
+                popup_4f1284ea9aa39697378c6dafdd1a7674.setContent(html_87eeda3324e47b6bf7ef5ec6607f6413);
+            
+        
+
+        circle_marker_f3a5173e9d11d387f410015419a0a43e.bindPopup(popup_4f1284ea9aa39697378c6dafdd1a7674)
+        ;
+
+        
+    
+    
+            circle_marker_f3a5173e9d11d387f410015419a0a43e.bindTooltip(
+                `<div>
+                     escuela aviadores
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c15efb4da904f9275c5be74e0bd62984 = L.marker(
+                [-33.5501, -70.6645],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_a4512014332bd66ce7b58417262f821f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e47\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c15efb4da904f9275c5be74e0bd62984.setIcon(div_icon_a4512014332bd66ce7b58417262f821f);
+        
+    
+            var circle_marker_19abbc94a25f6819f23376e868da637c = L.circleMarker(
+                [-33.5622, -70.6754],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb751ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.014925373134329, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_f32a052faf74944b4a0757de217eb603 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9ecc392a8fa27bff66bbb112f3c183ca = $(`<div id="html_9ecc392a8fa27bff66bbb112f3c183ca" style="width: 100.0%; height: 100.0%;"><b>escuela base el bosque</b><br>MARIANO LATORRE 11600<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>29</b></div>`)[0];
+                popup_f32a052faf74944b4a0757de217eb603.setContent(html_9ecc392a8fa27bff66bbb112f3c183ca);
+            
+        
+
+        circle_marker_19abbc94a25f6819f23376e868da637c.bindPopup(popup_f32a052faf74944b4a0757de217eb603)
+        ;
+
+        
+    
+    
+            circle_marker_19abbc94a25f6819f23376e868da637c.bindTooltip(
+                `<div>
+                     escuela base el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_05eaa957043cd28d43100f12fcff4c33 = L.marker(
+                [-33.5622, -70.6754],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_847b418a3f7bef2fb606270f74a82ec1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_05eaa957043cd28d43100f12fcff4c33.setIcon(div_icon_847b418a3f7bef2fb606270f74a82ec1);
+        
+    
+            var circle_marker_54acd664124891e47c98a8e1f5eb4edf = L.circleMarker(
+                [-33.5561, -70.6571],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feae4aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.432835820895523, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_8322f2e6bc5acef69d967ddf8fffec47 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_650a648cf0ffdb4217d91d7c4b774c13 = $(`<div id="html_650a648cf0ffdb4217d91d7c4b774c13" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de lyon</b><br>ALMIRANTE RIVEROS 10122<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>31</b></div>`)[0];
+                popup_8322f2e6bc5acef69d967ddf8fffec47.setContent(html_650a648cf0ffdb4217d91d7c4b774c13);
+            
+        
+
+        circle_marker_54acd664124891e47c98a8e1f5eb4edf.bindPopup(popup_8322f2e6bc5acef69d967ddf8fffec47)
+        ;
+
+        
+    
+    
+            circle_marker_54acd664124891e47c98a8e1f5eb4edf.bindTooltip(
+                `<div>
+                     escuela ciudad de lyon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f5b978b2bc9c00f9415cd0d1c823cc7b = L.marker(
+                [-33.5561, -70.6571],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_59185c3e1b0396db423b33126788a8bc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e31\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f5b978b2bc9c00f9415cd0d1c823cc7b.setIcon(div_icon_59185c3e1b0396db423b33126788a8bc);
+        
+    
+            var circle_marker_863d866dcfadf04370841b26a5e189b8 = L.circleMarker(
+                [-33.5717, -70.6808],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec9dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.880597014925373, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_6b062fab9b64fa6415c60e3157203778 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a407225085d5da8c398fb607943bacf8 = $(`<div id="html_a407225085d5da8c398fb607943bacf8" style="width: 100.0%; height: 100.0%;"><b>escuela claudio arrau leon</b><br>LOS CAROLINOS 530<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>14</b></div>`)[0];
+                popup_6b062fab9b64fa6415c60e3157203778.setContent(html_a407225085d5da8c398fb607943bacf8);
+            
+        
+
+        circle_marker_863d866dcfadf04370841b26a5e189b8.bindPopup(popup_6b062fab9b64fa6415c60e3157203778)
+        ;
+
+        
+    
+    
+            circle_marker_863d866dcfadf04370841b26a5e189b8.bindTooltip(
+                `<div>
+                     escuela claudio arrau leon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_15f50f11f5699b6b1f8211ce9361f6f3 = L.marker(
+                [-33.5717, -70.6808],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_58960c09863da895400bee9c61bda909 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e14\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_15f50f11f5699b6b1f8211ce9361f6f3.setIcon(div_icon_58960c09863da895400bee9c61bda909);
+        
+    
+            var circle_marker_de0957787cfa6bb2fc1fd49f70b2f538 = L.circleMarker(
+                [-33.57981, -70.67892],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feca66ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.17910447761194, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_fed51fb2c32839959dafe357d20f6a04 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d36c91b65a2e4159f09c209299bd749e = $(`<div id="html_d36c91b65a2e4159f09c209299bd749e" style="width: 100.0%; height: 100.0%;"><b>escuela club hipico</b><br>RODRIGO ORDOÑEZ 13150<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>25</b></div>`)[0];
+                popup_fed51fb2c32839959dafe357d20f6a04.setContent(html_d36c91b65a2e4159f09c209299bd749e);
+            
+        
+
+        circle_marker_de0957787cfa6bb2fc1fd49f70b2f538.bindPopup(popup_fed51fb2c32839959dafe357d20f6a04)
+        ;
+
+        
+    
+    
+            circle_marker_de0957787cfa6bb2fc1fd49f70b2f538.bindTooltip(
+                `<div>
+                     escuela club hipico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a258381572a349631e674fbbbb5fb934 = L.marker(
+                [-33.57981, -70.67892],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_20468645ea2f9f7664e0ad12eca3f724 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e25\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a258381572a349631e674fbbbb5fb934.setIcon(div_icon_20468645ea2f9f7664e0ad12eca3f724);
+        
+    
+            var circle_marker_14fa2f721fd2c886dc594d034f4805a8 = L.circleMarker(
+                [-33.56621, -70.68102],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde7fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.134328358208956, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_6185a5c17aef1ee87c58adbd7b5e8581 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_959c7f521df6201bd58db5ee81805365 = $(`<div id="html_959c7f521df6201bd58db5ee81805365" style="width: 100.0%; height: 100.0%;"><b>escuela general alberto bachelet </b><br>ALBENIZ  12021<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>20</b></div>`)[0];
+                popup_6185a5c17aef1ee87c58adbd7b5e8581.setContent(html_959c7f521df6201bd58db5ee81805365);
+            
+        
+
+        circle_marker_14fa2f721fd2c886dc594d034f4805a8.bindPopup(popup_6185a5c17aef1ee87c58adbd7b5e8581)
+        ;
+
+        
+    
+    
+            circle_marker_14fa2f721fd2c886dc594d034f4805a8.bindTooltip(
+                `<div>
+                     escuela general alberto bachelet 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a45e29cdc6b18af4e5d6b0aae6ac3e3b = L.marker(
+                [-33.56621, -70.68102],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_0e85fc2f2dc0b879218f74a7f1cd7637 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e20\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a45e29cdc6b18af4e5d6b0aae6ac3e3b.setIcon(div_icon_0e85fc2f2dc0b879218f74a7f1cd7637);
+        
+    
+            var circle_marker_df02cb96f35ec51a406fbd75c5b1cc4c = L.circleMarker(
+                [-33.5418, -70.6841],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_8601a082b3d1bab06dfd246e1e90315d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cae7e6ab6aff2199596bcee402ec0078 = $(`<div id="html_cae7e6ab6aff2199596bcee402ec0078" style="width: 100.0%; height: 100.0%;"><b>escuela jose marti</b><br>18 DE SEPTIEMBRE 1080<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>5</b></div>`)[0];
+                popup_8601a082b3d1bab06dfd246e1e90315d.setContent(html_cae7e6ab6aff2199596bcee402ec0078);
+            
+        
+
+        circle_marker_df02cb96f35ec51a406fbd75c5b1cc4c.bindPopup(popup_8601a082b3d1bab06dfd246e1e90315d)
+        ;
+
+        
+    
+    
+            circle_marker_df02cb96f35ec51a406fbd75c5b1cc4c.bindTooltip(
+                `<div>
+                     escuela jose marti
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_754480761f548509d033ec776df07ee3 = L.marker(
+                [-33.5418, -70.6841],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_55546acf53537bf3eca2690f08679b0c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e5\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_754480761f548509d033ec776df07ee3.setIcon(div_icon_55546acf53537bf3eca2690f08679b0c);
+        
+    
+            var circle_marker_e3cde6d4de962c67755b4dd9d5187b93 = L.circleMarker(
+                [-33.57056, -70.68746],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdb7aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.343283582089551, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_47f014d71657cfe86b13d6a387baa21e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9053127066aaf7707485d6c563fb4e06 = $(`<div id="html_9053127066aaf7707485d6c563fb4e06" style="width: 100.0%; height: 100.0%;"><b>escuela marcial martinez ferrari</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 12552<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>21</b></div>`)[0];
+                popup_47f014d71657cfe86b13d6a387baa21e.setContent(html_9053127066aaf7707485d6c563fb4e06);
+            
+        
+
+        circle_marker_e3cde6d4de962c67755b4dd9d5187b93.bindPopup(popup_47f014d71657cfe86b13d6a387baa21e)
+        ;
+
+        
+    
+    
+            circle_marker_e3cde6d4de962c67755b4dd9d5187b93.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b56f59169f73cf74f1a0cb9006b9fce9 = L.marker(
+                [-33.57056, -70.68746],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_c3d293eeac966982000137f5aea3313c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e21\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b56f59169f73cf74f1a0cb9006b9fce9.setIcon(div_icon_c3d293eeac966982000137f5aea3313c);
+        
+    
+            var circle_marker_a70bb64e4ff5261bd8ed79d9cea8ba36 = L.circleMarker(
+                [-33.5628, -70.6647],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed470ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.761194029850746, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_1395cf3933772d19683f4bf879528971 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_631498f65316870566e5a0774cd4c081 = $(`<div id="html_631498f65316870566e5a0774cd4c081" style="width: 100.0%; height: 100.0%;"><b>escuela mario arce gatica</b><br>LOS AVELLANOS 10958<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>23</b></div>`)[0];
+                popup_1395cf3933772d19683f4bf879528971.setContent(html_631498f65316870566e5a0774cd4c081);
+            
+        
+
+        circle_marker_a70bb64e4ff5261bd8ed79d9cea8ba36.bindPopup(popup_1395cf3933772d19683f4bf879528971)
+        ;
+
+        
+    
+    
+            circle_marker_a70bb64e4ff5261bd8ed79d9cea8ba36.bindTooltip(
+                `<div>
+                     escuela mario arce gatica
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bfd54f14777dc586d9050b4a0a348a0d = L.marker(
+                [-33.5628, -70.6647],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_3479708fab4997cb5c90451a990748aa = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bfd54f14777dc586d9050b4a0a348a0d.setIcon(div_icon_3479708fab4997cb5c90451a990748aa);
+        
+    
+            var circle_marker_cb6a7a809725769167d6d6025d752120 = L.circleMarker(
+                [-33.58528, -70.69938],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41b1cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.44776119402985, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_3c379bb3bdda29c3e84c8025bc9fb67d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4923ac79339b1ea47bd41dd18448ed53 = $(`<div id="html_4923ac79339b1ea47bd41dd18448ed53" style="width: 100.0%; height: 100.0%;"><b>escuela nemesio antunez l1</b><br>El Libertador 1001<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>55</b></div>`)[0];
+                popup_3c379bb3bdda29c3e84c8025bc9fb67d.setContent(html_4923ac79339b1ea47bd41dd18448ed53);
+            
+        
+
+        circle_marker_cb6a7a809725769167d6d6025d752120.bindPopup(popup_3c379bb3bdda29c3e84c8025bc9fb67d)
+        ;
+
+        
+    
+    
+            circle_marker_cb6a7a809725769167d6d6025d752120.bindTooltip(
+                `<div>
+                     escuela nemesio antunez l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b57972ac3cf6ee93de6c560c57baa206 = L.marker(
+                [-33.58528, -70.69938],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_b3544c27e55f96c6e5ba19c6d035f62c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e55\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b57972ac3cf6ee93de6c560c57baa206.setIcon(div_icon_b3544c27e55f96c6e5ba19c6d035f62c);
+        
+    
+            var circle_marker_6655bf171a4cef95501e132908ef8720 = L.circleMarker(
+                [-33.5521, -70.6878],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe58eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.507462686567164, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_80e50119a4ceb6cb47eedf4ab1cb0073 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dcac6eaa947aad1d111d8389a36ccda8 = $(`<div id="html_dcac6eaa947aad1d111d8389a36ccda8" style="width: 100.0%; height: 100.0%;"><b>escuela orlando letelier</b><br>EL PILLAN 1214<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>17</b></div>`)[0];
+                popup_80e50119a4ceb6cb47eedf4ab1cb0073.setContent(html_dcac6eaa947aad1d111d8389a36ccda8);
+            
+        
+
+        circle_marker_6655bf171a4cef95501e132908ef8720.bindPopup(popup_80e50119a4ceb6cb47eedf4ab1cb0073)
+        ;
+
+        
+    
+    
+            circle_marker_6655bf171a4cef95501e132908ef8720.bindTooltip(
+                `<div>
+                     escuela orlando letelier
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a3982bd605f18167b58b119616440307 = L.marker(
+                [-33.5521, -70.6878],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_d6e2bd9174aec9e256128b23b7ec8006 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e17\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a3982bd605f18167b58b119616440307.setIcon(div_icon_d6e2bd9174aec9e256128b23b7ec8006);
+        
+    
+            var circle_marker_df469c0915b38e7c75694ae67477efc7 = L.circleMarker(
+                [-33.56703, -70.66032],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe289ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.716417910447761, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_c83226eadff68d5ca24071f0184edb81 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5a3c09f57269dea5a982f64ade4abc9a = $(`<div id="html_5a3c09f57269dea5a982f64ade4abc9a" style="width: 100.0%; height: 100.0%;"><b>escuela paul harris</b><br>SANTA AGUEDA 1382<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>18</b></div>`)[0];
+                popup_c83226eadff68d5ca24071f0184edb81.setContent(html_5a3c09f57269dea5a982f64ade4abc9a);
+            
+        
+
+        circle_marker_df469c0915b38e7c75694ae67477efc7.bindPopup(popup_c83226eadff68d5ca24071f0184edb81)
+        ;
+
+        
+    
+    
+            circle_marker_df469c0915b38e7c75694ae67477efc7.bindTooltip(
+                `<div>
+                     escuela paul harris
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_aab63085834da49c217bcebdce4bd342 = L.marker(
+                [-33.56703, -70.66032],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_0f4aea2383865636bb1acdad28ee5fb4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e18\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_aab63085834da49c217bcebdce4bd342.setIcon(div_icon_0f4aea2383865636bb1acdad28ee5fb4);
+        
+    
+            var circle_marker_aa7bcaff0575d7ffdbe009bfa2c70bb2 = L.circleMarker(
+                [-33.5651, -70.6669],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed470ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.761194029850746, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_6835d16363b66a900ce8288907e9a396 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6e4a6b546ae478b661dffe9177e506dd = $(`<div id="html_6e4a6b546ae478b661dffe9177e506dd" style="width: 100.0%; height: 100.0%;"><b>escuela villa santa elena</b><br>PASAJE LOS PLATINOS 11169<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>23</b></div>`)[0];
+                popup_6835d16363b66a900ce8288907e9a396.setContent(html_6e4a6b546ae478b661dffe9177e506dd);
+            
+        
+
+        circle_marker_aa7bcaff0575d7ffdbe009bfa2c70bb2.bindPopup(popup_6835d16363b66a900ce8288907e9a396)
+        ;
+
+        
+    
+    
+            circle_marker_aa7bcaff0575d7ffdbe009bfa2c70bb2.bindTooltip(
+                `<div>
+                     escuela villa santa elena
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae8bfe58c892f4d40f7ab192caa2b05d = L.marker(
+                [-33.5651, -70.6669],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_232018760b31607ca21ca46e45386d6d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ae8bfe58c892f4d40f7ab192caa2b05d.setIcon(div_icon_232018760b31607ca21ca46e45386d6d);
+        
+    
+            var circle_marker_cfeb9a131990731551376707036ecfc7 = L.circleMarker(
+                [-33.54865, -70.67053],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_7a8f4bdefb9ee9aae3e0536a412228f0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0638ce7cf1cfb7d78534fe188eea8807 = $(`<div id="html_0638ce7cf1cfb7d78534fe188eea8807" style="width: 100.0%; height: 100.0%;"><b>liceo christia mc auliffe l1</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9730<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>72</b></div>`)[0];
+                popup_7a8f4bdefb9ee9aae3e0536a412228f0.setContent(html_0638ce7cf1cfb7d78534fe188eea8807);
+            
+        
+
+        circle_marker_cfeb9a131990731551376707036ecfc7.bindPopup(popup_7a8f4bdefb9ee9aae3e0536a412228f0)
+        ;
+
+        
+    
+    
+            circle_marker_cfeb9a131990731551376707036ecfc7.bindTooltip(
+                `<div>
+                     liceo christia mc auliffe l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_851a163fc0637f8774c19e5217862be4 = L.marker(
+                [-33.54865, -70.67053],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_adf4eb661b171d11b6b2cf116c1d23ee = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e72\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_851a163fc0637f8774c19e5217862be4.setIcon(div_icon_adf4eb661b171d11b6b2cf116c1d23ee);
+        
+    
+            var circle_marker_2ac16012a2265946ee345a62ac20f1b8 = L.circleMarker(
+                [-33.54918, -70.67083],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7a36ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.522388059701493, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_b2e5eaa1ed654bedf6d2c6383aa75e6c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_09c349546ee37ff454a32475b968dc21 = $(`<div id="html_09c349546ee37ff454a32475b968dc21" style="width: 100.0%; height: 100.0%;"><b>liceo juan gomez milla</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9740<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>41</b></div>`)[0];
+                popup_b2e5eaa1ed654bedf6d2c6383aa75e6c.setContent(html_09c349546ee37ff454a32475b968dc21);
+            
+        
+
+        circle_marker_2ac16012a2265946ee345a62ac20f1b8.bindPopup(popup_b2e5eaa1ed654bedf6d2c6383aa75e6c)
+        ;
+
+        
+    
+    
+            circle_marker_2ac16012a2265946ee345a62ac20f1b8.bindTooltip(
+                `<div>
+                     liceo juan gomez milla
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ba854ebcc287df701dcec23d2c4e904 = L.marker(
+                [-33.54918, -70.67083],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_6c16072af9279c4ea37b3c9ca25f048e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e41\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9ba854ebcc287df701dcec23d2c4e904.setIcon(div_icon_6c16072af9279c4ea37b3c9ca25f048e);
+        
+    
+            var circle_marker_328f52e532e78911fe6da4c09133e000 = L.circleMarker(
+                [-33.55225, -70.67474],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdb7aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.343283582089551, "stroke": false, "weight": 3}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+        var popup_3ac1d06214dd2727f96486b1a9c9014e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_230a6bad2ac767f9b76e324aedd93c75 = $(`<div id="html_230a6bad2ac767f9b76e324aedd93c75" style="width: 100.0%; height: 100.0%;"><b>liceo nuestra señora maria inmaculada</b><br>LUIS BARROS BORGOÑO 92<br>Votos Lista EVELYN ESTER PEREZ CISTERNAS: <b>21</b></div>`)[0];
+                popup_3ac1d06214dd2727f96486b1a9c9014e.setContent(html_230a6bad2ac767f9b76e324aedd93c75);
+            
+        
+
+        circle_marker_328f52e532e78911fe6da4c09133e000.bindPopup(popup_3ac1d06214dd2727f96486b1a9c9014e)
+        ;
+
+        
+    
+    
+            circle_marker_328f52e532e78911fe6da4c09133e000.bindTooltip(
+                `<div>
+                     liceo nuestra señora maria inmaculada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5c1ddb977e55a66c39ab158265b4aa07 = L.marker(
+                [-33.55225, -70.67474],
+                {"zIndexOffset": 9999}
+            ).addTo(map_af0a585ff36de903a89b461965a1a7a7);
+        
+    
+            var div_icon_1932305d1bb3d55221c89e07d69ed3dd = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e21\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5c1ddb977e55a66c39ab158265b4aa07.setIcon(div_icon_1932305d1bb3d55221c89e07d69ed3dd);
+        
+    
+            map_af0a585ff36de903a89b461965a1a7a7.fitBounds(
+                [[-33.5571, -70.6637], [-33.5803, -70.6701], [-33.57584, -70.692], [-33.5603, -70.6665], [-33.5691, -70.67], [-33.5501, -70.6645], [-33.5622, -70.6754], [-33.5561, -70.6571], [-33.5717, -70.6808], [-33.57981, -70.67892], [-33.56621, -70.68102], [-33.5418, -70.6841], [-33.57056, -70.68746], [-33.5628, -70.6647], [-33.58528, -70.69938], [-33.5521, -70.6878], [-33.56703, -70.66032], [-33.5651, -70.6669], [-33.54865, -70.67053], [-33.54918, -70.67083], [-33.55225, -70.67474]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

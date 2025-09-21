@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a4edc1145f12863039eff344adecde6c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a4edc1145f12863039eff344adecde6c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a4edc1145f12863039eff344adecde6c = L.map(
+                "map_a4edc1145f12863039eff344adecde6c",
+                {
+                    center: [-33.563024285714285, -70.67460952380952],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_33039255ff0d923950dddcf229afaef9 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_33039255ff0d923950dddcf229afaef9.addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+    var color_map_4c87bb3bec9c85bbc16c910f996518dc = {};
+
+    
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.color = d3.scale.threshold()
+              .domain([14.0, 14.256513026052104, 14.513026052104209, 14.769539078156313, 15.026052104208416, 15.28256513026052, 15.539078156312625, 15.79559118236473, 16.052104208416832, 16.308617234468937, 16.56513026052104, 16.821643286573146, 17.07815631262525, 17.334669338677354, 17.59118236472946, 17.847695390781563, 18.104208416833668, 18.360721442885772, 18.617234468937877, 18.87374749498998, 19.130260521042082, 19.386773547094187, 19.64328657314629, 19.899799599198396, 20.1563126252505, 20.412825651302605, 20.66933867735471, 20.925851703406813, 21.182364729458918, 21.438877755511022, 21.695390781563127, 21.95190380761523, 22.208416833667336, 22.46492985971944, 22.721442885771545, 22.97795591182365, 23.234468937875754, 23.490981963927858, 23.747494989979963, 24.004008016032063, 24.260521042084168, 24.517034068136272, 24.773547094188377, 25.03006012024048, 25.286573146292586, 25.54308617234469, 25.79959919839679, 26.056112224448896, 26.312625250501, 26.569138276553105, 26.82565130260521, 27.082164328657313, 27.338677354709418, 27.595190380761522, 27.851703406813627, 28.10821643286573, 28.364729458917836, 28.62124248496994, 28.877755511022045, 29.13426853707415, 29.390781563126254, 29.647294589178358, 29.903807615230463, 30.160320641282564, 30.416833667334668, 30.673346693386772, 30.929859719438877, 31.18637274549098, 31.442885771543086, 31.69939879759519, 31.955911823647295, 32.2124248496994, 32.46893787575151, 32.72545090180361, 32.981963927855716, 33.23847695390782, 33.494989979959925, 33.75150300601202, 34.00801603206413, 34.26452905811623, 34.521042084168336, 34.77755511022044, 35.034068136272545, 35.29058116232465, 35.547094188376754, 35.80360721442886, 36.06012024048096, 36.31663326653307, 36.57314629258517, 36.829659318637276, 37.08617234468938, 37.34268537074148, 37.59919839679358, 37.85571142284569, 38.11222444889779, 38.368737474949896, 38.625250501002, 38.881763527054105, 39.13827655310621, 39.394789579158314, 39.65130260521042, 39.90781563126252, 40.16432865731463, 40.42084168336673, 40.677354709418836, 40.93386773547094, 41.190380761523045, 41.44689378757515, 41.703406813627254, 41.95991983967936, 42.21643286573146, 42.47294589178357, 42.72945891783567, 42.985971943887776, 43.24248496993988, 43.498997995991985, 43.75551102204409, 44.012024048096194, 44.2685370741483, 44.5250501002004, 44.78156312625251, 45.03807615230461, 45.294589178356716, 45.55110220440882, 45.807615230460925, 46.06412825651302, 46.32064128256513, 46.57715430861723, 46.833667334669336, 47.09018036072144, 47.346693386773545, 47.60320641282565, 47.859719438877754, 48.11623246492986, 48.37274549098196, 48.62925851703407, 48.88577154308617, 49.142284569138276, 49.39879759519038, 49.655310621242485, 49.91182364729459, 50.168336673346694, 50.4248496993988, 50.6813627254509, 50.93787575150301, 51.19438877755511, 51.450901803607216, 51.70741482965932, 51.963927855711425, 52.22044088176353, 52.476953907815634, 52.73346693386774, 52.98997995991984, 53.24649298597194, 53.503006012024045, 53.75951903807615, 54.016032064128254, 54.27254509018036, 54.52905811623246, 54.78557114228457, 55.04208416833667, 55.298597194388776, 55.55511022044088, 55.811623246492985, 56.06813627254509, 56.324649298597194, 56.5811623246493, 56.8376753507014, 57.09418837675351, 57.35070140280561, 57.607214428857716, 57.86372745490982, 58.120240480961925, 58.37675350701403, 58.633266533066134, 58.88977955911824, 59.14629258517034, 59.40280561122245, 59.65931863727455, 59.91583166332666, 60.17234468937876, 60.42885771543086, 60.68537074148296, 60.94188376753507, 61.19839679358717, 61.454909819639276, 61.71142284569138, 61.967935871743485, 62.22444889779559, 62.480961923847694, 62.7374749498998, 62.9939879759519, 63.25050100200401, 63.50701402805611, 63.763527054108216, 64.02004008016033, 64.27655310621242, 64.53306613226454, 64.78957915831663, 65.04609218436875, 65.30260521042084, 65.55911823647295, 65.81563126252505, 66.07214428857716, 66.32865731462925, 66.58517034068137, 66.84168336673346, 67.09819639278558, 67.35470941883767, 67.61122244488978, 67.86773547094188, 68.12424849699399, 68.38076152304609, 68.6372745490982, 68.8937875751503, 69.1503006012024, 69.40681362725451, 69.66332665330661, 69.91983967935872, 70.17635270541082, 70.43286573146293, 70.68937875751503, 70.94589178356713, 71.20240480961924, 71.45891783567134, 71.71543086172345, 71.97194388777555, 72.22845691382766, 72.48496993987976, 72.74148296593187, 72.99799599198397, 73.25450901803607, 73.51102204408818, 73.76753507014028, 74.02404809619239, 74.28056112224449, 74.5370741482966, 74.79358717434869, 75.0501002004008, 75.3066132264529, 75.56312625250501, 75.8196392785571, 76.07615230460922, 76.33266533066131, 76.58917835671343, 76.84569138276552, 77.10220440881764, 77.35871743486973, 77.61523046092185, 77.87174348697394, 78.12825651302605, 78.38476953907815, 78.64128256513025, 78.89779559118236, 79.15430861723446, 79.41082164328657, 79.66733466933867, 79.92384769539078, 80.18036072144288, 80.43687374749499, 80.69338677354709, 80.9498997995992, 81.2064128256513, 81.4629258517034, 81.71943887775551, 81.97595190380761, 82.23246492985972, 82.48897795591182, 82.74549098196393, 83.00200400801603, 83.25851703406813, 83.51503006012024, 83.77154308617234, 84.02805611222445, 84.28456913827655, 84.54108216432866, 84.79759519038076, 85.05410821643287, 85.31062124248497, 85.56713426853707, 85.82364729458918, 86.08016032064128, 86.33667334669339, 86.59318637274549, 86.8496993987976, 87.1062124248497, 87.3627254509018, 87.61923847695391, 87.87575150300601, 88.13226452905812, 88.38877755511022, 88.64529058116233, 88.90180360721443, 89.15831663326654, 89.41482965931864, 89.67134268537075, 89.92785571142285, 90.18436873747495, 90.44088176352706, 90.69739478957916, 90.95390781563127, 91.21042084168337, 91.46693386773548, 91.72344689378758, 91.97995991983969, 92.23647294589178, 92.49298597194388, 92.74949899799599, 93.00601202404809, 93.2625250501002, 93.5190380761523, 93.7755511022044, 94.03206412825651, 94.28857715430861, 94.54509018036072, 94.80160320641282, 95.05811623246493, 95.31462925851703, 95.57114228456913, 95.82765531062124, 96.08416833667334, 96.34068136272545, 96.59719438877755, 96.85370741482966, 97.11022044088176, 97.36673346693387, 97.62324649298597, 97.87975951903807, 98.13627254509018, 98.39278557114228, 98.64929859719439, 98.90581162324649, 99.1623246492986, 99.4188376753507, 99.6753507014028, 99.93186372745491, 100.18837675350701, 100.44488977955912, 100.70140280561122, 100.95791583166333, 101.21442885771543, 101.47094188376754, 101.72745490981964, 101.98396793587175, 102.24048096192385, 102.49699398797596, 102.75350701402806, 103.01002004008016, 103.26653306613227, 103.52304609218437, 103.77955911823648, 104.03607214428858, 104.29258517034069, 104.54909819639279, 104.8056112224449, 105.062124248497, 105.3186372745491, 105.57515030060121, 105.83166332665331, 106.08817635270542, 106.34468937875752, 106.60120240480961, 106.85771543086172, 107.11422845691382, 107.37074148296593, 107.62725450901803, 107.88376753507013, 108.14028056112224, 108.39679358717434, 108.65330661322645, 108.90981963927855, 109.16633266533066, 109.42284569138276, 109.67935871743487, 109.93587174348697, 110.19238476953907, 110.44889779559118, 110.70541082164328, 110.96192384769539, 111.21843687374749, 111.4749498997996, 111.7314629258517, 111.9879759519038, 112.24448897795591, 112.50100200400801, 112.75751503006012, 113.01402805611222, 113.27054108216433, 113.52705410821643, 113.78356713426854, 114.04008016032064, 114.29659318637275, 114.55310621242485, 114.80961923847696, 115.06613226452906, 115.32264529058116, 115.57915831663327, 115.83567134268537, 116.09218436873748, 116.34869739478958, 116.60521042084169, 116.86172344689379, 117.1182364729459, 117.374749498998, 117.6312625250501, 117.88777555110221, 118.14428857715431, 118.40080160320642, 118.65731462925852, 118.91382765531063, 119.17034068136273, 119.42685370741484, 119.68336673346694, 119.93987975951904, 120.19639278557115, 120.45290581162325, 120.70941883767534, 120.96593186372745, 121.22244488977955, 121.47895791583166, 121.73547094188376, 121.99198396793587, 122.24849699398797, 122.50501002004007, 122.76152304609218, 123.01803607214428, 123.27454909819639, 123.53106212424849, 123.7875751503006, 124.0440881763527, 124.3006012024048, 124.55711422845691, 124.81362725450902, 125.07014028056112, 125.32665330661322, 125.58316633266533, 125.83967935871743, 126.09619238476954, 126.35270541082164, 126.60921843687375, 126.86573146292585, 127.12224448897796, 127.37875751503006, 127.63527054108216, 127.89178356713427, 128.1482965931864, 128.40480961923848, 128.66132264529057, 128.9178356713427, 129.1743486973948, 129.4308617234469, 129.68737474949899, 129.9438877755511, 130.20040080160322, 130.4569138276553, 130.7134268537074, 130.96993987975952, 131.22645290581164, 131.48296593186373, 131.73947895791582, 131.99599198396794, 132.25250501002006, 132.50901803607215, 132.76553106212424, 133.02204408817636, 133.27855711422848, 133.53507014028057, 133.79158316633266, 134.04809619238478, 134.3046092184369, 134.56112224448898, 134.81763527054107, 135.0741482965932, 135.33066132264528, 135.58717434869737, 135.8436873747495, 136.1002004008016, 136.3567134268537, 136.6132264529058, 136.8697394789579, 137.12625250501003, 137.38276553106212, 137.6392785571142, 137.89579158316633, 138.15230460921845, 138.40881763527054, 138.66533066132263, 138.92184368737475, 139.17835671342687, 139.43486973947896, 139.69138276553105, 139.94789579158316, 140.20440881763528, 140.46092184368737, 140.71743486973946, 140.97394789579158, 141.2304609218437, 141.4869739478958, 141.74348697394788, 142.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.x = d3.scale.linear()
+              .domain([14.0, 142.0])
+              .range([0, 450 - 50]);
+
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.legend = L.control({position: 'topright'});
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.legend.addTo(map_a4edc1145f12863039eff344adecde6c);
+
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.xAxis = d3.svg.axis()
+        .scale(color_map_4c87bb3bec9c85bbc16c910f996518dc.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([14.0, 30.0, 46.0, 62.0, 78.0, 94.0, 110.0, 126.0, 142.0]);
+
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.g = color_map_4c87bb3bec9c85bbc16c910f996518dc.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.g.selectAll("rect")
+        .data(color_map_4c87bb3bec9c85bbc16c910f996518dc.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_4c87bb3bec9c85bbc16c910f996518dc.x(color_map_4c87bb3bec9c85bbc16c910f996518dc.color.domain()[i - 1]) : color_map_4c87bb3bec9c85bbc16c910f996518dc.x.range()[0],
+            x1: i < color_map_4c87bb3bec9c85bbc16c910f996518dc.color.domain().length ? color_map_4c87bb3bec9c85bbc16c910f996518dc.x(color_map_4c87bb3bec9c85bbc16c910f996518dc.color.domain()[i]) : color_map_4c87bb3bec9c85bbc16c910f996518dc.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_4c87bb3bec9c85bbc16c910f996518dc.g.call(color_map_4c87bb3bec9c85bbc16c910f996518dc.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista ROBERTO LARENAS CUELLAR por local");
+    
+            var circle_marker_0dbf29dfde7c6f8b1c845a02648c0a1d = L.circleMarker(
+                [-33.5571, -70.6637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe186ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.84375, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_ea7e64b13a5fc24a1dd3c550c10249b5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_07e4178a3581d940050d04ccd9fee8f9 = $(`<div id="html_07e4178a3581d940050d04ccd9fee8f9" style="width: 100.0%; height: 100.0%;"><b>centro civico el bosque</b><br>ELEUTERIO RAMIREZ 10264<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>40</b></div>`)[0];
+                popup_ea7e64b13a5fc24a1dd3c550c10249b5.setContent(html_07e4178a3581d940050d04ccd9fee8f9);
+            
+        
+
+        circle_marker_0dbf29dfde7c6f8b1c845a02648c0a1d.bindPopup(popup_ea7e64b13a5fc24a1dd3c550c10249b5)
+        ;
+
+        
+    
+    
+            circle_marker_0dbf29dfde7c6f8b1c845a02648c0a1d.bindTooltip(
+                `<div>
+                     centro civico el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_461edf18ef67f71859220d54c2068893 = L.marker(
+                [-33.5571, -70.6637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_fa2617adaacdb412ddd843315f215aef = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e40\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_461edf18ef67f71859220d54c2068893.setIcon(div_icon_fa2617adaacdb412ddd843315f215aef);
+        
+    
+            var circle_marker_f8f89353ac8225dd1379a14111566380 = L.circleMarker(
+                [-33.5803, -70.6701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#febc56ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.8125, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_3c99f1553b51c428b7359556a4a00a07 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6805332d4a158eaf7140047a0986a9f9 = $(`<div id="html_6805332d4a158eaf7140047a0986a9f9" style="width: 100.0%; height: 100.0%;"><b>colegio batalla de la concepcion</b><br>VECINAL SUR 1380<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>58</b></div>`)[0];
+                popup_3c99f1553b51c428b7359556a4a00a07.setContent(html_6805332d4a158eaf7140047a0986a9f9);
+            
+        
+
+        circle_marker_f8f89353ac8225dd1379a14111566380.bindPopup(popup_3c99f1553b51c428b7359556a4a00a07)
+        ;
+
+        
+    
+    
+            circle_marker_f8f89353ac8225dd1379a14111566380.bindTooltip(
+                `<div>
+                     colegio batalla de la concepcion
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bec8eecdb055177300b69e45ea5c2049 = L.marker(
+                [-33.5803, -70.6701],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_67ccd8f2e30ec67efd74fc36847564ec = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e58\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bec8eecdb055177300b69e45ea5c2049.setIcon(div_icon_67ccd8f2e30ec67efd74fc36847564ec);
+        
+    
+            var circle_marker_c9392e9bcf569b9b4245b64512cb36de = L.circleMarker(
+                [-33.57584, -70.692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe690ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.40625, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_0c38a11e482bdfd7b5ead9d677f35ac1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2eb789e769809f1edf322954075d43e8 = $(`<div id="html_2eb789e769809f1edf322954075d43e8" style="width: 100.0%; height: 100.0%;"><b>colegio santo tomas de aquino</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 13231<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>36</b></div>`)[0];
+                popup_0c38a11e482bdfd7b5ead9d677f35ac1.setContent(html_2eb789e769809f1edf322954075d43e8);
+            
+        
+
+        circle_marker_c9392e9bcf569b9b4245b64512cb36de.bindPopup(popup_0c38a11e482bdfd7b5ead9d677f35ac1)
+        ;
+
+        
+    
+    
+            circle_marker_c9392e9bcf569b9b4245b64512cb36de.bindTooltip(
+                `<div>
+                     colegio santo tomas de aquino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2ed2927d25ea340453c981f0b698ad58 = L.marker(
+                [-33.57584, -70.692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_469f4a80240c916f95541b591bd1964b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e36\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2ed2927d25ea340453c981f0b698ad58.setIcon(div_icon_469f4a80240c916f95541b591bd1964b);
+        
+    
+            var circle_marker_e235fb65864bb11a3c022e0343f68457 = L.circleMarker(
+                [-33.5603, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffefa3ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.640625, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_3d49b0a62c1c4039c3c72f6098cdcda7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b247d0fc610a20fb0e8879e6d4db26a8 = $(`<div id="html_b247d0fc610a20fb0e8879e6d4db26a8" style="width: 100.0%; height: 100.0%;"><b>complejo educacional felipe herrera lane</b><br>LOS CUERVOS 866<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>29</b></div>`)[0];
+                popup_3d49b0a62c1c4039c3c72f6098cdcda7.setContent(html_b247d0fc610a20fb0e8879e6d4db26a8);
+            
+        
+
+        circle_marker_e235fb65864bb11a3c022e0343f68457.bindPopup(popup_3d49b0a62c1c4039c3c72f6098cdcda7)
+        ;
+
+        
+    
+    
+            circle_marker_e235fb65864bb11a3c022e0343f68457.bindTooltip(
+                `<div>
+                     complejo educacional felipe herrera lane
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_be6bce2e7d468904241755c3bf07530e = L.marker(
+                [-33.5603, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_a1209f9fa304d68adf0c854b0a5bc162 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_be6bce2e7d468904241755c3bf07530e.setIcon(div_icon_a1209f9fa304d68adf0c854b0a5bc162);
+        
+    
+            var circle_marker_f38a2eca0d36c976ccfe534abaa43150 = L.circleMarker(
+                [-33.5691, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed471ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.71875, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_1491410ca727f58856c6a22d5f909bf6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1fb2c5987148df1c5e07a53b055d160f = $(`<div id="html_1fb2c5987148df1c5e07a53b055d160f" style="width: 100.0%; height: 100.0%;"><b>complejo educacional las acacias</b><br>LAS ESMERALDAS 11475<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>48</b></div>`)[0];
+                popup_1491410ca727f58856c6a22d5f909bf6.setContent(html_1fb2c5987148df1c5e07a53b055d160f);
+            
+        
+
+        circle_marker_f38a2eca0d36c976ccfe534abaa43150.bindPopup(popup_1491410ca727f58856c6a22d5f909bf6)
+        ;
+
+        
+    
+    
+            circle_marker_f38a2eca0d36c976ccfe534abaa43150.bindTooltip(
+                `<div>
+                     complejo educacional las acacias
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_527f3573e538216fdf93918e9e5dfe18 = L.marker(
+                [-33.5691, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_d51dd9b602109548294bc0f4dabbc5e8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e48\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_527f3573e538216fdf93918e9e5dfe18.setIcon(div_icon_d51dd9b602109548294bc0f4dabbc5e8);
+        
+    
+            var circle_marker_1c08db3d1e9d9aa95d79bdd03ae9e54c = L.circleMarker(
+                [-33.5501, -70.6645],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecb66ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.15625, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_21b7ec2caf3ac840ea4b2ea353364f58 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c6038219c9c073a30966fefdc076ba75 = $(`<div id="html_c6038219c9c073a30966fefdc076ba75" style="width: 100.0%; height: 100.0%;"><b>escuela aviadores</b><br>BAQUEDANO 9820<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>52</b></div>`)[0];
+                popup_21b7ec2caf3ac840ea4b2ea353364f58.setContent(html_c6038219c9c073a30966fefdc076ba75);
+            
+        
+
+        circle_marker_1c08db3d1e9d9aa95d79bdd03ae9e54c.bindPopup(popup_21b7ec2caf3ac840ea4b2ea353364f58)
+        ;
+
+        
+    
+    
+            circle_marker_1c08db3d1e9d9aa95d79bdd03ae9e54c.bindTooltip(
+                `<div>
+                     escuela aviadores
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3c196c0b3672d797d808eb289a0f8020 = L.marker(
+                [-33.5501, -70.6645],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_3acb2d9da272326cc8a4df53d7bfcac2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e52\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3c196c0b3672d797d808eb289a0f8020.setIcon(div_icon_3acb2d9da272326cc8a4df53d7bfcac2);
+        
+    
+            var circle_marker_01809143c2ca8ee3b4363cf01d35b153 = L.circleMarker(
+                [-33.5622, -70.6754],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_cfb4456e5faffcfec2555b1dcd713c62 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2a8acead4e82adb80a7e826da4f5ab46 = $(`<div id="html_2a8acead4e82adb80a7e826da4f5ab46" style="width: 100.0%; height: 100.0%;"><b>escuela base el bosque</b><br>MARIANO LATORRE 11600<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>14</b></div>`)[0];
+                popup_cfb4456e5faffcfec2555b1dcd713c62.setContent(html_2a8acead4e82adb80a7e826da4f5ab46);
+            
+        
+
+        circle_marker_01809143c2ca8ee3b4363cf01d35b153.bindPopup(popup_cfb4456e5faffcfec2555b1dcd713c62)
+        ;
+
+        
+    
+    
+            circle_marker_01809143c2ca8ee3b4363cf01d35b153.bindTooltip(
+                `<div>
+                     escuela base el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_18e989c42174d73f41592e302ae398a5 = L.marker(
+                [-33.5622, -70.6754],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_d949fe46deec638d3fd5d80918e174f7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e14\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_18e989c42174d73f41592e302ae398a5.setIcon(div_icon_d949fe46deec638d3fd5d80918e174f7);
+        
+    
+            var circle_marker_30f3470d5f799e5a5b3860d4c28f849d = L.circleMarker(
+                [-33.5561, -70.6571],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde81ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0625, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_ae6d2c357cc461f4438d767d9253a347 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d1c192c885143253578f2401ba2106b4 = $(`<div id="html_d1c192c885143253578f2401ba2106b4" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de lyon</b><br>ALMIRANTE RIVEROS 10122<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>42</b></div>`)[0];
+                popup_ae6d2c357cc461f4438d767d9253a347.setContent(html_d1c192c885143253578f2401ba2106b4);
+            
+        
+
+        circle_marker_30f3470d5f799e5a5b3860d4c28f849d.bindPopup(popup_ae6d2c357cc461f4438d767d9253a347)
+        ;
+
+        
+    
+    
+            circle_marker_30f3470d5f799e5a5b3860d4c28f849d.bindTooltip(
+                `<div>
+                     escuela ciudad de lyon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e8c3b8351857b3cc8d31e085931f4e96 = L.marker(
+                [-33.5561, -70.6571],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_064154cf6523224df2ebdbead38393c5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e42\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e8c3b8351857b3cc8d31e085931f4e96.setIcon(div_icon_064154cf6523224df2ebdbead38393c5);
+        
+    
+            var circle_marker_2f6f795289152157f16658b512581b59 = L.circleMarker(
+                [-33.5717, -70.6808],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff8b9ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.765625, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_93c9510495e5a2ff2e1b9ff319740974 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_718f10b070fda1fe6731ad7507a1f125 = $(`<div id="html_718f10b070fda1fe6731ad7507a1f125" style="width: 100.0%; height: 100.0%;"><b>escuela claudio arrau leon</b><br>LOS CAROLINOS 530<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>21</b></div>`)[0];
+                popup_93c9510495e5a2ff2e1b9ff319740974.setContent(html_718f10b070fda1fe6731ad7507a1f125);
+            
+        
+
+        circle_marker_2f6f795289152157f16658b512581b59.bindPopup(popup_93c9510495e5a2ff2e1b9ff319740974)
+        ;
+
+        
+    
+    
+            circle_marker_2f6f795289152157f16658b512581b59.bindTooltip(
+                `<div>
+                     escuela claudio arrau leon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b99ee3493dc6e57cb00f21afd56520b8 = L.marker(
+                [-33.5717, -70.6808],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_51c67d0f17994891527d1f5e82d04e5b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e21\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b99ee3493dc6e57cb00f21afd56520b8.setIcon(div_icon_51c67d0f17994891527d1f5e82d04e5b);
+        
+    
+            var circle_marker_abc3394b6e2ae12a68f77bad4544625c = L.circleMarker(
+                [-33.57981, -70.67892],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe083ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.953125, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_857209ce0fee2f8f11d06da7dddf06e4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0864ead6be1fdf4c46ffa7f9ad540798 = $(`<div id="html_0864ead6be1fdf4c46ffa7f9ad540798" style="width: 100.0%; height: 100.0%;"><b>escuela club hipico</b><br>RODRIGO ORDOÑEZ 13150<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>41</b></div>`)[0];
+                popup_857209ce0fee2f8f11d06da7dddf06e4.setContent(html_0864ead6be1fdf4c46ffa7f9ad540798);
+            
+        
+
+        circle_marker_abc3394b6e2ae12a68f77bad4544625c.bindPopup(popup_857209ce0fee2f8f11d06da7dddf06e4)
+        ;
+
+        
+    
+    
+            circle_marker_abc3394b6e2ae12a68f77bad4544625c.bindTooltip(
+                `<div>
+                     escuela club hipico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_260777dd92aee29b63fecf99e61ba683 = L.marker(
+                [-33.57981, -70.67892],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_044ec7a0a4b931d77e0cbc94f0d30bc7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e41\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_260777dd92aee29b63fecf99e61ba683.setIcon(div_icon_044ec7a0a4b931d77e0cbc94f0d30bc7);
+        
+    
+            var circle_marker_c39d1238212be03df04217d6b0924f49 = L.circleMarker(
+                [-33.56621, -70.68102],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff1a8ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.421875, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_680efffb0b967b50c2977aa5742600e5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_77b071f5ead820d27f1848cd0a872c9a = $(`<div id="html_77b071f5ead820d27f1848cd0a872c9a" style="width: 100.0%; height: 100.0%;"><b>escuela general alberto bachelet </b><br>ALBENIZ  12021<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>27</b></div>`)[0];
+                popup_680efffb0b967b50c2977aa5742600e5.setContent(html_77b071f5ead820d27f1848cd0a872c9a);
+            
+        
+
+        circle_marker_c39d1238212be03df04217d6b0924f49.bindPopup(popup_680efffb0b967b50c2977aa5742600e5)
+        ;
+
+        
+    
+    
+            circle_marker_c39d1238212be03df04217d6b0924f49.bindTooltip(
+                `<div>
+                     escuela general alberto bachelet 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3dd9075080f0ce14b43c2ba939bf0132 = L.marker(
+                [-33.56621, -70.68102],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_f77d7261025cf9ebf2abe673e5a7bf20 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e27\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3dd9075080f0ce14b43c2ba939bf0132.setIcon(div_icon_f77d7261025cf9ebf2abe673e5a7bf20);
+        
+    
+            var circle_marker_10d197bbca617c130bf0488f0c86d976 = L.circleMarker(
+                [-33.5418, -70.6841],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffecaff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.109375, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_3f08639ef15d699809bb04ede111dd18 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f38de306a7d7ab9d45b6804379e4414a = $(`<div id="html_f38de306a7d7ab9d45b6804379e4414a" style="width: 100.0%; height: 100.0%;"><b>escuela jose marti</b><br>18 DE SEPTIEMBRE 1080<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>15</b></div>`)[0];
+                popup_3f08639ef15d699809bb04ede111dd18.setContent(html_f38de306a7d7ab9d45b6804379e4414a);
+            
+        
+
+        circle_marker_10d197bbca617c130bf0488f0c86d976.bindPopup(popup_3f08639ef15d699809bb04ede111dd18)
+        ;
+
+        
+    
+    
+            circle_marker_10d197bbca617c130bf0488f0c86d976.bindTooltip(
+                `<div>
+                     escuela jose marti
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e8a57b5e53e4f89d169d769627302be = L.marker(
+                [-33.5418, -70.6841],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_088202dabbe74919a1125a4f36f7ecf4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5e8a57b5e53e4f89d169d769627302be.setIcon(div_icon_088202dabbe74919a1125a4f36f7ecf4);
+        
+    
+            var circle_marker_ca26c65b06813a0fc38e640115e5c46b = L.circleMarker(
+                [-33.57056, -70.68746],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffefa3ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.640625, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_3e06993a641e9bddd1e8e17f0b7010ac = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b927d3a534f3b0c7a5386e561c3abe71 = $(`<div id="html_b927d3a534f3b0c7a5386e561c3abe71" style="width: 100.0%; height: 100.0%;"><b>escuela marcial martinez ferrari</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 12552<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>29</b></div>`)[0];
+                popup_3e06993a641e9bddd1e8e17f0b7010ac.setContent(html_b927d3a534f3b0c7a5386e561c3abe71);
+            
+        
+
+        circle_marker_ca26c65b06813a0fc38e640115e5c46b.bindPopup(popup_3e06993a641e9bddd1e8e17f0b7010ac)
+        ;
+
+        
+    
+    
+            circle_marker_ca26c65b06813a0fc38e640115e5c46b.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a0dda74631a968f2b060164229b8c9b0 = L.marker(
+                [-33.57056, -70.68746],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_4bc2590e07356ba3af348749218f34cb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a0dda74631a968f2b060164229b8c9b0.setIcon(div_icon_4bc2590e07356ba3af348749218f34cb);
+        
+    
+            var circle_marker_853997114e4ad20c5935ba2c64a1d7b5 = L.circleMarker(
+                [-33.5628, -70.6647],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdd7eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.171875, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_7884bee91516ddd52d1c70a92b46bc66 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b1f48d4a362e5dc802ea905a9d751db8 = $(`<div id="html_b1f48d4a362e5dc802ea905a9d751db8" style="width: 100.0%; height: 100.0%;"><b>escuela mario arce gatica</b><br>LOS AVELLANOS 10958<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>43</b></div>`)[0];
+                popup_7884bee91516ddd52d1c70a92b46bc66.setContent(html_b1f48d4a362e5dc802ea905a9d751db8);
+            
+        
+
+        circle_marker_853997114e4ad20c5935ba2c64a1d7b5.bindPopup(popup_7884bee91516ddd52d1c70a92b46bc66)
+        ;
+
+        
+    
+    
+            circle_marker_853997114e4ad20c5935ba2c64a1d7b5.bindTooltip(
+                `<div>
+                     escuela mario arce gatica
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4f561a6690e4948f2f768be068ebc1f4 = L.marker(
+                [-33.5628, -70.6647],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_05fcd4ea84e52361d57d61d8ab7b37e6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e43\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4f561a6690e4948f2f768be068ebc1f4.setIcon(div_icon_05fcd4ea84e52361d57d61d8ab7b37e6);
+        
+    
+            var circle_marker_ed4ffe599d82678e5f6286c5e9052ee9 = L.circleMarker(
+                [-33.58528, -70.69938],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_d97724087fa9f9128c7faddde424605b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a6fc7ac87488d3ddef0411ba070a3186 = $(`<div id="html_a6fc7ac87488d3ddef0411ba070a3186" style="width: 100.0%; height: 100.0%;"><b>escuela nemesio antunez l1</b><br>El Libertador 1001<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>142</b></div>`)[0];
+                popup_d97724087fa9f9128c7faddde424605b.setContent(html_a6fc7ac87488d3ddef0411ba070a3186);
+            
+        
+
+        circle_marker_ed4ffe599d82678e5f6286c5e9052ee9.bindPopup(popup_d97724087fa9f9128c7faddde424605b)
+        ;
+
+        
+    
+    
+            circle_marker_ed4ffe599d82678e5f6286c5e9052ee9.bindTooltip(
+                `<div>
+                     escuela nemesio antunez l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_371ae5bd8d3d7af8547074f927f3dbaa = L.marker(
+                [-33.58528, -70.69938],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_162771b594affc235ecd32dde1de57fd = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e142\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_371ae5bd8d3d7af8547074f927f3dbaa.setIcon(div_icon_162771b594affc235ecd32dde1de57fd);
+        
+    
+            var circle_marker_69c5628def350639e16313a6aebf2cf1 = L.circleMarker(
+                [-33.5521, -70.6878],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec9dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.859375, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_8c72167df7f3b5535641e2eede1182c0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_117778e7aa17852ec7755879da684f2d = $(`<div id="html_117778e7aa17852ec7755879da684f2d" style="width: 100.0%; height: 100.0%;"><b>escuela orlando letelier</b><br>EL PILLAN 1214<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>31</b></div>`)[0];
+                popup_8c72167df7f3b5535641e2eede1182c0.setContent(html_117778e7aa17852ec7755879da684f2d);
+            
+        
+
+        circle_marker_69c5628def350639e16313a6aebf2cf1.bindPopup(popup_8c72167df7f3b5535641e2eede1182c0)
+        ;
+
+        
+    
+    
+            circle_marker_69c5628def350639e16313a6aebf2cf1.bindTooltip(
+                `<div>
+                     escuela orlando letelier
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e97da4810328475856870a95799242d1 = L.marker(
+                [-33.5521, -70.6878],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_87137d801aaca422dc248a7a74904082 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e31\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e97da4810328475856870a95799242d1.setIcon(div_icon_87137d801aaca422dc248a7a74904082);
+        
+    
+            var circle_marker_ab15738a5975be0123bfa334b17dbb79 = L.circleMarker(
+                [-33.56703, -70.66032],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec9dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.859375, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_01257308646f025236f972d635a9a148 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_30d11af77d7a5f58a1d268fd9081231b = $(`<div id="html_30d11af77d7a5f58a1d268fd9081231b" style="width: 100.0%; height: 100.0%;"><b>escuela paul harris</b><br>SANTA AGUEDA 1382<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>31</b></div>`)[0];
+                popup_01257308646f025236f972d635a9a148.setContent(html_30d11af77d7a5f58a1d268fd9081231b);
+            
+        
+
+        circle_marker_ab15738a5975be0123bfa334b17dbb79.bindPopup(popup_01257308646f025236f972d635a9a148)
+        ;
+
+        
+    
+    
+            circle_marker_ab15738a5975be0123bfa334b17dbb79.bindTooltip(
+                `<div>
+                     escuela paul harris
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e179cd01fa1e40dfd00153e524ac89a3 = L.marker(
+                [-33.56703, -70.66032],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_a1423db65adc4e44e4be076fb87b9861 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e31\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e179cd01fa1e40dfd00153e524ac89a3.setIcon(div_icon_a1423db65adc4e44e4be076fb87b9861);
+        
+    
+            var circle_marker_5a6177e508b8cc08cd8b14b8c96a2291 = L.circleMarker(
+                [-33.5651, -70.6669],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeb9bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.96875, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_78045ff8fa06fb7868f8529288ac1dde = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e55d944ba46e9c50d1d2abbbedc23503 = $(`<div id="html_e55d944ba46e9c50d1d2abbbedc23503" style="width: 100.0%; height: 100.0%;"><b>escuela villa santa elena</b><br>PASAJE LOS PLATINOS 11169<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>32</b></div>`)[0];
+                popup_78045ff8fa06fb7868f8529288ac1dde.setContent(html_e55d944ba46e9c50d1d2abbbedc23503);
+            
+        
+
+        circle_marker_5a6177e508b8cc08cd8b14b8c96a2291.bindPopup(popup_78045ff8fa06fb7868f8529288ac1dde)
+        ;
+
+        
+    
+    
+            circle_marker_5a6177e508b8cc08cd8b14b8c96a2291.bindTooltip(
+                `<div>
+                     escuela villa santa elena
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_24ffb72f103aeeef0a1337a9bdb8dfbe = L.marker(
+                [-33.5651, -70.6669],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_747ee7bcf8141e0d28a37a550df0c8c0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e32\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_24ffb72f103aeeef0a1337a9bdb8dfbe.setIcon(div_icon_747ee7bcf8141e0d28a37a550df0c8c0);
+        
+    
+            var circle_marker_529c8b11f26f4d28e56a04e9d3eb0bd1 = L.circleMarker(
+                [-33.54865, -70.67053],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec864ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.265625, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_edae15090e36334e299016d71dd3bdf4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e87a79bb74b9aa3aaf6fd8797b952b45 = $(`<div id="html_e87a79bb74b9aa3aaf6fd8797b952b45" style="width: 100.0%; height: 100.0%;"><b>liceo christia mc auliffe l1</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9730<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>53</b></div>`)[0];
+                popup_edae15090e36334e299016d71dd3bdf4.setContent(html_e87a79bb74b9aa3aaf6fd8797b952b45);
+            
+        
+
+        circle_marker_529c8b11f26f4d28e56a04e9d3eb0bd1.bindPopup(popup_edae15090e36334e299016d71dd3bdf4)
+        ;
+
+        
+    
+    
+            circle_marker_529c8b11f26f4d28e56a04e9d3eb0bd1.bindTooltip(
+                `<div>
+                     liceo christia mc auliffe l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d8aa16b781088ac255c5f2d6bd01b99 = L.marker(
+                [-33.54865, -70.67053],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_b3552a1f05ab15e3a8127c87d22548b3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e53\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6d8aa16b781088ac255c5f2d6bd01b99.setIcon(div_icon_b3552a1f05ab15e3a8127c87d22548b3);
+        
+    
+            var circle_marker_c10ed61f1b5fb5fc77a441edb50fe3a2 = L.circleMarker(
+                [-33.54918, -70.67083],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe288ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.734375, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_d928d89b217027e34ce084f22e0a6fd4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ee996f39c5433d978f249a451b9e261b = $(`<div id="html_ee996f39c5433d978f249a451b9e261b" style="width: 100.0%; height: 100.0%;"><b>liceo juan gomez milla</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9740<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>39</b></div>`)[0];
+                popup_d928d89b217027e34ce084f22e0a6fd4.setContent(html_ee996f39c5433d978f249a451b9e261b);
+            
+        
+
+        circle_marker_c10ed61f1b5fb5fc77a441edb50fe3a2.bindPopup(popup_d928d89b217027e34ce084f22e0a6fd4)
+        ;
+
+        
+    
+    
+            circle_marker_c10ed61f1b5fb5fc77a441edb50fe3a2.bindTooltip(
+                `<div>
+                     liceo juan gomez milla
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_85f074b5e4f9c5f561ecc37f121093d8 = L.marker(
+                [-33.54918, -70.67083],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_1f2a5f8b9dddb7c20ee2be0521628e26 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e39\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_85f074b5e4f9c5f561ecc37f121093d8.setIcon(div_icon_1f2a5f8b9dddb7c20ee2be0521628e26);
+        
+    
+            var circle_marker_7b84dc2dd528e95f4ded102dbe0071c4 = L.circleMarker(
+                [-33.55225, -70.67474],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff1a8ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.421875, "stroke": false, "weight": 3}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+        var popup_7fdd47510eafa4414ac72f4c0adf2653 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9ae3f53b860f61ededebafb178d0493e = $(`<div id="html_9ae3f53b860f61ededebafb178d0493e" style="width: 100.0%; height: 100.0%;"><b>liceo nuestra señora maria inmaculada</b><br>LUIS BARROS BORGOÑO 92<br>Votos Lista ROBERTO LARENAS CUELLAR: <b>27</b></div>`)[0];
+                popup_7fdd47510eafa4414ac72f4c0adf2653.setContent(html_9ae3f53b860f61ededebafb178d0493e);
+            
+        
+
+        circle_marker_7b84dc2dd528e95f4ded102dbe0071c4.bindPopup(popup_7fdd47510eafa4414ac72f4c0adf2653)
+        ;
+
+        
+    
+    
+            circle_marker_7b84dc2dd528e95f4ded102dbe0071c4.bindTooltip(
+                `<div>
+                     liceo nuestra señora maria inmaculada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_130ad6e150c3f1b474c2866cc576f914 = L.marker(
+                [-33.55225, -70.67474],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a4edc1145f12863039eff344adecde6c);
+        
+    
+            var div_icon_ef24c706ee55022315cceb4996f9c1e8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e27\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_130ad6e150c3f1b474c2866cc576f914.setIcon(div_icon_ef24c706ee55022315cceb4996f9c1e8);
+        
+    
+            map_a4edc1145f12863039eff344adecde6c.fitBounds(
+                [[-33.5571, -70.6637], [-33.5803, -70.6701], [-33.57584, -70.692], [-33.5603, -70.6665], [-33.5691, -70.67], [-33.5501, -70.6645], [-33.5622, -70.6754], [-33.5561, -70.6571], [-33.5717, -70.6808], [-33.57981, -70.67892], [-33.56621, -70.68102], [-33.5418, -70.6841], [-33.57056, -70.68746], [-33.5628, -70.6647], [-33.58528, -70.69938], [-33.5521, -70.6878], [-33.56703, -70.66032], [-33.5651, -70.6669], [-33.54865, -70.67053], [-33.54918, -70.67083], [-33.55225, -70.67474]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>
