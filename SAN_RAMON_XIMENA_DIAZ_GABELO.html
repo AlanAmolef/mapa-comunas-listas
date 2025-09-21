@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a657b8e8c7f6384fdbfc4a1cfe74bfef {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a657b8e8c7f6384fdbfc4a1cfe74bfef" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a657b8e8c7f6384fdbfc4a1cfe74bfef = L.map(
+                "map_a657b8e8c7f6384fdbfc4a1cfe74bfef",
+                {
+                    center: [-33.54126733333334, -70.64074466666666],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f39853cd97af2676cda6d7b29600ae47 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_f39853cd97af2676cda6d7b29600ae47.addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+    var color_map_98e11bc2b3d911e9a1949809de73e5e1 = {};
+
+    
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.color = d3.scale.threshold()
+              .domain([37.0, 37.120240480961925, 37.24048096192385, 37.36072144288577, 37.480961923847694, 37.60120240480962, 37.721442885771545, 37.84168336673347, 37.96192384769539, 38.08216432865731, 38.20240480961924, 38.322645290581164, 38.44288577154309, 38.56312625250501, 38.68336673346693, 38.80360721442886, 38.92384769539078, 39.0440881763527, 39.16432865731463, 39.28456913827655, 39.40480961923848, 39.5250501002004, 39.64529058116233, 39.765531062124246, 39.88577154308617, 40.0060120240481, 40.12625250501002, 40.24649298597194, 40.366733466933866, 40.48697394789579, 40.607214428857716, 40.72745490981964, 40.84769539078156, 40.967935871743485, 41.08817635270541, 41.208416833667336, 41.32865731462926, 41.44889779559118, 41.569138276553105, 41.68937875751503, 41.809619238476955, 41.92985971943888, 42.0501002004008, 42.170340681362724, 42.29058116232465, 42.410821643286575, 42.5310621242485, 42.65130260521042, 42.77154308617234, 42.89178356713427, 43.012024048096194, 43.13226452905812, 43.25250501002004, 43.37274549098196, 43.49298597194389, 43.61322645290581, 43.73346693386773, 43.85370741482966, 43.97394789579158, 44.09418837675351, 44.21442885771543, 44.33466933867736, 44.454909819639276, 44.5751503006012, 44.69539078156313, 44.81563126252505, 44.93587174348697, 45.056112224448896, 45.17635270541082, 45.296593186372746, 45.41683366733467, 45.5370741482966, 45.657314629258515, 45.77755511022044, 45.897795591182366, 46.01803607214429, 46.13827655310621, 46.258517034068134, 46.37875751503006, 46.498997995991985, 46.61923847695391, 46.739478957915836, 46.859719438877754, 46.97995991983968, 47.100200400801604, 47.22044088176353, 47.34068136272545, 47.46092184368737, 47.5811623246493, 47.701402805611224, 47.82164328657315, 47.941883767535074, 48.06212424849699, 48.18236472945892, 48.30260521042084, 48.42284569138276, 48.54308617234469, 48.66332665330661, 48.78356713426854, 48.90380761523046, 49.02404809619239, 49.144288577154306, 49.26452905811623, 49.38476953907816, 49.50501002004008, 49.625250501002, 49.745490981963925, 49.86573146292585, 49.985971943887776, 50.1062124248497, 50.22645290581163, 50.346693386773545, 50.46693386773547, 50.587174348697395, 50.70741482965932, 50.82765531062124, 50.947895791583164, 51.06813627254509, 51.188376753507015, 51.30861723446894, 51.428857715430865, 51.549098196392784, 51.66933867735471, 51.789579158316634, 51.90981963927856, 52.03006012024048, 52.1503006012024, 52.27054108216433, 52.390781563126254, 52.51102204408818, 52.631262525050104, 52.75150300601202, 52.87174348697395, 52.99198396793587, 53.11222444889779, 53.23246492985972, 53.35270541082164, 53.47294589178357, 53.59318637274549, 53.71342685370742, 53.83366733466934, 53.95390781563126, 54.07414829659319, 54.19438877755511, 54.31462925851703, 54.434869739478955, 54.55511022044088, 54.675350701402806, 54.79559118236473, 54.91583166332666, 55.03607214428858, 55.1563126252505, 55.276553106212425, 55.39679358717434, 55.51703406813627, 55.637274549098194, 55.75751503006012, 55.877755511022045, 55.99799599198397, 56.118236472945895, 56.23847695390782, 56.35871743486974, 56.478957915831664, 56.59919839679358, 56.71943887775551, 56.83967935871743, 56.95991983967936, 57.08016032064128, 57.20040080160321, 57.320641282565134, 57.44088176352706, 57.56112224448898, 57.6813627254509, 57.80160320641282, 57.921843687374746, 58.04208416833667, 58.1623246492986, 58.28256513026052, 58.40280561122245, 58.52304609218437, 58.64328657314629, 58.763527054108216, 58.88376753507014, 59.00400801603206, 59.124248496993985, 59.24448897795591, 59.364729458917836, 59.48496993987976, 59.605210420841686, 59.72545090180361, 59.84569138276553, 59.965931863727455, 60.08617234468938, 60.2064128256513, 60.326653306613224, 60.44689378757515, 60.567134268537075, 60.687374749499, 60.807615230460925, 60.92785571142285, 61.04809619238477, 61.168336673346694, 61.28857715430861, 61.40881763527054, 61.52905811623246, 61.64929859719439, 61.76953907815631, 61.88977955911824, 62.010020040080164, 62.13026052104209, 62.25050100200401, 62.37074148296593, 62.49098196392785, 62.611222444889776, 62.7314629258517, 62.85170340681363, 62.97194388777555, 63.09218436873748, 63.2124248496994, 63.33266533066132, 63.452905811623246, 63.57314629258517, 63.69338677354709, 63.813627254509015, 63.93386773547094, 64.05410821643287, 64.17434869739479, 64.29458917835672, 64.41482965931864, 64.53507014028057, 64.65531062124248, 64.77555110220442, 64.89579158316633, 65.01603206412825, 65.13627254509018, 65.2565130260521, 65.37675350701403, 65.49699398797596, 65.61723446893788, 65.73747494989979, 65.85771543086173, 65.97795591182364, 66.09819639278557, 66.21843687374749, 66.33867735470942, 66.45891783567134, 66.57915831663327, 66.6993987975952, 66.81963927855712, 66.93987975951904, 67.06012024048096, 67.18036072144288, 67.3006012024048, 67.42084168336673, 67.54108216432866, 67.66132264529058, 67.78156312625251, 67.90180360721443, 68.02204408817636, 68.14228456913827, 68.26252505010021, 68.38276553106212, 68.50300601202404, 68.62324649298597, 68.7434869739479, 68.86372745490982, 68.98396793587175, 69.10420841683367, 69.22444889779558, 69.34468937875752, 69.46492985971943, 69.58517034068137, 69.70541082164328, 69.82565130260521, 69.94589178356713, 70.06613226452906, 70.18637274549098, 70.3066132264529, 70.42685370741484, 70.54709418837675, 70.66733466933869, 70.7875751503006, 70.90781563126252, 71.02805611222445, 71.14829659318637, 71.2685370741483, 71.38877755511022, 71.50901803607215, 71.62925851703406, 71.749498997996, 71.86973947895791, 71.98997995991985, 72.11022044088176, 72.23046092184369, 72.35070140280561, 72.47094188376754, 72.59118236472946, 72.71142284569137, 72.83166332665331, 72.95190380761522, 73.07214428857716, 73.19238476953907, 73.312625250501, 73.43286573146293, 73.55310621242485, 73.67334669338678, 73.79358717434869, 73.91382765531063, 74.03406813627254, 74.15430861723448, 74.27454909819639, 74.39478957915831, 74.51503006012024, 74.63527054108216, 74.75551102204409, 74.87575150300601, 74.99599198396794, 75.11623246492985, 75.23647294589179, 75.3567134268537, 75.47695390781564, 75.59719438877755, 75.71743486973948, 75.8376753507014, 75.95791583166333, 76.07815631262525, 76.19839679358716, 76.3186372745491, 76.43887775551102, 76.55911823647295, 76.67935871743487, 76.79959919839679, 76.91983967935872, 77.04008016032064, 77.16032064128257, 77.28056112224449, 77.40080160320642, 77.52104208416833, 77.64128256513027, 77.76152304609218, 77.88176352705412, 78.00200400801603, 78.12224448897796, 78.24248496993988, 78.3627254509018, 78.48296593186373, 78.60320641282564, 78.72344689378758, 78.84368737474949, 78.96392785571143, 79.08416833667334, 79.20440881763527, 79.3246492985972, 79.44488977955912, 79.56513026052104, 79.68537074148296, 79.8056112224449, 79.9258517034068, 80.04609218436875, 80.16633266533066, 80.28657314629258, 80.40681362725451, 80.52705410821643, 80.64729458917836, 80.76753507014028, 80.88777555110221, 81.00801603206412, 81.12825651302606, 81.24849699398797, 81.36873747494991, 81.48897795591182, 81.60921843687375, 81.72945891783567, 81.8496993987976, 81.96993987975952, 82.09018036072143, 82.21042084168337, 82.33066132264528, 82.45090180360722, 82.57114228456913, 82.69138276553106, 82.81162324649299, 82.93186372745491, 83.05210420841684, 83.17234468937876, 83.29258517034069, 83.4128256513026, 83.53306613226454, 83.65330661322645, 83.77354709418837, 83.8937875751503, 84.01402805611222, 84.13426853707415, 84.25450901803607, 84.374749498998, 84.49498997995991, 84.61523046092185, 84.73547094188376, 84.8557114228457, 84.97595190380761, 85.09619238476954, 85.21643286573146, 85.33667334669339, 85.45691382765531, 85.57715430861722, 85.69739478957916, 85.81763527054107, 85.93787575150301, 86.05811623246493, 86.17835671342685, 86.29859719438878, 86.4188376753507, 86.53907815631263, 86.65931863727455, 86.77955911823648, 86.89979959919839, 87.02004008016033, 87.14028056112224, 87.26052104208418, 87.38076152304609, 87.50100200400801, 87.62124248496994, 87.74148296593187, 87.86172344689379, 87.9819639278557, 88.10220440881764, 88.22244488977955, 88.34268537074149, 88.4629258517034, 88.58316633266533, 88.70340681362725, 88.82364729458918, 88.9438877755511, 89.06412825651302, 89.18436873747495, 89.30460921843687, 89.4248496993988, 89.54509018036072, 89.66533066132264, 89.78557114228457, 89.90581162324649, 90.02605210420842, 90.14629258517034, 90.26653306613227, 90.38677354709418, 90.50701402805612, 90.62725450901803, 90.74749498997997, 90.86773547094188, 90.9879759519038, 91.10821643286573, 91.22845691382766, 91.34869739478958, 91.4689378757515, 91.58917835671343, 91.70941883767534, 91.82965931863728, 91.9498997995992, 92.07014028056112, 92.19038076152304, 92.31062124248497, 92.4308617234469, 92.55110220440882, 92.67134268537075, 92.79158316633266, 92.9118236472946, 93.03206412825651, 93.15230460921845, 93.27254509018036, 93.39278557114228, 93.51302605210421, 93.63326653306613, 93.75350701402806, 93.87374749498997, 93.99398797595191, 94.11422845691382, 94.23446893787576, 94.35470941883767, 94.4749498997996, 94.59519038076152, 94.71543086172345, 94.83567134268537, 94.95591182364728, 95.07615230460922, 95.19639278557113, 95.31663326653307, 95.43687374749499, 95.55711422845691, 95.67735470941884, 95.79759519038076, 95.91783567134269, 96.03807615230461, 96.15831663326654, 96.27855711422845, 96.39879759519039, 96.5190380761523, 96.63927855711424, 96.75951903807615, 96.87975951903807, 97.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.x = d3.scale.linear()
+              .domain([37.0, 97.0])
+              .range([0, 450 - 50]);
+
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.legend = L.control({position: 'topright'});
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.legend.addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.xAxis = d3.svg.axis()
+        .scale(color_map_98e11bc2b3d911e9a1949809de73e5e1.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([37.0, 44.5, 52.0, 59.5, 67.0, 74.5, 82.0, 89.5, 97.0]);
+
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.g = color_map_98e11bc2b3d911e9a1949809de73e5e1.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.g.selectAll("rect")
+        .data(color_map_98e11bc2b3d911e9a1949809de73e5e1.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_98e11bc2b3d911e9a1949809de73e5e1.x(color_map_98e11bc2b3d911e9a1949809de73e5e1.color.domain()[i - 1]) : color_map_98e11bc2b3d911e9a1949809de73e5e1.x.range()[0],
+            x1: i < color_map_98e11bc2b3d911e9a1949809de73e5e1.color.domain().length ? color_map_98e11bc2b3d911e9a1949809de73e5e1.x(color_map_98e11bc2b3d911e9a1949809de73e5e1.color.domain()[i]) : color_map_98e11bc2b3d911e9a1949809de73e5e1.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_98e11bc2b3d911e9a1949809de73e5e1.g.call(color_map_98e11bc2b3d911e9a1949809de73e5e1.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista XIMENA DIAZ GABELO por local");
+    
+            var circle_marker_78078dac638db7ab10e504c058f9d8be = L.circleMarker(
+                [-33.5193, -70.6409],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_540a1ba613d190e29e53635db6e033f4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0fc495aa25c06c4c5d753f81c5f22944 = $(`<div id="html_0fc495aa25c06c4c5d753f81c5f22944" style="width: 100.0%; height: 100.0%;"><b>centro educacional mirador</b><br>MIRADOR 1470<br>Votos Lista XIMENA DIAZ GABELO: <b>37</b></div>`)[0];
+                popup_540a1ba613d190e29e53635db6e033f4.setContent(html_0fc495aa25c06c4c5d753f81c5f22944);
+            
+        
+
+        circle_marker_78078dac638db7ab10e504c058f9d8be.bindPopup(popup_540a1ba613d190e29e53635db6e033f4)
+        ;
+
+        
+    
+    
+            circle_marker_78078dac638db7ab10e504c058f9d8be.bindTooltip(
+                `<div>
+                     centro educacional mirador
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8f0015f025c0190d0c009e76b03ebbe8 = L.marker(
+                [-33.5193, -70.6409],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_3834b10d5896dfc14c38623bce882c91 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e37\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8f0015f025c0190d0c009e76b03ebbe8.setIcon(div_icon_3834b10d5896dfc14c38623bce882c91);
+        
+    
+            var circle_marker_3a929187e29d8f7bdf875ec35f89dd0d = L.circleMarker(
+                [-33.5518, -70.6448],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd522bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.633333333333333, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_418e757fa4d9ef1de4bd2053c19cbb9f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4e369f7cb16fad694bf51a34720116b1 = $(`<div id="html_4e369f7cb16fad694bf51a34720116b1" style="width: 100.0%; height: 100.0%;"><b>centro educacional paula jaraquemada</b><br>ALMIRANTE LATORRE 9921<br>Votos Lista XIMENA DIAZ GABELO: <b>74</b></div>`)[0];
+                popup_418e757fa4d9ef1de4bd2053c19cbb9f.setContent(html_4e369f7cb16fad694bf51a34720116b1);
+            
+        
+
+        circle_marker_3a929187e29d8f7bdf875ec35f89dd0d.bindPopup(popup_418e757fa4d9ef1de4bd2053c19cbb9f)
+        ;
+
+        
+    
+    
+            circle_marker_3a929187e29d8f7bdf875ec35f89dd0d.bindTooltip(
+                `<div>
+                     centro educacional paula jaraquemada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1082969d31da9666ba3eb979329c03c4 = L.marker(
+                [-33.5518, -70.6448],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_6d9559afc83ba5bdf3ffbda96a52b087 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e74\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1082969d31da9666ba3eb979329c03c4.setIcon(div_icon_6d9559afc83ba5bdf3ffbda96a52b087);
+        
+    
+            var circle_marker_2af27d4737ba121d9437ea8abb0b7135 = L.circleMarker(
+                [-33.5497, -70.6445],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc6ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.233333333333333, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_004c7bfe62bd63f7f0bcbe8abf270fb4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_41d3292503c3638ebc47d4ea0a1dd14f = $(`<div id="html_41d3292503c3638ebc47d4ea0a1dd14f" style="width: 100.0%; height: 100.0%;"><b>centro educacional san ramon</b><br>ALMIRANTE LATORRE 9701<br>Votos Lista XIMENA DIAZ GABELO: <b>38</b></div>`)[0];
+                popup_004c7bfe62bd63f7f0bcbe8abf270fb4.setContent(html_41d3292503c3638ebc47d4ea0a1dd14f);
+            
+        
+
+        circle_marker_2af27d4737ba121d9437ea8abb0b7135.bindPopup(popup_004c7bfe62bd63f7f0bcbe8abf270fb4)
+        ;
+
+        
+    
+    
+            circle_marker_2af27d4737ba121d9437ea8abb0b7135.bindTooltip(
+                `<div>
+                     centro educacional san ramon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7dfc3005493c41156a0090315c151f76 = L.marker(
+                [-33.5497, -70.6445],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_7807104b2a469efbbed67718cf34e14d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7dfc3005493c41156a0090315c151f76.setIcon(div_icon_7807104b2a469efbbed67718cf34e14d);
+        
+    
+            var circle_marker_2e59dfe5052cca926356e91f74bdc37b = L.circleMarker(
+                [-33.5196, -70.6381],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc6ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.233333333333333, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_9c622db2e89ffd1ebd7c34150d589ac9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_356e8e36e1e735c96254b96b822cf2ef = $(`<div id="html_356e8e36e1e735c96254b96b822cf2ef" style="width: 100.0%; height: 100.0%;"><b>colegio alberto blest gana</b><br>MIRADOR 1674<br>Votos Lista XIMENA DIAZ GABELO: <b>38</b></div>`)[0];
+                popup_9c622db2e89ffd1ebd7c34150d589ac9.setContent(html_356e8e36e1e735c96254b96b822cf2ef);
+            
+        
+
+        circle_marker_2e59dfe5052cca926356e91f74bdc37b.bindPopup(popup_9c622db2e89ffd1ebd7c34150d589ac9)
+        ;
+
+        
+    
+    
+            circle_marker_2e59dfe5052cca926356e91f74bdc37b.bindTooltip(
+                `<div>
+                     colegio alberto blest gana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_efc093c6cdaa87038db85cef509e613c = L.marker(
+                [-33.5196, -70.6381],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_3d79c078445a61f1f74eb8d2413d0d46 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_efc093c6cdaa87038db85cef509e613c.setIcon(div_icon_3d79c078445a61f1f74eb8d2413d0d46);
+        
+    
+            var circle_marker_54b94ab267acaa957cf317a3dba1a677 = L.circleMarker(
+                [-33.5511, -70.6447],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc6ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.233333333333333, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_2cb1d1a8ddd60276b3261ab49075920f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f197cc3ff52906b2bd5dd6733f91b4f8 = $(`<div id="html_f197cc3ff52906b2bd5dd6733f91b4f8" style="width: 100.0%; height: 100.0%;"><b>escuela aliven</b><br>ALMIRANTE LATORRE 9835<br>Votos Lista XIMENA DIAZ GABELO: <b>38</b></div>`)[0];
+                popup_2cb1d1a8ddd60276b3261ab49075920f.setContent(html_f197cc3ff52906b2bd5dd6733f91b4f8);
+            
+        
+
+        circle_marker_54b94ab267acaa957cf317a3dba1a677.bindPopup(popup_2cb1d1a8ddd60276b3261ab49075920f)
+        ;
+
+        
+    
+    
+            circle_marker_54b94ab267acaa957cf317a3dba1a677.bindTooltip(
+                `<div>
+                     escuela aliven
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a25f84ee9decb0fc9b691c4af826c009 = L.marker(
+                [-33.5511, -70.6447],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_cea68eab94a00fff08071177f3a7aca7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a25f84ee9decb0fc9b691c4af826c009.setIcon(div_icon_cea68eab94a00fff08071177f3a7aca7);
+        
+    
+            var circle_marker_a5056cf2ef09c13599200a0fcfe07536 = L.circleMarker(
+                [-33.5484, -70.649],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea646ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.833333333333332, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_97f70347e73f4c8e50c44da58908ddb8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a94c5fe7c3954f11798701eceff8d0f9 = $(`<div id="html_a94c5fe7c3954f11798701eceff8d0f9" style="width: 100.0%; height: 100.0%;"><b>escuela arturo matte larrain</b><br>ANIBAL ZAÑARTU 9567<br>Votos Lista XIMENA DIAZ GABELO: <b>62</b></div>`)[0];
+                popup_97f70347e73f4c8e50c44da58908ddb8.setContent(html_a94c5fe7c3954f11798701eceff8d0f9);
+            
+        
+
+        circle_marker_a5056cf2ef09c13599200a0fcfe07536.bindPopup(popup_97f70347e73f4c8e50c44da58908ddb8)
+        ;
+
+        
+    
+    
+            circle_marker_a5056cf2ef09c13599200a0fcfe07536.bindTooltip(
+                `<div>
+                     escuela arturo matte larrain
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_14615c1497e23061da41088748815adb = L.marker(
+                [-33.5484, -70.649],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_9c7bfc9e8934b4486df2c624613663c6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e62\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_14615c1497e23061da41088748815adb.setIcon(div_icon_9c7bfc9e8934b4486df2c624613663c6);
+        
+    
+            var circle_marker_f44ecef79b3b74a0704325648fafd4a8 = L.circleMarker(
+                [-33.5376, -70.6401],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cf0c21ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.433333333333334, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_f0e25cb268de0121ca9b4accd0536905 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8d03ce389eb74ace569f4e00ddf92b75 = $(`<div id="html_8d03ce389eb74ace569f4e00ddf92b75" style="width: 100.0%; height: 100.0%;"><b>escuela educadores de chile</b><br>DOÑIHUE 9567<br>Votos Lista XIMENA DIAZ GABELO: <b>86</b></div>`)[0];
+                popup_f0e25cb268de0121ca9b4accd0536905.setContent(html_8d03ce389eb74ace569f4e00ddf92b75);
+            
+        
+
+        circle_marker_f44ecef79b3b74a0704325648fafd4a8.bindPopup(popup_f0e25cb268de0121ca9b4accd0536905)
+        ;
+
+        
+    
+    
+            circle_marker_f44ecef79b3b74a0704325648fafd4a8.bindTooltip(
+                `<div>
+                     escuela educadores de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ed7020af4108912b4a210f69c677b9bf = L.marker(
+                [-33.5376, -70.6401],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_4aecef7379fa57240d8772eddd1f5821 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e86\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ed7020af4108912b4a210f69c677b9bf.setIcon(div_icon_4aecef7379fa57240d8772eddd1f5821);
+        
+    
+            var circle_marker_3e9f6e44583d5818131c2bdd9fa3b92d = L.circleMarker(
+                [-33.5458, -70.6437],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe923eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.766666666666666, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_0e449e177e2d7c3a4586b42ba4d9449e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_479d88cf3f486591a7ef0365b423b591 = $(`<div id="html_479d88cf3f486591a7ef0365b423b591" style="width: 100.0%; height: 100.0%;"><b>escuela karelmapu</b><br>ALMIRANTE LATORRE 9299<br>Votos Lista XIMENA DIAZ GABELO: <b>66</b></div>`)[0];
+                popup_0e449e177e2d7c3a4586b42ba4d9449e.setContent(html_479d88cf3f486591a7ef0365b423b591);
+            
+        
+
+        circle_marker_3e9f6e44583d5818131c2bdd9fa3b92d.bindPopup(popup_0e449e177e2d7c3a4586b42ba4d9449e)
+        ;
+
+        
+    
+    
+            circle_marker_3e9f6e44583d5818131c2bdd9fa3b92d.bindTooltip(
+                `<div>
+                     escuela karelmapu
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d5344e6c886e553687959f3ae10a4d7e = L.marker(
+                [-33.5458, -70.6437],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_aea6774c1f37071ce85f2894a5d4925d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e66\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d5344e6c886e553687959f3ae10a4d7e.setIcon(div_icon_aea6774c1f37071ce85f2894a5d4925d);
+        
+    
+            var circle_marker_4cc10db091aca60afd05c6d30f5ec028 = L.circleMarker(
+                [-33.5499, -70.6405],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8539ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.233333333333334, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_8cca992e2688b9ec07afab37e6523c75 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_71c1787b9c6b81406be29ad718495189 = $(`<div id="html_71c1787b9c6b81406be29ad718495189" style="width: 100.0%; height: 100.0%;"><b>escuela nanihue</b><br>RIQUELME 1922<br>Votos Lista XIMENA DIAZ GABELO: <b>68</b></div>`)[0];
+                popup_8cca992e2688b9ec07afab37e6523c75.setContent(html_71c1787b9c6b81406be29ad718495189);
+            
+        
+
+        circle_marker_4cc10db091aca60afd05c6d30f5ec028.bindPopup(popup_8cca992e2688b9ec07afab37e6523c75)
+        ;
+
+        
+    
+    
+            circle_marker_4cc10db091aca60afd05c6d30f5ec028.bindTooltip(
+                `<div>
+                     escuela nanihue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_21328602da0880d0cda3ca934c10b33f = L.marker(
+                [-33.5499, -70.6405],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_4ae9a4de376c2202e2f200327dfef868 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e68\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_21328602da0880d0cda3ca934c10b33f.setIcon(div_icon_4ae9a4de376c2202e2f200327dfef868);
+        
+    
+            var circle_marker_46487de57f09d798e11cf0c1da14618e = L.circleMarker(
+                [-33.5265, -70.6387],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec45fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.433333333333334, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_57f32ab5c9477ad794e09aa9f6a2fb2d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5c968f344f6a16c286a7d08d3a797f96 = $(`<div id="html_5c968f344f6a16c286a7d08d3a797f96" style="width: 100.0%; height: 100.0%;"><b>escuela sendero del saber</b><br>CARLOS DAVILA 7551<br>Votos Lista XIMENA DIAZ GABELO: <b>56</b></div>`)[0];
+                popup_57f32ab5c9477ad794e09aa9f6a2fb2d.setContent(html_5c968f344f6a16c286a7d08d3a797f96);
+            
+        
+
+        circle_marker_46487de57f09d798e11cf0c1da14618e.bindPopup(popup_57f32ab5c9477ad794e09aa9f6a2fb2d)
+        ;
+
+        
+    
+    
+            circle_marker_46487de57f09d798e11cf0c1da14618e.bindTooltip(
+                `<div>
+                     escuela sendero del saber
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99854ca264cba6fa6f80204d1a8aef12 = L.marker(
+                [-33.5265, -70.6387],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_9a332b6c46839f87db1a91a5cf1ec111 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e56\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_99854ca264cba6fa6f80204d1a8aef12.setIcon(div_icon_9a332b6c46839f87db1a91a5cf1ec111);
+        
+    
+            var circle_marker_66628a167808f6b5f90cdfe42adf94bd = L.circleMarker(
+                [-33.5538, -70.6415],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9740ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.533333333333333, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_411ca36a7ec29fd0082559eb98e6e263 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_707848aa52ca3437202e3f5335c88835 = $(`<div id="html_707848aa52ca3437202e3f5335c88835" style="width: 100.0%; height: 100.0%;"><b>escuela tupahue</b><br>AURORA DE CHILE 10104<br>Votos Lista XIMENA DIAZ GABELO: <b>65</b></div>`)[0];
+                popup_411ca36a7ec29fd0082559eb98e6e263.setContent(html_707848aa52ca3437202e3f5335c88835);
+            
+        
+
+        circle_marker_66628a167808f6b5f90cdfe42adf94bd.bindPopup(popup_411ca36a7ec29fd0082559eb98e6e263)
+        ;
+
+        
+    
+    
+            circle_marker_66628a167808f6b5f90cdfe42adf94bd.bindTooltip(
+                `<div>
+                     escuela tupahue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_431b535615dd6db6dab33d007d1ca2c7 = L.marker(
+                [-33.5538, -70.6415],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_2ffe274d3cfd3d2eb1c7c20d1a7f4386 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e65\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_431b535615dd6db6dab33d007d1ca2c7.setIcon(div_icon_2ffe274d3cfd3d2eb1c7c20d1a7f4386);
+        
+    
+            var circle_marker_c6cf5755acedbb7a3f1f862d1a6f2bd6 = L.circleMarker(
+                [-33.5557, -70.6331],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6330ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.166666666666664, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_f4a5cc8c31c58584732d0e57b4225f4d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fb9a9b0b193609a196bef1218ffa94a8 = $(`<div id="html_fb9a9b0b193609a196bef1218ffa94a8" style="width: 100.0%; height: 100.0%;"><b>escuela villa la cultura</b><br>GALVARINO 10252<br>Votos Lista XIMENA DIAZ GABELO: <b>72</b></div>`)[0];
+                popup_f4a5cc8c31c58584732d0e57b4225f4d.setContent(html_fb9a9b0b193609a196bef1218ffa94a8);
+            
+        
+
+        circle_marker_c6cf5755acedbb7a3f1f862d1a6f2bd6.bindPopup(popup_f4a5cc8c31c58584732d0e57b4225f4d)
+        ;
+
+        
+    
+    
+            circle_marker_c6cf5755acedbb7a3f1f862d1a6f2bd6.bindTooltip(
+                `<div>
+                     escuela villa la cultura
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3e49720a6d6ea2fff3e403492a69caa2 = L.marker(
+                [-33.5557, -70.6331],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_1221159a88edd3d6760f90c327a8a28d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e72\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3e49720a6d6ea2fff3e403492a69caa2.setIcon(div_icon_1221159a88edd3d6760f90c327a8a28d);
+        
+    
+            var circle_marker_bd2e7adadb53b022f610e69d451796e1 = L.circleMarker(
+                [-33.53481, -70.63727],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd522bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.633333333333333, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_e100a7872b23a9a2b511bf2dd4931d93 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_18019ed528ba419c8d2f8d74ddb240c0 = $(`<div id="html_18019ed528ba419c8d2f8d74ddb240c0" style="width: 100.0%; height: 100.0%;"><b>liceo araucania</b><br>PEDRO AGUIRRE CERDA 8153<br>Votos Lista XIMENA DIAZ GABELO: <b>74</b></div>`)[0];
+                popup_e100a7872b23a9a2b511bf2dd4931d93.setContent(html_18019ed528ba419c8d2f8d74ddb240c0);
+            
+        
+
+        circle_marker_bd2e7adadb53b022f610e69d451796e1.bindPopup(popup_e100a7872b23a9a2b511bf2dd4931d93)
+        ;
+
+        
+    
+    
+            circle_marker_bd2e7adadb53b022f610e69d451796e1.bindTooltip(
+                `<div>
+                     liceo araucania
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b3862643f3476cbfabff82c22741e6d1 = L.marker(
+                [-33.53481, -70.63727],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_29812687630e9ed122b2e1e75be60d0b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e74\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b3862643f3476cbfabff82c22741e6d1.setIcon(div_icon_29812687630e9ed122b2e1e75be60d0b);
+        
+    
+            var circle_marker_881f902bcf5ec34c5531162d60ffedcd = L.circleMarker(
+                [-33.5377, -70.637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_a3d8c243f6a55cdcf7f1e30049a94af2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c6b546fb41bd0ad78328fe65028601e8 = $(`<div id="html_c6b546fb41bd0ad78328fe65028601e8" style="width: 100.0%; height: 100.0%;"><b>liceo comercial vate vicente huidrobro</b><br>DOÑIHUE 2030<br>Votos Lista XIMENA DIAZ GABELO: <b>97</b></div>`)[0];
+                popup_a3d8c243f6a55cdcf7f1e30049a94af2.setContent(html_c6b546fb41bd0ad78328fe65028601e8);
+            
+        
+
+        circle_marker_881f902bcf5ec34c5531162d60ffedcd.bindPopup(popup_a3d8c243f6a55cdcf7f1e30049a94af2)
+        ;
+
+        
+    
+    
+            circle_marker_881f902bcf5ec34c5531162d60ffedcd.bindTooltip(
+                `<div>
+                     liceo comercial vate vicente huidrobro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d71658ef035dc37c9911c198bd05beb6 = L.marker(
+                [-33.5377, -70.637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_ea22554605fe897f19e7988ad4470b96 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e97\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d71658ef035dc37c9911c198bd05beb6.setIcon(div_icon_ea22554605fe897f19e7988ad4470b96);
+        
+    
+            var circle_marker_96eea04912fd18c7aabeec9fa850c5a4 = L.circleMarker(
+                [-33.5373, -70.6373],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdc7cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.266666666666666, "stroke": false, "weight": 3}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+        var popup_fe93c78d3bb73fd6edfce84cb7e70ad5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_07b4a071c44871639f06e08737f04a3d = $(`<div id="html_07b4a071c44871639f06e08737f04a3d" style="width: 100.0%; height: 100.0%;"><b>liceo purkuyen</b><br>PEDRO AGUIRRE CERDA 8450<br>Votos Lista XIMENA DIAZ GABELO: <b>51</b></div>`)[0];
+                popup_fe93c78d3bb73fd6edfce84cb7e70ad5.setContent(html_07b4a071c44871639f06e08737f04a3d);
+            
+        
+
+        circle_marker_96eea04912fd18c7aabeec9fa850c5a4.bindPopup(popup_fe93c78d3bb73fd6edfce84cb7e70ad5)
+        ;
+
+        
+    
+    
+            circle_marker_96eea04912fd18c7aabeec9fa850c5a4.bindTooltip(
+                `<div>
+                     liceo purkuyen
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eb718d48367be0a77f59af59d54e858e = L.marker(
+                [-33.5373, -70.6373],
+                {"zIndexOffset": 9999}
+            ).addTo(map_a657b8e8c7f6384fdbfc4a1cfe74bfef);
+        
+    
+            var div_icon_8bb1a718b65fb9b576430a96273d5c5a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e51\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_eb718d48367be0a77f59af59d54e858e.setIcon(div_icon_8bb1a718b65fb9b576430a96273d5c5a);
+        
+    
+            map_a657b8e8c7f6384fdbfc4a1cfe74bfef.fitBounds(
+                [[-33.5193, -70.6409], [-33.5518, -70.6448], [-33.5497, -70.6445], [-33.5196, -70.6381], [-33.5511, -70.6447], [-33.5484, -70.649], [-33.5376, -70.6401], [-33.5458, -70.6437], [-33.5499, -70.6405], [-33.5265, -70.6387], [-33.5538, -70.6415], [-33.5557, -70.6331], [-33.53481, -70.63727], [-33.5377, -70.637], [-33.5373, -70.6373]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

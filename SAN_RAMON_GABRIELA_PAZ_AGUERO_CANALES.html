@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_be0a413127e88b43f731584913ef67c7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_be0a413127e88b43f731584913ef67c7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_be0a413127e88b43f731584913ef67c7 = L.map(
+                "map_be0a413127e88b43f731584913ef67c7",
+                {
+                    center: [-33.54126733333334, -70.64074466666666],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7cfb3d97d5d50e6092a2654b78952237 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_7cfb3d97d5d50e6092a2654b78952237.addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+    var color_map_921918cac43239f79c8aee8834dac1c1 = {};
+
+    
+    color_map_921918cac43239f79c8aee8834dac1c1.color = d3.scale.threshold()
+              .domain([10.0, 10.072144288577155, 10.144288577154308, 10.216432865731463, 10.288577154308618, 10.360721442885772, 10.432865731462925, 10.50501002004008, 10.577154308617235, 10.649298597194388, 10.721442885771543, 10.793587174348698, 10.86573146292585, 10.937875751503006, 11.01002004008016, 11.082164328657315, 11.154308617234468, 11.226452905811623, 11.298597194388778, 11.370741482965933, 11.442885771543086, 11.51503006012024, 11.587174348697395, 11.659318637274549, 11.731462925851703, 11.803607214428858, 11.875751503006011, 11.947895791583166, 12.02004008016032, 12.092184368737474, 12.164328657314629, 12.236472945891784, 12.308617234468938, 12.380761523046093, 12.452905811623246, 12.525050100200401, 12.597194388777556, 12.669338677354709, 12.741482965931864, 12.813627254509019, 12.885771543086172, 12.957915831663327, 13.030060120240481, 13.102204408817634, 13.17434869739479, 13.246492985971944, 13.318637274549099, 13.390781563126252, 13.462925851703407, 13.535070140280562, 13.607214428857716, 13.67935871743487, 13.751503006012024, 13.823647294589179, 13.895791583166332, 13.967935871743487, 14.040080160320642, 14.112224448897795, 14.18436873747495, 14.256513026052104, 14.328657314629258, 14.400801603206414, 14.472945891783567, 14.54509018036072, 14.617234468937877, 14.68937875751503, 14.761523046092185, 14.83366733466934, 14.905811623246493, 14.977955911823647, 15.050100200400802, 15.122244488977955, 15.19438877755511, 15.266533066132265, 15.338677354709418, 15.410821643286573, 15.482965931863728, 15.55511022044088, 15.627254509018037, 15.69939879759519, 15.771543086172345, 15.8436873747495, 15.915831663326653, 15.987975951903808, 16.060120240480963, 16.132264529058116, 16.20440881763527, 16.276553106212425, 16.34869739478958, 16.42084168336673, 16.492985971943888, 16.56513026052104, 16.637274549098198, 16.70941883767535, 16.781563126252504, 16.85370741482966, 16.925851703406813, 16.99799599198397, 17.070140280561123, 17.142284569138276, 17.214428857715433, 17.286573146292586, 17.35871743486974, 17.430861723446895, 17.50300601202405, 17.5751503006012, 17.647294589178358, 17.71943887775551, 17.791583166332664, 17.86372745490982, 17.935871743486974, 18.008016032064127, 18.080160320641284, 18.152304609218437, 18.22444889779559, 18.296593186372746, 18.3687374749499, 18.440881763527052, 18.51302605210421, 18.585170340681362, 18.657314629258515, 18.72945891783567, 18.80160320641283, 18.873747494989978, 18.945891783567134, 19.01803607214429, 19.09018036072144, 19.162324649298597, 19.234468937875754, 19.306613226452907, 19.37875751503006, 19.450901803607216, 19.52304609218437, 19.595190380761522, 19.66733466933868, 19.739478957915832, 19.811623246492985, 19.88376753507014, 19.955911823647295, 20.028056112224448, 20.100200400801604, 20.172344689378757, 20.24448897795591, 20.316633266533067, 20.38877755511022, 20.460921843687373, 20.53306613226453, 20.605210420841683, 20.677354709418836, 20.749498997995993, 20.821643286573146, 20.8937875751503, 20.965931863727455, 21.038076152304612, 21.11022044088176, 21.182364729458918, 21.254509018036075, 21.326653306613224, 21.39879759519038, 21.470941883767537, 21.54308617234469, 21.615230460921843, 21.687374749499, 21.759519038076153, 21.831663326653306, 21.903807615230463, 21.975951903807616, 22.04809619238477, 22.120240480961925, 22.19238476953908, 22.26452905811623, 22.336673346693388, 22.40881763527054, 22.480961923847694, 22.55310621242485, 22.625250501002004, 22.697394789579157, 22.769539078156313, 22.841683366733466, 22.91382765531062, 22.985971943887776, 23.05811623246493, 23.130260521042082, 23.20240480961924, 23.274549098196395, 23.346693386773545, 23.4188376753507, 23.490981963927858, 23.563126252505008, 23.635270541082164, 23.70741482965932, 23.77955911823647, 23.851703406813627, 23.923847695390783, 23.995991983967937, 24.06813627254509, 24.140280561122246, 24.2124248496994, 24.284569138276552, 24.35671342685371, 24.428857715430862, 24.501002004008015, 24.57314629258517, 24.645290581162325, 24.717434869739478, 24.789579158316634, 24.861723446893787, 24.93386773547094, 25.006012024048097, 25.07815631262525, 25.150300601202403, 25.22244488977956, 25.294589178356713, 25.366733466933866, 25.438877755511022, 25.51102204408818, 25.58316633266533, 25.655310621242485, 25.72745490981964, 25.79959919839679, 25.871743486973948, 25.943887775551104, 26.016032064128257, 26.08817635270541, 26.160320641282564, 26.23246492985972, 26.304609218436873, 26.37675350701403, 26.448897795591183, 26.521042084168336, 26.593186372745492, 26.665330661322646, 26.7374749498998, 26.809619238476955, 26.881763527054108, 26.95390781563126, 27.026052104208418, 27.09819639278557, 27.170340681362724, 27.24248496993988, 27.314629258517034, 27.386773547094187, 27.458917835671343, 27.531062124248496, 27.603206412825653, 27.675350701402806, 27.74749498997996, 27.819639278557116, 27.89178356713427, 27.96392785571142, 28.03607214428858, 28.10821643286573, 28.180360721442884, 28.25250501002004, 28.324649298597194, 28.396793587174347, 28.468937875751504, 28.541082164328657, 28.613226452905813, 28.685370741482966, 28.75751503006012, 28.829659318637276, 28.90180360721443, 28.973947895791582, 29.04609218436874, 29.118236472945892, 29.190380761523045, 29.2625250501002, 29.334669338677354, 29.406813627254508, 29.478957915831664, 29.551102204408817, 29.62324649298597, 29.695390781563127, 29.76753507014028, 29.839679358717436, 29.91182364729459, 29.983967935871743, 30.0561122244489, 30.128256513026052, 30.200400801603205, 30.272545090180362, 30.344689378757515, 30.416833667334668, 30.488977955911825, 30.561122244488978, 30.63326653306613, 30.705410821643287, 30.77755511022044, 30.849699398797597, 30.92184368737475, 30.993987975951903, 31.06613226452906, 31.138276553106213, 31.210420841683366, 31.282565130260522, 31.354709418837675, 31.42685370741483, 31.498997995991985, 31.571142284569138, 31.64328657314629, 31.715430861723448, 31.7875751503006, 31.859719438877754, 31.93186372745491, 32.00400801603206, 32.076152304609224, 32.14829659318637, 32.22044088176352, 32.292585170340686, 32.364729458917836, 32.436873747494985, 32.50901803607215, 32.5811623246493, 32.65330661322645, 32.72545090180361, 32.79759519038076, 32.86973947895791, 32.941883767535074, 33.014028056112224, 33.08617234468938, 33.15831663326654, 33.23046092184369, 33.30260521042084, 33.374749498998, 33.44689378757515, 33.519038076152306, 33.59118236472946, 33.66332665330661, 33.73547094188377, 33.807615230460925, 33.879759519038075, 33.95190380761523, 34.02404809619239, 34.09619238476954, 34.168336673346694, 34.24048096192385, 34.312625250501, 34.38476953907816, 34.45691382765531, 34.52905811623246, 34.60120240480962, 34.673346693386776, 34.745490981963925, 34.81763527054108, 34.88977955911824, 34.96192384769539, 35.034068136272545, 35.1062124248497, 35.17835671342685, 35.25050100200401, 35.322645290581164, 35.394789579158314, 35.46693386773547, 35.53907815631263, 35.611222444889776, 35.68336673346693, 35.75551102204409, 35.82765531062124, 35.899799599198396, 35.97194388777555, 36.0440881763527, 36.11623246492986, 36.188376753507015, 36.260521042084164, 36.33266533066132, 36.40480961923848, 36.47695390781563, 36.54909819639279, 36.62124248496994, 36.69338677354709, 36.76553106212425, 36.8376753507014, 36.90981963927855, 36.981963927855716, 37.054108216432866, 37.126252505010015, 37.19839679358718, 37.27054108216433, 37.34268537074148, 37.41482965931864, 37.48697394789579, 37.55911823647294, 37.631262525050104, 37.703406813627254, 37.77555110220441, 37.84769539078157, 37.91983967935872, 37.99198396793587, 38.06412825651303, 38.13627254509018, 38.208416833667336, 38.28056112224449, 38.35270541082164, 38.4248496993988, 38.496993987975955, 38.569138276553105, 38.64128256513026, 38.71342685370742, 38.78557114228457, 38.857715430861724, 38.92985971943888, 39.00200400801603, 39.07414829659319, 39.14629258517034, 39.21843687374749, 39.29058116232465, 39.362725450901806, 39.434869739478955, 39.50701402805611, 39.57915831663327, 39.65130260521042, 39.723446893787575, 39.79559118236473, 39.86773547094188, 39.93987975951904, 40.012024048096194, 40.08416833667334, 40.1563126252505, 40.22845691382766, 40.300601202404806, 40.37274549098196, 40.44488977955912, 40.51703406813627, 40.589178356713425, 40.66132264529058, 40.73346693386773, 40.80561122244489, 40.877755511022045, 40.949899799599194, 41.02204408817636, 41.09418837675351, 41.16633266533066, 41.23847695390782, 41.31062124248497, 41.38276553106212, 41.45490981963928, 41.52705410821643, 41.59919839679358, 41.671342685370746, 41.743486973947896, 41.815631262525045, 41.88777555110221, 41.95991983967936, 42.032064128256515, 42.104208416833664, 42.17635270541082, 42.24849699398798, 42.32064128256513, 42.392785571142284, 42.46492985971944, 42.53707414829659, 42.609218436873746, 42.6813627254509, 42.75350701402806, 42.82565130260521, 42.897795591182366, 42.96993987975952, 43.04208416833667, 43.11422845691383, 43.186372745490985, 43.258517034068134, 43.33066132264529, 43.40280561122245, 43.4749498997996, 43.547094188376754, 43.61923847695391, 43.69138276553106, 43.763527054108216, 43.83567134268537, 43.90781563126252, 43.97995991983968, 44.052104208416836, 44.124248496993985, 44.19639278557114, 44.2685370741483, 44.34068136272545, 44.412825651302605, 44.48496993987976, 44.55711422845691, 44.62925851703407, 44.701402805611224, 44.77354709418837, 44.84569138276553, 44.91783567134269, 44.98997995991984, 45.06212424849699, 45.13426853707415, 45.206412825651306, 45.278557114228455, 45.35070140280561, 45.42284569138277, 45.49498997995992, 45.567134268537075, 45.63927855711423, 45.71142284569138, 45.78356713426854, 45.855711422845694, 45.92785571142284, 46.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_921918cac43239f79c8aee8834dac1c1.x = d3.scale.linear()
+              .domain([10.0, 46.0])
+              .range([0, 450 - 50]);
+
+    color_map_921918cac43239f79c8aee8834dac1c1.legend = L.control({position: 'topright'});
+    color_map_921918cac43239f79c8aee8834dac1c1.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_921918cac43239f79c8aee8834dac1c1.legend.addTo(map_be0a413127e88b43f731584913ef67c7);
+
+    color_map_921918cac43239f79c8aee8834dac1c1.xAxis = d3.svg.axis()
+        .scale(color_map_921918cac43239f79c8aee8834dac1c1.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([10.0, 14.5, 19.0, 23.5, 28.0, 32.5, 37.0, 41.5, 46.0]);
+
+    color_map_921918cac43239f79c8aee8834dac1c1.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_921918cac43239f79c8aee8834dac1c1.g = color_map_921918cac43239f79c8aee8834dac1c1.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_921918cac43239f79c8aee8834dac1c1.g.selectAll("rect")
+        .data(color_map_921918cac43239f79c8aee8834dac1c1.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_921918cac43239f79c8aee8834dac1c1.x(color_map_921918cac43239f79c8aee8834dac1c1.color.domain()[i - 1]) : color_map_921918cac43239f79c8aee8834dac1c1.x.range()[0],
+            x1: i < color_map_921918cac43239f79c8aee8834dac1c1.color.domain().length ? color_map_921918cac43239f79c8aee8834dac1c1.x(color_map_921918cac43239f79c8aee8834dac1c1.color.domain()[i]) : color_map_921918cac43239f79c8aee8834dac1c1.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_921918cac43239f79c8aee8834dac1c1.g.call(color_map_921918cac43239f79c8aee8834dac1c1.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista GABRIELA PAZ AGUERO CANALES por local");
+    
+            var circle_marker_9cc32db39dfc9aaec8db0ab2a8e96d1e = L.circleMarker(
+                [-33.5193, -70.6409],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_e9952f7427c9244dbd2babe3f5d37a49 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ca8ce10d41338e696763f16dc778f0cb = $(`<div id="html_ca8ce10d41338e696763f16dc778f0cb" style="width: 100.0%; height: 100.0%;"><b>centro educacional mirador</b><br>MIRADOR 1470<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>10</b></div>`)[0];
+                popup_e9952f7427c9244dbd2babe3f5d37a49.setContent(html_ca8ce10d41338e696763f16dc778f0cb);
+            
+        
+
+        circle_marker_9cc32db39dfc9aaec8db0ab2a8e96d1e.bindPopup(popup_e9952f7427c9244dbd2babe3f5d37a49)
+        ;
+
+        
+    
+    
+            circle_marker_9cc32db39dfc9aaec8db0ab2a8e96d1e.bindTooltip(
+                `<div>
+                     centro educacional mirador
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9d99d13d0c94ecc4d1fc57f087551353 = L.marker(
+                [-33.5193, -70.6409],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_85f4f369645ccc6a702aaa2ce9d2e730 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e10\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9d99d13d0c94ecc4d1fc57f087551353.setIcon(div_icon_85f4f369645ccc6a702aaa2ce9d2e730);
+        
+    
+            var circle_marker_1ef66ee00c0732b2920902e0c7544812 = L.circleMarker(
+                [-33.5518, -70.6448],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec863ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.277777777777779, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_a28ff04bf2fbdb2ebf48b7592d07a96b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d9e6f9ecc180ecdf6876008198c565e2 = $(`<div id="html_d9e6f9ecc180ecdf6876008198c565e2" style="width: 100.0%; height: 100.0%;"><b>centro educacional paula jaraquemada</b><br>ALMIRANTE LATORRE 9921<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>21</b></div>`)[0];
+                popup_a28ff04bf2fbdb2ebf48b7592d07a96b.setContent(html_d9e6f9ecc180ecdf6876008198c565e2);
+            
+        
+
+        circle_marker_1ef66ee00c0732b2920902e0c7544812.bindPopup(popup_a28ff04bf2fbdb2ebf48b7592d07a96b)
+        ;
+
+        
+    
+    
+            circle_marker_1ef66ee00c0732b2920902e0c7544812.bindTooltip(
+                `<div>
+                     centro educacional paula jaraquemada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d8b65672e6206b4552e6f3b8e5ad5c03 = L.marker(
+                [-33.5518, -70.6448],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_24a2c099be543d0a9cfccdfd6643cab6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e21\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d8b65672e6206b4552e6f3b8e5ad5c03.setIcon(div_icon_24a2c099be543d0a9cfccdfd6643cab6);
+        
+    
+            var circle_marker_db4550ae858c7ff18cc11f1d8f8c2ae5 = L.circleMarker(
+                [-33.5497, -70.6445],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.38888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_f2a422406f091106f11a62e18841f435 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f98f4f05571ad99ce4b20b292850314d = $(`<div id="html_f98f4f05571ad99ce4b20b292850314d" style="width: 100.0%; height: 100.0%;"><b>centro educacional san ramon</b><br>ALMIRANTE LATORRE 9701<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>11</b></div>`)[0];
+                popup_f2a422406f091106f11a62e18841f435.setContent(html_f98f4f05571ad99ce4b20b292850314d);
+            
+        
+
+        circle_marker_db4550ae858c7ff18cc11f1d8f8c2ae5.bindPopup(popup_f2a422406f091106f11a62e18841f435)
+        ;
+
+        
+    
+    
+            circle_marker_db4550ae858c7ff18cc11f1d8f8c2ae5.bindTooltip(
+                `<div>
+                     centro educacional san ramon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_98622fa1cf1e387b99d0ff527c3c6fc2 = L.marker(
+                [-33.5497, -70.6445],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_531c0febc4364b7753aa5dce57b96d77 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e11\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_98622fa1cf1e387b99d0ff527c3c6fc2.setIcon(div_icon_531c0febc4364b7753aa5dce57b96d77);
+        
+    
+            var circle_marker_4d2cb658331552eb516dded7bea05d5e = L.circleMarker(
+                [-33.5196, -70.6381],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.38888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_07a0b5b6ccfd0a39372f28f65002ae74 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c6ca2beea92ee99c341f1273647ea7f0 = $(`<div id="html_c6ca2beea92ee99c341f1273647ea7f0" style="width: 100.0%; height: 100.0%;"><b>colegio alberto blest gana</b><br>MIRADOR 1674<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>11</b></div>`)[0];
+                popup_07a0b5b6ccfd0a39372f28f65002ae74.setContent(html_c6ca2beea92ee99c341f1273647ea7f0);
+            
+        
+
+        circle_marker_4d2cb658331552eb516dded7bea05d5e.bindPopup(popup_07a0b5b6ccfd0a39372f28f65002ae74)
+        ;
+
+        
+    
+    
+            circle_marker_4d2cb658331552eb516dded7bea05d5e.bindTooltip(
+                `<div>
+                     colegio alberto blest gana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eb6ba583e0c6335f7bd80fc6295676a8 = L.marker(
+                [-33.5196, -70.6381],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_da92485270bda369de7d031fc53ab5fe = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e11\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_eb6ba583e0c6335f7bd80fc6295676a8.setIcon(div_icon_da92485270bda369de7d031fc53ab5fe);
+        
+    
+            var circle_marker_031e34e1cbf59c07df30bceb5dd8a074 = L.circleMarker(
+                [-33.5511, -70.6447],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.38888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_e79d860877159e2890a2dfa40e2eca41 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5619c7597c06f0ca44c9e931c12073f7 = $(`<div id="html_5619c7597c06f0ca44c9e931c12073f7" style="width: 100.0%; height: 100.0%;"><b>escuela aliven</b><br>ALMIRANTE LATORRE 9835<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>11</b></div>`)[0];
+                popup_e79d860877159e2890a2dfa40e2eca41.setContent(html_5619c7597c06f0ca44c9e931c12073f7);
+            
+        
+
+        circle_marker_031e34e1cbf59c07df30bceb5dd8a074.bindPopup(popup_e79d860877159e2890a2dfa40e2eca41)
+        ;
+
+        
+    
+    
+            circle_marker_031e34e1cbf59c07df30bceb5dd8a074.bindTooltip(
+                `<div>
+                     escuela aliven
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_627e58740b7107b4ecdcfcc0963f1c79 = L.marker(
+                [-33.5511, -70.6447],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_2ec05d85aac7f255761fc2cec7aab3f1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e11\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_627e58740b7107b4ecdcfcc0963f1c79.setIcon(div_icon_2ec05d85aac7f255761fc2cec7aab3f1);
+        
+    
+            var circle_marker_5ac25774b2bcd9a1ba4610629a725139 = L.circleMarker(
+                [-33.5484, -70.649],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#febf5aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.666666666666668, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_d068561029928e8d166c2c20e2bad234 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2e66df5b4481c5ba2d09a3b55f3b0fd9 = $(`<div id="html_2e66df5b4481c5ba2d09a3b55f3b0fd9" style="width: 100.0%; height: 100.0%;"><b>escuela arturo matte larrain</b><br>ANIBAL ZAÑARTU 9567<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>22</b></div>`)[0];
+                popup_d068561029928e8d166c2c20e2bad234.setContent(html_2e66df5b4481c5ba2d09a3b55f3b0fd9);
+            
+        
+
+        circle_marker_5ac25774b2bcd9a1ba4610629a725139.bindPopup(popup_d068561029928e8d166c2c20e2bad234)
+        ;
+
+        
+    
+    
+            circle_marker_5ac25774b2bcd9a1ba4610629a725139.bindTooltip(
+                `<div>
+                     escuela arturo matte larrain
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fd10aba697ed9c9ff3d31d41696553fd = L.marker(
+                [-33.5484, -70.649],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_dd0582e96c75ab7398ff9a39016c41ec = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e22\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fd10aba697ed9c9ff3d31d41696553fd.setIcon(div_icon_dd0582e96c75ab7398ff9a39016c41ec);
+        
+    
+            var circle_marker_785ab5093bba4409678eff42880ec309 = L.circleMarker(
+                [-33.5376, -70.6401],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_c2cde3cf8ca27d2416eb3aba4694c61f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_188b8b52c68170d908f2d5cab4ca8c0f = $(`<div id="html_188b8b52c68170d908f2d5cab4ca8c0f" style="width: 100.0%; height: 100.0%;"><b>escuela educadores de chile</b><br>DOÑIHUE 9567<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>46</b></div>`)[0];
+                popup_c2cde3cf8ca27d2416eb3aba4694c61f.setContent(html_188b8b52c68170d908f2d5cab4ca8c0f);
+            
+        
+
+        circle_marker_785ab5093bba4409678eff42880ec309.bindPopup(popup_c2cde3cf8ca27d2416eb3aba4694c61f)
+        ;
+
+        
+    
+    
+            circle_marker_785ab5093bba4409678eff42880ec309.bindTooltip(
+                `<div>
+                     escuela educadores de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e0b9619af47c2a6f6472dc096c13c2f = L.marker(
+                [-33.5376, -70.6401],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_5b9222d9faede9251c9cdbf9c725df1d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e46\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0e0b9619af47c2a6f6472dc096c13c2f.setIcon(div_icon_5b9222d9faede9251c9cdbf9c725df1d);
+        
+    
+            var circle_marker_e829af06db80836bf1a26ff42cd82c0a = L.circleMarker(
+                [-33.5458, -70.6437],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde7fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.11111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_c9c8a799fa43ac4ecb0c2516f1834336 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8d6d51bb1118b18f3aab4fe6a70356f7 = $(`<div id="html_8d6d51bb1118b18f3aab4fe6a70356f7" style="width: 100.0%; height: 100.0%;"><b>escuela karelmapu</b><br>ALMIRANTE LATORRE 9299<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>18</b></div>`)[0];
+                popup_c9c8a799fa43ac4ecb0c2516f1834336.setContent(html_8d6d51bb1118b18f3aab4fe6a70356f7);
+            
+        
+
+        circle_marker_e829af06db80836bf1a26ff42cd82c0a.bindPopup(popup_c9c8a799fa43ac4ecb0c2516f1834336)
+        ;
+
+        
+    
+    
+            circle_marker_e829af06db80836bf1a26ff42cd82c0a.bindTooltip(
+                `<div>
+                     escuela karelmapu
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4308cd479d7dfdf6215871c5112594e0 = L.marker(
+                [-33.5458, -70.6437],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_ab4b3bc45839af10e8e3d07539594970 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e18\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4308cd479d7dfdf6215871c5112594e0.setIcon(div_icon_ab4b3bc45839af10e8e3d07539594970);
+        
+    
+            var circle_marker_0700a66a85a37b98ac085d860c3ff52b = L.circleMarker(
+                [-33.5499, -70.6405],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeb9bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.944444444444445, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_384d051843d12ec7d368aea18400f0e2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0bcdf48e61838d9e05401b2d0daa0934 = $(`<div id="html_0bcdf48e61838d9e05401b2d0daa0934" style="width: 100.0%; height: 100.0%;"><b>escuela nanihue</b><br>RIQUELME 1922<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>15</b></div>`)[0];
+                popup_384d051843d12ec7d368aea18400f0e2.setContent(html_0bcdf48e61838d9e05401b2d0daa0934);
+            
+        
+
+        circle_marker_0700a66a85a37b98ac085d860c3ff52b.bindPopup(popup_384d051843d12ec7d368aea18400f0e2)
+        ;
+
+        
+    
+    
+            circle_marker_0700a66a85a37b98ac085d860c3ff52b.bindTooltip(
+                `<div>
+                     escuela nanihue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d43d6f0334e3dd7d76a03b3cc90d23de = L.marker(
+                [-33.5499, -70.6405],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_8c27b27f2dfb8b5de86555009b1eb6f5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d43d6f0334e3dd7d76a03b3cc90d23de.setIcon(div_icon_8c27b27f2dfb8b5de86555009b1eb6f5);
+        
+    
+            var circle_marker_cfb3d961d833cd31829dee2ab014b049 = L.circleMarker(
+                [-33.5265, -70.6387],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed16dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.88888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_af1938e76a8ee94286ee4a57a7a9665d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c9c3d3e760ddd23af030ac89646fb880 = $(`<div id="html_c9c3d3e760ddd23af030ac89646fb880" style="width: 100.0%; height: 100.0%;"><b>escuela sendero del saber</b><br>CARLOS DAVILA 7551<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>20</b></div>`)[0];
+                popup_af1938e76a8ee94286ee4a57a7a9665d.setContent(html_c9c3d3e760ddd23af030ac89646fb880);
+            
+        
+
+        circle_marker_cfb3d961d833cd31829dee2ab014b049.bindPopup(popup_af1938e76a8ee94286ee4a57a7a9665d)
+        ;
+
+        
+    
+    
+            circle_marker_cfb3d961d833cd31829dee2ab014b049.bindTooltip(
+                `<div>
+                     escuela sendero del saber
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_175fe887905fd057b9ba6c6c88840376 = L.marker(
+                [-33.5265, -70.6387],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_a197ec979ca56ace2efbd811012cc3b9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e20\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_175fe887905fd057b9ba6c6c88840376.setIcon(div_icon_a197ec979ca56ace2efbd811012cc3b9);
+        
+    
+            var circle_marker_6de11818efd267a138ee5d30b50d0c06 = L.circleMarker(
+                [-33.5538, -70.6415],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7134ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.777777777777779, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_3e7db1621b0e4a476b9b1956ca836f5e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_90fb93449eec15cc01f2fc992482039b = $(`<div id="html_90fb93449eec15cc01f2fc992482039b" style="width: 100.0%; height: 100.0%;"><b>escuela tupahue</b><br>AURORA DE CHILE 10104<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>30</b></div>`)[0];
+                popup_3e7db1621b0e4a476b9b1956ca836f5e.setContent(html_90fb93449eec15cc01f2fc992482039b);
+            
+        
+
+        circle_marker_6de11818efd267a138ee5d30b50d0c06.bindPopup(popup_3e7db1621b0e4a476b9b1956ca836f5e)
+        ;
+
+        
+    
+    
+            circle_marker_6de11818efd267a138ee5d30b50d0c06.bindTooltip(
+                `<div>
+                     escuela tupahue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c4f081f351916fd3bc0df473da1c0e2f = L.marker(
+                [-33.5538, -70.6415],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_4ef0c076b40359b2ae9a39860bca7fc1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e30\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c4f081f351916fd3bc0df473da1c0e2f.setIcon(div_icon_4ef0c076b40359b2ae9a39860bca7fc1);
+        
+    
+            var circle_marker_d266edbf13c9baf838f1c7d2929c0def = L.circleMarker(
+                [-33.5557, -70.6331],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed16dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.88888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_ea516b7f5818f1ee9e0151e30f0631d5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_167663fd4ac4105c492b068db2c88790 = $(`<div id="html_167663fd4ac4105c492b068db2c88790" style="width: 100.0%; height: 100.0%;"><b>escuela villa la cultura</b><br>GALVARINO 10252<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>20</b></div>`)[0];
+                popup_ea516b7f5818f1ee9e0151e30f0631d5.setContent(html_167663fd4ac4105c492b068db2c88790);
+            
+        
+
+        circle_marker_d266edbf13c9baf838f1c7d2929c0def.bindPopup(popup_ea516b7f5818f1ee9e0151e30f0631d5)
+        ;
+
+        
+    
+    
+            circle_marker_d266edbf13c9baf838f1c7d2929c0def.bindTooltip(
+                `<div>
+                     escuela villa la cultura
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_452aafe62b3bf1cdf86aa5dd5bb0e970 = L.marker(
+                [-33.5557, -70.6331],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_fc7ac5ab4d54e31e6edc31338cc7d2a5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e20\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_452aafe62b3bf1cdf86aa5dd5bb0e970.setIcon(div_icon_fc7ac5ab4d54e31e6edc31338cc7d2a5);
+        
+    
+            var circle_marker_4d222dfdd87d93bc71220f8fbf8408b9 = L.circleMarker(
+                [-33.53481, -70.63727],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe953fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.61111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_e59004458b7f3cf4ce78c2d72d2fb9e5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f0d0786172a51a9bff1b91fd6a1e15f8 = $(`<div id="html_f0d0786172a51a9bff1b91fd6a1e15f8" style="width: 100.0%; height: 100.0%;"><b>liceo araucania</b><br>PEDRO AGUIRRE CERDA 8153<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>27</b></div>`)[0];
+                popup_e59004458b7f3cf4ce78c2d72d2fb9e5.setContent(html_f0d0786172a51a9bff1b91fd6a1e15f8);
+            
+        
+
+        circle_marker_4d222dfdd87d93bc71220f8fbf8408b9.bindPopup(popup_e59004458b7f3cf4ce78c2d72d2fb9e5)
+        ;
+
+        
+    
+    
+            circle_marker_4d222dfdd87d93bc71220f8fbf8408b9.bindTooltip(
+                `<div>
+                     liceo araucania
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a50fa4628a0725beb91750cc5d654246 = L.marker(
+                [-33.53481, -70.63727],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_1f7c4114588f731de08de3693fc8a55d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e27\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a50fa4628a0725beb91750cc5d654246.setIcon(div_icon_1f7c4114588f731de08de3693fc8a55d);
+        
+    
+            var circle_marker_1e3e5528ef36c3acbada0b724c5b9d39 = L.circleMarker(
+                [-33.5377, -70.637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8e0026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.61111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_bf14d412f5093562a0d5a5f5bbed4dd4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_330958ad3728573634b6fa120581cbb2 = $(`<div id="html_330958ad3728573634b6fa120581cbb2" style="width: 100.0%; height: 100.0%;"><b>liceo comercial vate vicente huidrobro</b><br>DOÑIHUE 2030<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>45</b></div>`)[0];
+                popup_bf14d412f5093562a0d5a5f5bbed4dd4.setContent(html_330958ad3728573634b6fa120581cbb2);
+            
+        
+
+        circle_marker_1e3e5528ef36c3acbada0b724c5b9d39.bindPopup(popup_bf14d412f5093562a0d5a5f5bbed4dd4)
+        ;
+
+        
+    
+    
+            circle_marker_1e3e5528ef36c3acbada0b724c5b9d39.bindTooltip(
+                `<div>
+                     liceo comercial vate vicente huidrobro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_81e1eb918265b99ddd20a62a54839378 = L.marker(
+                [-33.5377, -70.637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_7e1af59d14e6fd22e9053eefe9f93b94 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e45\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_81e1eb918265b99ddd20a62a54839378.setIcon(div_icon_7e1af59d14e6fd22e9053eefe9f93b94);
+        
+    
+            var circle_marker_0407b9d30eab216a0c7118a6eee01d70 = L.circleMarker(
+                [-33.5373, -70.6373],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec863ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.277777777777779, "stroke": false, "weight": 3}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+        var popup_af667e92c5a00ee7a73de6b57e244a7b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_46be54ea023ed35a7de103c48cc5d1a6 = $(`<div id="html_46be54ea023ed35a7de103c48cc5d1a6" style="width: 100.0%; height: 100.0%;"><b>liceo purkuyen</b><br>PEDRO AGUIRRE CERDA 8450<br>Votos Lista GABRIELA PAZ AGUERO CANALES: <b>21</b></div>`)[0];
+                popup_af667e92c5a00ee7a73de6b57e244a7b.setContent(html_46be54ea023ed35a7de103c48cc5d1a6);
+            
+        
+
+        circle_marker_0407b9d30eab216a0c7118a6eee01d70.bindPopup(popup_af667e92c5a00ee7a73de6b57e244a7b)
+        ;
+
+        
+    
+    
+            circle_marker_0407b9d30eab216a0c7118a6eee01d70.bindTooltip(
+                `<div>
+                     liceo purkuyen
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5df945747e63cc60352d831eee5f2506 = L.marker(
+                [-33.5373, -70.6373],
+                {"zIndexOffset": 9999}
+            ).addTo(map_be0a413127e88b43f731584913ef67c7);
+        
+    
+            var div_icon_e6d15e893fc64b15a6a1bad394a2a55b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e21\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5df945747e63cc60352d831eee5f2506.setIcon(div_icon_e6d15e893fc64b15a6a1bad394a2a55b);
+        
+    
+            map_be0a413127e88b43f731584913ef67c7.fitBounds(
+                [[-33.5193, -70.6409], [-33.5518, -70.6448], [-33.5497, -70.6445], [-33.5196, -70.6381], [-33.5511, -70.6447], [-33.5484, -70.649], [-33.5376, -70.6401], [-33.5458, -70.6437], [-33.5499, -70.6405], [-33.5265, -70.6387], [-33.5538, -70.6415], [-33.5557, -70.6331], [-33.53481, -70.63727], [-33.5377, -70.637], [-33.5373, -70.6373]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

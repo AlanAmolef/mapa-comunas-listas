@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2a3715b900183d52c378fc588890cc35 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2a3715b900183d52c378fc588890cc35" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2a3715b900183d52c378fc588890cc35 = L.map(
+                "map_2a3715b900183d52c378fc588890cc35",
+                {
+                    center: [-33.54126733333334, -70.64074466666666],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c7b262e0b579a3518da940225ccddc52 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_c7b262e0b579a3518da940225ccddc52.addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+    var color_map_f4cb72ffffca462f164078dba7797482 = {};
+
+    
+    color_map_f4cb72ffffca462f164078dba7797482.color = d3.scale.threshold()
+              .domain([91.0, 91.49498997995993, 91.98997995991984, 92.48496993987976, 92.97995991983969, 93.4749498997996, 93.96993987975952, 94.46492985971943, 94.95991983967936, 95.45490981963928, 95.9498997995992, 96.44488977955912, 96.93987975951904, 97.43486973947896, 97.92985971943888, 98.42484969939879, 98.91983967935872, 99.41482965931864, 99.90981963927855, 100.40480961923848, 100.8997995991984, 101.39478957915831, 101.88977955911824, 102.38476953907815, 102.87975951903807, 103.374749498998, 103.86973947895791, 104.36472945891784, 104.85971943887776, 105.35470941883767, 105.8496993987976, 106.34468937875752, 106.83967935871743, 107.33466933867736, 107.82965931863728, 108.3246492985972, 108.81963927855712, 109.31462925851703, 109.80961923847696, 110.30460921843687, 110.79959919839679, 111.29458917835672, 111.78957915831663, 112.28456913827655, 112.77955911823648, 113.27454909819639, 113.76953907815631, 114.26452905811624, 114.75951903807615, 115.25450901803607, 115.749498997996, 116.24448897795591, 116.73947895791584, 117.23446893787575, 117.72945891783567, 118.22444889779558, 118.71943887775551, 119.21442885771543, 119.70941883767534, 120.20440881763527, 120.6993987975952, 121.1943887775551, 121.68937875751503, 122.18436873747495, 122.67935871743487, 123.17434869739479, 123.66933867735472, 124.16432865731463, 124.65931863727455, 125.15430861723448, 125.64929859719439, 126.1442885771543, 126.63927855711424, 127.13426853707415, 127.62925851703406, 128.12424849699397, 128.6192384769539, 129.11422845691382, 129.60921843687373, 130.10420841683367, 130.59919839679358, 131.0941883767535, 131.58917835671343, 132.08416833667334, 132.57915831663325, 133.0741482965932, 133.5691382765531, 134.06412825651302, 134.55911823647295, 135.05410821643287, 135.54909819639278, 136.04408817635272, 136.53907815631263, 137.03406813627254, 137.52905811623248, 138.0240480961924, 138.5190380761523, 139.01402805611224, 139.50901803607215, 140.00400801603206, 140.498997995992, 140.9939879759519, 141.48897795591182, 141.98396793587176, 142.47895791583167, 142.97394789579158, 143.4689378757515, 143.96392785571143, 144.45891783567134, 144.95390781563125, 145.44889779559117, 145.9438877755511, 146.43887775551102, 146.93386773547093, 147.42885771543087, 147.92384769539078, 148.4188376753507, 148.91382765531063, 149.40881763527054, 149.90380761523045, 150.3987975951904, 150.8937875751503, 151.3887775551102, 151.88376753507015, 152.37875751503006, 152.87374749498997, 153.3687374749499, 153.86372745490982, 154.35871743486973, 154.85370741482967, 155.34869739478958, 155.8436873747495, 156.33867735470943, 156.83366733466934, 157.32865731462925, 157.8236472945892, 158.3186372745491, 158.81362725450902, 159.30861723446895, 159.80360721442884, 160.29859719438878, 160.79358717434872, 161.2885771543086, 161.78356713426854, 162.27855711422848, 162.77354709418836, 163.2685370741483, 163.76352705410824, 164.25851703406812, 164.75350701402806, 165.24849699398797, 165.74348697394788, 166.23847695390782, 166.73346693386773, 167.22845691382764, 167.72344689378758, 168.2184368737475, 168.7134268537074, 169.20841683366734, 169.70340681362725, 170.19839679358716, 170.6933867735471, 171.18837675350701, 171.68336673346693, 172.17835671342687, 172.67334669338678, 173.1683366733467, 173.66332665330663, 174.15831663326654, 174.65330661322645, 175.1482965931864, 175.6432865731463, 176.1382765531062, 176.63326653306615, 177.12825651302603, 177.62324649298597, 178.1182364729459, 178.6132264529058, 179.10821643286573, 179.60320641282567, 180.09819639278555, 180.5931863727455, 181.08817635270543, 181.58316633266531, 182.07815631262525, 182.57314629258516, 183.06813627254508, 183.56312625250501, 184.05811623246493, 184.55310621242484, 185.04809619238478, 185.5430861723447, 186.0380761523046, 186.53306613226454, 187.02805611222445, 187.52304609218436, 188.0180360721443, 188.5130260521042, 189.00801603206412, 189.50300601202406, 189.99799599198397, 190.49298597194388, 190.98797595190382, 191.48296593186373, 191.97795591182364, 192.47294589178358, 192.9679358717435, 193.4629258517034, 193.95791583166334, 194.45290581162325, 194.94789579158316, 195.4428857715431, 195.937875751503, 196.43286573146293, 196.92785571142286, 197.42284569138275, 197.9178356713427, 198.41282565130263, 198.9078156312625, 199.40280561122245, 199.89779559118236, 200.39278557114227, 200.8877755511022, 201.38276553106212, 201.87775551102203, 202.37274549098197, 202.86773547094188, 203.3627254509018, 203.85771543086173, 204.35270541082164, 204.84769539078155, 205.3426853707415, 205.8376753507014, 206.3326653306613, 206.82765531062125, 207.32264529058116, 207.81763527054107, 208.31262525050101, 208.80761523046093, 209.30260521042084, 209.79759519038078, 210.2925851703407, 210.7875751503006, 211.28256513026054, 211.77755511022045, 212.27254509018036, 212.7675350701403, 213.26252505010018, 213.75751503006012, 214.25250501002006, 214.74749498997994, 215.24248496993988, 215.73747494989982, 216.2324649298597, 216.72745490981964, 217.22244488977955, 217.71743486973946, 218.2124248496994, 218.7074148296593, 219.20240480961922, 219.69739478957916, 220.19238476953907, 220.68737474949899, 221.18236472945893, 221.67735470941884, 222.17234468937875, 222.6673346693387, 223.1623246492986, 223.6573146292585, 224.15230460921845, 224.64729458917836, 225.14228456913827, 225.6372745490982, 226.13226452905812, 226.62725450901803, 227.12224448897797, 227.61723446893788, 228.1122244488978, 228.6072144288577, 229.10220440881764, 229.59719438877755, 230.09218436873746, 230.5871743486974, 231.0821643286573, 231.57715430861722, 232.07214428857716, 232.56713426853707, 233.06212424849699, 233.55711422845692, 234.05210420841684, 234.54709418837675, 235.0420841683367, 235.5370741482966, 236.0320641282565, 236.52705410821645, 237.02204408817636, 237.51703406813627, 238.01202404809618, 238.50701402805612, 239.00200400801603, 239.49699398797594, 239.99198396793588, 240.4869739478958, 240.9819639278557, 241.47695390781564, 241.97194388777555, 242.46693386773546, 242.9619238476954, 243.4569138276553, 243.95190380761522, 244.44689378757516, 244.94188376753507, 245.43687374749499, 245.9318637274549, 246.42685370741484, 246.92184368737475, 247.41683366733466, 247.9118236472946, 248.4068136272545, 248.90180360721442, 249.39679358717436, 249.89178356713427, 250.38677354709418, 250.88176352705412, 251.37675350701403, 251.87174348697394, 252.36673346693388, 252.8617234468938, 253.3567134268537, 253.85170340681364, 254.34669338677355, 254.84168336673346, 255.33667334669337, 255.8316633266533, 256.32665330661325, 256.82164328657313, 257.3166332665331, 257.811623246493, 258.3066132264529, 258.80160320641284, 259.2965931863728, 259.79158316633266, 260.2865731462926, 260.78156312625254, 261.2765531062124, 261.77154308617236, 262.2665330661323, 262.7615230460922, 263.25651302605206, 263.75150300601206, 264.24649298597194, 264.7414829659318, 265.2364729458918, 265.7314629258517, 266.2264529058116, 266.7214428857716, 267.21643286573146, 267.71142284569135, 268.20641282565134, 268.7014028056112, 269.1963927855711, 269.6913827655311, 270.186372745491, 270.68136272545087, 271.17635270541086, 271.67134268537075, 272.16633266533063, 272.66132264529057, 273.1563126252505, 273.6513026052104, 274.14629258517033, 274.64128256513027, 275.13627254509015, 275.6312625250501, 276.12625250501003, 276.6212424849699, 277.11623246492985, 277.6112224448898, 278.1062124248497, 278.6012024048096, 279.09619238476955, 279.59118236472943, 280.0861723446894, 280.5811623246493, 281.0761523046092, 281.57114228456913, 282.0661322645291, 282.56112224448896, 283.0561122244489, 283.55110220440883, 284.0460921843687, 284.54108216432866, 285.0360721442886, 285.5310621242485, 286.0260521042084, 286.52104208416836, 287.01603206412824, 287.5110220440882, 288.0060120240481, 288.501002004008, 288.99599198396794, 289.4909819639279, 289.98597194388776, 290.4809619238477, 290.97595190380764, 291.4709418837675, 291.96593186372746, 292.4609218436874, 292.9559118236473, 293.4509018036072, 293.94589178356716, 294.44088176352705, 294.935871743487, 295.4308617234469, 295.9258517034068, 296.42084168336675, 296.9158316633267, 297.41082164328657, 297.9058116232465, 298.40080160320645, 298.89579158316633, 299.3907815631262, 299.8857715430862, 300.3807615230461, 300.875751503006, 301.37074148296597, 301.86573146292585, 302.36072144288573, 302.85571142284573, 303.3507014028056, 303.8456913827655, 304.3406813627255, 304.8356713426854, 305.33066132264526, 305.82565130260525, 306.32064128256513, 306.815631262525, 307.31062124248496, 307.8056112224449, 308.3006012024048, 308.7955911823647, 309.29058116232466, 309.78557114228454, 310.2805611222445, 310.7755511022044, 311.2705410821643, 311.76553106212424, 312.2605210420842, 312.75551102204406, 313.250501002004, 313.74549098196394, 314.2404809619238, 314.73547094188376, 315.2304609218437, 315.7254509018036, 316.2204408817635, 316.71543086172346, 317.21042084168334, 317.7054108216433, 318.2004008016032, 318.6953907815631, 319.19038076152304, 319.685370741483, 320.18036072144287, 320.6753507014028, 321.17034068136275, 321.6653306613226, 322.16032064128257, 322.6553106212425, 323.1503006012024, 323.6452905811623, 324.14028056112227, 324.63527054108215, 325.1302605210421, 325.62525050100203, 326.1202404809619, 326.61523046092185, 327.1102204408818, 327.6052104208417, 328.1002004008016, 328.59519038076155, 329.09018036072143, 329.5851703406814, 330.0801603206413, 330.5751503006012, 331.07014028056113, 331.5651302605211, 332.06012024048096, 332.5551102204409, 333.05010020040083, 333.5450901803607, 334.0400801603206, 334.5350701402806, 335.0300601202405, 335.52505010020036, 336.02004008016036, 336.51503006012024, 337.0100200400801, 337.5050100200401, 338.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_f4cb72ffffca462f164078dba7797482.x = d3.scale.linear()
+              .domain([91.0, 338.0])
+              .range([0, 450 - 50]);
+
+    color_map_f4cb72ffffca462f164078dba7797482.legend = L.control({position: 'topright'});
+    color_map_f4cb72ffffca462f164078dba7797482.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_f4cb72ffffca462f164078dba7797482.legend.addTo(map_2a3715b900183d52c378fc588890cc35);
+
+    color_map_f4cb72ffffca462f164078dba7797482.xAxis = d3.svg.axis()
+        .scale(color_map_f4cb72ffffca462f164078dba7797482.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([91.0, 121.875, 152.75, 183.625, 214.5, 245.375, 276.25, 307.125, 338.0]);
+
+    color_map_f4cb72ffffca462f164078dba7797482.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_f4cb72ffffca462f164078dba7797482.g = color_map_f4cb72ffffca462f164078dba7797482.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_f4cb72ffffca462f164078dba7797482.g.selectAll("rect")
+        .data(color_map_f4cb72ffffca462f164078dba7797482.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_f4cb72ffffca462f164078dba7797482.x(color_map_f4cb72ffffca462f164078dba7797482.color.domain()[i - 1]) : color_map_f4cb72ffffca462f164078dba7797482.x.range()[0],
+            x1: i < color_map_f4cb72ffffca462f164078dba7797482.color.domain().length ? color_map_f4cb72ffffca462f164078dba7797482.x(color_map_f4cb72ffffca462f164078dba7797482.color.domain()[i]) : color_map_f4cb72ffffca462f164078dba7797482.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_f4cb72ffffca462f164078dba7797482.g.call(color_map_f4cb72ffffca462f164078dba7797482.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS por local");
+    
+            var circle_marker_fa8ba6e845b3a60f9aa4bd50191c304c = L.circleMarker(
+                [-33.5193, -70.6409],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_a2280d3a9970fdfea7a09110587a451d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f9a0716ab4d0ec601f93c81f4106d62a = $(`<div id="html_f9a0716ab4d0ec601f93c81f4106d62a" style="width: 100.0%; height: 100.0%;"><b>centro educacional mirador</b><br>MIRADOR 1470<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>91</b></div>`)[0];
+                popup_a2280d3a9970fdfea7a09110587a451d.setContent(html_f9a0716ab4d0ec601f93c81f4106d62a);
+            
+        
+
+        circle_marker_fa8ba6e845b3a60f9aa4bd50191c304c.bindPopup(popup_a2280d3a9970fdfea7a09110587a451d)
+        ;
+
+        
+    
+    
+            circle_marker_fa8ba6e845b3a60f9aa4bd50191c304c.bindTooltip(
+                `<div>
+                     centro educacional mirador
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1429d633da60f054661d5bf9981a3d9b = L.marker(
+                [-33.5193, -70.6409],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_ab756a22bfb66c6c35832ee5d3ead60e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e91\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1429d633da60f054661d5bf9981a3d9b.setIcon(div_icon_ab756a22bfb66c6c35832ee5d3ead60e);
+        
+    
+            var circle_marker_5b26314755ea82b6cda2dfefbdfb5aba = L.circleMarker(
+                [-33.5518, -70.6448],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea345ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.951417004048583, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_ff5e911f980c7dc3032ace980b36d773 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_13cc2429c8acab199d81d49df30459a8 = $(`<div id="html_13cc2429c8acab199d81d49df30459a8" style="width: 100.0%; height: 100.0%;"><b>centro educacional paula jaraquemada</b><br>ALMIRANTE LATORRE 9921<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>196</b></div>`)[0];
+                popup_ff5e911f980c7dc3032ace980b36d773.setContent(html_13cc2429c8acab199d81d49df30459a8);
+            
+        
+
+        circle_marker_5b26314755ea82b6cda2dfefbdfb5aba.bindPopup(popup_ff5e911f980c7dc3032ace980b36d773)
+        ;
+
+        
+    
+    
+            circle_marker_5b26314755ea82b6cda2dfefbdfb5aba.bindTooltip(
+                `<div>
+                     centro educacional paula jaraquemada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bb6547eeb854a063572a43f3007522e4 = L.marker(
+                [-33.5518, -70.6448],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_f403b10f7e31bbe8aaf3f996a6a16e71 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e196\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bb6547eeb854a063572a43f3007522e4.setIcon(div_icon_f403b10f7e31bbe8aaf3f996a6a16e71);
+        
+    
+            var circle_marker_2217849f797dca6327648f52501d0150 = L.circleMarker(
+                [-33.5497, -70.6445],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffabfff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.510121457489879, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_1c4cff45a14fced5cd894ed8302db818 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3146df8835bf197a2138c571110ae79d = $(`<div id="html_3146df8835bf197a2138c571110ae79d" style="width: 100.0%; height: 100.0%;"><b>centro educacional san ramon</b><br>ALMIRANTE LATORRE 9701<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>100</b></div>`)[0];
+                popup_1c4cff45a14fced5cd894ed8302db818.setContent(html_3146df8835bf197a2138c571110ae79d);
+            
+        
+
+        circle_marker_2217849f797dca6327648f52501d0150.bindPopup(popup_1c4cff45a14fced5cd894ed8302db818)
+        ;
+
+        
+    
+    
+            circle_marker_2217849f797dca6327648f52501d0150.bindTooltip(
+                `<div>
+                     centro educacional san ramon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1faa067c37f9e2b0e798bb8da5a17d69 = L.marker(
+                [-33.5497, -70.6445],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_51724dfad455848198bc065fabd438f8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e100\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1faa067c37f9e2b0e798bb8da5a17d69.setIcon(div_icon_51724dfad455848198bc065fabd438f8);
+        
+    
+            var circle_marker_bef241e7119d6cec4d467475a43f1a6c = L.circleMarker(
+                [-33.5196, -70.6381],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffabfff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.510121457489879, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_2cdb92d7e158519b63734dfc5c417baf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8891b3e2889bebebe34d3116a1bbb7d3 = $(`<div id="html_8891b3e2889bebebe34d3116a1bbb7d3" style="width: 100.0%; height: 100.0%;"><b>colegio alberto blest gana</b><br>MIRADOR 1674<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>100</b></div>`)[0];
+                popup_2cdb92d7e158519b63734dfc5c417baf.setContent(html_8891b3e2889bebebe34d3116a1bbb7d3);
+            
+        
+
+        circle_marker_bef241e7119d6cec4d467475a43f1a6c.bindPopup(popup_2cdb92d7e158519b63734dfc5c417baf)
+        ;
+
+        
+    
+    
+            circle_marker_bef241e7119d6cec4d467475a43f1a6c.bindTooltip(
+                `<div>
+                     colegio alberto blest gana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_caddca0a6341ba0cff8a04cf5fb99e1d = L.marker(
+                [-33.5196, -70.6381],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_2d8abedcae865ae6670f12a7294c4f27 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e100\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_caddca0a6341ba0cff8a04cf5fb99e1d.setIcon(div_icon_2d8abedcae865ae6670f12a7294c4f27);
+        
+    
+            var circle_marker_60f9532f6fd4bdce2c04eb4dabb1f171 = L.circleMarker(
+                [-33.5511, -70.6447],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffabfff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.510121457489879, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_2ea5a99c57625d8a18dcb8baa4ce54f9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3c1b373a3dd230ca02a1586d095c75c5 = $(`<div id="html_3c1b373a3dd230ca02a1586d095c75c5" style="width: 100.0%; height: 100.0%;"><b>escuela aliven</b><br>ALMIRANTE LATORRE 9835<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>100</b></div>`)[0];
+                popup_2ea5a99c57625d8a18dcb8baa4ce54f9.setContent(html_3c1b373a3dd230ca02a1586d095c75c5);
+            
+        
+
+        circle_marker_60f9532f6fd4bdce2c04eb4dabb1f171.bindPopup(popup_2ea5a99c57625d8a18dcb8baa4ce54f9)
+        ;
+
+        
+    
+    
+            circle_marker_60f9532f6fd4bdce2c04eb4dabb1f171.bindTooltip(
+                `<div>
+                     escuela aliven
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28504222fd421a0360bf37e6c4af7c0f = L.marker(
+                [-33.5511, -70.6447],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_e0de64ce56ccc93e20cbb1e0ea858a19 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e100\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_28504222fd421a0360bf37e6c4af7c0f.setIcon(div_icon_e0de64ce56ccc93e20cbb1e0ea858a19);
+        
+    
+            var circle_marker_3066e77082878be75371e12ca31b9302 = L.circleMarker(
+                [-33.5484, -70.649],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe8e3cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.97165991902834, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_60fa95918342ab6766ce0b3dd948f572 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fa9aad9c70498b859546af3ef7adb09f = $(`<div id="html_fa9aad9c70498b859546af3ef7adb09f" style="width: 100.0%; height: 100.0%;"><b>escuela arturo matte larrain</b><br>ANIBAL ZAÑARTU 9567<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>214</b></div>`)[0];
+                popup_60fa95918342ab6766ce0b3dd948f572.setContent(html_fa9aad9c70498b859546af3ef7adb09f);
+            
+        
+
+        circle_marker_3066e77082878be75371e12ca31b9302.bindPopup(popup_60fa95918342ab6766ce0b3dd948f572)
+        ;
+
+        
+    
+    
+            circle_marker_3066e77082878be75371e12ca31b9302.bindTooltip(
+                `<div>
+                     escuela arturo matte larrain
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0a67a8925897405ab02a5608c1564307 = L.marker(
+                [-33.5484, -70.649],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_3112667216bb52d0c35bc5a221a52307 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e214\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0a67a8925897405ab02a5608c1564307.setIcon(div_icon_3112667216bb52d0c35bc5a221a52307);
+        
+    
+            var circle_marker_4a85e5c1f933d1cfefde9455c1d5aab9 = L.circleMarker(
+                [-33.5376, -70.6401],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_2d7a46b6bb9cd7af7cf1afd45da93d33 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a78bd09c1337c0b618904c3364f02574 = $(`<div id="html_a78bd09c1337c0b618904c3364f02574" style="width: 100.0%; height: 100.0%;"><b>escuela educadores de chile</b><br>DOÑIHUE 9567<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>338</b></div>`)[0];
+                popup_2d7a46b6bb9cd7af7cf1afd45da93d33.setContent(html_a78bd09c1337c0b618904c3364f02574);
+            
+        
+
+        circle_marker_4a85e5c1f933d1cfefde9455c1d5aab9.bindPopup(popup_2d7a46b6bb9cd7af7cf1afd45da93d33)
+        ;
+
+        
+    
+    
+            circle_marker_4a85e5c1f933d1cfefde9455c1d5aab9.bindTooltip(
+                `<div>
+                     escuela educadores de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7273d49de024ee92e52fbf7b67db4ecd = L.marker(
+                [-33.5376, -70.6401],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_658c9ac4c9e4207a50b640f81e99624f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e338\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7273d49de024ee92e52fbf7b67db4ecd.setIcon(div_icon_658c9ac4c9e4207a50b640f81e99624f);
+        
+    
+            var circle_marker_13ec73682ccd3725a3ac4a81154f8e41 = L.circleMarker(
+                [-33.5458, -70.6437],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6b32ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.935222672064778, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_11011291320a8b086ad400f94d0966e1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_14188437010bd1e078010bc3e519c894 = $(`<div id="html_14188437010bd1e078010bc3e519c894" style="width: 100.0%; height: 100.0%;"><b>escuela karelmapu</b><br>ALMIRANTE LATORRE 9299<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>231</b></div>`)[0];
+                popup_11011291320a8b086ad400f94d0966e1.setContent(html_14188437010bd1e078010bc3e519c894);
+            
+        
+
+        circle_marker_13ec73682ccd3725a3ac4a81154f8e41.bindPopup(popup_11011291320a8b086ad400f94d0966e1)
+        ;
+
+        
+    
+    
+            circle_marker_13ec73682ccd3725a3ac4a81154f8e41.bindTooltip(
+                `<div>
+                     escuela karelmapu
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6bd6cf513a56d27cc22495e0b0a50d81 = L.marker(
+                [-33.5458, -70.6437],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_beeaa9520f537078da424626483e7ed4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e231\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6bd6cf513a56d27cc22495e0b0a50d81.setIcon(div_icon_beeaa9520f537078da424626483e7ed4);
+        
+    
+            var circle_marker_13246daac0ecbf9500daddffe4745f14 = L.circleMarker(
+                [-33.5499, -70.6405],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6731ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.048582995951417, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_3184d2d9053ca1defdc14038ac8deb7d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dd97a42a1b45c64f4aa1f5c4c7d454b7 = $(`<div id="html_dd97a42a1b45c64f4aa1f5c4c7d454b7" style="width: 100.0%; height: 100.0%;"><b>escuela nanihue</b><br>RIQUELME 1922<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>233</b></div>`)[0];
+                popup_3184d2d9053ca1defdc14038ac8deb7d.setContent(html_dd97a42a1b45c64f4aa1f5c4c7d454b7);
+            
+        
+
+        circle_marker_13246daac0ecbf9500daddffe4745f14.bindPopup(popup_3184d2d9053ca1defdc14038ac8deb7d)
+        ;
+
+        
+    
+    
+            circle_marker_13246daac0ecbf9500daddffe4745f14.bindTooltip(
+                `<div>
+                     escuela nanihue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_842aa59fd55f70aa6e935260b0b2af14 = L.marker(
+                [-33.5499, -70.6405],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_bedafb7c729365e537479a68866348c8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e233\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_842aa59fd55f70aa6e935260b0b2af14.setIcon(div_icon_bedafb7c729365e537479a68866348c8);
+        
+    
+            var circle_marker_5d4f8d97841e16f80a80bdb257514d19 = L.circleMarker(
+                [-33.5265, -70.6387],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fa4828ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.955465587044536, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_e8757d5d8d49a5333ea90aad89a90e8b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_38d30b9b6ca607751735ae04c51d96d5 = $(`<div id="html_38d30b9b6ca607751735ae04c51d96d5" style="width: 100.0%; height: 100.0%;"><b>escuela sendero del saber</b><br>CARLOS DAVILA 7551<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>249</b></div>`)[0];
+                popup_e8757d5d8d49a5333ea90aad89a90e8b.setContent(html_38d30b9b6ca607751735ae04c51d96d5);
+            
+        
+
+        circle_marker_5d4f8d97841e16f80a80bdb257514d19.bindPopup(popup_e8757d5d8d49a5333ea90aad89a90e8b)
+        ;
+
+        
+    
+    
+            circle_marker_5d4f8d97841e16f80a80bdb257514d19.bindTooltip(
+                `<div>
+                     escuela sendero del saber
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2a00d5e763c8e7d850b96e18721d2de5 = L.marker(
+                [-33.5265, -70.6387],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_f17566fe8de817f35125dd34150c9ab0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e249\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2a00d5e763c8e7d850b96e18721d2de5.setIcon(div_icon_f17566fe8de817f35125dd34150c9ab0);
+        
+    
+            var circle_marker_729fd5ba4a443e650bcf54dab94fef2a = L.circleMarker(
+                [-33.5538, -70.6415],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecb67ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.137651821862349, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_287ffb29d8155919197ae793a411251b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8804108f18df2efcf162759c32ae5b60 = $(`<div id="html_8804108f18df2efcf162759c32ae5b60" style="width: 100.0%; height: 100.0%;"><b>escuela tupahue</b><br>AURORA DE CHILE 10104<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>164</b></div>`)[0];
+                popup_287ffb29d8155919197ae793a411251b.setContent(html_8804108f18df2efcf162759c32ae5b60);
+            
+        
+
+        circle_marker_729fd5ba4a443e650bcf54dab94fef2a.bindPopup(popup_287ffb29d8155919197ae793a411251b)
+        ;
+
+        
+    
+    
+            circle_marker_729fd5ba4a443e650bcf54dab94fef2a.bindTooltip(
+                `<div>
+                     escuela tupahue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a2e667006d595eed51673a805f60d75e = L.marker(
+                [-33.5538, -70.6415],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_4165c59a280ae8fab46f138dfe642d73 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e164\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a2e667006d595eed51673a805f60d75e.setIcon(div_icon_4165c59a280ae8fab46f138dfe642d73);
+        
+    
+            var circle_marker_f0c76cde7a34e42f7b8be35e2f5f8fb3 = L.circleMarker(
+                [-33.5557, -70.6331],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea044ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.121457489878543, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_d0a402169170f371b832df03899207fb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_07f3d278023eb76bd1a59785bf497c75 = $(`<div id="html_07f3d278023eb76bd1a59785bf497c75" style="width: 100.0%; height: 100.0%;"><b>escuela villa la cultura</b><br>GALVARINO 10252<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>199</b></div>`)[0];
+                popup_d0a402169170f371b832df03899207fb.setContent(html_07f3d278023eb76bd1a59785bf497c75);
+            
+        
+
+        circle_marker_f0c76cde7a34e42f7b8be35e2f5f8fb3.bindPopup(popup_d0a402169170f371b832df03899207fb)
+        ;
+
+        
+    
+    
+            circle_marker_f0c76cde7a34e42f7b8be35e2f5f8fb3.bindTooltip(
+                `<div>
+                     escuela villa la cultura
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a7772c247e3a2c6604357b0d591bbd80 = L.marker(
+                [-33.5557, -70.6331],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_c7eb9943916e263073d9a32c757ca741 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e199\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a7772c247e3a2c6604357b0d591bbd80.setIcon(div_icon_c7eb9943916e263073d9a32c757ca741);
+        
+    
+            var circle_marker_3546ccfa4dbb001d7f7c62b2fd15de3f = L.circleMarker(
+                [-33.53481, -70.63727],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7535ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.651821862348179, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_a05819c42fcde6ebacff07983beb8c66 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f26d2090a4c17d0d74501d3595d512ed = $(`<div id="html_f26d2090a4c17d0d74501d3595d512ed" style="width: 100.0%; height: 100.0%;"><b>liceo araucania</b><br>PEDRO AGUIRRE CERDA 8153<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>226</b></div>`)[0];
+                popup_a05819c42fcde6ebacff07983beb8c66.setContent(html_f26d2090a4c17d0d74501d3595d512ed);
+            
+        
+
+        circle_marker_3546ccfa4dbb001d7f7c62b2fd15de3f.bindPopup(popup_a05819c42fcde6ebacff07983beb8c66)
+        ;
+
+        
+    
+    
+            circle_marker_3546ccfa4dbb001d7f7c62b2fd15de3f.bindTooltip(
+                `<div>
+                     liceo araucania
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07ba3d287fa863e95f25353bd339e33a = L.marker(
+                [-33.53481, -70.63727],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_23c9bc6c3ce8f7260ffdac6bc6b408b1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e226\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_07ba3d287fa863e95f25353bd339e33a.setIcon(div_icon_23c9bc6c3ce8f7260ffdac6bc6b408b1);
+        
+    
+            var circle_marker_09ed869aaa7501b7a33defd4644d1035 = L.circleMarker(
+                [-33.5377, -70.637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d10d20ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.336032388663966, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_924e7f5d68ec2f8e787885d99dfa8d41 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2aa21189d054d9705655e1655c6154e4 = $(`<div id="html_2aa21189d054d9705655e1655c6154e4" style="width: 100.0%; height: 100.0%;"><b>liceo comercial vate vicente huidrobro</b><br>DOÑIHUE 2030<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>291</b></div>`)[0];
+                popup_924e7f5d68ec2f8e787885d99dfa8d41.setContent(html_2aa21189d054d9705655e1655c6154e4);
+            
+        
+
+        circle_marker_09ed869aaa7501b7a33defd4644d1035.bindPopup(popup_924e7f5d68ec2f8e787885d99dfa8d41)
+        ;
+
+        
+    
+    
+            circle_marker_09ed869aaa7501b7a33defd4644d1035.bindTooltip(
+                `<div>
+                     liceo comercial vate vicente huidrobro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_25ed7d844e366283070ca0f40a8d12c0 = L.marker(
+                [-33.5377, -70.637],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_1682efd28791a1d57454415761801c7a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e291\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_25ed7d844e366283070ca0f40a8d12c0.setIcon(div_icon_1682efd28791a1d57454415761801c7a);
+        
+    
+            var circle_marker_9c593c66ca6f7aa786ca8f004069b3a2 = L.circleMarker(
+                [-33.5373, -70.6373],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea546ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.894736842105264, "stroke": false, "weight": 3}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+        var popup_fce1212a9ded2bcbecf174803fc34e9e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d1f3706b5682328ea2c535d73813ccb0 = $(`<div id="html_d1f3706b5682328ea2c535d73813ccb0" style="width: 100.0%; height: 100.0%;"><b>liceo purkuyen</b><br>PEDRO AGUIRRE CERDA 8450<br>Votos Lista CRISTOBAL ANTONIO ESCOBAR SALINAS: <b>195</b></div>`)[0];
+                popup_fce1212a9ded2bcbecf174803fc34e9e.setContent(html_d1f3706b5682328ea2c535d73813ccb0);
+            
+        
+
+        circle_marker_9c593c66ca6f7aa786ca8f004069b3a2.bindPopup(popup_fce1212a9ded2bcbecf174803fc34e9e)
+        ;
+
+        
+    
+    
+            circle_marker_9c593c66ca6f7aa786ca8f004069b3a2.bindTooltip(
+                `<div>
+                     liceo purkuyen
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5a00e949e6a1a5f929d437a0bb168c42 = L.marker(
+                [-33.5373, -70.6373],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2a3715b900183d52c378fc588890cc35);
+        
+    
+            var div_icon_58e4af2201112bf3c932d97e177e54b9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e195\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5a00e949e6a1a5f929d437a0bb168c42.setIcon(div_icon_58e4af2201112bf3c932d97e177e54b9);
+        
+    
+            map_2a3715b900183d52c378fc588890cc35.fitBounds(
+                [[-33.5193, -70.6409], [-33.5518, -70.6448], [-33.5497, -70.6445], [-33.5196, -70.6381], [-33.5511, -70.6447], [-33.5484, -70.649], [-33.5376, -70.6401], [-33.5458, -70.6437], [-33.5499, -70.6405], [-33.5265, -70.6387], [-33.5538, -70.6415], [-33.5557, -70.6331], [-33.53481, -70.63727], [-33.5377, -70.637], [-33.5373, -70.6373]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>
