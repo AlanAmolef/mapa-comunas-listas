@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d5b5714e8682cf55e5796be7b9cc9a16 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_d5b5714e8682cf55e5796be7b9cc9a16" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d5b5714e8682cf55e5796be7b9cc9a16 = L.map(
+                "map_d5b5714e8682cf55e5796be7b9cc9a16",
+                {
+                    center: [-33.53013636363636, -70.66172727272728],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c736e9557fe7843db5f9899af91a7886 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_c736e9557fe7843db5f9899af91a7886.addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+    var color_map_8f862b4ec49c11de5df533ed3e36bcf5 = {};
+
+    
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.color = d3.scale.threshold()
+              .domain([71.0, 71.63927855711422, 72.27855711422846, 72.91783567134269, 73.55711422845691, 74.19639278557115, 74.83567134268537, 75.4749498997996, 76.11422845691382, 76.75350701402806, 77.39278557114228, 78.03206412825651, 78.67134268537075, 79.31062124248497, 79.9498997995992, 80.58917835671343, 81.22845691382766, 81.86773547094188, 82.50701402805612, 83.14629258517034, 83.78557114228457, 84.4248496993988, 85.06412825651303, 85.70340681362725, 86.34268537074148, 86.98196392785572, 87.62124248496994, 88.26052104208416, 88.89979959919839, 89.53907815631263, 90.17835671342685, 90.81763527054107, 91.45691382765531, 92.09619238476954, 92.73547094188376, 93.374749498998, 94.01402805611222, 94.65330661322645, 95.29258517034069, 95.93186372745491, 96.57114228456913, 97.21042084168337, 97.8496993987976, 98.48897795591182, 99.12825651302606, 99.76753507014028, 100.40681362725451, 101.04609218436875, 101.68537074148297, 102.3246492985972, 102.96392785571142, 103.60320641282564, 104.24248496993988, 104.88176352705412, 105.52104208416833, 106.16032064128257, 106.79959919839679, 107.43887775551102, 108.07815631262525, 108.71743486973948, 109.3567134268537, 109.99599198396794, 110.63527054108216, 111.27454909819639, 111.91382765531063, 112.55310621242485, 113.19238476953907, 113.83166332665331, 114.47094188376754, 115.11022044088176, 115.749498997996, 116.38877755511022, 117.02805611222445, 117.66733466933869, 118.3066132264529, 118.94589178356713, 119.58517034068137, 120.22444889779558, 120.86372745490982, 121.50300601202404, 122.14228456913827, 122.78156312625251, 123.42084168336673, 124.06012024048096, 124.6993987975952, 125.33867735470942, 125.97795591182364, 126.61723446893788, 127.2565130260521, 127.89579158316633, 128.53507014028057, 129.1743486973948, 129.81362725450902, 130.45290581162325, 131.0921843687375, 131.7314629258517, 132.37074148296594, 133.01002004008015, 133.6492985971944, 134.28857715430863, 134.92785571142284, 135.56713426853707, 136.20641282565128, 136.84569138276555, 137.48496993987976, 138.12424849699397, 138.76352705410824, 139.40280561122245, 140.04208416833666, 140.6813627254509, 141.32064128256513, 141.95991983967934, 142.59919839679358, 143.23847695390782, 143.87775551102203, 144.51703406813627, 145.1563126252505, 145.79559118236472, 146.43486973947896, 147.0741482965932, 147.7134268537074, 148.35270541082164, 148.99198396793588, 149.6312625250501, 150.27054108216433, 150.90981963927857, 151.54909819639278, 152.18837675350701, 152.82765531062125, 153.46693386773546, 154.1062124248497, 154.74549098196394, 155.38476953907815, 156.0240480961924, 156.66332665330663, 157.30260521042084, 157.94188376753507, 158.5811623246493, 159.22044088176352, 159.85971943887776, 160.498997995992, 161.1382765531062, 161.77755511022045, 162.41683366733469, 163.0561122244489, 163.6953907815631, 164.33466933867737, 164.97394789579158, 165.6132264529058, 166.25250501002006, 166.89178356713427, 167.53106212424848, 168.17034068136275, 168.80961923847696, 169.44889779559117, 170.08817635270543, 170.72745490981964, 171.36673346693385, 172.0060120240481, 172.64529058116233, 173.28456913827654, 173.92384769539078, 174.56312625250501, 175.20240480961922, 175.84168336673346, 176.4809619238477, 177.1202404809619, 177.75951903807615, 178.3987975951904, 179.0380761523046, 179.67735470941884, 180.31663326653307, 180.95591182364728, 181.59519038076152, 182.23446893787576, 182.87374749498997, 183.5130260521042, 184.15230460921845, 184.79158316633266, 185.4308617234469, 186.07014028056113, 186.70941883767534, 187.34869739478958, 187.98797595190382, 188.62725450901803, 189.26653306613227, 189.9058116232465, 190.54509018036072, 191.18436873747495, 191.8236472945892, 192.4629258517034, 193.10220440881764, 193.74148296593188, 194.3807615230461, 195.0200400801603, 195.65931863727457, 196.29859719438878, 196.937875751503, 197.57715430861725, 198.21643286573146, 198.85571142284567, 199.4949899799599, 200.13426853707415, 200.7735470941884, 201.4128256513026, 202.05210420841684, 202.69138276553107, 203.33066132264528, 203.96993987975952, 204.60921843687376, 205.24849699398797, 205.8877755511022, 206.52705410821645, 207.16633266533066, 207.8056112224449, 208.4448897795591, 209.08416833667334, 209.72344689378758, 210.3627254509018, 211.00200400801603, 211.64128256513027, 212.28056112224448, 212.91983967935872, 213.55911823647295, 214.19839679358716, 214.8376753507014, 215.47695390781564, 216.11623246492985, 216.7555110220441, 217.39478957915833, 218.03406813627254, 218.67334669338678, 219.31262525050101, 219.95190380761522, 220.59118236472946, 221.2304609218437, 221.8697394789579, 222.50901803607215, 223.14829659318636, 223.7875751503006, 224.42685370741484, 225.06613226452905, 225.70541082164328, 226.34468937875752, 226.98396793587173, 227.62324649298597, 228.2625250501002, 228.90180360721442, 229.54108216432866, 230.1803607214429, 230.8196392785571, 231.45891783567134, 232.09819639278558, 232.7374749498998, 233.37675350701403, 234.01603206412827, 234.65531062124248, 235.29458917835672, 235.93386773547095, 236.57314629258516, 237.2124248496994, 237.85170340681364, 238.49098196392785, 239.1302605210421, 239.7695390781563, 240.40881763527054, 241.04809619238478, 241.68737474949899, 242.32665330661322, 242.96593186372746, 243.60521042084167, 244.2444889779559, 244.88376753507015, 245.52304609218436, 246.1623246492986, 246.80160320641284, 247.44088176352705, 248.08016032064128, 248.71943887775552, 249.35871743486973, 249.99799599198397, 250.6372745490982, 251.27655310621242, 251.91583166332666, 252.5551102204409, 253.1943887775551, 253.83366733466934, 254.47294589178355, 255.1122244488978, 255.75150300601203, 256.3907815631262, 257.0300601202405, 257.66933867735474, 258.3086172344689, 258.94789579158316, 259.58717434869743, 260.2264529058116, 260.86573146292585, 261.5050100200401, 262.14428857715427, 262.78356713426854, 263.4228456913828, 264.06212424849696, 264.7014028056112, 265.3406813627255, 265.97995991983964, 266.6192384769539, 267.2585170340682, 267.89779559118233, 268.5370741482966, 269.17635270541086, 269.815631262525, 270.4549098196393, 271.0941883767535, 271.7334669338677, 272.37274549098197, 273.0120240480962, 273.6513026052104, 274.29058116232466, 274.92985971943887, 275.5691382765531, 276.20841683366734, 276.84769539078155, 277.48697394789576, 278.12625250501003, 278.76553106212424, 279.40480961923845, 280.0440881763527, 280.6833667334669, 281.32264529058114, 281.9619238476954, 282.6012024048096, 283.2404809619238, 283.8797595190381, 284.5190380761523, 285.1583166332665, 285.7975951903808, 286.436873747495, 287.0761523046092, 287.71543086172346, 288.3547094188377, 288.9939879759519, 289.63326653306615, 290.27254509018036, 290.91182364729457, 291.55110220440883, 292.19038076152304, 292.82965931863725, 293.4689378757515, 294.10821643286573, 294.74749498997994, 295.3867735470942, 296.0260521042084, 296.6653306613226, 297.3046092184369, 297.9438877755511, 298.5831663326653, 299.2224448897796, 299.8617234468938, 300.501002004008, 301.14028056112227, 301.7795591182365, 302.4188376753507, 303.05811623246495, 303.69739478957916, 304.3366733466934, 304.97595190380764, 305.61523046092185, 306.25450901803606, 306.8937875751503, 307.53306613226454, 308.17234468937875, 308.811623246493, 309.4509018036072, 310.09018036072143, 310.7294589178357, 311.3687374749499, 312.0080160320641, 312.6472945891784, 313.2865731462926, 313.9258517034068, 314.5651302605211, 315.2044088176353, 315.8436873747495, 316.48296593186376, 317.12224448897797, 317.7615230460922, 318.40080160320645, 319.0400801603206, 319.67935871743487, 320.31863727454913, 320.9579158316633, 321.59719438877755, 322.2364729458918, 322.875751503006, 323.51503006012024, 324.1543086172345, 324.79358717434866, 325.4328657314629, 326.0721442885772, 326.71142284569135, 327.3507014028056, 327.9899799599198, 328.6292585170341, 329.2685370741483, 329.9078156312625, 330.5470941883768, 331.186372745491, 331.8256513026052, 332.46492985971946, 333.10420841683367, 333.7434869739479, 334.38276553106215, 335.02204408817636, 335.66132264529057, 336.30060120240483, 336.93987975951904, 337.57915831663325, 338.2184368737475, 338.85771543086173, 339.49699398797594, 340.1362725450902, 340.7755511022044, 341.4148296593186, 342.0541082164329, 342.6933867735471, 343.3326653306613, 343.9719438877755, 344.6112224448898, 345.250501002004, 345.8897795591182, 346.5290581162325, 347.1683366733467, 347.8076152304609, 348.44689378757516, 349.0861723446894, 349.7254509018036, 350.36472945891785, 351.00400801603206, 351.64328657314627, 352.28256513026054, 352.92184368737475, 353.56112224448896, 354.2004008016032, 354.83967935871743, 355.47895791583164, 356.1182364729459, 356.7575150300601, 357.39679358717433, 358.0360721442886, 358.6753507014028, 359.314629258517, 359.9539078156313, 360.5931863727455, 361.2324649298597, 361.87174348697397, 362.5110220440882, 363.1503006012024, 363.78957915831666, 364.42885771543087, 365.0681362725451, 365.70741482965934, 366.34669338677355, 366.98597194388776, 367.62525050100203, 368.26452905811624, 368.90380761523045, 369.5430861723447, 370.1823647294589, 370.82164328657313, 371.4609218436874, 372.1002004008016, 372.7394789579158, 373.3787575150301, 374.0180360721443, 374.6573146292585, 375.2965931863727, 375.935871743487, 376.5751503006012, 377.2144288577154, 377.85370741482967, 378.4929859719439, 379.1322645290581, 379.77154308617236, 380.41082164328657, 381.0501002004008, 381.68937875751504, 382.32865731462925, 382.96793587174346, 383.60721442885773, 384.24649298597194, 384.88577154308615, 385.5250501002004, 386.1643286573146, 386.80360721442884, 387.4428857715431, 388.0821643286573, 388.7214428857715, 389.3607214428858, 390.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.x = d3.scale.linear()
+              .domain([71.0, 390.0])
+              .range([0, 450 - 50]);
+
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.legend = L.control({position: 'topright'});
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.legend.addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.xAxis = d3.svg.axis()
+        .scale(color_map_8f862b4ec49c11de5df533ed3e36bcf5.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([71.0, 110.875, 150.75, 190.625, 230.5, 270.375, 310.25, 350.125, 390.0]);
+
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.g = color_map_8f862b4ec49c11de5df533ed3e36bcf5.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.g.selectAll("rect")
+        .data(color_map_8f862b4ec49c11de5df533ed3e36bcf5.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_8f862b4ec49c11de5df533ed3e36bcf5.x(color_map_8f862b4ec49c11de5df533ed3e36bcf5.color.domain()[i - 1]) : color_map_8f862b4ec49c11de5df533ed3e36bcf5.x.range()[0],
+            x1: i < color_map_8f862b4ec49c11de5df533ed3e36bcf5.color.domain().length ? color_map_8f862b4ec49c11de5df533ed3e36bcf5.x(color_map_8f862b4ec49c11de5df533ed3e36bcf5.color.domain()[i]) : color_map_8f862b4ec49c11de5df533ed3e36bcf5.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_8f862b4ec49c11de5df533ed3e36bcf5.g.call(color_map_8f862b4ec49c11de5df533ed3e36bcf5.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista GONZALO IGNACIO AGUAYO GAJARDO por local");
+    
+            var circle_marker_7a8499a073ee7025dcd9d7bb1dab7e7a = L.circleMarker(
+                [-33.5329, -70.6518],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_8b167840ca88aef6c624bc0218a15510 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e0a44b9d3fae87278394ae544b02e0c5 = $(`<div id="html_e0a44b9d3fae87278394ae544b02e0c5" style="width: 100.0%; height: 100.0%;"><b>CENTRO COMUNITARIO SERGIO SILVA ACUÑA</b><br>VICTORIA 8300<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>71</b></div>`)[0];
+                popup_8b167840ca88aef6c624bc0218a15510.setContent(html_e0a44b9d3fae87278394ae544b02e0c5);
+            
+        
+
+        circle_marker_7a8499a073ee7025dcd9d7bb1dab7e7a.bindPopup(popup_8b167840ca88aef6c624bc0218a15510)
+        ;
+
+        
+    
+    
+            circle_marker_7a8499a073ee7025dcd9d7bb1dab7e7a.bindTooltip(
+                `<div>
+                     CENTRO COMUNITARIO SERGIO SILVA ACUÑA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9221a06be7f84768f251996784613b61 = L.marker(
+                [-33.5329, -70.6518],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_65541940f484ec6583c382ef4780e5bd = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e71\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9221a06be7f84768f251996784613b61.setIcon(div_icon_65541940f484ec6583c382ef4780e5bd);
+        
+    
+            var circle_marker_e8ad872d0adaaf767f3d040b1b5469cf = L.circleMarker(
+                [-33.5273, -70.6554],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffda77ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.467084639498433, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_acf90ac9e307ceca0d694fdd1975a810 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bcccc1941a0e51ed4b20cd272851d850 = $(`<div id="html_bcccc1941a0e51ed4b20cd272851d850" style="width: 100.0%; height: 100.0%;"><b>centro de emprendimiento</b><br>EL PARRON 548<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>150</b></div>`)[0];
+                popup_acf90ac9e307ceca0d694fdd1975a810.setContent(html_bcccc1941a0e51ed4b20cd272851d850);
+            
+        
+
+        circle_marker_e8ad872d0adaaf767f3d040b1b5469cf.bindPopup(popup_acf90ac9e307ceca0d694fdd1975a810)
+        ;
+
+        
+    
+    
+            circle_marker_e8ad872d0adaaf767f3d040b1b5469cf.bindTooltip(
+                `<div>
+                     centro de emprendimiento
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_85a0eac209a06e02c07425532a5ea82f = L.marker(
+                [-33.5273, -70.6554],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_1441195e4e13a513659938951e6d8a38 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e150\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_85a0eac209a06e02c07425532a5ea82f.setIcon(div_icon_1441195e4e13a513659938951e6d8a38);
+        
+    
+            var circle_marker_4546726bc008269e03ce49acfb57b26e = L.circleMarker(
+                [-33.521, -70.6569],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9640ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.58307210031348, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_c1938268ebd4504eba2277cd75e9f638 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5e6f0a33f1e8ca9f0851652e53917988 = $(`<div id="html_5e6f0a33f1e8ca9f0851652e53917988" style="width: 100.0%; height: 100.0%;"><b>centro educacional santa clara</b><br>GENERAL FREIRE 236<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>221</b></div>`)[0];
+                popup_c1938268ebd4504eba2277cd75e9f638.setContent(html_5e6f0a33f1e8ca9f0851652e53917988);
+            
+        
+
+        circle_marker_4546726bc008269e03ce49acfb57b26e.bindPopup(popup_c1938268ebd4504eba2277cd75e9f638)
+        ;
+
+        
+    
+    
+            circle_marker_4546726bc008269e03ce49acfb57b26e.bindTooltip(
+                `<div>
+                     centro educacional santa clara
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e0b10614d0d73a535ef446d2679006ae = L.marker(
+                [-33.521, -70.6569],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_39304b277c31fd58278776e4de8092c8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e221\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e0b10614d0d73a535ef446d2679006ae.setIcon(div_icon_39304b277c31fd58278776e4de8092c8);
+        
+    
+            var circle_marker_7590a1f8147b8bf11dc71e71d301d35f = L.circleMarker(
+                [-33.5405, -70.6774],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdd7dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.203761755485893, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_a3cc551a7c1eac500f464ded2cd4afad = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b868b5cd2bb4e800ea5f56ea094f1c0f = $(`<div id="html_b868b5cd2bb4e800ea5f56ea094f1c0f" style="width: 100.0%; height: 100.0%;"><b>colegio antu</b><br>TRINIDAD RAMIREZ 750<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>144</b></div>`)[0];
+                popup_a3cc551a7c1eac500f464ded2cd4afad.setContent(html_b868b5cd2bb4e800ea5f56ea094f1c0f);
+            
+        
+
+        circle_marker_7590a1f8147b8bf11dc71e71d301d35f.bindPopup(popup_a3cc551a7c1eac500f464ded2cd4afad)
+        ;
+
+        
+    
+    
+            circle_marker_7590a1f8147b8bf11dc71e71d301d35f.bindTooltip(
+                `<div>
+                     colegio antu
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cc4bf6987c18cd3c31625519b1e11a60 = L.marker(
+                [-33.5405, -70.6774],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_6126e417edfdd51bb377bcc2a7113580 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e144\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_cc4bf6987c18cd3c31625519b1e11a60.setIcon(div_icon_6126e417edfdd51bb377bcc2a7113580);
+        
+    
+            var circle_marker_4c32fecbdd5b803fce3fee1f32ad83f1 = L.circleMarker(
+                [-33.5185, -70.668],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_14a25160c9019911f26bbbeaa9641d45 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8643f77be07348cf11fda0ee536cb293 = $(`<div id="html_8643f77be07348cf11fda0ee536cb293" style="width: 100.0%; height: 100.0%;"><b>colegio esperanza joven l1</b><br>COLON 6918<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>390</b></div>`)[0];
+                popup_14a25160c9019911f26bbbeaa9641d45.setContent(html_8643f77be07348cf11fda0ee536cb293);
+            
+        
+
+        circle_marker_4c32fecbdd5b803fce3fee1f32ad83f1.bindPopup(popup_14a25160c9019911f26bbbeaa9641d45)
+        ;
+
+        
+    
+    
+            circle_marker_4c32fecbdd5b803fce3fee1f32ad83f1.bindTooltip(
+                `<div>
+                     colegio esperanza joven l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6049f896206c925ab09f707021aed483 = L.marker(
+                [-33.5185, -70.668],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_e65f1accb9ebb78a308fe5cce18cf7b9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e390\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6049f896206c925ab09f707021aed483.setIcon(div_icon_e65f1accb9ebb78a308fe5cce18cf7b9);
+        
+    
+            var circle_marker_3dd86f767ba2bade91269ea6a79a24ae = L.circleMarker(
+                [-33.5266, -70.6738],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeea1ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.711598746081505, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_cbb8b99cc0f52a25e66118c7b32e9c9b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a3af525fad64844b26847a8a6bfe5086 = $(`<div id="html_a3af525fad64844b26847a8a6bfe5086" style="width: 100.0%; height: 100.0%;"><b>colegio naciones unidas</b><br>ISABEL LA CATOLICA 960<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>110</b></div>`)[0];
+                popup_cbb8b99cc0f52a25e66118c7b32e9c9b.setContent(html_a3af525fad64844b26847a8a6bfe5086);
+            
+        
+
+        circle_marker_3dd86f767ba2bade91269ea6a79a24ae.bindPopup(popup_cbb8b99cc0f52a25e66118c7b32e9c9b)
+        ;
+
+        
+    
+    
+            circle_marker_3dd86f767ba2bade91269ea6a79a24ae.bindTooltip(
+                `<div>
+                     colegio naciones unidas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4a45f334f159aa96f511aa927d7d4c7 = L.marker(
+                [-33.5266, -70.6738],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_69c86233a4806fdcc7988daee9ea8f9f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e110\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d4a45f334f159aa96f511aa927d7d4c7.setIcon(div_icon_69c86233a4806fdcc7988daee9ea8f9f);
+        
+    
+            var circle_marker_56a0a98d00e086117a855f73872b959d = L.circleMarker(
+                [-33.5274, -70.6547],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecd69ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.037617554858933, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_8299020f3b1304384f29e40fe352b07e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5f5775b2bf448c310f6b09c426ab3681 = $(`<div id="html_5f5775b2bf448c310f6b09c426ab3681" style="width: 100.0%; height: 100.0%;"><b>colegio palestino</b><br>AVENIDA EL PARRON 498<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>163</b></div>`)[0];
+                popup_8299020f3b1304384f29e40fe352b07e.setContent(html_5f5775b2bf448c310f6b09c426ab3681);
+            
+        
+
+        circle_marker_56a0a98d00e086117a855f73872b959d.bindPopup(popup_8299020f3b1304384f29e40fe352b07e)
+        ;
+
+        
+    
+    
+            circle_marker_56a0a98d00e086117a855f73872b959d.bindTooltip(
+                `<div>
+                     colegio palestino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3121096f51d51b0d4e90b99402bcbfe7 = L.marker(
+                [-33.5274, -70.6547],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_c2cfa8f797089ed1b181f01841e5a9b8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e163\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3121096f51d51b0d4e90b99402bcbfe7.setIcon(div_icon_c2cfa8f797089ed1b181f01841e5a9b8);
+        
+    
+            var circle_marker_6f23732a2cf20c191aae04ad9d3e09ca = L.circleMarker(
+                [-33.5346, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9740ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.539184952978056, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_c40eca0578439d2aee1e35bbb697a11d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_796b1a87b5df3720f616dca46d9b5597 = $(`<div id="html_796b1a87b5df3720f616dca46d9b5597" style="width: 100.0%; height: 100.0%;"><b>escuela oscar encalada yavanovich</b><br>PEDRO AGUIRRE CERDA 184<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>220</b></div>`)[0];
+                popup_c40eca0578439d2aee1e35bbb697a11d.setContent(html_796b1a87b5df3720f616dca46d9b5597);
+            
+        
+
+        circle_marker_6f23732a2cf20c191aae04ad9d3e09ca.bindPopup(popup_c40eca0578439d2aee1e35bbb697a11d)
+        ;
+
+        
+    
+    
+            circle_marker_6f23732a2cf20c191aae04ad9d3e09ca.bindTooltip(
+                `<div>
+                     escuela oscar encalada yavanovich
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a914696594dc6b7ebd12c669cf8fc089 = L.marker(
+                [-33.5346, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_62b90ac51bd44b87e1130cfe19fbe2ba = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e220\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a914696594dc6b7ebd12c669cf8fc089.setIcon(div_icon_62b90ac51bd44b87e1130cfe19fbe2ba);
+        
+    
+            var circle_marker_ee386d0676cd8a6993d3abf0341ee52b = L.circleMarker(
+                [-33.5413, -70.66],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cb0922ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.630094043887148, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_ce2efbcad115a713bc790ffe8a23076c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_52a933730c24c1cc5fe8ebeecccfc14d = $(`<div id="html_52a933730c24c1cc5fe8ebeecccfc14d" style="width: 100.0%; height: 100.0%;"><b>liceo politecnico ciencia y tecnologia l1</b><br>AVENIDA GOYCOLEA 469<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>336</b></div>`)[0];
+                popup_ce2efbcad115a713bc790ffe8a23076c.setContent(html_52a933730c24c1cc5fe8ebeecccfc14d);
+            
+        
+
+        circle_marker_ee386d0676cd8a6993d3abf0341ee52b.bindPopup(popup_ce2efbcad115a713bc790ffe8a23076c)
+        ;
+
+        
+    
+    
+            circle_marker_ee386d0676cd8a6993d3abf0341ee52b.bindTooltip(
+                `<div>
+                     liceo politecnico ciencia y tecnologia l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_32eafffe232080250d65c83e348f6b83 = L.marker(
+                [-33.5413, -70.66],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_1b354c2f85647fb342d4ca68050c2c0f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e336\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_32eafffe232080250d65c83e348f6b83.setIcon(div_icon_1b354c2f85647fb342d4ca68050c2c0f);
+        
+    
+            var circle_marker_cf2c7a4996ea422386816f426b28d9ac = L.circleMarker(
+                [-33.546, -70.6585],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdb7aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.335423197492164, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_d76ebde772af1d2856b4d2bd74657d94 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d1610639dfcf6743271d194e9da2c191 = $(`<div id="html_d1610639dfcf6743271d194e9da2c191" style="width: 100.0%; height: 100.0%;"><b>liceo polivalente olof palme </b><br>JULIO COVARRUBIAS 9370<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>147</b></div>`)[0];
+                popup_d76ebde772af1d2856b4d2bd74657d94.setContent(html_d1610639dfcf6743271d194e9da2c191);
+            
+        
+
+        circle_marker_cf2c7a4996ea422386816f426b28d9ac.bindPopup(popup_d76ebde772af1d2856b4d2bd74657d94)
+        ;
+
+        
+    
+    
+            circle_marker_cf2c7a4996ea422386816f426b28d9ac.bindTooltip(
+                `<div>
+                     liceo polivalente olof palme 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bea2fb9b6cd53c9f204e5ac3cb51b82f = L.marker(
+                [-33.546, -70.6585],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_d615d76c6953fed7970fd47cb8d26b57 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e147\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bea2fb9b6cd53c9f204e5ac3cb51b82f.setIcon(div_icon_d615d76c6953fed7970fd47cb8d26b57);
+        
+    
+            var circle_marker_b855d3744918de94bf6ce8799b33b539 = L.circleMarker(
+                [-33.5154, -70.656],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb04bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.35423197492163, "stroke": false, "weight": 3}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+        var popup_92cdece5df4f09f25cb9499cd751844c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_283ab1df7338d597f3288b7a0787169a = $(`<div id="html_283ab1df7338d597f3288b7a0787169a" style="width: 100.0%; height: 100.0%;"><b>liceo portal de la cisterna</b><br>ESMERALDA 6305<br>Votos Lista GONZALO IGNACIO AGUAYO GAJARDO: <b>193</b></div>`)[0];
+                popup_92cdece5df4f09f25cb9499cd751844c.setContent(html_283ab1df7338d597f3288b7a0787169a);
+            
+        
+
+        circle_marker_b855d3744918de94bf6ce8799b33b539.bindPopup(popup_92cdece5df4f09f25cb9499cd751844c)
+        ;
+
+        
+    
+    
+            circle_marker_b855d3744918de94bf6ce8799b33b539.bindTooltip(
+                `<div>
+                     liceo portal de la cisterna
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bbb2779da41ce2d53d3b428950d66476 = L.marker(
+                [-33.5154, -70.656],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d5b5714e8682cf55e5796be7b9cc9a16);
+        
+    
+            var div_icon_3dd8be18fc274571f43bfc68e7f9c68b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e193\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bbb2779da41ce2d53d3b428950d66476.setIcon(div_icon_3dd8be18fc274571f43bfc68e7f9c68b);
+        
+    
+            map_d5b5714e8682cf55e5796be7b9cc9a16.fitBounds(
+                [[-33.5329, -70.6518], [-33.5273, -70.6554], [-33.521, -70.6569], [-33.5405, -70.6774], [-33.5185, -70.668], [-33.5266, -70.6738], [-33.5274, -70.6547], [-33.5346, -70.6665], [-33.5413, -70.66], [-33.546, -70.6585], [-33.5154, -70.656]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

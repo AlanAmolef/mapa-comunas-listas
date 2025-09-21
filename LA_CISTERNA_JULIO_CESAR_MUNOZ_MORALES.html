@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_266396e77c3cf09ad4db4509d5e5a39f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_266396e77c3cf09ad4db4509d5e5a39f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_266396e77c3cf09ad4db4509d5e5a39f = L.map(
+                "map_266396e77c3cf09ad4db4509d5e5a39f",
+                {
+                    center: [-33.53013636363636, -70.66172727272728],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7122aa1885d3fec14eaa9128540f0e0e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_7122aa1885d3fec14eaa9128540f0e0e.addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+    var color_map_f70862382afa20dff6e9ef8e2739b5a0 = {};
+
+    
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.color = d3.scale.threshold()
+              .domain([45.0, 45.366733466933866, 45.73346693386774, 46.100200400801604, 46.46693386773547, 46.833667334669336, 47.20040080160321, 47.567134268537075, 47.93386773547094, 48.300601202404806, 48.66733466933868, 49.034068136272545, 49.40080160320641, 49.76753507014028, 50.13426853707415, 50.501002004008015, 50.86773547094188, 51.234468937875754, 51.60120240480962, 51.967935871743485, 52.33466933867736, 52.701402805611224, 53.06813627254509, 53.434869739478955, 53.80160320641283, 54.168336673346694, 54.53507014028056, 54.90180360721443, 55.2685370741483, 55.635270541082164, 56.00200400801603, 56.368737474949896, 56.73547094188377, 57.102204408817634, 57.46893787575151, 57.83567134268537, 58.20240480961924, 58.569138276553105, 58.93587174348697, 59.30260521042084, 59.66933867735471, 60.036072144288575, 60.40280561122245, 60.76953907815631, 61.13627254509018, 61.503006012024045, 61.86973947895791, 62.236472945891784, 62.60320641282566, 62.96993987975952, 63.33667334669339, 63.703406813627254, 64.07014028056112, 64.43687374749499, 64.80360721442887, 65.17034068136272, 65.5370741482966, 65.90380761523046, 66.27054108216433, 66.6372745490982, 67.00400801603206, 67.37074148296594, 67.73747494989979, 68.10420841683367, 68.47094188376754, 68.8376753507014, 69.20440881763527, 69.57114228456913, 69.93787575150301, 70.30460921843687, 70.67134268537075, 71.03807615230461, 71.40480961923848, 71.77154308617234, 72.13827655310621, 72.50501002004007, 72.87174348697394, 73.23847695390782, 73.60521042084169, 73.97194388777555, 74.33867735470942, 74.70541082164328, 75.07214428857715, 75.43887775551102, 75.8056112224449, 76.17234468937876, 76.53907815631263, 76.90581162324649, 77.27254509018036, 77.63927855711424, 78.00601202404809, 78.37274549098197, 78.73947895791582, 79.1062124248497, 79.47294589178357, 79.83967935871743, 80.20641282565131, 80.57314629258516, 80.93987975951904, 81.3066132264529, 81.67334669338678, 82.04008016032064, 82.40681362725451, 82.77354709418837, 83.14028056112224, 83.50701402805612, 83.87374749498997, 84.24048096192385, 84.60721442885772, 84.97394789579158, 85.34068136272545, 85.70741482965931, 86.0741482965932, 86.44088176352705, 86.80761523046093, 87.17434869739479, 87.54108216432866, 87.90781563126252, 88.27454909819639, 88.64128256513027, 89.00801603206412, 89.374749498998, 89.74148296593187, 90.10821643286573, 90.4749498997996, 90.84168336673346, 91.20841683366734, 91.5751503006012, 91.94188376753507, 92.30861723446894, 92.6753507014028, 93.04208416833667, 93.40881763527054, 93.77555110220442, 94.14228456913827, 94.50901803607215, 94.87575150300601, 95.24248496993988, 95.60921843687375, 95.97595190380761, 96.34268537074149, 96.70941883767534, 97.07615230460922, 97.44288577154309, 97.80961923847696, 98.17635270541082, 98.54308617234469, 98.90981963927857, 99.27655310621242, 99.6432865731463, 100.01002004008015, 100.37675350701403, 100.7434869739479, 101.11022044088176, 101.47695390781564, 101.84368737474949, 102.21042084168337, 102.57715430861722, 102.9438877755511, 103.31062124248497, 103.67735470941884, 104.04408817635272, 104.41082164328657, 104.77755511022045, 105.1442885771543, 105.51102204408818, 105.87775551102204, 106.24448897795591, 106.61122244488978, 106.97795591182364, 107.34468937875752, 107.71142284569137, 108.07815631262525, 108.44488977955912, 108.81162324649299, 109.17835671342685, 109.54509018036072, 109.91182364729458, 110.27855711422846, 110.64529058116233, 111.0120240480962, 111.37875751503006, 111.74549098196393, 112.11222444889779, 112.47895791583166, 112.84569138276554, 113.2124248496994, 113.57915831663327, 113.94589178356713, 114.312625250501, 114.67935871743487, 115.04609218436873, 115.41282565130261, 115.77955911823648, 116.14629258517034, 116.51302605210421, 116.87975951903807, 117.24649298597194, 117.6132264529058, 117.97995991983969, 118.34669338677355, 118.71342685370742, 119.08016032064128, 119.44689378757515, 119.81362725450902, 120.18036072144288, 120.54709418837675, 120.91382765531063, 121.28056112224449, 121.64729458917836, 122.01402805611222, 122.38076152304609, 122.74749498997996, 123.11422845691382, 123.4809619238477, 123.84769539078157, 124.21442885771543, 124.5811623246493, 124.94789579158316, 125.31462925851703, 125.6813627254509, 126.04809619238478, 126.41482965931864, 126.78156312625251, 127.14829659318637, 127.51503006012024, 127.8817635270541, 128.24849699398797, 128.61523046092185, 128.9819639278557, 129.34869739478958, 129.71543086172346, 130.0821643286573, 130.44889779559117, 130.81563126252505, 131.18236472945893, 131.54909819639278, 131.91583166332666, 132.28256513026054, 132.6492985971944, 133.01603206412824, 133.38276553106212, 133.749498997996, 134.11623246492985, 134.48296593186373, 134.8496993987976, 135.21643286573146, 135.58316633266531, 135.9498997995992, 136.31663326653307, 136.68336673346693, 137.0501002004008, 137.41683366733469, 137.78356713426854, 138.1503006012024, 138.51703406813627, 138.88376753507015, 139.250501002004, 139.61723446893788, 139.98396793587176, 140.3507014028056, 140.71743486973946, 141.08416833667334, 141.45090180360722, 141.81763527054107, 142.18436873747495, 142.55110220440883, 142.9178356713427, 143.28456913827654, 143.65130260521042, 144.0180360721443, 144.38476953907815, 144.75150300601203, 145.1182364729459, 145.48496993987976, 145.8517034068136, 146.2184368737475, 146.58517034068137, 146.95190380761522, 147.3186372745491, 147.68537074148298, 148.05210420841684, 148.4188376753507, 148.78557114228457, 149.15230460921845, 149.5190380761523, 149.88577154308618, 150.25250501002006, 150.6192384769539, 150.98597194388776, 151.35270541082164, 151.71943887775552, 152.08617234468937, 152.45290581162325, 152.81963927855713, 153.18637274549098, 153.55310621242484, 153.91983967935872, 154.2865731462926, 154.65330661322645, 155.0200400801603, 155.3867735470942, 155.75350701402806, 156.1202404809619, 156.4869739478958, 156.85370741482967, 157.22044088176352, 157.58717434869737, 157.95390781563128, 158.32064128256513, 158.68737474949899, 159.05410821643287, 159.42084168336675, 159.7875751503006, 160.15430861723445, 160.52104208416836, 160.8877755511022, 161.25450901803606, 161.62124248496994, 161.98797595190382, 162.35470941883767, 162.72144288577152, 163.08817635270543, 163.45490981963928, 163.82164328657313, 164.18837675350701, 164.5551102204409, 164.92184368737475, 165.2885771543086, 165.65531062124248, 166.02204408817636, 166.3887775551102, 166.7555110220441, 167.12224448897797, 167.48897795591182, 167.85571142284567, 168.22244488977955, 168.58917835671343, 168.95591182364728, 169.32264529058116, 169.68937875751504, 170.0561122244489, 170.42284569138275, 170.78957915831663, 171.1563126252505, 171.52304609218436, 171.88977955911824, 172.25651302605212, 172.62324649298597, 172.98997995991982, 173.3567134268537, 173.72344689378758, 174.09018036072143, 174.4569138276553, 174.82364729458916, 175.19038076152304, 175.55711422845692, 175.92384769539078, 176.29058116232466, 176.6573146292585, 177.0240480961924, 177.39078156312624, 177.75751503006012, 178.124248496994, 178.49098196392785, 178.85771543086173, 179.22444889779558, 179.59118236472946, 179.9579158316633, 180.3246492985972, 180.69138276553107, 181.05811623246493, 181.4248496993988, 181.79158316633266, 182.15831663326654, 182.5250501002004, 182.89178356713427, 183.25851703406815, 183.625250501002, 183.99198396793588, 184.35871743486973, 184.7254509018036, 185.09218436873746, 185.45891783567134, 185.82565130260522, 186.19238476953907, 186.55911823647295, 186.9258517034068, 187.2925851703407, 187.65931863727454, 188.02605210420842, 188.3927855711423, 188.75951903807615, 189.12625250501003, 189.49298597194388, 189.85971943887776, 190.2264529058116, 190.5931863727455, 190.95991983967937, 191.32665330661322, 191.6933867735471, 192.06012024048096, 192.42685370741484, 192.7935871743487, 193.16032064128257, 193.52705410821645, 193.8937875751503, 194.26052104208418, 194.62725450901803, 194.9939879759519, 195.36072144288576, 195.72745490981964, 196.0941883767535, 196.46092184368737, 196.82765531062125, 197.1943887775551, 197.56112224448898, 197.92785571142284, 198.29458917835672, 198.66132264529057, 199.02805611222445, 199.39478957915833, 199.76152304609218, 200.12825651302606, 200.4949899799599, 200.8617234468938, 201.22845691382764, 201.59519038076152, 201.9619238476954, 202.32865731462925, 202.69539078156313, 203.06212424849699, 203.42885771543087, 203.79559118236472, 204.1623246492986, 204.52905811623248, 204.89579158316633, 205.2625250501002, 205.62925851703406, 205.99599198396794, 206.3627254509018, 206.72945891783567, 207.09619238476955, 207.4629258517034, 207.82965931863728, 208.19639278557113, 208.56312625250501, 208.92985971943887, 209.29659318637275, 209.66332665330663, 210.03006012024048, 210.39679358717436, 210.7635270541082, 211.1302605210421, 211.49699398797594, 211.86372745490982, 212.2304609218437, 212.59719438877755, 212.96392785571143, 213.33066132264528, 213.69739478957916, 214.06412825651302, 214.4308617234469, 214.79759519038078, 215.16432865731463, 215.5310621242485, 215.89779559118236, 216.26452905811624, 216.6312625250501, 216.99799599198397, 217.36472945891782, 217.7314629258517, 218.09819639278558, 218.46492985971943, 218.8316633266533, 219.19839679358716, 219.56513026052104, 219.9318637274549, 220.29859719438878, 220.66533066132266, 221.0320641282565, 221.3987975951904, 221.76553106212424, 222.13226452905812, 222.49899799599197, 222.86573146292585, 223.23246492985973, 223.59919839679358, 223.96593186372746, 224.3326653306613, 224.6993987975952, 225.06613226452905, 225.43286573146293, 225.7995991983968, 226.16633266533066, 226.53306613226454, 226.8997995991984, 227.26653306613227, 227.63326653306612, 228.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.x = d3.scale.linear()
+              .domain([45.0, 228.0])
+              .range([0, 450 - 50]);
+
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.legend = L.control({position: 'topright'});
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.legend.addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.xAxis = d3.svg.axis()
+        .scale(color_map_f70862382afa20dff6e9ef8e2739b5a0.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([45.0, 67.875, 90.75, 113.625, 136.5, 159.375, 182.25, 205.125, 228.0]);
+
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.g = color_map_f70862382afa20dff6e9ef8e2739b5a0.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.g.selectAll("rect")
+        .data(color_map_f70862382afa20dff6e9ef8e2739b5a0.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_f70862382afa20dff6e9ef8e2739b5a0.x(color_map_f70862382afa20dff6e9ef8e2739b5a0.color.domain()[i - 1]) : color_map_f70862382afa20dff6e9ef8e2739b5a0.x.range()[0],
+            x1: i < color_map_f70862382afa20dff6e9ef8e2739b5a0.color.domain().length ? color_map_f70862382afa20dff6e9ef8e2739b5a0.x(color_map_f70862382afa20dff6e9ef8e2739b5a0.color.domain()[i]) : color_map_f70862382afa20dff6e9ef8e2739b5a0.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_f70862382afa20dff6e9ef8e2739b5a0.g.call(color_map_f70862382afa20dff6e9ef8e2739b5a0.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista JULIO CESAR MU\u00d1OZ MORALES por local");
+    
+            var circle_marker_1bc7e1697f720d8db3c091a748aba51d = L.circleMarker(
+                [-33.5329, -70.6518],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_15a81fc24019e026ad87b0e5dfd66bb9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4b0bac4cfeff69878cc829e68ddd9a5e = $(`<div id="html_4b0bac4cfeff69878cc829e68ddd9a5e" style="width: 100.0%; height: 100.0%;"><b>CENTRO COMUNITARIO SERGIO SILVA ACUÑA</b><br>VICTORIA 8300<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>45</b></div>`)[0];
+                popup_15a81fc24019e026ad87b0e5dfd66bb9.setContent(html_4b0bac4cfeff69878cc829e68ddd9a5e);
+            
+        
+
+        circle_marker_1bc7e1697f720d8db3c091a748aba51d.bindPopup(popup_15a81fc24019e026ad87b0e5dfd66bb9)
+        ;
+
+        
+    
+    
+            circle_marker_1bc7e1697f720d8db3c091a748aba51d.bindTooltip(
+                `<div>
+                     CENTRO COMUNITARIO SERGIO SILVA ACUÑA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e4d304c33e072fe8599ecb3a2b7f758 = L.marker(
+                [-33.5329, -70.6518],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_991500ac8c086f036ab588b48fb3debd = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e45\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2e4d304c33e072fe8599ecb3a2b7f758.setIcon(div_icon_991500ac8c086f036ab588b48fb3debd);
+        
+    
+            var circle_marker_3eb152be97b54152d1863e03585dc692 = L.circleMarker(
+                [-33.5273, -70.6554],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec45fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.437158469945356, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_5e2debadbfc0954cdc89ca8fff212082 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2fbb162d367911f339a7440bdb8cf07b = $(`<div id="html_2fbb162d367911f339a7440bdb8cf07b" style="width: 100.0%; height: 100.0%;"><b>centro de emprendimiento</b><br>EL PARRON 548<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>103</b></div>`)[0];
+                popup_5e2debadbfc0954cdc89ca8fff212082.setContent(html_2fbb162d367911f339a7440bdb8cf07b);
+            
+        
+
+        circle_marker_3eb152be97b54152d1863e03585dc692.bindPopup(popup_5e2debadbfc0954cdc89ca8fff212082)
+        ;
+
+        
+    
+    
+            circle_marker_3eb152be97b54152d1863e03585dc692.bindTooltip(
+                `<div>
+                     centro de emprendimiento
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6e93234823f3cfba044b61e93a47a26a = L.marker(
+                [-33.5273, -70.6554],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_28a810f753a8de4578bb24ffdfef5378 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e103\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6e93234823f3cfba044b61e93a47a26a.setIcon(div_icon_28a810f753a8de4578bb24ffdfef5378);
+        
+    
+            var circle_marker_bc8d3f54898e1ffc1a58842ec0314447 = L.circleMarker(
+                [-33.521, -70.6569],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f23824ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.486338797814206, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_8a6f028a0ab6b30e9ae8aa8334a8831e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ef4c76ca405b238fa125da3aa2d521c2 = $(`<div id="html_ef4c76ca405b238fa125da3aa2d521c2" style="width: 100.0%; height: 100.0%;"><b>centro educacional santa clara</b><br>GENERAL FREIRE 236<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>169</b></div>`)[0];
+                popup_8a6f028a0ab6b30e9ae8aa8334a8831e.setContent(html_ef4c76ca405b238fa125da3aa2d521c2);
+            
+        
+
+        circle_marker_bc8d3f54898e1ffc1a58842ec0314447.bindPopup(popup_8a6f028a0ab6b30e9ae8aa8334a8831e)
+        ;
+
+        
+    
+    
+            circle_marker_bc8d3f54898e1ffc1a58842ec0314447.bindTooltip(
+                `<div>
+                     centro educacional santa clara
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5d6416b31eb34f33104f7d960c7ffe8c = L.marker(
+                [-33.521, -70.6569],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_de6d3f7606b2f620796daa98b81bb11a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e169\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5d6416b31eb34f33104f7d960c7ffe8c.setIcon(div_icon_de6d3f7606b2f620796daa98b81bb11a);
+        
+    
+            var circle_marker_703e520ea04cc66d56e2a705bcb56bc2 = L.circleMarker(
+                [-33.5405, -70.6774],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec661ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.360655737704917, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_229d8b01ccfb93b8252e47625a23e344 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1c89310363e95ffffb32a51df14f8608 = $(`<div id="html_1c89310363e95ffffb32a51df14f8608" style="width: 100.0%; height: 100.0%;"><b>colegio antu</b><br>TRINIDAD RAMIREZ 750<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>102</b></div>`)[0];
+                popup_229d8b01ccfb93b8252e47625a23e344.setContent(html_1c89310363e95ffffb32a51df14f8608);
+            
+        
+
+        circle_marker_703e520ea04cc66d56e2a705bcb56bc2.bindPopup(popup_229d8b01ccfb93b8252e47625a23e344)
+        ;
+
+        
+    
+    
+            circle_marker_703e520ea04cc66d56e2a705bcb56bc2.bindTooltip(
+                `<div>
+                     colegio antu
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4535f5bf31d5cf65b56d4b4578a0f399 = L.marker(
+                [-33.5405, -70.6774],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_25867c4b00e4a0b8d99601e10c9d5b5c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e102\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4535f5bf31d5cf65b56d4b4578a0f399.setIcon(div_icon_25867c4b00e4a0b8d99601e10c9d5b5c);
+        
+    
+            var circle_marker_b2d41b39785d545a090b347ae7671047 = L.circleMarker(
+                [-33.5185, -70.668],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_4b72f0c041c0b267385b52973b31ded2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_11ed5bf2c468065f9f5dd9525ad71b4e = $(`<div id="html_11ed5bf2c468065f9f5dd9525ad71b4e" style="width: 100.0%; height: 100.0%;"><b>colegio esperanza joven l1</b><br>COLON 6918<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>228</b></div>`)[0];
+                popup_4b72f0c041c0b267385b52973b31ded2.setContent(html_11ed5bf2c468065f9f5dd9525ad71b4e);
+            
+        
+
+        circle_marker_b2d41b39785d545a090b347ae7671047.bindPopup(popup_4b72f0c041c0b267385b52973b31ded2)
+        ;
+
+        
+    
+    
+            circle_marker_b2d41b39785d545a090b347ae7671047.bindTooltip(
+                `<div>
+                     colegio esperanza joven l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1713a715bd7c4a22159392f6a5ddb1cd = L.marker(
+                [-33.5185, -70.668],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_f588295b8cc540c7716214e1223adc82 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e228\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1713a715bd7c4a22159392f6a5ddb1cd.setIcon(div_icon_f588295b8cc540c7716214e1223adc82);
+        
+    
+            var circle_marker_446d192d5e560adce165deac81edde58 = L.circleMarker(
+                [-33.5266, -70.6738],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe691ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.371584699453551, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_6ff090a15471afc5a0e20dbf20f95a8d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_591babfcd666959fe2f076853a9e0e16 = $(`<div id="html_591babfcd666959fe2f076853a9e0e16" style="width: 100.0%; height: 100.0%;"><b>colegio naciones unidas</b><br>ISABEL LA CATOLICA 960<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>76</b></div>`)[0];
+                popup_6ff090a15471afc5a0e20dbf20f95a8d.setContent(html_591babfcd666959fe2f076853a9e0e16);
+            
+        
+
+        circle_marker_446d192d5e560adce165deac81edde58.bindPopup(popup_6ff090a15471afc5a0e20dbf20f95a8d)
+        ;
+
+        
+    
+    
+            circle_marker_446d192d5e560adce165deac81edde58.bindTooltip(
+                `<div>
+                     colegio naciones unidas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_368a59884321ab102c25194dc7591c54 = L.marker(
+                [-33.5266, -70.6738],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_1b513ce9d983b70a07739b7a7dabf0a0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e76\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_368a59884321ab102c25194dc7591c54.setIcon(div_icon_1b513ce9d983b70a07739b7a7dabf0a0);
+        
+    
+            var circle_marker_a517bda1b2b73cf7d66647e9bbf4dd55 = L.circleMarker(
+                [-33.5274, -70.6547],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecf6aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.978142076502731, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_0d38256bdc24d2790b6d793aaf82a94c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a0b7c2d4999ad2c4528e219a70efc916 = $(`<div id="html_a0b7c2d4999ad2c4528e219a70efc916" style="width: 100.0%; height: 100.0%;"><b>colegio palestino</b><br>AVENIDA EL PARRON 498<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>97</b></div>`)[0];
+                popup_0d38256bdc24d2790b6d793aaf82a94c.setContent(html_a0b7c2d4999ad2c4528e219a70efc916);
+            
+        
+
+        circle_marker_a517bda1b2b73cf7d66647e9bbf4dd55.bindPopup(popup_0d38256bdc24d2790b6d793aaf82a94c)
+        ;
+
+        
+    
+    
+            circle_marker_a517bda1b2b73cf7d66647e9bbf4dd55.bindTooltip(
+                `<div>
+                     colegio palestino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b04766d738256bd23e64efb84e679355 = L.marker(
+                [-33.5274, -70.6547],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_cf36db6328cfd69a6a54dee0bdacaa25 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e97\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b04766d738256bd23e64efb84e679355.setIcon(div_icon_cf36db6328cfd69a6a54dee0bdacaa25);
+        
+    
+            var circle_marker_21121e13222c4d59e762f5a47f0b814c = L.circleMarker(
+                [-33.5346, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8138ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.344262295081968, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_dca796ab8e366b2ae8614b1db11ec244 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7afea3c531ae518bcdacb4c53df13614 = $(`<div id="html_7afea3c531ae518bcdacb4c53df13614" style="width: 100.0%; height: 100.0%;"><b>escuela oscar encalada yavanovich</b><br>PEDRO AGUIRRE CERDA 184<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>141</b></div>`)[0];
+                popup_dca796ab8e366b2ae8614b1db11ec244.setContent(html_7afea3c531ae518bcdacb4c53df13614);
+            
+        
+
+        circle_marker_21121e13222c4d59e762f5a47f0b814c.bindPopup(popup_dca796ab8e366b2ae8614b1db11ec244)
+        ;
+
+        
+    
+    
+            circle_marker_21121e13222c4d59e762f5a47f0b814c.bindTooltip(
+                `<div>
+                     escuela oscar encalada yavanovich
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dc24af85abeb53bc5d727ab32fe21fbf = L.marker(
+                [-33.5346, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_440f4b8e8900eea8ceda9c6d2e17ebbe = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e141\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dc24af85abeb53bc5d727ab32fe21fbf.setIcon(div_icon_440f4b8e8900eea8ceda9c6d2e17ebbe);
+        
+    
+            var circle_marker_86d6a037d296eb5a42c8aec345e68824 = L.circleMarker(
+                [-33.5413, -70.66],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#930026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.46448087431694, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_4c0749c9bd36a724c3c3b9e247288460 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_87b18b1d59563d7c84449c644619d97a = $(`<div id="html_87b18b1d59563d7c84449c644619d97a" style="width: 100.0%; height: 100.0%;"><b>liceo politecnico ciencia y tecnologia l1</b><br>AVENIDA GOYCOLEA 469<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>221</b></div>`)[0];
+                popup_4c0749c9bd36a724c3c3b9e247288460.setContent(html_87b18b1d59563d7c84449c644619d97a);
+            
+        
+
+        circle_marker_86d6a037d296eb5a42c8aec345e68824.bindPopup(popup_4c0749c9bd36a724c3c3b9e247288460)
+        ;
+
+        
+    
+    
+            circle_marker_86d6a037d296eb5a42c8aec345e68824.bindTooltip(
+                `<div>
+                     liceo politecnico ciencia y tecnologia l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ced69586513d2b0960461c32752d0a8b = L.marker(
+                [-33.5413, -70.66],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_4454f0f6505902543aa4ebdbb20ad720 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e221\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ced69586513d2b0960461c32752d0a8b.setIcon(div_icon_4454f0f6505902543aa4ebdbb20ad720);
+        
+    
+            var circle_marker_5b235f629a05cefcd5168f21818627cb = L.circleMarker(
+                [-33.546, -70.6585],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe38aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.6775956284153, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_94c3f54f1820920f9828ce22548dd3ec = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c6a2aca5d3e1d37480a22bca4bdee56e = $(`<div id="html_c6a2aca5d3e1d37480a22bca4bdee56e" style="width: 100.0%; height: 100.0%;"><b>liceo polivalente olof palme </b><br>JULIO COVARRUBIAS 9370<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>80</b></div>`)[0];
+                popup_94c3f54f1820920f9828ce22548dd3ec.setContent(html_c6a2aca5d3e1d37480a22bca4bdee56e);
+            
+        
+
+        circle_marker_5b235f629a05cefcd5168f21818627cb.bindPopup(popup_94c3f54f1820920f9828ce22548dd3ec)
+        ;
+
+        
+    
+    
+            circle_marker_5b235f629a05cefcd5168f21818627cb.bindTooltip(
+                `<div>
+                     liceo polivalente olof palme 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c13b9f2f445db2a42da2aaf9ed3ea870 = L.marker(
+                [-33.546, -70.6585],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_79149e263797a3c8d301c830063ab3fe = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e80\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c13b9f2f445db2a42da2aaf9ed3ea870.setIcon(div_icon_79149e263797a3c8d301c830063ab3fe);
+        
+    
+            var circle_marker_22762888541fd278c4b12a9f8a00a127 = L.circleMarker(
+                [-33.5154, -70.656],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9b42ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.349726775956285, "stroke": false, "weight": 3}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+        var popup_f0cc7bc5b45299359d8dcf3c6360bf8d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2984d7526dab9af3d261ea4fa5efdbeb = $(`<div id="html_2984d7526dab9af3d261ea4fa5efdbeb" style="width: 100.0%; height: 100.0%;"><b>liceo portal de la cisterna</b><br>ESMERALDA 6305<br>Votos Lista JULIO CESAR MUÑOZ MORALES: <b>128</b></div>`)[0];
+                popup_f0cc7bc5b45299359d8dcf3c6360bf8d.setContent(html_2984d7526dab9af3d261ea4fa5efdbeb);
+            
+        
+
+        circle_marker_22762888541fd278c4b12a9f8a00a127.bindPopup(popup_f0cc7bc5b45299359d8dcf3c6360bf8d)
+        ;
+
+        
+    
+    
+            circle_marker_22762888541fd278c4b12a9f8a00a127.bindTooltip(
+                `<div>
+                     liceo portal de la cisterna
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_29c3850533f0a15ed640ca15bf511f97 = L.marker(
+                [-33.5154, -70.656],
+                {"zIndexOffset": 9999}
+            ).addTo(map_266396e77c3cf09ad4db4509d5e5a39f);
+        
+    
+            var div_icon_2af29ef1ee610d74e3c1eb71f7b32ae2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e128\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_29c3850533f0a15ed640ca15bf511f97.setIcon(div_icon_2af29ef1ee610d74e3c1eb71f7b32ae2);
+        
+    
+            map_266396e77c3cf09ad4db4509d5e5a39f.fitBounds(
+                [[-33.5329, -70.6518], [-33.5273, -70.6554], [-33.521, -70.6569], [-33.5405, -70.6774], [-33.5185, -70.668], [-33.5266, -70.6738], [-33.5274, -70.6547], [-33.5346, -70.6665], [-33.5413, -70.66], [-33.546, -70.6585], [-33.5154, -70.656]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

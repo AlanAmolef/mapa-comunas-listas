@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_37165389a703af4fe9e8d863ebd41c5a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_37165389a703af4fe9e8d863ebd41c5a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_37165389a703af4fe9e8d863ebd41c5a = L.map(
+                "map_37165389a703af4fe9e8d863ebd41c5a",
+                {
+                    center: [-33.53013636363636, -70.66172727272728],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b25bc709f008b0bce9e7c16828dec387 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_b25bc709f008b0bce9e7c16828dec387.addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+    var color_map_158e8581798411760fce13af4dfd686e = {};
+
+    
+    color_map_158e8581798411760fce13af4dfd686e.color = d3.scale.threshold()
+              .domain([75.0, 75.687374749499, 76.374749498998, 77.062124248497, 77.74949899799599, 78.43687374749499, 79.12424849699399, 79.81162324649299, 80.49899799599199, 81.18637274549098, 81.87374749498998, 82.56112224448898, 83.24849699398797, 83.93587174348697, 84.62324649298597, 85.31062124248497, 85.99799599198397, 86.68537074148297, 87.37274549098197, 88.06012024048096, 88.74749498997996, 89.43486973947896, 90.12224448897796, 90.80961923847696, 91.49699398797596, 92.18436873747495, 92.87174348697394, 93.55911823647294, 94.24649298597194, 94.93386773547094, 95.62124248496994, 96.30861723446894, 96.99599198396794, 97.68336673346693, 98.37074148296594, 99.05811623246493, 99.74549098196393, 100.43286573146293, 101.12024048096193, 101.80761523046093, 102.49498997995993, 103.18236472945893, 103.86973947895791, 104.55711422845691, 105.24448897795591, 105.93186372745491, 106.61923847695391, 107.3066132264529, 107.99398797595191, 108.6813627254509, 109.36873747494991, 110.0561122244489, 110.7434869739479, 111.4308617234469, 112.11823647294588, 112.8056112224449, 113.49298597194388, 114.1803607214429, 114.86773547094188, 115.55511022044088, 116.24248496993988, 116.92985971943888, 117.61723446893788, 118.30460921843687, 118.99198396793588, 119.67935871743487, 120.36673346693387, 121.05410821643287, 121.74148296593187, 122.42885771543087, 123.11623246492985, 123.80360721442887, 124.49098196392785, 125.17835671342685, 125.86573146292585, 126.55310621242485, 127.24048096192385, 127.92785571142284, 128.61523046092185, 129.30260521042084, 129.98997995991985, 130.67735470941884, 131.36472945891785, 132.05210420841684, 132.73947895791582, 133.42685370741484, 134.11422845691382, 134.80160320641284, 135.48897795591182, 136.1763527054108, 136.86372745490982, 137.55110220440883, 138.23847695390782, 138.9258517034068, 139.6132264529058, 140.3006012024048, 140.98797595190382, 141.6753507014028, 142.3627254509018, 143.0501002004008, 143.73747494989982, 144.4248496993988, 145.1122244488978, 145.79959919839678, 146.4869739478958, 147.1743486973948, 147.8617234468938, 148.54909819639278, 149.23647294589176, 149.92384769539078, 150.6112224448898, 151.29859719438878, 151.98597194388776, 152.67334669338678, 153.3607214428858, 154.04809619238478, 154.73547094188376, 155.42284569138275, 156.11022044088176, 156.79759519038078, 157.48496993987976, 158.17234468937875, 158.85971943887776, 159.54709418837675, 160.23446893787576, 160.92184368737475, 161.60921843687373, 162.29659318637275, 162.98396793587176, 163.67134268537075, 164.35871743486973, 165.04609218436872, 165.73346693386773, 166.42084168336675, 167.10821643286573, 167.79559118236472, 168.48296593186373, 169.17034068136275, 169.85771543086173, 170.54509018036072, 171.2324649298597, 171.91983967935872, 172.60721442885773, 173.29458917835672, 173.9819639278557, 174.66933867735472, 175.3567134268537, 176.04408817635272, 176.7314629258517, 177.4188376753507, 178.1062124248497, 178.79358717434872, 179.4809619238477, 180.1683366733467, 180.85571142284567, 181.5430861723447, 182.2304609218437, 182.9178356713427, 183.60521042084167, 184.2925851703407, 184.9799599198397, 185.6673346693387, 186.35470941883767, 187.04208416833666, 187.72945891783567, 188.41683366733469, 189.10420841683367, 189.79158316633266, 190.47895791583164, 191.16633266533066, 191.85370741482967, 192.54108216432866, 193.22845691382764, 193.91583166332666, 194.60320641282567, 195.29058116232466, 195.97795591182364, 196.66533066132263, 197.35270541082164, 198.04008016032066, 198.72745490981964, 199.41482965931863, 200.10220440881764, 200.78957915831663, 201.47695390781564, 202.16432865731463, 202.8517034068136, 203.53907815631263, 204.2264529058116, 204.91382765531063, 205.6012024048096, 206.28857715430863, 206.9759519038076, 207.66332665330663, 208.3507014028056, 209.0380761523046, 209.7254509018036, 210.4128256513026, 211.1002004008016, 211.7875751503006, 212.4749498997996, 213.1623246492986, 213.84969939879758, 214.5370741482966, 215.22444889779558, 215.9118236472946, 216.59919839679358, 217.2865731462926, 217.97394789579158, 218.66132264529057, 219.34869739478958, 220.03607214428857, 220.72344689378758, 221.41082164328657, 222.09819639278558, 222.78557114228457, 223.47294589178355, 224.16032064128257, 224.84769539078155, 225.53507014028057, 226.22244488977955, 226.90981963927857, 227.59719438877755, 228.28456913827657, 228.97194388777555, 229.65931863727454, 230.34669338677355, 231.03406813627254, 231.72144288577155, 232.40881763527054, 233.09619238476955, 233.78356713426854, 234.47094188376752, 235.15831663326654, 235.84569138276552, 236.53306613226454, 237.22044088176352, 237.90781563126254, 238.59519038076152, 239.2825651302605, 239.96993987975952, 240.6573146292585, 241.34468937875752, 242.0320641282565, 242.71943887775552, 243.4068136272545, 244.0941883767535, 244.7815631262525, 245.4689378757515, 246.1563126252505, 246.8436873747495, 247.5310621242485, 248.2184368737475, 248.9058116232465, 249.5931863727455, 250.28056112224448, 250.9679358717435, 251.65531062124248, 252.3426853707415, 253.03006012024048, 253.7174348697395, 254.40480961923848, 255.09218436873746, 255.77955911823648, 256.46693386773546, 257.1543086172345, 257.8416833667335, 258.5290581162325, 259.21643286573146, 259.90380761523045, 260.59118236472943, 261.2785571142284, 261.96593186372746, 262.65330661322645, 263.3406813627255, 264.0280561122245, 264.71543086172346, 265.40280561122245, 266.09018036072143, 266.7775551102204, 267.4649298597194, 268.15230460921845, 268.83967935871743, 269.5270541082165, 270.21442885771546, 270.90180360721445, 271.58917835671343, 272.2765531062124, 272.9639278557114, 273.6513026052104, 274.33867735470943, 275.0260521042084, 275.7134268537074, 276.40080160320645, 277.08817635270543, 277.7755511022044, 278.4629258517034, 279.1503006012024, 279.8376753507014, 280.52505010020036, 281.2124248496994, 281.8997995991984, 282.58717434869743, 283.2745490981964, 283.9619238476954, 284.6492985971944, 285.3366733466934, 286.02404809619236, 286.71142284569135, 287.3987975951904, 288.0861723446894, 288.7735470941884, 289.4609218436874, 290.1482965931864, 290.8356713426854, 291.52304609218436, 292.21042084168334, 292.89779559118233, 293.5851703406814, 294.27254509018036, 294.9599198396794, 295.6472945891784, 296.3346693386774, 297.02204408817636, 297.70941883767534, 298.39679358717433, 299.0841683366733, 299.77154308617236, 300.45891783567134, 301.14629258517033, 301.83366733466937, 302.52104208416836, 303.20841683366734, 303.89579158316633, 304.5831663326653, 305.2705410821643, 305.9579158316633, 306.6452905811623, 307.3326653306613, 308.02004008016036, 308.70741482965934, 309.3947895791583, 310.0821643286573, 310.7695390781563, 311.4569138276553, 312.14428857715427, 312.8316633266533, 313.5190380761523, 314.20641282565134, 314.8937875751503, 315.5811623246493, 316.2685370741483, 316.9559118236473, 317.64328657314627, 318.33066132264526, 319.0180360721443, 319.7054108216433, 320.3927855711423, 321.0801603206413, 321.7675350701403, 322.4549098196393, 323.14228456913827, 323.82965931863725, 324.51703406813624, 325.2044088176353, 325.89178356713427, 326.57915831663325, 327.2665330661323, 327.9539078156313, 328.64128256513027, 329.32865731462925, 330.01603206412824, 330.7034068136272, 331.39078156312627, 332.07815631262525, 332.76553106212424, 333.4529058116232, 334.14028056112227, 334.82765531062125, 335.51503006012024, 336.2024048096192, 336.8897795591182, 337.57715430861725, 338.26452905811624, 338.9519038076152, 339.6392785571142, 340.32665330661325, 341.01402805611224, 341.7014028056112, 342.3887775551102, 343.0761523046092, 343.76352705410824, 344.4509018036072, 345.1382765531062, 345.8256513026052, 346.5130260521042, 347.2004008016032, 347.8877755511022, 348.5751503006012, 349.2625250501002, 349.9498997995992, 350.6372745490982, 351.3246492985972, 352.0120240480962, 352.69939879759517, 353.3867735470942, 354.0741482965932, 354.7615230460922, 355.44889779559117, 356.1362725450902, 356.8236472945892, 357.5110220440882, 358.19839679358716, 358.88577154308615, 359.5731462925852, 360.2605210420842, 360.94789579158316, 361.63527054108215, 362.32264529058114, 363.0100200400802, 363.69739478957916, 364.38476953907815, 365.07214428857714, 365.7595190380762, 366.44689378757516, 367.13426853707415, 367.82164328657313, 368.5090180360721, 369.19639278557116, 369.88376753507015, 370.57114228456913, 371.2585170340681, 371.9458917835671, 372.63326653306615, 373.32064128256513, 374.0080160320641, 374.6953907815631, 375.38276553106215, 376.07014028056113, 376.7575150300601, 377.4448897795591, 378.1322645290581, 378.81963927855713, 379.5070140280561, 380.1943887775551, 380.8817635270541, 381.56913827655313, 382.2565130260521, 382.9438877755511, 383.6312625250501, 384.3186372745491, 385.0060120240481, 385.6933867735471, 386.3807615230461, 387.0681362725451, 387.75551102204406, 388.4428857715431, 389.1302605210421, 389.8176352705411, 390.50501002004006, 391.1923847695391, 391.8797595190381, 392.5671342685371, 393.25450901803606, 393.94188376753505, 394.6292585170341, 395.3166332665331, 396.00400801603206, 396.69138276553105, 397.3787575150301, 398.0661322645291, 398.75350701402806, 399.44088176352705, 400.12825651302603, 400.8156312625251, 401.50300601202406, 402.19038076152304, 402.87775551102203, 403.565130260521, 404.25250501002006, 404.93987975951904, 405.62725450901803, 406.314629258517, 407.00200400801606, 407.68937875751504, 408.37675350701403, 409.064128256513, 409.751503006012, 410.43887775551104, 411.12625250501003, 411.813627254509, 412.501002004008, 413.188376753507, 413.87575150300603, 414.563126252505, 415.250501002004, 415.937875751503, 416.62525050100203, 417.312625250501, 418.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_158e8581798411760fce13af4dfd686e.x = d3.scale.linear()
+              .domain([75.0, 418.0])
+              .range([0, 450 - 50]);
+
+    color_map_158e8581798411760fce13af4dfd686e.legend = L.control({position: 'topright'});
+    color_map_158e8581798411760fce13af4dfd686e.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_158e8581798411760fce13af4dfd686e.legend.addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+
+    color_map_158e8581798411760fce13af4dfd686e.xAxis = d3.svg.axis()
+        .scale(color_map_158e8581798411760fce13af4dfd686e.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([75.0, 117.875, 160.75, 203.625, 246.5, 289.375, 332.25, 375.125, 418.0]);
+
+    color_map_158e8581798411760fce13af4dfd686e.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_158e8581798411760fce13af4dfd686e.g = color_map_158e8581798411760fce13af4dfd686e.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_158e8581798411760fce13af4dfd686e.g.selectAll("rect")
+        .data(color_map_158e8581798411760fce13af4dfd686e.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_158e8581798411760fce13af4dfd686e.x(color_map_158e8581798411760fce13af4dfd686e.color.domain()[i - 1]) : color_map_158e8581798411760fce13af4dfd686e.x.range()[0],
+            x1: i < color_map_158e8581798411760fce13af4dfd686e.color.domain().length ? color_map_158e8581798411760fce13af4dfd686e.x(color_map_158e8581798411760fce13af4dfd686e.color.domain()[i]) : color_map_158e8581798411760fce13af4dfd686e.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_158e8581798411760fce13af4dfd686e.g.call(color_map_158e8581798411760fce13af4dfd686e.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista MARITZA SALAS VEGA por local");
+    
+            var circle_marker_21ad32a7b74aa2fda267b85b9087a117 = L.circleMarker(
+                [-33.5329, -70.6518],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_59dcc5c9b2e25604ef391c80a1b541d9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c6f8fd26214650960b537f69e44c8ff4 = $(`<div id="html_c6f8fd26214650960b537f69e44c8ff4" style="width: 100.0%; height: 100.0%;"><b>CENTRO COMUNITARIO SERGIO SILVA ACUÑA</b><br>VICTORIA 8300<br>Votos Lista MARITZA SALAS VEGA: <b>75</b></div>`)[0];
+                popup_59dcc5c9b2e25604ef391c80a1b541d9.setContent(html_c6f8fd26214650960b537f69e44c8ff4);
+            
+        
+
+        circle_marker_21ad32a7b74aa2fda267b85b9087a117.bindPopup(popup_59dcc5c9b2e25604ef391c80a1b541d9)
+        ;
+
+        
+    
+    
+            circle_marker_21ad32a7b74aa2fda267b85b9087a117.bindTooltip(
+                `<div>
+                     CENTRO COMUNITARIO SERGIO SILVA ACUÑA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9008542d860a1842aba68087b132a334 = L.marker(
+                [-33.5329, -70.6518],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_1c884d18cda6f226d85dd49dc96afbea = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e75\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9008542d860a1842aba68087b132a334.setIcon(div_icon_1c884d18cda6f226d85dd49dc96afbea);
+        
+    
+            var circle_marker_fd6f3617d46a1f6ffb3d108d6b9302a4 = L.circleMarker(
+                [-33.5273, -70.6554],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.53061224489796, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_f7784d72fd3953b5569a5f2109eafef1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8ee98a1fefbbc5543bd0f2785ff15012 = $(`<div id="html_8ee98a1fefbbc5543bd0f2785ff15012" style="width: 100.0%; height: 100.0%;"><b>centro de emprendimiento</b><br>EL PARRON 548<br>Votos Lista MARITZA SALAS VEGA: <b>137</b></div>`)[0];
+                popup_f7784d72fd3953b5569a5f2109eafef1.setContent(html_8ee98a1fefbbc5543bd0f2785ff15012);
+            
+        
+
+        circle_marker_fd6f3617d46a1f6ffb3d108d6b9302a4.bindPopup(popup_f7784d72fd3953b5569a5f2109eafef1)
+        ;
+
+        
+    
+    
+            circle_marker_fd6f3617d46a1f6ffb3d108d6b9302a4.bindTooltip(
+                `<div>
+                     centro de emprendimiento
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a9b959cbea5d3c0440c08484ff79992f = L.marker(
+                [-33.5273, -70.6554],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_c74c53e1360c69baf28289406479ab8a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e137\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a9b959cbea5d3c0440c08484ff79992f.setIcon(div_icon_c74c53e1360c69baf28289406479ab8a);
+        
+    
+            var circle_marker_ec607ff359f1493dac27a1367d070d14 = L.circleMarker(
+                [-33.521, -70.6569],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb24cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.26530612244898, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_96054afa92b1dfbfe2c662f81838d636 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dc11ea07a61e25df2b1778cc6168616b = $(`<div id="html_dc11ea07a61e25df2b1778cc6168616b" style="width: 100.0%; height: 100.0%;"><b>centro educacional santa clara</b><br>GENERAL FREIRE 236<br>Votos Lista MARITZA SALAS VEGA: <b>204</b></div>`)[0];
+                popup_96054afa92b1dfbfe2c662f81838d636.setContent(html_dc11ea07a61e25df2b1778cc6168616b);
+            
+        
+
+        circle_marker_ec607ff359f1493dac27a1367d070d14.bindPopup(popup_96054afa92b1dfbfe2c662f81838d636)
+        ;
+
+        
+    
+    
+            circle_marker_ec607ff359f1493dac27a1367d070d14.bindTooltip(
+                `<div>
+                     centro educacional santa clara
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1e189cc7280ec55d8b3fd6a82628fc48 = L.marker(
+                [-33.521, -70.6569],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_6a27fa708dea0b2919738dd2c77b1417 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e204\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1e189cc7280ec55d8b3fd6a82628fc48.setIcon(div_icon_6a27fa708dea0b2919738dd2c77b1417);
+        
+    
+            var circle_marker_03422cdacce577e5e260701425023032 = L.circleMarker(
+                [-33.5405, -70.6774],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed976ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.510204081632653, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_9e11571784fdea4072a20f33c5b6e997 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6a2c93c6c04f09c3bcac80c48153de50 = $(`<div id="html_6a2c93c6c04f09c3bcac80c48153de50" style="width: 100.0%; height: 100.0%;"><b>colegio antu</b><br>TRINIDAD RAMIREZ 750<br>Votos Lista MARITZA SALAS VEGA: <b>161</b></div>`)[0];
+                popup_9e11571784fdea4072a20f33c5b6e997.setContent(html_6a2c93c6c04f09c3bcac80c48153de50);
+            
+        
+
+        circle_marker_03422cdacce577e5e260701425023032.bindPopup(popup_9e11571784fdea4072a20f33c5b6e997)
+        ;
+
+        
+    
+    
+            circle_marker_03422cdacce577e5e260701425023032.bindTooltip(
+                `<div>
+                     colegio antu
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1dd0fcc426e9bb60e10e9f7b6668003a = L.marker(
+                [-33.5405, -70.6774],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_ab9d59518feaa85046020539baeee894 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e161\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1dd0fcc426e9bb60e10e9f7b6668003a.setIcon(div_icon_ab9d59518feaa85046020539baeee894);
+        
+    
+            var circle_marker_4b7aec71192f43ad490cd910c9aab6d3 = L.circleMarker(
+                [-33.5185, -70.668],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_3b4cbf542ebb8ee2bed16f854a958de3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c69afd6dccbe794217727295cb11c494 = $(`<div id="html_c69afd6dccbe794217727295cb11c494" style="width: 100.0%; height: 100.0%;"><b>colegio esperanza joven l1</b><br>COLON 6918<br>Votos Lista MARITZA SALAS VEGA: <b>418</b></div>`)[0];
+                popup_3b4cbf542ebb8ee2bed16f854a958de3.setContent(html_c69afd6dccbe794217727295cb11c494);
+            
+        
+
+        circle_marker_4b7aec71192f43ad490cd910c9aab6d3.bindPopup(popup_3b4cbf542ebb8ee2bed16f854a958de3)
+        ;
+
+        
+    
+    
+            circle_marker_4b7aec71192f43ad490cd910c9aab6d3.bindTooltip(
+                `<div>
+                     colegio esperanza joven l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d8474f73eb0b24d26998f28cd8cbfab = L.marker(
+                [-33.5185, -70.668],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_9154f4e6b924277cbf490e9dfff4e210 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e418\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0d8474f73eb0b24d26998f28cd8cbfab.setIcon(div_icon_9154f4e6b924277cbf490e9dfff4e210);
+        
+    
+            var circle_marker_cf5b9bcb48c31e865b4614001dad7f2a = L.circleMarker(
+                [-33.5266, -70.6738],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feae4aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.428571428571429, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_f5bec40830880466fd6f10a057c98caf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6051a167338041c9f070df9469e35585 = $(`<div id="html_6051a167338041c9f070df9469e35585" style="width: 100.0%; height: 100.0%;"><b>colegio naciones unidas</b><br>ISABEL LA CATOLICA 960<br>Votos Lista MARITZA SALAS VEGA: <b>208</b></div>`)[0];
+                popup_f5bec40830880466fd6f10a057c98caf.setContent(html_6051a167338041c9f070df9469e35585);
+            
+        
+
+        circle_marker_cf5b9bcb48c31e865b4614001dad7f2a.bindPopup(popup_f5bec40830880466fd6f10a057c98caf)
+        ;
+
+        
+    
+    
+            circle_marker_cf5b9bcb48c31e865b4614001dad7f2a.bindTooltip(
+                `<div>
+                     colegio naciones unidas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_44a8027552e8abc88562b15dbc499bad = L.marker(
+                [-33.5266, -70.6738],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_3d90c24dcf7e51a73aaab86998b17882 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e208\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_44a8027552e8abc88562b15dbc499bad.setIcon(div_icon_3d90c24dcf7e51a73aaab86998b17882);
+        
+    
+            var circle_marker_425822870e474221c342eddc5b74b228 = L.circleMarker(
+                [-33.5274, -70.6547],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed36fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.795918367346939, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_9334e12b48a5d0270f5da02f132b7d0b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c999ffcf4db7428b5ca6a46302703a5e = $(`<div id="html_c999ffcf4db7428b5ca6a46302703a5e" style="width: 100.0%; height: 100.0%;"><b>colegio palestino</b><br>AVENIDA EL PARRON 498<br>Votos Lista MARITZA SALAS VEGA: <b>168</b></div>`)[0];
+                popup_9334e12b48a5d0270f5da02f132b7d0b.setContent(html_c999ffcf4db7428b5ca6a46302703a5e);
+            
+        
+
+        circle_marker_425822870e474221c342eddc5b74b228.bindPopup(popup_9334e12b48a5d0270f5da02f132b7d0b)
+        ;
+
+        
+    
+    
+            circle_marker_425822870e474221c342eddc5b74b228.bindTooltip(
+                `<div>
+                     colegio palestino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1efaf34925935954796ba580aa1a6fb0 = L.marker(
+                [-33.5274, -70.6547],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_249cea270c07de555644e756f0a4dbbb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e168\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1efaf34925935954796ba580aa1a6fb0.setIcon(div_icon_249cea270c07de555644e756f0a4dbbb);
+        
+    
+            var circle_marker_7df2fbd64cb272d86c65492722359567 = L.circleMarker(
+                [-33.5346, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8c3cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.020408163265305, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_28910432dbec8055958a69301e57591d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4b7fa3341103359395aa7e6285ad0d00 = $(`<div id="html_4b7fa3341103359395aa7e6285ad0d00" style="width: 100.0%; height: 100.0%;"><b>escuela oscar encalada yavanovich</b><br>PEDRO AGUIRRE CERDA 184<br>Votos Lista MARITZA SALAS VEGA: <b>247</b></div>`)[0];
+                popup_28910432dbec8055958a69301e57591d.setContent(html_4b7fa3341103359395aa7e6285ad0d00);
+            
+        
+
+        circle_marker_7df2fbd64cb272d86c65492722359567.bindPopup(popup_28910432dbec8055958a69301e57591d)
+        ;
+
+        
+    
+    
+            circle_marker_7df2fbd64cb272d86c65492722359567.bindTooltip(
+                `<div>
+                     escuela oscar encalada yavanovich
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01380f821dc33974dd4ef4012c94ee13 = L.marker(
+                [-33.5346, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_a9aab82183131cd988469599eb4dd304 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e247\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_01380f821dc33974dd4ef4012c94ee13.setIcon(div_icon_a9aab82183131cd988469599eb4dd304);
+        
+    
+            var circle_marker_4b1b4e16faffe3cede5cb9cccd35843f = L.circleMarker(
+                [-33.5413, -70.66],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f74227ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.142857142857142, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_290eb40bf16a8e3019772f2d12d2ccff = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0398c0fd533576f093aac304778f1dcc = $(`<div id="html_0398c0fd533576f093aac304778f1dcc" style="width: 100.0%; height: 100.0%;"><b>liceo politecnico ciencia y tecnologia l1</b><br>AVENIDA GOYCOLEA 469<br>Votos Lista MARITZA SALAS VEGA: <b>299</b></div>`)[0];
+                popup_290eb40bf16a8e3019772f2d12d2ccff.setContent(html_0398c0fd533576f093aac304778f1dcc);
+            
+        
+
+        circle_marker_4b1b4e16faffe3cede5cb9cccd35843f.bindPopup(popup_290eb40bf16a8e3019772f2d12d2ccff)
+        ;
+
+        
+    
+    
+            circle_marker_4b1b4e16faffe3cede5cb9cccd35843f.bindTooltip(
+                `<div>
+                     liceo politecnico ciencia y tecnologia l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5003c0f0d2e3ce798b9d1e6ec28ed0aa = L.marker(
+                [-33.5413, -70.66],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_a85d9722bd704c6fa8959da718f86b12 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e299\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5003c0f0d2e3ce798b9d1e6ec28ed0aa.setIcon(div_icon_a85d9722bd704c6fa8959da718f86b12);
+        
+    
+            var circle_marker_e1daf2096276e2f44089b05afbe79d39 = L.circleMarker(
+                [-33.546, -70.6585],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffefa5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.551020408163264, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_c349a0b5ba88bf24831cc59d1c220568 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_22c4406fadb62e9891943439e714eab2 = $(`<div id="html_22c4406fadb62e9891943439e714eab2" style="width: 100.0%; height: 100.0%;"><b>liceo polivalente olof palme </b><br>JULIO COVARRUBIAS 9370<br>Votos Lista MARITZA SALAS VEGA: <b>113</b></div>`)[0];
+                popup_c349a0b5ba88bf24831cc59d1c220568.setContent(html_22c4406fadb62e9891943439e714eab2);
+            
+        
+
+        circle_marker_e1daf2096276e2f44089b05afbe79d39.bindPopup(popup_c349a0b5ba88bf24831cc59d1c220568)
+        ;
+
+        
+    
+    
+            circle_marker_e1daf2096276e2f44089b05afbe79d39.bindTooltip(
+                `<div>
+                     liceo polivalente olof palme 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6cbb39b8c1ddeb1b1051547d91d9ebc8 = L.marker(
+                [-33.546, -70.6585],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_983e9c26aae7c7adaa9cf8cf82f8352f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e113\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6cbb39b8c1ddeb1b1051547d91d9ebc8.setIcon(div_icon_983e9c26aae7c7adaa9cf8cf82f8352f);
+        
+    
+            var circle_marker_37c9eb5e76cded49b8f5340f7390117c = L.circleMarker(
+                [-33.5154, -70.656],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feae4aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.428571428571429, "stroke": false, "weight": 3}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+        var popup_d06c89a0f00a37d419ff80e127f19de9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3ba99bb082c1d8ba7561fea92c5a5a27 = $(`<div id="html_3ba99bb082c1d8ba7561fea92c5a5a27" style="width: 100.0%; height: 100.0%;"><b>liceo portal de la cisterna</b><br>ESMERALDA 6305<br>Votos Lista MARITZA SALAS VEGA: <b>208</b></div>`)[0];
+                popup_d06c89a0f00a37d419ff80e127f19de9.setContent(html_3ba99bb082c1d8ba7561fea92c5a5a27);
+            
+        
+
+        circle_marker_37c9eb5e76cded49b8f5340f7390117c.bindPopup(popup_d06c89a0f00a37d419ff80e127f19de9)
+        ;
+
+        
+    
+    
+            circle_marker_37c9eb5e76cded49b8f5340f7390117c.bindTooltip(
+                `<div>
+                     liceo portal de la cisterna
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8e8f593ef2ef22a8585d1cdd37dbae9f = L.marker(
+                [-33.5154, -70.656],
+                {"zIndexOffset": 9999}
+            ).addTo(map_37165389a703af4fe9e8d863ebd41c5a);
+        
+    
+            var div_icon_b3deb815d7cedfb5acf53c3f509ac48a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e208\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8e8f593ef2ef22a8585d1cdd37dbae9f.setIcon(div_icon_b3deb815d7cedfb5acf53c3f509ac48a);
+        
+    
+            map_37165389a703af4fe9e8d863ebd41c5a.fitBounds(
+                [[-33.5329, -70.6518], [-33.5273, -70.6554], [-33.521, -70.6569], [-33.5405, -70.6774], [-33.5185, -70.668], [-33.5266, -70.6738], [-33.5274, -70.6547], [-33.5346, -70.6665], [-33.5413, -70.66], [-33.546, -70.6585], [-33.5154, -70.656]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

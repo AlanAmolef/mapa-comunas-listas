@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_93677726e7b2222ac3f0f24190b2a7fd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_93677726e7b2222ac3f0f24190b2a7fd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_93677726e7b2222ac3f0f24190b2a7fd = L.map(
+                "map_93677726e7b2222ac3f0f24190b2a7fd",
+                {
+                    center: [-33.53013636363636, -70.66172727272728],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3e0fb30121e75b18d742c4414e179756 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_3e0fb30121e75b18d742c4414e179756.addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+    var color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75 = {};
+
+    
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.color = d3.scale.threshold()
+              .domain([61.0, 61.61723446893787, 62.234468937875754, 62.85170340681363, 63.4689378757515, 64.08617234468937, 64.70340681362725, 65.32064128256513, 65.937875751503, 66.55511022044088, 67.17234468937876, 67.78957915831663, 68.40681362725451, 69.02404809619239, 69.64128256513027, 70.25851703406813, 70.87575150300601, 71.49298597194388, 72.11022044088176, 72.72745490981964, 73.34468937875752, 73.96192384769539, 74.57915831663327, 75.19639278557113, 75.81362725450902, 76.4308617234469, 77.04809619238478, 77.66533066132264, 78.28256513026052, 78.89979959919839, 79.51703406813627, 80.13426853707415, 80.75150300601203, 81.3687374749499, 81.98597194388778, 82.60320641282566, 83.22044088176352, 83.8376753507014, 84.45490981963928, 85.07214428857715, 85.68937875751503, 86.30661322645291, 86.92384769539078, 87.54108216432866, 88.15831663326654, 88.77555110220442, 89.39278557114228, 90.01002004008016, 90.62725450901803, 91.24448897795591, 91.86172344689379, 92.47895791583167, 93.09619238476954, 93.71342685370742, 94.33066132264528, 94.94789579158316, 95.56513026052104, 96.18236472945893, 96.79959919839679, 97.41683366733467, 98.03406813627254, 98.65130260521042, 99.2685370741483, 99.88577154308618, 100.50300601202404, 101.12024048096193, 101.73747494989979, 102.35470941883767, 102.97194388777555, 103.58917835671343, 104.20641282565131, 104.82364729458918, 105.44088176352705, 106.05811623246493, 106.6753507014028, 107.29258517034069, 107.90981963927857, 108.52705410821643, 109.1442885771543, 109.76152304609218, 110.37875751503006, 110.99599198396794, 111.61322645290582, 112.23046092184369, 112.84769539078155, 113.46492985971943, 114.08216432865731, 114.6993987975952, 115.31663326653307, 115.93386773547094, 116.55110220440882, 117.16833667334669, 117.78557114228457, 118.40280561122245, 119.02004008016033, 119.6372745490982, 120.25450901803607, 120.87174348697394, 121.48897795591182, 122.1062124248497, 122.72344689378758, 123.34068136272545, 123.95791583166333, 124.5751503006012, 125.19238476953907, 125.80961923847696, 126.42685370741484, 127.0440881763527, 127.66132264529058, 128.27855711422848, 128.89579158316633, 129.5130260521042, 130.1302605210421, 130.74749498997994, 131.36472945891785, 131.9819639278557, 132.59919839679358, 133.21643286573146, 133.83366733466934, 134.45090180360722, 135.06813627254508, 135.68537074148298, 136.30260521042084, 136.91983967935872, 137.5370741482966, 138.15430861723445, 138.77154308617236, 139.3887775551102, 140.0060120240481, 140.62324649298597, 141.24048096192385, 141.85771543086173, 142.47494989979958, 143.0921843687375, 143.70941883767534, 144.32665330661322, 144.9438877755511, 145.56112224448898, 146.17835671342687, 146.79559118236472, 147.41282565130263, 148.03006012024048, 148.64729458917836, 149.26452905811624, 149.8817635270541, 150.498997995992, 151.11623246492985, 151.73346693386773, 152.3507014028056, 152.9679358717435, 153.58517034068137, 154.20240480961922, 154.81963927855713, 155.43687374749499, 156.05410821643287, 156.67134268537075, 157.2885771543086, 157.9058116232465, 158.52304609218436, 159.14028056112224, 159.75751503006012, 160.374749498998, 160.99198396793588, 161.60921843687373, 162.22645290581164, 162.8436873747495, 163.46092184368737, 164.07815631262525, 164.6953907815631, 165.31262525050101, 165.92985971943887, 166.54709418837675, 167.16432865731463, 167.7815631262525, 168.3987975951904, 169.01603206412824, 169.63326653306615, 170.250501002004, 170.86773547094188, 171.48496993987976, 172.10220440881764, 172.71943887775552, 173.33667334669337, 173.95390781563128, 174.57114228456913, 175.18837675350701, 175.8056112224449, 176.42284569138275, 177.04008016032066, 177.6573146292585, 178.2745490981964, 178.89178356713427, 179.50901803607215, 180.12625250501003, 180.74348697394788, 181.3607214428858, 181.97795591182364, 182.59519038076152, 183.2124248496994, 183.82965931863725, 184.44689378757516, 185.06412825651302, 185.6813627254509, 186.29859719438878, 186.91583166332666, 187.53306613226454, 188.1503006012024, 188.7675350701403, 189.38476953907815, 190.00200400801603, 190.6192384769539, 191.2364729458918, 191.85370741482967, 192.47094188376752, 193.0881763527054, 193.70541082164328, 194.32264529058116, 194.93987975951904, 195.55711422845692, 196.17434869739478, 196.79158316633266, 197.40881763527054, 198.02605210420842, 198.6432865731463, 199.26052104208418, 199.87775551102203, 200.4949899799599, 201.1122244488978, 201.72945891783567, 202.34669338677355, 202.96392785571143, 203.5811623246493, 204.19839679358716, 204.81563126252505, 205.43286573146293, 206.0501002004008, 206.6673346693387, 207.28456913827657, 207.90180360721442, 208.5190380761523, 209.13627254509018, 209.75350701402806, 210.37074148296594, 210.98797595190382, 211.60521042084167, 212.22244488977955, 212.83967935871743, 213.4569138276553, 214.0741482965932, 214.69138276553107, 215.30861723446893, 215.9258517034068, 216.5430861723447, 217.16032064128257, 217.77755511022045, 218.39478957915833, 219.01202404809618, 219.62925851703406, 220.24649298597194, 220.86372745490982, 221.4809619238477, 222.09819639278558, 222.71543086172343, 223.3326653306613, 223.9498997995992, 224.56713426853707, 225.18436873747495, 225.80160320641284, 226.4188376753507, 227.03607214428857, 227.65330661322645, 228.27054108216433, 228.8877755511022, 229.5050100200401, 230.12224448897797, 230.73947895791582, 231.3567134268537, 231.97394789579158, 232.59118236472946, 233.20841683366734, 233.82565130260522, 234.44288577154308, 235.06012024048096, 235.67735470941884, 236.29458917835672, 236.9118236472946, 237.52905811623248, 238.14629258517033, 238.7635270541082, 239.3807615230461, 239.99799599198397, 240.61523046092185, 241.23246492985973, 241.84969939879758, 242.46693386773546, 243.08416833667334, 243.70140280561122, 244.3186372745491, 244.93587174348698, 245.55310621242484, 246.17034068136272, 246.7875751503006, 247.40480961923848, 248.02204408817636, 248.63927855711424, 249.2565130260521, 249.87374749498997, 250.49098196392785, 251.10821643286573, 251.7254509018036, 252.3426853707415, 252.95991983967937, 253.57715430861722, 254.1943887775551, 254.81162324649299, 255.42885771543087, 256.0460921843687, 256.6633266533066, 257.2805611222445, 257.89779559118233, 258.51503006012024, 259.13226452905815, 259.749498997996, 260.36673346693385, 260.98396793587176, 261.6012024048096, 262.21843687374746, 262.8356713426854, 263.4529058116233, 264.07014028056113, 264.687374749499, 265.3046092184369, 265.92184368737475, 266.5390781563126, 267.1563126252505, 267.7735470941884, 268.3907815631262, 269.0080160320641, 269.62525050100203, 270.2424849699399, 270.85971943887773, 271.47695390781564, 272.0941883767535, 272.71142284569135, 273.32865731462925, 273.94589178356716, 274.563126252505, 275.18036072144287, 275.7975951903808, 276.4148296593186, 277.0320641282565, 277.6492985971944, 278.2665330661323, 278.88376753507015, 279.501002004008, 280.1182364729459, 280.73547094188376, 281.3527054108216, 281.9699398797595, 282.58717434869743, 283.2044088176353, 283.82164328657313, 284.43887775551104, 285.0561122244489, 285.67334669338675, 286.29058116232466, 286.90781563126257, 287.52505010020036, 288.14228456913827, 288.7595190380762, 289.37675350701403, 289.9939879759519, 290.6112224448898, 291.22845691382764, 291.8456913827655, 292.4629258517034, 293.0801603206413, 293.69739478957916, 294.314629258517, 294.9318637274549, 295.5490981963928, 296.16633266533063, 296.78356713426854, 297.40080160320645, 298.0180360721443, 298.63527054108215, 299.25250501002006, 299.8697394789579, 300.48697394789576, 301.10420841683367, 301.7214428857716, 302.33867735470943, 302.9559118236473, 303.5731462925852, 304.19038076152304, 304.8076152304609, 305.4248496993988, 306.0420841683367, 306.6593186372745, 307.2765531062124, 307.8937875751503, 308.5110220440882, 309.12825651302603, 309.74549098196394, 310.3627254509018, 310.97995991983964, 311.59719438877755, 312.21442885771546, 312.8316633266533, 313.44889779559117, 314.0661322645291, 314.6833667334669, 315.3006012024048, 315.9178356713427, 316.5350701402806, 317.15230460921845, 317.7695390781563, 318.3867735470942, 319.00400801603206, 319.6212424849699, 320.2384769539078, 320.8557114228457, 321.4729458917836, 322.09018036072143, 322.70741482965934, 323.3246492985972, 323.94188376753505, 324.55911823647295, 325.1763527054108, 325.7935871743487, 326.41082164328657, 327.0280561122245, 327.6452905811623, 328.2625250501002, 328.8797595190381, 329.49699398797594, 330.11422845691385, 330.7314629258517, 331.34869739478955, 331.96593186372746, 332.5831663326653, 333.2004008016032, 333.8176352705411, 334.434869739479, 335.05210420841684, 335.6693386773547, 336.2865731462926, 336.90380761523045, 337.52104208416836, 338.1382765531062, 338.75551102204406, 339.37274549098197, 339.9899799599198, 340.60721442885773, 341.2244488977956, 341.8416833667335, 342.45891783567134, 343.0761523046092, 343.6933867735471, 344.31062124248496, 344.92785571142286, 345.5450901803607, 346.1623246492986, 346.7795591182365, 347.39679358717433, 348.01402805611224, 348.6312625250501, 349.248496993988, 349.86573146292585, 350.4829659318637, 351.1002004008016, 351.71743486973946, 352.3346693386774, 352.9519038076152, 353.56913827655313, 354.186372745491, 354.80360721442884, 355.42084168336675, 356.0380761523046, 356.6553106212425, 357.27254509018036, 357.8897795591182, 358.5070140280561, 359.12424849699397, 359.7414829659319, 360.35871743486973, 360.97595190380764, 361.5931863727455, 362.21042084168334, 362.82765531062125, 363.4448897795591, 364.062124248497, 364.67935871743487, 365.2965931863727, 365.9138276553106, 366.5310621242485, 367.1482965931864, 367.76553106212424, 368.38276553106215, 369.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.x = d3.scale.linear()
+              .domain([61.0, 369.0])
+              .range([0, 450 - 50]);
+
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.legend = L.control({position: 'topright'});
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.legend.addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.xAxis = d3.svg.axis()
+        .scale(color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([61.0, 99.5, 138.0, 176.5, 215.0, 253.5, 292.0, 330.5, 369.0]);
+
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.g = color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.g.selectAll("rect")
+        .data(color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.x(color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.color.domain()[i - 1]) : color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.x.range()[0],
+            x1: i < color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.color.domain().length ? color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.x(color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.color.domain()[i]) : color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.g.call(color_map_8f73ee7fc5cf24f4cdcb80e76b60bf75.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA por local");
+    
+            var circle_marker_bc970e26ccdb00b9058ea41107062e3e = L.circleMarker(
+                [-33.5329, -70.6518],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_5115c4fa6b335b192471db93c1ae89ba = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fcbc78adce1441b48e500377f348b82c = $(`<div id="html_fcbc78adce1441b48e500377f348b82c" style="width: 100.0%; height: 100.0%;"><b>CENTRO COMUNITARIO SERGIO SILVA ACUÑA</b><br>VICTORIA 8300<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>61</b></div>`)[0];
+                popup_5115c4fa6b335b192471db93c1ae89ba.setContent(html_fcbc78adce1441b48e500377f348b82c);
+            
+        
+
+        circle_marker_bc970e26ccdb00b9058ea41107062e3e.bindPopup(popup_5115c4fa6b335b192471db93c1ae89ba)
+        ;
+
+        
+    
+    
+            circle_marker_bc970e26ccdb00b9058ea41107062e3e.bindTooltip(
+                `<div>
+                     CENTRO COMUNITARIO SERGIO SILVA ACUÑA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f6c8802636acd73c9b491d4cbf25b6f = L.marker(
+                [-33.5329, -70.6518],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_e0c03c5293bbe164ef404ad56845c559 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e61\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1f6c8802636acd73c9b491d4cbf25b6f.setIcon(div_icon_e0c03c5293bbe164ef404ad56845c559);
+        
+    
+            var circle_marker_163f3e73102c7177a71947d49d5bec46 = L.circleMarker(
+                [-33.5273, -70.6554],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe186ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.818181818181818, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_aede492369d5afb3a0afd4e81e564024 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_17ac5e5c271a851bd21af588aae8ba19 = $(`<div id="html_17ac5e5c271a851bd21af588aae8ba19" style="width: 100.0%; height: 100.0%;"><b>centro de emprendimiento</b><br>EL PARRON 548<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>123</b></div>`)[0];
+                popup_aede492369d5afb3a0afd4e81e564024.setContent(html_17ac5e5c271a851bd21af588aae8ba19);
+            
+        
+
+        circle_marker_163f3e73102c7177a71947d49d5bec46.bindPopup(popup_aede492369d5afb3a0afd4e81e564024)
+        ;
+
+        
+    
+    
+            circle_marker_163f3e73102c7177a71947d49d5bec46.bindTooltip(
+                `<div>
+                     centro de emprendimiento
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_97305c1ba39bdb34b65cfca98afaa336 = L.marker(
+                [-33.5273, -70.6554],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_ba5164ed50f550a95e5c82510e20fc53 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e123\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_97305c1ba39bdb34b65cfca98afaa336.setIcon(div_icon_ba5164ed50f550a95e5c82510e20fc53);
+        
+    
+            var circle_marker_5e4976f6b42d47be3c26f2269f9bd98b = L.circleMarker(
+                [-33.521, -70.6569],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7e38ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.40909090909091, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_1ec67b81e56fa68e81c5b31c2a34e1d4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4bb3a9597408d03d61e46ea04cd32235 = $(`<div id="html_4bb3a9597408d03d61e46ea04cd32235" style="width: 100.0%; height: 100.0%;"><b>centro educacional santa clara</b><br>GENERAL FREIRE 236<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>224</b></div>`)[0];
+                popup_1ec67b81e56fa68e81c5b31c2a34e1d4.setContent(html_4bb3a9597408d03d61e46ea04cd32235);
+            
+        
+
+        circle_marker_5e4976f6b42d47be3c26f2269f9bd98b.bindPopup(popup_1ec67b81e56fa68e81c5b31c2a34e1d4)
+        ;
+
+        
+    
+    
+            circle_marker_5e4976f6b42d47be3c26f2269f9bd98b.bindTooltip(
+                `<div>
+                     centro educacional santa clara
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f208e060cb7c0539e278e289c6b95af2 = L.marker(
+                [-33.521, -70.6569],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_b256ac6eaf71e12b171d55f3e3ee7e46 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e224\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f208e060cb7c0539e278e289c6b95af2.setIcon(div_icon_b256ac6eaf71e12b171d55f3e3ee7e46);
+        
+    
+            var circle_marker_1537c910803f00da66b50ae455e267aa = L.circleMarker(
+                [-33.5405, -70.6774],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed673ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.636363636363637, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_cde5485445623a526e55db72e60470ac = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6ba1285922319c7f55a8a27837018c6e = $(`<div id="html_6ba1285922319c7f55a8a27837018c6e" style="width: 100.0%; height: 100.0%;"><b>colegio antu</b><br>TRINIDAD RAMIREZ 750<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>141</b></div>`)[0];
+                popup_cde5485445623a526e55db72e60470ac.setContent(html_6ba1285922319c7f55a8a27837018c6e);
+            
+        
+
+        circle_marker_1537c910803f00da66b50ae455e267aa.bindPopup(popup_cde5485445623a526e55db72e60470ac)
+        ;
+
+        
+    
+    
+            circle_marker_1537c910803f00da66b50ae455e267aa.bindTooltip(
+                `<div>
+                     colegio antu
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_775162ddae8bebe08e93ec5441cb292c = L.marker(
+                [-33.5405, -70.6774],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_fd4f3eb7d10827dc639c42d309de56d2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e141\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_775162ddae8bebe08e93ec5441cb292c.setIcon(div_icon_fd4f3eb7d10827dc639c42d309de56d2);
+        
+    
+            var circle_marker_50952593bfdc665b02f5782c2c37b2f2 = L.circleMarker(
+                [-33.5185, -70.668],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b30026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.545454545454547, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_4d0c78a56c64c259f1375bc77bd15bc6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cce94df8315f7cdc870087541b2302ba = $(`<div id="html_cce94df8315f7cdc870087541b2302ba" style="width: 100.0%; height: 100.0%;"><b>colegio esperanza joven l1</b><br>COLON 6918<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>337</b></div>`)[0];
+                popup_4d0c78a56c64c259f1375bc77bd15bc6.setContent(html_cce94df8315f7cdc870087541b2302ba);
+            
+        
+
+        circle_marker_50952593bfdc665b02f5782c2c37b2f2.bindPopup(popup_4d0c78a56c64c259f1375bc77bd15bc6)
+        ;
+
+        
+    
+    
+            circle_marker_50952593bfdc665b02f5782c2c37b2f2.bindTooltip(
+                `<div>
+                     colegio esperanza joven l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e22f8a9ea6d6bc7e70f9d494e5c9dfc = L.marker(
+                [-33.5185, -70.668],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_1a3f2e8fecbda283734dcdeac3b30089 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e337\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2e22f8a9ea6d6bc7e70f9d494e5c9dfc.setIcon(div_icon_1a3f2e8fecbda283734dcdeac3b30089);
+        
+    
+            var circle_marker_8d80bb26417635af32d78255ec7f6b1d = L.circleMarker(
+                [-33.5266, -70.6738],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe997ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.136363636363637, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_5075b648a6877fdc4fff8c91fac083ad = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6088fac7e76c4ff24c818966ca83f075 = $(`<div id="html_6088fac7e76c4ff24c818966ca83f075" style="width: 100.0%; height: 100.0%;"><b>colegio naciones unidas</b><br>ISABEL LA CATOLICA 960<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>108</b></div>`)[0];
+                popup_5075b648a6877fdc4fff8c91fac083ad.setContent(html_6088fac7e76c4ff24c818966ca83f075);
+            
+        
+
+        circle_marker_8d80bb26417635af32d78255ec7f6b1d.bindPopup(popup_5075b648a6877fdc4fff8c91fac083ad)
+        ;
+
+        
+    
+    
+            circle_marker_8d80bb26417635af32d78255ec7f6b1d.bindTooltip(
+                `<div>
+                     colegio naciones unidas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_33085409be33be1e7f7ba11d0bb2c816 = L.marker(
+                [-33.5266, -70.6738],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_88546297db325fc5dafc8b94044db1c1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e108\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_33085409be33be1e7f7ba11d0bb2c816.setIcon(div_icon_88546297db325fc5dafc8b94044db1c1);
+        
+    
+            var circle_marker_2a94caab9da62ef053449841bc8519a4 = L.circleMarker(
+                [-33.5274, -70.6547],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed976ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.5, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_201b777cce562c251fe8901a96e0642c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1d8dfe4ad6dfee955d89531cd43c5720 = $(`<div id="html_1d8dfe4ad6dfee955d89531cd43c5720" style="width: 100.0%; height: 100.0%;"><b>colegio palestino</b><br>AVENIDA EL PARRON 498<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>138</b></div>`)[0];
+                popup_201b777cce562c251fe8901a96e0642c.setContent(html_1d8dfe4ad6dfee955d89531cd43c5720);
+            
+        
+
+        circle_marker_2a94caab9da62ef053449841bc8519a4.bindPopup(popup_201b777cce562c251fe8901a96e0642c)
+        ;
+
+        
+    
+    
+            circle_marker_2a94caab9da62ef053449841bc8519a4.bindTooltip(
+                `<div>
+                     colegio palestino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2bb564d9f843847bb5899b499ac97c2a = L.marker(
+                [-33.5274, -70.6547],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_37020fe17c2f61f1e9aedecd991d9187 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e138\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2bb564d9f843847bb5899b499ac97c2a.setIcon(div_icon_37020fe17c2f61f1e9aedecd991d9187);
+        
+    
+            var circle_marker_18002232c41045fff50d5a2190466000 = L.circleMarker(
+                [-33.5346, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feaf4aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.40909090909091, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_14ed42a49368fd6ea2d419003efe6bfb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4ea3ce20ec108d8394eb0bec303b0974 = $(`<div id="html_4ea3ce20ec108d8394eb0bec303b0974" style="width: 100.0%; height: 100.0%;"><b>escuela oscar encalada yavanovich</b><br>PEDRO AGUIRRE CERDA 184<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>180</b></div>`)[0];
+                popup_14ed42a49368fd6ea2d419003efe6bfb.setContent(html_4ea3ce20ec108d8394eb0bec303b0974);
+            
+        
+
+        circle_marker_18002232c41045fff50d5a2190466000.bindPopup(popup_14ed42a49368fd6ea2d419003efe6bfb)
+        ;
+
+        
+    
+    
+            circle_marker_18002232c41045fff50d5a2190466000.bindTooltip(
+                `<div>
+                     escuela oscar encalada yavanovich
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_569ff740aca2134523fb5b4cbf77c835 = L.marker(
+                [-33.5346, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_9d361a594cf59879e48c16c1d0eb8138 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e180\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_569ff740aca2134523fb5b4cbf77c835.setIcon(div_icon_9d361a594cf59879e48c16c1d0eb8138);
+        
+    
+            var circle_marker_ec51a52a3354d4dceaabf1340cb61366 = L.circleMarker(
+                [-33.5413, -70.66],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_ebb534bf47d5a8436af0920886c58bd1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d80236e5b7887b6e4f378b6a5af15756 = $(`<div id="html_d80236e5b7887b6e4f378b6a5af15756" style="width: 100.0%; height: 100.0%;"><b>liceo politecnico ciencia y tecnologia l1</b><br>AVENIDA GOYCOLEA 469<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>369</b></div>`)[0];
+                popup_ebb534bf47d5a8436af0920886c58bd1.setContent(html_d80236e5b7887b6e4f378b6a5af15756);
+            
+        
+
+        circle_marker_ec51a52a3354d4dceaabf1340cb61366.bindPopup(popup_ebb534bf47d5a8436af0920886c58bd1)
+        ;
+
+        
+    
+    
+            circle_marker_ec51a52a3354d4dceaabf1340cb61366.bindTooltip(
+                `<div>
+                     liceo politecnico ciencia y tecnologia l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c1710ed41f415010bd8ed03f2c35e64 = L.marker(
+                [-33.5413, -70.66],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_c91e231753c1c5fc00d0bb3cfaaeae11 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e369\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8c1710ed41f415010bd8ed03f2c35e64.setIcon(div_icon_c91e231753c1c5fc00d0bb3cfaaeae11);
+        
+    
+            var circle_marker_e9af20bb75f9e947bdba930e46f6f891 = L.circleMarker(
+                [-33.546, -70.6585],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7b37ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.5, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_17eec9eab6676eda38666c22acfc45e2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_304f3bab11bebd555036999359b49df5 = $(`<div id="html_304f3bab11bebd555036999359b49df5" style="width: 100.0%; height: 100.0%;"><b>liceo polivalente olof palme </b><br>JULIO COVARRUBIAS 9370<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>226</b></div>`)[0];
+                popup_17eec9eab6676eda38666c22acfc45e2.setContent(html_304f3bab11bebd555036999359b49df5);
+            
+        
+
+        circle_marker_e9af20bb75f9e947bdba930e46f6f891.bindPopup(popup_17eec9eab6676eda38666c22acfc45e2)
+        ;
+
+        
+    
+    
+            circle_marker_e9af20bb75f9e947bdba930e46f6f891.bindTooltip(
+                `<div>
+                     liceo polivalente olof palme 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f72ac236fdaa6f2d0cec85bc654123f4 = L.marker(
+                [-33.546, -70.6585],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_4617f2fcfa8ce82cdd100ba3a2c8057d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e226\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f72ac236fdaa6f2d0cec85bc654123f4.setIcon(div_icon_4617f2fcfa8ce82cdd100ba3a2c8057d);
+        
+    
+            var circle_marker_070d8aa9244e9881b700484311088b1b = L.circleMarker(
+                [-33.5154, -70.656],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea847ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.727272727272727, "stroke": false, "weight": 3}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+        var popup_71ceb77d54a258343aa37adb9a64215e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cea50463580c193bfff6c47f941a96e6 = $(`<div id="html_cea50463580c193bfff6c47f941a96e6" style="width: 100.0%; height: 100.0%;"><b>liceo portal de la cisterna</b><br>ESMERALDA 6305<br>Votos Lista MARISOL DEL CARMEN MONTIEL LOAIZA: <b>187</b></div>`)[0];
+                popup_71ceb77d54a258343aa37adb9a64215e.setContent(html_cea50463580c193bfff6c47f941a96e6);
+            
+        
+
+        circle_marker_070d8aa9244e9881b700484311088b1b.bindPopup(popup_71ceb77d54a258343aa37adb9a64215e)
+        ;
+
+        
+    
+    
+            circle_marker_070d8aa9244e9881b700484311088b1b.bindTooltip(
+                `<div>
+                     liceo portal de la cisterna
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_55505ec0dcb746f7c106ec6f68685d4b = L.marker(
+                [-33.5154, -70.656],
+                {"zIndexOffset": 9999}
+            ).addTo(map_93677726e7b2222ac3f0f24190b2a7fd);
+        
+    
+            var div_icon_f80543613155276c1fc4553cc232b85f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e187\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_55505ec0dcb746f7c106ec6f68685d4b.setIcon(div_icon_f80543613155276c1fc4553cc232b85f);
+        
+    
+            map_93677726e7b2222ac3f0f24190b2a7fd.fitBounds(
+                [[-33.5329, -70.6518], [-33.5273, -70.6554], [-33.521, -70.6569], [-33.5405, -70.6774], [-33.5185, -70.668], [-33.5266, -70.6738], [-33.5274, -70.6547], [-33.5346, -70.6665], [-33.5413, -70.66], [-33.546, -70.6585], [-33.5154, -70.656]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

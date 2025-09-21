@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d327596ede0c8f8e3fa71b357171323b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_d327596ede0c8f8e3fa71b357171323b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d327596ede0c8f8e3fa71b357171323b = L.map(
+                "map_d327596ede0c8f8e3fa71b357171323b",
+                {
+                    center: [-33.53013636363636, -70.66172727272728],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ae67e60f651c0757e561c2db05e40f26 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_ae67e60f651c0757e561c2db05e40f26.addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+    var color_map_0c209def1d344aafdfb2bda4c067e0f4 = {};
+
+    
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.color = d3.scale.threshold()
+              .domain([48.0, 48.25050100200401, 48.501002004008015, 48.75150300601202, 49.00200400801603, 49.25250501002004, 49.503006012024045, 49.75350701402806, 50.00400801603207, 50.254509018036075, 50.50501002004008, 50.75551102204409, 51.0060120240481, 51.256513026052104, 51.50701402805611, 51.75751503006012, 52.00801603206413, 52.258517034068134, 52.50901803607214, 52.75951903807615, 53.010020040080164, 53.260521042084164, 53.51102204408818, 53.76152304609219, 54.012024048096194, 54.2625250501002, 54.51302605210421, 54.763527054108216, 55.014028056112224, 55.26452905811623, 55.51503006012024, 55.765531062124246, 56.016032064128254, 56.26653306613227, 56.51703406813627, 56.76753507014028, 57.01803607214429, 57.2685370741483, 57.519038076152306, 57.76953907815631, 58.02004008016032, 58.27054108216433, 58.521042084168336, 58.77154308617234, 59.02204408817635, 59.27254509018036, 59.52304609218437, 59.77354709418837, 60.02404809619239, 60.274549098196395, 60.5250501002004, 60.77555110220441, 61.02605210420842, 61.276553106212425, 61.52705410821643, 61.77755511022044, 62.02805611222445, 62.278557114228455, 62.52905811623246, 62.77955911823647, 63.03006012024048, 63.28056112224449, 63.53106212424849, 63.78156312625251, 64.03206412825651, 64.28256513026052, 64.53306613226454, 64.78356713426854, 65.03406813627254, 65.28456913827655, 65.53507014028057, 65.78557114228457, 66.03607214428858, 66.28657314629258, 66.5370741482966, 66.7875751503006, 67.03807615230461, 67.28857715430861, 67.53907815631263, 67.78957915831663, 68.04008016032064, 68.29058116232466, 68.54108216432866, 68.79158316633266, 69.04208416833667, 69.29258517034069, 69.54308617234469, 69.7935871743487, 70.0440881763527, 70.29458917835672, 70.54509018036072, 70.79559118236473, 71.04609218436875, 71.29659318637275, 71.54709418837675, 71.79759519038076, 72.04809619238478, 72.29859719438878, 72.54909819639279, 72.79959919839679, 73.0501002004008, 73.3006012024048, 73.55110220440882, 73.80160320641282, 74.05210420841684, 74.30260521042084, 74.55310621242485, 74.80360721442887, 75.05410821643287, 75.30460921843687, 75.55511022044088, 75.8056112224449, 76.0561122244489, 76.30661322645291, 76.55711422845691, 76.80761523046093, 77.05811623246493, 77.30861723446894, 77.55911823647294, 77.80961923847696, 78.06012024048096, 78.31062124248497, 78.56112224448898, 78.81162324649299, 79.06212424849699, 79.312625250501, 79.56312625250501, 79.81362725450902, 80.06412825651302, 80.31462925851704, 80.56513026052104, 80.81563126252505, 81.06613226452906, 81.31663326653307, 81.56713426853707, 81.81763527054107, 82.06813627254509, 82.3186372745491, 82.5691382765531, 82.8196392785571, 83.07014028056112, 83.32064128256513, 83.57114228456913, 83.82164328657315, 84.07214428857716, 84.32264529058116, 84.57314629258516, 84.82364729458918, 85.0741482965932, 85.3246492985972, 85.5751503006012, 85.82565130260521, 86.07615230460922, 86.32665330661322, 86.57715430861722, 86.82765531062124, 87.07815631262525, 87.32865731462925, 87.57915831663327, 87.82965931863728, 88.08016032064128, 88.33066132264528, 88.5811623246493, 88.83166332665331, 89.08216432865731, 89.33266533066131, 89.58316633266533, 89.83366733466934, 90.08416833667334, 90.33466933867736, 90.58517034068137, 90.83567134268537, 91.08617234468937, 91.33667334669339, 91.5871743486974, 91.8376753507014, 92.0881763527054, 92.33867735470942, 92.58917835671343, 92.83967935871743, 93.09018036072143, 93.34068136272545, 93.59118236472946, 93.84168336673346, 94.09218436873748, 94.34268537074149, 94.59318637274549, 94.84368737474949, 95.09418837675351, 95.34468937875752, 95.59519038076152, 95.84569138276552, 96.09619238476954, 96.34669338677355, 96.59719438877755, 96.84769539078155, 97.09819639278558, 97.34869739478958, 97.59919839679358, 97.8496993987976, 98.10020040080161, 98.35070140280561, 98.60120240480961, 98.85170340681363, 99.10220440881764, 99.35270541082164, 99.60320641282564, 99.85370741482966, 100.10420841683367, 100.35470941883767, 100.60521042084169, 100.8557114228457, 101.1062124248497, 101.3567134268537, 101.60721442885772, 101.85771543086173, 102.10821643286573, 102.35871743486973, 102.60921843687375, 102.85971943887776, 103.11022044088176, 103.36072144288576, 103.61122244488978, 103.86172344689379, 104.11222444889779, 104.3627254509018, 104.61322645290582, 104.86372745490982, 105.11422845691382, 105.36472945891784, 105.61523046092185, 105.86573146292585, 106.11623246492985, 106.36673346693387, 106.61723446893788, 106.86773547094188, 107.11823647294588, 107.36873747494991, 107.61923847695391, 107.86973947895791, 108.12024048096193, 108.37074148296594, 108.62124248496994, 108.87174348697394, 109.12224448897796, 109.37274549098197, 109.62324649298597, 109.87374749498997, 110.12424849699399, 110.374749498998, 110.625250501002, 110.87575150300601, 111.12625250501003, 111.37675350701403, 111.62725450901803, 111.87775551102204, 112.12825651302605, 112.37875751503006, 112.62925851703407, 112.87975951903807, 113.13026052104209, 113.38076152304609, 113.6312625250501, 113.8817635270541, 114.13226452905812, 114.38276553106212, 114.63326653306613, 114.88376753507013, 115.13426853707415, 115.38476953907815, 115.63527054108216, 115.88577154308618, 116.13627254509018, 116.3867735470942, 116.6372745490982, 116.88777555110221, 117.13827655310621, 117.38877755511022, 117.63927855711422, 117.88977955911824, 118.14028056112224, 118.39078156312625, 118.64128256513025, 118.89178356713427, 119.14228456913828, 119.39278557114228, 119.6432865731463, 119.8937875751503, 120.14428857715431, 120.39478957915831, 120.64529058116233, 120.89579158316633, 121.14629258517034, 121.39679358717434, 121.64729458917836, 121.89779559118236, 122.14829659318637, 122.39879759519039, 122.64929859719439, 122.8997995991984, 123.1503006012024, 123.40080160320642, 123.65130260521042, 123.90180360721443, 124.15230460921843, 124.40280561122245, 124.65330661322645, 124.90380761523046, 125.15430861723446, 125.40480961923848, 125.65531062124248, 125.90581162324649, 126.15631262525051, 126.40681362725451, 126.65731462925852, 126.90781563126252, 127.15831663326654, 127.40881763527054, 127.65931863727455, 127.90981963927855, 128.16032064128257, 128.41082164328657, 128.66132264529057, 128.91182364729457, 129.1623246492986, 129.41282565130263, 129.66332665330663, 129.91382765531063, 130.16432865731463, 130.41482965931863, 130.66533066132263, 130.91583166332666, 131.16633266533066, 131.41683366733469, 131.6673346693387, 131.9178356713427, 132.1683366733467, 132.4188376753507, 132.66933867735472, 132.91983967935872, 133.17034068136275, 133.42084168336675, 133.67134268537075, 133.92184368737475, 134.17234468937875, 134.42284569138275, 134.67334669338678, 134.92384769539078, 135.1743486973948, 135.4248496993988, 135.6753507014028, 135.9258517034068, 136.1763527054108, 136.42685370741484, 136.67735470941884, 136.92785571142286, 137.17835671342687, 137.42885771543087, 137.67935871743487, 137.92985971943887, 138.18036072144287, 138.4308617234469, 138.6813627254509, 138.93186372745492, 139.18236472945893, 139.43286573146293, 139.68336673346693, 139.93386773547093, 140.18436873747495, 140.43486973947896, 140.68537074148298, 140.93587174348698, 141.18637274549098, 141.43687374749499, 141.68737474949899, 141.937875751503, 142.18837675350701, 142.43887775551102, 142.68937875751504, 142.93987975951904, 143.19038076152304, 143.44088176352705, 143.69138276553105, 143.94188376753507, 144.19238476953907, 144.4428857715431, 144.6933867735471, 144.9438877755511, 145.1943887775551, 145.4448897795591, 145.6953907815631, 145.94589178356713, 146.19639278557116, 146.44689378757516, 146.69739478957916, 146.94789579158316, 147.19839679358716, 147.44889779559117, 147.6993987975952, 147.9498997995992, 148.20040080160322, 148.45090180360722, 148.70140280561122, 148.95190380761522, 149.20240480961922, 149.45290581162325, 149.70340681362725, 149.95390781563128, 150.20440881763528, 150.45490981963928, 150.70541082164328, 150.95591182364728, 151.20641282565128, 151.4569138276553, 151.7074148296593, 151.95791583166334, 152.20841683366734, 152.45891783567134, 152.70941883767534, 152.95991983967934, 153.21042084168337, 153.46092184368737, 153.7114228456914, 153.9619238476954, 154.2124248496994, 154.4629258517034, 154.7134268537074, 154.9639278557114, 155.21442885771543, 155.46492985971943, 155.71543086172346, 155.96593186372746, 156.21643286573146, 156.46693386773546, 156.71743486973946, 156.9679358717435, 157.2184368737475, 157.46893787575152, 157.71943887775552, 157.96993987975952, 158.22044088176352, 158.47094188376752, 158.72144288577152, 158.97194388777555, 159.22244488977955, 159.47294589178358, 159.72344689378758, 159.97394789579158, 160.22444889779558, 160.47494989979958, 160.7254509018036, 160.9759519038076, 161.22645290581164, 161.47695390781564, 161.72745490981964, 161.97795591182364, 162.22845691382764, 162.47895791583164, 162.72945891783567, 162.9799599198397, 163.2304609218437, 163.4809619238477, 163.7314629258517, 163.9819639278557, 164.2324649298597, 164.48296593186373, 164.73346693386773, 164.98396793587176, 165.23446893787576, 165.48496993987976, 165.73547094188376, 165.98597194388776, 166.23647294589176, 166.4869739478958, 166.73747494989982, 166.98797595190382, 167.23847695390782, 167.48897795591182, 167.73947895791582, 167.98997995991982, 168.24048096192385, 168.49098196392785, 168.74148296593188, 168.99198396793588, 169.24248496993988, 169.49298597194388, 169.74348697394788, 169.9939879759519, 170.2444889779559, 170.49498997995994, 170.74549098196394, 170.99599198396794, 171.24649298597194, 171.49699398797594, 171.74749498997994, 171.99799599198397, 172.24849699398797, 172.498997995992, 172.749498997996, 173.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.x = d3.scale.linear()
+              .domain([48.0, 173.0])
+              .range([0, 450 - 50]);
+
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.legend = L.control({position: 'topright'});
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.legend.addTo(map_d327596ede0c8f8e3fa71b357171323b);
+
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.xAxis = d3.svg.axis()
+        .scale(color_map_0c209def1d344aafdfb2bda4c067e0f4.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([48.0, 63.625, 79.25, 94.875, 110.5, 126.125, 141.75, 157.375, 173.0]);
+
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.g = color_map_0c209def1d344aafdfb2bda4c067e0f4.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.g.selectAll("rect")
+        .data(color_map_0c209def1d344aafdfb2bda4c067e0f4.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_0c209def1d344aafdfb2bda4c067e0f4.x(color_map_0c209def1d344aafdfb2bda4c067e0f4.color.domain()[i - 1]) : color_map_0c209def1d344aafdfb2bda4c067e0f4.x.range()[0],
+            x1: i < color_map_0c209def1d344aafdfb2bda4c067e0f4.color.domain().length ? color_map_0c209def1d344aafdfb2bda4c067e0f4.x(color_map_0c209def1d344aafdfb2bda4c067e0f4.color.domain()[i]) : color_map_0c209def1d344aafdfb2bda4c067e0f4.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_0c209def1d344aafdfb2bda4c067e0f4.g.call(color_map_0c209def1d344aafdfb2bda4c067e0f4.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista JOSE ANTONIO CONTRERAS FUENTES por local");
+    
+            var circle_marker_c93ab964130c8956ec42c821133c666a = L.circleMarker(
+                [-33.5329, -70.6518],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.576, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_143b93625185659ef4388e98cd981630 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fa8efd6927804dbe2fea41e8ddfd2b4a = $(`<div id="html_fa8efd6927804dbe2fea41e8ddfd2b4a" style="width: 100.0%; height: 100.0%;"><b>CENTRO COMUNITARIO SERGIO SILVA ACUÑA</b><br>VICTORIA 8300<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>71</b></div>`)[0];
+                popup_143b93625185659ef4388e98cd981630.setContent(html_fa8efd6927804dbe2fea41e8ddfd2b4a);
+            
+        
+
+        circle_marker_c93ab964130c8956ec42c821133c666a.bindPopup(popup_143b93625185659ef4388e98cd981630)
+        ;
+
+        
+    
+    
+            circle_marker_c93ab964130c8956ec42c821133c666a.bindTooltip(
+                `<div>
+                     CENTRO COMUNITARIO SERGIO SILVA ACUÑA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9202a502e96fda76999c26c1b636562 = L.marker(
+                [-33.5329, -70.6518],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_9e679d0c53ac6e80d4093fd6247acd25 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e71\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d9202a502e96fda76999c26c1b636562.setIcon(div_icon_9e679d0c53ac6e80d4093fd6247acd25);
+        
+    
+            var circle_marker_62809a93850496a9c0f85ad5f833f91f = L.circleMarker(
+                [-33.5273, -70.6554],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed26fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.808, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_7a7d281ea7390f708d892aa6c302d31e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c2026ea20faef7a16753c76760205161 = $(`<div id="html_c2026ea20faef7a16753c76760205161" style="width: 100.0%; height: 100.0%;"><b>centro de emprendimiento</b><br>EL PARRON 548<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>82</b></div>`)[0];
+                popup_7a7d281ea7390f708d892aa6c302d31e.setContent(html_c2026ea20faef7a16753c76760205161);
+            
+        
+
+        circle_marker_62809a93850496a9c0f85ad5f833f91f.bindPopup(popup_7a7d281ea7390f708d892aa6c302d31e)
+        ;
+
+        
+    
+    
+            circle_marker_62809a93850496a9c0f85ad5f833f91f.bindTooltip(
+                `<div>
+                     centro de emprendimiento
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4184d3b6d4c7d2cfa289a64cd6ddb479 = L.marker(
+                [-33.5273, -70.6554],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_7e1fc11a86af89b6ffed285ee18b204b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e82\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4184d3b6d4c7d2cfa289a64cd6ddb479.setIcon(div_icon_7e1fc11a86af89b6ffed285ee18b204b);
+        
+    
+            var circle_marker_ff1638e0cf04607b57e25a9f2dbabb9b = L.circleMarker(
+                [-33.521, -70.6569],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed774ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.584, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_aedf9d4ebd07dc0fe4c004f86449a2dc = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_350d3a9b4aba114cb91fbe285687119f = $(`<div id="html_350d3a9b4aba114cb91fbe285687119f" style="width: 100.0%; height: 100.0%;"><b>centro educacional santa clara</b><br>GENERAL FREIRE 236<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>80</b></div>`)[0];
+                popup_aedf9d4ebd07dc0fe4c004f86449a2dc.setContent(html_350d3a9b4aba114cb91fbe285687119f);
+            
+        
+
+        circle_marker_ff1638e0cf04607b57e25a9f2dbabb9b.bindPopup(popup_aedf9d4ebd07dc0fe4c004f86449a2dc)
+        ;
+
+        
+    
+    
+            circle_marker_ff1638e0cf04607b57e25a9f2dbabb9b.bindTooltip(
+                `<div>
+                     centro educacional santa clara
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e1be643f0751a79a2fd116980d421fb = L.marker(
+                [-33.521, -70.6569],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_6059c36c8542b1d589bd195f050284e9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e80\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5e1be643f0751a79a2fd116980d421fb.setIcon(div_icon_6059c36c8542b1d589bd195f050284e9);
+        
+    
+            var circle_marker_d3de14c0283ba5753a9c6ef87e15f9a9 = L.circleMarker(
+                [-33.5405, -70.6774],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed774ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.584, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_601494fa5e93a4ab35a7f6315daf4af6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_17e3612878ac581a27100a45800883d9 = $(`<div id="html_17e3612878ac581a27100a45800883d9" style="width: 100.0%; height: 100.0%;"><b>colegio antu</b><br>TRINIDAD RAMIREZ 750<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>80</b></div>`)[0];
+                popup_601494fa5e93a4ab35a7f6315daf4af6.setContent(html_17e3612878ac581a27100a45800883d9);
+            
+        
+
+        circle_marker_d3de14c0283ba5753a9c6ef87e15f9a9.bindPopup(popup_601494fa5e93a4ab35a7f6315daf4af6)
+        ;
+
+        
+    
+    
+            circle_marker_d3de14c0283ba5753a9c6ef87e15f9a9.bindTooltip(
+                `<div>
+                     colegio antu
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f94a1c931adc4206bd1899e90c90b619 = L.marker(
+                [-33.5405, -70.6774],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_74fade20d6477d26162439b338a576ad = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e80\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f94a1c931adc4206bd1899e90c90b619.setIcon(div_icon_74fade20d6477d26162439b338a576ad);
+        
+    
+            var circle_marker_1d4eb4b0f8af175271b6746b70036efd = L.circleMarker(
+                [-33.5185, -70.668],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_2077168df6ce455350189c997bef0b10 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1d470ca2df5191695088cc7b9ac8ffc4 = $(`<div id="html_1d470ca2df5191695088cc7b9ac8ffc4" style="width: 100.0%; height: 100.0%;"><b>colegio esperanza joven l1</b><br>COLON 6918<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>173</b></div>`)[0];
+                popup_2077168df6ce455350189c997bef0b10.setContent(html_1d470ca2df5191695088cc7b9ac8ffc4);
+            
+        
+
+        circle_marker_1d4eb4b0f8af175271b6746b70036efd.bindPopup(popup_2077168df6ce455350189c997bef0b10)
+        ;
+
+        
+    
+    
+            circle_marker_1d4eb4b0f8af175271b6746b70036efd.bindTooltip(
+                `<div>
+                     colegio esperanza joven l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9f40b33cedf17a920eb6ac1c8c977a14 = L.marker(
+                [-33.5185, -70.668],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_4ee227d65250daa680e0fe20fc3d63c9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e173\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9f40b33cedf17a920eb6ac1c8c977a14.setIcon(div_icon_4ee227d65250daa680e0fe20fc3d63c9);
+        
+    
+            var circle_marker_6bf3f8b501b6a6a3a40ade4cad771be3 = L.circleMarker(
+                [-33.5266, -70.6738],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_6018193c3cc0efa77375b678fd6bd590 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_33da62343d4a40544b1a4352690bdcd9 = $(`<div id="html_33da62343d4a40544b1a4352690bdcd9" style="width: 100.0%; height: 100.0%;"><b>colegio naciones unidas</b><br>ISABEL LA CATOLICA 960<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>48</b></div>`)[0];
+                popup_6018193c3cc0efa77375b678fd6bd590.setContent(html_33da62343d4a40544b1a4352690bdcd9);
+            
+        
+
+        circle_marker_6bf3f8b501b6a6a3a40ade4cad771be3.bindPopup(popup_6018193c3cc0efa77375b678fd6bd590)
+        ;
+
+        
+    
+    
+            circle_marker_6bf3f8b501b6a6a3a40ade4cad771be3.bindTooltip(
+                `<div>
+                     colegio naciones unidas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_faf9ff4f55a23372cd73787499404a74 = L.marker(
+                [-33.5266, -70.6738],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_6c34d1e2e8a5a698be125bac823d6a2a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e48\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_faf9ff4f55a23372cd73787499404a74.setIcon(div_icon_6c34d1e2e8a5a698be125bac823d6a2a);
+        
+    
+            var circle_marker_933e952733bc34618140d3e8a448452c = L.circleMarker(
+                [-33.5274, -70.6547],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecb66ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.144, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_2b8786a39c9753d642d8a3ea916b8922 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_71d164ac31cd58a60c71ed56a6025084 = $(`<div id="html_71d164ac31cd58a60c71ed56a6025084" style="width: 100.0%; height: 100.0%;"><b>colegio palestino</b><br>AVENIDA EL PARRON 498<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>85</b></div>`)[0];
+                popup_2b8786a39c9753d642d8a3ea916b8922.setContent(html_71d164ac31cd58a60c71ed56a6025084);
+            
+        
+
+        circle_marker_933e952733bc34618140d3e8a448452c.bindPopup(popup_2b8786a39c9753d642d8a3ea916b8922)
+        ;
+
+        
+    
+    
+            circle_marker_933e952733bc34618140d3e8a448452c.bindTooltip(
+                `<div>
+                     colegio palestino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbb49d8e799333ce10e25b437e21a2cc = L.marker(
+                [-33.5274, -70.6547],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_1d2e67b6f35eb620d0f504ba444b5017 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e85\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fbb49d8e799333ce10e25b437e21a2cc.setIcon(div_icon_1d2e67b6f35eb620d0f504ba444b5017);
+        
+    
+            var circle_marker_3577a33a2b9bbcd20b1c42ba13d765fb = L.circleMarker(
+                [-33.5346, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea446ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.936, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_77f404aa97e45f6d1f12b45b8d0f968a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_92a0b4fe25ad3385ec58ddb9856aee5c = $(`<div id="html_92a0b4fe25ad3385ec58ddb9856aee5c" style="width: 100.0%; height: 100.0%;"><b>escuela oscar encalada yavanovich</b><br>PEDRO AGUIRRE CERDA 184<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>101</b></div>`)[0];
+                popup_77f404aa97e45f6d1f12b45b8d0f968a.setContent(html_92a0b4fe25ad3385ec58ddb9856aee5c);
+            
+        
+
+        circle_marker_3577a33a2b9bbcd20b1c42ba13d765fb.bindPopup(popup_77f404aa97e45f6d1f12b45b8d0f968a)
+        ;
+
+        
+    
+    
+            circle_marker_3577a33a2b9bbcd20b1c42ba13d765fb.bindTooltip(
+                `<div>
+                     escuela oscar encalada yavanovich
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f76ad8e9cb5fbf8542a775bd472c5d6f = L.marker(
+                [-33.5346, -70.6665],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_8826a7f50ce6123c18771ed1e7521965 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e101\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f76ad8e9cb5fbf8542a775bd472c5d6f.setIcon(div_icon_8826a7f50ce6123c18771ed1e7521965);
+        
+    
+            var circle_marker_51af1dbec8f7b76386fb8bd06ba4f72e = L.circleMarker(
+                [-33.5413, -70.66],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c0026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.664, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_218991564b7e530a64ff52539f23ece4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7f9e75b29f62e725e4d651d79b800aef = $(`<div id="html_7f9e75b29f62e725e4d651d79b800aef" style="width: 100.0%; height: 100.0%;"><b>liceo politecnico ciencia y tecnologia l1</b><br>AVENIDA GOYCOLEA 469<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>170</b></div>`)[0];
+                popup_218991564b7e530a64ff52539f23ece4.setContent(html_7f9e75b29f62e725e4d651d79b800aef);
+            
+        
+
+        circle_marker_51af1dbec8f7b76386fb8bd06ba4f72e.bindPopup(popup_218991564b7e530a64ff52539f23ece4)
+        ;
+
+        
+    
+    
+            circle_marker_51af1dbec8f7b76386fb8bd06ba4f72e.bindTooltip(
+                `<div>
+                     liceo politecnico ciencia y tecnologia l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bc93ca2667bc1d74527e251b9b4e622a = L.marker(
+                [-33.5413, -70.66],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_bbd0647040eb0f72b8a2554a56bea6a9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e170\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bc93ca2667bc1d74527e251b9b4e622a.setIcon(div_icon_bbd0647040eb0f72b8a2554a56bea6a9);
+        
+    
+            var circle_marker_bad0f319b5fba084b6bd0a9bd58e96cb = L.circleMarker(
+                [-33.546, -70.6585],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed774ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.584, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_e85f6858f2ef3fa5fa31bd1454574ba2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f665fa9819d79985bbc8d4e8a0bf3854 = $(`<div id="html_f665fa9819d79985bbc8d4e8a0bf3854" style="width: 100.0%; height: 100.0%;"><b>liceo polivalente olof palme </b><br>JULIO COVARRUBIAS 9370<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>80</b></div>`)[0];
+                popup_e85f6858f2ef3fa5fa31bd1454574ba2.setContent(html_f665fa9819d79985bbc8d4e8a0bf3854);
+            
+        
+
+        circle_marker_bad0f319b5fba084b6bd0a9bd58e96cb.bindPopup(popup_e85f6858f2ef3fa5fa31bd1454574ba2)
+        ;
+
+        
+    
+    
+            circle_marker_bad0f319b5fba084b6bd0a9bd58e96cb.bindTooltip(
+                `<div>
+                     liceo polivalente olof palme 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7e8574ccac1be4ed33fbdcd58f1a873c = L.marker(
+                [-33.546, -70.6585],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_645cf1cc6a39a6cb10eaba060a8d6f08 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e80\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7e8574ccac1be4ed33fbdcd58f1a873c.setIcon(div_icon_645cf1cc6a39a6cb10eaba060a8d6f08);
+        
+    
+            var circle_marker_248ca893382b1f9ec9d7563076b781ac = L.circleMarker(
+                [-33.5154, -70.656],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed06cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.92, "stroke": false, "weight": 3}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+        var popup_db71bda014867bdc13ba5022cc1462bd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_997ae0fdb547a6dcb6846702e5e48aa1 = $(`<div id="html_997ae0fdb547a6dcb6846702e5e48aa1" style="width: 100.0%; height: 100.0%;"><b>liceo portal de la cisterna</b><br>ESMERALDA 6305<br>Votos Lista JOSE ANTONIO CONTRERAS FUENTES: <b>83</b></div>`)[0];
+                popup_db71bda014867bdc13ba5022cc1462bd.setContent(html_997ae0fdb547a6dcb6846702e5e48aa1);
+            
+        
+
+        circle_marker_248ca893382b1f9ec9d7563076b781ac.bindPopup(popup_db71bda014867bdc13ba5022cc1462bd)
+        ;
+
+        
+    
+    
+            circle_marker_248ca893382b1f9ec9d7563076b781ac.bindTooltip(
+                `<div>
+                     liceo portal de la cisterna
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ebd5e72b80a56a364c2dbe286949a7b9 = L.marker(
+                [-33.5154, -70.656],
+                {"zIndexOffset": 9999}
+            ).addTo(map_d327596ede0c8f8e3fa71b357171323b);
+        
+    
+            var div_icon_d0f5fadfedef2ad99fb09c445e5663d7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e83\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ebd5e72b80a56a364c2dbe286949a7b9.setIcon(div_icon_d0f5fadfedef2ad99fb09c445e5663d7);
+        
+    
+            map_d327596ede0c8f8e3fa71b357171323b.fitBounds(
+                [[-33.5329, -70.6518], [-33.5273, -70.6554], [-33.521, -70.6569], [-33.5405, -70.6774], [-33.5185, -70.668], [-33.5266, -70.6738], [-33.5274, -70.6547], [-33.5346, -70.6665], [-33.5413, -70.66], [-33.546, -70.6585], [-33.5154, -70.656]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>
