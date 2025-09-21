@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_aab9ba894dca7c4b80eae4d62f6af0dd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_aab9ba894dca7c4b80eae4d62f6af0dd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_aab9ba894dca7c4b80eae4d62f6af0dd = L.map(
+                "map_aab9ba894dca7c4b80eae4d62f6af0dd",
+                {
+                    center: [-33.51858933333333, -70.68975266666668],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_673fbde578d20b31883fefab54df89ff = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_673fbde578d20b31883fefab54df89ff.addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+    var color_map_cd8dd4bff35a3fa51d3eb24409d42aa2 = {};
+
+    
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.color = d3.scale.threshold()
+              .domain([33.0, 33.15430861723447, 33.30861723446894, 33.46292585170341, 33.61723446893787, 33.77154308617234, 33.92585170340681, 34.08016032064128, 34.234468937875754, 34.388777555110224, 34.54308617234469, 34.69739478957916, 34.85170340681363, 35.0060120240481, 35.16032064128257, 35.31462925851704, 35.4689378757515, 35.62324649298597, 35.77755511022044, 35.93186372745491, 36.08617234468938, 36.24048096192385, 36.394789579158314, 36.549098196392784, 36.703406813627254, 36.857715430861724, 37.012024048096194, 37.166332665330664, 37.320641282565134, 37.4749498997996, 37.62925851703407, 37.78356713426854, 37.93787575150301, 38.09218436873748, 38.24649298597194, 38.40080160320641, 38.55511022044088, 38.70941883767535, 38.86372745490982, 39.01803607214429, 39.17234468937876, 39.326653306613224, 39.480961923847694, 39.635270541082164, 39.789579158316634, 39.943887775551104, 40.09819639278557, 40.25250501002004, 40.40681362725451, 40.56112224448898, 40.71543086172345, 40.86973947895792, 41.02404809619239, 41.17835671342685, 41.33266533066132, 41.48697394789579, 41.64128256513026, 41.79559118236473, 41.949899799599194, 42.10420841683367, 42.258517034068134, 42.412825651302605, 42.567134268537075, 42.721442885771545, 42.875751503006015, 43.03006012024048, 43.18436873747495, 43.33867735470942, 43.49298597194389, 43.64729458917836, 43.80160320641283, 43.9559118236473, 44.11022044088176, 44.26452905811623, 44.4188376753507, 44.57314629258517, 44.72745490981964, 44.881763527054105, 45.036072144288575, 45.190380761523045, 45.344689378757515, 45.498997995991985, 45.653306613226455, 45.807615230460925, 45.96192384769539, 46.11623246492986, 46.27054108216433, 46.4248496993988, 46.57915831663327, 46.73346693386773, 46.88777555110221, 47.04208416833667, 47.19639278557114, 47.35070140280561, 47.50501002004008, 47.65931863727455, 47.813627254509015, 47.967935871743485, 48.122244488977955, 48.276553106212425, 48.430861723446895, 48.58517034068136, 48.739478957915836, 48.8937875751503, 49.04809619238477, 49.20240480961924, 49.35671342685371, 49.51102204408818, 49.66533066132264, 49.81963927855712, 49.97394789579158, 50.12825651302605, 50.28256513026052, 50.436873747494985, 50.59118236472946, 50.745490981963925, 50.899799599198396, 51.054108216432866, 51.208416833667336, 51.362725450901806, 51.51703406813627, 51.671342685370746, 51.82565130260521, 51.97995991983968, 52.13426853707415, 52.28857715430861, 52.44288577154309, 52.59719438877755, 52.75150300601202, 52.90581162324649, 53.06012024048096, 53.21442885771543, 53.368737474949896, 53.52304609218437, 53.677354709418836, 53.831663326653306, 53.985971943887776, 54.140280561122246, 54.294589178356716, 54.44889779559118, 54.60320641282566, 54.75751503006012, 54.91182364729459, 55.06613226452906, 55.22044088176352, 55.374749498998, 55.52905811623246, 55.68336673346693, 55.8376753507014, 55.99198396793587, 56.14629258517034, 56.300601202404806, 56.45490981963928, 56.609218436873746, 56.763527054108216, 56.91783567134269, 57.07214428857715, 57.22645290581163, 57.38076152304609, 57.53507014028056, 57.68937875751503, 57.8436873747495, 57.99799599198397, 58.15230460921843, 58.30661322645291, 58.46092184368737, 58.61523046092184, 58.76953907815631, 58.923847695390776, 59.078156312625254, 59.23246492985972, 59.38677354709419, 59.54108216432866, 59.69539078156313, 59.8496993987976, 60.00400801603206, 60.15831663326654, 60.312625250501, 60.46693386773547, 60.62124248496994, 60.77555110220441, 60.92985971943888, 61.08416833667334, 61.23847695390782, 61.392785571142284, 61.547094188376754, 61.701402805611224, 61.85571142284569, 62.010020040080164, 62.16432865731463, 62.3186372745491, 62.47294589178357, 62.62725450901804, 62.78156312625251, 62.93587174348697, 63.09018036072145, 63.24448897795591, 63.39879759519038, 63.55310621242485, 63.707414829659314, 63.86172344689379, 64.01603206412825, 64.17034068136272, 64.3246492985972, 64.47895791583167, 64.63326653306613, 64.7875751503006, 64.94188376753507, 65.09619238476954, 65.250501002004, 65.40480961923848, 65.55911823647295, 65.71342685370742, 65.86773547094188, 66.02204408817636, 66.17635270541082, 66.33066132264528, 66.48496993987976, 66.63927855711424, 66.79358717434869, 66.94789579158316, 67.10220440881764, 67.2565130260521, 67.41082164328657, 67.56513026052104, 67.71943887775551, 67.87374749498997, 68.02805611222445, 68.18236472945893, 68.33667334669339, 68.49098196392785, 68.64529058116233, 68.79959919839679, 68.95390781563125, 69.10821643286573, 69.26252505010021, 69.41683366733467, 69.57114228456913, 69.72545090180361, 69.87975951903807, 70.03406813627254, 70.18837675350701, 70.34268537074149, 70.49699398797596, 70.65130260521042, 70.8056112224449, 70.95991983967936, 71.11422845691382, 71.2685370741483, 71.42284569138278, 71.57715430861722, 71.7314629258517, 71.88577154308618, 72.04008016032064, 72.1943887775551, 72.34869739478958, 72.50300601202404, 72.65731462925851, 72.81162324649299, 72.96593186372746, 73.12024048096193, 73.27454909819639, 73.42885771543087, 73.58316633266533, 73.73747494989979, 73.89178356713427, 74.04609218436875, 74.20040080160321, 74.35470941883767, 74.50901803607215, 74.66332665330661, 74.81763527054107, 74.97194388777555, 75.12625250501003, 75.28056112224449, 75.43486973947896, 75.58917835671343, 75.7434869739479, 75.89779559118236, 76.05210420841684, 76.20641282565131, 76.36072144288576, 76.51503006012024, 76.66933867735472, 76.82364729458918, 76.97795591182364, 77.13226452905812, 77.28657314629258, 77.44088176352705, 77.59519038076152, 77.749498997996, 77.90380761523046, 78.05811623246493, 78.2124248496994, 78.36673346693387, 78.52104208416833, 78.6753507014028, 78.82965931863728, 78.98396793587175, 79.13827655310621, 79.29258517034069, 79.44689378757515, 79.60120240480961, 79.75551102204409, 79.90981963927857, 80.06412825651302, 80.21843687374749, 80.37274549098197, 80.52705410821643, 80.6813627254509, 80.83567134268537, 80.98997995991985, 81.1442885771543, 81.29859719438878, 81.45290581162325, 81.60721442885772, 81.76152304609218, 81.91583166332666, 82.07014028056112, 82.22444889779558, 82.37875751503006, 82.53306613226454, 82.687374749499, 82.84168336673346, 82.99599198396794, 83.1503006012024, 83.30460921843687, 83.45891783567134, 83.61322645290582, 83.76753507014028, 83.92184368737475, 84.07615230460922, 84.23046092184369, 84.38476953907815, 84.53907815631263, 84.6933867735471, 84.84769539078155, 85.00200400801603, 85.15631262525051, 85.31062124248497, 85.46492985971943, 85.61923847695391, 85.77354709418837, 85.92785571142284, 86.08216432865731, 86.23647294589179, 86.39078156312625, 86.54509018036072, 86.6993987975952, 86.85370741482966, 87.00801603206412, 87.1623246492986, 87.31663326653307, 87.47094188376754, 87.625250501002, 87.77955911823648, 87.93386773547094, 88.0881763527054, 88.24248496993988, 88.39679358717436, 88.55110220440882, 88.70541082164328, 88.85971943887776, 89.01402805611222, 89.16833667334669, 89.32264529058116, 89.47695390781564, 89.63126252505009, 89.78557114228457, 89.93987975951904, 90.09418837675351, 90.24849699398797, 90.40280561122245, 90.55711422845691, 90.71142284569137, 90.86573146292585, 91.02004008016033, 91.17434869739479, 91.32865731462925, 91.48296593186373, 91.6372745490982, 91.79158316633266, 91.94589178356713, 92.10020040080161, 92.25450901803607, 92.40881763527054, 92.56312625250501, 92.71743486973948, 92.87174348697394, 93.02605210420842, 93.1803607214429, 93.33466933867736, 93.48897795591182, 93.6432865731463, 93.79759519038076, 93.95190380761522, 94.1062124248497, 94.26052104208418, 94.41482965931863, 94.5691382765531, 94.72344689378758, 94.87775551102204, 95.03206412825651, 95.18637274549098, 95.34068136272545, 95.49498997995991, 95.64929859719439, 95.80360721442887, 95.95791583166333, 96.11222444889779, 96.26653306613227, 96.42084168336673, 96.5751503006012, 96.72945891783567, 96.88376753507015, 97.03807615230461, 97.19238476953907, 97.34669338677355, 97.50100200400801, 97.65531062124248, 97.80961923847696, 97.96392785571142, 98.1182364729459, 98.27254509018036, 98.42685370741484, 98.5811623246493, 98.73547094188376, 98.88977955911824, 99.0440881763527, 99.19839679358718, 99.35270541082164, 99.50701402805612, 99.66132264529058, 99.81563126252505, 99.96993987975952, 100.12424849699399, 100.27855711422846, 100.43286573146293, 100.58717434869739, 100.74148296593187, 100.89579158316633, 101.0501002004008, 101.20440881763527, 101.35871743486975, 101.51302605210421, 101.66733466933867, 101.82164328657315, 101.97595190380761, 102.13026052104209, 102.28456913827655, 102.43887775551102, 102.59318637274549, 102.74749498997996, 102.90180360721443, 103.0561122244489, 103.21042084168337, 103.36472945891784, 103.5190380761523, 103.67334669338678, 103.82765531062124, 103.98196392785572, 104.13627254509018, 104.29058116232466, 104.44488977955912, 104.59919839679358, 104.75350701402806, 104.90781563126252, 105.062124248497, 105.21643286573146, 105.37074148296593, 105.5250501002004, 105.67935871743487, 105.83366733466934, 105.9879759519038, 106.14228456913828, 106.29659318637275, 106.45090180360721, 106.60521042084169, 106.75951903807615, 106.91382765531063, 107.06813627254509, 107.22244488977955, 107.37675350701403, 107.53106212424849, 107.68537074148297, 107.83967935871743, 107.99398797595191, 108.14829659318637, 108.30260521042084, 108.45691382765531, 108.61122244488978, 108.76553106212425, 108.91983967935872, 109.07414829659318, 109.22845691382766, 109.38276553106212, 109.5370741482966, 109.69138276553106, 109.84569138276554, 110.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.x = d3.scale.linear()
+              .domain([33.0, 110.0])
+              .range([0, 450 - 50]);
+
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.legend = L.control({position: 'topright'});
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.legend.addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.xAxis = d3.svg.axis()
+        .scale(color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([33.0, 42.625, 52.25, 61.875, 71.5, 81.125, 90.75, 100.375, 110.0]);
+
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.g = color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.g.selectAll("rect")
+        .data(color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.x(color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.color.domain()[i - 1]) : color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.x.range()[0],
+            x1: i < color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.color.domain().length ? color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.x(color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.color.domain()[i]) : color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.g.call(color_map_cd8dd4bff35a3fa51d3eb24409d42aa2.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista BYRON ALEXANDER CALVERT CONTRERAS por local");
+    
+            var circle_marker_8f97bfca2ff4c70457ca171ab6fd7ddc = L.circleMarker(
+                [-33.5083, -70.6933],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_d6140e027d7648d339febcf39010ad3e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f4ff400419750b6362c0df602b001011 = $(`<div id="html_f4ff400419750b6362c0df602b001011" style="width: 100.0%; height: 100.0%;"><b>centro educacional cardenal jose maria caro</b><br>AVENIDA CARDENAL CARO 3745<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>110</b></div>`)[0];
+                popup_d6140e027d7648d339febcf39010ad3e.setContent(html_f4ff400419750b6362c0df602b001011);
+            
+        
+
+        circle_marker_8f97bfca2ff4c70457ca171ab6fd7ddc.bindPopup(popup_d6140e027d7648d339febcf39010ad3e)
+        ;
+
+        
+    
+    
+            circle_marker_8f97bfca2ff4c70457ca171ab6fd7ddc.bindTooltip(
+                `<div>
+                     centro educacional cardenal jose maria caro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4fce0fcb9840f17985c177906984c8ef = L.marker(
+                [-33.5083, -70.6933],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_a0109b430f2a511a899c5bba2801451c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e110\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4fce0fcb9840f17985c177906984c8ef.setIcon(div_icon_a0109b430f2a511a899c5bba2801451c);
+        
+    
+            var circle_marker_074929bd185381165836833f740af5ee = L.circleMarker(
+                [-33.52188, -70.69703],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9b42ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.363636363636363, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_e39ae72ee95fd6c58759b4025fd5647b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9085b44d067dce5aa4977b104bb653db = $(`<div id="html_9085b44d067dce5aa4977b104bb653db" style="width: 100.0%; height: 100.0%;"><b>colegio hernan olguin</b><br>AVENIDA CENTRAL 8108<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>68</b></div>`)[0];
+                popup_e39ae72ee95fd6c58759b4025fd5647b.setContent(html_9085b44d067dce5aa4977b104bb653db);
+            
+        
+
+        circle_marker_074929bd185381165836833f740af5ee.bindPopup(popup_e39ae72ee95fd6c58759b4025fd5647b)
+        ;
+
+        
+    
+    
+            circle_marker_074929bd185381165836833f740af5ee.bindTooltip(
+                `<div>
+                     colegio hernan olguin
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_051de505a9a7d91be6b387e9c6cdcd06 = L.marker(
+                [-33.52188, -70.69703],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_cb147b76d403dcebddde5141c2ef6b57 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e68\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_051de505a9a7d91be6b387e9c6cdcd06.setIcon(div_icon_cb147b76d403dcebddde5141c2ef6b57);
+        
+    
+            var circle_marker_c58aead3f69805c31f7396006d0c610b = L.circleMarker(
+                [-33.5184, -70.7014],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec25dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.545454545454547, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_0b7828e2196aa37f0bfdaeed0715dcc7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8d9eff0c130e7879a7ceeb31b2f6bcc6 = $(`<div id="html_8d9eff0c130e7879a7ceeb31b2f6bcc6" style="width: 100.0%; height: 100.0%;"><b>colegio lo espejo</b><br>SATURNO 3955<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>58</b></div>`)[0];
+                popup_0b7828e2196aa37f0bfdaeed0715dcc7.setContent(html_8d9eff0c130e7879a7ceeb31b2f6bcc6);
+            
+        
+
+        circle_marker_c58aead3f69805c31f7396006d0c610b.bindPopup(popup_0b7828e2196aa37f0bfdaeed0715dcc7)
+        ;
+
+        
+    
+    
+            circle_marker_c58aead3f69805c31f7396006d0c610b.bindTooltip(
+                `<div>
+                     colegio lo espejo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d0add49ccaec6267d069b9d534847d6 = L.marker(
+                [-33.5184, -70.7014],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_60f1224913908873eda3d606235c0e12 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e58\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6d0add49ccaec6267d069b9d534847d6.setIcon(div_icon_60f1224913908873eda3d606235c0e12);
+        
+    
+            var circle_marker_502aaa064807bc90189764314e1aa2bf = L.circleMarker(
+                [-33.5068, -70.69265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e2191cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.545454545454547, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_9e71520988e9f3fb8a7fdd7b4b02c9d8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b5adeb2c4769d95623b4efe158d5f941 = $(`<div id="html_b5adeb2c4769d95623b4efe158d5f941" style="width: 100.0%; height: 100.0%;"><b>colegio rosa elvira matte de prieto</b><br>BUENAVENTURA 3824<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>91</b></div>`)[0];
+                popup_9e71520988e9f3fb8a7fdd7b4b02c9d8.setContent(html_b5adeb2c4769d95623b4efe158d5f941);
+            
+        
+
+        circle_marker_502aaa064807bc90189764314e1aa2bf.bindPopup(popup_9e71520988e9f3fb8a7fdd7b4b02c9d8)
+        ;
+
+        
+    
+    
+            circle_marker_502aaa064807bc90189764314e1aa2bf.bindTooltip(
+                `<div>
+                     colegio rosa elvira matte de prieto
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e7b987600dbfc0e0d629845c8415e26 = L.marker(
+                [-33.5068, -70.69265],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_60a15f47dec3186de1226e7459e1ebcb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e91\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2e7b987600dbfc0e0d629845c8415e26.setIcon(div_icon_60a15f47dec3186de1226e7459e1ebcb);
+        
+    
+            var circle_marker_6ab6488651c871572ce60f7cf797e386 = L.circleMarker(
+                [-33.525, -70.7026],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e2191cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.545454545454547, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_5d7394edd71c922d368f562a9bdf4ee6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ba5dc8e16f09c43474de7851bd011fe7 = $(`<div id="html_ba5dc8e16f09c43474de7851bd011fe7" style="width: 100.0%; height: 100.0%;"><b>colegio san lucas de lo espejo</b><br>PEDRO LIRA 9195<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>91</b></div>`)[0];
+                popup_5d7394edd71c922d368f562a9bdf4ee6.setContent(html_ba5dc8e16f09c43474de7851bd011fe7);
+            
+        
+
+        circle_marker_6ab6488651c871572ce60f7cf797e386.bindPopup(popup_5d7394edd71c922d368f562a9bdf4ee6)
+        ;
+
+        
+    
+    
+            circle_marker_6ab6488651c871572ce60f7cf797e386.bindTooltip(
+                `<div>
+                     colegio san lucas de lo espejo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ea768fc9e6b976ba9ec95047ea4efeb = L.marker(
+                [-33.525, -70.7026],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_6b0bc3fb7a4dddf6170840ccfb968540 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e91\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5ea768fc9e6b976ba9ec95047ea4efeb.setIcon(div_icon_6b0bc3fb7a4dddf6170840ccfb968540);
+        
+    
+            var circle_marker_3a956fc9c81006933df5f14f1d542234 = L.circleMarker(
+                [-33.52, -70.6794],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea245ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_17b918e7ade1e5b5969c07b4ed4b00b0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_236c5fc0dc56f3c20bdf562cfef7fd98 = $(`<div id="html_236c5fc0dc56f3c20bdf562cfef7fd98" style="width: 100.0%; height: 100.0%;"><b>escuela acapulco</b><br>ACAPULCO 7661<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>66</b></div>`)[0];
+                popup_17b918e7ade1e5b5969c07b4ed4b00b0.setContent(html_236c5fc0dc56f3c20bdf562cfef7fd98);
+            
+        
+
+        circle_marker_3a956fc9c81006933df5f14f1d542234.bindPopup(popup_17b918e7ade1e5b5969c07b4ed4b00b0)
+        ;
+
+        
+    
+    
+            circle_marker_3a956fc9c81006933df5f14f1d542234.bindTooltip(
+                `<div>
+                     escuela acapulco
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17736e58a758cc1eb548f8e530a3be8d = L.marker(
+                [-33.52, -70.6794],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_f2fe76c764d8a8282496c0161eea100a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e66\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_17736e58a758cc1eb548f8e530a3be8d.setIcon(div_icon_f2fe76c764d8a8282496c0161eea100a);
+        
+    
+            var circle_marker_c7ba55eb5bb01fb01976815d98752b38 = L.circleMarker(
+                [-33.51984, -70.68374],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feca66ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.181818181818182, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_b97a8deb41039521b1bdaa2145df5ebf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f884afd6b029a94aa48d5d698f801e30 = $(`<div id="html_f884afd6b029a94aa48d5d698f801e30" style="width: 100.0%; height: 100.0%;"><b>escuela alicia ariztia de silva</b><br>MEXICO 2444<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>56</b></div>`)[0];
+                popup_b97a8deb41039521b1bdaa2145df5ebf.setContent(html_f884afd6b029a94aa48d5d698f801e30);
+            
+        
+
+        circle_marker_c7ba55eb5bb01fb01976815d98752b38.bindPopup(popup_b97a8deb41039521b1bdaa2145df5ebf)
+        ;
+
+        
+    
+    
+            circle_marker_c7ba55eb5bb01fb01976815d98752b38.bindTooltip(
+                `<div>
+                     escuela alicia ariztia de silva
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4afd2768057971dfdb130864b642e62d = L.marker(
+                [-33.51984, -70.68374],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_056cd814d52fbfbbce4dfdb28d7faf0d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e56\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4afd2768057971dfdb130864b642e62d.setIcon(div_icon_056cd814d52fbfbbce4dfdb28d7faf0d);
+        
+    
+            var circle_marker_92349f1b4e4a97b04e20b6768c469b02 = L.circleMarker(
+                [-33.5176, -70.6911],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feca66ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.181818181818182, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_cb4db6039165c77431cc6f9a0096265a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b10957adb82b51f6814b2bcd57378cae = $(`<div id="html_b10957adb82b51f6814b2bcd57378cae" style="width: 100.0%; height: 100.0%;"><b>escuela blue star college</b><br>MONTERREY 7519<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>56</b></div>`)[0];
+                popup_cb4db6039165c77431cc6f9a0096265a.setContent(html_b10957adb82b51f6814b2bcd57378cae);
+            
+        
+
+        circle_marker_92349f1b4e4a97b04e20b6768c469b02.bindPopup(popup_cb4db6039165c77431cc6f9a0096265a)
+        ;
+
+        
+    
+    
+            circle_marker_92349f1b4e4a97b04e20b6768c469b02.bindTooltip(
+                `<div>
+                     escuela blue star college
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f8b1ed8948429cc757db03a01f231138 = L.marker(
+                [-33.5176, -70.6911],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_9bb5f448cd087a7f547bda45b8cde0c0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e56\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f8b1ed8948429cc757db03a01f231138.setIcon(div_icon_9bb5f448cd087a7f547bda45b8cde0c0);
+        
+    
+            var circle_marker_0782022701a5b673df4304974f6f1632 = L.circleMarker(
+                [-33.51213, -70.68945],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffda77ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.454545454545455, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_2d9ed6abb6fc841d41b46cf4c56ffed6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a3d006764c841750d09bdfa3c73d0681 = $(`<div id="html_a3d006764c841750d09bdfa3c73d0681" style="width: 100.0%; height: 100.0%;"><b>escuela d 570 raul saez saez</b><br>VERACRUZ 5243<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>52</b></div>`)[0];
+                popup_2d9ed6abb6fc841d41b46cf4c56ffed6.setContent(html_a3d006764c841750d09bdfa3c73d0681);
+            
+        
+
+        circle_marker_0782022701a5b673df4304974f6f1632.bindPopup(popup_2d9ed6abb6fc841d41b46cf4c56ffed6)
+        ;
+
+        
+    
+    
+            circle_marker_0782022701a5b673df4304974f6f1632.bindTooltip(
+                `<div>
+                     escuela d 570 raul saez saez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0497dc1869678378484324d48d0af1a7 = L.marker(
+                [-33.51213, -70.68945],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_d1360c7615e44820eb64ab62f72d798b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e52\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0497dc1869678378484324d48d0af1a7.setIcon(div_icon_d1360c7615e44820eb64ab62f72d798b);
+        
+    
+            var circle_marker_cf767dc61921d40859d0d487c8c38484 = L.circleMarker(
+                [-33.5286, -70.68855],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fece6aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_65338f5ad2d5027564d81916c05475e6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_93450b310511f5e9d2d0ee904ee064b4 = $(`<div id="html_93450b310511f5e9d2d0ee904ee064b4" style="width: 100.0%; height: 100.0%;"><b>escuela republicana de las filipinas</b><br>JUPITER 7746<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>55</b></div>`)[0];
+                popup_65338f5ad2d5027564d81916c05475e6.setContent(html_93450b310511f5e9d2d0ee904ee064b4);
+            
+        
+
+        circle_marker_cf767dc61921d40859d0d487c8c38484.bindPopup(popup_65338f5ad2d5027564d81916c05475e6)
+        ;
+
+        
+    
+    
+            circle_marker_cf767dc61921d40859d0d487c8c38484.bindTooltip(
+                `<div>
+                     escuela republicana de las filipinas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9fcb718cb70d829d1c7eec41b9ddedeb = L.marker(
+                [-33.5286, -70.68855],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_702f7dbb0c9560873ceb6b76839c1cb7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e55\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9fcb718cb70d829d1c7eec41b9ddedeb.setIcon(div_icon_702f7dbb0c9560873ceb6b76839c1cb7);
+        
+    
+            var circle_marker_246ccea9544c2bcd8ee72d5c53a59894 = L.circleMarker(
+                [-33.5089, -70.67887],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_825cc2c83ec68bde7662f5764cba3c14 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5eb5735f304aba085bc3b6cbcf9ef805 = $(`<div id="html_5eb5735f304aba085bc3b6cbcf9ef805" style="width: 100.0%; height: 100.0%;"><b>escuela santa adriana</b><br>JUPITER 2238<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>33</b></div>`)[0];
+                popup_825cc2c83ec68bde7662f5764cba3c14.setContent(html_5eb5735f304aba085bc3b6cbcf9ef805);
+            
+        
+
+        circle_marker_246ccea9544c2bcd8ee72d5c53a59894.bindPopup(popup_825cc2c83ec68bde7662f5764cba3c14)
+        ;
+
+        
+    
+    
+            circle_marker_246ccea9544c2bcd8ee72d5c53a59894.bindTooltip(
+                `<div>
+                     escuela santa adriana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d1e98de76fb6ce71a310ee6da7db12e2 = L.marker(
+                [-33.5089, -70.67887],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_e169891ce3af6cdde424a60fa20678d4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e33\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d1e98de76fb6ce71a310ee6da7db12e2.setIcon(div_icon_e169891ce3af6cdde424a60fa20678d4);
+        
+    
+            var circle_marker_454a2ce167f3de80e0b138439876885c = L.circleMarker(
+                [-33.5149, -70.68],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c30324ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.0, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_18b10c9d7472e696a07ed2b7548a79ae = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d2e67edcc51388c7d7cb1bbf2060f755 = $(`<div id="html_d2e67edcc51388c7d7cb1bbf2060f755" style="width: 100.0%; height: 100.0%;"><b>liceo politecnico sagrado corazon</b><br>HUASCO 7147<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>99</b></div>`)[0];
+                popup_18b10c9d7472e696a07ed2b7548a79ae.setContent(html_d2e67edcc51388c7d7cb1bbf2060f755);
+            
+        
+
+        circle_marker_454a2ce167f3de80e0b138439876885c.bindPopup(popup_18b10c9d7472e696a07ed2b7548a79ae)
+        ;
+
+        
+    
+    
+            circle_marker_454a2ce167f3de80e0b138439876885c.bindTooltip(
+                `<div>
+                     liceo politecnico sagrado corazon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9e2ca3ce5b05104fd5069598a8d0238 = L.marker(
+                [-33.5149, -70.68],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_5ee33f0181a652b18b57c9e4ae9ebc27 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e99\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d9e2ca3ce5b05104fd5069598a8d0238.setIcon(div_icon_5ee33f0181a652b18b57c9e4ae9ebc27);
+        
+    
+            var circle_marker_c5257a4e4c299f005d293c09b41a6710 = L.circleMarker(
+                [-33.513, -70.6828],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8a3bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.09090909090909, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_a88638a12de285a513060d6a7e00f170 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f010bfb4d528bed1bf2ffd794b8fa1ea = $(`<div id="html_f010bfb4d528bed1bf2ffd794b8fa1ea" style="width: 100.0%; height: 100.0%;"><b>liceo polivalente</b><br>INES DE SUAREZ 6970<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>72</b></div>`)[0];
+                popup_a88638a12de285a513060d6a7e00f170.setContent(html_f010bfb4d528bed1bf2ffd794b8fa1ea);
+            
+        
+
+        circle_marker_c5257a4e4c299f005d293c09b41a6710.bindPopup(popup_a88638a12de285a513060d6a7e00f170)
+        ;
+
+        
+    
+    
+            circle_marker_c5257a4e4c299f005d293c09b41a6710.bindTooltip(
+                `<div>
+                     liceo polivalente
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cbe39b44bb47d3b229dde31ca082be37 = L.marker(
+                [-33.513, -70.6828],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_18fdbbb8156c6cb104e7795abdc362e5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e72\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_cbe39b44bb47d3b229dde31ca082be37.setIcon(div_icon_18fdbbb8156c6cb104e7795abdc362e5);
+        
+    
+            var circle_marker_77d08923adf37fd3ab711e24f00e448f = L.circleMarker(
+                [-33.5336, -70.6954],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9740ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.545454545454547, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_7c87d84455d7b5dfbd59a24703486492 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_86de5a8e6879c3e9a72de91105d3684f = $(`<div id="html_86de5a8e6879c3e9a72de91105d3684f" style="width: 100.0%; height: 100.0%;"><b>liceo teniente francisco mery aguirre</b><br>CENTENARIO 2854<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>69</b></div>`)[0];
+                popup_7c87d84455d7b5dfbd59a24703486492.setContent(html_86de5a8e6879c3e9a72de91105d3684f);
+            
+        
+
+        circle_marker_77d08923adf37fd3ab711e24f00e448f.bindPopup(popup_7c87d84455d7b5dfbd59a24703486492)
+        ;
+
+        
+    
+    
+            circle_marker_77d08923adf37fd3ab711e24f00e448f.bindTooltip(
+                `<div>
+                     liceo teniente francisco mery aguirre
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c86ed86593bd7cec3a91388e9691fb65 = L.marker(
+                [-33.5336, -70.6954],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_0a6f83f775e99edf41f9d76474ad5d36 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e69\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c86ed86593bd7cec3a91388e9691fb65.setIcon(div_icon_0a6f83f775e99edf41f9d76474ad5d36);
+        
+    
+            var circle_marker_b90819d1d1e06a9af4cbd7b864fa4ded = L.circleMarker(
+                [-33.52989, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9e43ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.181818181818182, "stroke": false, "weight": 3}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+        var popup_53debfd3eb1e7ef6e7469f531377834a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d86c567ca53e8cddab20672600e3737b = $(`<div id="html_d86c567ca53e8cddab20672600e3737b" style="width: 100.0%; height: 100.0%;"><b>saint trinity college</b><br>NUEVE DE ENERO 2699<br>Votos Lista BYRON ALEXANDER CALVERT CONTRERAS: <b>67</b></div>`)[0];
+                popup_53debfd3eb1e7ef6e7469f531377834a.setContent(html_d86c567ca53e8cddab20672600e3737b);
+            
+        
+
+        circle_marker_b90819d1d1e06a9af4cbd7b864fa4ded.bindPopup(popup_53debfd3eb1e7ef6e7469f531377834a)
+        ;
+
+        
+    
+    
+            circle_marker_b90819d1d1e06a9af4cbd7b864fa4ded.bindTooltip(
+                `<div>
+                     saint trinity college
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_08b72d7c6ac45877477cdb4d4ea6db9e = L.marker(
+                [-33.52989, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_aab9ba894dca7c4b80eae4d62f6af0dd);
+        
+    
+            var div_icon_b997464893a2fcce41cead6e280e82ce = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e67\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_08b72d7c6ac45877477cdb4d4ea6db9e.setIcon(div_icon_b997464893a2fcce41cead6e280e82ce);
+        
+    
+            map_aab9ba894dca7c4b80eae4d62f6af0dd.fitBounds(
+                [[-33.5083, -70.6933], [-33.52188, -70.69703], [-33.5184, -70.7014], [-33.5068, -70.69265], [-33.525, -70.7026], [-33.52, -70.6794], [-33.51984, -70.68374], [-33.5176, -70.6911], [-33.51213, -70.68945], [-33.5286, -70.68855], [-33.5089, -70.67887], [-33.5149, -70.68], [-33.513, -70.6828], [-33.5336, -70.6954], [-33.52989, -70.69]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

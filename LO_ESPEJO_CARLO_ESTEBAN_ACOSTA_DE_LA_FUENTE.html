@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e210b7854f15d9015502eca7bf03b325 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e210b7854f15d9015502eca7bf03b325" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e210b7854f15d9015502eca7bf03b325 = L.map(
+                "map_e210b7854f15d9015502eca7bf03b325",
+                {
+                    center: [-33.51858933333333, -70.68975266666668],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_68471804353c0bdcd565e89db51c3f25 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_68471804353c0bdcd565e89db51c3f25.addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+    var color_map_aa0a52abbd922a08a309971216151eac = {};
+
+    
+    color_map_aa0a52abbd922a08a309971216151eac.color = d3.scale.threshold()
+              .domain([100.0, 100.24849699398797, 100.49699398797596, 100.74549098196393, 100.99398797595191, 101.24248496993988, 101.49098196392785, 101.73947895791584, 101.9879759519038, 102.23647294589179, 102.48496993987976, 102.73346693386773, 102.98196392785572, 103.23046092184369, 103.47895791583166, 103.72745490981964, 103.97595190380761, 104.2244488977956, 104.47294589178357, 104.72144288577154, 104.96993987975952, 105.21843687374749, 105.46693386773548, 105.71543086172345, 105.96392785571142, 106.2124248496994, 106.46092184368737, 106.70941883767534, 106.95791583166333, 107.2064128256513, 107.45490981963928, 107.70340681362725, 107.95190380761522, 108.20040080160321, 108.44889779559118, 108.69739478957916, 108.94589178356713, 109.1943887775551, 109.44288577154309, 109.69138276553106, 109.93987975951904, 110.18837675350701, 110.43687374749499, 110.68537074148297, 110.93386773547094, 111.18236472945893, 111.4308617234469, 111.67935871743487, 111.92785571142285, 112.17635270541082, 112.4248496993988, 112.67334669338678, 112.92184368737475, 113.17034068136273, 113.4188376753507, 113.66733466933867, 113.91583166332666, 114.16432865731463, 114.4128256513026, 114.66132264529058, 114.90981963927855, 115.15831663326654, 115.40681362725451, 115.65531062124248, 115.90380761523046, 116.15230460921843, 116.40080160320642, 116.64929859719439, 116.89779559118236, 117.14629258517034, 117.39478957915831, 117.6432865731463, 117.89178356713427, 118.14028056112224, 118.38877755511022, 118.6372745490982, 118.88577154308618, 119.13426853707415, 119.38276553106212, 119.6312625250501, 119.87975951903807, 120.12825651302606, 120.37675350701403, 120.625250501002, 120.87374749498998, 121.12224448897796, 121.37074148296594, 121.61923847695391, 121.86773547094188, 122.11623246492985, 122.36472945891784, 122.61322645290582, 122.86172344689379, 123.11022044088176, 123.35871743486973, 123.60721442885772, 123.85571142284569, 124.10420841683367, 124.35270541082164, 124.60120240480961, 124.8496993987976, 125.09819639278557, 125.34669338677355, 125.59519038076152, 125.84368737474949, 126.09218436873748, 126.34068136272545, 126.58917835671343, 126.8376753507014, 127.08617234468937, 127.33466933867736, 127.58316633266533, 127.83166332665331, 128.08016032064128, 128.32865731462925, 128.57715430861722, 128.8256513026052, 129.0741482965932, 129.32264529058116, 129.57114228456913, 129.8196392785571, 130.06813627254508, 130.31663326653307, 130.56513026052104, 130.81362725450902, 131.06212424849699, 131.31062124248496, 131.55911823647295, 131.80761523046093, 132.0561122244489, 132.30460921843687, 132.55310621242484, 132.80160320641284, 133.0501002004008, 133.29859719438878, 133.54709418837675, 133.79559118236472, 134.04408817635272, 134.2925851703407, 134.54108216432866, 134.78957915831663, 135.0380761523046, 135.2865731462926, 135.53507014028057, 135.78356713426854, 136.0320641282565, 136.28056112224448, 136.52905811623248, 136.77755511022045, 137.02605210420842, 137.2745490981964, 137.52304609218436, 137.77154308617236, 138.02004008016033, 138.2685370741483, 138.51703406813627, 138.76553106212424, 139.01402805611224, 139.2625250501002, 139.51102204408818, 139.75951903807615, 140.00801603206412, 140.25651302605212, 140.5050100200401, 140.75350701402806, 141.00200400801603, 141.250501002004, 141.498997995992, 141.74749498997997, 141.99599198396794, 142.2444889779559, 142.49298597194388, 142.74148296593188, 142.98997995991985, 143.23847695390782, 143.4869739478958, 143.73547094188376, 143.98396793587176, 144.2324649298597, 144.4809619238477, 144.72945891783567, 144.97795591182364, 145.22645290581164, 145.47494989979958, 145.72344689378758, 145.97194388777555, 146.22044088176352, 146.4689378757515, 146.71743486973946, 146.96593186372746, 147.21442885771543, 147.4629258517034, 147.71142284569137, 147.95991983967934, 148.20841683366734, 148.4569138276553, 148.70541082164328, 148.95390781563125, 149.20240480961922, 149.45090180360722, 149.6993987975952, 149.94789579158316, 150.19639278557113, 150.4448897795591, 150.6933867735471, 150.94188376753507, 151.19038076152304, 151.43887775551102, 151.68737474949899, 151.93587174348698, 152.18436873747495, 152.43286573146293, 152.6813627254509, 152.92985971943887, 153.17835671342687, 153.42685370741484, 153.6753507014028, 153.92384769539078, 154.17234468937875, 154.42084168336675, 154.66933867735472, 154.9178356713427, 155.16633266533066, 155.41482965931863, 155.66332665330663, 155.9118236472946, 156.16032064128257, 156.40881763527054, 156.6573146292585, 156.9058116232465, 157.15430861723448, 157.40280561122245, 157.65130260521042, 157.8997995991984, 158.1482965931864, 158.39679358717436, 158.64529058116233, 158.8937875751503, 159.14228456913827, 159.39078156312627, 159.63927855711424, 159.8877755511022, 160.13627254509018, 160.38476953907815, 160.63326653306615, 160.88176352705412, 161.1302605210421, 161.37875751503006, 161.62725450901803, 161.87575150300603, 162.12424849699397, 162.37274549098197, 162.62124248496994, 162.8697394789579, 163.11823647294588, 163.36673346693385, 163.61523046092185, 163.86372745490982, 164.1122244488978, 164.3607214428858, 164.60921843687373, 164.85771543086173, 165.1062124248497, 165.35470941883767, 165.60320641282567, 165.8517034068136, 166.1002004008016, 166.34869739478958, 166.59719438877755, 166.84569138276555, 167.0941883767535, 167.3426853707415, 167.59118236472946, 167.83967935871743, 168.08817635270543, 168.33667334669337, 168.58517034068137, 168.83366733466934, 169.0821643286573, 169.33066132264528, 169.57915831663325, 169.82765531062125, 170.07615230460922, 170.3246492985972, 170.57314629258516, 170.82164328657313, 171.07014028056113, 171.3186372745491, 171.56713426853707, 171.81563126252505, 172.06412825651302, 172.31262525050101, 172.56112224448898, 172.80961923847696, 173.05811623246493, 173.3066132264529, 173.5551102204409, 173.80360721442884, 174.05210420841684, 174.3006012024048, 174.54909819639278, 174.79759519038078, 175.04609218436872, 175.29458917835672, 175.5430861723447, 175.79158316633266, 176.04008016032066, 176.2885771543086, 176.5370741482966, 176.78557114228457, 177.03406813627254, 177.28256513026054, 177.53106212424848, 177.77955911823648, 178.02805611222445, 178.27655310621242, 178.52505010020042, 178.77354709418836, 179.02204408817636, 179.27054108216433, 179.5190380761523, 179.7675350701403, 180.01603206412824, 180.26452905811624, 180.5130260521042, 180.76152304609218, 181.01002004008018, 181.25851703406812, 181.50701402805612, 181.7555110220441, 182.00400801603206, 182.25250501002006, 182.501002004008, 182.749498997996, 182.99799599198397, 183.24649298597194, 183.49498997995994, 183.74348697394788, 183.99198396793588, 184.24048096192385, 184.48897795591182, 184.73747494989982, 184.98597194388776, 185.23446893787576, 185.48296593186373, 185.7314629258517, 185.9799599198397, 186.22845691382764, 186.47695390781564, 186.7254509018036, 186.97394789579158, 187.22244488977955, 187.47094188376752, 187.71943887775552, 187.9679358717435, 188.21643286573146, 188.46492985971943, 188.7134268537074, 188.9619238476954, 189.21042084168337, 189.45891783567134, 189.7074148296593, 189.95591182364728, 190.20440881763528, 190.45290581162325, 190.70140280561122, 190.9498997995992, 191.19839679358716, 191.44689378757516, 191.6953907815631, 191.9438877755511, 192.19238476953907, 192.44088176352705, 192.68937875751504, 192.937875751503, 193.18637274549098, 193.43486973947896, 193.68336673346693, 193.93186372745492, 194.18036072144287, 194.42885771543087, 194.67735470941884, 194.9258517034068, 195.1743486973948, 195.42284569138275, 195.67134268537075, 195.91983967935872, 196.1683366733467, 196.41683366733469, 196.66533066132263, 196.91382765531063, 197.1623246492986, 197.41082164328657, 197.65931863727457, 197.9078156312625, 198.1563126252505, 198.40480961923848, 198.65330661322645, 198.90180360721445, 199.1503006012024, 199.3987975951904, 199.64729458917836, 199.89579158316633, 200.14428857715433, 200.39278557114227, 200.64128256513027, 200.88977955911824, 201.1382765531062, 201.3867735470942, 201.63527054108215, 201.88376753507015, 202.13226452905812, 202.3807615230461, 202.6292585170341, 202.87775551102203, 203.12625250501003, 203.374749498998, 203.62324649298597, 203.87174348697397, 204.1202404809619, 204.3687374749499, 204.61723446893788, 204.86573146292585, 205.11422845691382, 205.3627254509018, 205.6112224448898, 205.85971943887776, 206.10821643286573, 206.3567134268537, 206.60521042084167, 206.85370741482967, 207.10220440881764, 207.3507014028056, 207.59919839679358, 207.84769539078155, 208.09619238476955, 208.34468937875752, 208.5931863727455, 208.84168336673346, 209.09018036072143, 209.33867735470943, 209.58717434869737, 209.83567134268537, 210.08416833667334, 210.3326653306613, 210.5811623246493, 210.82965931863725, 211.07815631262525, 211.32665330661322, 211.5751503006012, 211.8236472945892, 212.07214428857714, 212.32064128256513, 212.5691382765531, 212.81763527054107, 213.06613226452907, 213.31462925851702, 213.56312625250501, 213.81162324649299, 214.06012024048096, 214.30861723446895, 214.5571142284569, 214.8056112224449, 215.05410821643287, 215.30260521042084, 215.55110220440883, 215.79959919839678, 216.04809619238478, 216.29659318637275, 216.54509018036072, 216.79358717434872, 217.04208416833666, 217.29058116232466, 217.53907815631263, 217.7875751503006, 218.0360721442886, 218.28456913827654, 218.53306613226454, 218.7815631262525, 219.03006012024048, 219.27855711422848, 219.52705410821642, 219.77555110220442, 220.0240480961924, 220.27254509018036, 220.52104208416836, 220.7695390781563, 221.0180360721443, 221.26653306613227, 221.51503006012024, 221.76352705410824, 222.01202404809618, 222.26052104208418, 222.50901803607215, 222.75751503006012, 223.0060120240481, 223.25450901803606, 223.50300601202406, 223.75150300601203, 224.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_aa0a52abbd922a08a309971216151eac.x = d3.scale.linear()
+              .domain([100.0, 224.0])
+              .range([0, 450 - 50]);
+
+    color_map_aa0a52abbd922a08a309971216151eac.legend = L.control({position: 'topright'});
+    color_map_aa0a52abbd922a08a309971216151eac.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_aa0a52abbd922a08a309971216151eac.legend.addTo(map_e210b7854f15d9015502eca7bf03b325);
+
+    color_map_aa0a52abbd922a08a309971216151eac.xAxis = d3.svg.axis()
+        .scale(color_map_aa0a52abbd922a08a309971216151eac.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([100.0, 115.5, 131.0, 146.5, 162.0, 177.5, 193.0, 208.5, 224.0]);
+
+    color_map_aa0a52abbd922a08a309971216151eac.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_aa0a52abbd922a08a309971216151eac.g = color_map_aa0a52abbd922a08a309971216151eac.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_aa0a52abbd922a08a309971216151eac.g.selectAll("rect")
+        .data(color_map_aa0a52abbd922a08a309971216151eac.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_aa0a52abbd922a08a309971216151eac.x(color_map_aa0a52abbd922a08a309971216151eac.color.domain()[i - 1]) : color_map_aa0a52abbd922a08a309971216151eac.x.range()[0],
+            x1: i < color_map_aa0a52abbd922a08a309971216151eac.color.domain().length ? color_map_aa0a52abbd922a08a309971216151eac.x(color_map_aa0a52abbd922a08a309971216151eac.color.domain()[i]) : color_map_aa0a52abbd922a08a309971216151eac.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_aa0a52abbd922a08a309971216151eac.g.call(color_map_aa0a52abbd922a08a309971216151eac.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE por local");
+    
+            var circle_marker_656a5b27dd3a19e52b0e07318280c981 = L.circleMarker(
+                [-33.5083, -70.6933],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6c32ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.903225806451612, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_e3d3fc9adc56016a87578be48ad074ef = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_84c85ca538de323f4ec5eb55ba2b5961 = $(`<div id="html_84c85ca538de323f4ec5eb55ba2b5961" style="width: 100.0%; height: 100.0%;"><b>centro educacional cardenal jose maria caro</b><br>AVENIDA CARDENAL CARO 3745<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>170</b></div>`)[0];
+                popup_e3d3fc9adc56016a87578be48ad074ef.setContent(html_84c85ca538de323f4ec5eb55ba2b5961);
+            
+        
+
+        circle_marker_656a5b27dd3a19e52b0e07318280c981.bindPopup(popup_e3d3fc9adc56016a87578be48ad074ef)
+        ;
+
+        
+    
+    
+            circle_marker_656a5b27dd3a19e52b0e07318280c981.bindTooltip(
+                `<div>
+                     centro educacional cardenal jose maria caro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cd91d0e9c239b109dd8fffebb723d3f9 = L.marker(
+                [-33.5083, -70.6933],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_07193fe338ca72630c5f61cfa9f9290e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e170\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_cd91d0e9c239b109dd8fffebb723d3f9.setIcon(div_icon_07193fe338ca72630c5f61cfa9f9290e);
+        
+    
+            var circle_marker_58e858dfffc1feb6bbb73c42b9d06815 = L.circleMarker(
+                [-33.52188, -70.69703],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd893bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.112903225806452, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_5434be0cb2f6525ac6f97be3a9996a02 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6cb05eef98358561067ddd0cda8efc3e = $(`<div id="html_6cb05eef98358561067ddd0cda8efc3e" style="width: 100.0%; height: 100.0%;"><b>colegio hernan olguin</b><br>AVENIDA CENTRAL 8108<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>163</b></div>`)[0];
+                popup_5434be0cb2f6525ac6f97be3a9996a02.setContent(html_6cb05eef98358561067ddd0cda8efc3e);
+            
+        
+
+        circle_marker_58e858dfffc1feb6bbb73c42b9d06815.bindPopup(popup_5434be0cb2f6525ac6f97be3a9996a02)
+        ;
+
+        
+    
+    
+            circle_marker_58e858dfffc1feb6bbb73c42b9d06815.bindTooltip(
+                `<div>
+                     colegio hernan olguin
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f74efbda3b26adc7ec3339405bf8a762 = L.marker(
+                [-33.52188, -70.69703],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_b66dad3e77050f465af3f3f8b42febdc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e163\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f74efbda3b26adc7ec3339405bf8a762.setIcon(div_icon_b66dad3e77050f465af3f3f8b42febdc);
+        
+    
+            var circle_marker_05867f072619cba7cbccdeaf5ae3ba78 = L.circleMarker(
+                [-33.5184, -70.7014],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff7b8ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.790322580645162, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_11855008151d0b5f8f43f547956d2013 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_41560e4056a549a218bed912138dfe31 = $(`<div id="html_41560e4056a549a218bed912138dfe31" style="width: 100.0%; height: 100.0%;"><b>colegio lo espejo</b><br>SATURNO 3955<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>107</b></div>`)[0];
+                popup_11855008151d0b5f8f43f547956d2013.setContent(html_41560e4056a549a218bed912138dfe31);
+            
+        
+
+        circle_marker_05867f072619cba7cbccdeaf5ae3ba78.bindPopup(popup_11855008151d0b5f8f43f547956d2013)
+        ;
+
+        
+    
+    
+            circle_marker_05867f072619cba7cbccdeaf5ae3ba78.bindTooltip(
+                `<div>
+                     colegio lo espejo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1ca0d3f6a7ca99921211874134bb35fb = L.marker(
+                [-33.5184, -70.7014],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_05148f664a5574c28e527192d5a165af = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e107\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1ca0d3f6a7ca99921211874134bb35fb.setIcon(div_icon_05148f664a5574c28e527192d5a165af);
+        
+    
+            var circle_marker_91997ab3940e3fb4b9655d24e556f541 = L.circleMarker(
+                [-33.5068, -70.69265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea044ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.096774193548388, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_05b4e7716ea495c16ffb165289c71751 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4e63b106563fcf9a88d3d594c68ea3d1 = $(`<div id="html_4e63b106563fcf9a88d3d594c68ea3d1" style="width: 100.0%; height: 100.0%;"><b>colegio rosa elvira matte de prieto</b><br>BUENAVENTURA 3824<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>154</b></div>`)[0];
+                popup_05b4e7716ea495c16ffb165289c71751.setContent(html_4e63b106563fcf9a88d3d594c68ea3d1);
+            
+        
+
+        circle_marker_91997ab3940e3fb4b9655d24e556f541.bindPopup(popup_05b4e7716ea495c16ffb165289c71751)
+        ;
+
+        
+    
+    
+            circle_marker_91997ab3940e3fb4b9655d24e556f541.bindTooltip(
+                `<div>
+                     colegio rosa elvira matte de prieto
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d250f115776b02e495803800b95b030 = L.marker(
+                [-33.5068, -70.69265],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_6a4bc62b164ef5913363e688a7fc24fa = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e154\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6d250f115776b02e495803800b95b030.setIcon(div_icon_6a4bc62b164ef5913363e688a7fc24fa);
+        
+    
+            var circle_marker_9daa94f14e0552620dca58c2a4082506 = L.circleMarker(
+                [-33.525, -70.7026],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea044ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.096774193548388, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_b227f7d87f1b0317b9d72b3955f0a140 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0ebd6b4ff9d7065e1615aeb01d84f5f5 = $(`<div id="html_0ebd6b4ff9d7065e1615aeb01d84f5f5" style="width: 100.0%; height: 100.0%;"><b>colegio san lucas de lo espejo</b><br>PEDRO LIRA 9195<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>154</b></div>`)[0];
+                popup_b227f7d87f1b0317b9d72b3955f0a140.setContent(html_0ebd6b4ff9d7065e1615aeb01d84f5f5);
+            
+        
+
+        circle_marker_9daa94f14e0552620dca58c2a4082506.bindPopup(popup_b227f7d87f1b0317b9d72b3955f0a140)
+        ;
+
+        
+    
+    
+            circle_marker_9daa94f14e0552620dca58c2a4082506.bindTooltip(
+                `<div>
+                     colegio san lucas de lo espejo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e17a35488e0b43fe4671eccaed7ef9b0 = L.marker(
+                [-33.525, -70.7026],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_5892a5e45d12faa102a5d6d956ca3193 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e154\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e17a35488e0b43fe4671eccaed7ef9b0.setIcon(div_icon_5892a5e45d12faa102a5d6d956ca3193);
+        
+    
+            var circle_marker_1cfa7ef007e3ccf7fc8c9543e8d2fd09 = L.circleMarker(
+                [-33.52, -70.6794],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec05bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.629032258064516, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_f6ce1c7a4b25f926da805c042ea19e6b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d76e805901b77fcbb320e5afa612311b = $(`<div id="html_d76e805901b77fcbb320e5afa612311b" style="width: 100.0%; height: 100.0%;"><b>escuela acapulco</b><br>ACAPULCO 7661<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>141</b></div>`)[0];
+                popup_f6ce1c7a4b25f926da805c042ea19e6b.setContent(html_d76e805901b77fcbb320e5afa612311b);
+            
+        
+
+        circle_marker_1cfa7ef007e3ccf7fc8c9543e8d2fd09.bindPopup(popup_f6ce1c7a4b25f926da805c042ea19e6b)
+        ;
+
+        
+    
+    
+            circle_marker_1cfa7ef007e3ccf7fc8c9543e8d2fd09.bindTooltip(
+                `<div>
+                     escuela acapulco
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4f547d75ef614f7c82b33b1e23a92b2d = L.marker(
+                [-33.52, -70.6794],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_3e4d69e457a5aab6a3c1529af0a57def = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e141\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4f547d75ef614f7c82b33b1e23a92b2d.setIcon(div_icon_3e4d69e457a5aab6a3c1529af0a57def);
+        
+    
+            var circle_marker_c12b9a34f7cd50dd427b8ea5662b1b66 = L.circleMarker(
+                [-33.51984, -70.68374],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdc7bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.274193548387096, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_2c822fc6765273a4c45002651c87e206 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7cbf2534cb94dfffbc9da2748f23924b = $(`<div id="html_7cbf2534cb94dfffbc9da2748f23924b" style="width: 100.0%; height: 100.0%;"><b>escuela alicia ariztia de silva</b><br>MEXICO 2444<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>129</b></div>`)[0];
+                popup_2c822fc6765273a4c45002651c87e206.setContent(html_7cbf2534cb94dfffbc9da2748f23924b);
+            
+        
+
+        circle_marker_c12b9a34f7cd50dd427b8ea5662b1b66.bindPopup(popup_2c822fc6765273a4c45002651c87e206)
+        ;
+
+        
+    
+    
+            circle_marker_c12b9a34f7cd50dd427b8ea5662b1b66.bindTooltip(
+                `<div>
+                     escuela alicia ariztia de silva
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0a6369c4f2fa295075a5c9282afcfe9d = L.marker(
+                [-33.51984, -70.68374],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_d3f3e7ca698106d6f42c5b407cfc6f0a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e129\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0a6369c4f2fa295075a5c9282afcfe9d.setIcon(div_icon_d3f3e7ca698106d6f42c5b407cfc6f0a);
+        
+    
+            var circle_marker_a24c5f328dc6298e15a02ea0826943c3 = L.circleMarker(
+                [-33.5176, -70.6911],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7535ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.67741935483871, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_a182085cba51dd8d560f3d9eba6a44ae = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_efb66c3d0967c45d8b6aa885b437e918 = $(`<div id="html_efb66c3d0967c45d8b6aa885b437e918" style="width: 100.0%; height: 100.0%;"><b>escuela blue star college</b><br>MONTERREY 7519<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>168</b></div>`)[0];
+                popup_a182085cba51dd8d560f3d9eba6a44ae.setContent(html_efb66c3d0967c45d8b6aa885b437e918);
+            
+        
+
+        circle_marker_a24c5f328dc6298e15a02ea0826943c3.bindPopup(popup_a182085cba51dd8d560f3d9eba6a44ae)
+        ;
+
+        
+    
+    
+            circle_marker_a24c5f328dc6298e15a02ea0826943c3.bindTooltip(
+                `<div>
+                     escuela blue star college
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7d5093b7426e76abdd182882d77e8a1c = L.marker(
+                [-33.5176, -70.6911],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_4ca508f4d2ba2d7830ae93230f78531e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e168\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7d5093b7426e76abdd182882d77e8a1c.setIcon(div_icon_4ca508f4d2ba2d7830ae93230f78531e);
+        
+    
+            var circle_marker_30334611095ae7dc31ef465e83dd2a00 = L.circleMarker(
+                [-33.51213, -70.68945],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.596774193548388, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_f58d527848e95b4f2a4274905a0ab348 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0b886c2a786f15c06a891c94fbe3f347 = $(`<div id="html_0b886c2a786f15c06a891c94fbe3f347" style="width: 100.0%; height: 100.0%;"><b>escuela d 570 raul saez saez</b><br>VERACRUZ 5243<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>123</b></div>`)[0];
+                popup_f58d527848e95b4f2a4274905a0ab348.setContent(html_0b886c2a786f15c06a891c94fbe3f347);
+            
+        
+
+        circle_marker_30334611095ae7dc31ef465e83dd2a00.bindPopup(popup_f58d527848e95b4f2a4274905a0ab348)
+        ;
+
+        
+    
+    
+            circle_marker_30334611095ae7dc31ef465e83dd2a00.bindTooltip(
+                `<div>
+                     escuela d 570 raul saez saez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2fefea1eca3e333bbbf2081740327491 = L.marker(
+                [-33.51213, -70.68945],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_1b27fddd68c0d923ddc1bb4bdc54297e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e123\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2fefea1eca3e333bbbf2081740327491.setIcon(div_icon_1b27fddd68c0d923ddc1bb4bdc54297e);
+        
+    
+            var circle_marker_fbcbaf1da1886bdd9500da21fca8a6e3 = L.circleMarker(
+                [-33.5286, -70.68855],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecf6bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.951612903225806, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_a3fe07585516b064ac88c85f09f8c2d5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b88626b50cface0eacce5690169ecf78 = $(`<div id="html_b88626b50cface0eacce5690169ecf78" style="width: 100.0%; height: 100.0%;"><b>escuela republicana de las filipinas</b><br>JUPITER 7746<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>135</b></div>`)[0];
+                popup_a3fe07585516b064ac88c85f09f8c2d5.setContent(html_b88626b50cface0eacce5690169ecf78);
+            
+        
+
+        circle_marker_fbcbaf1da1886bdd9500da21fca8a6e3.bindPopup(popup_a3fe07585516b064ac88c85f09f8c2d5)
+        ;
+
+        
+    
+    
+            circle_marker_fbcbaf1da1886bdd9500da21fca8a6e3.bindTooltip(
+                `<div>
+                     escuela republicana de las filipinas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ca2a79648f4ff841705ae3463574a372 = L.marker(
+                [-33.5286, -70.68855],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_58d088f5127b88562c11e6a90849576b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e135\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ca2a79648f4ff841705ae3463574a372.setIcon(div_icon_58d088f5127b88562c11e6a90849576b);
+        
+    
+            var circle_marker_0fb1881298b3f6246a8207da4b2ad40f = L.circleMarker(
+                [-33.5089, -70.67887],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_9078e9c105e1d1ac6771f5c6df1c3d81 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2df3bca2ebab2d6d1b43bd696ce7b680 = $(`<div id="html_2df3bca2ebab2d6d1b43bd696ce7b680" style="width: 100.0%; height: 100.0%;"><b>escuela santa adriana</b><br>JUPITER 2238<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>100</b></div>`)[0];
+                popup_9078e9c105e1d1ac6771f5c6df1c3d81.setContent(html_2df3bca2ebab2d6d1b43bd696ce7b680);
+            
+        
+
+        circle_marker_0fb1881298b3f6246a8207da4b2ad40f.bindPopup(popup_9078e9c105e1d1ac6771f5c6df1c3d81)
+        ;
+
+        
+    
+    
+            circle_marker_0fb1881298b3f6246a8207da4b2ad40f.bindTooltip(
+                `<div>
+                     escuela santa adriana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3cdcd9d437889eefdf48885b5b3bdb36 = L.marker(
+                [-33.5089, -70.67887],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_0fa704fb601494ce69bc77a1aa9b553e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e100\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3cdcd9d437889eefdf48885b5b3bdb36.setIcon(div_icon_0fa704fb601494ce69bc77a1aa9b553e);
+        
+    
+            var circle_marker_884816371fad61846a5e814978fe71ab = L.circleMarker(
+                [-33.5149, -70.68],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_727c33c766a5902cbd3beb1680902574 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_898ee34f7394213bb774e8312310fdea = $(`<div id="html_898ee34f7394213bb774e8312310fdea" style="width: 100.0%; height: 100.0%;"><b>liceo politecnico sagrado corazon</b><br>HUASCO 7147<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>224</b></div>`)[0];
+                popup_727c33c766a5902cbd3beb1680902574.setContent(html_898ee34f7394213bb774e8312310fdea);
+            
+        
+
+        circle_marker_884816371fad61846a5e814978fe71ab.bindPopup(popup_727c33c766a5902cbd3beb1680902574)
+        ;
+
+        
+    
+    
+            circle_marker_884816371fad61846a5e814978fe71ab.bindTooltip(
+                `<div>
+                     liceo politecnico sagrado corazon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0794e9d5f2d557478003fc9b1d1351db = L.marker(
+                [-33.5149, -70.68],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_7adb59bc5912e4e5e2cd4283b150b41d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e224\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0794e9d5f2d557478003fc9b1d1351db.setIcon(div_icon_7adb59bc5912e4e5e2cd4283b150b41d);
+        
+    
+            var circle_marker_ee8e20aa745399781ddf67fc8fe7af0f = L.circleMarker(
+                [-33.513, -70.6828],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#febb55ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.85483870967742, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_d0caccd9997fce2a3e47180a05445781 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dc425bbf16963353091c7b13a21e6b93 = $(`<div id="html_dc425bbf16963353091c7b13a21e6b93" style="width: 100.0%; height: 100.0%;"><b>liceo polivalente</b><br>INES DE SUAREZ 6970<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>143</b></div>`)[0];
+                popup_d0caccd9997fce2a3e47180a05445781.setContent(html_dc425bbf16963353091c7b13a21e6b93);
+            
+        
+
+        circle_marker_ee8e20aa745399781ddf67fc8fe7af0f.bindPopup(popup_d0caccd9997fce2a3e47180a05445781)
+        ;
+
+        
+    
+    
+            circle_marker_ee8e20aa745399781ddf67fc8fe7af0f.bindTooltip(
+                `<div>
+                     liceo polivalente
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_66cb85280373bbae58f0c520e84aeca9 = L.marker(
+                [-33.513, -70.6828],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_a0f386043fa040cbfd6106c9d71ac58b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e143\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_66cb85280373bbae58f0c520e84aeca9.setIcon(div_icon_a0f386043fa040cbfd6106c9d71ac58b);
+        
+    
+            var circle_marker_9f32453f0dbac963ff0c7b00948a1c2b = L.circleMarker(
+                [-33.5336, -70.6954],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feac49ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.532258064516128, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_4065c4c970dc18c0a0735ddc7e9ba1ad = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_541b8844b95ed3dc26a69bc797ebc66b = $(`<div id="html_541b8844b95ed3dc26a69bc797ebc66b" style="width: 100.0%; height: 100.0%;"><b>liceo teniente francisco mery aguirre</b><br>CENTENARIO 2854<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>149</b></div>`)[0];
+                popup_4065c4c970dc18c0a0735ddc7e9ba1ad.setContent(html_541b8844b95ed3dc26a69bc797ebc66b);
+            
+        
+
+        circle_marker_9f32453f0dbac963ff0c7b00948a1c2b.bindPopup(popup_4065c4c970dc18c0a0735ddc7e9ba1ad)
+        ;
+
+        
+    
+    
+            circle_marker_9f32453f0dbac963ff0c7b00948a1c2b.bindTooltip(
+                `<div>
+                     liceo teniente francisco mery aguirre
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f39ee86fa1756fc0908ce838f4e75065 = L.marker(
+                [-33.5336, -70.6954],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_d9cc4b09d1889d80670a888b4c6387ef = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e149\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f39ee86fa1756fc0908ce838f4e75065.setIcon(div_icon_d9cc4b09d1889d80670a888b4c6387ef);
+        
+    
+            var circle_marker_a123d720e77860aa3014ca202adc6f79 = L.circleMarker(
+                [-33.52989, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd893bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.112903225806452, "stroke": false, "weight": 3}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+        var popup_6e436b3c585500ad451bc929cecbd33c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9a369bedae4d21076df587bd6556069b = $(`<div id="html_9a369bedae4d21076df587bd6556069b" style="width: 100.0%; height: 100.0%;"><b>saint trinity college</b><br>NUEVE DE ENERO 2699<br>Votos Lista CARLO ESTEBAN ACOSTA DE LA FUENTE: <b>163</b></div>`)[0];
+                popup_6e436b3c585500ad451bc929cecbd33c.setContent(html_9a369bedae4d21076df587bd6556069b);
+            
+        
+
+        circle_marker_a123d720e77860aa3014ca202adc6f79.bindPopup(popup_6e436b3c585500ad451bc929cecbd33c)
+        ;
+
+        
+    
+    
+            circle_marker_a123d720e77860aa3014ca202adc6f79.bindTooltip(
+                `<div>
+                     saint trinity college
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_50d6154a71c933e69d206a4051dd9eb8 = L.marker(
+                [-33.52989, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e210b7854f15d9015502eca7bf03b325);
+        
+    
+            var div_icon_4bd9f2498973c9ff6ef63a4c7be74cb9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e163\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_50d6154a71c933e69d206a4051dd9eb8.setIcon(div_icon_4bd9f2498973c9ff6ef63a4c7be74cb9);
+        
+    
+            map_e210b7854f15d9015502eca7bf03b325.fitBounds(
+                [[-33.5083, -70.6933], [-33.52188, -70.69703], [-33.5184, -70.7014], [-33.5068, -70.69265], [-33.525, -70.7026], [-33.52, -70.6794], [-33.51984, -70.68374], [-33.5176, -70.6911], [-33.51213, -70.68945], [-33.5286, -70.68855], [-33.5089, -70.67887], [-33.5149, -70.68], [-33.513, -70.6828], [-33.5336, -70.6954], [-33.52989, -70.69]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2911b09f2bc9c83d6154787695d83f82 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2911b09f2bc9c83d6154787695d83f82" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2911b09f2bc9c83d6154787695d83f82 = L.map(
+                "map_2911b09f2bc9c83d6154787695d83f82",
+                {
+                    center: [-33.51858933333333, -70.68975266666668],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_511f19b6a2606e6410d18d9024b3bb9e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_511f19b6a2606e6410d18d9024b3bb9e.addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+    var color_map_96ee1ae78b2ff7294d5a1238c9af149a = {};
+
+    
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.color = d3.scale.threshold()
+              .domain([52.0, 52.12825651302605, 52.256513026052104, 52.38476953907816, 52.51302605210421, 52.64128256513026, 52.76953907815631, 52.897795591182366, 53.02605210420842, 53.15430861723447, 53.28256513026052, 53.410821643286575, 53.53907815631263, 53.66733466933868, 53.79559118236473, 53.92384769539078, 54.052104208416836, 54.18036072144289, 54.30861723446894, 54.43687374749499, 54.565130260521045, 54.6933867735471, 54.82164328657315, 54.9498997995992, 55.078156312625254, 55.206412825651306, 55.33466933867736, 55.4629258517034, 55.59118236472946, 55.71943887775551, 55.84769539078156, 55.97595190380761, 56.104208416833664, 56.23246492985972, 56.36072144288577, 56.48897795591182, 56.61723446893787, 56.745490981963925, 56.87374749498998, 57.00200400801603, 57.13026052104208, 57.258517034068134, 57.38677354709419, 57.51503006012024, 57.64328657314629, 57.77154308617234, 57.899799599198396, 58.02805611222445, 58.1563126252505, 58.28456913827655, 58.412825651302605, 58.54108216432866, 58.66933867735471, 58.79759519038076, 58.92585170340681, 59.054108216432866, 59.18236472945892, 59.31062124248497, 59.43887775551102, 59.567134268537075, 59.69539078156313, 59.82364729458918, 59.95190380761523, 60.08016032064128, 60.208416833667336, 60.33667334669339, 60.46492985971944, 60.59318637274549, 60.721442885771545, 60.8496993987976, 60.97795591182365, 61.1062124248497, 61.234468937875754, 61.362725450901806, 61.49098196392786, 61.61923847695391, 61.74749498997996, 61.875751503006015, 62.00400801603206, 62.13226452905812, 62.260521042084164, 62.388777555110224, 62.51703406813627, 62.64529058116233, 62.77354709418837, 62.90180360721443, 63.03006012024048, 63.15831663326654, 63.28657314629258, 63.41482965931864, 63.54308617234469, 63.67134268537074, 63.79959919839679, 63.92785571142284, 64.0561122244489, 64.18436873747495, 64.312625250501, 64.44088176352706, 64.5691382765531, 64.69739478957916, 64.82565130260521, 64.95390781563127, 65.08216432865731, 65.21042084168337, 65.33867735470942, 65.46693386773546, 65.59519038076152, 65.72344689378758, 65.85170340681363, 65.97995991983967, 66.10821643286573, 66.23647294589179, 66.36472945891784, 66.49298597194388, 66.62124248496994, 66.749498997996, 66.87775551102204, 67.00601202404809, 67.13426853707415, 67.2625250501002, 67.39078156312625, 67.5190380761523, 67.64729458917836, 67.7755511022044, 67.90380761523046, 68.03206412825651, 68.16032064128257, 68.28857715430861, 68.41683366733467, 68.54509018036072, 68.67334669338678, 68.80160320641282, 68.92985971943888, 69.05811623246493, 69.18637274549098, 69.31462925851703, 69.44288577154309, 69.57114228456913, 69.6993987975952, 69.82765531062124, 69.9559118236473, 70.08416833667334, 70.2124248496994, 70.34068136272545, 70.46893787575151, 70.59719438877755, 70.72545090180361, 70.85370741482966, 70.98196392785572, 71.11022044088176, 71.23847695390782, 71.36673346693387, 71.49498997995993, 71.62324649298597, 71.75150300601203, 71.87975951903807, 72.00801603206412, 72.13627254509018, 72.26452905811624, 72.39278557114228, 72.52104208416833, 72.64929859719439, 72.77755511022045, 72.90581162324649, 73.03406813627254, 73.1623246492986, 73.29058116232466, 73.4188376753507, 73.54709418837675, 73.6753507014028, 73.80360721442887, 73.93186372745491, 74.06012024048096, 74.18837675350701, 74.31663326653307, 74.44488977955912, 74.57314629258516, 74.70140280561122, 74.82965931863728, 74.95791583166333, 75.08617234468937, 75.21442885771543, 75.34268537074148, 75.47094188376754, 75.59919839679358, 75.72745490981964, 75.85571142284569, 75.98396793587175, 76.11222444889779, 76.24048096192385, 76.3687374749499, 76.49699398797596, 76.625250501002, 76.75350701402806, 76.8817635270541, 77.01002004008016, 77.13827655310621, 77.26653306613227, 77.39478957915831, 77.52304609218437, 77.65130260521042, 77.77955911823648, 77.90781563126252, 78.03607214428858, 78.16432865731463, 78.29258517034069, 78.42084168336673, 78.54909819639279, 78.67735470941884, 78.8056112224449, 78.93386773547094, 79.06212424849699, 79.19038076152304, 79.3186372745491, 79.44689378757515, 79.5751503006012, 79.70340681362725, 79.83166332665331, 79.95991983967936, 80.0881763527054, 80.21643286573146, 80.34468937875752, 80.47294589178357, 80.60120240480961, 80.72945891783567, 80.85771543086173, 80.98597194388778, 81.11422845691382, 81.24248496993988, 81.37074148296594, 81.49899799599199, 81.62725450901803, 81.75551102204409, 81.88376753507015, 82.0120240480962, 82.14028056112224, 82.2685370741483, 82.39679358717434, 82.5250501002004, 82.65330661322645, 82.78156312625251, 82.90981963927855, 83.03807615230461, 83.16633266533066, 83.29458917835672, 83.42284569138276, 83.55110220440882, 83.67935871743487, 83.80761523046093, 83.93587174348697, 84.06412825651302, 84.19238476953907, 84.32064128256513, 84.44889779559118, 84.57715430861722, 84.70541082164328, 84.83366733466934, 84.96192384769539, 85.09018036072143, 85.21843687374749, 85.34669338677355, 85.4749498997996, 85.60320641282564, 85.7314629258517, 85.85971943887776, 85.9879759519038, 86.11623246492985, 86.24448897795591, 86.37274549098197, 86.50100200400801, 86.62925851703406, 86.75751503006012, 86.88577154308618, 87.01402805611222, 87.14228456913827, 87.27054108216433, 87.39879759519039, 87.52705410821643, 87.65531062124248, 87.78356713426854, 87.9118236472946, 88.04008016032064, 88.16833667334669, 88.29659318637275, 88.4248496993988, 88.55310621242485, 88.6813627254509, 88.80961923847696, 88.93787575150301, 89.06613226452906, 89.1943887775551, 89.32264529058116, 89.45090180360722, 89.57915831663327, 89.70741482965931, 89.83567134268537, 89.96392785571143, 90.09218436873748, 90.22044088176352, 90.34869739478958, 90.47695390781564, 90.60521042084169, 90.73346693386773, 90.86172344689379, 90.98997995991985, 91.11823647294588, 91.24649298597194, 91.374749498998, 91.50300601202404, 91.63126252505009, 91.75951903807615, 91.88777555110221, 92.01603206412825, 92.1442885771543, 92.27254509018036, 92.40080160320642, 92.52905811623246, 92.65731462925851, 92.78557114228457, 92.91382765531063, 93.04208416833667, 93.17034068136272, 93.29859719438878, 93.42685370741484, 93.55511022044088, 93.68336673346693, 93.81162324649299, 93.93987975951904, 94.06813627254509, 94.19639278557113, 94.3246492985972, 94.45290581162325, 94.5811623246493, 94.70941883767534, 94.8376753507014, 94.96593186372746, 95.09418837675351, 95.22244488977955, 95.35070140280561, 95.47895791583167, 95.60721442885772, 95.73547094188376, 95.86372745490982, 95.99198396793588, 96.12024048096193, 96.24849699398797, 96.37675350701403, 96.50501002004009, 96.63326653306613, 96.76152304609218, 96.88977955911824, 97.0180360721443, 97.14629258517034, 97.27454909819639, 97.40280561122245, 97.5310621242485, 97.65931863727455, 97.7875751503006, 97.91583166332666, 98.04408817635272, 98.17234468937876, 98.3006012024048, 98.42885771543087, 98.55711422845691, 98.68537074148296, 98.81362725450902, 98.94188376753507, 99.07014028056112, 99.19839679358716, 99.32665330661322, 99.45490981963928, 99.58316633266533, 99.71142284569137, 99.83967935871743, 99.96793587174349, 100.09619238476954, 100.22444889779558, 100.35270541082164, 100.4809619238477, 100.60921843687375, 100.73747494989979, 100.86573146292585, 100.99398797595191, 101.12224448897796, 101.250501002004, 101.37875751503006, 101.50701402805612, 101.63527054108216, 101.76352705410821, 101.89178356713427, 102.02004008016033, 102.14829659318637, 102.27655310621242, 102.40480961923848, 102.53306613226454, 102.66132264529058, 102.78957915831663, 102.91783567134269, 103.04609218436875, 103.17434869739479, 103.30260521042084, 103.4308617234469, 103.55911823647295, 103.687374749499, 103.81563126252505, 103.9438877755511, 104.07214428857716, 104.20040080160321, 104.32865731462925, 104.45691382765531, 104.58517034068137, 104.71342685370742, 104.84168336673346, 104.96993987975952, 105.09819639278558, 105.22645290581163, 105.35470941883767, 105.48296593186373, 105.61122244488978, 105.73947895791582, 105.86773547094188, 105.99599198396794, 106.12424849699399, 106.25250501002003, 106.38076152304609, 106.50901803607215, 106.6372745490982, 106.76553106212424, 106.8937875751503, 107.02204408817636, 107.1503006012024, 107.27855711422845, 107.40681362725451, 107.53507014028057, 107.66332665330661, 107.79158316633266, 107.91983967935872, 108.04809619238478, 108.17635270541082, 108.30460921843687, 108.43286573146293, 108.56112224448898, 108.68937875751503, 108.81763527054107, 108.94589178356713, 109.0741482965932, 109.20240480961924, 109.33066132264528, 109.45891783567134, 109.5871743486974, 109.71543086172345, 109.84368737474949, 109.97194388777555, 110.10020040080161, 110.22845691382766, 110.3567134268537, 110.48496993987976, 110.61322645290582, 110.74148296593187, 110.86973947895791, 110.99799599198397, 111.12625250501003, 111.25450901803607, 111.38276553106212, 111.51102204408818, 111.63927855711424, 111.76753507014028, 111.89579158316633, 112.02404809619239, 112.15230460921845, 112.28056112224449, 112.40881763527054, 112.5370741482966, 112.66533066132264, 112.79358717434869, 112.92184368737475, 113.0501002004008, 113.17835671342685, 113.3066132264529, 113.43486973947896, 113.56312625250501, 113.69138276553106, 113.8196392785571, 113.94789579158316, 114.07615230460922, 114.20440881763527, 114.33266533066131, 114.46092184368737, 114.58917835671343, 114.71743486973948, 114.84569138276552, 114.97394789579158, 115.10220440881764, 115.23046092184369, 115.35871743486973, 115.48697394789579, 115.61523046092185, 115.7434869739479, 115.87174348697394, 116.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.x = d3.scale.linear()
+              .domain([52.0, 116.0])
+              .range([0, 450 - 50]);
+
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.legend = L.control({position: 'topright'});
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.legend.addTo(map_2911b09f2bc9c83d6154787695d83f82);
+
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.xAxis = d3.svg.axis()
+        .scale(color_map_96ee1ae78b2ff7294d5a1238c9af149a.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([52.0, 60.0, 68.0, 76.0, 84.0, 92.0, 100.0, 108.0, 116.0]);
+
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.g = color_map_96ee1ae78b2ff7294d5a1238c9af149a.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.g.selectAll("rect")
+        .data(color_map_96ee1ae78b2ff7294d5a1238c9af149a.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_96ee1ae78b2ff7294d5a1238c9af149a.x(color_map_96ee1ae78b2ff7294d5a1238c9af149a.color.domain()[i - 1]) : color_map_96ee1ae78b2ff7294d5a1238c9af149a.x.range()[0],
+            x1: i < color_map_96ee1ae78b2ff7294d5a1238c9af149a.color.domain().length ? color_map_96ee1ae78b2ff7294d5a1238c9af149a.x(color_map_96ee1ae78b2ff7294d5a1238c9af149a.color.domain()[i]) : color_map_96ee1ae78b2ff7294d5a1238c9af149a.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_96ee1ae78b2ff7294d5a1238c9af149a.g.call(color_map_96ee1ae78b2ff7294d5a1238c9af149a.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista GONZALO ANDRES MONTOYA RETAMAL por local");
+    
+            var circle_marker_0316febdfbd7425756fcef3cdea4a2b6 = L.circleMarker(
+                [-33.5083, -70.6933],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d00d21ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.375, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_c89a95236d47ed32c22f604239515f92 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2c57959c93f78f44c3125404e046d754 = $(`<div id="html_2c57959c93f78f44c3125404e046d754" style="width: 100.0%; height: 100.0%;"><b>centro educacional cardenal jose maria caro</b><br>AVENIDA CARDENAL CARO 3745<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>104</b></div>`)[0];
+                popup_c89a95236d47ed32c22f604239515f92.setContent(html_2c57959c93f78f44c3125404e046d754);
+            
+        
+
+        circle_marker_0316febdfbd7425756fcef3cdea4a2b6.bindPopup(popup_c89a95236d47ed32c22f604239515f92)
+        ;
+
+        
+    
+    
+            circle_marker_0316febdfbd7425756fcef3cdea4a2b6.bindTooltip(
+                `<div>
+                     centro educacional cardenal jose maria caro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a99ce8b74a722fc324ea6d5213030081 = L.marker(
+                [-33.5083, -70.6933],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_47bccb013cb740c686256fe441029841 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e104\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a99ce8b74a722fc324ea6d5213030081.setIcon(div_icon_47bccb013cb740c686256fe441029841);
+        
+    
+            var circle_marker_69366cced62ad6647858196e5b2ef6a3 = L.circleMarker(
+                [-33.52188, -70.69703],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#df161dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.71875, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_42989893214fee387c937f2c93717e52 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6e51d033e2879de63254673346e4c086 = $(`<div id="html_6e51d033e2879de63254673346e4c086" style="width: 100.0%; height: 100.0%;"><b>colegio hernan olguin</b><br>AVENIDA CENTRAL 8108<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>101</b></div>`)[0];
+                popup_42989893214fee387c937f2c93717e52.setContent(html_6e51d033e2879de63254673346e4c086);
+            
+        
+
+        circle_marker_69366cced62ad6647858196e5b2ef6a3.bindPopup(popup_42989893214fee387c937f2c93717e52)
+        ;
+
+        
+    
+    
+            circle_marker_69366cced62ad6647858196e5b2ef6a3.bindTooltip(
+                `<div>
+                     colegio hernan olguin
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5c54f840f43ab6af81105ab4c148afe = L.marker(
+                [-33.52188, -70.69703],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_46e7f0444eae1deabecf754590941c51 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e101\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a5c54f840f43ab6af81105ab4c148afe.setIcon(div_icon_46e7f0444eae1deabecf754590941c51);
+        
+    
+            var circle_marker_652f65773d28946e78c6eeddeeeb5995 = L.circleMarker(
+                [-33.5184, -70.7014],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde81ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0625, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_628af3400ffc312998fe9e65fceb61f1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f02f986704aa5caf681aa52ce49b749b = $(`<div id="html_f02f986704aa5caf681aa52ce49b749b" style="width: 100.0%; height: 100.0%;"><b>colegio lo espejo</b><br>SATURNO 3955<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>66</b></div>`)[0];
+                popup_628af3400ffc312998fe9e65fceb61f1.setContent(html_f02f986704aa5caf681aa52ce49b749b);
+            
+        
+
+        circle_marker_652f65773d28946e78c6eeddeeeb5995.bindPopup(popup_628af3400ffc312998fe9e65fceb61f1)
+        ;
+
+        
+    
+    
+            circle_marker_652f65773d28946e78c6eeddeeeb5995.bindTooltip(
+                `<div>
+                     colegio lo espejo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0856f024994e9092b0a84e0e81b88226 = L.marker(
+                [-33.5184, -70.7014],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_7679518f7cd1a90054a69915d96a96ae = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e66\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0856f024994e9092b0a84e0e81b88226.setIcon(div_icon_7679518f7cd1a90054a69915d96a96ae);
+        
+    
+            var circle_marker_72a2cbdce7a0797f8aa6b3ea18232d5c = L.circleMarker(
+                [-33.5068, -70.69265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f94728ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.96875, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_b35b51ed61600dae6efbfb4bd1ff0755 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2868d7dd9a0c6590422c83a6ba4090a0 = $(`<div id="html_2868d7dd9a0c6590422c83a6ba4090a0" style="width: 100.0%; height: 100.0%;"><b>colegio rosa elvira matte de prieto</b><br>BUENAVENTURA 3824<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>93</b></div>`)[0];
+                popup_b35b51ed61600dae6efbfb4bd1ff0755.setContent(html_2868d7dd9a0c6590422c83a6ba4090a0);
+            
+        
+
+        circle_marker_72a2cbdce7a0797f8aa6b3ea18232d5c.bindPopup(popup_b35b51ed61600dae6efbfb4bd1ff0755)
+        ;
+
+        
+    
+    
+            circle_marker_72a2cbdce7a0797f8aa6b3ea18232d5c.bindTooltip(
+                `<div>
+                     colegio rosa elvira matte de prieto
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4a8e1b7d2ac9c606c62d90c4e1456865 = L.marker(
+                [-33.5068, -70.69265],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_2cb8312ffd5d64117ec25f24f2a27f81 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e93\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4a8e1b7d2ac9c606c62d90c4e1456865.setIcon(div_icon_2cb8312ffd5d64117ec25f24f2a27f81);
+        
+    
+            var circle_marker_86bd98196d6ffbbe3903704002e6211e = L.circleMarker(
+                [-33.525, -70.7026],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f94728ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.96875, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_e4d671043a361604f2dc68850b1ae57b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a853f6f720f27afc66016c75531f1d89 = $(`<div id="html_a853f6f720f27afc66016c75531f1d89" style="width: 100.0%; height: 100.0%;"><b>colegio san lucas de lo espejo</b><br>PEDRO LIRA 9195<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>93</b></div>`)[0];
+                popup_e4d671043a361604f2dc68850b1ae57b.setContent(html_a853f6f720f27afc66016c75531f1d89);
+            
+        
+
+        circle_marker_86bd98196d6ffbbe3903704002e6211e.bindPopup(popup_e4d671043a361604f2dc68850b1ae57b)
+        ;
+
+        
+    
+    
+            circle_marker_86bd98196d6ffbbe3903704002e6211e.bindTooltip(
+                `<div>
+                     colegio san lucas de lo espejo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1731466f92df25796248ba2d77d7c400 = L.marker(
+                [-33.525, -70.7026],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_686733a06253a5c1871169e486280084 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e93\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1731466f92df25796248ba2d77d7c400.setIcon(div_icon_686733a06253a5c1871169e486280084);
+        
+    
+            var circle_marker_d541af4bf96156baea767ce17b6e5c0d = L.circleMarker(
+                [-33.52, -70.6794],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6d33ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.875, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_8b940bb83e36d22455d644189f022354 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bcc2bb0897a9b3868e4ec3a4b297d314 = $(`<div id="html_bcc2bb0897a9b3868e4ec3a4b297d314" style="width: 100.0%; height: 100.0%;"><b>escuela acapulco</b><br>ACAPULCO 7661<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>88</b></div>`)[0];
+                popup_8b940bb83e36d22455d644189f022354.setContent(html_bcc2bb0897a9b3868e4ec3a4b297d314);
+            
+        
+
+        circle_marker_d541af4bf96156baea767ce17b6e5c0d.bindPopup(popup_8b940bb83e36d22455d644189f022354)
+        ;
+
+        
+    
+    
+            circle_marker_d541af4bf96156baea767ce17b6e5c0d.bindTooltip(
+                `<div>
+                     escuela acapulco
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b81a67633d12684984f834bb2699e9a8 = L.marker(
+                [-33.52, -70.6794],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_dc894a2925eb0b60a342bf1f2c4d6fb8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e88\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b81a67633d12684984f834bb2699e9a8.setIcon(div_icon_dc894a2925eb0b60a342bf1f2c4d6fb8);
+        
+    
+            var circle_marker_ddc01b906f96daae606a40ec04f8605b = L.circleMarker(
+                [-33.51984, -70.68374],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_1afeef43ef799e6ff1549b416451aa14 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_808dcdf72e0ddb30fae769d197d0fb68 = $(`<div id="html_808dcdf72e0ddb30fae769d197d0fb68" style="width: 100.0%; height: 100.0%;"><b>escuela alicia ariztia de silva</b><br>MEXICO 2444<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>52</b></div>`)[0];
+                popup_1afeef43ef799e6ff1549b416451aa14.setContent(html_808dcdf72e0ddb30fae769d197d0fb68);
+            
+        
+
+        circle_marker_ddc01b906f96daae606a40ec04f8605b.bindPopup(popup_1afeef43ef799e6ff1549b416451aa14)
+        ;
+
+        
+    
+    
+            circle_marker_ddc01b906f96daae606a40ec04f8605b.bindTooltip(
+                `<div>
+                     escuela alicia ariztia de silva
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e5eff1a980d113c28f15b3111a9aced = L.marker(
+                [-33.51984, -70.68374],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_e6e084ccaaa16ebe82df5d6e96a3f9d7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e52\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5e5eff1a980d113c28f15b3111a9aced.setIcon(div_icon_e6e084ccaaa16ebe82df5d6e96a3f9d7);
+        
+    
+            var circle_marker_2210a13bfc3ce44282ea0afe79ae0f24 = L.circleMarker(
+                [-33.5176, -70.6911],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d5101fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.15625, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_0d5bfdbe68d99cca007683753f9789ad = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_73232b875de6e476e25ebc7afb4ca788 = $(`<div id="html_73232b875de6e476e25ebc7afb4ca788" style="width: 100.0%; height: 100.0%;"><b>escuela blue star college</b><br>MONTERREY 7519<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>103</b></div>`)[0];
+                popup_0d5bfdbe68d99cca007683753f9789ad.setContent(html_73232b875de6e476e25ebc7afb4ca788);
+            
+        
+
+        circle_marker_2210a13bfc3ce44282ea0afe79ae0f24.bindPopup(popup_0d5bfdbe68d99cca007683753f9789ad)
+        ;
+
+        
+    
+    
+            circle_marker_2210a13bfc3ce44282ea0afe79ae0f24.bindTooltip(
+                `<div>
+                     escuela blue star college
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11d1531de10ef4c05586f49364d3cf3d = L.marker(
+                [-33.5176, -70.6911],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_3a2eae6574af7469577761565171d3b7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e103\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_11d1531de10ef4c05586f49364d3cf3d.setIcon(div_icon_3a2eae6574af7469577761565171d3b7);
+        
+    
+            var circle_marker_1b94ebcae37a24b8b9468057f0c8120c = L.circleMarker(
+                [-33.51213, -70.68945],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea948ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.6875, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_d8c306f9dd5470e8709bbdcc9779ebeb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9eaf80d7a745cff44ec48e879beb6dd1 = $(`<div id="html_9eaf80d7a745cff44ec48e879beb6dd1" style="width: 100.0%; height: 100.0%;"><b>escuela d 570 raul saez saez</b><br>VERACRUZ 5243<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>78</b></div>`)[0];
+                popup_d8c306f9dd5470e8709bbdcc9779ebeb.setContent(html_9eaf80d7a745cff44ec48e879beb6dd1);
+            
+        
+
+        circle_marker_1b94ebcae37a24b8b9468057f0c8120c.bindPopup(popup_d8c306f9dd5470e8709bbdcc9779ebeb)
+        ;
+
+        
+    
+    
+            circle_marker_1b94ebcae37a24b8b9468057f0c8120c.bindTooltip(
+                `<div>
+                     escuela d 570 raul saez saez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eebc9490f5fb255acffb3ca15ccac520 = L.marker(
+                [-33.51213, -70.68945],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_8c96a4730070c3ca5c0826bb1c5d5cc3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e78\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_eebc9490f5fb255acffb3ca15ccac520.setIcon(div_icon_8c96a4730070c3ca5c0826bb1c5d5cc3);
+        
+    
+            var circle_marker_c10193966fdfcd3e502f711414ec92fc = L.circleMarker(
+                [-33.5286, -70.68855],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc4e2aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.75, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_09a321242499e4edced4811ba2ced529 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3a7ca9a6740b8b5d8f76e40a951e5e46 = $(`<div id="html_3a7ca9a6740b8b5d8f76e40a951e5e46" style="width: 100.0%; height: 100.0%;"><b>escuela republicana de las filipinas</b><br>JUPITER 7746<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>92</b></div>`)[0];
+                popup_09a321242499e4edced4811ba2ced529.setContent(html_3a7ca9a6740b8b5d8f76e40a951e5e46);
+            
+        
+
+        circle_marker_c10193966fdfcd3e502f711414ec92fc.bindPopup(popup_09a321242499e4edced4811ba2ced529)
+        ;
+
+        
+    
+    
+            circle_marker_c10193966fdfcd3e502f711414ec92fc.bindTooltip(
+                `<div>
+                     escuela republicana de las filipinas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8683267b5129a0eb8ec761f0bf986b4e = L.marker(
+                [-33.5286, -70.68855],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_b0b91046fcc0cd0c6105db59ca5694d2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e92\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8683267b5129a0eb8ec761f0bf986b4e.setIcon(div_icon_b0b91046fcc0cd0c6105db59ca5694d2);
+        
+    
+            var circle_marker_248aa303fdc6fe6d93954a7f3f884a66 = L.circleMarker(
+                [-33.5089, -70.67887],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe186ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.84375, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_6f07f5bb157d3213203f464f5de42dc0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f984bebc983b31b65ff0ef5b4580573a = $(`<div id="html_f984bebc983b31b65ff0ef5b4580573a" style="width: 100.0%; height: 100.0%;"><b>escuela santa adriana</b><br>JUPITER 2238<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>65</b></div>`)[0];
+                popup_6f07f5bb157d3213203f464f5de42dc0.setContent(html_f984bebc983b31b65ff0ef5b4580573a);
+            
+        
+
+        circle_marker_248aa303fdc6fe6d93954a7f3f884a66.bindPopup(popup_6f07f5bb157d3213203f464f5de42dc0)
+        ;
+
+        
+    
+    
+            circle_marker_248aa303fdc6fe6d93954a7f3f884a66.bindTooltip(
+                `<div>
+                     escuela santa adriana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_25ca01186308b2c2413143dd1bd5a3a6 = L.marker(
+                [-33.5089, -70.67887],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_1f7b007fb269c20375b0ffb49c35c450 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e65\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_25ca01186308b2c2413143dd1bd5a3a6.setIcon(div_icon_1f7b007fb269c20375b0ffb49c35c450);
+        
+    
+            var circle_marker_ca52b453ca74ff946fd0bfd14dc15d6c = L.circleMarker(
+                [-33.5149, -70.68],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_6f0900e9460b9d565db04653d112bd34 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a6bd3eeed5e0fb70e755952c5c6ea516 = $(`<div id="html_a6bd3eeed5e0fb70e755952c5c6ea516" style="width: 100.0%; height: 100.0%;"><b>liceo politecnico sagrado corazon</b><br>HUASCO 7147<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>116</b></div>`)[0];
+                popup_6f0900e9460b9d565db04653d112bd34.setContent(html_a6bd3eeed5e0fb70e755952c5c6ea516);
+            
+        
+
+        circle_marker_ca52b453ca74ff946fd0bfd14dc15d6c.bindPopup(popup_6f0900e9460b9d565db04653d112bd34)
+        ;
+
+        
+    
+    
+            circle_marker_ca52b453ca74ff946fd0bfd14dc15d6c.bindTooltip(
+                `<div>
+                     liceo politecnico sagrado corazon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cb47a0475116e312f50fca52a17fa24f = L.marker(
+                [-33.5149, -70.68],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_538b554a3ca7f65dca2c6b2684ef425c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e116\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_cb47a0475116e312f50fca52a17fa24f.setIcon(div_icon_538b554a3ca7f65dca2c6b2684ef425c);
+        
+    
+            var circle_marker_c9b883835d33ac8fefa08f7985cd7599 = L.circleMarker(
+                [-33.513, -70.6828],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea446ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.90625, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_aa18e53f78f4042907a9a81cc01b05c4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2732bccf41ca0769bda04d3b59211050 = $(`<div id="html_2732bccf41ca0769bda04d3b59211050" style="width: 100.0%; height: 100.0%;"><b>liceo polivalente</b><br>INES DE SUAREZ 6970<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>79</b></div>`)[0];
+                popup_aa18e53f78f4042907a9a81cc01b05c4.setContent(html_2732bccf41ca0769bda04d3b59211050);
+            
+        
+
+        circle_marker_c9b883835d33ac8fefa08f7985cd7599.bindPopup(popup_aa18e53f78f4042907a9a81cc01b05c4)
+        ;
+
+        
+    
+    
+            circle_marker_c9b883835d33ac8fefa08f7985cd7599.bindTooltip(
+                `<div>
+                     liceo polivalente
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2fef294f724c0f9b0998169c763ccfe1 = L.marker(
+                [-33.513, -70.6828],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_a2c9456b9039b5d3c5041e401675a7be = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e79\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2fef294f724c0f9b0998169c763ccfe1.setIcon(div_icon_a2c9456b9039b5d3c5041e401675a7be);
+        
+    
+            var circle_marker_765074e65f64217f3cffdc78eace8f16 = L.circleMarker(
+                [-33.5336, -70.6954],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde81ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0625, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_72d6eac65b1b95c11ac1d2b6d950d967 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_efd38b3d2bc459b4a4ee4f505b6da8c1 = $(`<div id="html_efd38b3d2bc459b4a4ee4f505b6da8c1" style="width: 100.0%; height: 100.0%;"><b>liceo teniente francisco mery aguirre</b><br>CENTENARIO 2854<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>66</b></div>`)[0];
+                popup_72d6eac65b1b95c11ac1d2b6d950d967.setContent(html_efd38b3d2bc459b4a4ee4f505b6da8c1);
+            
+        
+
+        circle_marker_765074e65f64217f3cffdc78eace8f16.bindPopup(popup_72d6eac65b1b95c11ac1d2b6d950d967)
+        ;
+
+        
+    
+    
+            circle_marker_765074e65f64217f3cffdc78eace8f16.bindTooltip(
+                `<div>
+                     liceo teniente francisco mery aguirre
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ba8f908820a4a0b65d555ec479dad63 = L.marker(
+                [-33.5336, -70.6954],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_1fb216fc3ed8aae797330e099ce63191 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e66\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5ba8f908820a4a0b65d555ec479dad63.setIcon(div_icon_1fb216fc3ed8aae797330e099ce63191);
+        
+    
+            var circle_marker_65c0553d04e1833448f94906ee37619f = L.circleMarker(
+                [-33.52989, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec661ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.375, "stroke": false, "weight": 3}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+        var popup_72926979dd5fbc664b0a7f45242c31e1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c5ac26e4d9b3ffbdc7d4871be0ff3362 = $(`<div id="html_c5ac26e4d9b3ffbdc7d4871be0ff3362" style="width: 100.0%; height: 100.0%;"><b>saint trinity college</b><br>NUEVE DE ENERO 2699<br>Votos Lista GONZALO ANDRES MONTOYA RETAMAL: <b>72</b></div>`)[0];
+                popup_72926979dd5fbc664b0a7f45242c31e1.setContent(html_c5ac26e4d9b3ffbdc7d4871be0ff3362);
+            
+        
+
+        circle_marker_65c0553d04e1833448f94906ee37619f.bindPopup(popup_72926979dd5fbc664b0a7f45242c31e1)
+        ;
+
+        
+    
+    
+            circle_marker_65c0553d04e1833448f94906ee37619f.bindTooltip(
+                `<div>
+                     saint trinity college
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6425e0e349cdf07b38ef845d3df7ca57 = L.marker(
+                [-33.52989, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_2911b09f2bc9c83d6154787695d83f82);
+        
+    
+            var div_icon_c0d9a351a3c45c13d7236565f69a343b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e72\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6425e0e349cdf07b38ef845d3df7ca57.setIcon(div_icon_c0d9a351a3c45c13d7236565f69a343b);
+        
+    
+            map_2911b09f2bc9c83d6154787695d83f82.fitBounds(
+                [[-33.5083, -70.6933], [-33.52188, -70.69703], [-33.5184, -70.7014], [-33.5068, -70.69265], [-33.525, -70.7026], [-33.52, -70.6794], [-33.51984, -70.68374], [-33.5176, -70.6911], [-33.51213, -70.68945], [-33.5286, -70.68855], [-33.5089, -70.67887], [-33.5149, -70.68], [-33.513, -70.6828], [-33.5336, -70.6954], [-33.52989, -70.69]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>
