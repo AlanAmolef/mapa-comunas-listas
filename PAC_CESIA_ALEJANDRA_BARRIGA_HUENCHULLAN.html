@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_322d20e804f0fb4dc1f32e0d895c0665 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_322d20e804f0fb4dc1f32e0d895c0665" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_322d20e804f0fb4dc1f32e0d895c0665 = L.map(
+                "map_322d20e804f0fb4dc1f32e0d895c0665",
+                {
+                    center: [-33.493775, -70.6766],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cab226779d96908f065f5170fd928472 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_cab226779d96908f065f5170fd928472.addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+    var color_map_7fe2a2061a41fc0c278e22f26e5e9201 = {};
+
+    
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.color = d3.scale.threshold()
+              .domain([17.0, 17.19238476953908, 17.384769539078157, 17.577154308617235, 17.769539078156313, 17.96192384769539, 18.15430861723447, 18.34669338677355, 18.539078156312627, 18.7314629258517, 18.92384769539078, 19.11623246492986, 19.308617234468937, 19.501002004008015, 19.693386773547093, 19.88577154308617, 20.07815631262525, 20.27054108216433, 20.462925851703407, 20.655310621242485, 20.847695390781563, 21.04008016032064, 21.23246492985972, 21.4248496993988, 21.617234468937877, 21.809619238476955, 22.00200400801603, 22.194388777555112, 22.386773547094187, 22.57915831663327, 22.771543086172343, 22.96392785571142, 23.1563126252505, 23.34869739478958, 23.541082164328657, 23.733466933867735, 23.925851703406813, 24.118236472945892, 24.31062124248497, 24.50300601202405, 24.695390781563127, 24.887775551102205, 25.080160320641284, 25.27254509018036, 25.46492985971944, 25.657314629258515, 25.849699398797597, 26.04208416833667, 26.234468937875754, 26.42685370741483, 26.61923847695391, 26.811623246492985, 27.004008016032063, 27.196392785571142, 27.38877755511022, 27.5811623246493, 27.773547094188377, 27.965931863727455, 28.158316633266534, 28.350701402805612, 28.54308617234469, 28.73547094188377, 28.927855711422843, 29.120240480961925, 29.312625250501, 29.505010020040082, 29.697394789579157, 29.88977955911824, 30.082164328657313, 30.274549098196395, 30.46693386773547, 30.65931863727455, 30.851703406813627, 31.044088176352705, 31.236472945891784, 31.428857715430862, 31.62124248496994, 31.81362725450902, 32.0060120240481, 32.19839679358717, 32.390781563126254, 32.58316633266533, 32.77555110220441, 32.967935871743485, 33.16032064128257, 33.35270541082164, 33.54509018036072, 33.7374749498998, 33.92985971943888, 34.122244488977955, 34.31462925851703, 34.50701402805611, 34.699398797595194, 34.89178356713427, 35.08416833667334, 35.276553106212425, 35.46893787575151, 35.66132264529058, 35.85370741482966, 36.04609218436874, 36.23847695390782, 36.430861723446895, 36.62324649298597, 36.815631262525045, 37.00801603206413, 37.20040080160321, 37.392785571142284, 37.58517034068136, 37.77755511022044, 37.96993987975952, 38.1623246492986, 38.35470941883767, 38.547094188376754, 38.739478957915836, 38.93186372745491, 39.124248496993985, 39.31663326653307, 39.50901803607215, 39.701402805611224, 39.8937875751503, 40.08617234468938, 40.278557114228455, 40.47094188376754, 40.66332665330661, 40.85571142284569, 41.04809619238477, 41.24048096192385, 41.432865731462925, 41.625250501002, 41.81763527054108, 42.010020040080164, 42.20240480961924, 42.394789579158314, 42.587174348697395, 42.77955911823648, 42.97194388777555, 43.16432865731463, 43.35671342685371, 43.54909819639279, 43.741482965931866, 43.93386773547094, 44.126252505010015, 44.3186372745491, 44.51102204408818, 44.703406813627254, 44.89579158316633, 45.08817635270541, 45.28056112224449, 45.47294589178357, 45.66533066132264, 45.857715430861724, 46.050100200400806, 46.24248496993988, 46.434869739478955, 46.62725450901804, 46.81963927855712, 47.012024048096194, 47.20440881763527, 47.39679358717434, 47.589178356713425, 47.78156312625251, 47.97394789579158, 48.16633266533066, 48.35871743486974, 48.55110220440882, 48.743486973947896, 48.93587174348697, 49.12825651302605, 49.32064128256513, 49.51302605210421, 49.705410821643284, 49.897795591182366, 50.09018036072144, 50.28256513026052, 50.4749498997996, 50.66733466933868, 50.859719438877754, 51.052104208416836, 51.24448897795591, 51.43687374749499, 51.62925851703407, 51.82164328657315, 52.014028056112224, 52.206412825651306, 52.39879759519038, 52.591182364729455, 52.78356713426854, 52.97595190380761, 53.168336673346694, 53.36072144288577, 53.55310621242485, 53.745490981963925, 53.93787575150301, 54.13026052104208, 54.322645290581164, 54.51503006012024, 54.70741482965932, 54.899799599198396, 55.09218436873748, 55.28456913827655, 55.476953907815634, 55.66933867735471, 55.86172344689379, 56.054108216432866, 56.24649298597194, 56.43887775551102, 56.6312625250501, 56.82364729458918, 57.016032064128254, 57.208416833667336, 57.40080160320641, 57.59318637274549, 57.78557114228457, 57.97795591182365, 58.170340681362724, 58.362725450901806, 58.55511022044088, 58.74749498997996, 58.93987975951904, 59.13226452905812, 59.324649298597194, 59.517034068136276, 59.70941883767535, 59.901803607214426, 60.09418837675351, 60.28657314629258, 60.478957915831664, 60.67134268537074, 60.86372745490982, 61.056112224448896, 61.24849699398798, 61.44088176352705, 61.633266533066134, 61.82565130260521, 62.01803607214429, 62.210420841683366, 62.40280561122245, 62.59519038076152, 62.787575150300604, 62.97995991983968, 63.17234468937876, 63.364729458917836, 63.55711422845691, 63.74949899799599, 63.94188376753507, 64.13426853707415, 64.32665330661322, 64.5190380761523, 64.71142284569137, 64.90380761523046, 65.09619238476954, 65.28857715430863, 65.4809619238477, 65.67334669338678, 65.86573146292585, 66.05811623246493, 66.250501002004, 66.44288577154309, 66.63527054108216, 66.82765531062124, 67.02004008016033, 67.2124248496994, 67.40480961923848, 67.59719438877755, 67.78957915831663, 67.9819639278557, 68.17434869739479, 68.36673346693387, 68.55911823647295, 68.75150300601203, 68.9438877755511, 69.13627254509018, 69.32865731462925, 69.52104208416833, 69.71342685370742, 69.90581162324649, 70.09819639278558, 70.29058116232466, 70.48296593186373, 70.6753507014028, 70.86773547094188, 71.06012024048096, 71.25250501002003, 71.44488977955912, 71.6372745490982, 71.82965931863728, 72.02204408817636, 72.21442885771543, 72.40681362725451, 72.59919839679358, 72.79158316633266, 72.98396793587175, 73.17635270541082, 73.36873747494991, 73.56112224448898, 73.75350701402806, 73.94589178356713, 74.13827655310621, 74.33066132264528, 74.52304609218436, 74.71543086172345, 74.90781563126252, 75.10020040080161, 75.29258517034069, 75.48496993987976, 75.67735470941884, 75.86973947895791, 76.06212424849699, 76.25450901803607, 76.44689378757515, 76.63927855711424, 76.83166332665331, 77.02404809619239, 77.21643286573146, 77.40881763527054, 77.60120240480961, 77.79358717434869, 77.98597194388778, 78.17835671342685, 78.37074148296594, 78.56312625250501, 78.75551102204409, 78.94789579158316, 79.14028056112224, 79.33266533066131, 79.5250501002004, 79.71743486973948, 79.90981963927857, 80.10220440881764, 80.29458917835672, 80.48697394789579, 80.67935871743487, 80.87174348697394, 81.06412825651303, 81.2565130260521, 81.44889779559118, 81.64128256513025, 81.83366733466934, 82.02605210420842, 82.21843687374749, 82.41082164328657, 82.60320641282566, 82.79559118236473, 82.9879759519038, 83.18036072144288, 83.37274549098197, 83.56513026052104, 83.75751503006012, 83.9498997995992, 84.14228456913828, 84.33466933867736, 84.52705410821643, 84.71943887775551, 84.91182364729458, 85.10420841683367, 85.29659318637275, 85.48897795591182, 85.6813627254509, 85.87374749498998, 86.06613226452906, 86.25851703406813, 86.45090180360721, 86.6432865731463, 86.83567134268537, 87.02805611222445, 87.22044088176352, 87.41282565130261, 87.60521042084169, 87.79759519038076, 87.98997995991984, 88.18236472945891, 88.374749498998, 88.56713426853707, 88.75951903807615, 88.95190380761522, 89.14428857715431, 89.33667334669339, 89.52905811623246, 89.72144288577154, 89.91382765531063, 90.1062124248497, 90.29859719438878, 90.49098196392785, 90.68336673346694, 90.87575150300601, 91.06813627254509, 91.26052104208416, 91.45290581162325, 91.64529058116233, 91.8376753507014, 92.03006012024048, 92.22244488977955, 92.41482965931864, 92.60721442885772, 92.79959919839679, 92.99198396793587, 93.18436873747495, 93.37675350701403, 93.5691382765531, 93.76152304609218, 93.95390781563127, 94.14629258517034, 94.33867735470942, 94.53106212424849, 94.72344689378758, 94.91583166332666, 95.10821643286573, 95.3006012024048, 95.49298597194388, 95.68537074148297, 95.87775551102204, 96.07014028056112, 96.2625250501002, 96.45490981963928, 96.64729458917836, 96.83967935871743, 97.03206412825651, 97.2244488977956, 97.41683366733467, 97.60921843687375, 97.80160320641282, 97.99398797595191, 98.18637274549098, 98.37875751503006, 98.57114228456913, 98.76352705410822, 98.9559118236473, 99.14829659318637, 99.34068136272545, 99.53306613226452, 99.72545090180361, 99.91783567134269, 100.11022044088176, 100.30260521042084, 100.49498997995993, 100.687374749499, 100.87975951903807, 101.07214428857715, 101.26452905811624, 101.45691382765531, 101.64929859719439, 101.84168336673346, 102.03406813627255, 102.22645290581163, 102.4188376753507, 102.61122244488978, 102.80360721442885, 102.99599198396794, 103.18837675350701, 103.38076152304609, 103.57314629258516, 103.76553106212425, 103.95791583166333, 104.1503006012024, 104.34268537074148, 104.53507014028057, 104.72745490981964, 104.91983967935872, 105.11222444889779, 105.30460921843688, 105.49699398797596, 105.68937875751503, 105.8817635270541, 106.07414829659318, 106.26653306613227, 106.45891783567134, 106.65130260521042, 106.84368737474949, 107.03607214428858, 107.22845691382766, 107.42084168336673, 107.6132264529058, 107.8056112224449, 107.99799599198397, 108.19038076152304, 108.38276553106212, 108.57515030060121, 108.76753507014028, 108.95991983967936, 109.15230460921843, 109.34468937875752, 109.5370741482966, 109.72945891783567, 109.92184368737475, 110.11422845691382, 110.30661322645291, 110.49899799599199, 110.69138276553106, 110.88376753507013, 111.07615230460922, 111.2685370741483, 111.46092184368737, 111.65330661322645, 111.84569138276554, 112.03807615230461, 112.23046092184369, 112.42284569138276, 112.61523046092185, 112.80761523046093, 113.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.x = d3.scale.linear()
+              .domain([17.0, 113.0])
+              .range([0, 450 - 50]);
+
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.legend = L.control({position: 'topright'});
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.legend.addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.xAxis = d3.svg.axis()
+        .scale(color_map_7fe2a2061a41fc0c278e22f26e5e9201.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([17.0, 29.0, 41.0, 53.0, 65.0, 77.0, 89.0, 101.0, 113.0]);
+
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.g = color_map_7fe2a2061a41fc0c278e22f26e5e9201.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.g.selectAll("rect")
+        .data(color_map_7fe2a2061a41fc0c278e22f26e5e9201.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_7fe2a2061a41fc0c278e22f26e5e9201.x(color_map_7fe2a2061a41fc0c278e22f26e5e9201.color.domain()[i - 1]) : color_map_7fe2a2061a41fc0c278e22f26e5e9201.x.range()[0],
+            x1: i < color_map_7fe2a2061a41fc0c278e22f26e5e9201.color.domain().length ? color_map_7fe2a2061a41fc0c278e22f26e5e9201.x(color_map_7fe2a2061a41fc0c278e22f26e5e9201.color.domain()[i]) : color_map_7fe2a2061a41fc0c278e22f26e5e9201.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_7fe2a2061a41fc0c278e22f26e5e9201.g.call(color_map_7fe2a2061a41fc0c278e22f26e5e9201.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN por local");
+    
+            var circle_marker_5d0a705712ed1b3316b2b94fe105f3a6 = L.circleMarker(
+                [-33.4888, -70.6653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed06bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.9375, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_8649bb225360b81f2c0ebe7736600bed = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d19881c4f0ae5ea7c3bf6cb93e254a5a = $(`<div id="html_d19881c4f0ae5ea7c3bf6cb93e254a5a" style="width: 100.0%; height: 100.0%;"><b>centro educativo republica mexicana</b><br>AVENIDA SALVADOR ALLENDE 2140<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>44</b></div>`)[0];
+                popup_8649bb225360b81f2c0ebe7736600bed.setContent(html_d19881c4f0ae5ea7c3bf6cb93e254a5a);
+            
+        
+
+        circle_marker_5d0a705712ed1b3316b2b94fe105f3a6.bindPopup(popup_8649bb225360b81f2c0ebe7736600bed)
+        ;
+
+        
+    
+    
+            circle_marker_5d0a705712ed1b3316b2b94fe105f3a6.bindTooltip(
+                `<div>
+                     centro educativo republica mexicana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a3edd04716cc168913104bae56129fa2 = L.marker(
+                [-33.4888, -70.6653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_1038e50f40672cdeda05afb7830009e0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e44\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a3edd04716cc168913104bae56129fa2.setIcon(div_icon_1038e50f40672cdeda05afb7830009e0);
+        
+    
+            var circle_marker_0df158eff5e5512ec7181a0fb3312ed1 = L.circleMarker(
+                [-33.4971, -70.6664],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff2abff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.3125, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_90fb6eed8ac2ee5675c80d1012e30d2f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3f6f5c8abcb008a125a83252a985e803 = $(`<div id="html_3f6f5c8abcb008a125a83252a985e803" style="width: 100.0%; height: 100.0%;"><b>colegio arcangel gabriel N°2</b><br>LAZO 1730<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>26</b></div>`)[0];
+                popup_90fb6eed8ac2ee5675c80d1012e30d2f.setContent(html_3f6f5c8abcb008a125a83252a985e803);
+            
+        
+
+        circle_marker_0df158eff5e5512ec7181a0fb3312ed1.bindPopup(popup_90fb6eed8ac2ee5675c80d1012e30d2f)
+        ;
+
+        
+    
+    
+            circle_marker_0df158eff5e5512ec7181a0fb3312ed1.bindTooltip(
+                `<div>
+                     colegio arcangel gabriel N°2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bd8be526927e2a0f6c666833ea71ba93 = L.marker(
+                [-33.4971, -70.6664],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_7cfd4f2b44f6e3d35b0ee47c240bd55c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e26\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bd8be526927e2a0f6c666833ea71ba93.setIcon(div_icon_7cfd4f2b44f6e3d35b0ee47c240bd55c);
+        
+    
+            var circle_marker_b2abbb0f27be79b2ae0a64e0a853e918 = L.circleMarker(
+                [-33.5016, -70.6875],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_d98b274eac5debc6e5a861da96852fe0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3a97d06a8c53b0f9d3a3c93de23c9821 = $(`<div id="html_3a97d06a8c53b0f9d3a3c93de23c9821" style="width: 100.0%; height: 100.0%;"><b>colegio grace school</b><br>ARMADA NACIONAL 6136<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>113</b></div>`)[0];
+                popup_d98b274eac5debc6e5a861da96852fe0.setContent(html_3a97d06a8c53b0f9d3a3c93de23c9821);
+            
+        
+
+        circle_marker_b2abbb0f27be79b2ae0a64e0a853e918.bindPopup(popup_d98b274eac5debc6e5a861da96852fe0)
+        ;
+
+        
+    
+    
+            circle_marker_b2abbb0f27be79b2ae0a64e0a853e918.bindTooltip(
+                `<div>
+                     colegio grace school
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_71f632a17856d92364669858a31e5ecc = L.marker(
+                [-33.5016, -70.6875],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_7148e9a87ee75ee7aba7784d5aafe05e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e113\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_71f632a17856d92364669858a31e5ecc.setIcon(div_icon_7148e9a87ee75ee7aba7784d5aafe05e);
+        
+    
+            var circle_marker_e783ed414dcb6e4051a1ad405492766f = L.circleMarker(
+                [-33.4911, -70.673],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde81ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0625, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_4245f36c9e8c51c78741af00bbfbb83e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a4ff189ca134a766293ca4abe5295a34 = $(`<div id="html_a4ff189ca134a766293ca4abe5295a34" style="width: 100.0%; height: 100.0%;"><b>colegioantonio acevedo hernandez</b><br>AV. LA MARINA 2835<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>38</b></div>`)[0];
+                popup_4245f36c9e8c51c78741af00bbfbb83e.setContent(html_a4ff189ca134a766293ca4abe5295a34);
+            
+        
+
+        circle_marker_e783ed414dcb6e4051a1ad405492766f.bindPopup(popup_4245f36c9e8c51c78741af00bbfbb83e)
+        ;
+
+        
+    
+    
+            circle_marker_e783ed414dcb6e4051a1ad405492766f.bindTooltip(
+                `<div>
+                     colegioantonio acevedo hernandez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_27b607bc3900cd58bec0ccc67dd2c539 = L.marker(
+                [-33.4911, -70.673],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_92a51b31fb64e1afecb1b28d354e8155 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_27b607bc3900cd58bec0ccc67dd2c539.setIcon(div_icon_92a51b31fb64e1afecb1b28d354e8155);
+        
+    
+            var circle_marker_55c2ff53616d3ee75886a135e69ef562 = L.circleMarker(
+                [-33.5054, -70.6748],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc1ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.4375, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_b0816bbefef16180ebb37ce46299752a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_25b4aa619ba81a34f5b8dc751147f6c4 = $(`<div id="html_25b4aa619ba81a34f5b8dc751147f6c4" style="width: 100.0%; height: 100.0%;"><b>escuela boroa</b><br>BOROA 6079<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>20</b></div>`)[0];
+                popup_b0816bbefef16180ebb37ce46299752a.setContent(html_25b4aa619ba81a34f5b8dc751147f6c4);
+            
+        
+
+        circle_marker_55c2ff53616d3ee75886a135e69ef562.bindPopup(popup_b0816bbefef16180ebb37ce46299752a)
+        ;
+
+        
+    
+    
+            circle_marker_55c2ff53616d3ee75886a135e69ef562.bindTooltip(
+                `<div>
+                     escuela boroa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bdb885f8bc7e4e897cef6078da93c8ac = L.marker(
+                [-33.5054, -70.6748],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_31411d59b9a567fed83dbb2fd3aaab5b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e20\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bdb885f8bc7e4e897cef6078da93c8ac.setIcon(div_icon_31411d59b9a567fed83dbb2fd3aaab5b);
+        
+    
+            var circle_marker_558b0732844d3afd96711b6946133ea1 = L.circleMarker(
+                [-33.4971, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe288ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.770833333333334, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_5cf29cecb0f915cf069ba50ae4e34d66 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_889b2cf2a2177443e1be64ad9fdcfab1 = $(`<div id="html_889b2cf2a2177443e1be64ad9fdcfab1" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de barcelona</b><br>MAYA 5961<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>36</b></div>`)[0];
+                popup_5cf29cecb0f915cf069ba50ae4e34d66.setContent(html_889b2cf2a2177443e1be64ad9fdcfab1);
+            
+        
+
+        circle_marker_558b0732844d3afd96711b6946133ea1.bindPopup(popup_5cf29cecb0f915cf069ba50ae4e34d66)
+        ;
+
+        
+    
+    
+            circle_marker_558b0732844d3afd96711b6946133ea1.bindTooltip(
+                `<div>
+                     escuela ciudad de barcelona
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c83bcb7ce5b33911bfd87b107a425372 = L.marker(
+                [-33.4971, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_ff847c6373cb1e3f1d7e9c96fb5fe3e3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e36\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c83bcb7ce5b33911bfd87b107a425372.setIcon(div_icon_ff847c6373cb1e3f1d7e9c96fb5fe3e3);
+        
+    
+            var circle_marker_5c788908176fe5a0203320d59ee5972c = L.circleMarker(
+                [-33.5073, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffefa4ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.604166666666666, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_266f7afd247e9461ec536d0adc9a9b64 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5b68345d9975fe3d7042970da86e756a = $(`<div id="html_5b68345d9975fe3d7042970da86e756a" style="width: 100.0%; height: 100.0%;"><b>escuela consolidada davila</b><br>AVENIDA JOSE JOAQUIN PRIETO 6075<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>28</b></div>`)[0];
+                popup_266f7afd247e9461ec536d0adc9a9b64.setContent(html_5b68345d9975fe3d7042970da86e756a);
+            
+        
+
+        circle_marker_5c788908176fe5a0203320d59ee5972c.bindPopup(popup_266f7afd247e9461ec536d0adc9a9b64)
+        ;
+
+        
+    
+    
+            circle_marker_5c788908176fe5a0203320d59ee5972c.bindTooltip(
+                `<div>
+                     escuela consolidada davila
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6594bd6d12772aa0b2dc2ac3d7866c2a = L.marker(
+                [-33.5073, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_831a9cc68f58e4d4d0272b4bc977621d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e28\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6594bd6d12772aa0b2dc2ac3d7866c2a.setIcon(div_icon_831a9cc68f58e4d4d0272b4bc977621d);
+        
+    
+            var circle_marker_dcfb354868c77d64d2eac9676ad680d8 = L.circleMarker(
+                [-33.4877, -70.6797],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed672ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.645833333333334, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_100c87a94ef1a370504c429bd1238eb1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cd7d1f36b0bc060b0f2e9d91e007615a = $(`<div id="html_cd7d1f36b0bc060b0f2e9d91e007615a" style="width: 100.0%; height: 100.0%;"><b>escuela la victoria</b><br>PRIMERO DE MAYO 4710<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>42</b></div>`)[0];
+                popup_100c87a94ef1a370504c429bd1238eb1.setContent(html_cd7d1f36b0bc060b0f2e9d91e007615a);
+            
+        
+
+        circle_marker_dcfb354868c77d64d2eac9676ad680d8.bindPopup(popup_100c87a94ef1a370504c429bd1238eb1)
+        ;
+
+        
+    
+    
+            circle_marker_dcfb354868c77d64d2eac9676ad680d8.bindTooltip(
+                `<div>
+                     escuela la victoria
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01423121a82c00840045c76e57d2cb02 = L.marker(
+                [-33.4877, -70.6797],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_9c1de85a1d3e01ed87ed082ef5213fc2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e42\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_01423121a82c00840045c76e57d2cb02.setIcon(div_icon_9c1de85a1d3e01ed87ed082ef5213fc2);
+        
+    
+            var circle_marker_a57a77b261f62d7fafa2b2a1f0126d56 = L.circleMarker(
+                [-33.5048, -70.6858],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_1e8541c031bb1c3784b39b23b0f5a62c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2be7c13f93e52b6fc6755610f6b36ed0 = $(`<div id="html_2be7c13f93e52b6fc6755610f6b36ed0" style="width: 100.0%; height: 100.0%;"><b>escuela lo valledor</b><br>ALESSANDRI 6378<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>17</b></div>`)[0];
+                popup_1e8541c031bb1c3784b39b23b0f5a62c.setContent(html_2be7c13f93e52b6fc6755610f6b36ed0);
+            
+        
+
+        circle_marker_a57a77b261f62d7fafa2b2a1f0126d56.bindPopup(popup_1e8541c031bb1c3784b39b23b0f5a62c)
+        ;
+
+        
+    
+    
+            circle_marker_a57a77b261f62d7fafa2b2a1f0126d56.bindTooltip(
+                `<div>
+                     escuela lo valledor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17109e03fe5ec045bbaa1cc266283c1e = L.marker(
+                [-33.5048, -70.6858],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_f2945936aa2433cf9b5e0ddd5fc0447c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e17\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_17109e03fe5ec045bbaa1cc266283c1e.setIcon(div_icon_f2945936aa2433cf9b5e0ddd5fc0447c);
+        
+    
+            var circle_marker_8e0f2223c2fc15a144f722928a801fa5 = L.circleMarker(
+                [-33.4808, -70.6602],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde81ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0625, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_8d67d9f98918d77e28ba487916174957 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dccf5e5adf287fd3e7a24bb07a4a01ae = $(`<div id="html_dccf5e5adf287fd3e7a24bb07a4a01ae" style="width: 100.0%; height: 100.0%;"><b>escuela poetas de chile</b><br>JUAN BASTIDAS 2890<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>38</b></div>`)[0];
+                popup_8d67d9f98918d77e28ba487916174957.setContent(html_dccf5e5adf287fd3e7a24bb07a4a01ae);
+            
+        
+
+        circle_marker_8e0f2223c2fc15a144f722928a801fa5.bindPopup(popup_8d67d9f98918d77e28ba487916174957)
+        ;
+
+        
+    
+    
+            circle_marker_8e0f2223c2fc15a144f722928a801fa5.bindTooltip(
+                `<div>
+                     escuela poetas de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a6ca4d98368ae8d39cf6733fdf7a800a = L.marker(
+                [-33.4808, -70.6602],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_75a5846373576bdd1f707f734c68d118 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a6ca4d98368ae8d39cf6733fdf7a800a.setIcon(div_icon_75a5846373576bdd1f707f734c68d118);
+        
+    
+            var circle_marker_b82bd89fe292d41c86bbe6728e06023d = L.circleMarker(
+                [-33.491, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b6ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.875, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_ba0c7dca0f27486719a6234c633d84f6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_212afb2ab2bd64d357d4938bc30f42d3 = $(`<div id="html_212afb2ab2bd64d357d4938bc30f42d3" style="width: 100.0%; height: 100.0%;"><b>escuela ricardo eduardo latcham</b><br>FELIX OSEGUEDA 4031<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>23</b></div>`)[0];
+                popup_ba0c7dca0f27486719a6234c633d84f6.setContent(html_212afb2ab2bd64d357d4938bc30f42d3);
+            
+        
+
+        circle_marker_b82bd89fe292d41c86bbe6728e06023d.bindPopup(popup_ba0c7dca0f27486719a6234c633d84f6)
+        ;
+
+        
+    
+    
+            circle_marker_b82bd89fe292d41c86bbe6728e06023d.bindTooltip(
+                `<div>
+                     escuela ricardo eduardo latcham
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7f7187b194f207fe398c391e1e7b2283 = L.marker(
+                [-33.491, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_20cbb5dfac6e1ebc816329d97c1fab7b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7f7187b194f207fe398c391e1e7b2283.setIcon(div_icon_20cbb5dfac6e1ebc816329d97c1fab7b);
+        
+    
+            var circle_marker_fcaed4e8b438f808f79ee098d9d5c1c1 = L.circleMarker(
+                [-33.4907, -70.6882],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe58fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.479166666666666, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_e7b0f4fef98ba0ead417aaca607780ea = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_620add8c0373a90c1422657fb93f3e66 = $(`<div id="html_620add8c0373a90c1422657fb93f3e66" style="width: 100.0%; height: 100.0%;"><b>escuela risopatron</b><br>PASAJE F 4491<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>34</b></div>`)[0];
+                popup_e7b0f4fef98ba0ead417aaca607780ea.setContent(html_620add8c0373a90c1422657fb93f3e66);
+            
+        
+
+        circle_marker_fcaed4e8b438f808f79ee098d9d5c1c1.bindPopup(popup_e7b0f4fef98ba0ead417aaca607780ea)
+        ;
+
+        
+    
+    
+            circle_marker_fcaed4e8b438f808f79ee098d9d5c1c1.bindTooltip(
+                `<div>
+                     escuela risopatron
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11aef755f5d77c00ad177facf1a30fdc = L.marker(
+                [-33.4907, -70.6882],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_1c46b2d94b5c636007b996dd646adabb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e34\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_11aef755f5d77c00ad177facf1a30fdc.setIcon(div_icon_1c46b2d94b5c636007b996dd646adabb);
+        
+    
+            var circle_marker_9162ef79c945a98d3813c1e9c9159d4e = L.circleMarker(
+                [-33.4779, -70.6615],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.145833333333334, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_4a1a7c88c3d8a5fe64194bc3c5857d23 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f8fd306aefac8e4509118b08cc9dec76 = $(`<div id="html_f8fd306aefac8e4509118b08cc9dec76" style="width: 100.0%; height: 100.0%;"><b>escuela rocio de los angeles</b><br>TRASLAVIÑA 1955<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>18</b></div>`)[0];
+                popup_4a1a7c88c3d8a5fe64194bc3c5857d23.setContent(html_f8fd306aefac8e4509118b08cc9dec76);
+            
+        
+
+        circle_marker_9162ef79c945a98d3813c1e9c9159d4e.bindPopup(popup_4a1a7c88c3d8a5fe64194bc3c5857d23)
+        ;
+
+        
+    
+    
+            circle_marker_9162ef79c945a98d3813c1e9c9159d4e.bindTooltip(
+                `<div>
+                     escuela rocio de los angeles
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8e655b3dcb7e68b04ae2811249601be2 = L.marker(
+                [-33.4779, -70.6615],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_2c7074ea75f90d0764702b690b1ac029 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e18\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8e655b3dcb7e68b04ae2811249601be2.setIcon(div_icon_2c7074ea75f90d0764702b690b1ac029);
+        
+    
+            var circle_marker_06433fe973bff4ce1ec52d51eb9f8378 = L.circleMarker(
+                [-33.5022, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff5b3ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.020833333333334, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_4d29dea78e3ec87bc677b81f613435c9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ab36af79d0150bd9e8b803ab7928775a = $(`<div id="html_ab36af79d0150bd9e8b803ab7928775a" style="width: 100.0%; height: 100.0%;"><b>escuela villa sur</b><br>LOS MOLLES 2973<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>24</b></div>`)[0];
+                popup_4d29dea78e3ec87bc677b81f613435c9.setContent(html_ab36af79d0150bd9e8b803ab7928775a);
+            
+        
+
+        circle_marker_06433fe973bff4ce1ec52d51eb9f8378.bindPopup(popup_4d29dea78e3ec87bc677b81f613435c9)
+        ;
+
+        
+    
+    
+            circle_marker_06433fe973bff4ce1ec52d51eb9f8378.bindTooltip(
+                `<div>
+                     escuela villa sur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f5e4f0662c24e8e8d586112db7c49771 = L.marker(
+                [-33.5022, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_b745294003f999bac966cbb8fd08b040 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e24\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f5e4f0662c24e8e8d586112db7c49771.setIcon(div_icon_b745294003f999bac966cbb8fd08b040);
+        
+    
+            var circle_marker_0c43b06c872b0c5bf2d514bed81ba9f6 = L.circleMarker(
+                [-33.4824, -70.6751],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffefa4ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.604166666666666, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_78b276bb1ed01792df95942eb08a5caa = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_de0b0ec501adda0421818557754b9f33 = $(`<div id="html_de0b0ec501adda0421818557754b9f33" style="width: 100.0%; height: 100.0%;"><b>liceo enrique backausse</b><br>JOSE BACKAUSSE 2850<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>28</b></div>`)[0];
+                popup_78b276bb1ed01792df95942eb08a5caa.setContent(html_de0b0ec501adda0421818557754b9f33);
+            
+        
+
+        circle_marker_0c43b06c872b0c5bf2d514bed81ba9f6.bindPopup(popup_78b276bb1ed01792df95942eb08a5caa)
+        ;
+
+        
+    
+    
+            circle_marker_0c43b06c872b0c5bf2d514bed81ba9f6.bindTooltip(
+                `<div>
+                     liceo enrique backausse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7744b72f85e9390e4f5b1dbd49f29529 = L.marker(
+                [-33.4824, -70.6751],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_57bb8339ff4a039be0a9156261535699 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e28\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7744b72f85e9390e4f5b1dbd49f29529.setIcon(div_icon_57bb8339ff4a039be0a9156261535699);
+        
+    
+            var circle_marker_614c4a8b95f491d2ca6b3a33d374a20b = L.circleMarker(
+                [-33.4945, -70.6833],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe38bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.625, "stroke": false, "weight": 3}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+        var popup_6d4bb41e699714c156bce375a419f043 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_320c838af61acf12de275efaed5521fa = $(`<div id="html_320c838af61acf12de275efaed5521fa" style="width: 100.0%; height: 100.0%;"><b>liceo eugenio pereira salas</b><br>COOPERACION 4581<br>Votos Lista CESIA ALEJANDRA BARRIGA HUENCHULLAN: <b>35</b></div>`)[0];
+                popup_6d4bb41e699714c156bce375a419f043.setContent(html_320c838af61acf12de275efaed5521fa);
+            
+        
+
+        circle_marker_614c4a8b95f491d2ca6b3a33d374a20b.bindPopup(popup_6d4bb41e699714c156bce375a419f043)
+        ;
+
+        
+    
+    
+            circle_marker_614c4a8b95f491d2ca6b3a33d374a20b.bindTooltip(
+                `<div>
+                     liceo eugenio pereira salas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_adb36a9cc58942b631fafad9e40e4942 = L.marker(
+                [-33.4945, -70.6833],
+                {"zIndexOffset": 9999}
+            ).addTo(map_322d20e804f0fb4dc1f32e0d895c0665);
+        
+    
+            var div_icon_45acf599a7e8d345f69831b27dcf683f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e35\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_adb36a9cc58942b631fafad9e40e4942.setIcon(div_icon_45acf599a7e8d345f69831b27dcf683f);
+        
+    
+            map_322d20e804f0fb4dc1f32e0d895c0665.fitBounds(
+                [[-33.4888, -70.6653], [-33.4971, -70.6664], [-33.5016, -70.6875], [-33.4911, -70.673], [-33.5054, -70.6748], [-33.4971, -70.69], [-33.5073, -70.67], [-33.4877, -70.6797], [-33.5048, -70.6858], [-33.4808, -70.6602], [-33.491, -70.6824], [-33.4907, -70.6882], [-33.4779, -70.6615], [-33.5022, -70.6824], [-33.4824, -70.6751], [-33.4945, -70.6833]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

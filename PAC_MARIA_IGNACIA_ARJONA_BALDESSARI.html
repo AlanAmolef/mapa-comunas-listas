@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6587f0b2f3cc61e378cf1c050a3f5c56 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6587f0b2f3cc61e378cf1c050a3f5c56" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6587f0b2f3cc61e378cf1c050a3f5c56 = L.map(
+                "map_6587f0b2f3cc61e378cf1c050a3f5c56",
+                {
+                    center: [-33.493775, -70.6766],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e7125b3f8d864b19c7d1d52f06eeae9b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_e7125b3f8d864b19c7d1d52f06eeae9b.addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+    var color_map_81122f72987656b6e2d7f31cf925bc09 = {};
+
+    
+    color_map_81122f72987656b6e2d7f31cf925bc09.color = d3.scale.threshold()
+              .domain([52.0, 52.25250501002004, 52.50501002004008, 52.75751503006012, 53.01002004008016, 53.2625250501002, 53.51503006012024, 53.76753507014028, 54.02004008016032, 54.27254509018036, 54.5250501002004, 54.77755511022044, 55.03006012024048, 55.28256513026052, 55.53507014028056, 55.787575150300604, 56.04008016032064, 56.29258517034068, 56.545090180360724, 56.79759519038076, 57.0501002004008, 57.30260521042084, 57.55511022044088, 57.807615230460925, 58.06012024048096, 58.312625250501, 58.565130260521045, 58.81763527054108, 59.07014028056112, 59.322645290581164, 59.5751503006012, 59.82765531062124, 60.08016032064128, 60.33266533066132, 60.58517034068136, 60.8376753507014, 61.09018036072144, 61.342685370741485, 61.59519038076152, 61.84769539078157, 62.100200400801604, 62.35270541082164, 62.605210420841686, 62.857715430861724, 63.11022044088176, 63.362725450901806, 63.61523046092184, 63.86773547094188, 64.12024048096193, 64.37274549098197, 64.625250501002, 64.87775551102204, 65.13026052104209, 65.38276553106212, 65.63527054108216, 65.88777555110221, 66.14028056112224, 66.39278557114228, 66.64529058116233, 66.89779559118236, 67.1503006012024, 67.40280561122245, 67.65531062124248, 67.90781563126252, 68.16032064128257, 68.4128256513026, 68.66533066132264, 68.91783567134269, 69.17034068136272, 69.42284569138276, 69.6753507014028, 69.92785571142285, 70.18036072144288, 70.43286573146293, 70.68537074148297, 70.93787575150301, 71.19038076152304, 71.44288577154309, 71.69539078156313, 71.94789579158316, 72.20040080160321, 72.45290581162325, 72.70541082164328, 72.95791583166333, 73.21042084168337, 73.4629258517034, 73.71543086172345, 73.96793587174349, 74.22044088176352, 74.47294589178357, 74.72545090180361, 74.97795591182364, 75.23046092184369, 75.48296593186373, 75.73547094188376, 75.9879759519038, 76.24048096192385, 76.49298597194388, 76.74549098196393, 76.99799599198397, 77.250501002004, 77.50300601202404, 77.75551102204409, 78.00801603206412, 78.26052104208416, 78.51302605210421, 78.76553106212425, 79.01803607214428, 79.27054108216433, 79.52304609218437, 79.77555110220442, 80.02805611222445, 80.28056112224449, 80.53306613226454, 80.78557114228457, 81.03807615230461, 81.29058116232466, 81.54308617234469, 81.79559118236473, 82.04809619238478, 82.3006012024048, 82.55310621242485, 82.8056112224449, 83.05811623246493, 83.31062124248497, 83.56312625250501, 83.81563126252505, 84.06813627254509, 84.32064128256513, 84.57314629258516, 84.82565130260521, 85.07815631262525, 85.33066132264528, 85.58316633266533, 85.83567134268537, 86.0881763527054, 86.34068136272545, 86.59318637274549, 86.84569138276552, 87.09819639278558, 87.35070140280561, 87.60320641282564, 87.8557114228457, 88.10821643286573, 88.36072144288576, 88.61322645290582, 88.86573146292585, 89.11823647294588, 89.37074148296594, 89.62324649298597, 89.87575150300601, 90.12825651302606, 90.38076152304609, 90.63326653306613, 90.88577154308618, 91.13827655310621, 91.39078156312625, 91.6432865731463, 91.89579158316633, 92.14829659318637, 92.40080160320642, 92.65330661322645, 92.90581162324649, 93.15831663326654, 93.41082164328657, 93.66332665330661, 93.91583166332666, 94.16833667334669, 94.42084168336673, 94.67334669338678, 94.9258517034068, 95.17835671342685, 95.4308617234469, 95.68336673346693, 95.93587174348698, 96.18837675350701, 96.44088176352705, 96.6933867735471, 96.94589178356713, 97.19839679358716, 97.45090180360722, 97.70340681362725, 97.95591182364728, 98.20841683366734, 98.46092184368737, 98.71342685370742, 98.96593186372746, 99.21843687374749, 99.47094188376754, 99.72344689378758, 99.97595190380761, 100.22845691382766, 100.4809619238477, 100.73346693386773, 100.98597194388778, 101.23847695390782, 101.49098196392785, 101.7434869739479, 101.99599198396794, 102.24849699398797, 102.50100200400801, 102.75350701402806, 103.00601202404809, 103.25851703406813, 103.51102204408818, 103.76352705410821, 104.01603206412825, 104.2685370741483, 104.52104208416833, 104.77354709418837, 105.02605210420842, 105.27855711422845, 105.5310621242485, 105.78356713426854, 106.03607214428857, 106.28857715430863, 106.54108216432866, 106.79358717434869, 107.04609218436875, 107.29859719438878, 107.55110220440882, 107.80360721442887, 108.0561122244489, 108.30861723446894, 108.56112224448898, 108.81362725450902, 109.06613226452906, 109.3186372745491, 109.57114228456913, 109.82364729458918, 110.07615230460922, 110.32865731462925, 110.5811623246493, 110.83366733466934, 111.08617234468937, 111.33867735470942, 111.59118236472946, 111.84368737474949, 112.09619238476954, 112.34869739478958, 112.60120240480961, 112.85370741482966, 113.1062124248497, 113.35871743486973, 113.61122244488978, 113.86372745490982, 114.11623246492985, 114.36873747494991, 114.62124248496994, 114.87374749498997, 115.12625250501003, 115.37875751503006, 115.63126252505009, 115.88376753507015, 116.13627254509018, 116.38877755511022, 116.64128256513025, 116.8937875751503, 117.14629258517034, 117.39879759519039, 117.65130260521042, 117.90380761523046, 118.15631262525051, 118.40881763527054, 118.66132264529058, 118.91382765531063, 119.16633266533066, 119.4188376753507, 119.67134268537075, 119.92384769539078, 120.17635270541082, 120.42885771543087, 120.6813627254509, 120.93386773547094, 121.18637274549098, 121.43887775551102, 121.69138276553106, 121.9438877755511, 122.19639278557115, 122.44889779559118, 122.70140280561122, 122.95390781563127, 123.2064128256513, 123.45891783567134, 123.71142284569139, 123.96392785571142, 124.21643286573146, 124.46893787575151, 124.72144288577154, 124.97394789579158, 125.22645290581163, 125.47895791583166, 125.7314629258517, 125.98396793587175, 126.23647294589178, 126.48897795591182, 126.74148296593187, 126.99398797595191, 127.24649298597194, 127.49899799599199, 127.75150300601203, 128.00400801603206, 128.25651302605212, 128.50901803607215, 128.76152304609218, 129.01402805611224, 129.26653306613227, 129.5190380761523, 129.77154308617236, 130.0240480961924, 130.27655310621242, 130.52905811623248, 130.7815631262525, 131.03406813627254, 131.2865731462926, 131.53907815631263, 131.79158316633266, 132.04408817635272, 132.29659318637275, 132.54909819639278, 132.80160320641284, 133.05410821643287, 133.3066132264529, 133.55911823647295, 133.81162324649299, 134.06412825651302, 134.31663326653307, 134.5691382765531, 134.82164328657313, 135.0741482965932, 135.32665330661322, 135.57915831663325, 135.8316633266533, 136.08416833667334, 136.33667334669337, 136.58917835671343, 136.84168336673346, 137.0941883767535, 137.34669338677355, 137.59919839679358, 137.8517034068136, 138.10420841683367, 138.3567134268537, 138.60921843687373, 138.8617234468938, 139.11422845691382, 139.36673346693385, 139.6192384769539, 139.87174348697397, 140.12424849699397, 140.37675350701403, 140.6292585170341, 140.8817635270541, 141.13426853707415, 141.3867735470942, 141.6392785571142, 141.89178356713427, 142.14428857715433, 142.39679358717433, 142.6492985971944, 142.90180360721445, 143.15430861723445, 143.4068136272545, 143.65931863727457, 143.91182364729457, 144.16432865731463, 144.41683366733469, 144.66933867735472, 144.92184368737475, 145.1743486973948, 145.42685370741484, 145.67935871743487, 145.93186372745492, 146.18436873747495, 146.43687374749499, 146.68937875751504, 146.94188376753507, 147.1943887775551, 147.44689378757516, 147.6993987975952, 147.95190380761522, 148.20440881763528, 148.4569138276553, 148.70941883767534, 148.9619238476954, 149.21442885771543, 149.46693386773546, 149.71943887775552, 149.97194388777555, 150.22444889779558, 150.47695390781564, 150.72945891783567, 150.9819639278557, 151.23446893787576, 151.4869739478958, 151.73947895791582, 151.99198396793588, 152.2444889779559, 152.49699398797594, 152.749498997996, 153.00200400801603, 153.25450901803606, 153.50701402805612, 153.75951903807615, 154.01202404809618, 154.26452905811624, 154.51703406813627, 154.7695390781563, 155.02204408817636, 155.2745490981964, 155.52705410821642, 155.77955911823648, 156.0320641282565, 156.28456913827654, 156.5370741482966, 156.78957915831663, 157.04208416833666, 157.29458917835672, 157.54709418837675, 157.79959919839678, 158.05210420841684, 158.3046092184369, 158.5571142284569, 158.80961923847696, 159.062124248497, 159.31462925851702, 159.56713426853707, 159.81963927855713, 160.07214428857714, 160.3246492985972, 160.57715430861725, 160.82965931863725, 161.0821643286573, 161.33466933867737, 161.58717434869737, 161.83967935871743, 162.0921843687375, 162.34468937875752, 162.59719438877755, 162.8496993987976, 163.10220440881764, 163.35470941883767, 163.60721442885773, 163.85971943887776, 164.1122244488978, 164.36472945891785, 164.61723446893788, 164.8697394789579, 165.12224448897797, 165.374749498998, 165.62725450901803, 165.8797595190381, 166.13226452905812, 166.38476953907815, 166.6372745490982, 166.88977955911824, 167.14228456913827, 167.39478957915833, 167.64729458917836, 167.8997995991984, 168.15230460921845, 168.40480961923848, 168.6573146292585, 168.90981963927857, 169.1623246492986, 169.41482965931863, 169.6673346693387, 169.91983967935872, 170.17234468937875, 170.4248496993988, 170.67735470941884, 170.92985971943887, 171.18236472945893, 171.43486973947896, 171.68737474949899, 171.93987975951904, 172.19238476953907, 172.4448897795591, 172.69739478957916, 172.9498997995992, 173.20240480961922, 173.45490981963928, 173.7074148296593, 173.95991983967934, 174.2124248496994, 174.46492985971943, 174.71743486973946, 174.96993987975952, 175.22244488977955, 175.47494989979958, 175.72745490981964, 175.9799599198397, 176.2324649298597, 176.48496993987976, 176.73747494989982, 176.98997995991982, 177.24248496993988, 177.49498997995994, 177.74749498997994, 178.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_81122f72987656b6e2d7f31cf925bc09.x = d3.scale.linear()
+              .domain([52.0, 178.0])
+              .range([0, 450 - 50]);
+
+    color_map_81122f72987656b6e2d7f31cf925bc09.legend = L.control({position: 'topright'});
+    color_map_81122f72987656b6e2d7f31cf925bc09.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_81122f72987656b6e2d7f31cf925bc09.legend.addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+
+    color_map_81122f72987656b6e2d7f31cf925bc09.xAxis = d3.svg.axis()
+        .scale(color_map_81122f72987656b6e2d7f31cf925bc09.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([52.0, 67.75, 83.5, 99.25, 115.0, 130.75, 146.5, 162.25, 178.0]);
+
+    color_map_81122f72987656b6e2d7f31cf925bc09.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_81122f72987656b6e2d7f31cf925bc09.g = color_map_81122f72987656b6e2d7f31cf925bc09.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_81122f72987656b6e2d7f31cf925bc09.g.selectAll("rect")
+        .data(color_map_81122f72987656b6e2d7f31cf925bc09.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_81122f72987656b6e2d7f31cf925bc09.x(color_map_81122f72987656b6e2d7f31cf925bc09.color.domain()[i - 1]) : color_map_81122f72987656b6e2d7f31cf925bc09.x.range()[0],
+            x1: i < color_map_81122f72987656b6e2d7f31cf925bc09.color.domain().length ? color_map_81122f72987656b6e2d7f31cf925bc09.x(color_map_81122f72987656b6e2d7f31cf925bc09.color.domain()[i]) : color_map_81122f72987656b6e2d7f31cf925bc09.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_81122f72987656b6e2d7f31cf925bc09.g.call(color_map_81122f72987656b6e2d7f31cf925bc09.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista MARIA IGNACIA ARJONA BALDESSARI por local");
+    
+            var circle_marker_21a267319497963bc841bb69eb54f09d = L.circleMarker(
+                [-33.4888, -70.6653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_6924623dd726341a1a188ff65a7fdc68 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1f916ada571b28d0e99ad3d8465acad2 = $(`<div id="html_1f916ada571b28d0e99ad3d8465acad2" style="width: 100.0%; height: 100.0%;"><b>centro educativo republica mexicana</b><br>AVENIDA SALVADOR ALLENDE 2140<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>178</b></div>`)[0];
+                popup_6924623dd726341a1a188ff65a7fdc68.setContent(html_1f916ada571b28d0e99ad3d8465acad2);
+            
+        
+
+        circle_marker_21a267319497963bc841bb69eb54f09d.bindPopup(popup_6924623dd726341a1a188ff65a7fdc68)
+        ;
+
+        
+    
+    
+            circle_marker_21a267319497963bc841bb69eb54f09d.bindTooltip(
+                `<div>
+                     centro educativo republica mexicana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cf8f7cce4c09ba823e1043ff1f889eb5 = L.marker(
+                [-33.4888, -70.6653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_a554fc38e7af42e212301d4928fddd32 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e178\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_cf8f7cce4c09ba823e1043ff1f889eb5.setIcon(div_icon_a554fc38e7af42e212301d4928fddd32);
+        
+    
+            var circle_marker_8e35b34f5f70029b452b2c22d4113013 = L.circleMarker(
+                [-33.4971, -70.6664],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feae4aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.444444444444445, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_5703e18e581dfbaecc783c8fb9256c31 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_25b1f0898715fafd8a011b8004df7e23 = $(`<div id="html_25b1f0898715fafd8a011b8004df7e23" style="width: 100.0%; height: 100.0%;"><b>colegio arcangel gabriel N°2</b><br>LAZO 1730<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>101</b></div>`)[0];
+                popup_5703e18e581dfbaecc783c8fb9256c31.setContent(html_25b1f0898715fafd8a011b8004df7e23);
+            
+        
+
+        circle_marker_8e35b34f5f70029b452b2c22d4113013.bindPopup(popup_5703e18e581dfbaecc783c8fb9256c31)
+        ;
+
+        
+    
+    
+            circle_marker_8e35b34f5f70029b452b2c22d4113013.bindTooltip(
+                `<div>
+                     colegio arcangel gabriel N°2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2ecac1a8dcc9c55cd0bafd6593356a80 = L.marker(
+                [-33.4971, -70.6664],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_2b94150cc9fda0bfb909d4320cddb559 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e101\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2ecac1a8dcc9c55cd0bafd6593356a80.setIcon(div_icon_2b94150cc9fda0bfb909d4320cddb559);
+        
+    
+            var circle_marker_0bc35b5e45a9dddbc722e2f440889348 = L.circleMarker(
+                [-33.5016, -70.6875],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6931ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.0, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_c2ec143d6f4118ffb16c21990a101809 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c364a13e8ac82403c49abcb4c998c8f4 = $(`<div id="html_c364a13e8ac82403c49abcb4c998c8f4" style="width: 100.0%; height: 100.0%;"><b>colegio grace school</b><br>ARMADA NACIONAL 6136<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>124</b></div>`)[0];
+                popup_c2ec143d6f4118ffb16c21990a101809.setContent(html_c364a13e8ac82403c49abcb4c998c8f4);
+            
+        
+
+        circle_marker_0bc35b5e45a9dddbc722e2f440889348.bindPopup(popup_c2ec143d6f4118ffb16c21990a101809)
+        ;
+
+        
+    
+    
+            circle_marker_0bc35b5e45a9dddbc722e2f440889348.bindTooltip(
+                `<div>
+                     colegio grace school
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ed1c1169437a1841509f4e5c55fd638f = L.marker(
+                [-33.5016, -70.6875],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_fdbfa4f596785428793e3623a57632fc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e124\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ed1c1169437a1841509f4e5c55fd638f.setIcon(div_icon_fdbfa4f596785428793e3623a57632fc);
+        
+    
+            var circle_marker_1a8d7c47590d6679d2efb96dbf9c5fb4 = L.circleMarker(
+                [-33.4911, -70.673],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe997ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.11111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_3a4579873ab1bfaf8131666ddc89d382 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2a2b350b8dd885690f6149eff0248320 = $(`<div id="html_2a2b350b8dd885690f6149eff0248320" style="width: 100.0%; height: 100.0%;"><b>colegioantonio acevedo hernandez</b><br>AV. LA MARINA 2835<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>71</b></div>`)[0];
+                popup_3a4579873ab1bfaf8131666ddc89d382.setContent(html_2a2b350b8dd885690f6149eff0248320);
+            
+        
+
+        circle_marker_1a8d7c47590d6679d2efb96dbf9c5fb4.bindPopup(popup_3a4579873ab1bfaf8131666ddc89d382)
+        ;
+
+        
+    
+    
+            circle_marker_1a8d7c47590d6679d2efb96dbf9c5fb4.bindTooltip(
+                `<div>
+                     colegioantonio acevedo hernandez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f32dc47ac6f60cf021ec1ea61ddfdf5a = L.marker(
+                [-33.4911, -70.673],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_77bd27f0f32e94dfb334e2aeeca0c615 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e71\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f32dc47ac6f60cf021ec1ea61ddfdf5a.setIcon(div_icon_77bd27f0f32e94dfb334e2aeeca0c615);
+        
+    
+            var circle_marker_577b8213ecbe722f7741fb601a6401d4 = L.circleMarker(
+                [-33.5054, -70.6748],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed16dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.88888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_9e9464647233f9a96480d87618526a22 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c0dea0e7b5d10627eaad45c58b7a352e = $(`<div id="html_c0dea0e7b5d10627eaad45c58b7a352e" style="width: 100.0%; height: 100.0%;"><b>escuela boroa</b><br>BOROA 6079<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>87</b></div>`)[0];
+                popup_9e9464647233f9a96480d87618526a22.setContent(html_c0dea0e7b5d10627eaad45c58b7a352e);
+            
+        
+
+        circle_marker_577b8213ecbe722f7741fb601a6401d4.bindPopup(popup_9e9464647233f9a96480d87618526a22)
+        ;
+
+        
+    
+    
+            circle_marker_577b8213ecbe722f7741fb601a6401d4.bindTooltip(
+                `<div>
+                     escuela boroa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e68c818ce4bc6b20b97596f0a1b0aa22 = L.marker(
+                [-33.5054, -70.6748],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_41389fb088187dcc7aeae29fb1729f08 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e87\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e68c818ce4bc6b20b97596f0a1b0aa22.setIcon(div_icon_41389fb088187dcc7aeae29fb1729f08);
+        
+    
+            var circle_marker_29efc5e3922940cedb441ce89e84fdb5 = L.circleMarker(
+                [-33.4971, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.555555555555555, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_fa69f1be951620b629421e524add3832 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8e731114122fa34f78f637382f649fd5 = $(`<div id="html_8e731114122fa34f78f637382f649fd5" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de barcelona</b><br>MAYA 5961<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>75</b></div>`)[0];
+                popup_fa69f1be951620b629421e524add3832.setContent(html_8e731114122fa34f78f637382f649fd5);
+            
+        
+
+        circle_marker_29efc5e3922940cedb441ce89e84fdb5.bindPopup(popup_fa69f1be951620b629421e524add3832)
+        ;
+
+        
+    
+    
+            circle_marker_29efc5e3922940cedb441ce89e84fdb5.bindTooltip(
+                `<div>
+                     escuela ciudad de barcelona
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3448e906c040536363c9fe4ddf8c828e = L.marker(
+                [-33.4971, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_1f1de55fc749c0697acf8c1b49658317 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e75\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3448e906c040536363c9fe4ddf8c828e.setIcon(div_icon_1f1de55fc749c0697acf8c1b49658317);
+        
+    
+            var circle_marker_72d118442779371751f7035a9bdba354 = L.circleMarker(
+                [-33.5073, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#900026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.555555555555557, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_b1dd1752e4a5d31732a2c35d54375a59 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_310807e1e19fabfc4b482bd418ff1f94 = $(`<div id="html_310807e1e19fabfc4b482bd418ff1f94" style="width: 100.0%; height: 100.0%;"><b>escuela consolidada davila</b><br>AVENIDA JOSE JOAQUIN PRIETO 6075<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>174</b></div>`)[0];
+                popup_b1dd1752e4a5d31732a2c35d54375a59.setContent(html_310807e1e19fabfc4b482bd418ff1f94);
+            
+        
+
+        circle_marker_72d118442779371751f7035a9bdba354.bindPopup(popup_b1dd1752e4a5d31732a2c35d54375a59)
+        ;
+
+        
+    
+    
+            circle_marker_72d118442779371751f7035a9bdba354.bindTooltip(
+                `<div>
+                     escuela consolidada davila
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b4d3d3698b7c500430e3e82e170766b1 = L.marker(
+                [-33.5073, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_15de1dcfbd19b15a12170f215177f51b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e174\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b4d3d3698b7c500430e3e82e170766b1.setIcon(div_icon_15de1dcfbd19b15a12170f215177f51b);
+        
+    
+            var circle_marker_55098988eede378141e43f9c70e081fb = L.circleMarker(
+                [-33.4877, -70.6797],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed672ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.666666666666666, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_a84cc0c97e877c939399f4c7e5567198 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_237e04978cd97046071be7f726a78673 = $(`<div id="html_237e04978cd97046071be7f726a78673" style="width: 100.0%; height: 100.0%;"><b>escuela la victoria</b><br>PRIMERO DE MAYO 4710<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>85</b></div>`)[0];
+                popup_a84cc0c97e877c939399f4c7e5567198.setContent(html_237e04978cd97046071be7f726a78673);
+            
+        
+
+        circle_marker_55098988eede378141e43f9c70e081fb.bindPopup(popup_a84cc0c97e877c939399f4c7e5567198)
+        ;
+
+        
+    
+    
+            circle_marker_55098988eede378141e43f9c70e081fb.bindTooltip(
+                `<div>
+                     escuela la victoria
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_680aa39b3be1f02141cf3b009b108e90 = L.marker(
+                [-33.4877, -70.6797],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_00dd0eea411de0866b20cd0b0c0e0cec = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e85\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_680aa39b3be1f02141cf3b009b108e90.setIcon(div_icon_00dd0eea411de0866b20cd0b0c0e0cec);
+        
+    
+            var circle_marker_ee86e01d0b1c3b8c25f1fa114d0ae2b0 = L.circleMarker(
+                [-33.5048, -70.6858],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec9dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.88888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_3406f9de22df900379ef143e7f268151 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ad8ce4412c6d71217c6e708c4d7a553f = $(`<div id="html_ad8ce4412c6d71217c6e708c4d7a553f" style="width: 100.0%; height: 100.0%;"><b>escuela lo valledor</b><br>ALESSANDRI 6378<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>69</b></div>`)[0];
+                popup_3406f9de22df900379ef143e7f268151.setContent(html_ad8ce4412c6d71217c6e708c4d7a553f);
+            
+        
+
+        circle_marker_ee86e01d0b1c3b8c25f1fa114d0ae2b0.bindPopup(popup_3406f9de22df900379ef143e7f268151)
+        ;
+
+        
+    
+    
+            circle_marker_ee86e01d0b1c3b8c25f1fa114d0ae2b0.bindTooltip(
+                `<div>
+                     escuela lo valledor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6a495bd72558b21d9b12017fda9adc22 = L.marker(
+                [-33.5048, -70.6858],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_174c9bfd5225b6b63f1e0310a0b53bdf = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e69\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6a495bd72558b21d9b12017fda9adc22.setIcon(div_icon_174c9bfd5225b6b63f1e0310a0b53bdf);
+        
+    
+            var circle_marker_f033ac3df76334b83971e6d1f574e8e0 = L.circleMarker(
+                [-33.4808, -70.6602],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c00225ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.11111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_d74cdaf5f88f8c4a1695a2f51f9860bd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cac9f55e8f6213ff33a2b9d49f3f0423 = $(`<div id="html_cac9f55e8f6213ff33a2b9d49f3f0423" style="width: 100.0%; height: 100.0%;"><b>escuela poetas de chile</b><br>JUAN BASTIDAS 2890<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>161</b></div>`)[0];
+                popup_d74cdaf5f88f8c4a1695a2f51f9860bd.setContent(html_cac9f55e8f6213ff33a2b9d49f3f0423);
+            
+        
+
+        circle_marker_f033ac3df76334b83971e6d1f574e8e0.bindPopup(popup_d74cdaf5f88f8c4a1695a2f51f9860bd)
+        ;
+
+        
+    
+    
+            circle_marker_f033ac3df76334b83971e6d1f574e8e0.bindTooltip(
+                `<div>
+                     escuela poetas de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c36ac7fea4dc42f5f008585ae2f7986c = L.marker(
+                [-33.4808, -70.6602],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_50f23f4705b7bcaa2b9e428449cafe47 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e161\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c36ac7fea4dc42f5f008585ae2f7986c.setIcon(div_icon_50f23f4705b7bcaa2b9e428449cafe47);
+        
+    
+            var circle_marker_c80b16f733c06495a9cd14d0572ae339 = L.circleMarker(
+                [-33.491, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_12ad04892e8e3b68b7370aaef1f650c4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ad41090fb2fa29e1937839e3ca7f6292 = $(`<div id="html_ad41090fb2fa29e1937839e3ca7f6292" style="width: 100.0%; height: 100.0%;"><b>escuela ricardo eduardo latcham</b><br>FELIX OSEGUEDA 4031<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>52</b></div>`)[0];
+                popup_12ad04892e8e3b68b7370aaef1f650c4.setContent(html_ad41090fb2fa29e1937839e3ca7f6292);
+            
+        
+
+        circle_marker_c80b16f733c06495a9cd14d0572ae339.bindPopup(popup_12ad04892e8e3b68b7370aaef1f650c4)
+        ;
+
+        
+    
+    
+            circle_marker_c80b16f733c06495a9cd14d0572ae339.bindTooltip(
+                `<div>
+                     escuela ricardo eduardo latcham
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_633d2a46131d561a3a9b648eb079af82 = L.marker(
+                [-33.491, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_faabca246d221de7698969df331e1ce4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e52\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_633d2a46131d561a3a9b648eb079af82.setIcon(div_icon_faabca246d221de7698969df331e1ce4);
+        
+    
+            var circle_marker_8db5c49dbac6364fd4ecce9c10f0c574 = L.circleMarker(
+                [-33.4907, -70.6882],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb54fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.11111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_b3f0ddedf0c5624b3bcc8679ef3e7ae0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6810376a3da7348f66b7b99e27790941 = $(`<div id="html_6810376a3da7348f66b7b99e27790941" style="width: 100.0%; height: 100.0%;"><b>escuela risopatron</b><br>PASAJE F 4491<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>98</b></div>`)[0];
+                popup_b3f0ddedf0c5624b3bcc8679ef3e7ae0.setContent(html_6810376a3da7348f66b7b99e27790941);
+            
+        
+
+        circle_marker_8db5c49dbac6364fd4ecce9c10f0c574.bindPopup(popup_b3f0ddedf0c5624b3bcc8679ef3e7ae0)
+        ;
+
+        
+    
+    
+            circle_marker_8db5c49dbac6364fd4ecce9c10f0c574.bindTooltip(
+                `<div>
+                     escuela risopatron
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_022de1920e2d6e4cdad5a052c61c9a3a = L.marker(
+                [-33.4907, -70.6882],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_833fd2f68805fd6e68d8d57f82ef05a3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e98\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_022de1920e2d6e4cdad5a052c61c9a3a.setIcon(div_icon_833fd2f68805fd6e68d8d57f82ef05a3);
+        
+    
+            var circle_marker_11c618f0aa2d195ab31e2245154770b8 = L.circleMarker(
+                [-33.4779, -70.6615],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feae4aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.444444444444445, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_41295168e7787661248f798a995bca17 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d922acf91dddf565d77428be7846eb97 = $(`<div id="html_d922acf91dddf565d77428be7846eb97" style="width: 100.0%; height: 100.0%;"><b>escuela rocio de los angeles</b><br>TRASLAVIÑA 1955<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>101</b></div>`)[0];
+                popup_41295168e7787661248f798a995bca17.setContent(html_d922acf91dddf565d77428be7846eb97);
+            
+        
+
+        circle_marker_11c618f0aa2d195ab31e2245154770b8.bindPopup(popup_41295168e7787661248f798a995bca17)
+        ;
+
+        
+    
+    
+            circle_marker_11c618f0aa2d195ab31e2245154770b8.bindTooltip(
+                `<div>
+                     escuela rocio de los angeles
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c89258f941c4166aaedef9f1bffabdc7 = L.marker(
+                [-33.4779, -70.6615],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_4ce46c41cc0fc5b77e7013b5113ce520 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e101\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c89258f941c4166aaedef9f1bffabdc7.setIcon(div_icon_4ce46c41cc0fc5b77e7013b5113ce520);
+        
+    
+            var circle_marker_4b33eaf8e7a188f7b9696509d39b281d = L.circleMarker(
+                [-33.5022, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeb9aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_4dfe6b43358c7cab82be08ed5e6c4879 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dd9ec9e5aaa8f564ec33a6feecf1652e = $(`<div id="html_dd9ec9e5aaa8f564ec33a6feecf1652e" style="width: 100.0%; height: 100.0%;"><b>escuela villa sur</b><br>LOS MOLLES 2973<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>70</b></div>`)[0];
+                popup_4dfe6b43358c7cab82be08ed5e6c4879.setContent(html_dd9ec9e5aaa8f564ec33a6feecf1652e);
+            
+        
+
+        circle_marker_4b33eaf8e7a188f7b9696509d39b281d.bindPopup(popup_4dfe6b43358c7cab82be08ed5e6c4879)
+        ;
+
+        
+    
+    
+            circle_marker_4b33eaf8e7a188f7b9696509d39b281d.bindTooltip(
+                `<div>
+                     escuela villa sur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26be8fbccbb9c3eaacdc24a6ce388125 = L.marker(
+                [-33.5022, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_ba5859246b40d6241f15afbf9ba84914 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e70\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_26be8fbccbb9c3eaacdc24a6ce388125.setIcon(div_icon_ba5859246b40d6241f15afbf9ba84914);
+        
+    
+            var circle_marker_05f37e1a95cab7b272c8e0f16f9b15c0 = L.circleMarker(
+                [-33.4824, -70.6751],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d10d20ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.333333333333336, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_ca8b153fed6ce0519bca974f87b53695 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1848e87aed8687af366933a742aca08d = $(`<div id="html_1848e87aed8687af366933a742aca08d" style="width: 100.0%; height: 100.0%;"><b>liceo enrique backausse</b><br>JOSE BACKAUSSE 2850<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>154</b></div>`)[0];
+                popup_ca8b153fed6ce0519bca974f87b53695.setContent(html_1848e87aed8687af366933a742aca08d);
+            
+        
+
+        circle_marker_05f37e1a95cab7b272c8e0f16f9b15c0.bindPopup(popup_ca8b153fed6ce0519bca974f87b53695)
+        ;
+
+        
+    
+    
+            circle_marker_05f37e1a95cab7b272c8e0f16f9b15c0.bindTooltip(
+                `<div>
+                     liceo enrique backausse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_830c0b1ba5b834dab5bec35368969c9d = L.marker(
+                [-33.4824, -70.6751],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_b35faca3b5dcadc8fcd0790746f97ae6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e154\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_830c0b1ba5b834dab5bec35368969c9d.setIcon(div_icon_b35faca3b5dcadc8fcd0790746f97ae6);
+        
+    
+            var circle_marker_b3934f1df759301020b41b5f81beb6ef = L.circleMarker(
+                [-33.4945, -70.6833],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec9dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.88888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+        var popup_08fc1ec58bc53e490f5d660c9dc66d69 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c890e66184e6018c75f70d8097368374 = $(`<div id="html_c890e66184e6018c75f70d8097368374" style="width: 100.0%; height: 100.0%;"><b>liceo eugenio pereira salas</b><br>COOPERACION 4581<br>Votos Lista MARIA IGNACIA ARJONA BALDESSARI: <b>69</b></div>`)[0];
+                popup_08fc1ec58bc53e490f5d660c9dc66d69.setContent(html_c890e66184e6018c75f70d8097368374);
+            
+        
+
+        circle_marker_b3934f1df759301020b41b5f81beb6ef.bindPopup(popup_08fc1ec58bc53e490f5d660c9dc66d69)
+        ;
+
+        
+    
+    
+            circle_marker_b3934f1df759301020b41b5f81beb6ef.bindTooltip(
+                `<div>
+                     liceo eugenio pereira salas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_75ad5e453fad28ef66c4f39710d0da75 = L.marker(
+                [-33.4945, -70.6833],
+                {"zIndexOffset": 9999}
+            ).addTo(map_6587f0b2f3cc61e378cf1c050a3f5c56);
+        
+    
+            var div_icon_f9c8b17ea9465a04a1a08c7def01f386 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e69\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_75ad5e453fad28ef66c4f39710d0da75.setIcon(div_icon_f9c8b17ea9465a04a1a08c7def01f386);
+        
+    
+            map_6587f0b2f3cc61e378cf1c050a3f5c56.fitBounds(
+                [[-33.4888, -70.6653], [-33.4971, -70.6664], [-33.5016, -70.6875], [-33.4911, -70.673], [-33.5054, -70.6748], [-33.4971, -70.69], [-33.5073, -70.67], [-33.4877, -70.6797], [-33.5048, -70.6858], [-33.4808, -70.6602], [-33.491, -70.6824], [-33.4907, -70.6882], [-33.4779, -70.6615], [-33.5022, -70.6824], [-33.4824, -70.6751], [-33.4945, -70.6833]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

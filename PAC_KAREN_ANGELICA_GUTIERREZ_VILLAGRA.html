@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1a9dc9d178fe11f5aa7f3da76644c879 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_1a9dc9d178fe11f5aa7f3da76644c879" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1a9dc9d178fe11f5aa7f3da76644c879 = L.map(
+                "map_1a9dc9d178fe11f5aa7f3da76644c879",
+                {
+                    center: [-33.493775, -70.6766],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d52d0bbf5b1a3d79384e57a4c5d3bbdc = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_d52d0bbf5b1a3d79384e57a4c5d3bbdc.addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+    var color_map_248ceeff726a03db4e2babf75f3cd855 = {};
+
+    
+    color_map_248ceeff726a03db4e2babf75f3cd855.color = d3.scale.threshold()
+              .domain([26.0, 26.25250501002004, 26.50501002004008, 26.75751503006012, 27.01002004008016, 27.2625250501002, 27.51503006012024, 27.76753507014028, 28.02004008016032, 28.272545090180362, 28.5250501002004, 28.77755511022044, 29.03006012024048, 29.282565130260522, 29.53507014028056, 29.7875751503006, 30.04008016032064, 30.29258517034068, 30.54509018036072, 30.79759519038076, 31.050100200400802, 31.302605210420843, 31.55511022044088, 31.80761523046092, 32.06012024048096, 32.312625250501, 32.565130260521045, 32.81763527054108, 33.07014028056112, 33.322645290581164, 33.5751503006012, 33.82765531062124, 34.08016032064128, 34.33266533066132, 34.58517034068136, 34.8376753507014, 35.09018036072144, 35.342685370741485, 35.59519038076152, 35.84769539078157, 36.100200400801604, 36.35270541082164, 36.605210420841686, 36.857715430861724, 37.11022044088176, 37.362725450901806, 37.61523046092184, 37.86773547094188, 38.120240480961925, 38.37274549098196, 38.625250501002, 38.877755511022045, 39.13026052104208, 39.38276553106213, 39.635270541082164, 39.88777555110221, 40.140280561122246, 40.392785571142284, 40.64529058116233, 40.897795591182366, 41.1503006012024, 41.40280561122245, 41.655310621242485, 41.90781563126252, 42.16032064128257, 42.412825651302605, 42.66533066132264, 42.91783567134269, 43.170340681362724, 43.42284569138276, 43.675350701402806, 43.92785571142285, 44.18036072144288, 44.432865731462925, 44.68537074148297, 44.93787575150301, 45.190380761523045, 45.44288577154309, 45.69539078156313, 45.947895791583164, 46.20040080160321, 46.452905811623246, 46.705410821643284, 46.95791583166333, 47.210420841683366, 47.4629258517034, 47.71543086172345, 47.96793587174349, 48.22044088176352, 48.47294589178357, 48.72545090180361, 48.97795591182364, 49.23046092184369, 49.48296593186373, 49.73547094188377, 49.987975951903806, 50.24048096192385, 50.49298597194389, 50.745490981963925, 50.99799599198397, 51.25050100200401, 51.503006012024045, 51.75551102204409, 52.00801603206413, 52.260521042084164, 52.51302605210421, 52.76553106212425, 53.018036072144284, 53.27054108216433, 53.52304609218437, 53.77555110220441, 54.02805611222445, 54.28056112224449, 54.53306613226453, 54.78557114228457, 55.03807615230461, 55.29058116232465, 55.54308617234469, 55.79559118236473, 56.04809619238477, 56.300601202404806, 56.55310621242485, 56.80561122244489, 57.058116232464926, 57.31062124248497, 57.563126252505015, 57.815631262525045, 58.06813627254509, 58.32064128256513, 58.57314629258517, 58.82565130260521, 59.078156312625254, 59.33066132264529, 59.58316633266533, 59.83567134268537, 60.08817635270541, 60.34068136272545, 60.59318637274549, 60.84569138276553, 61.098196392785574, 61.35070140280561, 61.60320641282565, 61.855711422845694, 62.10821643286573, 62.36072144288577, 62.61322645290581, 62.86573146292585, 63.11823647294589, 63.37074148296593, 63.62324649298597, 63.875751503006015, 64.12825651302606, 64.38076152304609, 64.63326653306613, 64.88577154308618, 65.13827655310621, 65.39078156312625, 65.6432865731463, 65.89579158316633, 66.14829659318637, 66.40080160320642, 66.65330661322645, 66.90581162324649, 67.15831663326654, 67.41082164328657, 67.66332665330661, 67.91583166332666, 68.16833667334669, 68.42084168336673, 68.67334669338678, 68.9258517034068, 69.17835671342685, 69.4308617234469, 69.68336673346693, 69.93587174348698, 70.18837675350701, 70.44088176352705, 70.6933867735471, 70.94589178356713, 71.19839679358716, 71.45090180360722, 71.70340681362725, 71.95591182364728, 72.20841683366734, 72.46092184368737, 72.71342685370742, 72.96593186372746, 73.21843687374749, 73.47094188376754, 73.72344689378758, 73.97595190380761, 74.22845691382766, 74.4809619238477, 74.73346693386773, 74.98597194388778, 75.23847695390782, 75.49098196392785, 75.7434869739479, 75.99599198396794, 76.24849699398797, 76.50100200400801, 76.75350701402806, 77.00601202404809, 77.25851703406813, 77.51102204408818, 77.76352705410821, 78.01603206412825, 78.2685370741483, 78.52104208416833, 78.77354709418837, 79.02605210420842, 79.27855711422845, 79.5310621242485, 79.78356713426854, 80.03607214428857, 80.28857715430863, 80.54108216432866, 80.79358717434869, 81.04609218436875, 81.29859719438878, 81.55110220440882, 81.80360721442887, 82.0561122244489, 82.30861723446894, 82.56112224448898, 82.81362725450902, 83.06613226452906, 83.3186372745491, 83.57114228456913, 83.82364729458918, 84.07615230460922, 84.32865731462925, 84.5811623246493, 84.83366733466934, 85.08617234468937, 85.33867735470942, 85.59118236472946, 85.84368737474949, 86.09619238476954, 86.34869739478958, 86.60120240480961, 86.85370741482966, 87.1062124248497, 87.35871743486973, 87.61122244488978, 87.86372745490982, 88.11623246492985, 88.36873747494991, 88.62124248496994, 88.87374749498997, 89.12625250501003, 89.37875751503006, 89.63126252505009, 89.88376753507015, 90.13627254509018, 90.38877755511022, 90.64128256513025, 90.8937875751503, 91.14629258517034, 91.39879759519039, 91.65130260521042, 91.90380761523046, 92.15631262525051, 92.40881763527054, 92.66132264529058, 92.91382765531063, 93.16633266533066, 93.4188376753507, 93.67134268537075, 93.92384769539078, 94.17635270541082, 94.42885771543087, 94.6813627254509, 94.93386773547094, 95.18637274549098, 95.43887775551102, 95.69138276553106, 95.9438877755511, 96.19639278557115, 96.44889779559118, 96.70140280561122, 96.95390781563127, 97.2064128256513, 97.45891783567134, 97.71142284569139, 97.96392785571142, 98.21643286573146, 98.46893787575151, 98.72144288577154, 98.97394789579158, 99.22645290581163, 99.47895791583166, 99.7314629258517, 99.98396793587175, 100.23647294589178, 100.48897795591182, 100.74148296593187, 100.99398797595191, 101.24649298597194, 101.49899799599199, 101.75150300601203, 102.00400801603206, 102.2565130260521, 102.50901803607215, 102.76152304609218, 103.01402805611222, 103.26653306613227, 103.5190380761523, 103.77154308617234, 104.02404809619239, 104.27655310621242, 104.52905811623246, 104.78156312625251, 105.03406813627255, 105.28657314629258, 105.53907815631263, 105.79158316633267, 106.0440881763527, 106.29659318637275, 106.54909819639279, 106.80160320641282, 107.05410821643287, 107.30661322645291, 107.55911823647294, 107.81162324649299, 108.06412825651303, 108.31663326653306, 108.5691382765531, 108.82164328657315, 109.07414829659318, 109.32665330661322, 109.57915831663327, 109.83166332665331, 110.08416833667334, 110.33667334669339, 110.58917835671343, 110.84168336673346, 111.09418837675351, 111.34669338677355, 111.59919839679358, 111.85170340681363, 112.10420841683367, 112.3567134268537, 112.60921843687375, 112.86172344689379, 113.11422845691382, 113.36673346693387, 113.61923847695391, 113.87174348697395, 114.12424849699399, 114.37675350701403, 114.62925851703407, 114.8817635270541, 115.13426853707415, 115.3867735470942, 115.63927855711422, 115.89178356713427, 116.14428857715431, 116.39679358717434, 116.64929859719439, 116.90180360721443, 117.15430861723446, 117.40681362725451, 117.65931863727455, 117.91182364729458, 118.16432865731463, 118.41683366733467, 118.66933867735472, 118.92184368737475, 119.17434869739479, 119.42685370741484, 119.67935871743487, 119.93186372745491, 120.18436873747495, 120.43687374749499, 120.68937875751503, 120.94188376753507, 121.1943887775551, 121.44689378757515, 121.6993987975952, 121.95190380761522, 122.20440881763527, 122.45691382765531, 122.70941883767534, 122.96192384769539, 123.21442885771543, 123.46693386773548, 123.71943887775551, 123.97194388777555, 124.2244488977956, 124.47695390781563, 124.72945891783567, 124.98196392785572, 125.23446893787575, 125.48697394789579, 125.73947895791584, 125.99198396793587, 126.24448897795591, 126.49699398797596, 126.74949899799599, 127.00200400801603, 127.25450901803607, 127.50701402805612, 127.75951903807615, 128.01202404809618, 128.26452905811624, 128.51703406813627, 128.7695390781563, 129.02204408817636, 129.2745490981964, 129.52705410821642, 129.77955911823648, 130.0320641282565, 130.28456913827654, 130.5370741482966, 130.78957915831663, 131.04208416833666, 131.29458917835672, 131.54709418837675, 131.79959919839678, 132.05210420841684, 132.3046092184369, 132.5571142284569, 132.80961923847696, 133.062124248497, 133.31462925851702, 133.56713426853707, 133.81963927855713, 134.07214428857714, 134.3246492985972, 134.57715430861725, 134.82965931863725, 135.0821643286573, 135.33466933867737, 135.58717434869737, 135.83967935871743, 136.0921843687375, 136.34468937875752, 136.59719438877755, 136.8496993987976, 137.10220440881764, 137.35470941883767, 137.60721442885773, 137.85971943887776, 138.1122244488978, 138.36472945891785, 138.61723446893788, 138.8697394789579, 139.12224448897797, 139.374749498998, 139.62725450901803, 139.8797595190381, 140.13226452905812, 140.38476953907815, 140.6372745490982, 140.88977955911824, 141.14228456913827, 141.39478957915833, 141.64729458917836, 141.8997995991984, 142.15230460921845, 142.40480961923848, 142.6573146292585, 142.90981963927857, 143.1623246492986, 143.41482965931863, 143.6673346693387, 143.91983967935872, 144.17234468937875, 144.4248496993988, 144.67735470941884, 144.92985971943887, 145.18236472945893, 145.43486973947896, 145.68737474949899, 145.93987975951904, 146.19238476953907, 146.4448897795591, 146.69739478957916, 146.9498997995992, 147.20240480961922, 147.45490981963928, 147.7074148296593, 147.95991983967934, 148.2124248496994, 148.46492985971943, 148.71743486973946, 148.96993987975952, 149.22244488977955, 149.47494989979958, 149.72745490981964, 149.9799599198397, 150.2324649298597, 150.48496993987976, 150.73747494989982, 150.98997995991982, 151.24248496993988, 151.49498997995994, 151.74749498997994, 152.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_248ceeff726a03db4e2babf75f3cd855.x = d3.scale.linear()
+              .domain([26.0, 152.0])
+              .range([0, 450 - 50]);
+
+    color_map_248ceeff726a03db4e2babf75f3cd855.legend = L.control({position: 'topright'});
+    color_map_248ceeff726a03db4e2babf75f3cd855.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_248ceeff726a03db4e2babf75f3cd855.legend.addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+
+    color_map_248ceeff726a03db4e2babf75f3cd855.xAxis = d3.svg.axis()
+        .scale(color_map_248ceeff726a03db4e2babf75f3cd855.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([26.0, 41.75, 57.5, 73.25, 89.0, 104.75, 120.5, 136.25, 152.0]);
+
+    color_map_248ceeff726a03db4e2babf75f3cd855.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_248ceeff726a03db4e2babf75f3cd855.g = color_map_248ceeff726a03db4e2babf75f3cd855.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_248ceeff726a03db4e2babf75f3cd855.g.selectAll("rect")
+        .data(color_map_248ceeff726a03db4e2babf75f3cd855.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_248ceeff726a03db4e2babf75f3cd855.x(color_map_248ceeff726a03db4e2babf75f3cd855.color.domain()[i - 1]) : color_map_248ceeff726a03db4e2babf75f3cd855.x.range()[0],
+            x1: i < color_map_248ceeff726a03db4e2babf75f3cd855.color.domain().length ? color_map_248ceeff726a03db4e2babf75f3cd855.x(color_map_248ceeff726a03db4e2babf75f3cd855.color.domain()[i]) : color_map_248ceeff726a03db4e2babf75f3cd855.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_248ceeff726a03db4e2babf75f3cd855.g.call(color_map_248ceeff726a03db4e2babf75f3cd855.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA por local");
+    
+            var circle_marker_8b196dfeca2bee25d5338fa8d60ac5f8 = L.circleMarker(
+                [-33.4888, -70.6653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec762ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.333333333333332, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_442ccb8cb72606f93caba6789217a716 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d7ed0eccf492169c75ce1038da9ba205 = $(`<div id="html_d7ed0eccf492169c75ce1038da9ba205" style="width: 100.0%; height: 100.0%;"><b>centro educativo republica mexicana</b><br>AVENIDA SALVADOR ALLENDE 2140<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>65</b></div>`)[0];
+                popup_442ccb8cb72606f93caba6789217a716.setContent(html_d7ed0eccf492169c75ce1038da9ba205);
+            
+        
+
+        circle_marker_8b196dfeca2bee25d5338fa8d60ac5f8.bindPopup(popup_442ccb8cb72606f93caba6789217a716)
+        ;
+
+        
+    
+    
+            circle_marker_8b196dfeca2bee25d5338fa8d60ac5f8.bindTooltip(
+                `<div>
+                     centro educativo republica mexicana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a312f849232f1c34c4877aab08c56958 = L.marker(
+                [-33.4888, -70.6653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_a97a9b2737d0abef55c355b2aafd581c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e65\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a312f849232f1c34c4877aab08c56958.setIcon(div_icon_a97a9b2737d0abef55c355b2aafd581c);
+        
+    
+            var circle_marker_ad5347fbceae5b63e6af8461514ee993 = L.circleMarker(
+                [-33.4971, -70.6664],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff5b3ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_c3a75760c846792f2d274d9edced73ef = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f6127a4d9e68df8039b20031a8021bbf = $(`<div id="html_f6127a4d9e68df8039b20031a8021bbf" style="width: 100.0%; height: 100.0%;"><b>colegio arcangel gabriel N°2</b><br>LAZO 1730<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>35</b></div>`)[0];
+                popup_c3a75760c846792f2d274d9edced73ef.setContent(html_f6127a4d9e68df8039b20031a8021bbf);
+            
+        
+
+        circle_marker_ad5347fbceae5b63e6af8461514ee993.bindPopup(popup_c3a75760c846792f2d274d9edced73ef)
+        ;
+
+        
+    
+    
+            circle_marker_ad5347fbceae5b63e6af8461514ee993.bindTooltip(
+                `<div>
+                     colegio arcangel gabriel N°2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_66c0d8e8b478d983ee8274f7ccbe2a74 = L.marker(
+                [-33.4971, -70.6664],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_30920da90aad3dd7b7b445a16ca83a06 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e35\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_66c0d8e8b478d983ee8274f7ccbe2a74.setIcon(div_icon_30920da90aad3dd7b7b445a16ca83a06);
+        
+    
+            var circle_marker_100540bc15cb47072dfc98428fec2bf7 = L.circleMarker(
+                [-33.5016, -70.6875],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea044ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.11111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_d448318aa3d5ef2cb4f8a95dcd0d73e5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_980e8e4b8d9b2d77787decbd2347065a = $(`<div id="html_980e8e4b8d9b2d77787decbd2347065a" style="width: 100.0%; height: 100.0%;"><b>colegio grace school</b><br>ARMADA NACIONAL 6136<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>81</b></div>`)[0];
+                popup_d448318aa3d5ef2cb4f8a95dcd0d73e5.setContent(html_980e8e4b8d9b2d77787decbd2347065a);
+            
+        
+
+        circle_marker_100540bc15cb47072dfc98428fec2bf7.bindPopup(popup_d448318aa3d5ef2cb4f8a95dcd0d73e5)
+        ;
+
+        
+    
+    
+            circle_marker_100540bc15cb47072dfc98428fec2bf7.bindTooltip(
+                `<div>
+                     colegio grace school
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_45d30bd103f43b09a03c18621a17850c = L.marker(
+                [-33.5016, -70.6875],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_d67c9fc88f1d78b3035639878c111bbb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e81\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_45d30bd103f43b09a03c18621a17850c.setIcon(div_icon_d67c9fc88f1d78b3035639878c111bbb);
+        
+    
+            var circle_marker_e5604fa6fd501183f58e0009f30b1985 = L.circleMarker(
+                [-33.4911, -70.673],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe085ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.88888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_8b007ff1a3ae54d9681e973548863e5a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_03567d46d08c3284c9632680fef9614a = $(`<div id="html_03567d46d08c3284c9632680fef9614a" style="width: 100.0%; height: 100.0%;"><b>colegioantonio acevedo hernandez</b><br>AV. LA MARINA 2835<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>52</b></div>`)[0];
+                popup_8b007ff1a3ae54d9681e973548863e5a.setContent(html_03567d46d08c3284c9632680fef9614a);
+            
+        
+
+        circle_marker_e5604fa6fd501183f58e0009f30b1985.bindPopup(popup_8b007ff1a3ae54d9681e973548863e5a)
+        ;
+
+        
+    
+    
+            circle_marker_e5604fa6fd501183f58e0009f30b1985.bindTooltip(
+                `<div>
+                     colegioantonio acevedo hernandez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5d3d7a1e83a332520b848d617afce987 = L.marker(
+                [-33.4911, -70.673],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_fcca9a9c72ac5ce6df0b12c4d5d1a8e5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e52\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5d3d7a1e83a332520b848d617afce987.setIcon(div_icon_fcca9a9c72ac5ce6df0b12c4d5d1a8e5);
+        
+    
+            var circle_marker_82df8c3a362601f410f55254a6fb106d = L.circleMarker(
+                [-33.5054, -70.6748],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe085ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.88888888888889, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_8fdd72cf3f6bc2c505eee93f847eb957 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cf9f968a1ab6bf1e3a3889982fe80863 = $(`<div id="html_cf9f968a1ab6bf1e3a3889982fe80863" style="width: 100.0%; height: 100.0%;"><b>escuela boroa</b><br>BOROA 6079<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>52</b></div>`)[0];
+                popup_8fdd72cf3f6bc2c505eee93f847eb957.setContent(html_cf9f968a1ab6bf1e3a3889982fe80863);
+            
+        
+
+        circle_marker_82df8c3a362601f410f55254a6fb106d.bindPopup(popup_8fdd72cf3f6bc2c505eee93f847eb957)
+        ;
+
+        
+    
+    
+            circle_marker_82df8c3a362601f410f55254a6fb106d.bindTooltip(
+                `<div>
+                     escuela boroa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ad66112c0b3fffabce1fc9a0eccda869 = L.marker(
+                [-33.5054, -70.6748],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_f2ef171354538907365f407c42f3ac1f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e52\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ad66112c0b3fffabce1fc9a0eccda869.setIcon(div_icon_f2ef171354538907365f407c42f3ac1f);
+        
+    
+            var circle_marker_be5f306e302a597d419945d21d42de0a = L.circleMarker(
+                [-33.4971, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff3adff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.222222222222221, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_23f0938dace2e78f6c86569241031db5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9aa2a18e0f55efb7f585610f3213e8ae = $(`<div id="html_9aa2a18e0f55efb7f585610f3213e8ae" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de barcelona</b><br>MAYA 5961<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>37</b></div>`)[0];
+                popup_23f0938dace2e78f6c86569241031db5.setContent(html_9aa2a18e0f55efb7f585610f3213e8ae);
+            
+        
+
+        circle_marker_be5f306e302a597d419945d21d42de0a.bindPopup(popup_23f0938dace2e78f6c86569241031db5)
+        ;
+
+        
+    
+    
+            circle_marker_be5f306e302a597d419945d21d42de0a.bindTooltip(
+                `<div>
+                     escuela ciudad de barcelona
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fe382d1d28f3801efa4a6cd631e5ccc1 = L.marker(
+                [-33.4971, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_997bdc889bbedc74f30e445abb5a5737 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e37\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fe382d1d28f3801efa4a6cd631e5ccc1.setIcon(div_icon_997bdc889bbedc74f30e445abb5a5737);
+        
+    
+            var circle_marker_fc90791777d01228f9e7a72fcaa3a737 = L.circleMarker(
+                [-33.5073, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_01ca02e0b0b29947d5cf83aa37b59870 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_74e22aff252d2f66ffee6d6c54e1c6cb = $(`<div id="html_74e22aff252d2f66ffee6d6c54e1c6cb" style="width: 100.0%; height: 100.0%;"><b>escuela consolidada davila</b><br>AVENIDA JOSE JOAQUIN PRIETO 6075<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>152</b></div>`)[0];
+                popup_01ca02e0b0b29947d5cf83aa37b59870.setContent(html_74e22aff252d2f66ffee6d6c54e1c6cb);
+            
+        
+
+        circle_marker_fc90791777d01228f9e7a72fcaa3a737.bindPopup(popup_01ca02e0b0b29947d5cf83aa37b59870)
+        ;
+
+        
+    
+    
+            circle_marker_fc90791777d01228f9e7a72fcaa3a737.bindTooltip(
+                `<div>
+                     escuela consolidada davila
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_991314b3eb5921765432bd5bdabf4a8c = L.marker(
+                [-33.5073, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_68e9b272b0b17d6d174ba55383c396d7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e152\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_991314b3eb5921765432bd5bdabf4a8c.setIcon(div_icon_68e9b272b0b17d6d174ba55383c396d7);
+        
+    
+            var circle_marker_dbe6473f9f61586c36ca3526f659edf7 = L.circleMarker(
+                [-33.4877, -70.6797],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe997ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.11111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_75a72b6af4d8cc5cc8a256a0f9ef5001 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4f4c0043c54231d50359178d750e872a = $(`<div id="html_4f4c0043c54231d50359178d750e872a" style="width: 100.0%; height: 100.0%;"><b>escuela la victoria</b><br>PRIMERO DE MAYO 4710<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>45</b></div>`)[0];
+                popup_75a72b6af4d8cc5cc8a256a0f9ef5001.setContent(html_4f4c0043c54231d50359178d750e872a);
+            
+        
+
+        circle_marker_dbe6473f9f61586c36ca3526f659edf7.bindPopup(popup_75a72b6af4d8cc5cc8a256a0f9ef5001)
+        ;
+
+        
+    
+    
+            circle_marker_dbe6473f9f61586c36ca3526f659edf7.bindTooltip(
+                `<div>
+                     escuela la victoria
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae1f3cd70b569ac40f79d714aabd9f38 = L.marker(
+                [-33.4877, -70.6797],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_3e6eadb38389c19e7be466d0e30706e8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e45\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ae1f3cd70b569ac40f79d714aabd9f38.setIcon(div_icon_3e6eadb38389c19e7be466d0e30706e8);
+        
+    
+            var circle_marker_a6ca2e37af841650c11a5306cbe1196c = L.circleMarker(
+                [-33.5048, -70.6858],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff3adff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.222222222222221, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_eded582b8450cd1a6cedac7dc2854b86 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_224d91a19842e8b107036e500a693f56 = $(`<div id="html_224d91a19842e8b107036e500a693f56" style="width: 100.0%; height: 100.0%;"><b>escuela lo valledor</b><br>ALESSANDRI 6378<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>37</b></div>`)[0];
+                popup_eded582b8450cd1a6cedac7dc2854b86.setContent(html_224d91a19842e8b107036e500a693f56);
+            
+        
+
+        circle_marker_a6ca2e37af841650c11a5306cbe1196c.bindPopup(popup_eded582b8450cd1a6cedac7dc2854b86)
+        ;
+
+        
+    
+    
+            circle_marker_a6ca2e37af841650c11a5306cbe1196c.bindTooltip(
+                `<div>
+                     escuela lo valledor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f1585661df4cdce2fa90b589abc0bc42 = L.marker(
+                [-33.5048, -70.6858],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_390b2992cdd99d15a477bfcda0771d62 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e37\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f1585661df4cdce2fa90b589abc0bc42.setIcon(div_icon_390b2992cdd99d15a477bfcda0771d62);
+        
+    
+            var circle_marker_fbe17bd6c69c486fea2c86895168b625 = L.circleMarker(
+                [-33.4808, -70.6602],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea747ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.777777777777779, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_fe771bfd66506df5f9d1e662148ef7da = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a423cb774a245e332b6edd63eb809a85 = $(`<div id="html_a423cb774a245e332b6edd63eb809a85" style="width: 100.0%; height: 100.0%;"><b>escuela poetas de chile</b><br>JUAN BASTIDAS 2890<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>78</b></div>`)[0];
+                popup_fe771bfd66506df5f9d1e662148ef7da.setContent(html_a423cb774a245e332b6edd63eb809a85);
+            
+        
+
+        circle_marker_fbe17bd6c69c486fea2c86895168b625.bindPopup(popup_fe771bfd66506df5f9d1e662148ef7da)
+        ;
+
+        
+    
+    
+            circle_marker_fbe17bd6c69c486fea2c86895168b625.bindTooltip(
+                `<div>
+                     escuela poetas de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_356bb7face938066c1999367ebae36c5 = L.marker(
+                [-33.4808, -70.6602],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_2c878cdb159d38a15b099f3a231b1855 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e78\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_356bb7face938066c1999367ebae36c5.setIcon(div_icon_2c878cdb159d38a15b099f3a231b1855);
+        
+    
+            var circle_marker_60c0ad17ba9b0be89161e301930219f6 = L.circleMarker(
+                [-33.491, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc1ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.444444444444445, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_cbd009d176739d91c5029cff8ab96ab5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a9ac5178493bae1902afed6ba77e298d = $(`<div id="html_a9ac5178493bae1902afed6ba77e298d" style="width: 100.0%; height: 100.0%;"><b>escuela ricardo eduardo latcham</b><br>FELIX OSEGUEDA 4031<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>30</b></div>`)[0];
+                popup_cbd009d176739d91c5029cff8ab96ab5.setContent(html_a9ac5178493bae1902afed6ba77e298d);
+            
+        
+
+        circle_marker_60c0ad17ba9b0be89161e301930219f6.bindPopup(popup_cbd009d176739d91c5029cff8ab96ab5)
+        ;
+
+        
+    
+    
+            circle_marker_60c0ad17ba9b0be89161e301930219f6.bindTooltip(
+                `<div>
+                     escuela ricardo eduardo latcham
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_795596f92912daa84124152793af72cd = L.marker(
+                [-33.491, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_74a9fd4f93984e7376aec62a7a69918e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e30\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_795596f92912daa84124152793af72cd.setIcon(div_icon_74a9fd4f93984e7376aec62a7a69918e);
+        
+    
+            var circle_marker_1d3c4edd1e9c69136783322f563b91f6 = L.circleMarker(
+                [-33.4907, -70.6882],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeea2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.666666666666666, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_5b63bb0923b80848d42c1994dc625ac3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4b73de3db3db679f6c0be2593e6b2a47 = $(`<div id="html_4b73de3db3db679f6c0be2593e6b2a47" style="width: 100.0%; height: 100.0%;"><b>escuela risopatron</b><br>PASAJE F 4491<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>41</b></div>`)[0];
+                popup_5b63bb0923b80848d42c1994dc625ac3.setContent(html_4b73de3db3db679f6c0be2593e6b2a47);
+            
+        
+
+        circle_marker_1d3c4edd1e9c69136783322f563b91f6.bindPopup(popup_5b63bb0923b80848d42c1994dc625ac3)
+        ;
+
+        
+    
+    
+            circle_marker_1d3c4edd1e9c69136783322f563b91f6.bindTooltip(
+                `<div>
+                     escuela risopatron
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f77f2b5ace3e3ebbd1a80225308ed96e = L.marker(
+                [-33.4907, -70.6882],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_ebd60fdbb1ff887cd2edfbae72e2e4b7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e41\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f77f2b5ace3e3ebbd1a80225308ed96e.setIcon(div_icon_ebd60fdbb1ff887cd2edfbae72e2e4b7);
+        
+    
+            var circle_marker_e9b68497a832cb9b75b85e109a65d0d2 = L.circleMarker(
+                [-33.4779, -70.6615],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_e3cb0d562433148c3a793a4d429f2cfa = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9df781f75203a40af356fba9b6209425 = $(`<div id="html_9df781f75203a40af356fba9b6209425" style="width: 100.0%; height: 100.0%;"><b>escuela rocio de los angeles</b><br>TRASLAVIÑA 1955<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>26</b></div>`)[0];
+                popup_e3cb0d562433148c3a793a4d429f2cfa.setContent(html_9df781f75203a40af356fba9b6209425);
+            
+        
+
+        circle_marker_e9b68497a832cb9b75b85e109a65d0d2.bindPopup(popup_e3cb0d562433148c3a793a4d429f2cfa)
+        ;
+
+        
+    
+    
+            circle_marker_e9b68497a832cb9b75b85e109a65d0d2.bindTooltip(
+                `<div>
+                     escuela rocio de los angeles
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5bcde9fe9204a6735d522cb2938bb511 = L.marker(
+                [-33.4779, -70.6615],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_16a0031eeb5cf173547a687d5309bae6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e26\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5bcde9fe9204a6735d522cb2938bb511.setIcon(div_icon_16a0031eeb5cf173547a687d5309bae6);
+        
+    
+            var circle_marker_d62f2aed8bff7517144a87360a8a5fdb = L.circleMarker(
+                [-33.5022, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffefa5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.555555555555555, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_ddf2c3d0dd04f83b6587c16a6d6401c0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3624bbb45143467563a20fd014936dfe = $(`<div id="html_3624bbb45143467563a20fd014936dfe" style="width: 100.0%; height: 100.0%;"><b>escuela villa sur</b><br>LOS MOLLES 2973<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>40</b></div>`)[0];
+                popup_ddf2c3d0dd04f83b6587c16a6d6401c0.setContent(html_3624bbb45143467563a20fd014936dfe);
+            
+        
+
+        circle_marker_d62f2aed8bff7517144a87360a8a5fdb.bindPopup(popup_ddf2c3d0dd04f83b6587c16a6d6401c0)
+        ;
+
+        
+    
+    
+            circle_marker_d62f2aed8bff7517144a87360a8a5fdb.bindTooltip(
+                `<div>
+                     escuela villa sur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73070df50bd39d145dba1659689b6d1c = L.marker(
+                [-33.5022, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_b8dbf7cfbd42c7369e2158b8d24783e6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e40\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_73070df50bd39d145dba1659689b6d1c.setIcon(div_icon_b8dbf7cfbd42c7369e2158b8d24783e6);
+        
+    
+            var circle_marker_1d67cdbf56186992b99f823376400da9 = L.circleMarker(
+                [-33.4824, -70.6751],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea948ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.666666666666668, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_df3352bb9dffc108ea57f574451609f9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f00ade2f93b1c6076ae349b8ec766ff0 = $(`<div id="html_f00ade2f93b1c6076ae349b8ec766ff0" style="width: 100.0%; height: 100.0%;"><b>liceo enrique backausse</b><br>JOSE BACKAUSSE 2850<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>77</b></div>`)[0];
+                popup_df3352bb9dffc108ea57f574451609f9.setContent(html_f00ade2f93b1c6076ae349b8ec766ff0);
+            
+        
+
+        circle_marker_1d67cdbf56186992b99f823376400da9.bindPopup(popup_df3352bb9dffc108ea57f574451609f9)
+        ;
+
+        
+    
+    
+            circle_marker_1d67cdbf56186992b99f823376400da9.bindTooltip(
+                `<div>
+                     liceo enrique backausse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_894d55b82876df66709ff05611870124 = L.marker(
+                [-33.4824, -70.6751],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_2f715dc42d9afe5b45168590cfa7c3dc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e77\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_894d55b82876df66709ff05611870124.setIcon(div_icon_2f715dc42d9afe5b45168590cfa7c3dc);
+        
+    
+            var circle_marker_7a1588720298df94a6f7b7fe9d5f65c6 = L.circleMarker(
+                [-33.4945, -70.6833],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe997ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.11111111111111, "stroke": false, "weight": 3}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+        var popup_af3fdb57426f7c6d7ebbe2ec2fa63a55 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_336a71eb68baf1319b89a068e481bd22 = $(`<div id="html_336a71eb68baf1319b89a068e481bd22" style="width: 100.0%; height: 100.0%;"><b>liceo eugenio pereira salas</b><br>COOPERACION 4581<br>Votos Lista KAREN ANGELICA GUTIERREZ VILLAGRA: <b>45</b></div>`)[0];
+                popup_af3fdb57426f7c6d7ebbe2ec2fa63a55.setContent(html_336a71eb68baf1319b89a068e481bd22);
+            
+        
+
+        circle_marker_7a1588720298df94a6f7b7fe9d5f65c6.bindPopup(popup_af3fdb57426f7c6d7ebbe2ec2fa63a55)
+        ;
+
+        
+    
+    
+            circle_marker_7a1588720298df94a6f7b7fe9d5f65c6.bindTooltip(
+                `<div>
+                     liceo eugenio pereira salas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99aa4912928123b7846fd3e7f1eb25fb = L.marker(
+                [-33.4945, -70.6833],
+                {"zIndexOffset": 9999}
+            ).addTo(map_1a9dc9d178fe11f5aa7f3da76644c879);
+        
+    
+            var div_icon_6e7a3a74d814153743a2afb77623e702 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e45\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_99aa4912928123b7846fd3e7f1eb25fb.setIcon(div_icon_6e7a3a74d814153743a2afb77623e702);
+        
+    
+            map_1a9dc9d178fe11f5aa7f3da76644c879.fitBounds(
+                [[-33.4888, -70.6653], [-33.4971, -70.6664], [-33.5016, -70.6875], [-33.4911, -70.673], [-33.5054, -70.6748], [-33.4971, -70.69], [-33.5073, -70.67], [-33.4877, -70.6797], [-33.5048, -70.6858], [-33.4808, -70.6602], [-33.491, -70.6824], [-33.4907, -70.6882], [-33.4779, -70.6615], [-33.5022, -70.6824], [-33.4824, -70.6751], [-33.4945, -70.6833]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

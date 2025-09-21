@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7495a417517355a638c5a8ee1395c4db {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7495a417517355a638c5a8ee1395c4db" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7495a417517355a638c5a8ee1395c4db = L.map(
+                "map_7495a417517355a638c5a8ee1395c4db",
+                {
+                    center: [-33.493775, -70.6766],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_af77523c9b5396493bb7460a29d28a80 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_af77523c9b5396493bb7460a29d28a80.addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+    var color_map_e990b9c43dfa03fdcf35274d76154600 = {};
+
+    
+    color_map_e990b9c43dfa03fdcf35274d76154600.color = d3.scale.threshold()
+              .domain([22.0, 22.31062124248497, 22.62124248496994, 22.93186372745491, 23.24248496993988, 23.55310621242485, 23.86372745490982, 24.17434869739479, 24.48496993987976, 24.79559118236473, 25.1062124248497, 25.416833667334668, 25.727454909819638, 26.03807615230461, 26.34869739478958, 26.65931863727455, 26.96993987975952, 27.28056112224449, 27.59118236472946, 27.90180360721443, 28.2124248496994, 28.52304609218437, 28.83366733466934, 29.14428857715431, 29.45490981963928, 29.765531062124246, 30.076152304609217, 30.386773547094187, 30.697394789579157, 31.008016032064127, 31.318637274549097, 31.629258517034067, 31.939879759519037, 32.25050100200401, 32.56112224448898, 32.87174348697395, 33.18236472945892, 33.49298597194389, 33.80360721442886, 34.11422845691383, 34.4248496993988, 34.73547094188377, 35.04609218436874, 35.35671342685371, 35.66733466933868, 35.97795591182365, 36.28857715430862, 36.59919839679359, 36.90981963927856, 37.22044088176353, 37.53106212424849, 37.84168336673346, 38.15230460921843, 38.4629258517034, 38.77354709418837, 39.08416833667334, 39.394789579158314, 39.705410821643284, 40.016032064128254, 40.326653306613224, 40.637274549098194, 40.947895791583164, 41.258517034068134, 41.569138276553105, 41.879759519038075, 42.190380761523045, 42.501002004008015, 42.811623246492985, 43.122244488977955, 43.432865731462925, 43.743486973947896, 44.054108216432866, 44.364729458917836, 44.675350701402806, 44.985971943887776, 45.296593186372746, 45.607214428857716, 45.91783567134269, 46.22845691382766, 46.53907815631263, 46.8496993987976, 47.16032064128257, 47.47094188376754, 47.78156312625251, 48.09218436873748, 48.40280561122245, 48.71342685370742, 49.02404809619239, 49.33466933867736, 49.64529058116233, 49.9559118236473, 50.26653306613227, 50.57715430861724, 50.88777555110221, 51.19839679358718, 51.50901803607215, 51.81963927855712, 52.13026052104209, 52.44088176352706, 52.75150300601202, 53.06212424849699, 53.37274549098196, 53.68336673346693, 53.9939879759519, 54.30460921843687, 54.61523046092184, 54.92585170340681, 55.236472945891784, 55.547094188376754, 55.857715430861724, 56.168336673346694, 56.478957915831664, 56.789579158316634, 57.100200400801604, 57.410821643286575, 57.721442885771545, 58.032064128256515, 58.342685370741485, 58.653306613226455, 58.963927855711425, 59.274549098196395, 59.585170340681366, 59.895791583166336, 60.206412825651306, 60.517034068136276, 60.82765531062124, 61.13827655310621, 61.44889779559118, 61.75951903807615, 62.07014028056112, 62.38076152304609, 62.69138276553106, 63.00200400801603, 63.312625250501, 63.62324649298597, 63.93386773547094, 64.24448897795591, 64.55511022044088, 64.86573146292585, 65.17635270541082, 65.48697394789579, 65.79759519038076, 66.10821643286573, 66.4188376753507, 66.72945891783567, 67.04008016032064, 67.35070140280561, 67.66132264529058, 67.97194388777555, 68.28256513026052, 68.59318637274549, 68.90380761523046, 69.21442885771543, 69.5250501002004, 69.83567134268537, 70.14629258517034, 70.45691382765531, 70.76753507014028, 71.07815631262525, 71.38877755511022, 71.6993987975952, 72.01002004008015, 72.32064128256513, 72.63126252505009, 72.94188376753507, 73.25250501002003, 73.56312625250501, 73.87374749498997, 74.18436873747495, 74.49498997995991, 74.8056112224449, 75.11623246492985, 75.42685370741484, 75.73747494989979, 76.04809619238478, 76.35871743486973, 76.66933867735472, 76.97995991983967, 77.29058116232466, 77.60120240480961, 77.9118236472946, 78.22244488977955, 78.53306613226454, 78.84368737474949, 79.15430861723448, 79.46492985971943, 79.77555110220442, 80.08617234468937, 80.39679358717436, 80.70741482965931, 81.0180360721443, 81.32865731462925, 81.63927855711424, 81.9498997995992, 82.26052104208418, 82.57114228456913, 82.88176352705412, 83.19238476953907, 83.50300601202404, 83.81362725450902, 84.12424849699399, 84.43486973947896, 84.74549098196393, 85.0561122244489, 85.36673346693387, 85.67735470941884, 85.9879759519038, 86.29859719438878, 86.60921843687375, 86.91983967935872, 87.23046092184369, 87.54108216432866, 87.85170340681363, 88.1623246492986, 88.47294589178357, 88.78356713426854, 89.09418837675351, 89.40480961923848, 89.71543086172345, 90.02605210420842, 90.33667334669339, 90.64729458917836, 90.95791583166333, 91.2685370741483, 91.57915831663327, 91.88977955911824, 92.20040080160321, 92.51102204408818, 92.82164328657315, 93.13226452905812, 93.44288577154309, 93.75350701402806, 94.06412825651303, 94.374749498998, 94.68537074148297, 94.99599198396794, 95.30661322645291, 95.61723446893788, 95.92785571142285, 96.23847695390782, 96.54909819639279, 96.85971943887776, 97.17034068136273, 97.4809619238477, 97.79158316633267, 98.10220440881764, 98.41282565130261, 98.72344689378758, 99.03406813627255, 99.34468937875752, 99.65531062124248, 99.96593186372745, 100.27655310621242, 100.58717434869739, 100.89779559118236, 101.20841683366733, 101.5190380761523, 101.82965931863727, 102.14028056112224, 102.45090180360721, 102.76152304609218, 103.07214428857715, 103.38276553106212, 103.69338677354709, 104.00400801603206, 104.31462925851703, 104.625250501002, 104.93587174348697, 105.24649298597194, 105.55711422845691, 105.86773547094188, 106.17835671342685, 106.48897795591182, 106.79959919839679, 107.11022044088176, 107.42084168336673, 107.7314629258517, 108.04208416833667, 108.35270541082164, 108.66332665330661, 108.97394789579158, 109.28456913827655, 109.59519038076152, 109.90581162324649, 110.21643286573146, 110.52705410821643, 110.8376753507014, 111.14829659318637, 111.45891783567134, 111.76953907815631, 112.08016032064128, 112.39078156312625, 112.70140280561122, 113.0120240480962, 113.32264529058116, 113.63326653306613, 113.9438877755511, 114.25450901803607, 114.56513026052104, 114.87575150300601, 115.18637274549098, 115.49699398797596, 115.80761523046093, 116.1182364729459, 116.42885771543087, 116.73947895791584, 117.0501002004008, 117.36072144288578, 117.67134268537075, 117.98196392785572, 118.29258517034069, 118.60320641282566, 118.91382765531063, 119.2244488977956, 119.53507014028057, 119.84569138276554, 120.15631262525051, 120.46693386773548, 120.77755511022045, 121.08817635270542, 121.39879759519039, 121.70941883767534, 122.02004008016031, 122.33066132264528, 122.64128256513025, 122.95190380761522, 123.2625250501002, 123.57314629258516, 123.88376753507013, 124.1943887775551, 124.50501002004007, 124.81563126252505, 125.12625250501002, 125.43687374749499, 125.74749498997996, 126.05811623246493, 126.3687374749499, 126.67935871743487, 126.98997995991984, 127.3006012024048, 127.61122244488978, 127.92184368737475, 128.2324649298597, 128.5430861723447, 128.85370741482967, 129.16432865731463, 129.47494989979958, 129.78557114228457, 130.09619238476955, 130.4068136272545, 130.71743486973946, 131.02805611222445, 131.33867735470943, 131.6492985971944, 131.95991983967934, 132.27054108216433, 132.5811623246493, 132.89178356713427, 133.20240480961922, 133.5130260521042, 133.8236472945892, 134.13426853707415, 134.4448897795591, 134.7555110220441, 135.06613226452907, 135.37675350701403, 135.68737474949899, 135.99799599198397, 136.30861723446895, 136.6192384769539, 136.92985971943887, 137.24048096192385, 137.55110220440883, 137.8617234468938, 138.17234468937875, 138.48296593186373, 138.79358717434872, 139.10420841683367, 139.41482965931863, 139.7254509018036, 140.0360721442886, 140.34669338677355, 140.6573146292585, 140.9679358717435, 141.27855711422848, 141.58917835671343, 141.8997995991984, 142.21042084168337, 142.52104208416836, 142.8316633266533, 143.14228456913827, 143.45290581162325, 143.76352705410824, 144.0741482965932, 144.38476953907815, 144.6953907815631, 145.0060120240481, 145.31663326653307, 145.62725450901803, 145.937875751503, 146.24849699398797, 146.55911823647295, 146.8697394789579, 147.18036072144287, 147.49098196392785, 147.80160320641284, 148.1122244488978, 148.42284569138275, 148.73346693386773, 149.04408817635272, 149.35470941883767, 149.66533066132263, 149.9759519038076, 150.2865731462926, 150.59719438877755, 150.90781563126254, 151.2184368737475, 151.52905811623248, 151.83967935871743, 152.15030060120242, 152.46092184368737, 152.77154308617236, 153.0821643286573, 153.3927855711423, 153.70340681362725, 154.01402805611224, 154.3246492985972, 154.63527054108218, 154.94589178356713, 155.2565130260521, 155.56713426853707, 155.87775551102203, 156.18837675350701, 156.49899799599197, 156.80961923847696, 157.1202404809619, 157.4308617234469, 157.74148296593185, 158.05210420841684, 158.3627254509018, 158.67334669338678, 158.98396793587173, 159.29458917835672, 159.60521042084167, 159.91583166332666, 160.2264529058116, 160.5370741482966, 160.84769539078155, 161.15831663326654, 161.4689378757515, 161.77955911823648, 162.09018036072143, 162.40080160320642, 162.71142284569137, 163.02204408817636, 163.3326653306613, 163.6432865731463, 163.95390781563125, 164.26452905811624, 164.5751503006012, 164.88577154308618, 165.19639278557113, 165.50701402805612, 165.81763527054107, 166.12825651302606, 166.43887775551102, 166.749498997996, 167.06012024048096, 167.37074148296594, 167.6813627254509, 167.99198396793588, 168.30260521042084, 168.61322645290582, 168.92384769539078, 169.23446893787576, 169.54509018036072, 169.8557114228457, 170.16633266533066, 170.47695390781564, 170.7875751503006, 171.09819639278558, 171.40881763527054, 171.71943887775552, 172.03006012024048, 172.34068136272546, 172.65130260521042, 172.9619238476954, 173.27254509018036, 173.58316633266534, 173.8937875751503, 174.20440881763528, 174.51503006012024, 174.82565130260522, 175.13627254509018, 175.44689378757516, 175.75751503006012, 176.0681362725451, 176.37875751503006, 176.68937875751504, 177.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_e990b9c43dfa03fdcf35274d76154600.x = d3.scale.linear()
+              .domain([22.0, 177.0])
+              .range([0, 450 - 50]);
+
+    color_map_e990b9c43dfa03fdcf35274d76154600.legend = L.control({position: 'topright'});
+    color_map_e990b9c43dfa03fdcf35274d76154600.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_e990b9c43dfa03fdcf35274d76154600.legend.addTo(map_7495a417517355a638c5a8ee1395c4db);
+
+    color_map_e990b9c43dfa03fdcf35274d76154600.xAxis = d3.svg.axis()
+        .scale(color_map_e990b9c43dfa03fdcf35274d76154600.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([22.0, 41.375, 60.75, 80.125, 99.5, 118.875, 138.25, 157.625, 177.0]);
+
+    color_map_e990b9c43dfa03fdcf35274d76154600.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_e990b9c43dfa03fdcf35274d76154600.g = color_map_e990b9c43dfa03fdcf35274d76154600.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_e990b9c43dfa03fdcf35274d76154600.g.selectAll("rect")
+        .data(color_map_e990b9c43dfa03fdcf35274d76154600.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_e990b9c43dfa03fdcf35274d76154600.x(color_map_e990b9c43dfa03fdcf35274d76154600.color.domain()[i - 1]) : color_map_e990b9c43dfa03fdcf35274d76154600.x.range()[0],
+            x1: i < color_map_e990b9c43dfa03fdcf35274d76154600.color.domain().length ? color_map_e990b9c43dfa03fdcf35274d76154600.x(color_map_e990b9c43dfa03fdcf35274d76154600.color.domain()[i]) : color_map_e990b9c43dfa03fdcf35274d76154600.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_e990b9c43dfa03fdcf35274d76154600.g.call(color_map_e990b9c43dfa03fdcf35274d76154600.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ por local");
+    
+            var circle_marker_00a612c43894589e425ad659cfbf2d4b = L.circleMarker(
+                [-33.4888, -70.6653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe085ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.890322580645162, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_7229384108cea17f21e695b8c919b4cf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4212a8a0d11633893b23ca82623c5281 = $(`<div id="html_4212a8a0d11633893b23ca82623c5281" style="width: 100.0%; height: 100.0%;"><b>centro educativo republica mexicana</b><br>AVENIDA SALVADOR ALLENDE 2140<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>54</b></div>`)[0];
+                popup_7229384108cea17f21e695b8c919b4cf.setContent(html_4212a8a0d11633893b23ca82623c5281);
+            
+        
+
+        circle_marker_00a612c43894589e425ad659cfbf2d4b.bindPopup(popup_7229384108cea17f21e695b8c919b4cf)
+        ;
+
+        
+    
+    
+            circle_marker_00a612c43894589e425ad659cfbf2d4b.bindTooltip(
+                `<div>
+                     centro educativo republica mexicana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0933f34a3fd0f146867fc799090fd1d9 = L.marker(
+                [-33.4888, -70.6653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_5e2e14abccca9299bc14ac3c04b6faa7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e54\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0933f34a3fd0f146867fc799090fd1d9.setIcon(div_icon_5e2e14abccca9299bc14ac3c04b6faa7);
+        
+    
+            var circle_marker_29fc7b48e123d4f39ebc06ca6e9f4ed1 = L.circleMarker(
+                [-33.4971, -70.6664],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeea1ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.716129032258065, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_e834783283762317153d81e5a855dfa5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4f319f0473a8875e0f2794faa1712406 = $(`<div id="html_4f319f0473a8875e0f2794faa1712406" style="width: 100.0%; height: 100.0%;"><b>colegio arcangel gabriel N°2</b><br>LAZO 1730<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>41</b></div>`)[0];
+                popup_e834783283762317153d81e5a855dfa5.setContent(html_4f319f0473a8875e0f2794faa1712406);
+            
+        
+
+        circle_marker_29fc7b48e123d4f39ebc06ca6e9f4ed1.bindPopup(popup_e834783283762317153d81e5a855dfa5)
+        ;
+
+        
+    
+    
+            circle_marker_29fc7b48e123d4f39ebc06ca6e9f4ed1.bindTooltip(
+                `<div>
+                     colegio arcangel gabriel N°2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e39071ce0c3db8f5e04a5750f05c140d = L.marker(
+                [-33.4971, -70.6664],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_591878c5218ea966670d3ca94bd87659 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e41\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e39071ce0c3db8f5e04a5750f05c140d.setIcon(div_icon_591878c5218ea966670d3ca94bd87659);
+        
+    
+            var circle_marker_fd2f8899d2c2863360ad2ebe327e9477 = L.circleMarker(
+                [-33.5016, -70.6875],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#febb55ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.87741935483871, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_02b4170b8072246debaa02d8af7757f3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4ec4ad4972ffc49c306f2ec9d3713544 = $(`<div id="html_4ec4ad4972ffc49c306f2ec9d3713544" style="width: 100.0%; height: 100.0%;"><b>colegio grace school</b><br>ARMADA NACIONAL 6136<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>76</b></div>`)[0];
+                popup_02b4170b8072246debaa02d8af7757f3.setContent(html_4ec4ad4972ffc49c306f2ec9d3713544);
+            
+        
+
+        circle_marker_fd2f8899d2c2863360ad2ebe327e9477.bindPopup(popup_02b4170b8072246debaa02d8af7757f3)
+        ;
+
+        
+    
+    
+            circle_marker_fd2f8899d2c2863360ad2ebe327e9477.bindTooltip(
+                `<div>
+                     colegio grace school
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bec95f2e3b6fff259be162c6e246f9f9 = L.marker(
+                [-33.5016, -70.6875],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_122d876832c1584bb60ce5db57dbd0e7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e76\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bec95f2e3b6fff259be162c6e246f9f9.setIcon(div_icon_122d876832c1584bb60ce5db57dbd0e7);
+        
+    
+            var circle_marker_e6112aae49488a2a49d2c462f93132ed = L.circleMarker(
+                [-33.4911, -70.673],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffabfff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.541935483870969, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_f23cdd082121f334eec5977797b76a91 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_27a8d9f84d133a27bfbb947b4f98576f = $(`<div id="html_27a8d9f84d133a27bfbb947b4f98576f" style="width: 100.0%; height: 100.0%;"><b>colegioantonio acevedo hernandez</b><br>AV. LA MARINA 2835<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>28</b></div>`)[0];
+                popup_f23cdd082121f334eec5977797b76a91.setContent(html_27a8d9f84d133a27bfbb947b4f98576f);
+            
+        
+
+        circle_marker_e6112aae49488a2a49d2c462f93132ed.bindPopup(popup_f23cdd082121f334eec5977797b76a91)
+        ;
+
+        
+    
+    
+            circle_marker_e6112aae49488a2a49d2c462f93132ed.bindTooltip(
+                `<div>
+                     colegioantonio acevedo hernandez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_38c24709ab8fb219c63ca0a9d9fc3bf9 = L.marker(
+                [-33.4911, -70.673],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_b16862c72c3443965344cf4f5e177048 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e28\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_38c24709ab8fb219c63ca0a9d9fc3bf9.setIcon(div_icon_b16862c72c3443965344cf4f5e177048);
+        
+    
+            var circle_marker_7ab432b70fbfdebbad7fa83583557fad = L.circleMarker(
+                [-33.5054, -70.6748],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff9bcff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.63225806451613, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_cd2ca80e7119987e67671ac1c2290001 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c047fde5d4fd6153211ad1b9eaca39c7 = $(`<div id="html_c047fde5d4fd6153211ad1b9eaca39c7" style="width: 100.0%; height: 100.0%;"><b>escuela boroa</b><br>BOROA 6079<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>29</b></div>`)[0];
+                popup_cd2ca80e7119987e67671ac1c2290001.setContent(html_c047fde5d4fd6153211ad1b9eaca39c7);
+            
+        
+
+        circle_marker_7ab432b70fbfdebbad7fa83583557fad.bindPopup(popup_cd2ca80e7119987e67671ac1c2290001)
+        ;
+
+        
+    
+    
+            circle_marker_7ab432b70fbfdebbad7fa83583557fad.bindTooltip(
+                `<div>
+                     escuela boroa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2a45dbf7632ec417a5bdaf89d75793a7 = L.marker(
+                [-33.5054, -70.6748],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_9dd464091cc7ae6d459b173777bab41b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2a45dbf7632ec417a5bdaf89d75793a7.setIcon(div_icon_9dd464091cc7ae6d459b173777bab41b);
+        
+    
+            var circle_marker_9f86ef071624d749e7099f8f12ecf177 = L.circleMarker(
+                [-33.4971, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeb9aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.987096774193548, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_44b23a68b5d6e18e6f0ccae366d994f1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_391374922be69d8de5a25e831e2e3afe = $(`<div id="html_391374922be69d8de5a25e831e2e3afe" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de barcelona</b><br>MAYA 5961<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>44</b></div>`)[0];
+                popup_44b23a68b5d6e18e6f0ccae366d994f1.setContent(html_391374922be69d8de5a25e831e2e3afe);
+            
+        
+
+        circle_marker_9f86ef071624d749e7099f8f12ecf177.bindPopup(popup_44b23a68b5d6e18e6f0ccae366d994f1)
+        ;
+
+        
+    
+    
+            circle_marker_9f86ef071624d749e7099f8f12ecf177.bindTooltip(
+                `<div>
+                     escuela ciudad de barcelona
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_80806614b8521d2d76f21a6620a9a65c = L.marker(
+                [-33.4971, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_2d9999a839964e178d69b82690dac24f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e44\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_80806614b8521d2d76f21a6620a9a65c.setIcon(div_icon_2d9999a839964e178d69b82690dac24f);
+        
+    
+            var circle_marker_89a5371b77f0b3f9610506ca4b17eddd = L.circleMarker(
+                [-33.5073, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdd7eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.161290322580644, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_8b1205bf5ab170653839ae24d7106a25 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b5bc757c11a0a785119daa5976e109ed = $(`<div id="html_b5bc757c11a0a785119daa5976e109ed" style="width: 100.0%; height: 100.0%;"><b>escuela consolidada davila</b><br>AVENIDA JOSE JOAQUIN PRIETO 6075<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>57</b></div>`)[0];
+                popup_8b1205bf5ab170653839ae24d7106a25.setContent(html_b5bc757c11a0a785119daa5976e109ed);
+            
+        
+
+        circle_marker_89a5371b77f0b3f9610506ca4b17eddd.bindPopup(popup_8b1205bf5ab170653839ae24d7106a25)
+        ;
+
+        
+    
+    
+            circle_marker_89a5371b77f0b3f9610506ca4b17eddd.bindTooltip(
+                `<div>
+                     escuela consolidada davila
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b9927904b4af84cb2ff5891a9aa02d7 = L.marker(
+                [-33.5073, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_8f9f090def63d2da673dc5457118b06b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e57\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7b9927904b4af84cb2ff5891a9aa02d7.setIcon(div_icon_8f9f090def63d2da673dc5457118b06b);
+        
+    
+            var circle_marker_6eee4c6bdee456322d21b3acd9850ceb = L.circleMarker(
+                [-33.4877, -70.6797],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_ab88f40bb754688647143fcb4373e48f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a011faf0da9d9099c422f987bc7b5ac9 = $(`<div id="html_a011faf0da9d9099c422f987bc7b5ac9" style="width: 100.0%; height: 100.0%;"><b>escuela la victoria</b><br>PRIMERO DE MAYO 4710<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>177</b></div>`)[0];
+                popup_ab88f40bb754688647143fcb4373e48f.setContent(html_a011faf0da9d9099c422f987bc7b5ac9);
+            
+        
+
+        circle_marker_6eee4c6bdee456322d21b3acd9850ceb.bindPopup(popup_ab88f40bb754688647143fcb4373e48f)
+        ;
+
+        
+    
+    
+            circle_marker_6eee4c6bdee456322d21b3acd9850ceb.bindTooltip(
+                `<div>
+                     escuela la victoria
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7be4cffd60fab4dcb6626d4170987c6e = L.marker(
+                [-33.4877, -70.6797],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_4655e6a9f69444880501b3ccdfbb2fdb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e177\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7be4cffd60fab4dcb6626d4170987c6e.setIcon(div_icon_4655e6a9f69444880501b3ccdfbb2fdb);
+        
+    
+            var circle_marker_a0f1fbca7741282dcd0f5bce33209f46 = L.circleMarker(
+                [-33.5048, -70.6858],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_4a479467b3b858563cf9a5bc2c7b07a3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2e2bc10ff148fc361c84b5518ea117d0 = $(`<div id="html_2e2bc10ff148fc361c84b5518ea117d0" style="width: 100.0%; height: 100.0%;"><b>escuela lo valledor</b><br>ALESSANDRI 6378<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>22</b></div>`)[0];
+                popup_4a479467b3b858563cf9a5bc2c7b07a3.setContent(html_2e2bc10ff148fc361c84b5518ea117d0);
+            
+        
+
+        circle_marker_a0f1fbca7741282dcd0f5bce33209f46.bindPopup(popup_4a479467b3b858563cf9a5bc2c7b07a3)
+        ;
+
+        
+    
+    
+            circle_marker_a0f1fbca7741282dcd0f5bce33209f46.bindTooltip(
+                `<div>
+                     escuela lo valledor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9becb690b7e393da2b6544127359dd33 = L.marker(
+                [-33.5048, -70.6858],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_86bbb464019eefbec969e4487f391307 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e22\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9becb690b7e393da2b6544127359dd33.setIcon(div_icon_86bbb464019eefbec969e4487f391307);
+        
+    
+            var circle_marker_7105dff70651dffdebe80dfc180c8295 = L.circleMarker(
+                [-33.4808, -70.6602],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#febf59ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.696774193548386, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_90dc9de886901635f2f14d240235056c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f7b2bad9dde7eeeb722b10dc88f7f9f3 = $(`<div id="html_f7b2bad9dde7eeeb722b10dc88f7f9f3" style="width: 100.0%; height: 100.0%;"><b>escuela poetas de chile</b><br>JUAN BASTIDAS 2890<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>74</b></div>`)[0];
+                popup_90dc9de886901635f2f14d240235056c.setContent(html_f7b2bad9dde7eeeb722b10dc88f7f9f3);
+            
+        
+
+        circle_marker_7105dff70651dffdebe80dfc180c8295.bindPopup(popup_90dc9de886901635f2f14d240235056c)
+        ;
+
+        
+    
+    
+            circle_marker_7105dff70651dffdebe80dfc180c8295.bindTooltip(
+                `<div>
+                     escuela poetas de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c430de4e1d17d4422d970105097ce5d3 = L.marker(
+                [-33.4808, -70.6602],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_f79602cbbe1a3bac8feee6ee2896b15e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e74\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c430de4e1d17d4422d970105097ce5d3.setIcon(div_icon_f79602cbbe1a3bac8feee6ee2896b15e);
+        
+    
+            var circle_marker_e5cee00a63085a1636664a5ed7918fea = L.circleMarker(
+                [-33.491, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffcc3ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.361290322580645, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_6a198dd8a953c7d3e8f0fd1a03094a95 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_defa0549ea53e58907eeecf4c1689a8d = $(`<div id="html_defa0549ea53e58907eeecf4c1689a8d" style="width: 100.0%; height: 100.0%;"><b>escuela ricardo eduardo latcham</b><br>FELIX OSEGUEDA 4031<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>26</b></div>`)[0];
+                popup_6a198dd8a953c7d3e8f0fd1a03094a95.setContent(html_defa0549ea53e58907eeecf4c1689a8d);
+            
+        
+
+        circle_marker_e5cee00a63085a1636664a5ed7918fea.bindPopup(popup_6a198dd8a953c7d3e8f0fd1a03094a95)
+        ;
+
+        
+    
+    
+            circle_marker_e5cee00a63085a1636664a5ed7918fea.bindTooltip(
+                `<div>
+                     escuela ricardo eduardo latcham
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17a8decb79f57b7a60e9983343d4a644 = L.marker(
+                [-33.491, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_b593cdacffbbe14ce63dfbadaf9a4351 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e26\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_17a8decb79f57b7a60e9983343d4a644.setIcon(div_icon_b593cdacffbbe14ce63dfbadaf9a4351);
+        
+    
+            var circle_marker_baf7556f19ad09abf7c74c1c69b22d09 = L.circleMarker(
+                [-33.4907, -70.6882],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdc7cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.251612903225807, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_f44bb858ba1ec4765ba7cc77cf709760 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b173a092430a5ba0f62408d98da4bbce = $(`<div id="html_b173a092430a5ba0f62408d98da4bbce" style="width: 100.0%; height: 100.0%;"><b>escuela risopatron</b><br>PASAJE F 4491<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>58</b></div>`)[0];
+                popup_f44bb858ba1ec4765ba7cc77cf709760.setContent(html_b173a092430a5ba0f62408d98da4bbce);
+            
+        
+
+        circle_marker_baf7556f19ad09abf7c74c1c69b22d09.bindPopup(popup_f44bb858ba1ec4765ba7cc77cf709760)
+        ;
+
+        
+    
+    
+            circle_marker_baf7556f19ad09abf7c74c1c69b22d09.bindTooltip(
+                `<div>
+                     escuela risopatron
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c5c6983a984d589c738fa1bf04a6c52e = L.marker(
+                [-33.4907, -70.6882],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_0372f52753347a4be6dbe97e909955be = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e58\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c5c6983a984d589c738fa1bf04a6c52e.setIcon(div_icon_0372f52753347a4be6dbe97e909955be);
+        
+    
+            var circle_marker_035ab7dd2de79c4147be594a2e77d5ea = L.circleMarker(
+                [-33.4779, -70.6615],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe38bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.619354838709677, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_b0fda5c06b30b803b574bbb7b96dfd09 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a6b17ca83db4af3d463a23210f3cd9b4 = $(`<div id="html_a6b17ca83db4af3d463a23210f3cd9b4" style="width: 100.0%; height: 100.0%;"><b>escuela rocio de los angeles</b><br>TRASLAVIÑA 1955<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>51</b></div>`)[0];
+                popup_b0fda5c06b30b803b574bbb7b96dfd09.setContent(html_a6b17ca83db4af3d463a23210f3cd9b4);
+            
+        
+
+        circle_marker_035ab7dd2de79c4147be594a2e77d5ea.bindPopup(popup_b0fda5c06b30b803b574bbb7b96dfd09)
+        ;
+
+        
+    
+    
+            circle_marker_035ab7dd2de79c4147be594a2e77d5ea.bindTooltip(
+                `<div>
+                     escuela rocio de los angeles
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_39883feff781d3c6b37086f5e2fe10ca = L.marker(
+                [-33.4779, -70.6615],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_03abc11fa502b11f016c0d258547f1e1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e51\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_39883feff781d3c6b37086f5e2fe10ca.setIcon(div_icon_03abc11fa502b11f016c0d258547f1e1);
+        
+    
+            var circle_marker_d718fd412a317328051aede371f3acbf = L.circleMarker(
+                [-33.5022, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff9bcff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.63225806451613, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_4933439bb29ed1a3f0e5ce4f3b8d4658 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2f54e43d3f3d36ba223b26e435d5f782 = $(`<div id="html_2f54e43d3f3d36ba223b26e435d5f782" style="width: 100.0%; height: 100.0%;"><b>escuela villa sur</b><br>LOS MOLLES 2973<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>29</b></div>`)[0];
+                popup_4933439bb29ed1a3f0e5ce4f3b8d4658.setContent(html_2f54e43d3f3d36ba223b26e435d5f782);
+            
+        
+
+        circle_marker_d718fd412a317328051aede371f3acbf.bindPopup(popup_4933439bb29ed1a3f0e5ce4f3b8d4658)
+        ;
+
+        
+    
+    
+            circle_marker_d718fd412a317328051aede371f3acbf.bindTooltip(
+                `<div>
+                     escuela villa sur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a6f7d7e407d305f9999b3224b23dddfd = L.marker(
+                [-33.5022, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_1f65ba522c2aa4764d446476d0130940 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a6f7d7e407d305f9999b3224b23dddfd.setIcon(div_icon_1f65ba522c2aa4764d446476d0130940);
+        
+    
+            var circle_marker_34c3882b77563f5aae23e2adb89fdd36 = L.circleMarker(
+                [-33.4824, -70.6751],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed975ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.522580645161291, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_5187d3cc20ed2d04d37938fa750c814b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_508ae9aabcceb78946da982a23a31895 = $(`<div id="html_508ae9aabcceb78946da982a23a31895" style="width: 100.0%; height: 100.0%;"><b>liceo enrique backausse</b><br>JOSE BACKAUSSE 2850<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>61</b></div>`)[0];
+                popup_5187d3cc20ed2d04d37938fa750c814b.setContent(html_508ae9aabcceb78946da982a23a31895);
+            
+        
+
+        circle_marker_34c3882b77563f5aae23e2adb89fdd36.bindPopup(popup_5187d3cc20ed2d04d37938fa750c814b)
+        ;
+
+        
+    
+    
+            circle_marker_34c3882b77563f5aae23e2adb89fdd36.bindTooltip(
+                `<div>
+                     liceo enrique backausse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9108c3b59c041e1d681fd1a41fb1af2 = L.marker(
+                [-33.4824, -70.6751],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_32fa725324e68ac888ea983b125383bb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e61\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d9108c3b59c041e1d681fd1a41fb1af2.setIcon(div_icon_32fa725324e68ac888ea983b125383bb);
+        
+    
+            var circle_marker_cdab015879d63257fdb9ea34828cccd7 = L.circleMarker(
+                [-33.4945, -70.6833],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff1a8ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.44516129032258, "stroke": false, "weight": 3}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+        var popup_4d17464e7ddecca6d4acdf09eef4dc47 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8dc299b2ee2228a08c0876be62a6fb81 = $(`<div id="html_8dc299b2ee2228a08c0876be62a6fb81" style="width: 100.0%; height: 100.0%;"><b>liceo eugenio pereira salas</b><br>COOPERACION 4581<br>Votos Lista LUIS ARMANDO CASTILLO FERNANDEZ: <b>38</b></div>`)[0];
+                popup_4d17464e7ddecca6d4acdf09eef4dc47.setContent(html_8dc299b2ee2228a08c0876be62a6fb81);
+            
+        
+
+        circle_marker_cdab015879d63257fdb9ea34828cccd7.bindPopup(popup_4d17464e7ddecca6d4acdf09eef4dc47)
+        ;
+
+        
+    
+    
+            circle_marker_cdab015879d63257fdb9ea34828cccd7.bindTooltip(
+                `<div>
+                     liceo eugenio pereira salas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f9de55290f3d4d412cf563db9185fad2 = L.marker(
+                [-33.4945, -70.6833],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7495a417517355a638c5a8ee1395c4db);
+        
+    
+            var div_icon_ff8cc9dd2d8f5d92e427011cecd33cf5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f9de55290f3d4d412cf563db9185fad2.setIcon(div_icon_ff8cc9dd2d8f5d92e427011cecd33cf5);
+        
+    
+            map_7495a417517355a638c5a8ee1395c4db.fitBounds(
+                [[-33.4888, -70.6653], [-33.4971, -70.6664], [-33.5016, -70.6875], [-33.4911, -70.673], [-33.5054, -70.6748], [-33.4971, -70.69], [-33.5073, -70.67], [-33.4877, -70.6797], [-33.5048, -70.6858], [-33.4808, -70.6602], [-33.491, -70.6824], [-33.4907, -70.6882], [-33.4779, -70.6615], [-33.5022, -70.6824], [-33.4824, -70.6751], [-33.4945, -70.6833]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

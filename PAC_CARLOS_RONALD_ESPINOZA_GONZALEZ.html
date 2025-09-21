@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3899ee0d3f9f76e762f25115f2ff489d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3899ee0d3f9f76e762f25115f2ff489d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3899ee0d3f9f76e762f25115f2ff489d = L.map(
+                "map_3899ee0d3f9f76e762f25115f2ff489d",
+                {
+                    center: [-33.493775, -70.6766],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_027afd50af089460845b04a33b6148eb = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_027afd50af089460845b04a33b6148eb.addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+    var color_map_7ed820f629444062e07d533c0ccf538d = {};
+
+    
+    color_map_7ed820f629444062e07d533c0ccf538d.color = d3.scale.threshold()
+              .domain([8.0, 8.464929859719438, 8.929859719438877, 9.394789579158317, 9.859719438877756, 10.324649298597194, 10.789579158316634, 11.254509018036073, 11.719438877755511, 12.18436873747495, 12.649298597194388, 13.114228456913828, 13.579158316633267, 14.044088176352705, 14.509018036072145, 14.973947895791582, 15.438877755511022, 15.90380761523046, 16.3687374749499, 16.83366733466934, 17.298597194388776, 17.763527054108216, 18.228456913827657, 18.693386773547093, 19.158316633266534, 19.62324649298597, 20.08817635270541, 20.55310621242485, 21.01803607214429, 21.482965931863728, 21.947895791583164, 22.412825651302605, 22.877755511022045, 23.342685370741485, 23.80761523046092, 24.272545090180362, 24.7374749498998, 25.20240480961924, 25.66733466933868, 26.132264529058116, 26.597194388777556, 27.062124248496993, 27.527054108216433, 27.991983967935873, 28.45691382765531, 28.92184368737475, 29.386773547094187, 29.851703406813627, 30.316633266533067, 30.781563126252504, 31.246492985971944, 31.711422845691384, 32.17635270541082, 32.64128256513026, 33.1062124248497, 33.571142284569135, 34.03607214428858, 34.501002004008015, 34.965931863727455, 35.430861723446895, 35.89579158316633, 36.360721442885776, 36.82565130260521, 37.29058116232465, 37.75551102204409, 38.22044088176352, 38.68537074148297, 39.1503006012024, 39.61523046092184, 40.08016032064128, 40.545090180360724, 41.01002004008016, 41.4749498997996, 41.93987975951904, 42.40480961923848, 42.86973947895792, 43.33466933867736, 43.79959919839679, 44.26452905811623, 44.72945891783567, 45.19438877755511, 45.65931863727455, 46.124248496993985, 46.589178356713425, 47.054108216432866, 47.519038076152306, 47.983967935871746, 48.44889779559118, 48.91382765531062, 49.37875751503006, 49.8436873747495, 50.30861723446894, 50.77354709418837, 51.23847695390781, 51.703406813627254, 52.168336673346694, 52.633266533066134, 53.098196392785574, 53.56312625250501, 54.02805611222445, 54.49298597194389, 54.95791583166333, 55.42284569138277, 55.8877755511022, 56.35270541082164, 56.81763527054108, 57.28256513026052, 57.74749498997996, 58.212424849699396, 58.677354709418836, 59.142284569138276, 59.607214428857716, 60.07214428857716, 60.53707414829659, 61.00200400801603, 61.46693386773547, 61.93186372745491, 62.39679358717435, 62.86172344689379, 63.326653306613224, 63.791583166332664, 64.2565130260521, 64.72144288577155, 65.18637274549098, 65.65130260521042, 66.11623246492985, 66.5811623246493, 67.04609218436875, 67.51102204408818, 67.97595190380761, 68.44088176352705, 68.90581162324649, 69.37074148296594, 69.83567134268537, 70.3006012024048, 70.76553106212424, 71.23046092184369, 71.69539078156313, 72.16032064128257, 72.625250501002, 73.09018036072145, 73.55511022044088, 74.02004008016031, 74.48496993987976, 74.9498997995992, 75.41482965931864, 75.87975951903807, 76.34468937875752, 76.80961923847696, 77.27454909819639, 77.73947895791584, 78.20440881763527, 78.66933867735472, 79.13426853707415, 79.59919839679358, 80.06412825651303, 80.52905811623246, 80.99398797595191, 81.45891783567134, 81.92384769539078, 82.38877755511022, 82.85370741482966, 83.3186372745491, 83.78356713426854, 84.24849699398797, 84.71342685370742, 85.17835671342685, 85.6432865731463, 86.10821643286573, 86.57314629258516, 87.03807615230461, 87.50300601202404, 87.96793587174349, 88.43286573146293, 88.89779559118236, 89.3627254509018, 89.82765531062124, 90.29258517034069, 90.75751503006012, 91.22244488977955, 91.687374749499, 92.15230460921843, 92.61723446893788, 93.08216432865731, 93.54709418837675, 94.0120240480962, 94.47695390781563, 94.94188376753507, 95.40681362725451, 95.87174348697395, 96.33667334669339, 96.80160320641282, 97.26653306613227, 97.7314629258517, 98.19639278557115, 98.66132264529058, 99.12625250501002, 99.59118236472946, 100.0561122244489, 100.52104208416834, 100.98597194388778, 101.45090180360721, 101.91583166332666, 102.38076152304609, 102.84569138276554, 103.31062124248497, 103.7755511022044, 104.24048096192385, 104.70541082164328, 105.17034068136273, 105.63527054108216, 106.1002004008016, 106.56513026052104, 107.03006012024048, 107.49498997995993, 107.95991983967936, 108.42484969939879, 108.88977955911824, 109.35470941883767, 109.81963927855712, 110.28456913827655, 110.74949899799599, 111.21442885771543, 111.67935871743487, 112.14428857715431, 112.60921843687375, 113.07414829659318, 113.53907815631263, 114.00400801603206, 114.46893787575151, 114.93386773547094, 115.39879759519039, 115.86372745490982, 116.32865731462925, 116.7935871743487, 117.25851703406813, 117.72344689378758, 118.18837675350701, 118.65330661322645, 119.1182364729459, 119.58316633266533, 120.04809619238478, 120.51302605210421, 120.97795591182364, 121.44288577154309, 121.90781563126252, 122.37274549098197, 122.8376753507014, 123.30260521042084, 123.76753507014028, 124.23246492985972, 124.69739478957916, 125.1623246492986, 125.62725450901803, 126.09218436873748, 126.55711422845691, 127.02204408817636, 127.48697394789579, 127.95190380761522, 128.41683366733469, 128.8817635270541, 129.34669338677355, 129.81162324649299, 130.27655310621242, 130.74148296593188, 131.20641282565128, 131.67134268537075, 132.13627254509018, 132.6012024048096, 133.06613226452907, 133.53106212424848, 133.99599198396794, 134.46092184368737, 134.9258517034068, 135.39078156312627, 135.85571142284567, 136.32064128256513, 136.78557114228457, 137.250501002004, 137.71543086172343, 138.1803607214429, 138.64529058116233, 139.11022044088176, 139.5751503006012, 140.04008016032063, 140.5050100200401, 140.96993987975952, 141.43486973947896, 141.8997995991984, 142.36472945891782, 142.82965931863728, 143.29458917835672, 143.75951903807615, 144.22444889779558, 144.68937875751504, 145.15430861723448, 145.6192384769539, 146.08416833667334, 146.54909819639278, 147.01402805611224, 147.47895791583167, 147.9438877755511, 148.40881763527054, 148.87374749498997, 149.33867735470943, 149.80360721442887, 150.2685370741483, 150.73346693386773, 151.19839679358716, 151.66332665330663, 152.12825651302606, 152.5931863727455, 153.05811623246493, 153.52304609218436, 153.98797595190382, 154.45290581162325, 154.9178356713427, 155.38276553106212, 155.84769539078155, 156.31262525050101, 156.77755511022045, 157.24248496993988, 157.7074148296593, 158.17234468937875, 158.6372745490982, 159.10220440881764, 159.56713426853707, 160.0320641282565, 160.49699398797594, 160.9619238476954, 161.42685370741484, 161.89178356713427, 162.3567134268537, 162.82164328657313, 163.2865731462926, 163.75150300601203, 164.21643286573146, 164.6813627254509, 165.14629258517033, 165.6112224448898, 166.07615230460922, 166.54108216432866, 167.0060120240481, 167.47094188376752, 167.93587174348698, 168.40080160320642, 168.86573146292585, 169.33066132264528, 169.79559118236472, 170.26052104208418, 170.7254509018036, 171.19038076152304, 171.65531062124248, 172.1202404809619, 172.58517034068137, 173.0501002004008, 173.51503006012024, 173.97995991983967, 174.4448897795591, 174.90981963927857, 175.374749498998, 175.83967935871743, 176.30460921843687, 176.7695390781563, 177.23446893787576, 177.6993987975952, 178.16432865731463, 178.62925851703406, 179.0941883767535, 179.55911823647295, 180.0240480961924, 180.48897795591182, 180.95390781563125, 181.4188376753507, 181.88376753507015, 182.34869739478958, 182.81362725450902, 183.27855711422845, 183.7434869739479, 184.20841683366734, 184.67334669338678, 185.1382765531062, 185.60320641282564, 186.0681362725451, 186.53306613226454, 186.99799599198397, 187.4629258517034, 187.92785571142284, 188.3927855711423, 188.85771543086173, 189.32264529058116, 189.7875751503006, 190.25250501002003, 190.7174348697395, 191.18236472945893, 191.64729458917836, 192.1122244488978, 192.57715430861722, 193.0420841683367, 193.50701402805612, 193.97194388777555, 194.43687374749499, 194.90180360721442, 195.36673346693388, 195.8316633266533, 196.29659318637275, 196.76152304609218, 197.2264529058116, 197.69138276553107, 198.1563126252505, 198.62124248496994, 199.08617234468937, 199.5511022044088, 200.01603206412827, 200.4809619238477, 200.94589178356713, 201.41082164328657, 201.875751503006, 202.34068136272546, 202.8056112224449, 203.27054108216433, 203.73547094188376, 204.2004008016032, 204.66533066132266, 205.1302605210421, 205.59519038076152, 206.06012024048096, 206.5250501002004, 206.98997995991985, 207.45490981963928, 207.91983967935872, 208.38476953907815, 208.84969939879758, 209.31462925851704, 209.77955911823648, 210.2444889779559, 210.70941883767534, 211.17434869739478, 211.63927855711424, 212.10420841683367, 212.5691382765531, 213.03406813627254, 213.49899799599197, 213.96392785571143, 214.42885771543087, 214.8937875751503, 215.35871743486973, 215.82364729458916, 216.28857715430863, 216.75350701402806, 217.2184368737475, 217.68336673346693, 218.14829659318636, 218.61322645290582, 219.07815631262525, 219.5430861723447, 220.00801603206412, 220.47294589178355, 220.93787575150301, 221.40280561122245, 221.86773547094188, 222.3326653306613, 222.79759519038078, 223.2625250501002, 223.72745490981964, 224.19238476953907, 224.6573146292585, 225.12224448897797, 225.5871743486974, 226.05210420841684, 226.51703406813627, 226.9819639278557, 227.44689378757516, 227.9118236472946, 228.37675350701403, 228.84168336673346, 229.3066132264529, 229.77154308617236, 230.2364729458918, 230.70140280561122, 231.16633266533066, 231.6312625250501, 232.09619238476955, 232.56112224448898, 233.02605210420842, 233.49098196392785, 233.95591182364728, 234.42084168336675, 234.88577154308618, 235.3507014028056, 235.81563126252505, 236.28056112224448, 236.74549098196394, 237.21042084168337, 237.6753507014028, 238.14028056112224, 238.60521042084167, 239.07014028056113, 239.53507014028057, 240.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_7ed820f629444062e07d533c0ccf538d.x = d3.scale.linear()
+              .domain([8.0, 240.0])
+              .range([0, 450 - 50]);
+
+    color_map_7ed820f629444062e07d533c0ccf538d.legend = L.control({position: 'topright'});
+    color_map_7ed820f629444062e07d533c0ccf538d.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_7ed820f629444062e07d533c0ccf538d.legend.addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+
+    color_map_7ed820f629444062e07d533c0ccf538d.xAxis = d3.svg.axis()
+        .scale(color_map_7ed820f629444062e07d533c0ccf538d.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([8.0, 37.0, 66.0, 95.0, 124.0, 153.0, 182.0, 211.0, 240.0]);
+
+    color_map_7ed820f629444062e07d533c0ccf538d.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_7ed820f629444062e07d533c0ccf538d.g = color_map_7ed820f629444062e07d533c0ccf538d.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_7ed820f629444062e07d533c0ccf538d.g.selectAll("rect")
+        .data(color_map_7ed820f629444062e07d533c0ccf538d.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_7ed820f629444062e07d533c0ccf538d.x(color_map_7ed820f629444062e07d533c0ccf538d.color.domain()[i - 1]) : color_map_7ed820f629444062e07d533c0ccf538d.x.range()[0],
+            x1: i < color_map_7ed820f629444062e07d533c0ccf538d.color.domain().length ? color_map_7ed820f629444062e07d533c0ccf538d.x(color_map_7ed820f629444062e07d533c0ccf538d.color.domain()[i]) : color_map_7ed820f629444062e07d533c0ccf538d.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_7ed820f629444062e07d533c0ccf538d.g.call(color_map_7ed820f629444062e07d533c0ccf538d.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista CARLOS RONALD ESPINOZA GONZALEZ por local");
+    
+            var circle_marker_d2a81d442e6d75e9c9d24e922fc5d1b9 = L.circleMarker(
+                [-33.4888, -70.6653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.905172413793103, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_068aad7e840f92e5d7c2f8161b03f48a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e741260e1471c7f6c325a8c3274c0e26 = $(`<div id="html_e741260e1471c7f6c325a8c3274c0e26" style="width: 100.0%; height: 100.0%;"><b>centro educativo republica mexicana</b><br>AVENIDA SALVADOR ALLENDE 2140<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>23</b></div>`)[0];
+                popup_068aad7e840f92e5d7c2f8161b03f48a.setContent(html_e741260e1471c7f6c325a8c3274c0e26);
+            
+        
+
+        circle_marker_d2a81d442e6d75e9c9d24e922fc5d1b9.bindPopup(popup_068aad7e840f92e5d7c2f8161b03f48a)
+        ;
+
+        
+    
+    
+            circle_marker_d2a81d442e6d75e9c9d24e922fc5d1b9.bindTooltip(
+                `<div>
+                     centro educativo republica mexicana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dfab948eb1d82fcd54f25ca8453a0e1d = L.marker(
+                [-33.4888, -70.6653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_af83f5ccc21795cd966e80e2376addb9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dfab948eb1d82fcd54f25ca8453a0e1d.setIcon(div_icon_af83f5ccc21795cd966e80e2376addb9);
+        
+    
+            var circle_marker_9621ab1b8572791e61380c58c5c6904f = L.circleMarker(
+                [-33.4971, -70.6664],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b4ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.96551724137931, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_18891cafbb0b50d6ecea4c6df2be363c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e7543ff753ed56847f011e0c47643305 = $(`<div id="html_e7543ff753ed56847f011e0c47643305" style="width: 100.0%; height: 100.0%;"><b>colegio arcangel gabriel N°2</b><br>LAZO 1730<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>24</b></div>`)[0];
+                popup_18891cafbb0b50d6ecea4c6df2be363c.setContent(html_e7543ff753ed56847f011e0c47643305);
+            
+        
+
+        circle_marker_9621ab1b8572791e61380c58c5c6904f.bindPopup(popup_18891cafbb0b50d6ecea4c6df2be363c)
+        ;
+
+        
+    
+    
+            circle_marker_9621ab1b8572791e61380c58c5c6904f.bindTooltip(
+                `<div>
+                     colegio arcangel gabriel N°2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_76fa0b34b30dc8a33ab4a2181baa7a1f = L.marker(
+                [-33.4971, -70.6664],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_69ee472e1458f93ba4667b69763bbcfc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e24\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_76fa0b34b30dc8a33ab4a2181baa7a1f.setIcon(div_icon_69ee472e1458f93ba4667b69763bbcfc);
+        
+    
+            var circle_marker_bc14a9f627267f6977d16e80378ab40f = L.circleMarker(
+                [-33.5016, -70.6875],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_8d2157c103519b6f0b20be36a95b2b1c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f5cd5ea495b09a4fed92dc12fc73c567 = $(`<div id="html_f5cd5ea495b09a4fed92dc12fc73c567" style="width: 100.0%; height: 100.0%;"><b>colegio grace school</b><br>ARMADA NACIONAL 6136<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>240</b></div>`)[0];
+                popup_8d2157c103519b6f0b20be36a95b2b1c.setContent(html_f5cd5ea495b09a4fed92dc12fc73c567);
+            
+        
+
+        circle_marker_bc14a9f627267f6977d16e80378ab40f.bindPopup(popup_8d2157c103519b6f0b20be36a95b2b1c)
+        ;
+
+        
+    
+    
+            circle_marker_bc14a9f627267f6977d16e80378ab40f.bindTooltip(
+                `<div>
+                     colegio grace school
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_051f95d21d261ba024b58339a9c4416b = L.marker(
+                [-33.5016, -70.6875],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_e4418f423f7f15ee4de9b233a2c698a8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e240\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_051f95d21d261ba024b58339a9c4416b.setIcon(div_icon_e4418f423f7f15ee4de9b233a2c698a8);
+        
+    
+            var circle_marker_317b7630fe824b97d1e1188bf6805b95 = L.circleMarker(
+                [-33.4911, -70.673],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.422413793103448, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_07c60ae69591399bfd9b7de451619e7f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1300b69b9a4ef022f38f80062e82f51f = $(`<div id="html_1300b69b9a4ef022f38f80062e82f51f" style="width: 100.0%; height: 100.0%;"><b>colegioantonio acevedo hernandez</b><br>AV. LA MARINA 2835<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>15</b></div>`)[0];
+                popup_07c60ae69591399bfd9b7de451619e7f.setContent(html_1300b69b9a4ef022f38f80062e82f51f);
+            
+        
+
+        circle_marker_317b7630fe824b97d1e1188bf6805b95.bindPopup(popup_07c60ae69591399bfd9b7de451619e7f)
+        ;
+
+        
+    
+    
+            circle_marker_317b7630fe824b97d1e1188bf6805b95.bindTooltip(
+                `<div>
+                     colegioantonio acevedo hernandez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a68576e31393a505668ddeeb5a449d1e = L.marker(
+                [-33.4911, -70.673],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_9c6796a95fbd9e0e039af77c5991c38a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a68576e31393a505668ddeeb5a449d1e.setIcon(div_icon_9c6796a95fbd9e0e039af77c5991c38a);
+        
+    
+            var circle_marker_4390e154dac783262f1c338a2e17abaf = L.circleMarker(
+                [-33.5054, -70.6748],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff2abff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.327586206896552, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_3aae2550e8442e0e249c5a3468985451 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d444f4789c17878a7b662abc51899ca1 = $(`<div id="html_d444f4789c17878a7b662abc51899ca1" style="width: 100.0%; height: 100.0%;"><b>escuela boroa</b><br>BOROA 6079<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>30</b></div>`)[0];
+                popup_3aae2550e8442e0e249c5a3468985451.setContent(html_d444f4789c17878a7b662abc51899ca1);
+            
+        
+
+        circle_marker_4390e154dac783262f1c338a2e17abaf.bindPopup(popup_3aae2550e8442e0e249c5a3468985451)
+        ;
+
+        
+    
+    
+            circle_marker_4390e154dac783262f1c338a2e17abaf.bindTooltip(
+                `<div>
+                     escuela boroa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d23abd769c5bd81b95c23e8b817628a2 = L.marker(
+                [-33.5054, -70.6748],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_95de86a559427485d9dcf7daef10a301 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e30\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d23abd769c5bd81b95c23e8b817628a2.setIcon(div_icon_95de86a559427485d9dcf7daef10a301);
+        
+    
+            var circle_marker_7054a35b83bac43b5e709b8bfc8dda42 = L.circleMarker(
+                [-33.4971, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fa4828ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.93103448275862, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_e35140121a5d6e97f59e57114814c418 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a959b9f5774d22bf52eaabd20b636db0 = $(`<div id="html_a959b9f5774d22bf52eaabd20b636db0" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de barcelona</b><br>MAYA 5961<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>156</b></div>`)[0];
+                popup_e35140121a5d6e97f59e57114814c418.setContent(html_a959b9f5774d22bf52eaabd20b636db0);
+            
+        
+
+        circle_marker_7054a35b83bac43b5e709b8bfc8dda42.bindPopup(popup_e35140121a5d6e97f59e57114814c418)
+        ;
+
+        
+    
+    
+            circle_marker_7054a35b83bac43b5e709b8bfc8dda42.bindTooltip(
+                `<div>
+                     escuela ciudad de barcelona
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3111dbba05872c08a3491fad2f1912ff = L.marker(
+                [-33.4971, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_aafdda4fb850e41aca6003835e4411cc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e156\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3111dbba05872c08a3491fad2f1912ff.setIcon(div_icon_aafdda4fb850e41aca6003835e4411cc);
+        
+    
+            var circle_marker_4fbf1391556b2ff94dfab3070ac6c859 = L.circleMarker(
+                [-33.5073, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe997ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.112068965517242, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_c7fe9a542062400b85d37b6cba7b11d7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a5b970c6abb98d52801f1961cacc3e74 = $(`<div id="html_a5b970c6abb98d52801f1961cacc3e74" style="width: 100.0%; height: 100.0%;"><b>escuela consolidada davila</b><br>AVENIDA JOSE JOAQUIN PRIETO 6075<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>43</b></div>`)[0];
+                popup_c7fe9a542062400b85d37b6cba7b11d7.setContent(html_a5b970c6abb98d52801f1961cacc3e74);
+            
+        
+
+        circle_marker_4fbf1391556b2ff94dfab3070ac6c859.bindPopup(popup_c7fe9a542062400b85d37b6cba7b11d7)
+        ;
+
+        
+    
+    
+            circle_marker_4fbf1391556b2ff94dfab3070ac6c859.bindTooltip(
+                `<div>
+                     escuela consolidada davila
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_940e762b629759ec5344f317db9492c2 = L.marker(
+                [-33.5073, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_c3780efbb757afcb602e5779f7e8b5b0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e43\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_940e762b629759ec5344f317db9492c2.setIcon(div_icon_c3780efbb757afcb602e5779f7e8b5b0);
+        
+    
+            var circle_marker_56b5a028fd69221351eb6c608c4b22f2 = L.circleMarker(
+                [-33.4877, -70.6797],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.905172413793103, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_23d14d994d6a7d5974a6d5acce4e8190 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_49784435288360bdd8bd68831c2b766d = $(`<div id="html_49784435288360bdd8bd68831c2b766d" style="width: 100.0%; height: 100.0%;"><b>escuela la victoria</b><br>PRIMERO DE MAYO 4710<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>23</b></div>`)[0];
+                popup_23d14d994d6a7d5974a6d5acce4e8190.setContent(html_49784435288360bdd8bd68831c2b766d);
+            
+        
+
+        circle_marker_56b5a028fd69221351eb6c608c4b22f2.bindPopup(popup_23d14d994d6a7d5974a6d5acce4e8190)
+        ;
+
+        
+    
+    
+            circle_marker_56b5a028fd69221351eb6c608c4b22f2.bindTooltip(
+                `<div>
+                     escuela la victoria
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8da2296319862d87debbc283291cd4ca = L.marker(
+                [-33.4877, -70.6797],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_7f0ef0a7873fc61c397aede0c830a986 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8da2296319862d87debbc283291cd4ca.setIcon(div_icon_7f0ef0a7873fc61c397aede0c830a986);
+        
+    
+            var circle_marker_760d63b607235b0a72d5e0cd5e42ae53 = L.circleMarker(
+                [-33.5048, -70.6858],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff8baff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.724137931034482, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_68c54752fc47f38a9483250ce0e86c36 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1c68b542820284964bd881f0cf3f7ecc = $(`<div id="html_1c68b542820284964bd881f0cf3f7ecc" style="width: 100.0%; height: 100.0%;"><b>escuela lo valledor</b><br>ALESSANDRI 6378<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>20</b></div>`)[0];
+                popup_68c54752fc47f38a9483250ce0e86c36.setContent(html_1c68b542820284964bd881f0cf3f7ecc);
+            
+        
+
+        circle_marker_760d63b607235b0a72d5e0cd5e42ae53.bindPopup(popup_68c54752fc47f38a9483250ce0e86c36)
+        ;
+
+        
+    
+    
+            circle_marker_760d63b607235b0a72d5e0cd5e42ae53.bindTooltip(
+                `<div>
+                     escuela lo valledor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73ec74923e19bf38465f81741739a94c = L.marker(
+                [-33.5048, -70.6858],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_a1a3fcc72c90e77b39e5c3eae2dde2b1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e20\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_73ec74923e19bf38465f81741739a94c.setIcon(div_icon_a1a3fcc72c90e77b39e5c3eae2dde2b1);
+        
+    
+            var circle_marker_c29db7cbcb4933afb11889cdf00a4be2 = L.circleMarker(
+                [-33.4808, -70.6602],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.905172413793103, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_d778ce9d457d5936424ad398734b73a1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0105fce4cfa2bb9c8917cebac6b6ffa3 = $(`<div id="html_0105fce4cfa2bb9c8917cebac6b6ffa3" style="width: 100.0%; height: 100.0%;"><b>escuela poetas de chile</b><br>JUAN BASTIDAS 2890<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>23</b></div>`)[0];
+                popup_d778ce9d457d5936424ad398734b73a1.setContent(html_0105fce4cfa2bb9c8917cebac6b6ffa3);
+            
+        
+
+        circle_marker_c29db7cbcb4933afb11889cdf00a4be2.bindPopup(popup_d778ce9d457d5936424ad398734b73a1)
+        ;
+
+        
+    
+    
+            circle_marker_c29db7cbcb4933afb11889cdf00a4be2.bindTooltip(
+                `<div>
+                     escuela poetas de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f044f45a3894f11ff6254fc20be222fc = L.marker(
+                [-33.4808, -70.6602],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_bbf5d290ab923c25a9e39bb1d958ffd1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f044f45a3894f11ff6254fc20be222fc.setIcon(div_icon_bbf5d290ab923c25a9e39bb1d958ffd1);
+        
+    
+            var circle_marker_b64e0fedb0ffd4e5c5c7c4f7fe35b59e = L.circleMarker(
+                [-33.491, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.120689655172415, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_6c3823ab3f8bd645a98612b2772f073e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3b38d42e2bf481f3d656399f8139a143 = $(`<div id="html_3b38d42e2bf481f3d656399f8139a143" style="width: 100.0%; height: 100.0%;"><b>escuela ricardo eduardo latcham</b><br>FELIX OSEGUEDA 4031<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>10</b></div>`)[0];
+                popup_6c3823ab3f8bd645a98612b2772f073e.setContent(html_3b38d42e2bf481f3d656399f8139a143);
+            
+        
+
+        circle_marker_b64e0fedb0ffd4e5c5c7c4f7fe35b59e.bindPopup(popup_6c3823ab3f8bd645a98612b2772f073e)
+        ;
+
+        
+    
+    
+            circle_marker_b64e0fedb0ffd4e5c5c7c4f7fe35b59e.bindTooltip(
+                `<div>
+                     escuela ricardo eduardo latcham
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2a3cb598084e50031f20c9924ca44fce = L.marker(
+                [-33.491, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_a4f2c924500f99e605b081cc19f8f5e6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e10\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2a3cb598084e50031f20c9924ca44fce.setIcon(div_icon_a4f2c924500f99e605b081cc19f8f5e6);
+        
+    
+            var circle_marker_287e74cbc2cb0799000c74c6e42f70f4 = L.circleMarker(
+                [-33.4907, -70.6882],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe186ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.836206896551724, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_0daddfd3089b66940cfacc889fb39de3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1689feafc1929d123caee725248fd083 = $(`<div id="html_1689feafc1929d123caee725248fd083" style="width: 100.0%; height: 100.0%;"><b>escuela risopatron</b><br>PASAJE F 4491<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>55</b></div>`)[0];
+                popup_0daddfd3089b66940cfacc889fb39de3.setContent(html_1689feafc1929d123caee725248fd083);
+            
+        
+
+        circle_marker_287e74cbc2cb0799000c74c6e42f70f4.bindPopup(popup_0daddfd3089b66940cfacc889fb39de3)
+        ;
+
+        
+    
+    
+            circle_marker_287e74cbc2cb0799000c74c6e42f70f4.bindTooltip(
+                `<div>
+                     escuela risopatron
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eca1523dda4bf63039fcdc502656ea01 = L.marker(
+                [-33.4907, -70.6882],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_1e10bc8b50c606594884f0a4f339db86 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e55\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_eca1523dda4bf63039fcdc502656ea01.setIcon(div_icon_1e10bc8b50c606594884f0a4f339db86);
+        
+    
+            var circle_marker_f5e618df0a38d8969ebd9111635c4a70 = L.circleMarker(
+                [-33.4779, -70.6615],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_a4edc071690ae8c429ee32b9159fb578 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_75574f77544aaafb6ad9d29c006a4c2a = $(`<div id="html_75574f77544aaafb6ad9d29c006a4c2a" style="width: 100.0%; height: 100.0%;"><b>escuela rocio de los angeles</b><br>TRASLAVIÑA 1955<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>8</b></div>`)[0];
+                popup_a4edc071690ae8c429ee32b9159fb578.setContent(html_75574f77544aaafb6ad9d29c006a4c2a);
+            
+        
+
+        circle_marker_f5e618df0a38d8969ebd9111635c4a70.bindPopup(popup_a4edc071690ae8c429ee32b9159fb578)
+        ;
+
+        
+    
+    
+            circle_marker_f5e618df0a38d8969ebd9111635c4a70.bindTooltip(
+                `<div>
+                     escuela rocio de los angeles
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bcd635160899becb3a78341211dbe5b3 = L.marker(
+                [-33.4779, -70.6615],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_24188a956f80ee8f59764c15bf65207d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e8\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bcd635160899becb3a78341211dbe5b3.setIcon(div_icon_24188a956f80ee8f59764c15bf65207d);
+        
+    
+            var circle_marker_97d765418a90f9ef18f40e6cb8e78ece = L.circleMarker(
+                [-33.5022, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc6ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.241379310344827, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_4af87ae5ef4625f9f9d01c2f929452c1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_160b93477a3133e9e1b2e0423865a281 = $(`<div id="html_160b93477a3133e9e1b2e0423865a281" style="width: 100.0%; height: 100.0%;"><b>escuela villa sur</b><br>LOS MOLLES 2973<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>12</b></div>`)[0];
+                popup_4af87ae5ef4625f9f9d01c2f929452c1.setContent(html_160b93477a3133e9e1b2e0423865a281);
+            
+        
+
+        circle_marker_97d765418a90f9ef18f40e6cb8e78ece.bindPopup(popup_4af87ae5ef4625f9f9d01c2f929452c1)
+        ;
+
+        
+    
+    
+            circle_marker_97d765418a90f9ef18f40e6cb8e78ece.bindTooltip(
+                `<div>
+                     escuela villa sur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f147c66b24988dec62bb056c790a542b = L.marker(
+                [-33.5022, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_771315e42d938b58f3cbf0b8a3eb54a3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e12\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f147c66b24988dec62bb056c790a542b.setIcon(div_icon_771315e42d938b58f3cbf0b8a3eb54a3);
+        
+    
+            var circle_marker_b5c03e77c480cbcdd5812fac3dc7dbf5 = L.circleMarker(
+                [-33.4824, -70.6751],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff7b7ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.844827586206897, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_857a821a4833d886f854596f6c102b06 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3edeb15576ed95afd3681565e7a967f7 = $(`<div id="html_3edeb15576ed95afd3681565e7a967f7" style="width: 100.0%; height: 100.0%;"><b>liceo enrique backausse</b><br>JOSE BACKAUSSE 2850<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>22</b></div>`)[0];
+                popup_857a821a4833d886f854596f6c102b06.setContent(html_3edeb15576ed95afd3681565e7a967f7);
+            
+        
+
+        circle_marker_b5c03e77c480cbcdd5812fac3dc7dbf5.bindPopup(popup_857a821a4833d886f854596f6c102b06)
+        ;
+
+        
+    
+    
+            circle_marker_b5c03e77c480cbcdd5812fac3dc7dbf5.bindTooltip(
+                `<div>
+                     liceo enrique backausse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bba045a3258eaaf8041cc5a91c5ab622 = L.marker(
+                [-33.4824, -70.6751],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_49224b42fa91e74dbcce67c634addc21 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e22\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bba045a3258eaaf8041cc5a91c5ab622.setIcon(div_icon_49224b42fa91e74dbcce67c634addc21);
+        
+    
+            var circle_marker_0faea8a787b901eb69ae8f2a66576fc4 = L.circleMarker(
+                [-33.4945, -70.6833],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff2acff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.267241379310345, "stroke": false, "weight": 3}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+        var popup_11aafe934c4d9e37a67883a396dddebc = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9097ad3118da4683edc2fb514136c3f0 = $(`<div id="html_9097ad3118da4683edc2fb514136c3f0" style="width: 100.0%; height: 100.0%;"><b>liceo eugenio pereira salas</b><br>COOPERACION 4581<br>Votos Lista CARLOS RONALD ESPINOZA GONZALEZ: <b>29</b></div>`)[0];
+                popup_11aafe934c4d9e37a67883a396dddebc.setContent(html_9097ad3118da4683edc2fb514136c3f0);
+            
+        
+
+        circle_marker_0faea8a787b901eb69ae8f2a66576fc4.bindPopup(popup_11aafe934c4d9e37a67883a396dddebc)
+        ;
+
+        
+    
+    
+            circle_marker_0faea8a787b901eb69ae8f2a66576fc4.bindTooltip(
+                `<div>
+                     liceo eugenio pereira salas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e804d3d2e95b87ebfdf8bd4388301127 = L.marker(
+                [-33.4945, -70.6833],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3899ee0d3f9f76e762f25115f2ff489d);
+        
+    
+            var div_icon_218d772c8f7d96b65d03b291f363e08d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e804d3d2e95b87ebfdf8bd4388301127.setIcon(div_icon_218d772c8f7d96b65d03b291f363e08d);
+        
+    
+            map_3899ee0d3f9f76e762f25115f2ff489d.fitBounds(
+                [[-33.4888, -70.6653], [-33.4971, -70.6664], [-33.5016, -70.6875], [-33.4911, -70.673], [-33.5054, -70.6748], [-33.4971, -70.69], [-33.5073, -70.67], [-33.4877, -70.6797], [-33.5048, -70.6858], [-33.4808, -70.6602], [-33.491, -70.6824], [-33.4907, -70.6882], [-33.4779, -70.6615], [-33.5022, -70.6824], [-33.4824, -70.6751], [-33.4945, -70.6833]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

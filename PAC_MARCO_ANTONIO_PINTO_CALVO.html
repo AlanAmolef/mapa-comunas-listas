@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_40cdf020e534a3eda539ae05678e7b16 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_40cdf020e534a3eda539ae05678e7b16" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_40cdf020e534a3eda539ae05678e7b16 = L.map(
+                "map_40cdf020e534a3eda539ae05678e7b16",
+                {
+                    center: [-33.493775, -70.6766],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5da370a611380de971e9897ef92b7455 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_5da370a611380de971e9897ef92b7455.addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+    var color_map_b75077c4c4ca7b7f8d852478d6c57d1f = {};
+
+    
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.color = d3.scale.threshold()
+              .domain([25.0, 25.100200400801604, 25.200400801603205, 25.30060120240481, 25.400801603206414, 25.501002004008015, 25.60120240480962, 25.701402805611224, 25.801603206412825, 25.90180360721443, 26.002004008016034, 26.102204408817634, 26.20240480961924, 26.302605210420843, 26.402805611222444, 26.50300601202405, 26.603206412825653, 26.703406813627254, 26.803607214428858, 26.903807615230463, 27.004008016032063, 27.104208416833668, 27.20440881763527, 27.304609218436873, 27.404809619238478, 27.505010020040082, 27.605210420841683, 27.705410821643287, 27.805611222444888, 27.905811623246493, 28.006012024048097, 28.1062124248497, 28.206412825651302, 28.306613226452907, 28.406813627254508, 28.507014028056112, 28.607214428857716, 28.707414829659317, 28.80761523046092, 28.907815631262526, 29.008016032064127, 29.10821643286573, 29.208416833667336, 29.308617234468937, 29.40881763527054, 29.509018036072145, 29.609218436873746, 29.70941883767535, 29.809619238476955, 29.909819639278556, 30.01002004008016, 30.110220440881765, 30.210420841683366, 30.31062124248497, 30.410821643286575, 30.511022044088175, 30.61122244488978, 30.71142284569138, 30.811623246492985, 30.91182364729459, 31.012024048096194, 31.112224448897795, 31.2124248496994, 31.312625250501, 31.412825651302605, 31.51302605210421, 31.613226452905813, 31.713426853707414, 31.81362725450902, 31.91382765531062, 32.014028056112224, 32.11422845691383, 32.21442885771543, 32.31462925851704, 32.414829659318634, 32.51503006012024, 32.61523046092184, 32.71543086172345, 32.81563126252505, 32.91583166332666, 33.016032064128254, 33.11623246492986, 33.21643286573146, 33.31663326653307, 33.41683366733467, 33.51703406813627, 33.61723446893787, 33.71743486973948, 33.81763527054108, 33.91783567134269, 34.01803607214429, 34.118236472945895, 34.21843687374749, 34.3186372745491, 34.4188376753507, 34.519038076152306, 34.61923847695391, 34.71943887775551, 34.81963927855711, 34.91983967935872, 35.02004008016032, 35.120240480961925, 35.22044088176353, 35.320641282565134, 35.42084168336673, 35.521042084168336, 35.62124248496994, 35.721442885771545, 35.82164328657315, 35.921843687374746, 36.02204408817635, 36.122244488977955, 36.22244488977956, 36.322645290581164, 36.42284569138276, 36.52304609218437, 36.62324649298597, 36.723446893787575, 36.82364729458918, 36.92384769539078, 37.02404809619239, 37.124248496993985, 37.22444889779559, 37.324649298597194, 37.4248496993988, 37.5250501002004, 37.625250501002, 37.725450901803605, 37.82565130260521, 37.92585170340681, 38.02605210420842, 38.12625250501002, 38.22645290581163, 38.326653306613224, 38.42685370741483, 38.52705410821643, 38.62725450901804, 38.72745490981964, 38.82765531062124, 38.92785571142284, 39.02805611222445, 39.12825651302605, 39.22845691382766, 39.32865731462926, 39.428857715430865, 39.52905811623246, 39.62925851703407, 39.72945891783567, 39.829659318637276, 39.92985971943888, 40.03006012024048, 40.13026052104208, 40.23046092184369, 40.33066132264529, 40.430861723446895, 40.53106212424849, 40.631262525050104, 40.7314629258517, 40.831663326653306, 40.93186372745491, 41.03206412825651, 41.13226452905812, 41.23246492985972, 41.33266533066132, 41.432865731462925, 41.53306613226453, 41.633266533066134, 41.73346693386773, 41.83366733466934, 41.93386773547094, 42.034068136272545, 42.13426853707415, 42.23446893787575, 42.33466933867736, 42.434869739478955, 42.53507014028056, 42.635270541082164, 42.73547094188377, 42.83567134268537, 42.93587174348697, 43.03607214428858, 43.13627254509018, 43.236472945891784, 43.33667334669339, 43.436873747494985, 43.5370741482966, 43.637274549098194, 43.7374749498998, 43.8376753507014, 43.93787575150301, 44.03807615230461, 44.13827655310621, 44.23847695390782, 44.33867735470942, 44.43887775551102, 44.53907815631263, 44.639278557114224, 44.739478957915836, 44.83967935871743, 44.93987975951904, 45.04008016032064, 45.140280561122246, 45.24048096192385, 45.34068136272545, 45.44088176352706, 45.54108216432866, 45.64128256513026, 45.741482965931866, 45.84168336673346, 45.941883767535074, 46.04208416833667, 46.142284569138276, 46.24248496993988, 46.34268537074148, 46.44288577154309, 46.54308617234469, 46.64328657314629, 46.743486973947896, 46.8436873747495, 46.943887775551104, 47.0440881763527, 47.14428857715431, 47.24448897795591, 47.344689378757515, 47.44488977955912, 47.54509018036072, 47.64529058116233, 47.745490981963925, 47.84569138276553, 47.945891783567134, 48.04609218436874, 48.14629258517034, 48.24649298597194, 48.34669338677355, 48.44689378757515, 48.547094188376754, 48.64729458917836, 48.747494989979955, 48.84769539078157, 48.947895791583164, 49.04809619238477, 49.14829659318637, 49.24849699398798, 49.34869739478958, 49.44889779559118, 49.54909819639279, 49.64929859719439, 49.74949899799599, 49.8496993987976, 49.949899799599194, 50.050100200400806, 50.1503006012024, 50.25050100200401, 50.35070140280561, 50.45090180360721, 50.55110220440882, 50.65130260521042, 50.75150300601202, 50.85170340681363, 50.95190380761523, 51.052104208416836, 51.15230460921843, 51.252505010020045, 51.35270541082164, 51.452905811623246, 51.55310621242485, 51.65330661322645, 51.75350701402806, 51.85370741482966, 51.95390781563126, 52.054108216432866, 52.15430861723447, 52.254509018036075, 52.35470941883767, 52.45490981963928, 52.55511022044088, 52.655310621242485, 52.75551102204409, 52.85571142284569, 52.9559118236473, 53.056112224448896, 53.1563126252505, 53.256513026052104, 53.35671342685371, 53.45691382765531, 53.55711422845691, 53.65731462925852, 53.75751503006012, 53.857715430861724, 53.95791583166333, 54.058116232464926, 54.15831663326654, 54.258517034068134, 54.35871743486974, 54.45891783567134, 54.55911823647294, 54.65931863727455, 54.75951903807615, 54.859719438877754, 54.95991983967936, 55.06012024048096, 55.16032064128257, 55.260521042084164, 55.360721442885776, 55.46092184368737, 55.56112224448898, 55.66132264529058, 55.76152304609218, 55.86172344689379, 55.96192384769539, 56.06212424849699, 56.1623246492986, 56.2625250501002, 56.362725450901806, 56.4629258517034, 56.563126252505015, 56.66332665330661, 56.763527054108216, 56.86372745490982, 56.96392785571142, 57.06412825651302, 57.16432865731463, 57.26452905811623, 57.364729458917836, 57.46492985971944, 57.565130260521045, 57.66533066132264, 57.765531062124246, 57.86573146292585, 57.965931863727455, 58.06613226452906, 58.166332665330664, 58.26653306613226, 58.366733466933866, 58.46693386773547, 58.567134268537075, 58.66733466933868, 58.76753507014028, 58.86773547094188, 58.967935871743485, 59.06813627254509, 59.168336673346694, 59.2685370741483, 59.3687374749499, 59.4689378757515, 59.569138276553105, 59.66933867735471, 59.76953907815631, 59.86973947895792, 59.96993987975952, 60.07014028056112, 60.170340681362724, 60.27054108216433, 60.37074148296593, 60.47094188376754, 60.57114228456914, 60.67134268537074, 60.77154308617234, 60.87174348697395, 60.97194388777555, 61.07214428857716, 61.17234468937876, 61.27254509018036, 61.37274549098196, 61.47294589178357, 61.57314629258517, 61.673346693386776, 61.77354709418837, 61.87374749498998, 61.97394789579158, 62.07414829659319, 62.17434869739479, 62.274549098196395, 62.37474949899799, 62.4749498997996, 62.5751503006012, 62.675350701402806, 62.77555110220441, 62.875751503006015, 62.97595190380761, 63.07615230460922, 63.17635270541082, 63.276553106212425, 63.37675350701403, 63.476953907815634, 63.57715430861723, 63.677354709418836, 63.77755511022044, 63.877755511022045, 63.97795591182365, 64.07815631262525, 64.17835671342685, 64.27855711422845, 64.37875751503006, 64.47895791583167, 64.57915831663327, 64.67935871743487, 64.77955911823648, 64.87975951903807, 64.97995991983967, 65.08016032064128, 65.1803607214429, 65.28056112224449, 65.38076152304609, 65.4809619238477, 65.5811623246493, 65.6813627254509, 65.78156312625251, 65.88176352705412, 65.9819639278557, 66.08216432865731, 66.18236472945893, 66.28256513026052, 66.38276553106212, 66.48296593186373, 66.58316633266533, 66.68336673346693, 66.78356713426854, 66.88376753507015, 66.98396793587175, 67.08416833667334, 67.18436873747495, 67.28456913827655, 67.38476953907815, 67.48496993987976, 67.58517034068137, 67.68537074148296, 67.78557114228457, 67.88577154308618, 67.98597194388778, 68.08617234468937, 68.18637274549098, 68.28657314629258, 68.38677354709418, 68.48697394789579, 68.5871743486974, 68.687374749499, 68.7875751503006, 68.88777555110221, 68.9879759519038, 69.0881763527054, 69.18837675350701, 69.28857715430863, 69.38877755511022, 69.48897795591182, 69.58917835671343, 69.68937875751503, 69.78957915831663, 69.88977955911824, 69.98997995991985, 70.09018036072143, 70.19038076152304, 70.29058116232466, 70.39078156312625, 70.49098196392785, 70.59118236472946, 70.69138276553106, 70.79158316633266, 70.89178356713427, 70.99198396793588, 71.09218436873748, 71.19238476953907, 71.29258517034069, 71.39278557114228, 71.49298597194388, 71.59318637274549, 71.6933867735471, 71.79358717434869, 71.8937875751503, 71.99398797595191, 72.09418837675351, 72.1943887775551, 72.29458917835672, 72.39478957915831, 72.49498997995991, 72.59519038076152, 72.69539078156313, 72.79559118236473, 72.89579158316633, 72.99599198396794, 73.09619238476954, 73.19639278557113, 73.29659318637275, 73.39679358717436, 73.49699398797596, 73.59719438877755, 73.69739478957916, 73.79759519038076, 73.89779559118236, 73.99799599198397, 74.09819639278558, 74.19839679358716, 74.29859719438878, 74.39879759519039, 74.49899799599199, 74.59919839679358, 74.6993987975952, 74.79959919839679, 74.89979959919839, 75.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.x = d3.scale.linear()
+              .domain([25.0, 75.0])
+              .range([0, 450 - 50]);
+
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.legend = L.control({position: 'topright'});
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.legend.addTo(map_40cdf020e534a3eda539ae05678e7b16);
+
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.xAxis = d3.svg.axis()
+        .scale(color_map_b75077c4c4ca7b7f8d852478d6c57d1f.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([25.0, 31.25, 37.5, 43.75, 50.0, 56.25, 62.5, 68.75, 75.0]);
+
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.g = color_map_b75077c4c4ca7b7f8d852478d6c57d1f.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.g.selectAll("rect")
+        .data(color_map_b75077c4c4ca7b7f8d852478d6c57d1f.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_b75077c4c4ca7b7f8d852478d6c57d1f.x(color_map_b75077c4c4ca7b7f8d852478d6c57d1f.color.domain()[i - 1]) : color_map_b75077c4c4ca7b7f8d852478d6c57d1f.x.range()[0],
+            x1: i < color_map_b75077c4c4ca7b7f8d852478d6c57d1f.color.domain().length ? color_map_b75077c4c4ca7b7f8d852478d6c57d1f.x(color_map_b75077c4c4ca7b7f8d852478d6c57d1f.color.domain()[i]) : color_map_b75077c4c4ca7b7f8d852478d6c57d1f.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_b75077c4c4ca7b7f8d852478d6c57d1f.g.call(color_map_b75077c4c4ca7b7f8d852478d6c57d1f.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista MARCO ANTONIO PINTO CALVO por local");
+    
+            var circle_marker_78bafd49776db09bf46560672b474f38 = L.circleMarker(
+                [-33.4888, -70.6653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_17cd5ddf6611c2e3f45e26fd378a51c8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1b8842286d2b6bb2db513b6e6becc98d = $(`<div id="html_1b8842286d2b6bb2db513b6e6becc98d" style="width: 100.0%; height: 100.0%;"><b>centro educativo republica mexicana</b><br>AVENIDA SALVADOR ALLENDE 2140<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>75</b></div>`)[0];
+                popup_17cd5ddf6611c2e3f45e26fd378a51c8.setContent(html_1b8842286d2b6bb2db513b6e6becc98d);
+            
+        
+
+        circle_marker_78bafd49776db09bf46560672b474f38.bindPopup(popup_17cd5ddf6611c2e3f45e26fd378a51c8)
+        ;
+
+        
+    
+    
+            circle_marker_78bafd49776db09bf46560672b474f38.bindTooltip(
+                `<div>
+                     centro educativo republica mexicana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1266c2a5621a878375264f590fe321e2 = L.marker(
+                [-33.4888, -70.6653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_6903dd73bd911f929e626c43022b528d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e75\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1266c2a5621a878375264f590fe321e2.setIcon(div_icon_6903dd73bd911f929e626c43022b528d);
+        
+    
+            var circle_marker_ebd91888e1abbddf4d9eb6310d64a182 = L.circleMarker(
+                [-33.4971, -70.6664],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f94828ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.96, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_374ac82a391eb577febdb36af9a8192f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_55a7e7569adb37b20e58587d5e8c3ce1 = $(`<div id="html_55a7e7569adb37b20e58587d5e8c3ce1" style="width: 100.0%; height: 100.0%;"><b>colegio arcangel gabriel N°2</b><br>LAZO 1730<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>57</b></div>`)[0];
+                popup_374ac82a391eb577febdb36af9a8192f.setContent(html_55a7e7569adb37b20e58587d5e8c3ce1);
+            
+        
+
+        circle_marker_ebd91888e1abbddf4d9eb6310d64a182.bindPopup(popup_374ac82a391eb577febdb36af9a8192f)
+        ;
+
+        
+    
+    
+            circle_marker_ebd91888e1abbddf4d9eb6310d64a182.bindTooltip(
+                `<div>
+                     colegio arcangel gabriel N°2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73a4597cdacb320e14f238dd3e63c2d9 = L.marker(
+                [-33.4971, -70.6664],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_6b4a31eba5e488f7fca58523a55d93f8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e57\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_73a4597cdacb320e14f238dd3e63c2d9.setIcon(div_icon_6b4a31eba5e488f7fca58523a55d93f8);
+        
+    
+            var circle_marker_dcbd63a8fbca4e4862573d2cd1029320 = L.circleMarker(
+                [-33.5016, -70.6875],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd502aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.68, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_ea106f5d789cdc1fb772a958d2189560 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_82f89592ffa7f2e948cd2968c54600ba = $(`<div id="html_82f89592ffa7f2e948cd2968c54600ba" style="width: 100.0%; height: 100.0%;"><b>colegio grace school</b><br>ARMADA NACIONAL 6136<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>56</b></div>`)[0];
+                popup_ea106f5d789cdc1fb772a958d2189560.setContent(html_82f89592ffa7f2e948cd2968c54600ba);
+            
+        
+
+        circle_marker_dcbd63a8fbca4e4862573d2cd1029320.bindPopup(popup_ea106f5d789cdc1fb772a958d2189560)
+        ;
+
+        
+    
+    
+            circle_marker_dcbd63a8fbca4e4862573d2cd1029320.bindTooltip(
+                `<div>
+                     colegio grace school
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ab93070c8fa374c8eee51ea0476dba41 = L.marker(
+                [-33.5016, -70.6875],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_4c692cabadddad5c95e722192b5ee930 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e56\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ab93070c8fa374c8eee51ea0476dba41.setIcon(div_icon_4c692cabadddad5c95e722192b5ee930);
+        
+    
+            var circle_marker_8fe24510430c848bc726f9ba8ba3c747 = L.circleMarker(
+                [-33.4911, -70.673],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe894ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.24, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_d5eeba150a7bee86a72ae4741dd2b743 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_15a9290642b564596ad06319fdae74df = $(`<div id="html_15a9290642b564596ad06319fdae74df" style="width: 100.0%; height: 100.0%;"><b>colegioantonio acevedo hernandez</b><br>AV. LA MARINA 2835<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>33</b></div>`)[0];
+                popup_d5eeba150a7bee86a72ae4741dd2b743.setContent(html_15a9290642b564596ad06319fdae74df);
+            
+        
+
+        circle_marker_8fe24510430c848bc726f9ba8ba3c747.bindPopup(popup_d5eeba150a7bee86a72ae4741dd2b743)
+        ;
+
+        
+    
+    
+            circle_marker_8fe24510430c848bc726f9ba8ba3c747.bindTooltip(
+                `<div>
+                     colegioantonio acevedo hernandez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a126ccc48a044e5a95d97508d6eb5c02 = L.marker(
+                [-33.4911, -70.673],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_5cec8f4c3cee8300cdb405858a3f9ff7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e33\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a126ccc48a044e5a95d97508d6eb5c02.setIcon(div_icon_5cec8f4c3cee8300cdb405858a3f9ff7);
+        
+    
+            var circle_marker_1059025835b3198080d29718eb606f5a = L.circleMarker(
+                [-33.5054, -70.6748],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeea2ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.68, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_4eae3269aec66c25b573f50d2089b6d8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c176534f3dd23ea1e3d19ca8d8e18a00 = $(`<div id="html_c176534f3dd23ea1e3d19ca8d8e18a00" style="width: 100.0%; height: 100.0%;"><b>escuela boroa</b><br>BOROA 6079<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>31</b></div>`)[0];
+                popup_4eae3269aec66c25b573f50d2089b6d8.setContent(html_c176534f3dd23ea1e3d19ca8d8e18a00);
+            
+        
+
+        circle_marker_1059025835b3198080d29718eb606f5a.bindPopup(popup_4eae3269aec66c25b573f50d2089b6d8)
+        ;
+
+        
+    
+    
+            circle_marker_1059025835b3198080d29718eb606f5a.bindTooltip(
+                `<div>
+                     escuela boroa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0af63f92754dd87bc6c0e6406561301a = L.marker(
+                [-33.5054, -70.6748],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_8d4f65286f336b94433eed18ea3488ce = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e31\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0af63f92754dd87bc6c0e6406561301a.setIcon(div_icon_8d4f65286f336b94433eed18ea3488ce);
+        
+    
+            var circle_marker_da670aac5e85d4cef8436ec9bf2bd050 = L.circleMarker(
+                [-33.4971, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed06cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.92, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_8142f3f51c5dfb612951ac6b7137f525 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_de9d959c8ff94e7cde382476d9568bd7 = $(`<div id="html_de9d959c8ff94e7cde382476d9568bd7" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de barcelona</b><br>MAYA 5961<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>39</b></div>`)[0];
+                popup_8142f3f51c5dfb612951ac6b7137f525.setContent(html_de9d959c8ff94e7cde382476d9568bd7);
+            
+        
+
+        circle_marker_da670aac5e85d4cef8436ec9bf2bd050.bindPopup(popup_8142f3f51c5dfb612951ac6b7137f525)
+        ;
+
+        
+    
+    
+            circle_marker_da670aac5e85d4cef8436ec9bf2bd050.bindTooltip(
+                `<div>
+                     escuela ciudad de barcelona
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e7d3e0ba67e3d7b0b3c1908b92d8df18 = L.marker(
+                [-33.4971, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_9f2e43510c913f07a30a80d2386ad783 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e39\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e7d3e0ba67e3d7b0b3c1908b92d8df18.setIcon(div_icon_9f2e43510c913f07a30a80d2386ad783);
+        
+    
+            var circle_marker_d43d1bedeca634a06ea570ac6881596b = L.circleMarker(
+                [-33.5073, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b10026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.6, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_50bd2224c22c4d98e0f1c712f79ba19d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3987b8e207c49bcc237873e38a812b2a = $(`<div id="html_3987b8e207c49bcc237873e38a812b2a" style="width: 100.0%; height: 100.0%;"><b>escuela consolidada davila</b><br>AVENIDA JOSE JOAQUIN PRIETO 6075<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>70</b></div>`)[0];
+                popup_50bd2224c22c4d98e0f1c712f79ba19d.setContent(html_3987b8e207c49bcc237873e38a812b2a);
+            
+        
+
+        circle_marker_d43d1bedeca634a06ea570ac6881596b.bindPopup(popup_50bd2224c22c4d98e0f1c712f79ba19d)
+        ;
+
+        
+    
+    
+            circle_marker_d43d1bedeca634a06ea570ac6881596b.bindTooltip(
+                `<div>
+                     escuela consolidada davila
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_91a5fd4116c87b55f8f2f8b6f8909749 = L.marker(
+                [-33.5073, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_e753090c540a3ddfdc20265f6d8da3fb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e70\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_91a5fd4116c87b55f8f2f8b6f8909749.setIcon(div_icon_e753090c540a3ddfdc20265f6d8da3fb);
+        
+    
+            var circle_marker_00b7530ed4d3ed2e773ad2c295668776 = L.circleMarker(
+                [-33.4877, -70.6797],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ed2e21ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.8, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_d6c9703296742413be736256bb27489f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_669b30b5d83fc288b2646e78f17ceea4 = $(`<div id="html_669b30b5d83fc288b2646e78f17ceea4" style="width: 100.0%; height: 100.0%;"><b>escuela la victoria</b><br>PRIMERO DE MAYO 4710<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>60</b></div>`)[0];
+                popup_d6c9703296742413be736256bb27489f.setContent(html_669b30b5d83fc288b2646e78f17ceea4);
+            
+        
+
+        circle_marker_00b7530ed4d3ed2e773ad2c295668776.bindPopup(popup_d6c9703296742413be736256bb27489f)
+        ;
+
+        
+    
+    
+            circle_marker_00b7530ed4d3ed2e773ad2c295668776.bindTooltip(
+                `<div>
+                     escuela la victoria
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_256805da65baae0c28180c3b997964fc = L.marker(
+                [-33.4877, -70.6797],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_82947b0abc6a3e599027ab6ece33bd96 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e60\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_256805da65baae0c28180c3b997964fc.setIcon(div_icon_82947b0abc6a3e599027ab6ece33bd96);
+        
+    
+            var circle_marker_6f6dfdd35cbd8aebfde77a67efc13c83 = L.circleMarker(
+                [-33.5048, -70.6858],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed673ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.64, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_d3de4758a5010cb9db68e28e77b303d4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8bbab1ca58913b46df95d628b46f1acb = $(`<div id="html_8bbab1ca58913b46df95d628b46f1acb" style="width: 100.0%; height: 100.0%;"><b>escuela lo valledor</b><br>ALESSANDRI 6378<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>38</b></div>`)[0];
+                popup_d3de4758a5010cb9db68e28e77b303d4.setContent(html_8bbab1ca58913b46df95d628b46f1acb);
+            
+        
+
+        circle_marker_6f6dfdd35cbd8aebfde77a67efc13c83.bindPopup(popup_d3de4758a5010cb9db68e28e77b303d4)
+        ;
+
+        
+    
+    
+            circle_marker_6f6dfdd35cbd8aebfde77a67efc13c83.bindTooltip(
+                `<div>
+                     escuela lo valledor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4ae2dcc6d81f92ccb679fecab8c60d65 = L.marker(
+                [-33.5048, -70.6858],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_b8c5a02a096211fa0020980f09881256 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4ae2dcc6d81f92ccb679fecab8c60d65.setIcon(div_icon_b8c5a02a096211fa0020980f09881256);
+        
+    
+            var circle_marker_0021df39f3ea4dc28b5c3d526224aa42 = L.circleMarker(
+                [-33.4808, -70.6602],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9d0026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.16, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_a98d492be7bf5202889212e007a23e0a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c4889d8b464e18c40e59bc7e587ce5c8 = $(`<div id="html_c4889d8b464e18c40e59bc7e587ce5c8" style="width: 100.0%; height: 100.0%;"><b>escuela poetas de chile</b><br>JUAN BASTIDAS 2890<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>72</b></div>`)[0];
+                popup_a98d492be7bf5202889212e007a23e0a.setContent(html_c4889d8b464e18c40e59bc7e587ce5c8);
+            
+        
+
+        circle_marker_0021df39f3ea4dc28b5c3d526224aa42.bindPopup(popup_a98d492be7bf5202889212e007a23e0a)
+        ;
+
+        
+    
+    
+            circle_marker_0021df39f3ea4dc28b5c3d526224aa42.bindTooltip(
+                `<div>
+                     escuela poetas de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_193a4300ebb3b92ecde48eb0c165e4e3 = L.marker(
+                [-33.4808, -70.6602],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_eab8d6640b43b8af6164fe97e52a1903 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e72\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_193a4300ebb3b92ecde48eb0c165e4e3.setIcon(div_icon_eab8d6640b43b8af6164fe97e52a1903);
+        
+    
+            var circle_marker_4737b8157f77035dc381d7c2b33067ce = L.circleMarker(
+                [-33.491, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_4cda0da1b3662a22253231e6b32bffae = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2e2a92bdde3c08a669d83a43842fe1f6 = $(`<div id="html_2e2a92bdde3c08a669d83a43842fe1f6" style="width: 100.0%; height: 100.0%;"><b>escuela ricardo eduardo latcham</b><br>FELIX OSEGUEDA 4031<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>25</b></div>`)[0];
+                popup_4cda0da1b3662a22253231e6b32bffae.setContent(html_2e2a92bdde3c08a669d83a43842fe1f6);
+            
+        
+
+        circle_marker_4737b8157f77035dc381d7c2b33067ce.bindPopup(popup_4cda0da1b3662a22253231e6b32bffae)
+        ;
+
+        
+    
+    
+            circle_marker_4737b8157f77035dc381d7c2b33067ce.bindTooltip(
+                `<div>
+                     escuela ricardo eduardo latcham
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_caae0bb6862c9c873c173982ee281ba2 = L.marker(
+                [-33.491, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_e32216dd6ca9eeb042cc09fd9f24b5e9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e25\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_caae0bb6862c9c873c173982ee281ba2.setIcon(div_icon_e32216dd6ca9eeb042cc09fd9f24b5e9);
+        
+    
+            var circle_marker_26a0da97b41398a018ba558c52b1306c = L.circleMarker(
+                [-33.4907, -70.6882],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe894ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.24, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_d38bfdfaca07c16ac54d0d0a68bbabe5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_95cd9eebfb8451429e11b2c9877b3f53 = $(`<div id="html_95cd9eebfb8451429e11b2c9877b3f53" style="width: 100.0%; height: 100.0%;"><b>escuela risopatron</b><br>PASAJE F 4491<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>33</b></div>`)[0];
+                popup_d38bfdfaca07c16ac54d0d0a68bbabe5.setContent(html_95cd9eebfb8451429e11b2c9877b3f53);
+            
+        
+
+        circle_marker_26a0da97b41398a018ba558c52b1306c.bindPopup(popup_d38bfdfaca07c16ac54d0d0a68bbabe5)
+        ;
+
+        
+    
+    
+            circle_marker_26a0da97b41398a018ba558c52b1306c.bindTooltip(
+                `<div>
+                     escuela risopatron
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b775785578c07e8294c65525d7b5814b = L.marker(
+                [-33.4907, -70.6882],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_b15c30ba0b6e44dc43214f0658ab1b50 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e33\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b775785578c07e8294c65525d7b5814b.setIcon(div_icon_b15c30ba0b6e44dc43214f0658ab1b50);
+        
+    
+            var circle_marker_c59ec8aa0214d313e771c011370df66c = L.circleMarker(
+                [-33.4779, -70.6615],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed06cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.92, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_d5d94824e9ebd6165c022f7bcf3e98d1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_faff53adc274920789db4b96f6cb0939 = $(`<div id="html_faff53adc274920789db4b96f6cb0939" style="width: 100.0%; height: 100.0%;"><b>escuela rocio de los angeles</b><br>TRASLAVIÑA 1955<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>39</b></div>`)[0];
+                popup_d5d94824e9ebd6165c022f7bcf3e98d1.setContent(html_faff53adc274920789db4b96f6cb0939);
+            
+        
+
+        circle_marker_c59ec8aa0214d313e771c011370df66c.bindPopup(popup_d5d94824e9ebd6165c022f7bcf3e98d1)
+        ;
+
+        
+    
+    
+            circle_marker_c59ec8aa0214d313e771c011370df66c.bindTooltip(
+                `<div>
+                     escuela rocio de los angeles
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d536c4b7454f4632a7d45f662112f3cf = L.marker(
+                [-33.4779, -70.6615],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_e8c412157625275c8a7d1d62be7080ba = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e39\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d536c4b7454f4632a7d45f662112f3cf.setIcon(div_icon_e8c412157625275c8a7d1d62be7080ba);
+        
+    
+            var circle_marker_9d77f44820bee364977ed73c029e7953 = L.circleMarker(
+                [-33.5022, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdb79ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.36, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_6d825bd7f9e43a75f244e5dbe14cf15c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d3864b0ce3de1862f160b8a7c4649ec1 = $(`<div id="html_d3864b0ce3de1862f160b8a7c4649ec1" style="width: 100.0%; height: 100.0%;"><b>escuela villa sur</b><br>LOS MOLLES 2973<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>37</b></div>`)[0];
+                popup_6d825bd7f9e43a75f244e5dbe14cf15c.setContent(html_d3864b0ce3de1862f160b8a7c4649ec1);
+            
+        
+
+        circle_marker_9d77f44820bee364977ed73c029e7953.bindPopup(popup_6d825bd7f9e43a75f244e5dbe14cf15c)
+        ;
+
+        
+    
+    
+            circle_marker_9d77f44820bee364977ed73c029e7953.bindTooltip(
+                `<div>
+                     escuela villa sur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6bea0ab658dd97b59630bc81045389d0 = L.marker(
+                [-33.5022, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_fe689a8c9c9a0a31d9f8ecac1628e06f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e37\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6bea0ab658dd97b59630bc81045389d0.setIcon(div_icon_fe689a8c9c9a0a31d9f8ecac1628e06f);
+        
+    
+            var circle_marker_a7d38420941e77dbaef5e93da9d75ecc = L.circleMarker(
+                [-33.4824, -70.6751],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d40f20ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.2, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_670d70a0ceebf866544f5b347f489c02 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_01a14196737fa27b25ee12a30747a9e9 = $(`<div id="html_01a14196737fa27b25ee12a30747a9e9" style="width: 100.0%; height: 100.0%;"><b>liceo enrique backausse</b><br>JOSE BACKAUSSE 2850<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>65</b></div>`)[0];
+                popup_670d70a0ceebf866544f5b347f489c02.setContent(html_01a14196737fa27b25ee12a30747a9e9);
+            
+        
+
+        circle_marker_a7d38420941e77dbaef5e93da9d75ecc.bindPopup(popup_670d70a0ceebf866544f5b347f489c02)
+        ;
+
+        
+    
+    
+            circle_marker_a7d38420941e77dbaef5e93da9d75ecc.bindTooltip(
+                `<div>
+                     liceo enrique backausse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3e7685e33f35d58b22b0e39613993854 = L.marker(
+                [-33.4824, -70.6751],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_731b96870140314ccc5992d54ed81deb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e65\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3e7685e33f35d58b22b0e39613993854.setIcon(div_icon_731b96870140314ccc5992d54ed81deb);
+        
+    
+            var circle_marker_3328d6750b1b9a82c6cb27f42c1820f2 = L.circleMarker(
+                [-33.4945, -70.6833],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe894ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.24, "stroke": false, "weight": 3}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+        var popup_a34a7e05bb8352db05782c27744bb6b3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f6fba2130369413ddd508aa2e7aef01d = $(`<div id="html_f6fba2130369413ddd508aa2e7aef01d" style="width: 100.0%; height: 100.0%;"><b>liceo eugenio pereira salas</b><br>COOPERACION 4581<br>Votos Lista MARCO ANTONIO PINTO CALVO: <b>33</b></div>`)[0];
+                popup_a34a7e05bb8352db05782c27744bb6b3.setContent(html_f6fba2130369413ddd508aa2e7aef01d);
+            
+        
+
+        circle_marker_3328d6750b1b9a82c6cb27f42c1820f2.bindPopup(popup_a34a7e05bb8352db05782c27744bb6b3)
+        ;
+
+        
+    
+    
+            circle_marker_3328d6750b1b9a82c6cb27f42c1820f2.bindTooltip(
+                `<div>
+                     liceo eugenio pereira salas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9b2e039a3492e61adde92d7b3bf77a69 = L.marker(
+                [-33.4945, -70.6833],
+                {"zIndexOffset": 9999}
+            ).addTo(map_40cdf020e534a3eda539ae05678e7b16);
+        
+    
+            var div_icon_23ba20e014f04a7fbd0e17ceb1fe7b54 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e33\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9b2e039a3492e61adde92d7b3bf77a69.setIcon(div_icon_23ba20e014f04a7fbd0e17ceb1fe7b54);
+        
+    
+            map_40cdf020e534a3eda539ae05678e7b16.fitBounds(
+                [[-33.4888, -70.6653], [-33.4971, -70.6664], [-33.5016, -70.6875], [-33.4911, -70.673], [-33.5054, -70.6748], [-33.4971, -70.69], [-33.5073, -70.67], [-33.4877, -70.6797], [-33.5048, -70.6858], [-33.4808, -70.6602], [-33.491, -70.6824], [-33.4907, -70.6882], [-33.4779, -70.6615], [-33.5022, -70.6824], [-33.4824, -70.6751], [-33.4945, -70.6833]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

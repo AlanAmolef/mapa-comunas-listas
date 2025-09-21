@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7352423b210322ea092be65da915e1d1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7352423b210322ea092be65da915e1d1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7352423b210322ea092be65da915e1d1 = L.map(
+                "map_7352423b210322ea092be65da915e1d1",
+                {
+                    center: [-33.493775, -70.6766],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0920e42e6230001ae0f2b52d846b9773 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_0920e42e6230001ae0f2b52d846b9773.addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+    var color_map_d219099c670b404492379e551f961c14 = {};
+
+    
+    color_map_d219099c670b404492379e551f961c14.color = d3.scale.threshold()
+              .domain([2.0, 2.150300601202405, 2.3006012024048097, 2.4509018036072145, 2.6012024048096194, 2.7515030060120242, 2.901803607214429, 3.052104208416834, 3.202404809619239, 3.352705410821643, 3.503006012024048, 3.653306613226453, 3.8036072144288577, 3.9539078156312626, 4.104208416833668, 4.254509018036073, 4.404809619238478, 4.555110220440882, 4.705410821643286, 4.855711422845691, 5.006012024048096, 5.156312625250501, 5.306613226452906, 5.456913827655311, 5.6072144288577155, 5.75751503006012, 5.907815631262525, 6.05811623246493, 6.208416833667335, 6.35871743486974, 6.509018036072145, 6.659318637274549, 6.809619238476954, 6.959919839679359, 7.110220440881764, 7.260521042084168, 7.410821643286573, 7.561122244488978, 7.7114228456913825, 7.861723446893787, 8.012024048096192, 8.162324649298597, 8.312625250501002, 8.462925851703407, 8.613226452905812, 8.763527054108216, 8.913827655310621, 9.064128256513026, 9.214428857715431, 9.364729458917836, 9.51503006012024, 9.665330661322646, 9.81563126252505, 9.965931863727455, 10.11623246492986, 10.266533066132265, 10.41683366733467, 10.567134268537075, 10.71743486973948, 10.867735470941884, 11.01803607214429, 11.168336673346694, 11.318637274549099, 11.468937875751504, 11.619238476953909, 11.769539078156313, 11.919839679358718, 12.070140280561123, 12.220440881763528, 12.370741482965931, 12.521042084168336, 12.67134268537074, 12.821643286573146, 12.97194388777555, 13.122244488977955, 13.27254509018036, 13.422845691382765, 13.57314629258517, 13.723446893787575, 13.87374749498998, 14.024048096192384, 14.17434869739479, 14.324649298597194, 14.474949899799599, 14.625250501002004, 14.775551102204409, 14.925851703406813, 15.076152304609218, 15.226452905811623, 15.376753507014028, 15.527054108216433, 15.677354709418838, 15.827655310621243, 15.977955911823647, 16.128256513026052, 16.278557114228455, 16.428857715430862, 16.57915831663327, 16.72945891783567, 16.879759519038075, 17.03006012024048, 17.180360721442888, 17.33066132264529, 17.480961923847694, 17.6312625250501, 17.781563126252507, 17.93186372745491, 18.082164328657313, 18.23246492985972, 18.382765531062123, 18.53306613226453, 18.683366733466933, 18.83366733466934, 18.983967935871743, 19.13426853707415, 19.284569138276552, 19.43486973947896, 19.585170340681362, 19.73547094188377, 19.88577154308617, 20.03607214428858, 20.18637274549098, 20.336673346693388, 20.48697394789579, 20.637274549098198, 20.7875751503006, 20.937875751503007, 21.08817635270541, 21.238476953907817, 21.38877755511022, 21.539078156312627, 21.68937875751503, 21.839679358717436, 21.98997995991984, 22.140280561122246, 22.29058116232465, 22.440881763527056, 22.59118236472946, 22.741482965931862, 22.89178356713427, 23.04208416833667, 23.19238476953908, 23.34268537074148, 23.492985971943888, 23.64328657314629, 23.793587174348698, 23.9438877755511, 24.094188376753507, 24.24448897795591, 24.394789579158317, 24.54509018036072, 24.695390781563127, 24.84569138276553, 24.995991983967937, 25.14629258517034, 25.296593186372746, 25.44689378757515, 25.597194388777556, 25.74749498997996, 25.897795591182366, 26.04809619238477, 26.198396793587175, 26.34869739478958, 26.498997995991985, 26.649298597194388, 26.799599198396795, 26.949899799599198, 27.100200400801604, 27.250501002004007, 27.400801603206414, 27.551102204408817, 27.701402805611224, 27.851703406813627, 28.002004008016034, 28.152304609218437, 28.302605210420843, 28.452905811623246, 28.603206412825653, 28.753507014028056, 28.903807615230463, 29.054108216432866, 29.204408817635272, 29.354709418837675, 29.50501002004008, 29.655310621242485, 29.805611222444888, 29.955911823647295, 30.106212424849698, 30.256513026052104, 30.406813627254508, 30.557114228456914, 30.707414829659317, 30.857715430861724, 31.008016032064127, 31.158316633266534, 31.308617234468937, 31.458917835671343, 31.609218436873746, 31.759519038076153, 31.909819639278556, 32.06012024048096, 32.210420841683366, 32.360721442885776, 32.51102204408818, 32.66132264529058, 32.811623246492985, 32.96192384769539, 33.11222444889779, 33.2625250501002, 33.412825651302605, 33.563126252505015, 33.71342685370742, 33.86372745490982, 34.014028056112224, 34.16432865731463, 34.31462925851704, 34.46492985971944, 34.61523046092184, 34.765531062124246, 34.91583166332666, 35.06613226452906, 35.21643286573146, 35.366733466933866, 35.517034068136276, 35.66733466933868, 35.81763527054108, 35.967935871743485, 36.11823647294589, 36.2685370741483, 36.4188376753507, 36.569138276553105, 36.71943887775551, 36.86973947895792, 37.02004008016032, 37.170340681362724, 37.32064128256513, 37.47094188376754, 37.62124248496994, 37.77154308617234, 37.921843687374746, 38.07214428857716, 38.22244488977956, 38.37274549098196, 38.523046092184366, 38.673346693386776, 38.82364729458918, 38.97394789579158, 39.124248496993985, 39.274549098196395, 39.4248496993988, 39.5751503006012, 39.725450901803605, 39.875751503006015, 40.02605210420842, 40.17635270541082, 40.326653306613224, 40.476953907815634, 40.62725450901804, 40.77755511022044, 40.92785571142284, 41.078156312625254, 41.22845691382766, 41.37875751503006, 41.52905811623246, 41.67935871743487, 41.829659318637276, 41.97995991983968, 42.13026052104208, 42.28056112224449, 42.430861723446895, 42.5811623246493, 42.7314629258517, 42.88176352705411, 43.032064128256515, 43.18236472945892, 43.33266533066132, 43.482965931863724, 43.633266533066134, 43.78356713426854, 43.93386773547094, 44.08416833667334, 44.234468937875754, 44.38476953907816, 44.53507014028056, 44.68537074148296, 44.83567134268537, 44.985971943887776, 45.13627254509018, 45.28657314629258, 45.43687374749499, 45.587174348697395, 45.7374749498998, 45.8877755511022, 46.03807615230461, 46.188376753507015, 46.33867735470942, 46.48897795591182, 46.63927855711423, 46.789579158316634, 46.93987975951904, 47.09018036072144, 47.24048096192385, 47.390781563126254, 47.54108216432866, 47.69138276553106, 47.84168336673347, 47.99198396793587, 48.142284569138276, 48.29258517034068, 48.44288577154309, 48.59318637274549, 48.743486973947896, 48.8937875751503, 49.04408817635271, 49.19438877755511, 49.344689378757515, 49.49498997995992, 49.64529058116233, 49.79559118236473, 49.945891783567134, 50.09619238476954, 50.24649298597194, 50.39679358717435, 50.547094188376754, 50.69739478957916, 50.84769539078156, 50.99799599198397, 51.14829659318637, 51.298597194388776, 51.44889779559118, 51.59919839679359, 51.74949899799599, 51.899799599198396, 52.0501002004008, 52.20040080160321, 52.35070140280561, 52.501002004008015, 52.65130260521042, 52.80160320641283, 52.95190380761523, 53.102204408817634, 53.25250501002004, 53.40280561122245, 53.55310621242485, 53.703406813627254, 53.85370741482966, 54.00400801603207, 54.15430861723447, 54.30460921843687, 54.454909819639276, 54.605210420841686, 54.75551102204409, 54.90581162324649, 55.056112224448896, 55.206412825651306, 55.35671342685371, 55.50701402805611, 55.657314629258515, 55.807615230460925, 55.95791583166333, 56.10821643286573, 56.258517034068134, 56.408817635270545, 56.55911823647295, 56.70941883767535, 56.859719438877754, 57.01002004008016, 57.16032064128257, 57.31062124248497, 57.46092184368737, 57.611222444889776, 57.76152304609219, 57.91182364729459, 58.06212424849699, 58.212424849699396, 58.362725450901806, 58.51302605210421, 58.66332665330661, 58.813627254509015, 58.963927855711425, 59.11422845691383, 59.26452905811623, 59.414829659318634, 59.565130260521045, 59.71543086172345, 59.86573146292585, 60.016032064128254, 60.166332665330664, 60.31663326653307, 60.46693386773547, 60.61723446893787, 60.76753507014028, 60.91783567134269, 61.06813627254509, 61.21843687374749, 61.3687374749499, 61.519038076152306, 61.66933867735471, 61.81963927855711, 61.96993987975952, 62.120240480961925, 62.27054108216433, 62.42084168336673, 62.57114228456914, 62.721442885771545, 62.87174348697395, 63.02204408817635, 63.17234468937876, 63.322645290581164, 63.47294589178357, 63.62324649298597, 63.77354709418837, 63.92384769539078, 64.0741482965932, 64.22444889779558, 64.374749498998, 64.5250501002004, 64.6753507014028, 64.82565130260521, 64.97595190380761, 65.12625250501003, 65.27655310621242, 65.42685370741484, 65.57715430861722, 65.72745490981964, 65.87775551102204, 66.02805611222445, 66.17835671342685, 66.32865731462925, 66.47895791583166, 66.62925851703407, 66.77955911823648, 66.92985971943888, 67.08016032064128, 67.23046092184369, 67.38076152304609, 67.53106212424849, 67.6813627254509, 67.83166332665331, 67.98196392785572, 68.13226452905812, 68.28256513026052, 68.43286573146293, 68.58316633266533, 68.73346693386773, 68.88376753507013, 69.03406813627255, 69.18436873747495, 69.33466933867736, 69.48496993987976, 69.63527054108216, 69.78557114228457, 69.93587174348697, 70.08617234468937, 70.23647294589178, 70.3867735470942, 70.5370741482966, 70.687374749499, 70.8376753507014, 70.9879759519038, 71.13827655310621, 71.28857715430861, 71.43887775551102, 71.58917835671343, 71.73947895791584, 71.88977955911824, 72.04008016032064, 72.19038076152304, 72.34068136272545, 72.49098196392785, 72.64128256513025, 72.79158316633267, 72.94188376753507, 73.09218436873748, 73.24248496993988, 73.39278557114228, 73.54308617234469, 73.69338677354709, 73.84368737474949, 73.99398797595191, 74.14428857715431, 74.29458917835672, 74.44488977955912, 74.59519038076152, 74.74549098196393, 74.89579158316633, 75.04609218436873, 75.19639278557115, 75.34669338677355, 75.49699398797596, 75.64729458917836, 75.79759519038076, 75.94789579158316, 76.09819639278557, 76.24849699398797, 76.39879759519039, 76.54909819639279, 76.6993987975952, 76.8496993987976, 77.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_d219099c670b404492379e551f961c14.x = d3.scale.linear()
+              .domain([2.0, 77.0])
+              .range([0, 450 - 50]);
+
+    color_map_d219099c670b404492379e551f961c14.legend = L.control({position: 'topright'});
+    color_map_d219099c670b404492379e551f961c14.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_d219099c670b404492379e551f961c14.legend.addTo(map_7352423b210322ea092be65da915e1d1);
+
+    color_map_d219099c670b404492379e551f961c14.xAxis = d3.svg.axis()
+        .scale(color_map_d219099c670b404492379e551f961c14.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([2.0, 11.375, 20.75, 30.125, 39.5, 48.875, 58.25, 67.625, 77.0]);
+
+    color_map_d219099c670b404492379e551f961c14.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_d219099c670b404492379e551f961c14.g = color_map_d219099c670b404492379e551f961c14.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_d219099c670b404492379e551f961c14.g.selectAll("rect")
+        .data(color_map_d219099c670b404492379e551f961c14.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_d219099c670b404492379e551f961c14.x(color_map_d219099c670b404492379e551f961c14.color.domain()[i - 1]) : color_map_d219099c670b404492379e551f961c14.x.range()[0],
+            x1: i < color_map_d219099c670b404492379e551f961c14.color.domain().length ? color_map_d219099c670b404492379e551f961c14.x(color_map_d219099c670b404492379e551f961c14.color.domain()[i]) : color_map_d219099c670b404492379e551f961c14.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_d219099c670b404492379e551f961c14.g.call(color_map_d219099c670b404492379e551f961c14.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista RODOLFO ALEXIS MU\u00d1OZ MU\u00d1OZ por local");
+    
+            var circle_marker_d440d149d74a4f090f7fbe7d019af2ff = L.circleMarker(
+                [-33.4888, -70.6653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9f43ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.16, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_5dbaa65f9602cb2e39c75f8dbc9e0410 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0e7fb5c972d8a937eb7ab1a381360225 = $(`<div id="html_0e7fb5c972d8a937eb7ab1a381360225" style="width: 100.0%; height: 100.0%;"><b>centro educativo republica mexicana</b><br>AVENIDA SALVADOR ALLENDE 2140<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>35</b></div>`)[0];
+                popup_5dbaa65f9602cb2e39c75f8dbc9e0410.setContent(html_0e7fb5c972d8a937eb7ab1a381360225);
+            
+        
+
+        circle_marker_d440d149d74a4f090f7fbe7d019af2ff.bindPopup(popup_5dbaa65f9602cb2e39c75f8dbc9e0410)
+        ;
+
+        
+    
+    
+            circle_marker_d440d149d74a4f090f7fbe7d019af2ff.bindTooltip(
+                `<div>
+                     centro educativo republica mexicana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f10a8be6ae7743848ce4af8c19c15f09 = L.marker(
+                [-33.4888, -70.6653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_066e6da7b092175cf0fbbb1420bd52ae = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e35\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f10a8be6ae7743848ce4af8c19c15f09.setIcon(div_icon_066e6da7b092175cf0fbbb1420bd52ae);
+        
+    
+            var circle_marker_f929f68bdf25135bd2ba82ddfadd1c79 = L.circleMarker(
+                [-33.4971, -70.6664],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff0a7ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.493333333333334, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_051bb63c3bab7618f50d05dd7df045ac = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c126210ac7b8da061f41207276abf421 = $(`<div id="html_c126210ac7b8da061f41207276abf421" style="width: 100.0%; height: 100.0%;"><b>colegio arcangel gabriel N°2</b><br>LAZO 1730<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>10</b></div>`)[0];
+                popup_051bb63c3bab7618f50d05dd7df045ac.setContent(html_c126210ac7b8da061f41207276abf421);
+            
+        
+
+        circle_marker_f929f68bdf25135bd2ba82ddfadd1c79.bindPopup(popup_051bb63c3bab7618f50d05dd7df045ac)
+        ;
+
+        
+    
+    
+            circle_marker_f929f68bdf25135bd2ba82ddfadd1c79.bindTooltip(
+                `<div>
+                     colegio arcangel gabriel N°2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_787c8f18383c47d70d50c4e0df132853 = L.marker(
+                [-33.4971, -70.6664],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_b77badef70730528ab89b2f715e5750f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e10\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_787c8f18383c47d70d50c4e0df132853.setIcon(div_icon_b77badef70730528ab89b2f715e5750f);
+        
+    
+            var circle_marker_811f8e001c4f95f46ff1ca6debd6645c = L.circleMarker(
+                [-33.5016, -70.6875],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe187ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.8, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_7680e132d6225f4164956fe0696ee135 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1ef5d3c0d1eb8240b9dd161010a6680e = $(`<div id="html_1ef5d3c0d1eb8240b9dd161010a6680e" style="width: 100.0%; height: 100.0%;"><b>colegio grace school</b><br>ARMADA NACIONAL 6136<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>17</b></div>`)[0];
+                popup_7680e132d6225f4164956fe0696ee135.setContent(html_1ef5d3c0d1eb8240b9dd161010a6680e);
+            
+        
+
+        circle_marker_811f8e001c4f95f46ff1ca6debd6645c.bindPopup(popup_7680e132d6225f4164956fe0696ee135)
+        ;
+
+        
+    
+    
+            circle_marker_811f8e001c4f95f46ff1ca6debd6645c.bindTooltip(
+                `<div>
+                     colegio grace school
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ed0f69b8b0d01421fef5efa411f688f3 = L.marker(
+                [-33.5016, -70.6875],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_2e432593055c8f7889282551d6a1df79 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e17\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ed0f69b8b0d01421fef5efa411f688f3.setIcon(div_icon_2e432593055c8f7889282551d6a1df79);
+        
+    
+            var circle_marker_7dca9276fd5ed60f9ce62ccfb9479f96 = L.circleMarker(
+                [-33.4911, -70.673],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff4b0ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.120000000000001, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_204689f2f9414cc095670d219071b7a2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5c157a0209c5d9e6753bf87e2ce236a3 = $(`<div id="html_5c157a0209c5d9e6753bf87e2ce236a3" style="width: 100.0%; height: 100.0%;"><b>colegioantonio acevedo hernandez</b><br>AV. LA MARINA 2835<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>8</b></div>`)[0];
+                popup_204689f2f9414cc095670d219071b7a2.setContent(html_5c157a0209c5d9e6753bf87e2ce236a3);
+            
+        
+
+        circle_marker_7dca9276fd5ed60f9ce62ccfb9479f96.bindPopup(popup_204689f2f9414cc095670d219071b7a2)
+        ;
+
+        
+    
+    
+            circle_marker_7dca9276fd5ed60f9ce62ccfb9479f96.bindTooltip(
+                `<div>
+                     colegioantonio acevedo hernandez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_20b33fd5eede1ee69bbf1c8be2b3ed2d = L.marker(
+                [-33.4911, -70.673],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_7b26c7c7b612ac88909be3947f830bbc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e8\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_20b33fd5eede1ee69bbf1c8be2b3ed2d.setIcon(div_icon_7b26c7c7b612ac88909be3947f830bbc);
+        
+    
+            var circle_marker_c451fa11a9a4e00db386dd1b1cb362c7 = L.circleMarker(
+                [-33.5054, -70.6748],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.933333333333334, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_04e4c53049e563dc5edbd83938aec387 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_20915a7900a25f0d004685caeeb07e98 = $(`<div id="html_20915a7900a25f0d004685caeeb07e98" style="width: 100.0%; height: 100.0%;"><b>escuela boroa</b><br>BOROA 6079<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>7</b></div>`)[0];
+                popup_04e4c53049e563dc5edbd83938aec387.setContent(html_20915a7900a25f0d004685caeeb07e98);
+            
+        
+
+        circle_marker_c451fa11a9a4e00db386dd1b1cb362c7.bindPopup(popup_04e4c53049e563dc5edbd83938aec387)
+        ;
+
+        
+    
+    
+            circle_marker_c451fa11a9a4e00db386dd1b1cb362c7.bindTooltip(
+                `<div>
+                     escuela boroa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_91d6614d156c630ce690a0d439035a89 = L.marker(
+                [-33.5054, -70.6748],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_b9839985361397cac2251a9b8e9121e3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e7\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_91d6614d156c630ce690a0d439035a89.setIcon(div_icon_b9839985361397cac2251a9b8e9121e3);
+        
+    
+            var circle_marker_b1668a8872a88ddf38b52abb282347b6 = L.circleMarker(
+                [-33.4971, -70.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.933333333333334, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_e6ca304faf6c56a5d856b1f03b657a8e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_307a07beb0f8c4af00bca0cd3f6c4d36 = $(`<div id="html_307a07beb0f8c4af00bca0cd3f6c4d36" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de barcelona</b><br>MAYA 5961<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>7</b></div>`)[0];
+                popup_e6ca304faf6c56a5d856b1f03b657a8e.setContent(html_307a07beb0f8c4af00bca0cd3f6c4d36);
+            
+        
+
+        circle_marker_b1668a8872a88ddf38b52abb282347b6.bindPopup(popup_e6ca304faf6c56a5d856b1f03b657a8e)
+        ;
+
+        
+    
+    
+            circle_marker_b1668a8872a88ddf38b52abb282347b6.bindTooltip(
+                `<div>
+                     escuela ciudad de barcelona
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f2db0448cae3f47713df72f387e5f43a = L.marker(
+                [-33.4971, -70.69],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_60db9b1e6a33ccdc02d3b3d7240d961b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e7\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f2db0448cae3f47713df72f387e5f43a.setIcon(div_icon_60db9b1e6a33ccdc02d3b3d7240d961b);
+        
+    
+            var circle_marker_cf95f822f250e67b70be28bd735e271f = L.circleMarker(
+                [-33.5073, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea345ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.973333333333333, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_c6cc695c87a8dad789cec7a27544cfc6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9b80f0a51c0ae3a37894f497475db716 = $(`<div id="html_9b80f0a51c0ae3a37894f497475db716" style="width: 100.0%; height: 100.0%;"><b>escuela consolidada davila</b><br>AVENIDA JOSE JOAQUIN PRIETO 6075<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>34</b></div>`)[0];
+                popup_c6cc695c87a8dad789cec7a27544cfc6.setContent(html_9b80f0a51c0ae3a37894f497475db716);
+            
+        
+
+        circle_marker_cf95f822f250e67b70be28bd735e271f.bindPopup(popup_c6cc695c87a8dad789cec7a27544cfc6)
+        ;
+
+        
+    
+    
+            circle_marker_cf95f822f250e67b70be28bd735e271f.bindTooltip(
+                `<div>
+                     escuela consolidada davila
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5aa7285b00edaaef53cb9c59a5128a8 = L.marker(
+                [-33.5073, -70.67],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_1567d9ff89890a9a4bfba0ea483e71fd = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e34\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a5aa7285b00edaaef53cb9c59a5128a8.setIcon(div_icon_1567d9ff89890a9a4bfba0ea483e71fd);
+        
+    
+            var circle_marker_7b9e2aac2354a9d5a51ec6608d3e9d69 = L.circleMarker(
+                [-33.4877, -70.6797],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_3d330096bcb8ce4c9c7b0fe55e0d949c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fa751746b849cd1ffc60a46c9ee5727c = $(`<div id="html_fa751746b849cd1ffc60a46c9ee5727c" style="width: 100.0%; height: 100.0%;"><b>escuela la victoria</b><br>PRIMERO DE MAYO 4710<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>2</b></div>`)[0];
+                popup_3d330096bcb8ce4c9c7b0fe55e0d949c.setContent(html_fa751746b849cd1ffc60a46c9ee5727c);
+            
+        
+
+        circle_marker_7b9e2aac2354a9d5a51ec6608d3e9d69.bindPopup(popup_3d330096bcb8ce4c9c7b0fe55e0d949c)
+        ;
+
+        
+    
+    
+            circle_marker_7b9e2aac2354a9d5a51ec6608d3e9d69.bindTooltip(
+                `<div>
+                     escuela la victoria
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c431f15b6bdf40e982f5541cf7a80309 = L.marker(
+                [-33.4877, -70.6797],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_f6a233560112161a83b65416afb41080 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e2\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c431f15b6bdf40e982f5541cf7a80309.setIcon(div_icon_f6a233560112161a83b65416afb41080);
+        
+    
+            var circle_marker_b525072398fcb7868583ebdc85784538 = L.circleMarker(
+                [-33.5048, -70.6858],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff8b9ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.746666666666666, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_52c085666e3ac51073051e87db1f8172 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_27bc4706299bab5d80533bfbfe57dc5e = $(`<div id="html_27bc4706299bab5d80533bfbfe57dc5e" style="width: 100.0%; height: 100.0%;"><b>escuela lo valledor</b><br>ALESSANDRI 6378<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>6</b></div>`)[0];
+                popup_52c085666e3ac51073051e87db1f8172.setContent(html_27bc4706299bab5d80533bfbfe57dc5e);
+            
+        
+
+        circle_marker_b525072398fcb7868583ebdc85784538.bindPopup(popup_52c085666e3ac51073051e87db1f8172)
+        ;
+
+        
+    
+    
+            circle_marker_b525072398fcb7868583ebdc85784538.bindTooltip(
+                `<div>
+                     escuela lo valledor
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_913176ab4e6daac61e5b32c397318562 = L.marker(
+                [-33.5048, -70.6858],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_0795cdc1ce6e84ed395bf01e2897f526 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e6\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_913176ab4e6daac61e5b32c397318562.setIcon(div_icon_0795cdc1ce6e84ed395bf01e2897f526);
+        
+    
+            var circle_marker_e69ca0079b9cc38ac3f878086ad33f12 = L.circleMarker(
+                [-33.4808, -70.6602],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f13723ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.52, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_a17393955e7c62871877ea96e2df7cc7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a3ac8701c0108891bb47b32bb9d76cea = $(`<div id="html_a3ac8701c0108891bb47b32bb9d76cea" style="width: 100.0%; height: 100.0%;"><b>escuela poetas de chile</b><br>JUAN BASTIDAS 2890<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>53</b></div>`)[0];
+                popup_a17393955e7c62871877ea96e2df7cc7.setContent(html_a3ac8701c0108891bb47b32bb9d76cea);
+            
+        
+
+        circle_marker_e69ca0079b9cc38ac3f878086ad33f12.bindPopup(popup_a17393955e7c62871877ea96e2df7cc7)
+        ;
+
+        
+    
+    
+            circle_marker_e69ca0079b9cc38ac3f878086ad33f12.bindTooltip(
+                `<div>
+                     escuela poetas de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e21a784f3c673a5f3c0731abb41b3556 = L.marker(
+                [-33.4808, -70.6602],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_d948d433ff24fe24c1d6355d77d0e900 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e53\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e21a784f3c673a5f3c0731abb41b3556.setIcon(div_icon_d948d433ff24fe24c1d6355d77d0e900);
+        
+    
+            var circle_marker_437e10d4cd2a7d2d8779b5cd1ac022f1 = L.circleMarker(
+                [-33.491, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.933333333333334, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_20a88f615b8259edcabc9a348a7e86bf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5e379e49190b0e1d5c25f753d5843a9f = $(`<div id="html_5e379e49190b0e1d5c25f753d5843a9f" style="width: 100.0%; height: 100.0%;"><b>escuela ricardo eduardo latcham</b><br>FELIX OSEGUEDA 4031<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>7</b></div>`)[0];
+                popup_20a88f615b8259edcabc9a348a7e86bf.setContent(html_5e379e49190b0e1d5c25f753d5843a9f);
+            
+        
+
+        circle_marker_437e10d4cd2a7d2d8779b5cd1ac022f1.bindPopup(popup_20a88f615b8259edcabc9a348a7e86bf)
+        ;
+
+        
+    
+    
+            circle_marker_437e10d4cd2a7d2d8779b5cd1ac022f1.bindTooltip(
+                `<div>
+                     escuela ricardo eduardo latcham
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9aa0f1cf19ac411b17ed71c95708b024 = L.marker(
+                [-33.491, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_ea2ec8dec418fba8c5ee94629469bb8a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e7\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9aa0f1cf19ac411b17ed71c95708b024.setIcon(div_icon_ea2ec8dec418fba8c5ee94629469bb8a);
+        
+    
+            var circle_marker_637f8cd38274f05980820b18f6e97f3e = L.circleMarker(
+                [-33.4907, -70.6882],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff2abff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.306666666666667, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_13857e0142f7f4480077223603475a71 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dc0dd223c816c261a966527af1e9318c = $(`<div id="html_dc0dd223c816c261a966527af1e9318c" style="width: 100.0%; height: 100.0%;"><b>escuela risopatron</b><br>PASAJE F 4491<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>9</b></div>`)[0];
+                popup_13857e0142f7f4480077223603475a71.setContent(html_dc0dd223c816c261a966527af1e9318c);
+            
+        
+
+        circle_marker_637f8cd38274f05980820b18f6e97f3e.bindPopup(popup_13857e0142f7f4480077223603475a71)
+        ;
+
+        
+    
+    
+            circle_marker_637f8cd38274f05980820b18f6e97f3e.bindTooltip(
+                `<div>
+                     escuela risopatron
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e440b299dc1691e7dbf10a68c39f2391 = L.marker(
+                [-33.4907, -70.6882],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_79a18476131544b656758629cf9ef8d7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e9\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e440b299dc1691e7dbf10a68c39f2391.setIcon(div_icon_79a18476131544b656758629cf9ef8d7);
+        
+    
+            var circle_marker_dd1f0d7caf1e7a45e751373e408a0ddb = L.circleMarker(
+                [-33.4779, -70.6615],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_93a11968ce30c8298aeda9286b2365e6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d3b096df93a71e207ac8a14a0783f732 = $(`<div id="html_d3b096df93a71e207ac8a14a0783f732" style="width: 100.0%; height: 100.0%;"><b>escuela rocio de los angeles</b><br>TRASLAVIÑA 1955<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>77</b></div>`)[0];
+                popup_93a11968ce30c8298aeda9286b2365e6.setContent(html_d3b096df93a71e207ac8a14a0783f732);
+            
+        
+
+        circle_marker_dd1f0d7caf1e7a45e751373e408a0ddb.bindPopup(popup_93a11968ce30c8298aeda9286b2365e6)
+        ;
+
+        
+    
+    
+            circle_marker_dd1f0d7caf1e7a45e751373e408a0ddb.bindTooltip(
+                `<div>
+                     escuela rocio de los angeles
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8dab6ab658717277ef78a34db7f5317e = L.marker(
+                [-33.4779, -70.6615],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_0b20e601d769fbcaa1c848c6ed60ccda = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e77\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8dab6ab658717277ef78a34db7f5317e.setIcon(div_icon_0b20e601d769fbcaa1c848c6ed60ccda);
+        
+    
+            var circle_marker_ed845e7c4578224f809d2f068ad1d755 = L.circleMarker(
+                [-33.5022, -70.6824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff4b0ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.120000000000001, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_1fcb5a50bf606534ec5767c4e3346649 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ec4868d969f3c7419575fb219b600fe2 = $(`<div id="html_ec4868d969f3c7419575fb219b600fe2" style="width: 100.0%; height: 100.0%;"><b>escuela villa sur</b><br>LOS MOLLES 2973<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>8</b></div>`)[0];
+                popup_1fcb5a50bf606534ec5767c4e3346649.setContent(html_ec4868d969f3c7419575fb219b600fe2);
+            
+        
+
+        circle_marker_ed845e7c4578224f809d2f068ad1d755.bindPopup(popup_1fcb5a50bf606534ec5767c4e3346649)
+        ;
+
+        
+    
+    
+            circle_marker_ed845e7c4578224f809d2f068ad1d755.bindTooltip(
+                `<div>
+                     escuela villa sur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dff7e2e0795942d86da5a8064be0c61d = L.marker(
+                [-33.5022, -70.6824],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_72baa4232aec6fd2263732a131c03233 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e8\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dff7e2e0795942d86da5a8064be0c61d.setIcon(div_icon_72baa4232aec6fd2263732a131c03233);
+        
+    
+            var circle_marker_bb8265060359c85aed3d581ac79de06d = L.circleMarker(
+                [-33.4824, -70.6751],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec9dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.866666666666667, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_ebf7671c67cce28d0cf3a494627957b4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d61abef0c48cea90aea7cf686aa09171 = $(`<div id="html_d61abef0c48cea90aea7cf686aa09171" style="width: 100.0%; height: 100.0%;"><b>liceo enrique backausse</b><br>JOSE BACKAUSSE 2850<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>12</b></div>`)[0];
+                popup_ebf7671c67cce28d0cf3a494627957b4.setContent(html_d61abef0c48cea90aea7cf686aa09171);
+            
+        
+
+        circle_marker_bb8265060359c85aed3d581ac79de06d.bindPopup(popup_ebf7671c67cce28d0cf3a494627957b4)
+        ;
+
+        
+    
+    
+            circle_marker_bb8265060359c85aed3d581ac79de06d.bindTooltip(
+                `<div>
+                     liceo enrique backausse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_71567fcdfc14fa2cd86968515116649f = L.marker(
+                [-33.4824, -70.6751],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_600bb32ff07eb6b49bc5d3e0caf892f6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e12\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_71567fcdfc14fa2cd86968515116649f.setIcon(div_icon_600bb32ff07eb6b49bc5d3e0caf892f6);
+        
+    
+            var circle_marker_a8fddd6cfc456f9d8ba4c0de8a2d9246 = L.circleMarker(
+                [-33.4945, -70.6833],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe690ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.426666666666666, "stroke": false, "weight": 3}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+        var popup_4a732122a6b5fd998398f10a00a4f46d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e25637ffc2e3b251f61eac8e2bf3101f = $(`<div id="html_e25637ffc2e3b251f61eac8e2bf3101f" style="width: 100.0%; height: 100.0%;"><b>liceo eugenio pereira salas</b><br>COOPERACION 4581<br>Votos Lista RODOLFO ALEXIS MUÑOZ MUÑOZ: <b>15</b></div>`)[0];
+                popup_4a732122a6b5fd998398f10a00a4f46d.setContent(html_e25637ffc2e3b251f61eac8e2bf3101f);
+            
+        
+
+        circle_marker_a8fddd6cfc456f9d8ba4c0de8a2d9246.bindPopup(popup_4a732122a6b5fd998398f10a00a4f46d)
+        ;
+
+        
+    
+    
+            circle_marker_a8fddd6cfc456f9d8ba4c0de8a2d9246.bindTooltip(
+                `<div>
+                     liceo eugenio pereira salas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9c89fb90ade90d6b5051dc6a9cb56bd9 = L.marker(
+                [-33.4945, -70.6833],
+                {"zIndexOffset": 9999}
+            ).addTo(map_7352423b210322ea092be65da915e1d1);
+        
+    
+            var div_icon_529678e967b9859a4b44da418909ac2e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9c89fb90ade90d6b5051dc6a9cb56bd9.setIcon(div_icon_529678e967b9859a4b44da418909ac2e);
+        
+    
+            map_7352423b210322ea092be65da915e1d1.fitBounds(
+                [[-33.4888, -70.6653], [-33.4971, -70.6664], [-33.5016, -70.6875], [-33.4911, -70.673], [-33.5054, -70.6748], [-33.4971, -70.69], [-33.5073, -70.67], [-33.4877, -70.6797], [-33.5048, -70.6858], [-33.4808, -70.6602], [-33.491, -70.6824], [-33.4907, -70.6882], [-33.4779, -70.6615], [-33.5022, -70.6824], [-33.4824, -70.6751], [-33.4945, -70.6833]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>
