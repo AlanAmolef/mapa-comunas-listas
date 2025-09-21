@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_082c5b9513b99fb94b0c3e3116e229ff {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_082c5b9513b99fb94b0c3e3116e229ff" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_082c5b9513b99fb94b0c3e3116e229ff = L.map(
+                "map_082c5b9513b99fb94b0c3e3116e229ff",
+                {
+                    center: [-33.49671562499999, -70.652783125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_eabff9bd34f6595c3d77a8ac0d20e451 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_eabff9bd34f6595c3d77a8ac0d20e451.addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+    var color_map_a0b533deb6d5c7647fdeb6dd32da3e29 = {};
+
+    
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.color = d3.scale.threshold()
+              .domain([0.0, 0.12224448897795591, 0.24448897795591182, 0.3667334669338677, 0.48897795591182364, 0.6112224448897795, 0.7334669338677354, 0.8557114228456913, 0.9779559118236473, 1.1002004008016033, 1.222444889779559, 1.344689378757515, 1.4669338677354709, 1.5891783567134268, 1.7114228456913827, 1.8336673346693386, 1.9559118236472945, 2.0781563126252505, 2.2004008016032066, 2.3226452905811623, 2.444889779559118, 2.567134268537074, 2.68937875751503, 2.811623246492986, 2.9338677354709417, 3.056112224448898, 3.1783567134268536, 3.3006012024048097, 3.4228456913827654, 3.5450901803607215, 3.6673346693386772, 3.7895791583166334, 3.911823647294589, 4.034068136272545, 4.156312625250501, 4.278557114228457, 4.400801603206413, 4.5230460921843685, 4.645290581162325, 4.767535070140281, 4.889779559118236, 5.012024048096192, 5.134268537074148, 5.2565130260521045, 5.37875751503006, 5.501002004008016, 5.623246492985972, 5.745490981963928, 5.867735470941883, 5.98997995991984, 6.112224448897796, 6.234468937875752, 6.356713426853707, 6.478957915831663, 6.601202404809619, 6.7234468937875755, 6.845691382765531, 6.967935871743487, 7.090180360721443, 7.212424849699399, 7.3346693386773545, 7.456913827655311, 7.579158316633267, 7.701402805611222, 7.823647294589178, 7.945891783567134, 8.06813627254509, 8.190380761523047, 8.312625250501002, 8.434869739478957, 8.557114228456914, 8.67935871743487, 8.801603206412826, 8.923847695390782, 9.046092184368737, 9.168336673346694, 9.29058116232465, 9.412825651302605, 9.535070140280562, 9.657314629258517, 9.779559118236472, 9.901803607214429, 10.024048096192384, 10.146292585170341, 10.268537074148297, 10.390781563126252, 10.513026052104209, 10.635270541082164, 10.75751503006012, 10.879759519038076, 11.002004008016032, 11.124248496993989, 11.246492985971944, 11.3687374749499, 11.490981963927856, 11.613226452905812, 11.735470941883767, 11.857715430861724, 11.97995991983968, 12.102204408817636, 12.224448897795591, 12.346693386773547, 12.468937875751504, 12.591182364729459, 12.713426853707414, 12.835671342685371, 12.957915831663327, 13.080160320641282, 13.202404809619239, 13.324649298597194, 13.446893787575151, 13.569138276553106, 13.691382765531062, 13.813627254509019, 13.935871743486974, 14.05811623246493, 14.180360721442886, 14.302605210420841, 14.424849699398798, 14.547094188376754, 14.669338677354709, 14.791583166332666, 14.913827655310621, 15.036072144288577, 15.158316633266534, 15.280561122244489, 15.402805611222444, 15.525050100200401, 15.647294589178356, 15.769539078156313, 15.891783567134269, 16.014028056112224, 16.13627254509018, 16.258517034068138, 16.380761523046093, 16.50300601202405, 16.625250501002004, 16.74749498997996, 16.869739478957914, 16.991983967935873, 17.11422845691383, 17.236472945891784, 17.35871743486974, 17.480961923847694, 17.603206412825653, 17.725450901803608, 17.847695390781563, 17.96993987975952, 18.092184368737474, 18.21442885771543, 18.336673346693388, 18.458917835671343, 18.5811623246493, 18.703406813627254, 18.82565130260521, 18.947895791583168, 19.070140280561123, 19.19238476953908, 19.314629258517034, 19.43687374749499, 19.559118236472944, 19.681362725450903, 19.803607214428858, 19.925851703406813, 20.04809619238477, 20.170340681362724, 20.292585170340683, 20.414829659318638, 20.537074148296593, 20.65931863727455, 20.781563126252504, 20.903807615230463, 21.026052104208418, 21.148296593186373, 21.27054108216433, 21.392785571142284, 21.51503006012024, 21.637274549098198, 21.759519038076153, 21.881763527054108, 22.004008016032063, 22.12625250501002, 22.248496993987978, 22.370741482965933, 22.492985971943888, 22.615230460921843, 22.7374749498998, 22.859719438877754, 22.981963927855713, 23.104208416833668, 23.226452905811623, 23.34869739478958, 23.470941883767534, 23.593186372745492, 23.715430861723448, 23.837675350701403, 23.95991983967936, 24.082164328657313, 24.204408817635272, 24.326653306613228, 24.448897795591183, 24.571142284569138, 24.693386773547093, 24.81563126252505, 24.937875751503007, 25.060120240480963, 25.182364729458918, 25.304609218436873, 25.42685370741483, 25.549098196392787, 25.671342685370742, 25.793587174348698, 25.915831663326653, 26.03807615230461, 26.160320641282564, 26.282565130260522, 26.404809619238478, 26.527054108216433, 26.649298597194388, 26.771543086172343, 26.893787575150302, 27.016032064128257, 27.138276553106213, 27.260521042084168, 27.382765531062123, 27.50501002004008, 27.627254509018037, 27.749498997995993, 27.871743486973948, 27.993987975951903, 28.11623246492986, 28.238476953907817, 28.360721442885772, 28.482965931863728, 28.605210420841683, 28.727454909819638, 28.849699398797597, 28.971943887775552, 29.094188376753507, 29.216432865731463, 29.338677354709418, 29.460921843687373, 29.583166332665332, 29.705410821643287, 29.827655310621243, 29.949899799599198, 30.072144288577153, 30.194388777555112, 30.316633266533067, 30.438877755511022, 30.561122244488978, 30.683366733466933, 30.805611222444888, 30.927855711422847, 31.050100200400802, 31.172344689378757, 31.294589178356713, 31.416833667334668, 31.539078156312627, 31.661322645290582, 31.783567134268537, 31.905811623246493, 32.02805611222445, 32.1503006012024, 32.27254509018036, 32.394789579158314, 32.517034068136276, 32.63927855711423, 32.76152304609219, 32.88376753507014, 33.0060120240481, 33.12825651302605, 33.25050100200401, 33.37274549098196, 33.49498997995992, 33.61723446893787, 33.73947895791583, 33.86172344689379, 33.983967935871746, 34.1062124248497, 34.22845691382766, 34.35070140280561, 34.47294589178357, 34.59519038076152, 34.71743486973948, 34.83967935871743, 34.96192384769539, 35.08416833667334, 35.206412825651306, 35.32865731462926, 35.450901803607216, 35.57314629258517, 35.69539078156313, 35.81763527054108, 35.93987975951904, 36.06212424849699, 36.18436873747495, 36.3066132264529, 36.42885771543086, 36.55110220440882, 36.673346693386776, 36.79559118236473, 36.91783567134269, 37.04008016032064, 37.1623246492986, 37.28456913827655, 37.40681362725451, 37.52905811623246, 37.65130260521042, 37.77354709418837, 37.895791583166336, 38.01803607214429, 38.140280561122246, 38.2625250501002, 38.38476953907816, 38.50701402805611, 38.62925851703407, 38.75150300601202, 38.87374749498998, 38.99599198396793, 39.11823647294589, 39.24048096192385, 39.362725450901806, 39.48496993987976, 39.607214428857716, 39.72945891783567, 39.85170340681363, 39.97394789579158, 40.09619238476954, 40.21843687374749, 40.34068136272545, 40.46292585170341, 40.585170340681366, 40.70741482965932, 40.829659318637276, 40.95190380761523, 41.07414829659319, 41.19639278557114, 41.3186372745491, 41.44088176352705, 41.56312625250501, 41.68537074148296, 41.807615230460925, 41.92985971943888, 42.052104208416836, 42.17434869739479, 42.296593186372746, 42.4188376753507, 42.54108216432866, 42.66332665330661, 42.78557114228457, 42.90781563126252, 43.03006012024048, 43.15230460921844, 43.274549098196395, 43.39679358717435, 43.519038076152306, 43.64128256513026, 43.763527054108216, 43.88577154308617, 44.00801603206413, 44.13026052104208, 44.25250501002004, 44.37474949899799, 44.496993987975955, 44.61923847695391, 44.741482965931866, 44.86372745490982, 44.985971943887776, 45.10821643286573, 45.23046092184369, 45.35270541082164, 45.4749498997996, 45.59719438877755, 45.71943887775551, 45.84168336673347, 45.963927855711425, 46.08617234468938, 46.208416833667336, 46.33066132264529, 46.452905811623246, 46.5751503006012, 46.69739478957916, 46.81963927855711, 46.94188376753507, 47.06412825651302, 47.186372745490985, 47.30861723446894, 47.430861723446895, 47.55310621242485, 47.675350701402806, 47.79759519038076, 47.91983967935872, 48.04208416833667, 48.16432865731463, 48.28657314629258, 48.408817635270545, 48.5310621242485, 48.653306613226455, 48.77555110220441, 48.897795591182366, 49.02004008016032, 49.142284569138276, 49.26452905811623, 49.38677354709419, 49.50901803607214, 49.6312625250501, 49.75350701402806, 49.875751503006015, 49.99799599198397, 50.120240480961925, 50.24248496993988, 50.364729458917836, 50.48697394789579, 50.609218436873746, 50.7314629258517, 50.85370741482966, 50.97595190380761, 51.098196392785574, 51.22044088176353, 51.342685370741485, 51.46492985971944, 51.587174348697395, 51.70941883767535, 51.831663326653306, 51.95390781563126, 52.07615230460922, 52.19839679358717, 52.32064128256513, 52.44288577154309, 52.565130260521045, 52.687374749499, 52.809619238476955, 52.93186372745491, 53.054108216432866, 53.17635270541082, 53.298597194388776, 53.42084168336673, 53.54308617234469, 53.66533066132264, 53.787575150300604, 53.90981963927856, 54.032064128256515, 54.15430861723447, 54.276553106212425, 54.39879759519038, 54.521042084168336, 54.64328657314629, 54.765531062124246, 54.8877755511022, 55.01002004008016, 55.13226452905812, 55.254509018036075, 55.37675350701403, 55.498997995991985, 55.62124248496994, 55.743486973947896, 55.86573146292585, 55.987975951903806, 56.11022044088176, 56.23246492985972, 56.35470941883767, 56.476953907815634, 56.59919839679359, 56.721442885771545, 56.8436873747495, 56.965931863727455, 57.08817635270541, 57.210420841683366, 57.33266533066132, 57.454909819639276, 57.57715430861723, 57.699398797595194, 57.82164328657315, 57.943887775551104, 58.06613226452906, 58.188376753507015, 58.31062124248497, 58.432865731462925, 58.55511022044088, 58.677354709418836, 58.79959919839679, 58.921843687374746, 59.04408817635271, 59.166332665330664, 59.28857715430862, 59.410821643286575, 59.53306613226453, 59.655310621242485, 59.77755511022044, 59.899799599198396, 60.02204408817635, 60.144288577154306, 60.26653306613226, 60.388777555110224, 60.51102204408818, 60.633266533066134, 60.75551102204409, 60.877755511022045, 61.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.x = d3.scale.linear()
+              .domain([0.0, 61.0])
+              .range([0, 450 - 50]);
+
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.legend = L.control({position: 'topright'});
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.legend.addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.xAxis = d3.svg.axis()
+        .scale(color_map_a0b533deb6d5c7647fdeb6dd32da3e29.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, 7.625, 15.25, 22.875, 30.5, 38.125, 45.75, 53.375, 61.0]);
+
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.g = color_map_a0b533deb6d5c7647fdeb6dd32da3e29.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.g.selectAll("rect")
+        .data(color_map_a0b533deb6d5c7647fdeb6dd32da3e29.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_a0b533deb6d5c7647fdeb6dd32da3e29.x(color_map_a0b533deb6d5c7647fdeb6dd32da3e29.color.domain()[i - 1]) : color_map_a0b533deb6d5c7647fdeb6dd32da3e29.x.range()[0],
+            x1: i < color_map_a0b533deb6d5c7647fdeb6dd32da3e29.color.domain().length ? color_map_a0b533deb6d5c7647fdeb6dd32da3e29.x(color_map_a0b533deb6d5c7647fdeb6dd32da3e29.color.domain()[i]) : color_map_a0b533deb6d5c7647fdeb6dd32da3e29.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_a0b533deb6d5c7647fdeb6dd32da3e29.g.call(color_map_a0b533deb6d5c7647fdeb6dd32da3e29.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista CESAR BENAVIDES DIAZ por local");
+    
+            var circle_marker_a3f125b96c054e27e412c864c0ea8e3a = L.circleMarker(
+                [-33.49788, -70.64692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_5a9e836142567ac420c00ba92ffd7633 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a455c22a7a6a444e301f52da24481747 = $(`<div id="html_a455c22a7a6a444e301f52da24481747" style="width: 100.0%; height: 100.0%;"><b>C.P.F de san miguel</b><br>SAN FRANCISCO 4756<br>Votos Lista CESAR BENAVIDES DIAZ: <b>0</b></div>`)[0];
+                popup_5a9e836142567ac420c00ba92ffd7633.setContent(html_a455c22a7a6a444e301f52da24481747);
+            
+        
+
+        circle_marker_a3f125b96c054e27e412c864c0ea8e3a.bindPopup(popup_5a9e836142567ac420c00ba92ffd7633)
+        ;
+
+        
+    
+    
+            circle_marker_a3f125b96c054e27e412c864c0ea8e3a.bindTooltip(
+                `<div>
+                     C.P.F de san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b51d9571ef59e97e956ac59ba390ff97 = L.marker(
+                [-33.49788, -70.64692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_4f867b38e0e65fc1c28333662359aabe = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e0\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b51d9571ef59e97e956ac59ba390ff97.setIcon(div_icon_4f867b38e0e65fc1c28333662359aabe);
+        
+    
+            var circle_marker_77849ee673d9afd21cb67d23744fecb7 = L.circleMarker(
+                [-33.5068, -70.6519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7836ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.573770491803279, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_fa84a4b38d465fa5568056f354cf34c6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_11f681f8afef1dc5ec8d905c713d5bc3 = $(`<div id="html_11f681f8afef1dc5ec8d905c713d5bc3" style="width: 100.0%; height: 100.0%;"><b>colegio bicentenario santo cura de ars</b><br>CARMEN MENA 939<br>Votos Lista CESAR BENAVIDES DIAZ: <b>33</b></div>`)[0];
+                popup_fa84a4b38d465fa5568056f354cf34c6.setContent(html_11f681f8afef1dc5ec8d905c713d5bc3);
+            
+        
+
+        circle_marker_77849ee673d9afd21cb67d23744fecb7.bindPopup(popup_fa84a4b38d465fa5568056f354cf34c6)
+        ;
+
+        
+    
+    
+            circle_marker_77849ee673d9afd21cb67d23744fecb7.bindTooltip(
+                `<div>
+                     colegio bicentenario santo cura de ars
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_25292b9be636cb798c69e57c8b6b42a5 = L.marker(
+                [-33.5068, -70.6519],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_98a4794775c5605476804c974fe261d5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e33\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_25292b9be636cb798c69e57c8b6b42a5.setIcon(div_icon_98a4794775c5605476804c974fe261d5);
+        
+    
+            var circle_marker_403f06b24ee8b6ed62f965a89c18c0e1 = L.circleMarker(
+                [-33.50099, -70.65444],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d30e20ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.24590163934426, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_f7302f6b3e0c53f0c3495c4a6fae8170 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_628b465ab85e2dfb5adcd367a9f309f9 = $(`<div id="html_628b465ab85e2dfb5adcd367a9f309f9" style="width: 100.0%; height: 100.0%;"><b>colegio chile</b><br>PIRAMIDE 1089<br>Votos Lista CESAR BENAVIDES DIAZ: <b>49</b></div>`)[0];
+                popup_f7302f6b3e0c53f0c3495c4a6fae8170.setContent(html_628b465ab85e2dfb5adcd367a9f309f9);
+            
+        
+
+        circle_marker_403f06b24ee8b6ed62f965a89c18c0e1.bindPopup(popup_f7302f6b3e0c53f0c3495c4a6fae8170)
+        ;
+
+        
+    
+    
+            circle_marker_403f06b24ee8b6ed62f965a89c18c0e1.bindTooltip(
+                `<div>
+                     colegio chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b0b83f6bdcb29d83f1b8a2d721d2d951 = L.marker(
+                [-33.50099, -70.65444],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_dfae728b791816f82d1232b6c443b6a6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e49\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b0b83f6bdcb29d83f1b8a2d721d2d951.setIcon(div_icon_dfae728b791816f82d1232b6c443b6a6);
+        
+    
+            var circle_marker_03580bb653cf4eb73aee6ee96d072c1f = L.circleMarker(
+                [-33.4867, -70.6495],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd893bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.114754098360656, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_68cbd1a8d1f1f84ecd35e8fe2b4d7b77 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4be3b526a5324b1bc1f163e3634b43d5 = $(`<div id="html_4be3b526a5324b1bc1f163e3634b43d5" style="width: 100.0%; height: 100.0%;"><b>colegio parroquial san miguel</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3548<br>Votos Lista CESAR BENAVIDES DIAZ: <b>31</b></div>`)[0];
+                popup_68cbd1a8d1f1f84ecd35e8fe2b4d7b77.setContent(html_4be3b526a5324b1bc1f163e3634b43d5);
+            
+        
+
+        circle_marker_03580bb653cf4eb73aee6ee96d072c1f.bindPopup(popup_68cbd1a8d1f1f84ecd35e8fe2b4d7b77)
+        ;
+
+        
+    
+    
+            circle_marker_03580bb653cf4eb73aee6ee96d072c1f.bindTooltip(
+                `<div>
+                     colegio parroquial san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_84f8ddf15ed71994e1d5909d38ac1a6a = L.marker(
+                [-33.4867, -70.6495],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_fe742b6d60adc9c5d58f7da34c0d8363 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e31\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_84f8ddf15ed71994e1d5909d38ac1a6a.setIcon(div_icon_fe742b6d60adc9c5d58f7da34c0d8363);
+        
+    
+            var circle_marker_8f2882a7a4dd4446a7c23a81c566655b = L.circleMarker(
+                [-33.50737, -70.65042],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd572cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.491803278688522, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_8a2c103cd8ef8c74aa36f7aedf25f1fd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_601405ec94be58899d37be76ca2d3279 = $(`<div id="html_601405ec94be58899d37be76ca2d3279" style="width: 100.0%; height: 100.0%;"><b>colegio tomas moro</b><br>CARMEN MENA 882<br>Votos Lista CESAR BENAVIDES DIAZ: <b>37</b></div>`)[0];
+                popup_8a2c103cd8ef8c74aa36f7aedf25f1fd.setContent(html_601405ec94be58899d37be76ca2d3279);
+            
+        
+
+        circle_marker_8f2882a7a4dd4446a7c23a81c566655b.bindPopup(popup_8a2c103cd8ef8c74aa36f7aedf25f1fd)
+        ;
+
+        
+    
+    
+            circle_marker_8f2882a7a4dd4446a7c23a81c566655b.bindTooltip(
+                `<div>
+                     colegio tomas moro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b33521c21ce1b94634bec24fa80c4495 = L.marker(
+                [-33.50737, -70.65042],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_7299f6a42ca6f44d636354a1e705985b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e37\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b33521c21ce1b94634bec24fa80c4495.setIcon(div_icon_7299f6a42ca6f44d636354a1e705985b);
+        
+    
+            var circle_marker_372f52b61c472629b3ef68a3637be850 = L.circleMarker(
+                [-33.4893, -70.6577],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea847ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.737704918032787, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_bc3efc03031fd0f7c54f4a8a4353692e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1d50d62e9aa46a89a67981a461855ac7 = $(`<div id="html_1d50d62e9aa46a89a67981a461855ac7" style="width: 100.0%; height: 100.0%;"><b>escuela de la industria grafica hector gomez</b><br>FLORENCIA 1442<br>Votos Lista CESAR BENAVIDES DIAZ: <b>25</b></div>`)[0];
+                popup_bc3efc03031fd0f7c54f4a8a4353692e.setContent(html_1d50d62e9aa46a89a67981a461855ac7);
+            
+        
+
+        circle_marker_372f52b61c472629b3ef68a3637be850.bindPopup(popup_bc3efc03031fd0f7c54f4a8a4353692e)
+        ;
+
+        
+    
+    
+            circle_marker_372f52b61c472629b3ef68a3637be850.bindTooltip(
+                `<div>
+                     escuela de la industria grafica hector gomez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_40f93b5d9329211ff6c9b84af00f3682 = L.marker(
+                [-33.4893, -70.6577],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_ad1a548411d6165ee5af4a80c74f3f31 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e25\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_40f93b5d9329211ff6c9b84af00f3682.setIcon(div_icon_ad1a548411d6165ee5af4a80c74f3f31);
+        
+    
+            var circle_marker_42b62a1a1871a51455114ad78a27306c = L.circleMarker(
+                [-33.4858, -70.6565],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a00026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.081967213114755, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_2182818b6a245b47bb50689a1b3b7559 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3c382388ce000502a42de76058433c59 = $(`<div id="html_3c382388ce000502a42de76058433c59" style="width: 100.0%; height: 100.0%;"><b>escuela llano subercaseaux</b><br>SOTO AGUILAR 1509<br>Votos Lista CESAR BENAVIDES DIAZ: <b>57</b></div>`)[0];
+                popup_2182818b6a245b47bb50689a1b3b7559.setContent(html_3c382388ce000502a42de76058433c59);
+            
+        
+
+        circle_marker_42b62a1a1871a51455114ad78a27306c.bindPopup(popup_2182818b6a245b47bb50689a1b3b7559)
+        ;
+
+        
+    
+    
+            circle_marker_42b62a1a1871a51455114ad78a27306c.bindTooltip(
+                `<div>
+                     escuela llano subercaseaux
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1df9cf6033da2bade1a0490561633b1a = L.marker(
+                [-33.4858, -70.6565],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_4decc93f6634b5ce1c7c29aab171db70 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e57\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1df9cf6033da2bade1a0490561633b1a.setIcon(div_icon_4decc93f6634b5ce1c7c29aab171db70);
+        
+    
+            var circle_marker_416cca309f8320974edcd3cf308a560e = L.circleMarker(
+                [-33.50714, -70.65149],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7033ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.803278688524589, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_a92222c23488b7050f81b554f1b52467 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8b20af5d19f4ab212f7909ddf4abd7fc = $(`<div id="html_8b20af5d19f4ab212f7909ddf4abd7fc" style="width: 100.0%; height: 100.0%;"><b>escuela municipal</b><br>CARMEN MENA 906<br>Votos Lista CESAR BENAVIDES DIAZ: <b>34</b></div>`)[0];
+                popup_a92222c23488b7050f81b554f1b52467.setContent(html_8b20af5d19f4ab212f7909ddf4abd7fc);
+            
+        
+
+        circle_marker_416cca309f8320974edcd3cf308a560e.bindPopup(popup_a92222c23488b7050f81b554f1b52467)
+        ;
+
+        
+    
+    
+            circle_marker_416cca309f8320974edcd3cf308a560e.bindTooltip(
+                `<div>
+                     escuela municipal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_402f407083d0b1e7f10c3d2446cae9e2 = L.marker(
+                [-33.50714, -70.65149],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_4e1410af6eb1abc721570809b21fea20 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e34\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_402f407083d0b1e7f10c3d2446cae9e2.setIcon(div_icon_4e1410af6eb1abc721570809b21fea20);
+        
+    
+            var circle_marker_a68e4c9e3156daad65bbb1e9d06faff8 = L.circleMarker(
+                [-33.5139, -70.6386],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_8e24d17d89a9d3b20142dd15090d8e1b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9c2eff7dca0acc95218a91bd35f8be3c = $(`<div id="html_9c2eff7dca0acc95218a91bd35f8be3c" style="width: 100.0%; height: 100.0%;"><b>escuela santa fe</b><br>SANTA FE 528<br>Votos Lista CESAR BENAVIDES DIAZ: <b>61</b></div>`)[0];
+                popup_8e24d17d89a9d3b20142dd15090d8e1b.setContent(html_9c2eff7dca0acc95218a91bd35f8be3c);
+            
+        
+
+        circle_marker_a68e4c9e3156daad65bbb1e9d06faff8.bindPopup(popup_8e24d17d89a9d3b20142dd15090d8e1b)
+        ;
+
+        
+    
+    
+            circle_marker_a68e4c9e3156daad65bbb1e9d06faff8.bindTooltip(
+                `<div>
+                     escuela santa fe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_60400146924d452b507669d32bd56336 = L.marker(
+                [-33.5139, -70.6386],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_6e5a0a41f085c18587d003628d6271a7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e61\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_60400146924d452b507669d32bd56336.setIcon(div_icon_6e5a0a41f085c18587d003628d6271a7);
+        
+    
+            var circle_marker_b78a7a3103d9f17d7513d309a2ae3b2d = L.circleMarker(
+                [-33.507, -70.6624],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#880026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.770491803278688, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_09787cb53cac53283819cd3e991d2f83 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b43072dc26b0cc86f4f31ea9a5261977 = $(`<div id="html_b43072dc26b0cc86f4f31ea9a5261977" style="width: 100.0%; height: 100.0%;"><b>escuela territorio antartico</b><br>TERCERA TRANSVERSAL 5950<br>Votos Lista CESAR BENAVIDES DIAZ: <b>60</b></div>`)[0];
+                popup_09787cb53cac53283819cd3e991d2f83.setContent(html_b43072dc26b0cc86f4f31ea9a5261977);
+            
+        
+
+        circle_marker_b78a7a3103d9f17d7513d309a2ae3b2d.bindPopup(popup_09787cb53cac53283819cd3e991d2f83)
+        ;
+
+        
+    
+    
+            circle_marker_b78a7a3103d9f17d7513d309a2ae3b2d.bindTooltip(
+                `<div>
+                     escuela territorio antartico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_47f7e9a517ad2e02dcc9d0f29ec2a582 = L.marker(
+                [-33.507, -70.6624],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_4bd5bd63d2b0a6b79bdc9d888877a962 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e60\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_47f7e9a517ad2e02dcc9d0f29ec2a582.setIcon(div_icon_4bd5bd63d2b0a6b79bdc9d888877a962);
+        
+    
+            var circle_marker_c4e462cad39d27b1ae6bf5e0833a2a21 = L.circleMarker(
+                [-33.49785, -70.66286],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea847ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.737704918032787, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_e7fa2c560cb7f056c10b32b493d627f9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_31de7588f3d993d98a0a919ef9922dd5 = $(`<div id="html_31de7588f3d993d98a0a919ef9922dd5" style="width: 100.0%; height: 100.0%;"><b>escuela villa san miguel</b><br>LAZO 1520<br>Votos Lista CESAR BENAVIDES DIAZ: <b>25</b></div>`)[0];
+                popup_e7fa2c560cb7f056c10b32b493d627f9.setContent(html_31de7588f3d993d98a0a919ef9922dd5);
+            
+        
+
+        circle_marker_c4e462cad39d27b1ae6bf5e0833a2a21.bindPopup(popup_e7fa2c560cb7f056c10b32b493d627f9)
+        ;
+
+        
+    
+    
+            circle_marker_c4e462cad39d27b1ae6bf5e0833a2a21.bindTooltip(
+                `<div>
+                     escuela villa san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b2476bd81154bf9c6738660f0cebd52e = L.marker(
+                [-33.49785, -70.66286],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_b717bf6bb5b52359628f4a20cced1087 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e25\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b2476bd81154bf9c6738660f0cebd52e.setIcon(div_icon_b717bf6bb5b52359628f4a20cced1087);
+        
+    
+            var circle_marker_aff33567fa068447e1edce41c9177bf2 = L.circleMarker(
+                [-33.4881, -70.6504],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd4f2aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.721311475409834, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_70bb8f1e94c9b4f8edfd7829313e411a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6b3e3332c2677c6afd4c00ba37a06a4e = $(`<div id="html_6b3e3332c2677c6afd4c00ba37a06a4e" style="width: 100.0%; height: 100.0%;"><b>instituto miguel leon prado</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3696<br>Votos Lista CESAR BENAVIDES DIAZ: <b>38</b></div>`)[0];
+                popup_70bb8f1e94c9b4f8edfd7829313e411a.setContent(html_6b3e3332c2677c6afd4c00ba37a06a4e);
+            
+        
+
+        circle_marker_aff33567fa068447e1edce41c9177bf2.bindPopup(popup_70bb8f1e94c9b4f8edfd7829313e411a)
+        ;
+
+        
+    
+    
+            circle_marker_aff33567fa068447e1edce41c9177bf2.bindTooltip(
+                `<div>
+                     instituto miguel leon prado
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a02f204263864be5a307fb9a2b8f8a2e = L.marker(
+                [-33.4881, -70.6504],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_9c4120f9fa522eeebe1ce15a4399bef4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e38\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a02f204263864be5a307fb9a2b8f8a2e.setIcon(div_icon_9c4120f9fa522eeebe1ce15a4399bef4);
+        
+    
+            var circle_marker_8e7a3b9e8b4d7521a3c1e785e3f702a4 = L.circleMarker(
+                [-33.4901, -70.651],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8138ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.344262295081968, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_57151bf8dee022afb0dbbd7b91e2d61f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_663e051ff8d25de273095390c4ee9602 = $(`<div id="html_663e051ff8d25de273095390c4ee9602" style="width: 100.0%; height: 100.0%;"><b>instituto superior de comercio de chile</b><br>ALVAREZ DE TOLEDO 1060<br>Votos Lista CESAR BENAVIDES DIAZ: <b>32</b></div>`)[0];
+                popup_57151bf8dee022afb0dbbd7b91e2d61f.setContent(html_663e051ff8d25de273095390c4ee9602);
+            
+        
+
+        circle_marker_8e7a3b9e8b4d7521a3c1e785e3f702a4.bindPopup(popup_57151bf8dee022afb0dbbd7b91e2d61f)
+        ;
+
+        
+    
+    
+            circle_marker_8e7a3b9e8b4d7521a3c1e785e3f702a4.bindTooltip(
+                `<div>
+                     instituto superior de comercio de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d8bdc9256ce514124564f7989757e825 = L.marker(
+                [-33.4901, -70.651],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_41a91df67915abae26503d415b9c0b31 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e32\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d8bdc9256ce514124564f7989757e825.setIcon(div_icon_41a91df67915abae26503d415b9c0b31);
+        
+    
+            var circle_marker_e6acffa5407ac0e8c2105588d1bf279e = L.circleMarker(
+                [-33.4866, -70.653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a80026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.852459016393443, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_8634918754b319f46378a0bd090f24cc = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_42e51ca8bf76b14d5cdaa869ffd58f35 = $(`<div id="html_42e51ca8bf76b14d5cdaa869ffd58f35" style="width: 100.0%; height: 100.0%;"><b>liceo andres bello</b><br>SOTO AGUILAR 1241<br>Votos Lista CESAR BENAVIDES DIAZ: <b>56</b></div>`)[0];
+                popup_8634918754b319f46378a0bd090f24cc.setContent(html_42e51ca8bf76b14d5cdaa869ffd58f35);
+            
+        
+
+        circle_marker_e6acffa5407ac0e8c2105588d1bf279e.bindPopup(popup_8634918754b319f46378a0bd090f24cc)
+        ;
+
+        
+    
+    
+            circle_marker_e6acffa5407ac0e8c2105588d1bf279e.bindTooltip(
+                `<div>
+                     liceo andres bello
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_02a22971bc5baf61605be16752a855fc = L.marker(
+                [-33.4866, -70.653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_c512e9c0b8ef234cc03a3b35bb9f3183 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e56\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_02a22971bc5baf61605be16752a855fc.setIcon(div_icon_c512e9c0b8ef234cc03a3b35bb9f3183);
+        
+    
+            var circle_marker_b425ef71a2bab941e8ce8c5fc5c213be = L.circleMarker(
+                [-33.48978, -70.65599],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#880026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.770491803278688, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_0b0707215239e38e86dc01c11474aa04 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fe722de534739361b6a5bd488eea6570 = $(`<div id="html_fe722de534739361b6a5bd488eea6570" style="width: 100.0%; height: 100.0%;"><b>liceo betsabe hormazabal de alarcon l1</b><br>GASPAR BANDA 4047<br>Votos Lista CESAR BENAVIDES DIAZ: <b>60</b></div>`)[0];
+                popup_0b0707215239e38e86dc01c11474aa04.setContent(html_fe722de534739361b6a5bd488eea6570);
+            
+        
+
+        circle_marker_b425ef71a2bab941e8ce8c5fc5c213be.bindPopup(popup_0b0707215239e38e86dc01c11474aa04)
+        ;
+
+        
+    
+    
+            circle_marker_b425ef71a2bab941e8ce8c5fc5c213be.bindTooltip(
+                `<div>
+                     liceo betsabe hormazabal de alarcon l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4a89a4d0f64ecc78dc5efb6888e0d912 = L.marker(
+                [-33.48978, -70.65599],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_c57649f7a2071078bed661e8acd4a60a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e60\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4a89a4d0f64ecc78dc5efb6888e0d912.setIcon(div_icon_c57649f7a2071078bed661e8acd4a60a);
+        
+    
+            var circle_marker_bb23f0e9cfb20e1fad2a788e8574c3e7 = L.circleMarker(
+                [-33.49214, -70.65141],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a80026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.852459016393443, "stroke": false, "weight": 3}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+        var popup_eca3e2673a6323b6987a2bea2d2ba960 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4074e9a4c3e3f104103de28db2887dab = $(`<div id="html_4074e9a4c3e3f104103de28db2887dab" style="width: 100.0%; height: 100.0%;"><b>universidad de valparaiso</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 4160<br>Votos Lista CESAR BENAVIDES DIAZ: <b>56</b></div>`)[0];
+                popup_eca3e2673a6323b6987a2bea2d2ba960.setContent(html_4074e9a4c3e3f104103de28db2887dab);
+            
+        
+
+        circle_marker_bb23f0e9cfb20e1fad2a788e8574c3e7.bindPopup(popup_eca3e2673a6323b6987a2bea2d2ba960)
+        ;
+
+        
+    
+    
+            circle_marker_bb23f0e9cfb20e1fad2a788e8574c3e7.bindTooltip(
+                `<div>
+                     universidad de valparaiso
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_552900bd5191aad25a3740a4f8861d4c = L.marker(
+                [-33.49214, -70.65141],
+                {"zIndexOffset": 9999}
+            ).addTo(map_082c5b9513b99fb94b0c3e3116e229ff);
+        
+    
+            var div_icon_978d1c5416994cea9ca2ffc9de63c752 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e56\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_552900bd5191aad25a3740a4f8861d4c.setIcon(div_icon_978d1c5416994cea9ca2ffc9de63c752);
+        
+    
+            map_082c5b9513b99fb94b0c3e3116e229ff.fitBounds(
+                [[-33.49788, -70.64692], [-33.5068, -70.6519], [-33.50099, -70.65444], [-33.4867, -70.6495], [-33.50737, -70.65042], [-33.4893, -70.6577], [-33.4858, -70.6565], [-33.50714, -70.65149], [-33.5139, -70.6386], [-33.507, -70.6624], [-33.49785, -70.66286], [-33.4881, -70.6504], [-33.4901, -70.651], [-33.4866, -70.653], [-33.48978, -70.65599], [-33.49214, -70.65141]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

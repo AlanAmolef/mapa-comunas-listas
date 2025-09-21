@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3fdb7528738ee4ae778bcffd1c48fc45 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3fdb7528738ee4ae778bcffd1c48fc45" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3fdb7528738ee4ae778bcffd1c48fc45 = L.map(
+                "map_3fdb7528738ee4ae778bcffd1c48fc45",
+                {
+                    center: [-33.49671562499999, -70.652783125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_456b0dd4b06680a0bd58daf81a59ed3a = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_456b0dd4b06680a0bd58daf81a59ed3a.addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+    var color_map_683d8f56220b30a248dfee0f81101aaf = {};
+
+    
+    color_map_683d8f56220b30a248dfee0f81101aaf.color = d3.scale.threshold()
+              .domain([1.0, 1.6613226452905812, 2.3226452905811623, 2.9839679358717435, 3.6452905811623246, 4.306613226452906, 4.967935871743487, 5.629258517034068, 6.290581162324649, 6.95190380761523, 7.613226452905812, 8.274549098196392, 8.935871743486974, 9.597194388777556, 10.258517034068136, 10.919839679358718, 11.581162324649299, 12.24248496993988, 12.90380761523046, 13.565130260521043, 14.226452905811623, 14.887775551102205, 15.549098196392785, 16.210420841683366, 16.871743486973948, 17.53306613226453, 18.194388777555112, 18.85571142284569, 19.517034068136272, 20.178356713426854, 20.839679358717436, 21.501002004008015, 22.162324649298597, 22.82364729458918, 23.48496993987976, 24.14629258517034, 24.80761523046092, 25.468937875751504, 26.130260521042086, 26.791583166332664, 27.452905811623246, 28.11422845691383, 28.77555110220441, 29.43687374749499, 30.09819639278557, 30.759519038076153, 31.420841683366735, 32.08216432865731, 32.743486973947896, 33.40480961923848, 34.06613226452906, 34.72745490981964, 35.388777555110224, 36.0501002004008, 36.71142284569138, 37.37274549098196, 38.034068136272545, 38.69539078156313, 39.35671342685371, 40.01803607214429, 40.67935871743487, 41.34068136272545, 42.00200400801603, 42.66332665330661, 43.324649298597194, 43.985971943887776, 44.64729458917836, 45.30861723446894, 45.96993987975952, 46.6312625250501, 47.29258517034068, 47.95390781563126, 48.61523046092184, 49.276553106212425, 49.93787575150301, 50.59919839679359, 51.26052104208417, 51.921843687374746, 52.58316633266533, 53.24448897795591, 53.90581162324649, 54.567134268537075, 55.22845691382766, 55.88977955911824, 56.55110220440882, 57.212424849699396, 57.87374749498998, 58.53507014028056, 59.19639278557114, 59.857715430861724, 60.519038076152306, 61.18036072144289, 61.84168336673347, 62.503006012024045, 63.16432865731463, 63.82565130260521, 64.48697394789579, 65.14829659318637, 65.80961923847696, 66.47094188376754, 67.13226452905812, 67.7935871743487, 68.45490981963928, 69.11623246492987, 69.77755511022045, 70.43887775551102, 71.1002004008016, 71.76152304609218, 72.42284569138276, 73.08416833667334, 73.74549098196393, 74.40681362725451, 75.06813627254509, 75.72945891783567, 76.39078156312625, 77.05210420841684, 77.71342685370742, 78.374749498998, 79.03607214428858, 79.69739478957916, 80.35871743486975, 81.02004008016031, 81.6813627254509, 82.34268537074148, 83.00400801603206, 83.66533066132264, 84.32665330661322, 84.9879759519038, 85.64929859719439, 86.31062124248497, 86.97194388777555, 87.63326653306613, 88.29458917835672, 88.9559118236473, 89.61723446893788, 90.27855711422846, 90.93987975951904, 91.60120240480961, 92.2625250501002, 92.92384769539078, 93.58517034068136, 94.24649298597194, 94.90781563126252, 95.5691382765531, 96.23046092184369, 96.89178356713427, 97.55310621242485, 98.21442885771543, 98.87575150300601, 99.5370741482966, 100.19839679358718, 100.85971943887776, 101.52104208416834, 102.18236472945891, 102.84368737474949, 103.50501002004007, 104.16633266533066, 104.82765531062124, 105.48897795591182, 106.1503006012024, 106.81162324649299, 107.47294589178357, 108.13426853707415, 108.79559118236473, 109.45691382765531, 110.1182364729459, 110.77955911823648, 111.44088176352706, 112.10220440881764, 112.76352705410822, 113.42484969939879, 114.08617234468937, 114.74749498997996, 115.40881763527054, 116.07014028056112, 116.7314629258517, 117.39278557114228, 118.05410821643287, 118.71543086172345, 119.37675350701403, 120.03807615230461, 120.6993987975952, 121.36072144288578, 122.02204408817636, 122.68336673346694, 123.34468937875752, 124.00601202404809, 124.66733466933867, 125.32865731462925, 125.98997995991984, 126.65130260521042, 127.312625250501, 127.97394789579158, 128.63527054108215, 129.29659318637275, 129.9579158316633, 130.6192384769539, 131.28056112224448, 131.94188376753507, 132.60320641282564, 133.26452905811624, 133.9258517034068, 134.5871743486974, 135.24849699398797, 135.90981963927857, 136.57114228456913, 137.23246492985973, 137.8937875751503, 138.5551102204409, 139.21643286573146, 139.87775551102203, 140.53907815631263, 141.2004008016032, 141.8617234468938, 142.52304609218436, 143.18436873747495, 143.84569138276552, 144.50701402805612, 145.1683366733467, 145.82965931863728, 146.49098196392785, 147.15230460921845, 147.81362725450902, 148.4749498997996, 149.13627254509018, 149.79759519038078, 150.45891783567134, 151.1202404809619, 151.7815631262525, 152.44288577154308, 153.10420841683367, 153.76553106212424, 154.42685370741484, 155.0881763527054, 155.749498997996, 156.41082164328657, 157.07214428857716, 157.73346693386773, 158.39478957915833, 159.0561122244489, 159.7174348697395, 160.37875751503006, 161.04008016032063, 161.70140280561122, 162.3627254509018, 163.0240480961924, 163.68537074148296, 164.34669338677355, 165.00801603206412, 165.66933867735472, 166.33066132264528, 166.99198396793588, 167.65330661322645, 168.31462925851704, 168.9759519038076, 169.6372745490982, 170.29859719438878, 170.95991983967937, 171.62124248496994, 172.2825651302605, 172.9438877755511, 173.60521042084167, 174.26653306613227, 174.92785571142284, 175.58917835671343, 176.250501002004, 176.9118236472946, 177.57314629258516, 178.23446893787576, 178.89579158316633, 179.55711422845692, 180.2184368737475, 180.8797595190381, 181.54108216432866, 182.20240480961922, 182.86372745490982, 183.5250501002004, 184.18637274549098, 184.84769539078155, 185.50901803607215, 186.17034068136272, 186.8316633266533, 187.49298597194388, 188.15430861723448, 188.81563126252505, 189.47695390781564, 190.1382765531062, 190.7995991983968, 191.46092184368737, 192.12224448897797, 192.78356713426854, 193.4448897795591, 194.1062124248497, 194.76753507014027, 195.42885771543087, 196.09018036072143, 196.75150300601203, 197.4128256513026, 198.0741482965932, 198.73547094188376, 199.39679358717436, 200.05811623246493, 200.71943887775552, 201.3807615230461, 202.0420841683367, 202.70340681362725, 203.36472945891782, 204.02605210420842, 204.68737474949899, 205.34869739478958, 206.01002004008015, 206.67134268537075, 207.3326653306613, 207.9939879759519, 208.65531062124248, 209.31663326653307, 209.97795591182364, 210.63927855711424, 211.3006012024048, 211.9619238476954, 212.62324649298597, 213.28456913827657, 213.94589178356713, 214.6072144288577, 215.2685370741483, 215.92985971943887, 216.59118236472946, 217.25250501002003, 217.91382765531063, 218.5751503006012, 219.2364729458918, 219.89779559118236, 220.55911823647295, 221.22044088176352, 221.88176352705412, 222.5430861723447, 223.20440881763528, 223.86573146292585, 224.52705410821645, 225.18837675350701, 225.84969939879758, 226.51102204408818, 227.17234468937875, 227.83366733466934, 228.4949899799599, 229.1563126252505, 229.81763527054107, 230.47895791583167, 231.14028056112224, 231.80160320641284, 232.4629258517034, 233.124248496994, 233.78557114228457, 234.44689378757516, 235.10821643286573, 235.7695390781563, 236.4308617234469, 237.09218436873746, 237.75350701402806, 238.41482965931863, 239.07615230460922, 239.7374749498998, 240.3987975951904, 241.06012024048096, 241.72144288577155, 242.38276553106212, 243.04408817635272, 243.70541082164328, 244.36673346693388, 245.02805611222445, 245.68937875751504, 246.3507014028056, 247.01202404809618, 247.67334669338678, 248.33466933867734, 248.99599198396794, 249.6573146292585, 250.3186372745491, 250.97995991983967, 251.64128256513027, 252.30260521042084, 252.96392785571143, 253.625250501002, 254.2865731462926, 254.94789579158316, 255.60921843687376, 256.2705410821643, 256.9318637274549, 257.5931863727455, 258.25450901803606, 258.9158316633266, 259.57715430861725, 260.2384769539078, 260.8997995991984, 261.56112224448896, 262.2224448897796, 262.88376753507015, 263.5450901803607, 264.2064128256513, 264.8677354709419, 265.5290581162325, 266.19038076152304, 266.8517034068136, 267.5130260521042, 268.1743486973948, 268.8356713426854, 269.49699398797594, 270.1583166332665, 270.81963927855713, 271.4809619238477, 272.14228456913827, 272.80360721442884, 273.46492985971946, 274.12625250501003, 274.7875751503006, 275.44889779559117, 276.1102204408818, 276.77154308617236, 277.4328657314629, 278.0941883767535, 278.75551102204406, 279.4168336673347, 280.07815631262525, 280.7394789579158, 281.4008016032064, 282.062124248497, 282.7234468937876, 283.38476953907815, 284.0460921843687, 284.70741482965934, 285.3687374749499, 286.0300601202405, 286.69138276553105, 287.35270541082167, 288.01402805611224, 288.6753507014028, 289.3366733466934, 289.99799599198394, 290.65931863727457, 291.32064128256513, 291.9819639278557, 292.64328657314627, 293.3046092184369, 293.96593186372746, 294.62725450901803, 295.2885771543086, 295.9498997995992, 296.6112224448898, 297.27254509018036, 297.9338677354709, 298.59519038076155, 299.2565130260521, 299.9178356713427, 300.57915831663325, 301.2404809619238, 301.90180360721445, 302.563126252505, 303.2244488977956, 303.88577154308615, 304.5470941883768, 305.20841683366734, 305.8697394789579, 306.5310621242485, 307.1923847695391, 307.85370741482967, 308.51503006012024, 309.1763527054108, 309.8376753507014, 310.498997995992, 311.16032064128257, 311.82164328657313, 312.4829659318637, 313.1442885771543, 313.8056112224449, 314.46693386773546, 315.12825651302603, 315.78957915831666, 316.4509018036072, 317.1122244488978, 317.77354709418836, 318.434869739479, 319.09619238476955, 319.7575150300601, 320.4188376753507, 321.08016032064126, 321.7414829659319, 322.40280561122245, 323.064128256513, 323.7254509018036, 324.3867735470942, 325.0480961923848, 325.70941883767534, 326.3707414829659, 327.03206412825654, 327.6933867735471, 328.3547094188377, 329.01603206412824, 329.67735470941886, 330.33867735470943, 331.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_683d8f56220b30a248dfee0f81101aaf.x = d3.scale.linear()
+              .domain([1.0, 331.0])
+              .range([0, 450 - 50]);
+
+    color_map_683d8f56220b30a248dfee0f81101aaf.legend = L.control({position: 'topright'});
+    color_map_683d8f56220b30a248dfee0f81101aaf.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_683d8f56220b30a248dfee0f81101aaf.legend.addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+
+    color_map_683d8f56220b30a248dfee0f81101aaf.xAxis = d3.svg.axis()
+        .scale(color_map_683d8f56220b30a248dfee0f81101aaf.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([1.0, 42.25, 83.5, 124.75, 166.0, 207.25, 248.5, 289.75, 331.0]);
+
+    color_map_683d8f56220b30a248dfee0f81101aaf.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_683d8f56220b30a248dfee0f81101aaf.g = color_map_683d8f56220b30a248dfee0f81101aaf.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_683d8f56220b30a248dfee0f81101aaf.g.selectAll("rect")
+        .data(color_map_683d8f56220b30a248dfee0f81101aaf.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_683d8f56220b30a248dfee0f81101aaf.x(color_map_683d8f56220b30a248dfee0f81101aaf.color.domain()[i - 1]) : color_map_683d8f56220b30a248dfee0f81101aaf.x.range()[0],
+            x1: i < color_map_683d8f56220b30a248dfee0f81101aaf.color.domain().length ? color_map_683d8f56220b30a248dfee0f81101aaf.x(color_map_683d8f56220b30a248dfee0f81101aaf.color.domain()[i]) : color_map_683d8f56220b30a248dfee0f81101aaf.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_683d8f56220b30a248dfee0f81101aaf.g.call(color_map_683d8f56220b30a248dfee0f81101aaf.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista FELIPE GUEVARA STEPHENS por local");
+    
+            var circle_marker_a709885c13a153678ee492829196ec83 = L.circleMarker(
+                [-33.49788, -70.64692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_071fa0941bc6fe7cec2dbdded2b33a64 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d565dc47a2b48a4f85007c904bb1b062 = $(`<div id="html_d565dc47a2b48a4f85007c904bb1b062" style="width: 100.0%; height: 100.0%;"><b>C.P.F de san miguel</b><br>SAN FRANCISCO 4756<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>1</b></div>`)[0];
+                popup_071fa0941bc6fe7cec2dbdded2b33a64.setContent(html_d565dc47a2b48a4f85007c904bb1b062);
+            
+        
+
+        circle_marker_a709885c13a153678ee492829196ec83.bindPopup(popup_071fa0941bc6fe7cec2dbdded2b33a64)
+        ;
+
+        
+    
+    
+            circle_marker_a709885c13a153678ee492829196ec83.bindTooltip(
+                `<div>
+                     C.P.F de san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_784adcf3ac059b38ab4d94c223ebf24e = L.marker(
+                [-33.49788, -70.64692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_4db734487d9ee22a5c9ed1da20a26c3b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e1\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_784adcf3ac059b38ab4d94c223ebf24e.setIcon(div_icon_4db734487d9ee22a5c9ed1da20a26c3b);
+        
+    
+            var circle_marker_10922bfc4bad4357dbb2107f8dba025d = L.circleMarker(
+                [-33.5068, -70.6519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f84427ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.078787878787878, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_78cd89ee0bb53f6f2a50d38dd7f700d9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c65d74bfd34c5c0a2412eedcbec0f177 = $(`<div id="html_c65d74bfd34c5c0a2412eedcbec0f177" style="width: 100.0%; height: 100.0%;"><b>colegio bicentenario santo cura de ars</b><br>CARMEN MENA 939<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>215</b></div>`)[0];
+                popup_78cd89ee0bb53f6f2a50d38dd7f700d9.setContent(html_c65d74bfd34c5c0a2412eedcbec0f177);
+            
+        
+
+        circle_marker_10922bfc4bad4357dbb2107f8dba025d.bindPopup(popup_78cd89ee0bb53f6f2a50d38dd7f700d9)
+        ;
+
+        
+    
+    
+            circle_marker_10922bfc4bad4357dbb2107f8dba025d.bindTooltip(
+                `<div>
+                     colegio bicentenario santo cura de ars
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a7c775708604d15d40ca23efc87e7d78 = L.marker(
+                [-33.5068, -70.6519],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_bba7d89c13ce7fd0e203285a7ce3297a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e215\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a7c775708604d15d40ca23efc87e7d78.setIcon(div_icon_bba7d89c13ce7fd0e203285a7ce3297a);
+        
+    
+            var circle_marker_50c8e84618c58696a06b9dde62514413 = L.circleMarker(
+                [-33.50099, -70.65444],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fa4828ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.951515151515153, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_0c16cf4e4d8622254140cea599e28298 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_39bc45310f18f2a7be27e7999f02a843 = $(`<div id="html_39bc45310f18f2a7be27e7999f02a843" style="width: 100.0%; height: 100.0%;"><b>colegio chile</b><br>PIRAMIDE 1089<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>212</b></div>`)[0];
+                popup_0c16cf4e4d8622254140cea599e28298.setContent(html_39bc45310f18f2a7be27e7999f02a843);
+            
+        
+
+        circle_marker_50c8e84618c58696a06b9dde62514413.bindPopup(popup_0c16cf4e4d8622254140cea599e28298)
+        ;
+
+        
+    
+    
+            circle_marker_50c8e84618c58696a06b9dde62514413.bindTooltip(
+                `<div>
+                     colegio chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9cbb226683a8118f950ba75824436d28 = L.marker(
+                [-33.50099, -70.65444],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_482667d120309791c885703252c54e58 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e212\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9cbb226683a8118f950ba75824436d28.setIcon(div_icon_482667d120309791c885703252c54e58);
+        
+    
+            var circle_marker_0ac1f51132b30bc73b3ce213e7f698ad = L.circleMarker(
+                [-33.4867, -70.6495],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe923eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.787878787878789, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_b9cc8a0c83d20b86d79e0063f1f0732c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_56192274b58eebec6b33bbdbca5528a5 = $(`<div id="html_56192274b58eebec6b33bbdbca5528a5" style="width: 100.0%; height: 100.0%;"><b>colegio parroquial san miguel</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3548<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>161</b></div>`)[0];
+                popup_b9cc8a0c83d20b86d79e0063f1f0732c.setContent(html_56192274b58eebec6b33bbdbca5528a5);
+            
+        
+
+        circle_marker_0ac1f51132b30bc73b3ce213e7f698ad.bindPopup(popup_b9cc8a0c83d20b86d79e0063f1f0732c)
+        ;
+
+        
+    
+    
+            circle_marker_0ac1f51132b30bc73b3ce213e7f698ad.bindTooltip(
+                `<div>
+                     colegio parroquial san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b824b344879be7bb63e654fc51988be9 = L.marker(
+                [-33.4867, -70.6495],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_996c3bad2cda9bfac4316a616ce83ec1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e161\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b824b344879be7bb63e654fc51988be9.setIcon(div_icon_996c3bad2cda9bfac4316a616ce83ec1);
+        
+    
+            var circle_marker_0bb8a9134d858965f7703c4ebc4e84fe = L.circleMarker(
+                [-33.50737, -70.65042],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea546ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.854545454545455, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_85f5291648e6958fdaf4d4cc18819071 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_825ea89431023d9e63097249a0af4725 = $(`<div id="html_825ea89431023d9e63097249a0af4725" style="width: 100.0%; height: 100.0%;"><b>colegio tomas moro</b><br>CARMEN MENA 882<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>139</b></div>`)[0];
+                popup_85f5291648e6958fdaf4d4cc18819071.setContent(html_825ea89431023d9e63097249a0af4725);
+            
+        
+
+        circle_marker_0bb8a9134d858965f7703c4ebc4e84fe.bindPopup(popup_85f5291648e6958fdaf4d4cc18819071)
+        ;
+
+        
+    
+    
+            circle_marker_0bb8a9134d858965f7703c4ebc4e84fe.bindTooltip(
+                `<div>
+                     colegio tomas moro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f94e00ba01120cc4ef35b615d3f675ef = L.marker(
+                [-33.50737, -70.65042],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_ff3e29bf00ba378a794e98864f84c706 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e139\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f94e00ba01120cc4ef35b615d3f675ef.setIcon(div_icon_ff3e29bf00ba378a794e98864f84c706);
+        
+    
+            var circle_marker_8620f4cfd363384c659a097101e89bcc = L.circleMarker(
+                [-33.4893, -70.6577],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe903dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.872727272727273, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_6d7e540a498459328d70c4985da38ef0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b6c1b7ebce4ff98bd9491c055c623914 = $(`<div id="html_b6c1b7ebce4ff98bd9491c055c623914" style="width: 100.0%; height: 100.0%;"><b>escuela de la industria grafica hector gomez</b><br>FLORENCIA 1442<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>163</b></div>`)[0];
+                popup_6d7e540a498459328d70c4985da38ef0.setContent(html_b6c1b7ebce4ff98bd9491c055c623914);
+            
+        
+
+        circle_marker_8620f4cfd363384c659a097101e89bcc.bindPopup(popup_6d7e540a498459328d70c4985da38ef0)
+        ;
+
+        
+    
+    
+            circle_marker_8620f4cfd363384c659a097101e89bcc.bindTooltip(
+                `<div>
+                     escuela de la industria grafica hector gomez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d03734b494815bb2d92278a91b8766fe = L.marker(
+                [-33.4893, -70.6577],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_b10c742ce7d204996ecd402f5b41ffc4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e163\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d03734b494815bb2d92278a91b8766fe.setIcon(div_icon_b10c742ce7d204996ecd402f5b41ffc4);
+        
+    
+            var circle_marker_5973324b6f5ce7cac3e131a040bab836 = L.circleMarker(
+                [-33.4858, -70.6565],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f13623ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.545454545454547, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_53349986141fd02c69b9b39d669fd4b1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f559a33bb55f660b54c74a3afb2ba656 = $(`<div id="html_f559a33bb55f660b54c74a3afb2ba656" style="width: 100.0%; height: 100.0%;"><b>escuela llano subercaseaux</b><br>SOTO AGUILAR 1509<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>226</b></div>`)[0];
+                popup_53349986141fd02c69b9b39d669fd4b1.setContent(html_f559a33bb55f660b54c74a3afb2ba656);
+            
+        
+
+        circle_marker_5973324b6f5ce7cac3e131a040bab836.bindPopup(popup_53349986141fd02c69b9b39d669fd4b1)
+        ;
+
+        
+    
+    
+            circle_marker_5973324b6f5ce7cac3e131a040bab836.bindTooltip(
+                `<div>
+                     escuela llano subercaseaux
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f0e78c4db5f669cd1852e8772f3242cd = L.marker(
+                [-33.4858, -70.6565],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_ba92a13ce55954cfbf96dcd70a673bd7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e226\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f0e78c4db5f669cd1852e8772f3242cd.setIcon(div_icon_ba92a13ce55954cfbf96dcd70a673bd7);
+        
+    
+            var circle_marker_21120ab950bdaf8084bdfd376add45cf = L.circleMarker(
+                [-33.50714, -70.65149],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9f44ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.151515151515152, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_c3a874b8bd4e30d27762f2b16e494bbd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e62b13d6967270dd6f22003c8b1e0251 = $(`<div id="html_e62b13d6967270dd6f22003c8b1e0251" style="width: 100.0%; height: 100.0%;"><b>escuela municipal</b><br>CARMEN MENA 906<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>146</b></div>`)[0];
+                popup_c3a874b8bd4e30d27762f2b16e494bbd.setContent(html_e62b13d6967270dd6f22003c8b1e0251);
+            
+        
+
+        circle_marker_21120ab950bdaf8084bdfd376add45cf.bindPopup(popup_c3a874b8bd4e30d27762f2b16e494bbd)
+        ;
+
+        
+    
+    
+            circle_marker_21120ab950bdaf8084bdfd376add45cf.bindTooltip(
+                `<div>
+                     escuela municipal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ddd22dd3fe8084fbed6c4b3195c56bf = L.marker(
+                [-33.50714, -70.65149],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_8bc7a0f131e5c444fcd1f3603c6ccf8f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e146\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5ddd22dd3fe8084fbed6c4b3195c56bf.setIcon(div_icon_8bc7a0f131e5c444fcd1f3603c6ccf8f);
+        
+    
+            var circle_marker_baadaa8fa5e721bcce934a68166346c0 = L.circleMarker(
+                [-33.5139, -70.6386],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9941ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.44848484848485, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_afc6a48afd6009266f508669f11e1636 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_acbd119dc07cfb26ded7c58087e6d357 = $(`<div id="html_acbd119dc07cfb26ded7c58087e6d357" style="width: 100.0%; height: 100.0%;"><b>escuela santa fe</b><br>SANTA FE 528<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>153</b></div>`)[0];
+                popup_afc6a48afd6009266f508669f11e1636.setContent(html_acbd119dc07cfb26ded7c58087e6d357);
+            
+        
+
+        circle_marker_baadaa8fa5e721bcce934a68166346c0.bindPopup(popup_afc6a48afd6009266f508669f11e1636)
+        ;
+
+        
+    
+    
+            circle_marker_baadaa8fa5e721bcce934a68166346c0.bindTooltip(
+                `<div>
+                     escuela santa fe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c724f80b4d71bcbf4548916b5081dc6d = L.marker(
+                [-33.5139, -70.6386],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_9bc67719585e500739bfa00339a17315 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e153\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c724f80b4d71bcbf4548916b5081dc6d.setIcon(div_icon_9bc67719585e500739bfa00339a17315);
+        
+    
+            var circle_marker_e204707204f4780e7bde25e6ad829be9 = L.circleMarker(
+                [-33.507, -70.6624],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dd151dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.775757575757574, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_290a02550d6790962a0ac7f8017d149b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_821b768480bdfcffcdb47d9a7f85a0fa = $(`<div id="html_821b768480bdfcffcdb47d9a7f85a0fa" style="width: 100.0%; height: 100.0%;"><b>escuela territorio antartico</b><br>TERCERA TRANSVERSAL 5950<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>255</b></div>`)[0];
+                popup_290a02550d6790962a0ac7f8017d149b.setContent(html_821b768480bdfcffcdb47d9a7f85a0fa);
+            
+        
+
+        circle_marker_e204707204f4780e7bde25e6ad829be9.bindPopup(popup_290a02550d6790962a0ac7f8017d149b)
+        ;
+
+        
+    
+    
+            circle_marker_e204707204f4780e7bde25e6ad829be9.bindTooltip(
+                `<div>
+                     escuela territorio antartico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9b9b826aa11e089b9a44b965e4eab021 = L.marker(
+                [-33.507, -70.6624],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_07453268e87672f3c5e93a4b20787ec7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e255\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9b9b826aa11e089b9a44b965e4eab021.setIcon(div_icon_07453268e87672f3c5e93a4b20787ec7);
+        
+    
+            var circle_marker_255dfd56d1cf91df801486fe4f196be8 = L.circleMarker(
+                [-33.49785, -70.66286],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb852ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.006060606060606, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_dfed91475af24e9148d7001712d426d2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_691668b02577968583eebf633e58a3e1 = $(`<div id="html_691668b02577968583eebf633e58a3e1" style="width: 100.0%; height: 100.0%;"><b>escuela villa san miguel</b><br>LAZO 1520<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>119</b></div>`)[0];
+                popup_dfed91475af24e9148d7001712d426d2.setContent(html_691668b02577968583eebf633e58a3e1);
+            
+        
+
+        circle_marker_255dfd56d1cf91df801486fe4f196be8.bindPopup(popup_dfed91475af24e9148d7001712d426d2)
+        ;
+
+        
+    
+    
+            circle_marker_255dfd56d1cf91df801486fe4f196be8.bindTooltip(
+                `<div>
+                     escuela villa san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_64ef61becde9258722d159f350631ea4 = L.marker(
+                [-33.49785, -70.66286],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_82259ae071aa3de20fa205f8f70bfe56 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e119\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_64ef61becde9258722d159f350631ea4.setIcon(div_icon_82259ae071aa3de20fa205f8f70bfe56);
+        
+    
+            var circle_marker_fb7ec86c7ac3f1de331537f456a2b96a = L.circleMarker(
+                [-33.4881, -70.6504],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe933eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.703030303030303, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_c9fa3d61f3efe12742363282bd78cf69 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_78674786000f53f883ca89e1f03a23ce = $(`<div id="html_78674786000f53f883ca89e1f03a23ce" style="width: 100.0%; height: 100.0%;"><b>instituto miguel leon prado</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3696<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>159</b></div>`)[0];
+                popup_c9fa3d61f3efe12742363282bd78cf69.setContent(html_78674786000f53f883ca89e1f03a23ce);
+            
+        
+
+        circle_marker_fb7ec86c7ac3f1de331537f456a2b96a.bindPopup(popup_c9fa3d61f3efe12742363282bd78cf69)
+        ;
+
+        
+    
+    
+            circle_marker_fb7ec86c7ac3f1de331537f456a2b96a.bindTooltip(
+                `<div>
+                     instituto miguel leon prado
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cac8a27cfdbeb1c3938be18b06607613 = L.marker(
+                [-33.4881, -70.6504],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_8b10f036db333e0173d8d065f974d1c4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e159\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_cac8a27cfdbeb1c3938be18b06607613.setIcon(div_icon_8b10f036db333e0173d8d065f974d1c4);
+        
+    
+            var circle_marker_54e7e14e8f57513c4e806b5f968c856c = L.circleMarker(
+                [-33.4901, -70.651],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea747ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.76969696969697, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_8a23cbcbae5bb9167d9759ccb644b991 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_508013a691254c2a6d5910aea6682f7d = $(`<div id="html_508013a691254c2a6d5910aea6682f7d" style="width: 100.0%; height: 100.0%;"><b>instituto superior de comercio de chile</b><br>ALVAREZ DE TOLEDO 1060<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>137</b></div>`)[0];
+                popup_8a23cbcbae5bb9167d9759ccb644b991.setContent(html_508013a691254c2a6d5910aea6682f7d);
+            
+        
+
+        circle_marker_54e7e14e8f57513c4e806b5f968c856c.bindPopup(popup_8a23cbcbae5bb9167d9759ccb644b991)
+        ;
+
+        
+    
+    
+            circle_marker_54e7e14e8f57513c4e806b5f968c856c.bindTooltip(
+                `<div>
+                     instituto superior de comercio de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_836a87e2e915b3c77ae48a29db891e9b = L.marker(
+                [-33.4901, -70.651],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_52d1ca6418bcf3ee83eb6203f56cc84c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e137\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_836a87e2e915b3c77ae48a29db891e9b.setIcon(div_icon_52d1ca6418bcf3ee83eb6203f56cc84c);
+        
+    
+            var circle_marker_9abd29442d56cc19ca2433d478bebeae = L.circleMarker(
+                [-33.4866, -70.653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#990026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.27878787878788, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_2877e284e7ec6d225141d4c6c0ba9854 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_add619c97409ba2b441c1c886ebc3235 = $(`<div id="html_add619c97409ba2b441c1c886ebc3235" style="width: 100.0%; height: 100.0%;"><b>liceo andres bello</b><br>SOTO AGUILAR 1241<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>314</b></div>`)[0];
+                popup_2877e284e7ec6d225141d4c6c0ba9854.setContent(html_add619c97409ba2b441c1c886ebc3235);
+            
+        
+
+        circle_marker_9abd29442d56cc19ca2433d478bebeae.bindPopup(popup_2877e284e7ec6d225141d4c6c0ba9854)
+        ;
+
+        
+    
+    
+            circle_marker_9abd29442d56cc19ca2433d478bebeae.bindTooltip(
+                `<div>
+                     liceo andres bello
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_37df2c842a8cf4001137b4cb51cea8be = L.marker(
+                [-33.4866, -70.653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_4f374c35e3ff48f62746612bd8742af2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e314\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_37df2c842a8cf4001137b4cb51cea8be.setIcon(div_icon_4f374c35e3ff48f62746612bd8742af2);
+        
+    
+            var circle_marker_3e7a337cdb2e9927ef458765dc5e5e99 = L.circleMarker(
+                [-33.48978, -70.65599],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_20b490eebdf371261045d3ee1a6d8fe9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_65cdd9c463c1d7dd62c1960ee70e221c = $(`<div id="html_65cdd9c463c1d7dd62c1960ee70e221c" style="width: 100.0%; height: 100.0%;"><b>liceo betsabe hormazabal de alarcon l1</b><br>GASPAR BANDA 4047<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>331</b></div>`)[0];
+                popup_20b490eebdf371261045d3ee1a6d8fe9.setContent(html_65cdd9c463c1d7dd62c1960ee70e221c);
+            
+        
+
+        circle_marker_3e7a337cdb2e9927ef458765dc5e5e99.bindPopup(popup_20b490eebdf371261045d3ee1a6d8fe9)
+        ;
+
+        
+    
+    
+            circle_marker_3e7a337cdb2e9927ef458765dc5e5e99.bindTooltip(
+                `<div>
+                     liceo betsabe hormazabal de alarcon l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4008294ebdfeedd375b2b1105e3cd6af = L.marker(
+                [-33.48978, -70.65599],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_fbb419b785359cfbaa94bdb346524bb4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e331\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4008294ebdfeedd375b2b1105e3cd6af.setIcon(div_icon_fbb419b785359cfbaa94bdb346524bb4);
+        
+    
+            var circle_marker_889604f69d75d7923c3c709707d531bc = L.circleMarker(
+                [-33.49214, -70.65141],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d7111fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.07272727272727, "stroke": false, "weight": 3}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+        var popup_dc02523a18e45320e9c7822330b7d892 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1458abe7aa43e54701cdb42a7f624598 = $(`<div id="html_1458abe7aa43e54701cdb42a7f624598" style="width: 100.0%; height: 100.0%;"><b>universidad de valparaiso</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 4160<br>Votos Lista FELIPE GUEVARA STEPHENS: <b>262</b></div>`)[0];
+                popup_dc02523a18e45320e9c7822330b7d892.setContent(html_1458abe7aa43e54701cdb42a7f624598);
+            
+        
+
+        circle_marker_889604f69d75d7923c3c709707d531bc.bindPopup(popup_dc02523a18e45320e9c7822330b7d892)
+        ;
+
+        
+    
+    
+            circle_marker_889604f69d75d7923c3c709707d531bc.bindTooltip(
+                `<div>
+                     universidad de valparaiso
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4cb3dd78952e8176bdd5af9c2e09efd4 = L.marker(
+                [-33.49214, -70.65141],
+                {"zIndexOffset": 9999}
+            ).addTo(map_3fdb7528738ee4ae778bcffd1c48fc45);
+        
+    
+            var div_icon_73f2e178a22c3dcfa01a534cd1de3836 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e262\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4cb3dd78952e8176bdd5af9c2e09efd4.setIcon(div_icon_73f2e178a22c3dcfa01a534cd1de3836);
+        
+    
+            map_3fdb7528738ee4ae778bcffd1c48fc45.fitBounds(
+                [[-33.49788, -70.64692], [-33.5068, -70.6519], [-33.50099, -70.65444], [-33.4867, -70.6495], [-33.50737, -70.65042], [-33.4893, -70.6577], [-33.4858, -70.6565], [-33.50714, -70.65149], [-33.5139, -70.6386], [-33.507, -70.6624], [-33.49785, -70.66286], [-33.4881, -70.6504], [-33.4901, -70.651], [-33.4866, -70.653], [-33.48978, -70.65599], [-33.49214, -70.65141]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

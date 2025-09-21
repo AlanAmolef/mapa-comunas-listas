@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_11ad1b71afa9aec7c532c97efdbd5518 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_11ad1b71afa9aec7c532c97efdbd5518" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_11ad1b71afa9aec7c532c97efdbd5518 = L.map(
+                "map_11ad1b71afa9aec7c532c97efdbd5518",
+                {
+                    center: [-33.49671562499999, -70.652783125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9f706a5410bb31a3b91d0157dbe45f76 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_9f706a5410bb31a3b91d0157dbe45f76.addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+    var color_map_57fa130f9ed776e4dd83ece51615edfa = {};
+
+    
+    color_map_57fa130f9ed776e4dd83ece51615edfa.color = d3.scale.threshold()
+              .domain([0.0, 0.22444889779559118, 0.44889779559118237, 0.6733466933867736, 0.8977955911823647, 1.122244488977956, 1.346693386773547, 1.5711422845691383, 1.7955911823647295, 2.0200400801603204, 2.244488977955912, 2.468937875751503, 2.693386773547094, 2.917835671342685, 3.1422845691382766, 3.3667334669338675, 3.591182364729459, 3.81563126252505, 4.040080160320641, 4.264529058116232, 4.488977955911824, 4.713426853707415, 4.937875751503006, 5.162324649298597, 5.386773547094188, 5.61122244488978, 5.83567134268537, 6.060120240480962, 6.284569138276553, 6.509018036072145, 6.733466933867735, 6.9579158316633265, 7.182364729458918, 7.406813627254509, 7.6312625250501, 7.855711422845691, 8.080160320641282, 8.304609218436873, 8.529058116232465, 8.753507014028056, 8.977955911823647, 9.202404809619239, 9.42685370741483, 9.651302605210422, 9.875751503006011, 10.100200400801603, 10.324649298597194, 10.549098196392785, 10.773547094188377, 10.997995991983968, 11.22244488977956, 11.446893787575151, 11.67134268537074, 11.895791583166332, 12.120240480961924, 12.344689378757515, 12.569138276553106, 12.793587174348698, 13.01803607214429, 13.24248496993988, 13.46693386773547, 13.691382765531062, 13.915831663326653, 14.140280561122244, 14.364729458917836, 14.589178356713427, 14.813627254509019, 15.03807615230461, 15.2625250501002, 15.486973947895791, 15.711422845691382, 15.935871743486974, 16.160320641282564, 16.384769539078157, 16.609218436873746, 16.83366733466934, 17.05811623246493, 17.282565130260522, 17.507014028056112, 17.731462925851705, 17.955911823647295, 18.180360721442884, 18.404809619238478, 18.629258517034067, 18.85370741482966, 19.07815631262525, 19.302605210420843, 19.527054108216433, 19.751503006012022, 19.975951903807616, 20.200400801603205, 20.4248496993988, 20.649298597194388, 20.87374749498998, 21.09819639278557, 21.322645290581164, 21.547094188376754, 21.771543086172343, 21.995991983967937, 22.220440881763526, 22.44488977955912, 22.66933867735471, 22.893787575150302, 23.118236472945892, 23.34268537074148, 23.567134268537075, 23.791583166332664, 24.016032064128257, 24.240480961923847, 24.46492985971944, 24.68937875751503, 24.91382765531062, 25.138276553106213, 25.362725450901802, 25.587174348697395, 25.811623246492985, 26.03607214428858, 26.260521042084168, 26.48496993987976, 26.70941883767535, 26.93386773547094, 27.158316633266534, 27.382765531062123, 27.607214428857716, 27.831663326653306, 28.0561122244489, 28.28056112224449, 28.50501002004008, 28.72945891783567, 28.95390781563126, 29.178356713426854, 29.402805611222444, 29.627254509018037, 29.851703406813627, 30.07615230460922, 30.30060120240481, 30.5250501002004, 30.749498997995993, 30.973947895791582, 31.198396793587175, 31.422845691382765, 31.647294589178358, 31.871743486973948, 32.09619238476954, 32.32064128256513, 32.545090180360724, 32.76953907815631, 32.9939879759519, 33.21843687374749, 33.44288577154309, 33.66733466933868, 33.89178356713427, 34.11623246492986, 34.34068136272545, 34.565130260521045, 34.789579158316634, 35.014028056112224, 35.23847695390781, 35.46292585170341, 35.687374749499, 35.91182364729459, 36.13627254509018, 36.36072144288577, 36.585170340681366, 36.809619238476955, 37.034068136272545, 37.258517034068134, 37.482965931863724, 37.70741482965932, 37.93186372745491, 38.1563126252505, 38.38076152304609, 38.605210420841686, 38.829659318637276, 39.054108216432866, 39.278557114228455, 39.503006012024045, 39.72745490981964, 39.95190380761523, 40.17635270541082, 40.40080160320641, 40.62525050100201, 40.8496993987976, 41.07414829659319, 41.298597194388776, 41.523046092184366, 41.74749498997996, 41.97194388777555, 42.19639278557114, 42.42084168336673, 42.64529058116233, 42.86973947895792, 43.09418837675351, 43.3186372745491, 43.54308617234469, 43.76753507014028, 43.99198396793587, 44.21643286573146, 44.44088176352705, 44.66533066132264, 44.88977955911824, 45.11422845691383, 45.33867735470942, 45.56312625250501, 45.787575150300604, 46.012024048096194, 46.236472945891784, 46.46092184368737, 46.68537074148296, 46.90981963927856, 47.13426853707415, 47.35871743486974, 47.58316633266533, 47.807615230460925, 48.032064128256515, 48.256513026052104, 48.480961923847694, 48.705410821643284, 48.92985971943888, 49.15430861723447, 49.37875751503006, 49.60320641282565, 49.82765531062124, 50.052104208416836, 50.276553106212425, 50.501002004008015, 50.725450901803605, 50.9498997995992, 51.17434869739479, 51.39879759519038, 51.62324649298597, 51.84769539078156, 52.07214428857716, 52.296593186372746, 52.521042084168336, 52.745490981963925, 52.96993987975952, 53.19438877755511, 53.4188376753507, 53.64328657314629, 53.86773547094188, 54.09218436873748, 54.31663326653307, 54.54108216432866, 54.765531062124246, 54.98997995991984, 55.21442885771543, 55.43887775551102, 55.66332665330661, 55.8877755511022, 56.1122244488978, 56.33667334669339, 56.56112224448898, 56.78557114228457, 57.01002004008016, 57.234468937875754, 57.45891783567134, 57.68336673346693, 57.90781563126252, 58.13226452905812, 58.35671342685371, 58.5811623246493, 58.80561122244489, 59.03006012024048, 59.254509018036075, 59.478957915831664, 59.703406813627254, 59.92785571142284, 60.15230460921844, 60.37675350701403, 60.60120240480962, 60.82565130260521, 61.0501002004008, 61.274549098196395, 61.498997995991985, 61.723446893787575, 61.947895791583164, 62.17234468937876, 62.39679358717435, 62.62124248496994, 62.84569138276553, 63.07014028056112, 63.294589178356716, 63.519038076152306, 63.743486973947896, 63.967935871743485, 64.19238476953907, 64.41683366733467, 64.64128256513025, 64.86573146292585, 65.09018036072145, 65.31462925851703, 65.53907815631263, 65.76352705410822, 65.9879759519038, 66.2124248496994, 66.43687374749499, 66.66132264529058, 66.88577154308618, 67.11022044088176, 67.33466933867736, 67.55911823647294, 67.78356713426854, 68.00801603206413, 68.23246492985972, 68.45691382765531, 68.6813627254509, 68.90581162324649, 69.13026052104209, 69.35470941883767, 69.57915831663327, 69.80360721442885, 70.02805611222445, 70.25250501002004, 70.47695390781563, 70.70140280561122, 70.92585170340682, 71.1503006012024, 71.374749498998, 71.59919839679358, 71.82364729458918, 72.04809619238478, 72.27254509018036, 72.49699398797596, 72.72144288577154, 72.94589178356713, 73.17034068136273, 73.39478957915831, 73.61923847695391, 73.84368737474949, 74.06813627254509, 74.29258517034069, 74.51703406813627, 74.74148296593187, 74.96593186372745, 75.19038076152304, 75.41482965931864, 75.63927855711422, 75.86372745490982, 76.08817635270542, 76.312625250501, 76.5370741482966, 76.76152304609218, 76.98597194388778, 77.21042084168337, 77.43486973947896, 77.65931863727455, 77.88376753507013, 78.10821643286573, 78.33266533066133, 78.55711422845691, 78.78156312625251, 79.00601202404809, 79.23046092184369, 79.45490981963928, 79.67935871743487, 79.90380761523046, 80.12825651302605, 80.35270541082164, 80.57715430861724, 80.80160320641282, 81.02605210420842, 81.25050100200401, 81.4749498997996, 81.6993987975952, 81.92384769539078, 82.14829659318637, 82.37274549098197, 82.59719438877755, 82.82164328657315, 83.04609218436873, 83.27054108216433, 83.49498997995993, 83.71943887775551, 83.9438877755511, 84.16833667334669, 84.39278557114228, 84.61723446893788, 84.84168336673346, 85.06613226452906, 85.29058116232466, 85.51503006012024, 85.73947895791584, 85.96392785571142, 86.18837675350701, 86.41282565130261, 86.6372745490982, 86.86172344689379, 87.08617234468937, 87.31062124248497, 87.53507014028057, 87.75951903807615, 87.98396793587175, 88.20841683366733, 88.43286573146293, 88.65731462925852, 88.8817635270541, 89.1062124248497, 89.33066132264528, 89.55511022044088, 89.77955911823648, 90.00400801603206, 90.22845691382766, 90.45290581162325, 90.67735470941884, 90.90180360721443, 91.12625250501002, 91.35070140280561, 91.57515030060121, 91.79959919839679, 92.02404809619239, 92.24849699398797, 92.47294589178357, 92.69739478957916, 92.92184368737475, 93.14629258517034, 93.37074148296593, 93.59519038076152, 93.81963927855712, 94.0440881763527, 94.2685370741483, 94.49298597194388, 94.71743486973948, 94.94188376753507, 95.16633266533066, 95.39078156312625, 95.61523046092185, 95.83967935871743, 96.06412825651303, 96.28857715430861, 96.51302605210421, 96.7374749498998, 96.96192384769539, 97.18637274549098, 97.41082164328657, 97.63527054108216, 97.85971943887776, 98.08416833667334, 98.30861723446894, 98.53306613226452, 98.75751503006012, 98.98196392785572, 99.2064128256513, 99.4308617234469, 99.65531062124248, 99.87975951903807, 100.10420841683367, 100.32865731462925, 100.55310621242485, 100.77755511022045, 101.00200400801603, 101.22645290581163, 101.45090180360721, 101.6753507014028, 101.8997995991984, 102.12424849699399, 102.34869739478958, 102.57314629258516, 102.79759519038076, 103.02204408817636, 103.24649298597194, 103.47094188376754, 103.69539078156312, 103.91983967935872, 104.14428857715431, 104.3687374749499, 104.59318637274549, 104.81763527054109, 105.04208416833667, 105.26653306613227, 105.49098196392785, 105.71543086172345, 105.93987975951904, 106.16432865731463, 106.38877755511022, 106.6132264529058, 106.8376753507014, 107.062124248497, 107.28657314629258, 107.51102204408818, 107.73547094188376, 107.95991983967936, 108.18436873747495, 108.40881763527054, 108.63326653306613, 108.85771543086172, 109.08216432865731, 109.30661322645291, 109.53106212424849, 109.75551102204409, 109.97995991983969, 110.20440881763527, 110.42885771543087, 110.65330661322645, 110.87775551102204, 111.10220440881764, 111.32665330661322, 111.55110220440882, 111.7755511022044, 112.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_57fa130f9ed776e4dd83ece51615edfa.x = d3.scale.linear()
+              .domain([0.0, 112.0])
+              .range([0, 450 - 50]);
+
+    color_map_57fa130f9ed776e4dd83ece51615edfa.legend = L.control({position: 'topright'});
+    color_map_57fa130f9ed776e4dd83ece51615edfa.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_57fa130f9ed776e4dd83ece51615edfa.legend.addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+
+    color_map_57fa130f9ed776e4dd83ece51615edfa.xAxis = d3.svg.axis()
+        .scale(color_map_57fa130f9ed776e4dd83ece51615edfa.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, 14.0, 28.0, 42.0, 56.0, 70.0, 84.0, 98.0, 112.0]);
+
+    color_map_57fa130f9ed776e4dd83ece51615edfa.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_57fa130f9ed776e4dd83ece51615edfa.g = color_map_57fa130f9ed776e4dd83ece51615edfa.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_57fa130f9ed776e4dd83ece51615edfa.g.selectAll("rect")
+        .data(color_map_57fa130f9ed776e4dd83ece51615edfa.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_57fa130f9ed776e4dd83ece51615edfa.x(color_map_57fa130f9ed776e4dd83ece51615edfa.color.domain()[i - 1]) : color_map_57fa130f9ed776e4dd83ece51615edfa.x.range()[0],
+            x1: i < color_map_57fa130f9ed776e4dd83ece51615edfa.color.domain().length ? color_map_57fa130f9ed776e4dd83ece51615edfa.x(color_map_57fa130f9ed776e4dd83ece51615edfa.color.domain()[i]) : color_map_57fa130f9ed776e4dd83ece51615edfa.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_57fa130f9ed776e4dd83ece51615edfa.g.call(color_map_57fa130f9ed776e4dd83ece51615edfa.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista JOSE LUIS OYARCE GARAY por local");
+    
+            var circle_marker_ca23ea9641531be674697d9794544564 = L.circleMarker(
+                [-33.49788, -70.64692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_42e3eef38901218507f18e6d7063d9d2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7bcd608ba23bce3a1742e035346a1448 = $(`<div id="html_7bcd608ba23bce3a1742e035346a1448" style="width: 100.0%; height: 100.0%;"><b>C.P.F de san miguel</b><br>SAN FRANCISCO 4756<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>0</b></div>`)[0];
+                popup_42e3eef38901218507f18e6d7063d9d2.setContent(html_7bcd608ba23bce3a1742e035346a1448);
+            
+        
+
+        circle_marker_ca23ea9641531be674697d9794544564.bindPopup(popup_42e3eef38901218507f18e6d7063d9d2)
+        ;
+
+        
+    
+    
+            circle_marker_ca23ea9641531be674697d9794544564.bindTooltip(
+                `<div>
+                     C.P.F de san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6782e630384467ec799f1cb1638a71c9 = L.marker(
+                [-33.49788, -70.64692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_f3d7906885cd7798ed3cd9d9ef9d81a6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e0\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6782e630384467ec799f1cb1638a71c9.setIcon(div_icon_f3d7906885cd7798ed3cd9d9ef9d81a6);
+        
+    
+            var circle_marker_231624430fcb505c187c2bd0442f804c = L.circleMarker(
+                [-33.5068, -70.6519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7234ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.75, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_37eb8cb9e557b34eb9cbf5f5f82d0547 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_41280c09b7fcaaac903955c3a9947dd6 = $(`<div id="html_41280c09b7fcaaac903955c3a9947dd6" style="width: 100.0%; height: 100.0%;"><b>colegio bicentenario santo cura de ars</b><br>CARMEN MENA 939<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>62</b></div>`)[0];
+                popup_37eb8cb9e557b34eb9cbf5f5f82d0547.setContent(html_41280c09b7fcaaac903955c3a9947dd6);
+            
+        
+
+        circle_marker_231624430fcb505c187c2bd0442f804c.bindPopup(popup_37eb8cb9e557b34eb9cbf5f5f82d0547)
+        ;
+
+        
+    
+    
+            circle_marker_231624430fcb505c187c2bd0442f804c.bindTooltip(
+                `<div>
+                     colegio bicentenario santo cura de ars
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_78f6f30c8a26935549ff7755c7866392 = L.marker(
+                [-33.5068, -70.6519],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_98520b80e0130edfe3a5c2ab51ed7828 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e62\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_78f6f30c8a26935549ff7755c7866392.setIcon(div_icon_98520b80e0130edfe3a5c2ab51ed7828);
+        
+    
+            var circle_marker_d5f2ca9072a40b1211028b8fc5044bc9 = L.circleMarker(
+                [-33.50099, -70.65444],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea546ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.875, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_35925243d06ca6ac31c1cbd48397bf58 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bc64bd107f14b2f4957b1d516a8f7093 = $(`<div id="html_bc64bd107f14b2f4957b1d516a8f7093" style="width: 100.0%; height: 100.0%;"><b>colegio chile</b><br>PIRAMIDE 1089<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>47</b></div>`)[0];
+                popup_35925243d06ca6ac31c1cbd48397bf58.setContent(html_bc64bd107f14b2f4957b1d516a8f7093);
+            
+        
+
+        circle_marker_d5f2ca9072a40b1211028b8fc5044bc9.bindPopup(popup_35925243d06ca6ac31c1cbd48397bf58)
+        ;
+
+        
+    
+    
+            circle_marker_d5f2ca9072a40b1211028b8fc5044bc9.bindTooltip(
+                `<div>
+                     colegio chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f97225b170fd3dba08234ebf62f17dff = L.marker(
+                [-33.50099, -70.65444],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_8c606ab2b57a2c289e317e949c656bf1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e47\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f97225b170fd3dba08234ebf62f17dff.setIcon(div_icon_8c606ab2b57a2c289e317e949c656bf1);
+        
+    
+            var circle_marker_f543470cdbf5f76d145d75cf7e37b1c5 = L.circleMarker(
+                [-33.4867, -70.6495],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd893aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.125, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_9a79c02283519a8d1702e43c6afef574 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c4776db79335d155cdcd85279ecd63e7 = $(`<div id="html_c4776db79335d155cdcd85279ecd63e7" style="width: 100.0%; height: 100.0%;"><b>colegio parroquial san miguel</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3548<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>57</b></div>`)[0];
+                popup_9a79c02283519a8d1702e43c6afef574.setContent(html_c4776db79335d155cdcd85279ecd63e7);
+            
+        
+
+        circle_marker_f543470cdbf5f76d145d75cf7e37b1c5.bindPopup(popup_9a79c02283519a8d1702e43c6afef574)
+        ;
+
+        
+    
+    
+            circle_marker_f543470cdbf5f76d145d75cf7e37b1c5.bindTooltip(
+                `<div>
+                     colegio parroquial san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_911c91e36308bfb084ad1ab08a7dc46d = L.marker(
+                [-33.4867, -70.6495],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_f6c10b638066daf35193d201659972b6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e57\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_911c91e36308bfb084ad1ab08a7dc46d.setIcon(div_icon_f6c10b638066daf35193d201659972b6);
+        
+    
+            var circle_marker_7f487f12e28af09c07cd330428b87315 = L.circleMarker(
+                [-33.50737, -70.65042],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feaa48ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.625, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_5d8732b8efec6a24340764e9c02ef9b8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_297b9adfa15bb079b992f5705d23dbe8 = $(`<div id="html_297b9adfa15bb079b992f5705d23dbe8" style="width: 100.0%; height: 100.0%;"><b>colegio tomas moro</b><br>CARMEN MENA 882<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>45</b></div>`)[0];
+                popup_5d8732b8efec6a24340764e9c02ef9b8.setContent(html_297b9adfa15bb079b992f5705d23dbe8);
+            
+        
+
+        circle_marker_7f487f12e28af09c07cd330428b87315.bindPopup(popup_5d8732b8efec6a24340764e9c02ef9b8)
+        ;
+
+        
+    
+    
+            circle_marker_7f487f12e28af09c07cd330428b87315.bindTooltip(
+                `<div>
+                     colegio tomas moro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_09a04a27e8be6bb825269db7225e4cb3 = L.marker(
+                [-33.50737, -70.65042],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_b982465ef4a5e516341b340d49a6f5ce = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e45\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_09a04a27e8be6bb825269db7225e4cb3.setIcon(div_icon_b982465ef4a5e516341b340d49a6f5ce);
+        
+    
+            var circle_marker_ceaaad3d2c5234f26c7f2cf3210460b9 = L.circleMarker(
+                [-33.4893, -70.6577],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea245ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_4348c165fdcae22a9b3d6f9519d4cc6d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_caee575a4298f54af0cb3f0a5b88982a = $(`<div id="html_caee575a4298f54af0cb3f0a5b88982a" style="width: 100.0%; height: 100.0%;"><b>escuela de la industria grafica hector gomez</b><br>FLORENCIA 1442<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>48</b></div>`)[0];
+                popup_4348c165fdcae22a9b3d6f9519d4cc6d.setContent(html_caee575a4298f54af0cb3f0a5b88982a);
+            
+        
+
+        circle_marker_ceaaad3d2c5234f26c7f2cf3210460b9.bindPopup(popup_4348c165fdcae22a9b3d6f9519d4cc6d)
+        ;
+
+        
+    
+    
+            circle_marker_ceaaad3d2c5234f26c7f2cf3210460b9.bindTooltip(
+                `<div>
+                     escuela de la industria grafica hector gomez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b819160ce82b62081b6691b0f038ae5a = L.marker(
+                [-33.4893, -70.6577],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_ebf8e2164538c4ea5dc88927826f0ba6 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e48\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b819160ce82b62081b6691b0f038ae5a.setIcon(div_icon_ebf8e2164538c4ea5dc88927826f0ba6);
+        
+    
+            var circle_marker_e48258a0675f84cde3fd8afa5ff42b08 = L.circleMarker(
+                [-33.4858, -70.6565],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de161dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.75, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_5ff4e490146c217a906846c5c65c76c3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cbaa68c4e85d24f5851c4c2b36fd38e8 = $(`<div id="html_cbaa68c4e85d24f5851c4c2b36fd38e8" style="width: 100.0%; height: 100.0%;"><b>escuela llano subercaseaux</b><br>SOTO AGUILAR 1509<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>86</b></div>`)[0];
+                popup_5ff4e490146c217a906846c5c65c76c3.setContent(html_cbaa68c4e85d24f5851c4c2b36fd38e8);
+            
+        
+
+        circle_marker_e48258a0675f84cde3fd8afa5ff42b08.bindPopup(popup_5ff4e490146c217a906846c5c65c76c3)
+        ;
+
+        
+    
+    
+            circle_marker_e48258a0675f84cde3fd8afa5ff42b08.bindTooltip(
+                `<div>
+                     escuela llano subercaseaux
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c821a2c2b5f42ffa0b7acd75a5de87d5 = L.marker(
+                [-33.4858, -70.6565],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_01569ace06dc42be58abdcf86ca74c32 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e86\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c821a2c2b5f42ffa0b7acd75a5de87d5.setIcon(div_icon_01569ace06dc42be58abdcf86ca74c32);
+        
+    
+            var circle_marker_6f898a9bdf0eb3064577f87a09923f36 = L.circleMarker(
+                [-33.50714, -70.65149],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb54fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.125, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_99352f85684f6e8a73ffbf583e70e80a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_23ae85a476cbe9bb8f3e54260d9c1e51 = $(`<div id="html_23ae85a476cbe9bb8f3e54260d9c1e51" style="width: 100.0%; height: 100.0%;"><b>escuela municipal</b><br>CARMEN MENA 906<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>41</b></div>`)[0];
+                popup_99352f85684f6e8a73ffbf583e70e80a.setContent(html_23ae85a476cbe9bb8f3e54260d9c1e51);
+            
+        
+
+        circle_marker_6f898a9bdf0eb3064577f87a09923f36.bindPopup(popup_99352f85684f6e8a73ffbf583e70e80a)
+        ;
+
+        
+    
+    
+            circle_marker_6f898a9bdf0eb3064577f87a09923f36.bindTooltip(
+                `<div>
+                     escuela municipal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_055d958b606f7e345249418ad9d1fb75 = L.marker(
+                [-33.50714, -70.65149],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_f785b9f1af7e3ff09031dc8771699197 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e41\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_055d958b606f7e345249418ad9d1fb75.setIcon(div_icon_f785b9f1af7e3ff09031dc8771699197);
+        
+    
+            var circle_marker_63209eab8100d8eee51daa387e3d793d = L.circleMarker(
+                [-33.5139, -70.6386],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec35eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.5, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_e9266aa0afe3bc6f99f6f757b37b2e69 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4d338bae8a57b82c17dc66c6812a8e7a = $(`<div id="html_4d338bae8a57b82c17dc66c6812a8e7a" style="width: 100.0%; height: 100.0%;"><b>escuela santa fe</b><br>SANTA FE 528<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>36</b></div>`)[0];
+                popup_e9266aa0afe3bc6f99f6f757b37b2e69.setContent(html_4d338bae8a57b82c17dc66c6812a8e7a);
+            
+        
+
+        circle_marker_63209eab8100d8eee51daa387e3d793d.bindPopup(popup_e9266aa0afe3bc6f99f6f757b37b2e69)
+        ;
+
+        
+    
+    
+            circle_marker_63209eab8100d8eee51daa387e3d793d.bindTooltip(
+                `<div>
+                     escuela santa fe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c3934dda6c739e54a4bdab1f2997cb68 = L.marker(
+                [-33.5139, -70.6386],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_1f63566d83271496d572f57e2995aa41 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e36\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c3934dda6c739e54a4bdab1f2997cb68.setIcon(div_icon_1f63566d83271496d572f57e2995aa41);
+        
+    
+            var circle_marker_1a9af77530455683c5a01cca2f82aac8 = L.circleMarker(
+                [-33.507, -70.6624],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e51d1dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.375, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_9b5d0badc66a65fb422aa61f41ed6ce4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e24e0e52047040d286bcd515cd997dd8 = $(`<div id="html_e24e0e52047040d286bcd515cd997dd8" style="width: 100.0%; height: 100.0%;"><b>escuela territorio antartico</b><br>TERCERA TRANSVERSAL 5950<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>83</b></div>`)[0];
+                popup_9b5d0badc66a65fb422aa61f41ed6ce4.setContent(html_e24e0e52047040d286bcd515cd997dd8);
+            
+        
+
+        circle_marker_1a9af77530455683c5a01cca2f82aac8.bindPopup(popup_9b5d0badc66a65fb422aa61f41ed6ce4)
+        ;
+
+        
+    
+    
+            circle_marker_1a9af77530455683c5a01cca2f82aac8.bindTooltip(
+                `<div>
+                     escuela territorio antartico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c3a9a2b32f9a7d1ef14d4602b8c4d374 = L.marker(
+                [-33.507, -70.6624],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_b45444f19629427ccd31d2ae77dacc92 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e83\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c3a9a2b32f9a7d1ef14d4602b8c4d374.setIcon(div_icon_b45444f19629427ccd31d2ae77dacc92);
+        
+    
+            var circle_marker_3ffff58f89de67d02ba2f92eeec34852 = L.circleMarker(
+                [-33.49785, -70.66286],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec05bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.625, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_5893cdae663be2919d5f3cd230260895 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_391ee293067b47b75533f977efe81269 = $(`<div id="html_391ee293067b47b75533f977efe81269" style="width: 100.0%; height: 100.0%;"><b>escuela villa san miguel</b><br>LAZO 1520<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>37</b></div>`)[0];
+                popup_5893cdae663be2919d5f3cd230260895.setContent(html_391ee293067b47b75533f977efe81269);
+            
+        
+
+        circle_marker_3ffff58f89de67d02ba2f92eeec34852.bindPopup(popup_5893cdae663be2919d5f3cd230260895)
+        ;
+
+        
+    
+    
+            circle_marker_3ffff58f89de67d02ba2f92eeec34852.bindTooltip(
+                `<div>
+                     escuela villa san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2a0ae8b20883d68059bb88ab8dd880e5 = L.marker(
+                [-33.49785, -70.66286],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_9b322ab1142530fa01d15e38668b8c76 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e37\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2a0ae8b20883d68059bb88ab8dd880e5.setIcon(div_icon_9b322ab1142530fa01d15e38668b8c76);
+        
+    
+            var circle_marker_9d082fb62ea1c170eb5336fc694f31b8 = L.circleMarker(
+                [-33.4881, -70.6504],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7635ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.625, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_721d28fb9b3effac0250bc23f8994d9e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2dbff7e24f75b22a9c4ff84f5ff58a7e = $(`<div id="html_2dbff7e24f75b22a9c4ff84f5ff58a7e" style="width: 100.0%; height: 100.0%;"><b>instituto miguel leon prado</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3696<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>61</b></div>`)[0];
+                popup_721d28fb9b3effac0250bc23f8994d9e.setContent(html_2dbff7e24f75b22a9c4ff84f5ff58a7e);
+            
+        
+
+        circle_marker_9d082fb62ea1c170eb5336fc694f31b8.bindPopup(popup_721d28fb9b3effac0250bc23f8994d9e)
+        ;
+
+        
+    
+    
+            circle_marker_9d082fb62ea1c170eb5336fc694f31b8.bindTooltip(
+                `<div>
+                     instituto miguel leon prado
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cde4d90b39989f393e0a5dc0d320a5ca = L.marker(
+                [-33.4881, -70.6504],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_9dec8abc0b40cdd80f3ab57f2f068314 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e61\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_cde4d90b39989f393e0a5dc0d320a5ca.setIcon(div_icon_9dec8abc0b40cdd80f3ab57f2f068314);
+        
+    
+            var circle_marker_893d0defa71c31e8e23a8b7babc00b9e = L.circleMarker(
+                [-33.4901, -70.651],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe185ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.875, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_52152d568d465bf771b351981d2afccf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d957088f2ed11ada67bb1d672109ccf1 = $(`<div id="html_d957088f2ed11ada67bb1d672109ccf1" style="width: 100.0%; height: 100.0%;"><b>instituto superior de comercio de chile</b><br>ALVAREZ DE TOLEDO 1060<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>23</b></div>`)[0];
+                popup_52152d568d465bf771b351981d2afccf.setContent(html_d957088f2ed11ada67bb1d672109ccf1);
+            
+        
+
+        circle_marker_893d0defa71c31e8e23a8b7babc00b9e.bindPopup(popup_52152d568d465bf771b351981d2afccf)
+        ;
+
+        
+    
+    
+            circle_marker_893d0defa71c31e8e23a8b7babc00b9e.bindTooltip(
+                `<div>
+                     instituto superior de comercio de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e6375dc002ea7735d341ae86b4ff5426 = L.marker(
+                [-33.4901, -70.651],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_cbd1ab479121d897831db0f93fbfd1d1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e6375dc002ea7735d341ae86b4ff5426.setIcon(div_icon_cbd1ab479121d897831db0f93fbfd1d1);
+        
+    
+            var circle_marker_b850bc2ecf9e3c42cc389d04313f8aa3 = L.circleMarker(
+                [-33.4866, -70.653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#890026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.75, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_d2e2834b3c6f8d2da821a687996193f6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8627ec2e9bf9cf1285b3a1b2533c6060 = $(`<div id="html_8627ec2e9bf9cf1285b3a1b2533c6060" style="width: 100.0%; height: 100.0%;"><b>liceo andres bello</b><br>SOTO AGUILAR 1241<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>110</b></div>`)[0];
+                popup_d2e2834b3c6f8d2da821a687996193f6.setContent(html_8627ec2e9bf9cf1285b3a1b2533c6060);
+            
+        
+
+        circle_marker_b850bc2ecf9e3c42cc389d04313f8aa3.bindPopup(popup_d2e2834b3c6f8d2da821a687996193f6)
+        ;
+
+        
+    
+    
+            circle_marker_b850bc2ecf9e3c42cc389d04313f8aa3.bindTooltip(
+                `<div>
+                     liceo andres bello
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7cf548f3b434c552dc0b7c7ac936e40b = L.marker(
+                [-33.4866, -70.653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_ab0d06e27acd49d1511d6ba8c9aff296 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e110\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7cf548f3b434c552dc0b7c7ac936e40b.setIcon(div_icon_ab0d06e27acd49d1511d6ba8c9aff296);
+        
+    
+            var circle_marker_ecc453707d71e5c024ec26da62f0e4da = L.circleMarker(
+                [-33.48978, -70.65599],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_a389556279e69de2d2f7854620eb35f3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9a4412f2de74a449ae15c8a452eec87e = $(`<div id="html_9a4412f2de74a449ae15c8a452eec87e" style="width: 100.0%; height: 100.0%;"><b>liceo betsabe hormazabal de alarcon l1</b><br>GASPAR BANDA 4047<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>112</b></div>`)[0];
+                popup_a389556279e69de2d2f7854620eb35f3.setContent(html_9a4412f2de74a449ae15c8a452eec87e);
+            
+        
+
+        circle_marker_ecc453707d71e5c024ec26da62f0e4da.bindPopup(popup_a389556279e69de2d2f7854620eb35f3)
+        ;
+
+        
+    
+    
+            circle_marker_ecc453707d71e5c024ec26da62f0e4da.bindTooltip(
+                `<div>
+                     liceo betsabe hormazabal de alarcon l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_719e11b5450ecc6f199eddb51b20dbd4 = L.marker(
+                [-33.48978, -70.65599],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_56f3c812c6afef6844385222907009fb = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e112\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_719e11b5450ecc6f199eddb51b20dbd4.setIcon(div_icon_56f3c812c6afef6844385222907009fb);
+        
+    
+            var circle_marker_da6fa763a0643070138d5adebf27abb2 = L.circleMarker(
+                [-33.49214, -70.65141],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9a41ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.375, "stroke": false, "weight": 3}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+        var popup_42b0d2f42f1b1ccd663e0f817b4365f6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_462a16c5c4e8f7f94e44fb94041e8d52 = $(`<div id="html_462a16c5c4e8f7f94e44fb94041e8d52" style="width: 100.0%; height: 100.0%;"><b>universidad de valparaiso</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 4160<br>Votos Lista JOSE LUIS OYARCE GARAY: <b>51</b></div>`)[0];
+                popup_42b0d2f42f1b1ccd663e0f817b4365f6.setContent(html_462a16c5c4e8f7f94e44fb94041e8d52);
+            
+        
+
+        circle_marker_da6fa763a0643070138d5adebf27abb2.bindPopup(popup_42b0d2f42f1b1ccd663e0f817b4365f6)
+        ;
+
+        
+    
+    
+            circle_marker_da6fa763a0643070138d5adebf27abb2.bindTooltip(
+                `<div>
+                     universidad de valparaiso
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b2274a0235c9465cb9be04575520e33 = L.marker(
+                [-33.49214, -70.65141],
+                {"zIndexOffset": 9999}
+            ).addTo(map_11ad1b71afa9aec7c532c97efdbd5518);
+        
+    
+            var div_icon_395442ec0ee0d64d7b9aa2e2f358e206 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e51\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7b2274a0235c9465cb9be04575520e33.setIcon(div_icon_395442ec0ee0d64d7b9aa2e2f358e206);
+        
+    
+            map_11ad1b71afa9aec7c532c97efdbd5518.fitBounds(
+                [[-33.49788, -70.64692], [-33.5068, -70.6519], [-33.50099, -70.65444], [-33.4867, -70.6495], [-33.50737, -70.65042], [-33.4893, -70.6577], [-33.4858, -70.6565], [-33.50714, -70.65149], [-33.5139, -70.6386], [-33.507, -70.6624], [-33.49785, -70.66286], [-33.4881, -70.6504], [-33.4901, -70.651], [-33.4866, -70.653], [-33.48978, -70.65599], [-33.49214, -70.65141]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

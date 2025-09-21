@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_658549f7fc25061e4c40da399d7ddb78 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_658549f7fc25061e4c40da399d7ddb78" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_658549f7fc25061e4c40da399d7ddb78 = L.map(
+                "map_658549f7fc25061e4c40da399d7ddb78",
+                {
+                    center: [-33.49671562499999, -70.652783125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0362ec7834244148d38cb6affabfb739 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_0362ec7834244148d38cb6affabfb739.addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+    var color_map_40abcb19999f9fd1ac0fbdfaa136168e = {};
+
+    
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.color = d3.scale.threshold()
+              .domain([0.0, 0.45090180360721444, 0.9018036072144289, 1.3527054108216432, 1.8036072144288577, 2.2545090180360723, 2.7054108216432864, 3.156312625250501, 3.6072144288577155, 4.05811623246493, 4.509018036072145, 4.959919839679359, 5.410821643286573, 5.861723446893787, 6.312625250501002, 6.763527054108216, 7.214428857715431, 7.6653306613226455, 8.11623246492986, 8.567134268537075, 9.01803607214429, 9.468937875751504, 9.919839679358718, 10.370741482965931, 10.821643286573146, 11.27254509018036, 11.723446893787575, 12.17434869739479, 12.625250501002004, 13.076152304609218, 13.527054108216433, 13.977955911823647, 14.428857715430862, 14.879759519038076, 15.330661322645291, 15.781563126252506, 16.23246492985972, 16.683366733466933, 17.13426853707415, 17.585170340681362, 18.03607214428858, 18.48697394789579, 18.937875751503007, 19.38877755511022, 19.839679358717436, 20.29058116232465, 20.741482965931862, 21.19238476953908, 21.64328657314629, 22.094188376753507, 22.54509018036072, 22.995991983967937, 23.44689378757515, 23.897795591182366, 24.34869739478958, 24.799599198396795, 25.250501002004007, 25.701402805611224, 26.152304609218437, 26.603206412825653, 27.054108216432866, 27.50501002004008, 27.955911823647295, 28.406813627254508, 28.857715430861724, 29.308617234468937, 29.759519038076153, 30.210420841683366, 30.661322645290582, 31.112224448897795, 31.56312625250501, 32.014028056112224, 32.46492985971944, 32.91583166332666, 33.366733466933866, 33.81763527054108, 34.2685370741483, 34.71943887775551, 35.170340681362724, 35.62124248496994, 36.07214428857716, 36.523046092184366, 36.97394789579158, 37.4248496993988, 37.875751503006015, 38.326653306613224, 38.77755511022044, 39.22845691382766, 39.67935871743487, 40.13026052104208, 40.5811623246493, 41.032064128256515, 41.482965931863724, 41.93386773547094, 42.38476953907816, 42.83567134268537, 43.28657314629258, 43.7374749498998, 44.188376753507015, 44.63927855711423, 45.09018036072144, 45.54108216432866, 45.99198396793587, 46.44288577154309, 46.8937875751503, 47.344689378757515, 47.79559118236473, 48.24649298597194, 48.69739478957916, 49.14829659318637, 49.59919839679359, 50.0501002004008, 50.501002004008015, 50.95190380761523, 51.40280561122245, 51.85370741482966, 52.30460921843687, 52.75551102204409, 53.206412825651306, 53.657314629258515, 54.10821643286573, 54.55911823647295, 55.01002004008016, 55.46092184368737, 55.91182364729459, 56.362725450901806, 56.813627254509015, 57.26452905811623, 57.71543086172345, 58.166332665330664, 58.61723446893787, 59.06813627254509, 59.519038076152306, 59.96993987975952, 60.42084168336673, 60.87174348697395, 61.322645290581164, 61.77354709418837, 62.22444889779559, 62.675350701402806, 63.12625250501002, 63.57715430861723, 64.02805611222445, 64.47895791583166, 64.92985971943888, 65.38076152304609, 65.83166332665331, 66.28256513026052, 66.73346693386773, 67.18436873747495, 67.63527054108216, 68.08617234468937, 68.5370741482966, 68.9879759519038, 69.43887775551102, 69.88977955911824, 70.34068136272545, 70.79158316633267, 71.24248496993988, 71.69338677354709, 72.14428857715431, 72.59519038076152, 73.04609218436873, 73.49699398797596, 73.94789579158316, 74.39879759519039, 74.8496993987976, 75.3006012024048, 75.75150300601203, 76.20240480961924, 76.65330661322645, 77.10420841683367, 77.55511022044088, 78.00601202404809, 78.45691382765531, 78.90781563126252, 79.35871743486975, 79.80961923847696, 80.26052104208416, 80.71142284569139, 81.1623246492986, 81.6132264529058, 82.06412825651303, 82.51503006012024, 82.96593186372745, 83.41683366733467, 83.86773547094188, 84.3186372745491, 84.76953907815631, 85.22044088176352, 85.67134268537075, 86.12224448897796, 86.57314629258516, 87.02404809619239, 87.4749498997996, 87.92585170340682, 88.37675350701403, 88.82765531062124, 89.27855711422846, 89.72945891783567, 90.18036072144288, 90.6312625250501, 91.08216432865731, 91.53306613226452, 91.98396793587175, 92.43486973947896, 92.88577154308618, 93.33667334669339, 93.7875751503006, 94.23847695390782, 94.68937875751503, 95.14028056112224, 95.59118236472946, 96.04208416833667, 96.49298597194388, 96.9438877755511, 97.39478957915831, 97.84569138276554, 98.29659318637275, 98.74749498997996, 99.19839679358718, 99.64929859719439, 100.1002004008016, 100.55110220440882, 101.00200400801603, 101.45290581162325, 101.90380761523046, 102.35470941883767, 102.8056112224449, 103.2565130260521, 103.70741482965931, 104.15831663326654, 104.60921843687375, 105.06012024048096, 105.51102204408818, 105.96192384769539, 106.41282565130261, 106.86372745490982, 107.31462925851703, 107.76553106212425, 108.21643286573146, 108.66733466933867, 109.1182364729459, 109.5691382765531, 110.02004008016031, 110.47094188376754, 110.92184368737475, 111.37274549098197, 111.82364729458918, 112.27454909819639, 112.72545090180361, 113.17635270541082, 113.62725450901803, 114.07815631262525, 114.52905811623246, 114.97995991983969, 115.4308617234469, 115.8817635270541, 116.33266533066133, 116.78356713426854, 117.23446893787575, 117.68537074148297, 118.13627254509018, 118.58717434869739, 119.03807615230461, 119.48897795591182, 119.93987975951904, 120.39078156312625, 120.84168336673346, 121.29258517034069, 121.7434869739479, 122.1943887775551, 122.64529058116233, 123.09619238476954, 123.54709418837675, 123.99799599198397, 124.44889779559118, 124.8997995991984, 125.35070140280561, 125.80160320641282, 126.25250501002004, 126.70340681362725, 127.15430861723446, 127.60521042084169, 128.0561122244489, 128.50701402805612, 128.9579158316633, 129.40881763527054, 129.85971943887776, 130.31062124248496, 130.76152304609218, 131.2124248496994, 131.66332665330663, 132.11422845691382, 132.56513026052104, 133.01603206412827, 133.46693386773546, 133.9178356713427, 134.3687374749499, 134.8196392785571, 135.27054108216433, 135.72144288577155, 136.17234468937875, 136.62324649298597, 137.0741482965932, 137.5250501002004, 137.9759519038076, 138.42685370741484, 138.87775551102203, 139.32865731462925, 139.77955911823648, 140.2304609218437, 140.6813627254509, 141.13226452905812, 141.58316633266534, 142.03406813627254, 142.48496993987976, 142.93587174348698, 143.38677354709418, 143.8376753507014, 144.28857715430863, 144.73947895791582, 145.19038076152304, 145.64128256513027, 146.09218436873746, 146.5430861723447, 146.9939879759519, 147.4448897795591, 147.89579158316633, 148.34669338677355, 148.79759519038078, 149.24849699398797, 149.6993987975952, 150.15030060120242, 150.6012024048096, 151.05210420841684, 151.50300601202406, 151.95390781563125, 152.40480961923848, 152.8557114228457, 153.3066132264529, 153.75751503006012, 154.20841683366734, 154.65931863727454, 155.11022044088176, 155.56112224448898, 156.01202404809618, 156.4629258517034, 156.91382765531063, 157.36472945891782, 157.81563126252505, 158.26653306613227, 158.7174348697395, 159.1683366733467, 159.6192384769539, 160.07014028056113, 160.52104208416833, 160.97194388777555, 161.42284569138278, 161.87374749498997, 162.3246492985972, 162.77555110220442, 163.2264529058116, 163.67735470941884, 164.12825651302606, 164.57915831663325, 165.03006012024048, 165.4809619238477, 165.9318637274549, 166.38276553106212, 166.83366733466934, 167.28456913827657, 167.73547094188376, 168.18637274549098, 168.6372745490982, 169.0881763527054, 169.53907815631263, 169.98997995991985, 170.44088176352705, 170.89178356713427, 171.3426853707415, 171.7935871743487, 172.2444889779559, 172.69539078156313, 173.14629258517033, 173.59719438877755, 174.04809619238478, 174.49899799599197, 174.9498997995992, 175.40080160320642, 175.85170340681364, 176.30260521042084, 176.75350701402806, 177.20440881763528, 177.65531062124248, 178.1062124248497, 178.55711422845692, 179.00801603206412, 179.45891783567134, 179.90981963927857, 180.36072144288576, 180.81162324649299, 181.2625250501002, 181.7134268537074, 182.16432865731463, 182.61523046092185, 183.06613226452905, 183.51703406813627, 183.9679358717435, 184.4188376753507, 184.8697394789579, 185.32064128256513, 185.77154308617236, 186.22244488977955, 186.67334669338678, 187.124248496994, 187.5751503006012, 188.02605210420842, 188.47695390781564, 188.92785571142284, 189.37875751503006, 189.82965931863728, 190.28056112224448, 190.7314629258517, 191.18236472945893, 191.63326653306612, 192.08416833667334, 192.53507014028057, 192.98597194388776, 193.43687374749499, 193.8877755511022, 194.33867735470943, 194.78957915831663, 195.24048096192385, 195.69138276553107, 196.14228456913827, 196.5931863727455, 197.04408817635272, 197.4949899799599, 197.94589178356713, 198.39679358717436, 198.84769539078155, 199.29859719438878, 199.749498997996, 200.2004008016032, 200.65130260521042, 201.10220440881764, 201.55310621242484, 202.00400801603206, 202.45490981963928, 202.9058116232465, 203.3567134268537, 203.80761523046093, 204.25851703406815, 204.70941883767534, 205.16032064128257, 205.6112224448898, 206.06212424849699, 206.5130260521042, 206.96392785571143, 207.41482965931863, 207.86573146292585, 208.31663326653307, 208.76753507014027, 209.2184368737475, 209.66933867735472, 210.1202404809619, 210.57114228456913, 211.02204408817636, 211.47294589178355, 211.92384769539078, 212.374749498998, 212.82565130260522, 213.27655310621242, 213.72745490981964, 214.17835671342687, 214.62925851703406, 215.08016032064128, 215.5310621242485, 215.9819639278557, 216.43286573146293, 216.88376753507015, 217.33466933867734, 217.78557114228457, 218.2364729458918, 218.68737474949899, 219.1382765531062, 219.58917835671343, 220.04008016032063, 220.49098196392785, 220.94188376753507, 221.3927855711423, 221.8436873747495, 222.29458917835672, 222.74549098196394, 223.19639278557113, 223.64729458917836, 224.09819639278558, 224.54909819639278, 225.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.x = d3.scale.linear()
+              .domain([0.0, 225.0])
+              .range([0, 450 - 50]);
+
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.legend = L.control({position: 'topright'});
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.legend.addTo(map_658549f7fc25061e4c40da399d7ddb78);
+
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.xAxis = d3.svg.axis()
+        .scale(color_map_40abcb19999f9fd1ac0fbdfaa136168e.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, 28.125, 56.25, 84.375, 112.5, 140.625, 168.75, 196.875, 225.0]);
+
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.g = color_map_40abcb19999f9fd1ac0fbdfaa136168e.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.g.selectAll("rect")
+        .data(color_map_40abcb19999f9fd1ac0fbdfaa136168e.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_40abcb19999f9fd1ac0fbdfaa136168e.x(color_map_40abcb19999f9fd1ac0fbdfaa136168e.color.domain()[i - 1]) : color_map_40abcb19999f9fd1ac0fbdfaa136168e.x.range()[0],
+            x1: i < color_map_40abcb19999f9fd1ac0fbdfaa136168e.color.domain().length ? color_map_40abcb19999f9fd1ac0fbdfaa136168e.x(color_map_40abcb19999f9fd1ac0fbdfaa136168e.color.domain()[i]) : color_map_40abcb19999f9fd1ac0fbdfaa136168e.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_40abcb19999f9fd1ac0fbdfaa136168e.g.call(color_map_40abcb19999f9fd1ac0fbdfaa136168e.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista LUIS HUMBERTO SANHUEZA BRAVO por local");
+    
+            var circle_marker_a544dd8377a5db4c5c5d59a4eb0b9d88 = L.circleMarker(
+                [-33.49788, -70.64692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_346fa8370a95f09d68fcecb651a64c3d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c15bd6fe5dc4f2a3eac22721de96d3e1 = $(`<div id="html_c15bd6fe5dc4f2a3eac22721de96d3e1" style="width: 100.0%; height: 100.0%;"><b>C.P.F de san miguel</b><br>SAN FRANCISCO 4756<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>0</b></div>`)[0];
+                popup_346fa8370a95f09d68fcecb651a64c3d.setContent(html_c15bd6fe5dc4f2a3eac22721de96d3e1);
+            
+        
+
+        circle_marker_a544dd8377a5db4c5c5d59a4eb0b9d88.bindPopup(popup_346fa8370a95f09d68fcecb651a64c3d)
+        ;
+
+        
+    
+    
+            circle_marker_a544dd8377a5db4c5c5d59a4eb0b9d88.bindTooltip(
+                `<div>
+                     C.P.F de san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b0b89ee5f0b77dd5efb4a04873d1e8de = L.marker(
+                [-33.49788, -70.64692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_be204b0d89b45a2e7508bed6eb40810c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e0\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b0b89ee5f0b77dd5efb4a04873d1e8de.setIcon(div_icon_be204b0d89b45a2e7508bed6eb40810c);
+        
+    
+            var circle_marker_952910019ebb39f44388710a866e8de8 = L.circleMarker(
+                [-33.5068, -70.6519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cd0b21ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.511111111111113, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_6a10985c7f05c7fad2c6e29708264eb8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ba4626b5fdd33d6ce3dfe8a8c5a2cf46 = $(`<div id="html_ba4626b5fdd33d6ce3dfe8a8c5a2cf46" style="width: 100.0%; height: 100.0%;"><b>colegio bicentenario santo cura de ars</b><br>CARMEN MENA 939<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>185</b></div>`)[0];
+                popup_6a10985c7f05c7fad2c6e29708264eb8.setContent(html_ba4626b5fdd33d6ce3dfe8a8c5a2cf46);
+            
+        
+
+        circle_marker_952910019ebb39f44388710a866e8de8.bindPopup(popup_6a10985c7f05c7fad2c6e29708264eb8)
+        ;
+
+        
+    
+    
+            circle_marker_952910019ebb39f44388710a866e8de8.bindTooltip(
+                `<div>
+                     colegio bicentenario santo cura de ars
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b82a47117c9d30a1755fe52bf06a4031 = L.marker(
+                [-33.5068, -70.6519],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_0ee4c770be35b5695da8f7c27c2a19d9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e185\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b82a47117c9d30a1755fe52bf06a4031.setIcon(div_icon_0ee4c770be35b5695da8f7c27c2a19d9);
+        
+    
+            var circle_marker_53b42432e63a95ffd71da94a3878f43f = L.circleMarker(
+                [-33.50099, -70.65444],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e7211dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.266666666666666, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_d29c57533eb34515e8691c8fc09207c2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7d5199d85f094c952b748b297bdde97b = $(`<div id="html_7d5199d85f094c952b748b297bdde97b" style="width: 100.0%; height: 100.0%;"><b>colegio chile</b><br>PIRAMIDE 1089<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>165</b></div>`)[0];
+                popup_d29c57533eb34515e8691c8fc09207c2.setContent(html_7d5199d85f094c952b748b297bdde97b);
+            
+        
+
+        circle_marker_53b42432e63a95ffd71da94a3878f43f.bindPopup(popup_d29c57533eb34515e8691c8fc09207c2)
+        ;
+
+        
+    
+    
+            circle_marker_53b42432e63a95ffd71da94a3878f43f.bindTooltip(
+                `<div>
+                     colegio chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1b7fffb3b697f3f23e37efbe24cdb7bd = L.marker(
+                [-33.50099, -70.65444],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_e9cfaccd11fd41a7add183a259c75c31 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e165\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1b7fffb3b697f3f23e37efbe24cdb7bd.setIcon(div_icon_e9cfaccd11fd41a7add183a259c75c31);
+        
+    
+            var circle_marker_9400a4e368d1179518ba45aa2ddfe5fc = L.circleMarker(
+                [-33.4867, -70.6495],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b90026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.38222222222222, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_48759543b2943d038b5a03d4c785a932 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_29f989e4c634a90b93fbc0cebdd1b4aa = $(`<div id="html_29f989e4c634a90b93fbc0cebdd1b4aa" style="width: 100.0%; height: 100.0%;"><b>colegio parroquial san miguel</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3548<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>199</b></div>`)[0];
+                popup_48759543b2943d038b5a03d4c785a932.setContent(html_29f989e4c634a90b93fbc0cebdd1b4aa);
+            
+        
+
+        circle_marker_9400a4e368d1179518ba45aa2ddfe5fc.bindPopup(popup_48759543b2943d038b5a03d4c785a932)
+        ;
+
+        
+    
+    
+            circle_marker_9400a4e368d1179518ba45aa2ddfe5fc.bindTooltip(
+                `<div>
+                     colegio parroquial san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_569afea29614288ff8078a2aaf101864 = L.marker(
+                [-33.4867, -70.6495],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_7540eac22c93dc266e5342b9e81de927 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e199\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_569afea29614288ff8078a2aaf101864.setIcon(div_icon_7540eac22c93dc266e5342b9e81de927);
+        
+    
+            var circle_marker_9861bb7fe25ec1d2c0eda50625d452d4 = L.circleMarker(
+                [-33.50737, -70.65042],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f33b24ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.395555555555553, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_31167ebdf13889768cd6abdecebf7762 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_03b4f1c809bfe243332951d70dbd8463 = $(`<div id="html_03b4f1c809bfe243332951d70dbd8463" style="width: 100.0%; height: 100.0%;"><b>colegio tomas moro</b><br>CARMEN MENA 882<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>151</b></div>`)[0];
+                popup_31167ebdf13889768cd6abdecebf7762.setContent(html_03b4f1c809bfe243332951d70dbd8463);
+            
+        
+
+        circle_marker_9861bb7fe25ec1d2c0eda50625d452d4.bindPopup(popup_31167ebdf13889768cd6abdecebf7762)
+        ;
+
+        
+    
+    
+            circle_marker_9861bb7fe25ec1d2c0eda50625d452d4.bindTooltip(
+                `<div>
+                     colegio tomas moro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_87a2851f3cbff7f9374cd3e2feb46966 = L.marker(
+                [-33.50737, -70.65042],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_b5fdbf47cc2c0e297dd790447cf851c3 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e151\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_87a2851f3cbff7f9374cd3e2feb46966.setIcon(div_icon_b5fdbf47cc2c0e297dd790447cf851c3);
+        
+    
+            var circle_marker_dfc821a1b81df7586a8e9c1c7110edf4 = L.circleMarker(
+                [-33.4893, -70.6577],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb34cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.226666666666667, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_854b6844a7d97441a24d148d6067e073 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_41d0500a7c7700255d7f0bd9a8b86fac = $(`<div id="html_41d0500a7c7700255d7f0bd9a8b86fac" style="width: 100.0%; height: 100.0%;"><b>escuela de la industria grafica hector gomez</b><br>FLORENCIA 1442<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>84</b></div>`)[0];
+                popup_854b6844a7d97441a24d148d6067e073.setContent(html_41d0500a7c7700255d7f0bd9a8b86fac);
+            
+        
+
+        circle_marker_dfc821a1b81df7586a8e9c1c7110edf4.bindPopup(popup_854b6844a7d97441a24d148d6067e073)
+        ;
+
+        
+    
+    
+            circle_marker_dfc821a1b81df7586a8e9c1c7110edf4.bindTooltip(
+                `<div>
+                     escuela de la industria grafica hector gomez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_429dfe1e7927f5561f6585ed75265a3b = L.marker(
+                [-33.4893, -70.6577],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_43df811af47c6c0a3af5ae3e16101801 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e84\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_429dfe1e7927f5561f6585ed75265a3b.setIcon(div_icon_43df811af47c6c0a3af5ae3e16101801);
+        
+    
+            var circle_marker_f752e5e9a42eeb0fc09640e0c8f9ee92 = L.circleMarker(
+                [-33.4858, -70.6565],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea281fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.017777777777777, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_fd371b3d3d9f6fada15e7f9828d6ff26 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1d8d34331074e5696524a4d3d08c084e = $(`<div id="html_1d8d34331074e5696524a4d3d08c084e" style="width: 100.0%; height: 100.0%;"><b>escuela llano subercaseaux</b><br>SOTO AGUILAR 1509<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>161</b></div>`)[0];
+                popup_fd371b3d3d9f6fada15e7f9828d6ff26.setContent(html_1d8d34331074e5696524a4d3d08c084e);
+            
+        
+
+        circle_marker_f752e5e9a42eeb0fc09640e0c8f9ee92.bindPopup(popup_fd371b3d3d9f6fada15e7f9828d6ff26)
+        ;
+
+        
+    
+    
+            circle_marker_f752e5e9a42eeb0fc09640e0c8f9ee92.bindTooltip(
+                `<div>
+                     escuela llano subercaseaux
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_895fcda4ea1de086590dc7bd8d5b17f4 = L.marker(
+                [-33.4858, -70.6565],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_79466b52f59e1cf4f920428c05857b41 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e161\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_895fcda4ea1de086590dc7bd8d5b17f4.setIcon(div_icon_79466b52f59e1cf4f920428c05857b41);
+        
+    
+            var circle_marker_31fc5e83ec7965192615982bc6da7f4f = L.circleMarker(
+                [-33.50714, -70.65149],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ac0026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.755555555555556, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_db1318bd57c3dbcfe9abbd4391ebf801 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b7f41c7c936cb88b353706e3a4174926 = $(`<div id="html_b7f41c7c936cb88b353706e3a4174926" style="width: 100.0%; height: 100.0%;"><b>escuela municipal</b><br>CARMEN MENA 906<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>205</b></div>`)[0];
+                popup_db1318bd57c3dbcfe9abbd4391ebf801.setContent(html_b7f41c7c936cb88b353706e3a4174926);
+            
+        
+
+        circle_marker_31fc5e83ec7965192615982bc6da7f4f.bindPopup(popup_db1318bd57c3dbcfe9abbd4391ebf801)
+        ;
+
+        
+    
+    
+            circle_marker_31fc5e83ec7965192615982bc6da7f4f.bindTooltip(
+                `<div>
+                     escuela municipal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a680ec728b8209455edea97593e86f75 = L.marker(
+                [-33.50714, -70.65149],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_a6d36be72d6afeaa879aa99ec26da563 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e205\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a680ec728b8209455edea97593e86f75.setIcon(div_icon_a6d36be72d6afeaa879aa99ec26da563);
+        
+    
+            var circle_marker_645d99d0520b2d50d1278a1624dbd513 = L.circleMarker(
+                [-33.5139, -70.6386],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe923eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.782222222222222, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_67ba8860404d65647565e912231786a9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_74ae4259dd43ea471e2e678275c53f37 = $(`<div id="html_74ae4259dd43ea471e2e678275c53f37" style="width: 100.0%; height: 100.0%;"><b>escuela santa fe</b><br>SANTA FE 528<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>109</b></div>`)[0];
+                popup_67ba8860404d65647565e912231786a9.setContent(html_74ae4259dd43ea471e2e678275c53f37);
+            
+        
+
+        circle_marker_645d99d0520b2d50d1278a1624dbd513.bindPopup(popup_67ba8860404d65647565e912231786a9)
+        ;
+
+        
+    
+    
+            circle_marker_645d99d0520b2d50d1278a1624dbd513.bindTooltip(
+                `<div>
+                     escuela santa fe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6dfbb4dd9b37317289737ad607325f4f = L.marker(
+                [-33.5139, -70.6386],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_19401d517cbbf49def565f056020b3e4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e109\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6dfbb4dd9b37317289737ad607325f4f.setIcon(div_icon_19401d517cbbf49def565f056020b3e4);
+        
+    
+            var circle_marker_2527e679f85a269892f4a539c110157b = L.circleMarker(
+                [-33.507, -70.6624],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f13723ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.52, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_caad5c4ae592238a365247250490ce9a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5301691868abffd141601edd570225b4 = $(`<div id="html_5301691868abffd141601edd570225b4" style="width: 100.0%; height: 100.0%;"><b>escuela territorio antartico</b><br>TERCERA TRANSVERSAL 5950<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>153</b></div>`)[0];
+                popup_caad5c4ae592238a365247250490ce9a.setContent(html_5301691868abffd141601edd570225b4);
+            
+        
+
+        circle_marker_2527e679f85a269892f4a539c110157b.bindPopup(popup_caad5c4ae592238a365247250490ce9a)
+        ;
+
+        
+    
+    
+            circle_marker_2527e679f85a269892f4a539c110157b.bindTooltip(
+                `<div>
+                     escuela territorio antartico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9dddadb03bf1db16d59e53f36d6fc39 = L.marker(
+                [-33.507, -70.6624],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_9632d996488ab8824038d8a928ceb712 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e153\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d9dddadb03bf1db16d59e53f36d6fc39.setIcon(div_icon_9632d996488ab8824038d8a928ceb712);
+        
+    
+            var circle_marker_e157f4e7689fefa2b8dd6d1ada8d4ea0 = L.circleMarker(
+                [-33.49785, -70.66286],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cb0922ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.635555555555555, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_b928f1d37b11fbaea0d8bcacd6c06245 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_361a34894d866ae0ecf5d5a8c5df12e0 = $(`<div id="html_361a34894d866ae0ecf5d5a8c5df12e0" style="width: 100.0%; height: 100.0%;"><b>escuela villa san miguel</b><br>LAZO 1520<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>187</b></div>`)[0];
+                popup_b928f1d37b11fbaea0d8bcacd6c06245.setContent(html_361a34894d866ae0ecf5d5a8c5df12e0);
+            
+        
+
+        circle_marker_e157f4e7689fefa2b8dd6d1ada8d4ea0.bindPopup(popup_b928f1d37b11fbaea0d8bcacd6c06245)
+        ;
+
+        
+    
+    
+            circle_marker_e157f4e7689fefa2b8dd6d1ada8d4ea0.bindTooltip(
+                `<div>
+                     escuela villa san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5196afb417afc4fe8f47a52c831d4a92 = L.marker(
+                [-33.49785, -70.66286],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_3631cf3938b6c5ddd1d01ad86c6b4af4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:17px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e187\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5196afb417afc4fe8f47a52c831d4a92.setIcon(div_icon_3631cf3938b6c5ddd1d01ad86c6b4af4);
+        
+    
+            var circle_marker_377685fb33196edd83dd98f58f128b43 = L.circleMarker(
+                [-33.4881, -70.6504],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de161dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.764444444444443, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_b6d2ef9beffbd96b00f3e04f4c6ff29a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_759d3271ce3a13657759ae8b43ba6619 = $(`<div id="html_759d3271ce3a13657759ae8b43ba6619" style="width: 100.0%; height: 100.0%;"><b>instituto miguel leon prado</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3696<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>173</b></div>`)[0];
+                popup_b6d2ef9beffbd96b00f3e04f4c6ff29a.setContent(html_759d3271ce3a13657759ae8b43ba6619);
+            
+        
+
+        circle_marker_377685fb33196edd83dd98f58f128b43.bindPopup(popup_b6d2ef9beffbd96b00f3e04f4c6ff29a)
+        ;
+
+        
+    
+    
+            circle_marker_377685fb33196edd83dd98f58f128b43.bindTooltip(
+                `<div>
+                     instituto miguel leon prado
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fd15a6651c25c7d1dce528966101e20a = L.marker(
+                [-33.4881, -70.6504],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_48701f3a0bc879104503e4b3b7e5d457 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e173\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fd15a6651c25c7d1dce528966101e20a.setIcon(div_icon_48701f3a0bc879104503e4b3b7e5d457);
+        
+    
+            var circle_marker_43b4a397457b4683d08293c48f74a887 = L.circleMarker(
+                [-33.4901, -70.651],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd562cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.524444444444445, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_05c6e03d6f924b4429126d0b95c0e953 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_46be35e73e183d21dc39d67a2669c821 = $(`<div id="html_46be35e73e183d21dc39d67a2669c821" style="width: 100.0%; height: 100.0%;"><b>instituto superior de comercio de chile</b><br>ALVAREZ DE TOLEDO 1060<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>137</b></div>`)[0];
+                popup_05c6e03d6f924b4429126d0b95c0e953.setContent(html_46be35e73e183d21dc39d67a2669c821);
+            
+        
+
+        circle_marker_43b4a397457b4683d08293c48f74a887.bindPopup(popup_05c6e03d6f924b4429126d0b95c0e953)
+        ;
+
+        
+    
+    
+            circle_marker_43b4a397457b4683d08293c48f74a887.bindTooltip(
+                `<div>
+                     instituto superior de comercio de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0bd92c7a9614bfb7e0956bdeb2e1aaa6 = L.marker(
+                [-33.4901, -70.651],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_74a92656805e41a82d773d09e79841ac = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e137\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0bd92c7a9614bfb7e0956bdeb2e1aaa6.setIcon(div_icon_74a92656805e41a82d773d09e79841ac);
+        
+    
+            var circle_marker_9438a82c2ffa329a1a9c3d6513cc9acc = L.circleMarker(
+                [-33.4866, -70.653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_c476f0773f0d669f8c3d96ced17ae7b5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_418b8423b7f838f7ac97616e08dc7e7f = $(`<div id="html_418b8423b7f838f7ac97616e08dc7e7f" style="width: 100.0%; height: 100.0%;"><b>liceo andres bello</b><br>SOTO AGUILAR 1241<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>225</b></div>`)[0];
+                popup_c476f0773f0d669f8c3d96ced17ae7b5.setContent(html_418b8423b7f838f7ac97616e08dc7e7f);
+            
+        
+
+        circle_marker_9438a82c2ffa329a1a9c3d6513cc9acc.bindPopup(popup_c476f0773f0d669f8c3d96ced17ae7b5)
+        ;
+
+        
+    
+    
+            circle_marker_9438a82c2ffa329a1a9c3d6513cc9acc.bindTooltip(
+                `<div>
+                     liceo andres bello
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fc0834a22e43f998555962ad75b84e66 = L.marker(
+                [-33.4866, -70.653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_91bf0ef3fa7a81ea4953db25bb6b604b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e225\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fc0834a22e43f998555962ad75b84e66.setIcon(div_icon_91bf0ef3fa7a81ea4953db25bb6b604b);
+        
+    
+            var circle_marker_ba8e57d255ee4e78e72452c27438c81f = L.circleMarker(
+                [-33.48978, -70.65599],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#820026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.937777777777775, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_879b6a897f4d44aca1f47c97bcaef656 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4e599cf1e262fd5522fe8a1b6bcbcd01 = $(`<div id="html_4e599cf1e262fd5522fe8a1b6bcbcd01" style="width: 100.0%; height: 100.0%;"><b>liceo betsabe hormazabal de alarcon l1</b><br>GASPAR BANDA 4047<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>224</b></div>`)[0];
+                popup_879b6a897f4d44aca1f47c97bcaef656.setContent(html_4e599cf1e262fd5522fe8a1b6bcbcd01);
+            
+        
+
+        circle_marker_ba8e57d255ee4e78e72452c27438c81f.bindPopup(popup_879b6a897f4d44aca1f47c97bcaef656)
+        ;
+
+        
+    
+    
+            circle_marker_ba8e57d255ee4e78e72452c27438c81f.bindTooltip(
+                `<div>
+                     liceo betsabe hormazabal de alarcon l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1de784ce63daf9b594c1e22d4ce0a9ab = L.marker(
+                [-33.48978, -70.65599],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_ec067b0b497fce30b36e9b39478722d0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e224\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1de784ce63daf9b594c1e22d4ce0a9ab.setIcon(div_icon_ec067b0b497fce30b36e9b39478722d0);
+        
+    
+            var circle_marker_e5fda27001968fc03ac383fdde94fb13 = L.circleMarker(
+                [-33.49214, -70.65141],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a10026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.066666666666666, "stroke": false, "weight": 3}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+        var popup_ae66b4bce28b6d8501bd3327163eb56b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_60af5ddec919f496056afc4d5cdb9563 = $(`<div id="html_60af5ddec919f496056afc4d5cdb9563" style="width: 100.0%; height: 100.0%;"><b>universidad de valparaiso</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 4160<br>Votos Lista LUIS HUMBERTO SANHUEZA BRAVO: <b>210</b></div>`)[0];
+                popup_ae66b4bce28b6d8501bd3327163eb56b.setContent(html_60af5ddec919f496056afc4d5cdb9563);
+            
+        
+
+        circle_marker_e5fda27001968fc03ac383fdde94fb13.bindPopup(popup_ae66b4bce28b6d8501bd3327163eb56b)
+        ;
+
+        
+    
+    
+            circle_marker_e5fda27001968fc03ac383fdde94fb13.bindTooltip(
+                `<div>
+                     universidad de valparaiso
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e15cca5d90621131b030eaf358ce3a0f = L.marker(
+                [-33.49214, -70.65141],
+                {"zIndexOffset": 9999}
+            ).addTo(map_658549f7fc25061e4c40da399d7ddb78);
+        
+    
+            var div_icon_a44bb6b72e9567f56044f11a826093d2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e210\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e15cca5d90621131b030eaf358ce3a0f.setIcon(div_icon_a44bb6b72e9567f56044f11a826093d2);
+        
+    
+            map_658549f7fc25061e4c40da399d7ddb78.fitBounds(
+                [[-33.49788, -70.64692], [-33.5068, -70.6519], [-33.50099, -70.65444], [-33.4867, -70.6495], [-33.50737, -70.65042], [-33.4893, -70.6577], [-33.4858, -70.6565], [-33.50714, -70.65149], [-33.5139, -70.6386], [-33.507, -70.6624], [-33.49785, -70.66286], [-33.4881, -70.6504], [-33.4901, -70.651], [-33.4866, -70.653], [-33.48978, -70.65599], [-33.49214, -70.65141]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

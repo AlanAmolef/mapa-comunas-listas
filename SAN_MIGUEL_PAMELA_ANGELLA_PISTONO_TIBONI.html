@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_90fda67194b51d9dbe6a777f3acf9491 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_90fda67194b51d9dbe6a777f3acf9491" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_90fda67194b51d9dbe6a777f3acf9491 = L.map(
+                "map_90fda67194b51d9dbe6a777f3acf9491",
+                {
+                    center: [-33.49671562499999, -70.652783125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_fb1425cecdde5d959a2d9c2ed89d999d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_fb1425cecdde5d959a2d9c2ed89d999d.addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+    var color_map_71878f5154527984598a44f1798bf9f6 = {};
+
+    
+    color_map_71878f5154527984598a44f1798bf9f6.color = d3.scale.threshold()
+              .domain([0.0, 0.3787575150300601, 0.7575150300601202, 1.1362725450901803, 1.5150300601202404, 1.8937875751503006, 2.2725450901803605, 2.6513026052104207, 3.030060120240481, 3.408817635270541, 3.787575150300601, 4.166332665330661, 4.545090180360721, 4.923847695390782, 5.302605210420841, 5.681362725450902, 6.060120240480962, 6.438877755511022, 6.817635270541082, 7.196392785571143, 7.575150300601202, 7.953907815631262, 8.332665330661323, 8.711422845691382, 9.090180360721442, 9.468937875751504, 9.847695390781563, 10.226452905811623, 10.605210420841683, 10.983967935871744, 11.362725450901804, 11.741482965931864, 12.120240480961924, 12.498997995991983, 12.877755511022045, 13.256513026052104, 13.635270541082164, 14.014028056112224, 14.392785571142285, 14.771543086172345, 15.150300601202405, 15.529058116232465, 15.907815631262524, 16.286573146292586, 16.665330661322646, 17.044088176352705, 17.422845691382765, 17.801603206412825, 18.180360721442884, 18.559118236472944, 18.937875751503007, 19.316633266533067, 19.695390781563127, 20.074148296593187, 20.452905811623246, 20.831663326653306, 21.210420841683366, 21.589178356713425, 21.96793587174349, 22.34669338677355, 22.725450901803608, 23.104208416833668, 23.482965931863728, 23.861723446893787, 24.240480961923847, 24.619238476953907, 24.997995991983966, 25.37675350701403, 25.75551102204409, 26.13426853707415, 26.51302605210421, 26.89178356713427, 27.27054108216433, 27.649298597194388, 28.028056112224448, 28.406813627254508, 28.78557114228457, 29.16432865731463, 29.54308617234469, 29.92184368737475, 30.30060120240481, 30.67935871743487, 31.05811623246493, 31.43687374749499, 31.81563126252505, 32.19438877755511, 32.57314629258517, 32.95190380761523, 33.33066132264529, 33.70941883767535, 34.08817635270541, 34.46693386773547, 34.84569138276553, 35.22444889779559, 35.60320641282565, 35.98196392785571, 36.36072144288577, 36.73947895791583, 37.11823647294589, 37.496993987975955, 37.875751503006015, 38.254509018036075, 38.633266533066134, 39.012024048096194, 39.390781563126254, 39.76953907815631, 40.14829659318637, 40.52705410821643, 40.90581162324649, 41.28456913827655, 41.66332665330661, 42.04208416833667, 42.42084168336673, 42.79959919839679, 43.17835671342685, 43.55711422845691, 43.93587174348698, 44.31462925851704, 44.6933867735471, 45.07214428857716, 45.450901803607216, 45.829659318637276, 46.208416833667336, 46.587174348697395, 46.965931863727455, 47.344689378757515, 47.723446893787575, 48.102204408817634, 48.480961923847694, 48.859719438877754, 49.23847695390781, 49.61723446893787, 49.99599198396793, 50.37474949899799, 50.75350701402806, 51.13226452905812, 51.51102204408818, 51.88977955911824, 52.2685370741483, 52.64729458917836, 53.02605210420842, 53.40480961923848, 53.78356713426854, 54.1623246492986, 54.54108216432866, 54.91983967935872, 55.298597194388776, 55.677354709418836, 56.056112224448896, 56.434869739478955, 56.813627254509015, 57.192384769539075, 57.57114228456914, 57.9498997995992, 58.32865731462926, 58.70741482965932, 59.08617234468938, 59.46492985971944, 59.8436873747495, 60.22244488977956, 60.60120240480962, 60.97995991983968, 61.35871743486974, 61.7374749498998, 62.11623246492986, 62.49498997995992, 62.87374749498998, 63.25250501002004, 63.6312625250501, 64.01002004008016, 64.38877755511022, 64.76753507014028, 65.14629258517034, 65.5250501002004, 65.90380761523046, 66.28256513026052, 66.66132264529058, 67.04008016032064, 67.4188376753507, 67.79759519038076, 68.17635270541082, 68.55511022044088, 68.93386773547094, 69.312625250501, 69.69138276553106, 70.07014028056112, 70.44889779559118, 70.82765531062124, 71.2064128256513, 71.58517034068136, 71.96392785571142, 72.34268537074148, 72.72144288577154, 73.1002004008016, 73.47895791583166, 73.85771543086172, 74.23647294589178, 74.61523046092185, 74.99398797595191, 75.37274549098197, 75.75150300601203, 76.13026052104209, 76.50901803607215, 76.88777555110221, 77.26653306613227, 77.64529058116233, 78.02404809619239, 78.40280561122245, 78.78156312625251, 79.16032064128257, 79.53907815631263, 79.91783567134269, 80.29659318637275, 80.6753507014028, 81.05410821643287, 81.43286573146293, 81.81162324649299, 82.19038076152304, 82.5691382765531, 82.94789579158316, 83.32665330661322, 83.70541082164328, 84.08416833667334, 84.4629258517034, 84.84168336673346, 85.22044088176352, 85.59919839679358, 85.97795591182364, 86.3567134268537, 86.73547094188376, 87.11422845691382, 87.49298597194388, 87.87174348697395, 88.25050100200401, 88.62925851703407, 89.00801603206413, 89.3867735470942, 89.76553106212425, 90.14428857715431, 90.52304609218437, 90.90180360721443, 91.28056112224449, 91.65931863727455, 92.03807615230461, 92.41683366733467, 92.79559118236473, 93.17434869739479, 93.55310621242485, 93.93186372745491, 94.31062124248497, 94.68937875751503, 95.06813627254509, 95.44689378757515, 95.82565130260521, 96.20440881763527, 96.58316633266533, 96.96192384769539, 97.34068136272545, 97.71943887775551, 98.09819639278557, 98.47695390781563, 98.85571142284569, 99.23446893787575, 99.6132264529058, 99.99198396793587, 100.37074148296593, 100.74949899799599, 101.12825651302605, 101.50701402805612, 101.88577154308618, 102.26452905811624, 102.6432865731463, 103.02204408817636, 103.40080160320642, 103.77955911823648, 104.15831663326654, 104.5370741482966, 104.91583166332666, 105.29458917835672, 105.67334669338678, 106.05210420841684, 106.4308617234469, 106.80961923847696, 107.18837675350701, 107.56713426853707, 107.94589178356713, 108.3246492985972, 108.70340681362725, 109.08216432865731, 109.46092184368737, 109.83967935871743, 110.21843687374749, 110.59719438877755, 110.97595190380761, 111.35470941883767, 111.73346693386773, 112.11222444889779, 112.49098196392785, 112.86973947895791, 113.24849699398797, 113.62725450901803, 114.00601202404809, 114.38476953907815, 114.76352705410822, 115.14228456913828, 115.52104208416834, 115.8997995991984, 116.27855711422846, 116.65731462925852, 117.03607214428858, 117.41482965931864, 117.7935871743487, 118.17234468937876, 118.55110220440882, 118.92985971943888, 119.30861723446894, 119.687374749499, 120.06613226452906, 120.44488977955912, 120.82364729458918, 121.20240480961924, 121.5811623246493, 121.95991983967936, 122.33867735470942, 122.71743486973948, 123.09619238476954, 123.4749498997996, 123.85370741482966, 124.23246492985972, 124.61122244488978, 124.98997995991984, 125.3687374749499, 125.74749498997996, 126.12625250501002, 126.50501002004007, 126.88376753507013, 127.2625250501002, 127.64128256513025, 128.02004008016033, 128.3987975951904, 128.77755511022045, 129.1563126252505, 129.53507014028057, 129.91382765531063, 130.2925851703407, 130.67134268537075, 131.0501002004008, 131.42885771543087, 131.80761523046093, 132.18637274549098, 132.56513026052104, 132.9438877755511, 133.32264529058116, 133.70140280561122, 134.08016032064128, 134.45891783567134, 134.8376753507014, 135.21643286573146, 135.59519038076152, 135.97394789579158, 136.35270541082164, 136.7314629258517, 137.11022044088176, 137.48897795591182, 137.86773547094188, 138.24649298597194, 138.625250501002, 139.00400801603206, 139.38276553106212, 139.76152304609218, 140.14028056112224, 140.5190380761523, 140.89779559118236, 141.27655310621242, 141.65531062124248, 142.03406813627254, 142.4128256513026, 142.79158316633266, 143.17034068136272, 143.54909819639278, 143.92785571142284, 144.3066132264529, 144.68537074148296, 145.06412825651302, 145.44288577154308, 145.82164328657313, 146.2004008016032, 146.57915831663325, 146.9579158316633, 147.33667334669337, 147.71543086172343, 148.0941883767535, 148.47294589178355, 148.85170340681364, 149.2304609218437, 149.60921843687376, 149.98797595190382, 150.36673346693388, 150.74549098196394, 151.124248496994, 151.50300601202406, 151.88176352705412, 152.26052104208418, 152.63927855711424, 153.0180360721443, 153.39679358717436, 153.77555110220442, 154.15430861723448, 154.53306613226454, 154.9118236472946, 155.29058116232466, 155.66933867735472, 156.04809619238478, 156.42685370741484, 156.8056112224449, 157.18436873747495, 157.56312625250501, 157.94188376753507, 158.32064128256513, 158.6993987975952, 159.07815631262525, 159.4569138276553, 159.83567134268537, 160.21442885771543, 160.5931863727455, 160.97194388777555, 161.3507014028056, 161.72945891783567, 162.10821643286573, 162.4869739478958, 162.86573146292585, 163.2444889779559, 163.62324649298597, 164.00200400801603, 164.3807615230461, 164.75951903807615, 165.1382765531062, 165.51703406813627, 165.89579158316633, 166.2745490981964, 166.65330661322645, 167.0320641282565, 167.41082164328657, 167.78957915831663, 168.1683366733467, 168.54709418837675, 168.9258517034068, 169.30460921843687, 169.68336673346693, 170.06212424849699, 170.44088176352705, 170.8196392785571, 171.19839679358716, 171.57715430861722, 171.95591182364728, 172.33466933867734, 172.7134268537074, 173.09218436873746, 173.47094188376752, 173.84969939879758, 174.22845691382764, 174.6072144288577, 174.98597194388776, 175.36472945891782, 175.7434869739479, 176.12224448897797, 176.50100200400803, 176.8797595190381, 177.25851703406815, 177.6372745490982, 178.01603206412827, 178.39478957915833, 178.7735470941884, 179.15230460921845, 179.5310621242485, 179.90981963927857, 180.28857715430863, 180.6673346693387, 181.04609218436875, 181.4248496993988, 181.80360721442887, 182.18236472945893, 182.56112224448898, 182.93987975951904, 183.3186372745491, 183.69739478957916, 184.07615230460922, 184.45490981963928, 184.83366733466934, 185.2124248496994, 185.59118236472946, 185.96993987975952, 186.34869739478958, 186.72745490981964, 187.1062124248497, 187.48496993987976, 187.86372745490982, 188.24248496993988, 188.62124248496994, 189.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_71878f5154527984598a44f1798bf9f6.x = d3.scale.linear()
+              .domain([0.0, 189.0])
+              .range([0, 450 - 50]);
+
+    color_map_71878f5154527984598a44f1798bf9f6.legend = L.control({position: 'topright'});
+    color_map_71878f5154527984598a44f1798bf9f6.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_71878f5154527984598a44f1798bf9f6.legend.addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+
+    color_map_71878f5154527984598a44f1798bf9f6.xAxis = d3.svg.axis()
+        .scale(color_map_71878f5154527984598a44f1798bf9f6.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, 23.625, 47.25, 70.875, 94.5, 118.125, 141.75, 165.375, 189.0]);
+
+    color_map_71878f5154527984598a44f1798bf9f6.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_71878f5154527984598a44f1798bf9f6.g = color_map_71878f5154527984598a44f1798bf9f6.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_71878f5154527984598a44f1798bf9f6.g.selectAll("rect")
+        .data(color_map_71878f5154527984598a44f1798bf9f6.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_71878f5154527984598a44f1798bf9f6.x(color_map_71878f5154527984598a44f1798bf9f6.color.domain()[i - 1]) : color_map_71878f5154527984598a44f1798bf9f6.x.range()[0],
+            x1: i < color_map_71878f5154527984598a44f1798bf9f6.color.domain().length ? color_map_71878f5154527984598a44f1798bf9f6.x(color_map_71878f5154527984598a44f1798bf9f6.color.domain()[i]) : color_map_71878f5154527984598a44f1798bf9f6.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_71878f5154527984598a44f1798bf9f6.g.call(color_map_71878f5154527984598a44f1798bf9f6.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista PAMELA ANGELLA PISTONO TIBONI por local");
+    
+            var circle_marker_15a3ca3aa747912d39d1f41e605e2b29 = L.circleMarker(
+                [-33.49788, -70.64692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_9ddec6ade27a7096088a7cdeabc54d34 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5437b9e46c60deb13ab97372dee4eadc = $(`<div id="html_5437b9e46c60deb13ab97372dee4eadc" style="width: 100.0%; height: 100.0%;"><b>C.P.F de san miguel</b><br>SAN FRANCISCO 4756<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>0</b></div>`)[0];
+                popup_9ddec6ade27a7096088a7cdeabc54d34.setContent(html_5437b9e46c60deb13ab97372dee4eadc);
+            
+        
+
+        circle_marker_15a3ca3aa747912d39d1f41e605e2b29.bindPopup(popup_9ddec6ade27a7096088a7cdeabc54d34)
+        ;
+
+        
+    
+    
+            circle_marker_15a3ca3aa747912d39d1f41e605e2b29.bindTooltip(
+                `<div>
+                     C.P.F de san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4e01dabc376420efbf8d8804ced44c1 = L.marker(
+                [-33.49788, -70.64692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_b1a74eb3f857f3d54fb20e74ee84f0e4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e0\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d4e01dabc376420efbf8d8804ced44c1.setIcon(div_icon_b1a74eb3f857f3d54fb20e74ee84f0e4);
+        
+    
+            var circle_marker_82aee4ad136363366ed1e782845ac4bb = L.circleMarker(
+                [-33.5068, -70.6519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd863aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.185185185185185, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_be762c0dba865f23370cb2a28d3865df = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1a294a895eb727592bdb711835bd759e = $(`<div id="html_1a294a895eb727592bdb711835bd759e" style="width: 100.0%; height: 100.0%;"><b>colegio bicentenario santo cura de ars</b><br>CARMEN MENA 939<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>97</b></div>`)[0];
+                popup_be762c0dba865f23370cb2a28d3865df.setContent(html_1a294a895eb727592bdb711835bd759e);
+            
+        
+
+        circle_marker_82aee4ad136363366ed1e782845ac4bb.bindPopup(popup_be762c0dba865f23370cb2a28d3865df)
+        ;
+
+        
+    
+    
+            circle_marker_82aee4ad136363366ed1e782845ac4bb.bindTooltip(
+                `<div>
+                     colegio bicentenario santo cura de ars
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2c0cfa9cc572f08160a3074dd015be6b = L.marker(
+                [-33.5068, -70.6519],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_d39bca51280261f5028ddb1ae884ae63 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e97\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2c0cfa9cc572f08160a3074dd015be6b.setIcon(div_icon_d39bca51280261f5028ddb1ae884ae63);
+        
+    
+            var circle_marker_a7a80f926287c21442457ea8f08ff51b = L.circleMarker(
+                [-33.50099, -70.65444],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7e38ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.407407407407408, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_673ea39bae1256c24c7452e09af51b43 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1e5fc25ed72fbc96d1a0cf8a43b8cd63 = $(`<div id="html_1e5fc25ed72fbc96d1a0cf8a43b8cd63" style="width: 100.0%; height: 100.0%;"><b>colegio chile</b><br>PIRAMIDE 1089<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>100</b></div>`)[0];
+                popup_673ea39bae1256c24c7452e09af51b43.setContent(html_1e5fc25ed72fbc96d1a0cf8a43b8cd63);
+            
+        
+
+        circle_marker_a7a80f926287c21442457ea8f08ff51b.bindPopup(popup_673ea39bae1256c24c7452e09af51b43)
+        ;
+
+        
+    
+    
+            circle_marker_a7a80f926287c21442457ea8f08ff51b.bindTooltip(
+                `<div>
+                     colegio chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5cda2add45d18b6db2848d99818f614e = L.marker(
+                [-33.50099, -70.65444],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_c8faf6c3eb044ff162aec7088788ae1a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e100\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5cda2add45d18b6db2848d99818f614e.setIcon(div_icon_c8faf6c3eb044ff162aec7088788ae1a);
+        
+    
+            var circle_marker_78a3264d13afc8fab74be32478d6d7af = L.circleMarker(
+                [-33.4867, -70.6495],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ee2f21ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.77777777777778, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_33e6226cb122ee8bbfe923be77ff0df6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6778ed3670212002e012e8763eff7186 = $(`<div id="html_6778ed3670212002e012e8763eff7186" style="width: 100.0%; height: 100.0%;"><b>colegio parroquial san miguel</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3548<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>132</b></div>`)[0];
+                popup_33e6226cb122ee8bbfe923be77ff0df6.setContent(html_6778ed3670212002e012e8763eff7186);
+            
+        
+
+        circle_marker_78a3264d13afc8fab74be32478d6d7af.bindPopup(popup_33e6226cb122ee8bbfe923be77ff0df6)
+        ;
+
+        
+    
+    
+            circle_marker_78a3264d13afc8fab74be32478d6d7af.bindTooltip(
+                `<div>
+                     colegio parroquial san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01581a2560050a08a8cc7dbc43a2eb51 = L.marker(
+                [-33.4867, -70.6495],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_c20c22f7d803be669171c853dd29c2e0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e132\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_01581a2560050a08a8cc7dbc43a2eb51.setIcon(div_icon_c20c22f7d803be669171c853dd29c2e0);
+        
+    
+            var circle_marker_cbbd9090015016d5f6b8d674ebf251e2 = L.circleMarker(
+                [-33.50737, -70.65042],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9c42ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.296296296296298, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_8a66a4c2273686be90a9e2edbace034d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_134884f6f6a6030a16568755f8c7fd26 = $(`<div id="html_134884f6f6a6030a16568755f8c7fd26" style="width: 100.0%; height: 100.0%;"><b>colegio tomas moro</b><br>CARMEN MENA 882<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>85</b></div>`)[0];
+                popup_8a66a4c2273686be90a9e2edbace034d.setContent(html_134884f6f6a6030a16568755f8c7fd26);
+            
+        
+
+        circle_marker_cbbd9090015016d5f6b8d674ebf251e2.bindPopup(popup_8a66a4c2273686be90a9e2edbace034d)
+        ;
+
+        
+    
+    
+            circle_marker_cbbd9090015016d5f6b8d674ebf251e2.bindTooltip(
+                `<div>
+                     colegio tomas moro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ebac07cb6131d637264b0c5c9d511c50 = L.marker(
+                [-33.50737, -70.65042],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_877793a839b45b660210bdbc36cd0c15 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e85\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ebac07cb6131d637264b0c5c9d511c50.setIcon(div_icon_877793a839b45b660210bdbc36cd0c15);
+        
+    
+            var circle_marker_dcb5a9ab9faaa8dd77279c13fd2b480b = L.circleMarker(
+                [-33.4893, -70.6577],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9e43ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.222222222222221, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_eb0cb5d5d7d8e6096de884314a249856 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e8726f286567cea2db3f2df2c944c046 = $(`<div id="html_e8726f286567cea2db3f2df2c944c046" style="width: 100.0%; height: 100.0%;"><b>escuela de la industria grafica hector gomez</b><br>FLORENCIA 1442<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>84</b></div>`)[0];
+                popup_eb0cb5d5d7d8e6096de884314a249856.setContent(html_e8726f286567cea2db3f2df2c944c046);
+            
+        
+
+        circle_marker_dcb5a9ab9faaa8dd77279c13fd2b480b.bindPopup(popup_eb0cb5d5d7d8e6096de884314a249856)
+        ;
+
+        
+    
+    
+            circle_marker_dcb5a9ab9faaa8dd77279c13fd2b480b.bindTooltip(
+                `<div>
+                     escuela de la industria grafica hector gomez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_949d9a8f6b42c2760ab697bb67e170a0 = L.marker(
+                [-33.4893, -70.6577],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_4b6dceeccee982e0277982b2409a81d2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e84\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_949d9a8f6b42c2760ab697bb67e170a0.setIcon(div_icon_4b6dceeccee982e0277982b2409a81d2);
+        
+    
+            var circle_marker_4f4eddd837c6b92004e540a1a07c8fa5 = L.circleMarker(
+                [-33.4858, -70.6565],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd612fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.22222222222222, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_022b430c426e43b9eace82b6ae04f358 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fbc4ef6cc1e877bef4751738c75307ef = $(`<div id="html_fbc4ef6cc1e877bef4751738c75307ef" style="width: 100.0%; height: 100.0%;"><b>escuela llano subercaseaux</b><br>SOTO AGUILAR 1509<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>111</b></div>`)[0];
+                popup_022b430c426e43b9eace82b6ae04f358.setContent(html_fbc4ef6cc1e877bef4751738c75307ef);
+            
+        
+
+        circle_marker_4f4eddd837c6b92004e540a1a07c8fa5.bindPopup(popup_022b430c426e43b9eace82b6ae04f358)
+        ;
+
+        
+    
+    
+            circle_marker_4f4eddd837c6b92004e540a1a07c8fa5.bindTooltip(
+                `<div>
+                     escuela llano subercaseaux
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5d9fd31fff778ca05edb2bc13f1b2bd1 = L.marker(
+                [-33.4858, -70.6565],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_97f44766deeb094ae04f90158661ede0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e111\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5d9fd31fff778ca05edb2bc13f1b2bd1.setIcon(div_icon_97f44766deeb094ae04f90158661ede0);
+        
+    
+            var circle_marker_39713ec178be5079b384bf930755d928 = L.circleMarker(
+                [-33.50714, -70.65149],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9c42ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.296296296296298, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_118f1b7146d8cfb07a66c24ddf95a21e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1480aeb18065cbc0c118b0c18b4da4c9 = $(`<div id="html_1480aeb18065cbc0c118b0c18b4da4c9" style="width: 100.0%; height: 100.0%;"><b>escuela municipal</b><br>CARMEN MENA 906<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>85</b></div>`)[0];
+                popup_118f1b7146d8cfb07a66c24ddf95a21e.setContent(html_1480aeb18065cbc0c118b0c18b4da4c9);
+            
+        
+
+        circle_marker_39713ec178be5079b384bf930755d928.bindPopup(popup_118f1b7146d8cfb07a66c24ddf95a21e)
+        ;
+
+        
+    
+    
+            circle_marker_39713ec178be5079b384bf930755d928.bindTooltip(
+                `<div>
+                     escuela municipal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_393bd4f8f94264fcc054d108016a6ab3 = L.marker(
+                [-33.50714, -70.65149],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_87d5942d6f2fdb3b3b1a2f45bc79bb9e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e85\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_393bd4f8f94264fcc054d108016a6ab3.setIcon(div_icon_87d5942d6f2fdb3b3b1a2f45bc79bb9e);
+        
+    
+            var circle_marker_4fdbc7cdccc54aa50099258201835f2e = L.circleMarker(
+                [-33.5139, -70.6386],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9c42ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.296296296296298, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_1224974552feca44a04bcf9b21da650b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_be2140bbbd46c1b65b491200d986496f = $(`<div id="html_be2140bbbd46c1b65b491200d986496f" style="width: 100.0%; height: 100.0%;"><b>escuela santa fe</b><br>SANTA FE 528<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>85</b></div>`)[0];
+                popup_1224974552feca44a04bcf9b21da650b.setContent(html_be2140bbbd46c1b65b491200d986496f);
+            
+        
+
+        circle_marker_4fdbc7cdccc54aa50099258201835f2e.bindPopup(popup_1224974552feca44a04bcf9b21da650b)
+        ;
+
+        
+    
+    
+            circle_marker_4fdbc7cdccc54aa50099258201835f2e.bindTooltip(
+                `<div>
+                     escuela santa fe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_96c68bb4ac75037ecade1c63896a6e38 = L.marker(
+                [-33.5139, -70.6386],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_77a6287a8e8872535164d6e1665cd1f2 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e85\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_96c68bb4ac75037ecade1c63896a6e38.setIcon(div_icon_77a6287a8e8872535164d6e1665cd1f2);
+        
+    
+            var circle_marker_bc073493ed2a17ae2eaa1b14812935b2 = L.circleMarker(
+                [-33.507, -70.6624],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a40026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.962962962962962, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_c17a5d660fbb2b3bcfc6c1d78a354099 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cba876bc5e9ef5e74987975fa7f033f8 = $(`<div id="html_cba876bc5e9ef5e74987975fa7f033f8" style="width: 100.0%; height: 100.0%;"><b>escuela territorio antartico</b><br>TERCERA TRANSVERSAL 5950<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>175</b></div>`)[0];
+                popup_c17a5d660fbb2b3bcfc6c1d78a354099.setContent(html_cba876bc5e9ef5e74987975fa7f033f8);
+            
+        
+
+        circle_marker_bc073493ed2a17ae2eaa1b14812935b2.bindPopup(popup_c17a5d660fbb2b3bcfc6c1d78a354099)
+        ;
+
+        
+    
+    
+            circle_marker_bc073493ed2a17ae2eaa1b14812935b2.bindTooltip(
+                `<div>
+                     escuela territorio antartico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2ba942f7d36d31a00ac3afcb74bd80be = L.marker(
+                [-33.507, -70.6624],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_62594175198728a876162d84806289ef = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e175\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2ba942f7d36d31a00ac3afcb74bd80be.setIcon(div_icon_62594175198728a876162d84806289ef);
+        
+    
+            var circle_marker_6a5f27fe1680b2844e6442506173e862 = L.circleMarker(
+                [-33.49785, -70.66286],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb24cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.25925925925926, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_4eba32c95d91539b5ef0d23e2df539fe = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4c31c4b98df6c8c27241876ed50332ef = $(`<div id="html_4c31c4b98df6c8c27241876ed50332ef" style="width: 100.0%; height: 100.0%;"><b>escuela villa san miguel</b><br>LAZO 1520<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>71</b></div>`)[0];
+                popup_4eba32c95d91539b5ef0d23e2df539fe.setContent(html_4c31c4b98df6c8c27241876ed50332ef);
+            
+        
+
+        circle_marker_6a5f27fe1680b2844e6442506173e862.bindPopup(popup_4eba32c95d91539b5ef0d23e2df539fe)
+        ;
+
+        
+    
+    
+            circle_marker_6a5f27fe1680b2844e6442506173e862.bindTooltip(
+                `<div>
+                     escuela villa san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cfaecacaa4d31a27a574b4f80631c9eb = L.marker(
+                [-33.49785, -70.66286],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_874c4a4196d11608f6b3b4b1e9266aff = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e71\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_cfaecacaa4d31a27a574b4f80631c9eb.setIcon(div_icon_874c4a4196d11608f6b3b4b1e9266aff);
+        
+    
+            var circle_marker_c96ab7f979448b3541eb1dc0e6b32261 = L.circleMarker(
+                [-33.4881, -70.6504],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7635ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.62962962962963, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_eb66d1df88b599b72bb5a740ac7cbbb3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_49204dcc680b331d9d0d5f168d8a9047 = $(`<div id="html_49204dcc680b331d9d0d5f168d8a9047" style="width: 100.0%; height: 100.0%;"><b>instituto miguel leon prado</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3696<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>103</b></div>`)[0];
+                popup_eb66d1df88b599b72bb5a740ac7cbbb3.setContent(html_49204dcc680b331d9d0d5f168d8a9047);
+            
+        
+
+        circle_marker_c96ab7f979448b3541eb1dc0e6b32261.bindPopup(popup_eb66d1df88b599b72bb5a740ac7cbbb3)
+        ;
+
+        
+    
+    
+            circle_marker_c96ab7f979448b3541eb1dc0e6b32261.bindTooltip(
+                `<div>
+                     instituto miguel leon prado
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbb14bc15b6d7391bc75edfdb338335b = L.marker(
+                [-33.4881, -70.6504],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_391005b50f61b66a78759c3512bca0a5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e103\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_fbb14bc15b6d7391bc75edfdb338335b.setIcon(div_icon_391005b50f61b66a78759c3512bca0a5);
+        
+    
+            var circle_marker_b2bd45d16eea6c77c7cd8531ad311fcf = L.circleMarker(
+                [-33.4901, -70.651],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9c42ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.296296296296298, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_c2c769718f1dcd4c5faa492f9c7fe92d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6dd535f06725dfe56b71ff05c487f44c = $(`<div id="html_6dd535f06725dfe56b71ff05c487f44c" style="width: 100.0%; height: 100.0%;"><b>instituto superior de comercio de chile</b><br>ALVAREZ DE TOLEDO 1060<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>85</b></div>`)[0];
+                popup_c2c769718f1dcd4c5faa492f9c7fe92d.setContent(html_6dd535f06725dfe56b71ff05c487f44c);
+            
+        
+
+        circle_marker_b2bd45d16eea6c77c7cd8531ad311fcf.bindPopup(popup_c2c769718f1dcd4c5faa492f9c7fe92d)
+        ;
+
+        
+    
+    
+            circle_marker_b2bd45d16eea6c77c7cd8531ad311fcf.bindTooltip(
+                `<div>
+                     instituto superior de comercio de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dbabdb6b8caa159e74ea932e93bc51ea = L.marker(
+                [-33.4901, -70.651],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_3a8e563fbbc009f4bf97c9cba5c64c7d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e85\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dbabdb6b8caa159e74ea932e93bc51ea.setIcon(div_icon_3a8e563fbbc009f4bf97c9cba5c64c7d);
+        
+    
+            var circle_marker_aebd5e3d606e981fb98fa7f4ef8daec4 = L.circleMarker(
+                [-33.4866, -70.653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#be0025ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.22222222222222, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_fc5ca2bca076122e1fabdc1e69aeffd7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f4924e38ce0cafce2691cf2ee0a0563d = $(`<div id="html_f4924e38ce0cafce2691cf2ee0a0563d" style="width: 100.0%; height: 100.0%;"><b>liceo andres bello</b><br>SOTO AGUILAR 1241<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>165</b></div>`)[0];
+                popup_fc5ca2bca076122e1fabdc1e69aeffd7.setContent(html_f4924e38ce0cafce2691cf2ee0a0563d);
+            
+        
+
+        circle_marker_aebd5e3d606e981fb98fa7f4ef8daec4.bindPopup(popup_fc5ca2bca076122e1fabdc1e69aeffd7)
+        ;
+
+        
+    
+    
+            circle_marker_aebd5e3d606e981fb98fa7f4ef8daec4.bindTooltip(
+                `<div>
+                     liceo andres bello
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7ab8be965bffa856ae26df4621335269 = L.marker(
+                [-33.4866, -70.653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_6999453af1ea5cb7218614adf74ce07c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:18px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e165\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7ab8be965bffa856ae26df4621335269.setIcon(div_icon_6999453af1ea5cb7218614adf74ce07c);
+        
+    
+            var circle_marker_025e4fd8f4e513798ea53bbe9e995223 = L.circleMarker(
+                [-33.48978, -70.65599],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_be9b97ea3a019fad7be4bfab24090804 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_728c0acefceeea4dc96afa4d2ea6e7f5 = $(`<div id="html_728c0acefceeea4dc96afa4d2ea6e7f5" style="width: 100.0%; height: 100.0%;"><b>liceo betsabe hormazabal de alarcon l1</b><br>GASPAR BANDA 4047<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>189</b></div>`)[0];
+                popup_be9b97ea3a019fad7be4bfab24090804.setContent(html_728c0acefceeea4dc96afa4d2ea6e7f5);
+            
+        
+
+        circle_marker_025e4fd8f4e513798ea53bbe9e995223.bindPopup(popup_be9b97ea3a019fad7be4bfab24090804)
+        ;
+
+        
+    
+    
+            circle_marker_025e4fd8f4e513798ea53bbe9e995223.bindTooltip(
+                `<div>
+                     liceo betsabe hormazabal de alarcon l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4f3bcab886ab1790458fdf07f07c65fb = L.marker(
+                [-33.48978, -70.65599],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_075077ad018d37e22f0ba186d5d0093a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e189\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4f3bcab886ab1790458fdf07f07c65fb.setIcon(div_icon_075077ad018d37e22f0ba186d5d0093a);
+        
+    
+            var circle_marker_9236cbd6a00cbbfcf5655b39c3550e4a = L.circleMarker(
+                [-33.49214, -70.65141],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41b1cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.444444444444443, "stroke": false, "weight": 3}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+        var popup_85ec9b6bf1bac3c92a38c3b121296019 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a6dd9f60f6f29950f18111373f84d232 = $(`<div id="html_a6dd9f60f6f29950f18111373f84d232" style="width: 100.0%; height: 100.0%;"><b>universidad de valparaiso</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 4160<br>Votos Lista PAMELA ANGELLA PISTONO TIBONI: <b>141</b></div>`)[0];
+                popup_85ec9b6bf1bac3c92a38c3b121296019.setContent(html_a6dd9f60f6f29950f18111373f84d232);
+            
+        
+
+        circle_marker_9236cbd6a00cbbfcf5655b39c3550e4a.bindPopup(popup_85ec9b6bf1bac3c92a38c3b121296019)
+        ;
+
+        
+    
+    
+            circle_marker_9236cbd6a00cbbfcf5655b39c3550e4a.bindTooltip(
+                `<div>
+                     universidad de valparaiso
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4641e41ebe90c836f61c0dcbd7e048e2 = L.marker(
+                [-33.49214, -70.65141],
+                {"zIndexOffset": 9999}
+            ).addTo(map_90fda67194b51d9dbe6a777f3acf9491);
+        
+    
+            var div_icon_f8b80db0d1579f4e3bd191f114190a99 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e141\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4641e41ebe90c836f61c0dcbd7e048e2.setIcon(div_icon_f8b80db0d1579f4e3bd191f114190a99);
+        
+    
+            map_90fda67194b51d9dbe6a777f3acf9491.fitBounds(
+                [[-33.49788, -70.64692], [-33.5068, -70.6519], [-33.50099, -70.65444], [-33.4867, -70.6495], [-33.50737, -70.65042], [-33.4893, -70.6577], [-33.4858, -70.6565], [-33.50714, -70.65149], [-33.5139, -70.6386], [-33.507, -70.6624], [-33.49785, -70.66286], [-33.4881, -70.6504], [-33.4901, -70.651], [-33.4866, -70.653], [-33.48978, -70.65599], [-33.49214, -70.65141]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

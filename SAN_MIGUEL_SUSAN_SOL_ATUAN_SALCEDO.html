@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cca3d1aaa06d698ce81a0f7892aeeebc {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_cca3d1aaa06d698ce81a0f7892aeeebc" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cca3d1aaa06d698ce81a0f7892aeeebc = L.map(
+                "map_cca3d1aaa06d698ce81a0f7892aeeebc",
+                {
+                    center: [-33.49671562499999, -70.652783125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_15c7bc85234f680347d4322258cf662f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_15c7bc85234f680347d4322258cf662f.addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+    var color_map_b5d054ba281fb712ffeb0a0e659f5add = {};
+
+    
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.color = d3.scale.threshold()
+              .domain([1.0, 1.6372745490981964, 2.2745490981963927, 2.911823647294589, 3.5490981963927855, 4.186372745490981, 4.823647294589178, 5.460921843687375, 6.098196392785571, 6.735470941883768, 7.372745490981964, 8.01002004008016, 8.647294589178356, 9.284569138276552, 9.92184368737475, 10.559118236472946, 11.196392785571142, 11.83366733466934, 12.470941883767535, 13.108216432865731, 13.745490981963927, 14.382765531062125, 15.02004008016032, 15.657314629258517, 16.294589178356713, 16.93186372745491, 17.569138276553105, 18.206412825651302, 18.8436873747495, 19.480961923847694, 20.118236472945892, 20.75551102204409, 21.392785571142284, 22.03006012024048, 22.66733466933868, 23.304609218436873, 23.94188376753507, 24.579158316633265, 25.216432865731463, 25.85370741482966, 26.490981963927855, 27.128256513026052, 27.76553106212425, 28.402805611222444, 29.04008016032064, 29.677354709418836, 30.314629258517034, 30.95190380761523, 31.589178356713425, 32.22645290581163, 32.86372745490982, 33.501002004008015, 34.13827655310621, 34.77555110220441, 35.412825651302605, 36.0501002004008, 36.687374749499, 37.324649298597194, 37.96192384769539, 38.59919839679359, 39.236472945891784, 39.87374749498998, 40.51102204408818, 41.14829659318637, 41.78557114228457, 42.42284569138277, 43.06012024048096, 43.69739478957916, 44.33466933867736, 44.97194388777555, 45.609218436873746, 46.24649298597194, 46.88376753507014, 47.521042084168336, 48.15831663326653, 48.79559118236473, 49.432865731462925, 50.07014028056112, 50.70741482965932, 51.344689378757515, 51.98196392785571, 52.61923847695391, 53.256513026052104, 53.8937875751503, 54.5310621242485, 55.168336673346694, 55.80561122244489, 56.44288577154309, 57.08016032064128, 57.71743486973948, 58.35470941883767, 58.99198396793587, 59.62925851703407, 60.26653306613226, 60.90380761523046, 61.54108216432866, 62.17835671342685, 62.81563126252505, 63.452905811623246, 64.09018036072143, 64.72745490981964, 65.36472945891784, 66.00200400801603, 66.63927855711422, 67.27655310621242, 67.91382765531063, 68.55110220440882, 69.18837675350701, 69.82565130260521, 70.4629258517034, 71.1002004008016, 71.7374749498998, 72.374749498998, 73.0120240480962, 73.64929859719439, 74.28657314629258, 74.92384769539078, 75.56112224448898, 76.19839679358718, 76.83567134268537, 77.47294589178357, 78.11022044088176, 78.74749498997996, 79.38476953907815, 80.02204408817636, 80.65931863727455, 81.29659318637275, 81.93386773547094, 82.57114228456913, 83.20841683366733, 83.84569138276554, 84.48296593186373, 85.12024048096193, 85.75751503006012, 86.39478957915831, 87.03206412825651, 87.66933867735472, 88.30661322645291, 88.9438877755511, 89.5811623246493, 90.21843687374749, 90.85571142284569, 91.49298597194388, 92.13026052104209, 92.76753507014028, 93.40480961923848, 94.04208416833667, 94.67935871743487, 95.31663326653306, 95.95390781563127, 96.59118236472946, 97.22845691382766, 97.86573146292585, 98.50300601202404, 99.14028056112224, 99.77755511022045, 100.41482965931864, 101.05210420841684, 101.68937875751503, 102.32665330661322, 102.96392785571142, 103.60120240480961, 104.23847695390782, 104.87575150300601, 105.51302605210421, 106.1503006012024, 106.7875751503006, 107.42484969939879, 108.062124248497, 108.6993987975952, 109.33667334669339, 109.97394789579158, 110.61122244488978, 111.24849699398797, 111.88577154308618, 112.52304609218437, 113.16032064128257, 113.79759519038076, 114.43486973947896, 115.07214428857715, 115.70941883767534, 116.34669338677355, 116.98396793587175, 117.62124248496994, 118.25851703406813, 118.89579158316633, 119.53306613226452, 120.17034068136273, 120.80761523046093, 121.44488977955912, 122.08216432865731, 122.71943887775551, 123.3567134268537, 123.99398797595191, 124.6312625250501, 125.2685370741483, 125.90581162324649, 126.54308617234469, 127.18036072144288, 127.81763527054109, 128.45490981963928, 129.09218436873746, 129.72945891783567, 130.36673346693388, 131.00400801603206, 131.64128256513027, 132.27855711422845, 132.91583166332666, 133.55310621242484, 134.19038076152304, 134.82765531062125, 135.46492985971943, 136.10220440881764, 136.73947895791582, 137.37675350701403, 138.01402805611224, 138.65130260521042, 139.28857715430863, 139.9258517034068, 140.56312625250501, 141.2004008016032, 141.8376753507014, 142.4749498997996, 143.1122244488978, 143.749498997996, 144.38677354709418, 145.0240480961924, 145.66132264529057, 146.29859719438878, 146.93587174348698, 147.57314629258516, 148.21042084168337, 148.84769539078155, 149.48496993987976, 150.12224448897797, 150.75951903807615, 151.39679358717436, 152.03406813627254, 152.67134268537075, 153.30861723446893, 153.94589178356713, 154.58316633266534, 155.22044088176352, 155.85771543086173, 156.4949899799599, 157.13226452905812, 157.7695390781563, 158.4068136272545, 159.04408817635272, 159.6813627254509, 160.3186372745491, 160.95591182364728, 161.5931863727455, 162.2304609218437, 162.86773547094188, 163.5050100200401, 164.14228456913827, 164.77955911823648, 165.41683366733466, 166.05410821643287, 166.69138276553107, 167.32865731462925, 167.96593186372746, 168.60320641282564, 169.24048096192385, 169.87775551102203, 170.51503006012024, 171.15230460921845, 171.78957915831663, 172.42685370741484, 173.06412825651302, 173.70140280561122, 174.33867735470943, 174.9759519038076, 175.61322645290582, 176.250501002004, 176.8877755511022, 177.5250501002004, 178.1623246492986, 178.7995991983968, 179.43687374749499, 180.0741482965932, 180.71142284569137, 181.34869739478958, 181.98597194388776, 182.62324649298597, 183.26052104208418, 183.89779559118236, 184.53507014028057, 185.17234468937875, 185.80961923847696, 186.44689378757516, 187.08416833667334, 187.72144288577155, 188.35871743486973, 188.99599198396794, 189.63326653306612, 190.27054108216433, 190.90781563126254, 191.54509018036072, 192.18236472945893, 192.8196392785571, 193.4569138276553, 194.0941883767535, 194.7314629258517, 195.3687374749499, 196.0060120240481, 196.6432865731463, 197.28056112224448, 197.9178356713427, 198.5551102204409, 199.19238476953907, 199.82965931863728, 200.46693386773546, 201.10420841683367, 201.74148296593185, 202.37875751503006, 203.01603206412827, 203.65330661322645, 204.29058116232466, 204.92785571142284, 205.56513026052104, 206.20240480961922, 206.83967935871743, 207.47695390781564, 208.11422845691382, 208.75150300601203, 209.3887775551102, 210.02605210420842, 210.66332665330663, 211.3006012024048, 211.93787575150301, 212.5751503006012, 213.2124248496994, 213.84969939879758, 214.4869739478958, 215.124248496994, 215.76152304609218, 216.3987975951904, 217.03607214428857, 217.67334669338678, 218.31062124248496, 218.94789579158316, 219.58517034068137, 220.22244488977955, 220.85971943887776, 221.49699398797594, 222.13426853707415, 222.77154308617236, 223.40881763527054, 224.04609218436875, 224.68336673346693, 225.32064128256513, 225.9579158316633, 226.59519038076152, 227.23246492985973, 227.8697394789579, 228.50701402805612, 229.1442885771543, 229.7815631262525, 230.4188376753507, 231.0561122244489, 231.6933867735471, 232.33066132264528, 232.9679358717435, 233.60521042084167, 234.24248496993988, 234.8797595190381, 235.51703406813627, 236.15430861723448, 236.79158316633266, 237.42885771543087, 238.06613226452905, 238.70340681362725, 239.34068136272546, 239.97795591182364, 240.61523046092185, 241.25250501002003, 241.88977955911824, 242.52705410821645, 243.16432865731463, 243.80160320641284, 244.43887775551102, 245.07615230460922, 245.7134268537074, 246.3507014028056, 246.98797595190382, 247.625250501002, 248.2625250501002, 248.8997995991984, 249.5370741482966, 250.17434869739478, 250.81162324649299, 251.4488977955912, 252.08617234468937, 252.72344689378758, 253.36072144288576, 253.99799599198397, 254.63527054108218, 255.27254509018036, 255.90981963927857, 256.5470941883767, 257.1843687374749, 257.82164328657313, 258.45891783567134, 259.09619238476955, 259.73346693386776, 260.3707414829659, 261.0080160320641, 261.6452905811623, 262.28256513026054, 262.91983967935874, 263.5571142284569, 264.1943887775551, 264.8316633266533, 265.4689378757515, 266.1062124248497, 266.7434869739479, 267.3807615230461, 268.0180360721443, 268.6553106212425, 269.29258517034066, 269.92985971943887, 270.5671342685371, 271.2044088176353, 271.8416833667335, 272.47895791583164, 273.11623246492985, 273.75350701402806, 274.39078156312627, 275.0280561122245, 275.6653306613226, 276.30260521042084, 276.93987975951904, 277.57715430861725, 278.2144288577154, 278.8517034068136, 279.4889779559118, 280.12625250501003, 280.76352705410824, 281.4008016032064, 282.0380761523046, 282.6753507014028, 283.312625250501, 283.9498997995992, 284.5871743486974, 285.2244488977956, 285.8617234468938, 286.498997995992, 287.1362725450902, 287.77354709418836, 288.41082164328657, 289.0480961923848, 289.685370741483, 290.32264529058114, 290.95991983967934, 291.59719438877755, 292.23446893787576, 292.87174348697397, 293.5090180360721, 294.14629258517033, 294.78356713426854, 295.42084168336675, 296.05811623246495, 296.6953907815631, 297.3326653306613, 297.9699398797595, 298.60721442885773, 299.24448897795594, 299.8817635270541, 300.5190380761523, 301.1563126252505, 301.7935871743487, 302.43086172344687, 303.0681362725451, 303.7054108216433, 304.3426853707415, 304.9799599198397, 305.61723446893785, 306.25450901803606, 306.89178356713427, 307.5290581162325, 308.1663326653307, 308.80360721442884, 309.44088176352705, 310.07815631262525, 310.71543086172346, 311.35270541082167, 311.9899799599198, 312.62725450901803, 313.26452905811624, 313.90180360721445, 314.5390781563126, 315.1763527054108, 315.813627254509, 316.4509018036072, 317.08817635270543, 317.7254509018036, 318.3627254509018, 319.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.x = d3.scale.linear()
+              .domain([1.0, 319.0])
+              .range([0, 450 - 50]);
+
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.legend = L.control({position: 'topright'});
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.legend.addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.xAxis = d3.svg.axis()
+        .scale(color_map_b5d054ba281fb712ffeb0a0e659f5add.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([1.0, 40.75, 80.5, 120.25, 160.0, 199.75, 239.5, 279.25, 319.0]);
+
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.g = color_map_b5d054ba281fb712ffeb0a0e659f5add.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.g.selectAll("rect")
+        .data(color_map_b5d054ba281fb712ffeb0a0e659f5add.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_b5d054ba281fb712ffeb0a0e659f5add.x(color_map_b5d054ba281fb712ffeb0a0e659f5add.color.domain()[i - 1]) : color_map_b5d054ba281fb712ffeb0a0e659f5add.x.range()[0],
+            x1: i < color_map_b5d054ba281fb712ffeb0a0e659f5add.color.domain().length ? color_map_b5d054ba281fb712ffeb0a0e659f5add.x(color_map_b5d054ba281fb712ffeb0a0e659f5add.color.domain()[i]) : color_map_b5d054ba281fb712ffeb0a0e659f5add.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_b5d054ba281fb712ffeb0a0e659f5add.g.call(color_map_b5d054ba281fb712ffeb0a0e659f5add.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista SUSAN SOL ATUAN SALCEDO por local");
+    
+            var circle_marker_0ef7c67eb42e5006f110c776994cd500 = L.circleMarker(
+                [-33.49788, -70.64692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_decd602a7c60c933bdaf661c72f3d074 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_162abfd5a6866c8f49942dc8014c4078 = $(`<div id="html_162abfd5a6866c8f49942dc8014c4078" style="width: 100.0%; height: 100.0%;"><b>C.P.F de san miguel</b><br>SAN FRANCISCO 4756<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>1</b></div>`)[0];
+                popup_decd602a7c60c933bdaf661c72f3d074.setContent(html_162abfd5a6866c8f49942dc8014c4078);
+            
+        
+
+        circle_marker_0ef7c67eb42e5006f110c776994cd500.bindPopup(popup_decd602a7c60c933bdaf661c72f3d074)
+        ;
+
+        
+    
+    
+            circle_marker_0ef7c67eb42e5006f110c776994cd500.bindTooltip(
+                `<div>
+                     C.P.F de san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4f8595ca7636b3f54d2517c572974cdc = L.marker(
+                [-33.49788, -70.64692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_b689c779b47cfdad850b3ef50060c5cd = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e1\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4f8595ca7636b3f54d2517c572974cdc.setIcon(div_icon_b689c779b47cfdad850b3ef50060c5cd);
+        
+    
+            var circle_marker_17ea200a7dd2bd3ec6c473ccbe581458 = L.circleMarker(
+                [-33.5068, -70.6519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb852ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.974842767295598, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_7b3e0d7e599a465e05454756818d993d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_02b7c2a62bde6cf9290f4c284d321f4e = $(`<div id="html_02b7c2a62bde6cf9290f4c284d321f4e" style="width: 100.0%; height: 100.0%;"><b>colegio bicentenario santo cura de ars</b><br>CARMEN MENA 939<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>114</b></div>`)[0];
+                popup_7b3e0d7e599a465e05454756818d993d.setContent(html_02b7c2a62bde6cf9290f4c284d321f4e);
+            
+        
+
+        circle_marker_17ea200a7dd2bd3ec6c473ccbe581458.bindPopup(popup_7b3e0d7e599a465e05454756818d993d)
+        ;
+
+        
+    
+    
+            circle_marker_17ea200a7dd2bd3ec6c473ccbe581458.bindTooltip(
+                `<div>
+                     colegio bicentenario santo cura de ars
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e53cc95d4839998190cdfbabec979c7 = L.marker(
+                [-33.5068, -70.6519],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_4cb92f6b988a78f8a8dc0705d82ea56c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e114\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5e53cc95d4839998190cdfbabec979c7.setIcon(div_icon_4cb92f6b988a78f8a8dc0705d82ea56c);
+        
+    
+            var circle_marker_8d8afbb254aa97a72ccc4cb3c3915336 = L.circleMarker(
+                [-33.50099, -70.65444],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8038ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352201257861635, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_c78067b19a28a1dc2c68fd3705aa896c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3b5fce44a43e91513cccd60f50415287 = $(`<div id="html_3b5fce44a43e91513cccd60f50415287" style="width: 100.0%; height: 100.0%;"><b>colegio chile</b><br>PIRAMIDE 1089<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>168</b></div>`)[0];
+                popup_c78067b19a28a1dc2c68fd3705aa896c.setContent(html_3b5fce44a43e91513cccd60f50415287);
+            
+        
+
+        circle_marker_8d8afbb254aa97a72ccc4cb3c3915336.bindPopup(popup_c78067b19a28a1dc2c68fd3705aa896c)
+        ;
+
+        
+    
+    
+            circle_marker_8d8afbb254aa97a72ccc4cb3c3915336.bindTooltip(
+                `<div>
+                     colegio chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bab58e0da815b70b223b3d25482d9b5c = L.marker(
+                [-33.50099, -70.65444],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_bcc5345da456ca183a8ae3e76489d7c7 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e168\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_bab58e0da815b70b223b3d25482d9b5c.setIcon(div_icon_bcc5345da456ca183a8ae3e76489d7c7);
+        
+    
+            var circle_marker_4f93597a4b6c23d61876e46b9ea7d07f = L.circleMarker(
+                [-33.4867, -70.6495],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea271fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.037735849056602, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_fc289b8e75018090497fcb28a814448c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c7918ebc8929cee514b8a2784e1cdc73 = $(`<div id="html_c7918ebc8929cee514b8a2784e1cdc73" style="width: 100.0%; height: 100.0%;"><b>colegio parroquial san miguel</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3548<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>229</b></div>`)[0];
+                popup_fc289b8e75018090497fcb28a814448c.setContent(html_c7918ebc8929cee514b8a2784e1cdc73);
+            
+        
+
+        circle_marker_4f93597a4b6c23d61876e46b9ea7d07f.bindPopup(popup_fc289b8e75018090497fcb28a814448c)
+        ;
+
+        
+    
+    
+            circle_marker_4f93597a4b6c23d61876e46b9ea7d07f.bindTooltip(
+                `<div>
+                     colegio parroquial san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_55c5b24679b647ac83589e6c0be9615d = L.marker(
+                [-33.4867, -70.6495],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_ec2556e7470c38425d0cc6d3a0d39d49 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e229\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_55c5b24679b647ac83589e6c0be9615d.setIcon(div_icon_ec2556e7470c38425d0cc6d3a0d39d49);
+        
+    
+            var circle_marker_53e0a91adbb502831265205a66edda4b = L.circleMarker(
+                [-33.50737, -70.65042],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecb67ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.138364779874214, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_76e93752bd476f43163dbc02b95d9670 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3e8296ccf43f34ebae8ad7cd4aae6f29 = $(`<div id="html_3e8296ccf43f34ebae8ad7cd4aae6f29" style="width: 100.0%; height: 100.0%;"><b>colegio tomas moro</b><br>CARMEN MENA 882<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>95</b></div>`)[0];
+                popup_76e93752bd476f43163dbc02b95d9670.setContent(html_3e8296ccf43f34ebae8ad7cd4aae6f29);
+            
+        
+
+        circle_marker_53e0a91adbb502831265205a66edda4b.bindPopup(popup_76e93752bd476f43163dbc02b95d9670)
+        ;
+
+        
+    
+    
+            circle_marker_53e0a91adbb502831265205a66edda4b.bindTooltip(
+                `<div>
+                     colegio tomas moro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1cc66100fcbd38131b040ad5800a3520 = L.marker(
+                [-33.50737, -70.65042],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_4d9234943f52162632fb69ba2fe02d0b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e95\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1cc66100fcbd38131b040ad5800a3520.setIcon(div_icon_4d9234943f52162632fb69ba2fe02d0b);
+        
+    
+            var circle_marker_c621ec6225f302bbc2f2251dab5fc4d4 = L.circleMarker(
+                [-33.4893, -70.6577],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecb67ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.138364779874214, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_1918b81df4740b86220d9269117c98a4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_df8fcb2eb15f6dfdd1652c979c5cb437 = $(`<div id="html_df8fcb2eb15f6dfdd1652c979c5cb437" style="width: 100.0%; height: 100.0%;"><b>escuela de la industria grafica hector gomez</b><br>FLORENCIA 1442<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>95</b></div>`)[0];
+                popup_1918b81df4740b86220d9269117c98a4.setContent(html_df8fcb2eb15f6dfdd1652c979c5cb437);
+            
+        
+
+        circle_marker_c621ec6225f302bbc2f2251dab5fc4d4.bindPopup(popup_1918b81df4740b86220d9269117c98a4)
+        ;
+
+        
+    
+    
+            circle_marker_c621ec6225f302bbc2f2251dab5fc4d4.bindTooltip(
+                `<div>
+                     escuela de la industria grafica hector gomez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4087e3836455d3354fe188dfd073dc65 = L.marker(
+                [-33.4893, -70.6577],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_a5fcc95619b6645e7de11db32a04f049 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e95\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4087e3836455d3354fe188dfd073dc65.setIcon(div_icon_a5fcc95619b6645e7de11db32a04f049);
+        
+    
+            var circle_marker_1a3bda9ae54539b43f0af1733fa8885b = L.circleMarker(
+                [-33.4858, -70.6565],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9f43ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.163522012578618, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_ef5b3a600eb219a739cbcc57387336ee = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_faba6c9c68732c05cdb313f277948716 = $(`<div id="html_faba6c9c68732c05cdb313f277948716" style="width: 100.0%; height: 100.0%;"><b>escuela llano subercaseaux</b><br>SOTO AGUILAR 1509<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>141</b></div>`)[0];
+                popup_ef5b3a600eb219a739cbcc57387336ee.setContent(html_faba6c9c68732c05cdb313f277948716);
+            
+        
+
+        circle_marker_1a3bda9ae54539b43f0af1733fa8885b.bindPopup(popup_ef5b3a600eb219a739cbcc57387336ee)
+        ;
+
+        
+    
+    
+            circle_marker_1a3bda9ae54539b43f0af1733fa8885b.bindTooltip(
+                `<div>
+                     escuela llano subercaseaux
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c55893b3b62a65900b79a5faafcb44c = L.marker(
+                [-33.4858, -70.6565],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_de69597c69f16d153b757981e8bce792 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e141\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8c55893b3b62a65900b79a5faafcb44c.setIcon(div_icon_de69597c69f16d153b757981e8bce792);
+        
+    
+            var circle_marker_86e87879b5259206557bcd7bd95ca51a = L.circleMarker(
+                [-33.50714, -70.65149],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed470ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.742138364779874, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_fdf9ca6b4619b4a44ed8ca0fc9e0cb1c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_82d1974ac0941fd10cfe85e2517f6403 = $(`<div id="html_82d1974ac0941fd10cfe85e2517f6403" style="width: 100.0%; height: 100.0%;"><b>escuela municipal</b><br>CARMEN MENA 906<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>86</b></div>`)[0];
+                popup_fdf9ca6b4619b4a44ed8ca0fc9e0cb1c.setContent(html_82d1974ac0941fd10cfe85e2517f6403);
+            
+        
+
+        circle_marker_86e87879b5259206557bcd7bd95ca51a.bindPopup(popup_fdf9ca6b4619b4a44ed8ca0fc9e0cb1c)
+        ;
+
+        
+    
+    
+            circle_marker_86e87879b5259206557bcd7bd95ca51a.bindTooltip(
+                `<div>
+                     escuela municipal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0173155ebfe3b4b07e6e7e427fae4931 = L.marker(
+                [-33.50714, -70.65149],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_806a5cd92948c0b359ded06df3ac9fa9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e86\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0173155ebfe3b4b07e6e7e427fae4931.setIcon(div_icon_806a5cd92948c0b359ded06df3ac9fa9);
+        
+    
+            var circle_marker_10e2d2e5fbfa289cb20079cea7e539fd = L.circleMarker(
+                [-33.5139, -70.6386],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.59748427672956, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_cbdbe8534860b6db0831a6f5ed7c38c6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ad79ca10711027066f26129e592433ef = $(`<div id="html_ad79ca10711027066f26129e592433ef" style="width: 100.0%; height: 100.0%;"><b>escuela santa fe</b><br>SANTA FE 528<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>60</b></div>`)[0];
+                popup_cbdbe8534860b6db0831a6f5ed7c38c6.setContent(html_ad79ca10711027066f26129e592433ef);
+            
+        
+
+        circle_marker_10e2d2e5fbfa289cb20079cea7e539fd.bindPopup(popup_cbdbe8534860b6db0831a6f5ed7c38c6)
+        ;
+
+        
+    
+    
+            circle_marker_10e2d2e5fbfa289cb20079cea7e539fd.bindTooltip(
+                `<div>
+                     escuela santa fe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e9675cb330db1c6df8860e683ed5e2d = L.marker(
+                [-33.5139, -70.6386],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_4d9ea77e9ecac938143bb3d8af504fad = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e60\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2e9675cb330db1c6df8860e683ed5e2d.setIcon(div_icon_4d9ea77e9ecac938143bb3d8af504fad);
+        
+    
+            var circle_marker_f9c6be99d136076c49c4e991cd3d2d7c = L.circleMarker(
+                [-33.507, -70.6624],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd552cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.540880503144656, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_2ef1730270b4815bd265523e0f72f1bc = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d2da6db833c618fbbede4bdb31927374 = $(`<div id="html_d2da6db833c618fbbede4bdb31927374" style="width: 100.0%; height: 100.0%;"><b>escuela territorio antartico</b><br>TERCERA TRANSVERSAL 5950<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>195</b></div>`)[0];
+                popup_2ef1730270b4815bd265523e0f72f1bc.setContent(html_d2da6db833c618fbbede4bdb31927374);
+            
+        
+
+        circle_marker_f9c6be99d136076c49c4e991cd3d2d7c.bindPopup(popup_2ef1730270b4815bd265523e0f72f1bc)
+        ;
+
+        
+    
+    
+            circle_marker_f9c6be99d136076c49c4e991cd3d2d7c.bindTooltip(
+                `<div>
+                     escuela territorio antartico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dc62b9d3bb5880915be0f096d45a60c2 = L.marker(
+                [-33.507, -70.6624],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_746a486e34b975e8d1e9f77559ee9c1b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e195\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dc62b9d3bb5880915be0f096d45a60c2.setIcon(div_icon_746a486e34b975e8d1e9f77559ee9c1b);
+        
+    
+            var circle_marker_ad806cbc6b659fa06f012f2b56e0c4e2 = L.circleMarker(
+                [-33.49785, -70.66286],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdf81ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.037735849056604, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_790528db324f02c6580a01808039b0e3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_06490a2e1f0a7e67c5dc50bc64713bb5 = $(`<div id="html_06490a2e1f0a7e67c5dc50bc64713bb5" style="width: 100.0%; height: 100.0%;"><b>escuela villa san miguel</b><br>LAZO 1520<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>70</b></div>`)[0];
+                popup_790528db324f02c6580a01808039b0e3.setContent(html_06490a2e1f0a7e67c5dc50bc64713bb5);
+            
+        
+
+        circle_marker_ad806cbc6b659fa06f012f2b56e0c4e2.bindPopup(popup_790528db324f02c6580a01808039b0e3)
+        ;
+
+        
+    
+    
+            circle_marker_ad806cbc6b659fa06f012f2b56e0c4e2.bindTooltip(
+                `<div>
+                     escuela villa san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a0779de545502ba22660f22b0adcb2a3 = L.marker(
+                [-33.49785, -70.66286],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_156a8711e4342e602b01df453ffc2725 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e70\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a0779de545502ba22660f22b0adcb2a3.setIcon(div_icon_156a8711e4342e602b01df453ffc2725);
+        
+    
+            var circle_marker_e00fd218be7aaf4f207c0fc10d0aee61 = L.circleMarker(
+                [-33.4881, -70.6504],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6831ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.0125786163522, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_f3ade2cc60691dd01d5c020b097acaea = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_202438061e7a5a8c79bf8ecd8acbfd52 = $(`<div id="html_202438061e7a5a8c79bf8ecd8acbfd52" style="width: 100.0%; height: 100.0%;"><b>instituto miguel leon prado</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3696<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>183</b></div>`)[0];
+                popup_f3ade2cc60691dd01d5c020b097acaea.setContent(html_202438061e7a5a8c79bf8ecd8acbfd52);
+            
+        
+
+        circle_marker_e00fd218be7aaf4f207c0fc10d0aee61.bindPopup(popup_f3ade2cc60691dd01d5c020b097acaea)
+        ;
+
+        
+    
+    
+            circle_marker_e00fd218be7aaf4f207c0fc10d0aee61.bindTooltip(
+                `<div>
+                     instituto miguel leon prado
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0dc2ac027e9cd9015758f908689d07de = L.marker(
+                [-33.4881, -70.6504],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_ab5bba355ccd342a5f6ab7076dceb11e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e183\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0dc2ac027e9cd9015758f908689d07de.setIcon(div_icon_ab5bba355ccd342a5f6ab7076dceb11e);
+        
+    
+            var circle_marker_8344157734bf490c28fa1abfba9b6e8c = L.circleMarker(
+                [-33.4901, -70.651],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb34dff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.19496855345912, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_edf00e6aaf40ad131cfe239b1edd58d1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3009d7dbf1c99939b97053ad64db33a4 = $(`<div id="html_3009d7dbf1c99939b97053ad64db33a4" style="width: 100.0%; height: 100.0%;"><b>instituto superior de comercio de chile</b><br>ALVAREZ DE TOLEDO 1060<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>119</b></div>`)[0];
+                popup_edf00e6aaf40ad131cfe239b1edd58d1.setContent(html_3009d7dbf1c99939b97053ad64db33a4);
+            
+        
+
+        circle_marker_8344157734bf490c28fa1abfba9b6e8c.bindPopup(popup_edf00e6aaf40ad131cfe239b1edd58d1)
+        ;
+
+        
+    
+    
+            circle_marker_8344157734bf490c28fa1abfba9b6e8c.bindTooltip(
+                `<div>
+                     instituto superior de comercio de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6537f39aef9e0b33c8280032f96e876c = L.marker(
+                [-33.4901, -70.651],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_032dc63be5f8674b15faacc0cae7e8ff = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e119\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_6537f39aef9e0b33c8280032f96e876c.setIcon(div_icon_032dc63be5f8674b15faacc0cae7e8ff);
+        
+    
+            var circle_marker_ce57f437e1ce4512eaee758a9b044542 = L.circleMarker(
+                [-33.4866, -70.653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f03523ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.59748427672956, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_e6a1eb29adae01c6e38b2e85691c01a9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3ad56fc5b81137ce542b3e7ad5bef8a3 = $(`<div id="html_3ad56fc5b81137ce542b3e7ad5bef8a3" style="width: 100.0%; height: 100.0%;"><b>liceo andres bello</b><br>SOTO AGUILAR 1241<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>219</b></div>`)[0];
+                popup_e6a1eb29adae01c6e38b2e85691c01a9.setContent(html_3ad56fc5b81137ce542b3e7ad5bef8a3);
+            
+        
+
+        circle_marker_ce57f437e1ce4512eaee758a9b044542.bindPopup(popup_e6a1eb29adae01c6e38b2e85691c01a9)
+        ;
+
+        
+    
+    
+            circle_marker_ce57f437e1ce4512eaee758a9b044542.bindTooltip(
+                `<div>
+                     liceo andres bello
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a2e2f5a4217ba91075902a9b4cd78829 = L.marker(
+                [-33.4866, -70.653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_c03eae305788be44ae5f557a4920da06 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e219\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a2e2f5a4217ba91075902a9b4cd78829.setIcon(div_icon_c03eae305788be44ae5f557a4920da06);
+        
+    
+            var circle_marker_6c95c0a39e0075a87ce8000272d4e29e = L.circleMarker(
+                [-33.48978, -70.65599],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_b54d251a40a8ff6df8097117de1c08b2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_024cec6d10f430e4584d1255776599d0 = $(`<div id="html_024cec6d10f430e4584d1255776599d0" style="width: 100.0%; height: 100.0%;"><b>liceo betsabe hormazabal de alarcon l1</b><br>GASPAR BANDA 4047<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>319</b></div>`)[0];
+                popup_b54d251a40a8ff6df8097117de1c08b2.setContent(html_024cec6d10f430e4584d1255776599d0);
+            
+        
+
+        circle_marker_6c95c0a39e0075a87ce8000272d4e29e.bindPopup(popup_b54d251a40a8ff6df8097117de1c08b2)
+        ;
+
+        
+    
+    
+            circle_marker_6c95c0a39e0075a87ce8000272d4e29e.bindTooltip(
+                `<div>
+                     liceo betsabe hormazabal de alarcon l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_77f9c7aa810b1bc9a951efd33b358e46 = L.marker(
+                [-33.48978, -70.65599],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_cb1caf1672bc61216256c77a4215744a = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e319\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_77f9c7aa810b1bc9a951efd33b358e46.setIcon(div_icon_cb1caf1672bc61216256c77a4215744a);
+        
+    
+            var circle_marker_e9a6a966bb4ade33e32948aa49bc800c = L.circleMarker(
+                [-33.49214, -70.65141],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f94728ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.9811320754717, "stroke": false, "weight": 3}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+        var popup_72791971867e686267ac30ea6f869947 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_754000e5c4234e99dd2e6ce0a84db110 = $(`<div id="html_754000e5c4234e99dd2e6ce0a84db110" style="width: 100.0%; height: 100.0%;"><b>universidad de valparaiso</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 4160<br>Votos Lista SUSAN SOL ATUAN SALCEDO: <b>205</b></div>`)[0];
+                popup_72791971867e686267ac30ea6f869947.setContent(html_754000e5c4234e99dd2e6ce0a84db110);
+            
+        
+
+        circle_marker_e9a6a966bb4ade33e32948aa49bc800c.bindPopup(popup_72791971867e686267ac30ea6f869947)
+        ;
+
+        
+    
+    
+            circle_marker_e9a6a966bb4ade33e32948aa49bc800c.bindTooltip(
+                `<div>
+                     universidad de valparaiso
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3db67b8623916816774c3f9ab5ebe4d7 = L.marker(
+                [-33.49214, -70.65141],
+                {"zIndexOffset": 9999}
+            ).addTo(map_cca3d1aaa06d698ce81a0f7892aeeebc);
+        
+    
+            var div_icon_a9385bef4621341c059bdf379750b3d8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e205\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_3db67b8623916816774c3f9ab5ebe4d7.setIcon(div_icon_a9385bef4621341c059bdf379750b3d8);
+        
+    
+            map_cca3d1aaa06d698ce81a0f7892aeeebc.fitBounds(
+                [[-33.49788, -70.64692], [-33.5068, -70.6519], [-33.50099, -70.65444], [-33.4867, -70.6495], [-33.50737, -70.65042], [-33.4893, -70.6577], [-33.4858, -70.6565], [-33.50714, -70.65149], [-33.5139, -70.6386], [-33.507, -70.6624], [-33.49785, -70.66286], [-33.4881, -70.6504], [-33.4901, -70.651], [-33.4866, -70.653], [-33.48978, -70.65599], [-33.49214, -70.65141]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>

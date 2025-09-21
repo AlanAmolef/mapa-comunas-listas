@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e0ec81b322cec05463ffcfb54df12258 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e0ec81b322cec05463ffcfb54df12258" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e0ec81b322cec05463ffcfb54df12258 = L.map(
+                "map_e0ec81b322cec05463ffcfb54df12258",
+                {
+                    center: [-33.49671562499999, -70.652783125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6ad1805fd72fc165b25d221176e52aea = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_6ad1805fd72fc165b25d221176e52aea.addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+    var color_map_c8bdee7c34754e7946574d75cd3b366a = {};
+
+    
+    color_map_c8bdee7c34754e7946574d75cd3b366a.color = d3.scale.threshold()
+              .domain([0.0, 0.17635270541082165, 0.3527054108216433, 0.5290581162324649, 0.7054108216432866, 0.8817635270541082, 1.0581162324649298, 1.2344689378757514, 1.4108216432865732, 1.5871743486973948, 1.7635270541082164, 1.939879759519038, 2.1162324649298596, 2.2925851703406814, 2.468937875751503, 2.6452905811623246, 2.8216432865731464, 2.997995991983968, 3.1743486973947896, 3.350701402805611, 3.527054108216433, 3.7034068136272547, 3.879759519038076, 4.056112224448897, 4.232464929859719, 4.408817635270541, 4.585170340681363, 4.761523046092185, 4.937875751503006, 5.114228456913827, 5.290581162324649, 5.466933867735471, 5.643286573146293, 5.819639278557114, 5.995991983967936, 6.1723446893787575, 6.348697394789579, 6.525050100200401, 6.701402805611222, 6.877755511022044, 7.054108216432866, 7.2304609218436875, 7.406813627254509, 7.58316633266533, 7.759519038076152, 7.935871743486974, 8.112224448897795, 8.288577154308618, 8.464929859719438, 8.641282565130261, 8.817635270541082, 8.993987975951903, 9.170340681362726, 9.346693386773547, 9.52304609218437, 9.69939879759519, 9.875751503006011, 10.052104208416834, 10.228456913827655, 10.404809619238478, 10.581162324649299, 10.75751503006012, 10.933867735470942, 11.110220440881763, 11.286573146292586, 11.462925851703407, 11.639278557114228, 11.81563126252505, 11.991983967935871, 12.168336673346694, 12.344689378757515, 12.521042084168336, 12.697394789579159, 12.87374749498998, 13.050100200400802, 13.226452905811623, 13.402805611222444, 13.579158316633267, 13.755511022044088, 13.93186372745491, 14.108216432865731, 14.284569138276552, 14.460921843687375, 14.637274549098196, 14.813627254509019, 14.98997995991984, 15.16633266533066, 15.342685370741483, 15.519038076152304, 15.695390781563127, 15.871743486973948, 16.04809619238477, 16.22444889779559, 16.400801603206414, 16.577154308617235, 16.753507014028056, 16.929859719438877, 17.106212424849698, 17.282565130260522, 17.458917835671343, 17.635270541082164, 17.811623246492985, 17.987975951903806, 18.16432865731463, 18.34068136272545, 18.517034068136272, 18.693386773547093, 18.869739478957914, 19.04609218436874, 19.22244488977956, 19.39879759519038, 19.5751503006012, 19.751503006012022, 19.927855711422847, 20.104208416833668, 20.28056112224449, 20.45691382765531, 20.63326653306613, 20.809619238476955, 20.985971943887776, 21.162324649298597, 21.338677354709418, 21.51503006012024, 21.691382765531063, 21.867735470941884, 22.044088176352705, 22.220440881763526, 22.396793587174347, 22.57314629258517, 22.749498997995993, 22.925851703406813, 23.102204408817634, 23.278557114228455, 23.45490981963928, 23.6312625250501, 23.80761523046092, 23.983967935871743, 24.160320641282564, 24.336673346693388, 24.51302605210421, 24.68937875751503, 24.86573146292585, 25.04208416833667, 25.218436873747496, 25.394789579158317, 25.571142284569138, 25.74749498997996, 25.92384769539078, 26.100200400801604, 26.276553106212425, 26.452905811623246, 26.629258517034067, 26.805611222444888, 26.981963927855713, 27.158316633266534, 27.334669338677354, 27.511022044088175, 27.687374749498996, 27.86372745490982, 28.04008016032064, 28.216432865731463, 28.392785571142284, 28.569138276553105, 28.74549098196393, 28.92184368737475, 29.09819639278557, 29.274549098196392, 29.450901803607213, 29.627254509018037, 29.803607214428858, 29.97995991983968, 30.1563126252505, 30.33266533066132, 30.509018036072145, 30.685370741482966, 30.861723446893787, 31.03807615230461, 31.21442885771543, 31.390781563126254, 31.567134268537075, 31.743486973947896, 31.919839679358716, 32.09619238476954, 32.27254509018036, 32.44889779559118, 32.62525050100201, 32.80160320641283, 32.97795591182365, 33.15430861723447, 33.33066132264529, 33.50701402805611, 33.68336673346693, 33.859719438877754, 34.036072144288575, 34.212424849699396, 34.388777555110224, 34.565130260521045, 34.741482965931866, 34.91783567134269, 35.09418837675351, 35.27054108216433, 35.44689378757515, 35.62324649298597, 35.79959919839679, 35.97595190380761, 36.15230460921844, 36.32865731462926, 36.50501002004008, 36.6813627254509, 36.857715430861724, 37.034068136272545, 37.210420841683366, 37.38677354709419, 37.56312625250501, 37.73947895791583, 37.91583166332666, 38.09218436873748, 38.2685370741483, 38.44488977955912, 38.62124248496994, 38.79759519038076, 38.97394789579158, 39.1503006012024, 39.326653306613224, 39.503006012024045, 39.67935871743487, 39.855711422845694, 40.032064128256515, 40.208416833667336, 40.38476953907816, 40.56112224448898, 40.7374749498998, 40.91382765531062, 41.09018036072144, 41.26653306613226, 41.44288577154309, 41.61923847695391, 41.79559118236473, 41.97194388777555, 42.14829659318637, 42.324649298597194, 42.501002004008015, 42.677354709418836, 42.85370741482966, 43.03006012024048, 43.206412825651306, 43.38276553106213, 43.55911823647295, 43.73547094188377, 43.91182364729459, 44.08817635270541, 44.26452905811623, 44.44088176352705, 44.61723446893787, 44.793587174348694, 44.96993987975952, 45.14629258517034, 45.322645290581164, 45.498997995991985, 45.675350701402806, 45.85170340681363, 46.02805611222445, 46.20440881763527, 46.38076152304609, 46.55711422845691, 46.73346693386774, 46.90981963927856, 47.08617234468938, 47.2625250501002, 47.43887775551102, 47.61523046092184, 47.791583166332664, 47.967935871743485, 48.144288577154306, 48.32064128256513, 48.496993987975955, 48.673346693386776, 48.8496993987976, 49.02605210420842, 49.20240480961924, 49.37875751503006, 49.55511022044088, 49.7314629258517, 49.90781563126252, 50.08416833667334, 50.26052104208417, 50.43687374749499, 50.61322645290581, 50.789579158316634, 50.965931863727455, 51.142284569138276, 51.3186372745491, 51.49498997995992, 51.67134268537074, 51.84769539078156, 52.02404809619239, 52.20040080160321, 52.37675350701403, 52.55310621242485, 52.72945891783567, 52.90581162324649, 53.08216432865731, 53.258517034068134, 53.434869739478955, 53.611222444889776, 53.787575150300604, 53.963927855711425, 54.140280561122246, 54.31663326653307, 54.49298597194389, 54.66933867735471, 54.84569138276553, 55.02204408817635, 55.19839679358717, 55.37474949899799, 55.55110220440882, 55.72745490981964, 55.90380761523046, 56.08016032064128, 56.256513026052104, 56.432865731462925, 56.609218436873746, 56.78557114228457, 56.96192384769539, 57.13827655310621, 57.31462925851704, 57.49098196392786, 57.66733466933868, 57.8436873747495, 58.02004008016032, 58.19639278557114, 58.37274549098196, 58.549098196392784, 58.725450901803605, 58.901803607214426, 59.078156312625254, 59.254509018036075, 59.430861723446895, 59.607214428857716, 59.78356713426854, 59.95991983967936, 60.13627254509018, 60.312625250501, 60.48897795591182, 60.66533066132264, 60.84168336673347, 61.01803607214429, 61.19438877755511, 61.37074148296593, 61.547094188376754, 61.723446893787575, 61.899799599198396, 62.07615230460922, 62.25250501002004, 62.42885771543086, 62.605210420841686, 62.78156312625251, 62.95791583166333, 63.13426853707415, 63.31062124248497, 63.48697394789579, 63.66332665330661, 63.83967935871743, 64.01603206412825, 64.19238476953907, 64.3687374749499, 64.54509018036072, 64.72144288577154, 64.89779559118236, 65.07414829659318, 65.25050100200401, 65.42685370741484, 65.60320641282566, 65.77955911823648, 65.9559118236473, 66.13226452905812, 66.30861723446894, 66.48496993987976, 66.66132264529058, 66.8376753507014, 67.01402805611222, 67.19038076152304, 67.36673346693387, 67.54308617234469, 67.71943887775551, 67.89579158316633, 68.07214428857715, 68.24849699398797, 68.42484969939879, 68.60120240480961, 68.77755511022045, 68.95390781563127, 69.13026052104209, 69.30661322645291, 69.48296593186373, 69.65931863727455, 69.83567134268537, 70.0120240480962, 70.18837675350701, 70.36472945891784, 70.54108216432866, 70.71743486973948, 70.8937875751503, 71.07014028056112, 71.24649298597194, 71.42284569138276, 71.59919839679358, 71.7755511022044, 71.95190380761522, 72.12825651302605, 72.30460921843688, 72.4809619238477, 72.65731462925852, 72.83366733466934, 73.01002004008016, 73.18637274549098, 73.3627254509018, 73.53907815631263, 73.71543086172345, 73.89178356713427, 74.06813627254509, 74.24448897795591, 74.42084168336673, 74.59719438877755, 74.77354709418837, 74.9498997995992, 75.12625250501002, 75.30260521042084, 75.47895791583166, 75.65531062124248, 75.83166332665331, 76.00801603206413, 76.18436873747495, 76.36072144288578, 76.5370741482966, 76.71342685370742, 76.88977955911824, 77.06613226452906, 77.24248496993988, 77.4188376753507, 77.59519038076152, 77.77154308617234, 77.94789579158316, 78.12424849699399, 78.3006012024048, 78.47695390781563, 78.65330661322645, 78.82965931863727, 79.00601202404809, 79.18236472945891, 79.35871743486975, 79.53507014028057, 79.71142284569139, 79.88777555110221, 80.06412825651303, 80.24048096192385, 80.41683366733467, 80.59318637274549, 80.76953907815631, 80.94589178356713, 81.12224448897796, 81.29859719438878, 81.4749498997996, 81.65130260521042, 81.82765531062124, 82.00400801603206, 82.18036072144288, 82.3567134268537, 82.53306613226452, 82.70941883767534, 82.88577154308618, 83.062124248497, 83.23847695390782, 83.41482965931864, 83.59118236472946, 83.76753507014028, 83.9438877755511, 84.12024048096193, 84.29659318637275, 84.47294589178357, 84.64929859719439, 84.82565130260521, 85.00200400801603, 85.17835671342685, 85.35470941883767, 85.53106212424849, 85.70741482965931, 85.88376753507013, 86.06012024048096, 86.23647294589178, 86.41282565130261, 86.58917835671343, 86.76553106212425, 86.94188376753507, 87.1182364729459, 87.29458917835672, 87.47094188376754, 87.64729458917836, 87.82364729458918, 88.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_c8bdee7c34754e7946574d75cd3b366a.x = d3.scale.linear()
+              .domain([0.0, 88.0])
+              .range([0, 450 - 50]);
+
+    color_map_c8bdee7c34754e7946574d75cd3b366a.legend = L.control({position: 'topright'});
+    color_map_c8bdee7c34754e7946574d75cd3b366a.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_c8bdee7c34754e7946574d75cd3b366a.legend.addTo(map_e0ec81b322cec05463ffcfb54df12258);
+
+    color_map_c8bdee7c34754e7946574d75cd3b366a.xAxis = d3.svg.axis()
+        .scale(color_map_c8bdee7c34754e7946574d75cd3b366a.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, 11.0, 22.0, 33.0, 44.0, 55.0, 66.0, 77.0, 88.0]);
+
+    color_map_c8bdee7c34754e7946574d75cd3b366a.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_c8bdee7c34754e7946574d75cd3b366a.g = color_map_c8bdee7c34754e7946574d75cd3b366a.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_c8bdee7c34754e7946574d75cd3b366a.g.selectAll("rect")
+        .data(color_map_c8bdee7c34754e7946574d75cd3b366a.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_c8bdee7c34754e7946574d75cd3b366a.x(color_map_c8bdee7c34754e7946574d75cd3b366a.color.domain()[i - 1]) : color_map_c8bdee7c34754e7946574d75cd3b366a.x.range()[0],
+            x1: i < color_map_c8bdee7c34754e7946574d75cd3b366a.color.domain().length ? color_map_c8bdee7c34754e7946574d75cd3b366a.x(color_map_c8bdee7c34754e7946574d75cd3b366a.color.domain()[i]) : color_map_c8bdee7c34754e7946574d75cd3b366a.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_c8bdee7c34754e7946574d75cd3b366a.g.call(color_map_c8bdee7c34754e7946574d75cd3b366a.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos Lista PABLO IGNACIO ZOLA CORVALAN por local");
+    
+            var circle_marker_fc3f1d861142c18f1683a590d6600942 = L.circleMarker(
+                [-33.49788, -70.64692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_aa527eb0a5aa5922ee5856573a063180 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9f1335ab4fe6a1d23d5bc23f8b3d7f60 = $(`<div id="html_9f1335ab4fe6a1d23d5bc23f8b3d7f60" style="width: 100.0%; height: 100.0%;"><b>C.P.F de san miguel</b><br>SAN FRANCISCO 4756<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>0</b></div>`)[0];
+                popup_aa527eb0a5aa5922ee5856573a063180.setContent(html_9f1335ab4fe6a1d23d5bc23f8b3d7f60);
+            
+        
+
+        circle_marker_fc3f1d861142c18f1683a590d6600942.bindPopup(popup_aa527eb0a5aa5922ee5856573a063180)
+        ;
+
+        
+    
+    
+            circle_marker_fc3f1d861142c18f1683a590d6600942.bindTooltip(
+                `<div>
+                     C.P.F de san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_27dc484b5ca2a4ff1e40db800a67579e = L.marker(
+                [-33.49788, -70.64692],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_9b2e09bb8bc7630c1a7c209694405f2f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e0\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_27dc484b5ca2a4ff1e40db800a67579e.setIcon(div_icon_9b2e09bb8bc7630c1a7c209694405f2f);
+        
+    
+            var circle_marker_0d059291ac00e7cdd807f9e5a5265558 = L.circleMarker(
+                [-33.5068, -70.6519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec05bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.613636363636363, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_1ac0d07b0870b3a7f1f097f851caee18 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b8df0e7659338c32ba8fa405b419ab27 = $(`<div id="html_b8df0e7659338c32ba8fa405b419ab27" style="width: 100.0%; height: 100.0%;"><b>colegio bicentenario santo cura de ars</b><br>CARMEN MENA 939<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>29</b></div>`)[0];
+                popup_1ac0d07b0870b3a7f1f097f851caee18.setContent(html_b8df0e7659338c32ba8fa405b419ab27);
+            
+        
+
+        circle_marker_0d059291ac00e7cdd807f9e5a5265558.bindPopup(popup_1ac0d07b0870b3a7f1f097f851caee18)
+        ;
+
+        
+    
+    
+            circle_marker_0d059291ac00e7cdd807f9e5a5265558.bindTooltip(
+                `<div>
+                     colegio bicentenario santo cura de ars
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5015dae863f1ec831ae836c9333f3d47 = L.marker(
+                [-33.5068, -70.6519],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_d8d9a750c5fc4988d5abe2d8e7bc8a43 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e29\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5015dae863f1ec831ae836c9333f3d47.setIcon(div_icon_d8d9a750c5fc4988d5abe2d8e7bc8a43);
+        
+    
+            var circle_marker_7a4cb924437cb1ab79c8493e00243cba = L.circleMarker(
+                [-33.50099, -70.65444],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed672ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.65909090909091, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_39275053c8cc92d8f0ca97e6136d521f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4a5eeb4209571a517723dece54b54877 = $(`<div id="html_4a5eeb4209571a517723dece54b54877" style="width: 100.0%; height: 100.0%;"><b>colegio chile</b><br>PIRAMIDE 1089<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>23</b></div>`)[0];
+                popup_39275053c8cc92d8f0ca97e6136d521f.setContent(html_4a5eeb4209571a517723dece54b54877);
+            
+        
+
+        circle_marker_7a4cb924437cb1ab79c8493e00243cba.bindPopup(popup_39275053c8cc92d8f0ca97e6136d521f)
+        ;
+
+        
+    
+    
+            circle_marker_7a4cb924437cb1ab79c8493e00243cba.bindTooltip(
+                `<div>
+                     colegio chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_da778fe501e2d6e9770c01bf32203698 = L.marker(
+                [-33.50099, -70.65444],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_b9c7ae7cfa6f46f1f027c80d0942dd03 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e23\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_da778fe501e2d6e9770c01bf32203698.setIcon(div_icon_b9c7ae7cfa6f46f1f027c80d0942dd03);
+        
+    
+            var circle_marker_9ab02419948dbe30209cecec28e1a8cd = L.circleMarker(
+                [-33.4867, -70.6495],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_6448cbad6d586362db68f5c5b0b009ec = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f66ed3ea1c03a580b897adf7329861f7 = $(`<div id="html_f66ed3ea1c03a580b897adf7329861f7" style="width: 100.0%; height: 100.0%;"><b>colegio parroquial san miguel</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3548<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>88</b></div>`)[0];
+                popup_6448cbad6d586362db68f5c5b0b009ec.setContent(html_f66ed3ea1c03a580b897adf7329861f7);
+            
+        
+
+        circle_marker_9ab02419948dbe30209cecec28e1a8cd.bindPopup(popup_6448cbad6d586362db68f5c5b0b009ec)
+        ;
+
+        
+    
+    
+            circle_marker_9ab02419948dbe30209cecec28e1a8cd.bindTooltip(
+                `<div>
+                     colegio parroquial san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f53e4e4b1b44fd9eef817e68f6a926ba = L.marker(
+                [-33.4867, -70.6495],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_46ff2ae8dba7383b4369c09d7256eefa = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e88\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_f53e4e4b1b44fd9eef817e68f6a926ba.setIcon(div_icon_46ff2ae8dba7383b4369c09d7256eefa);
+        
+    
+            var circle_marker_0054f081e362590c0bb3eab820077676 = L.circleMarker(
+                [-33.50737, -70.65042],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed976ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.5, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_73fd1d582cc2e51086bc6d000020c4a3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_32143adce5faec530bd69fd12d6c722d = $(`<div id="html_32143adce5faec530bd69fd12d6c722d" style="width: 100.0%; height: 100.0%;"><b>colegio tomas moro</b><br>CARMEN MENA 882<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>22</b></div>`)[0];
+                popup_73fd1d582cc2e51086bc6d000020c4a3.setContent(html_32143adce5faec530bd69fd12d6c722d);
+            
+        
+
+        circle_marker_0054f081e362590c0bb3eab820077676.bindPopup(popup_73fd1d582cc2e51086bc6d000020c4a3)
+        ;
+
+        
+    
+    
+            circle_marker_0054f081e362590c0bb3eab820077676.bindTooltip(
+                `<div>
+                     colegio tomas moro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1c7ab127c8d510648172234168afbceb = L.marker(
+                [-33.50737, -70.65042],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_936e519a6753cb70c7f9c38caf38f548 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e22\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_1c7ab127c8d510648172234168afbceb.setIcon(div_icon_936e519a6753cb70c7f9c38caf38f548);
+        
+    
+            var circle_marker_5c7f454cef68ca47b90754d85d709692 = L.circleMarker(
+                [-33.4893, -70.6577],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdd7eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.181818181818182, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_3057dff370ae0f70c1d0e5785d6b6b5f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6a339207d77480a9f60a455f69754b21 = $(`<div id="html_6a339207d77480a9f60a455f69754b21" style="width: 100.0%; height: 100.0%;"><b>escuela de la industria grafica hector gomez</b><br>FLORENCIA 1442<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>20</b></div>`)[0];
+                popup_3057dff370ae0f70c1d0e5785d6b6b5f.setContent(html_6a339207d77480a9f60a455f69754b21);
+            
+        
+
+        circle_marker_5c7f454cef68ca47b90754d85d709692.bindPopup(popup_3057dff370ae0f70c1d0e5785d6b6b5f)
+        ;
+
+        
+    
+    
+            circle_marker_5c7f454cef68ca47b90754d85d709692.bindTooltip(
+                `<div>
+                     escuela de la industria grafica hector gomez
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dab123351d70e052768a42052eca540d = L.marker(
+                [-33.4893, -70.6577],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_955d39901be22b42225034b98e2141e0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e20\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dab123351d70e052768a42052eca540d.setIcon(div_icon_955d39901be22b42225034b98e2141e0);
+        
+    
+            var circle_marker_bcfc550f4eb0e0ead7bfca744a9ad443 = L.circleMarker(
+                [-33.4858, -70.6565],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb953ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.931818181818182, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_816691515bbc324e13a6c25b95144282 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_46e5096f838e9ad7d353a856b342e49f = $(`<div id="html_46e5096f838e9ad7d353a856b342e49f" style="width: 100.0%; height: 100.0%;"><b>escuela llano subercaseaux</b><br>SOTO AGUILAR 1509<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>31</b></div>`)[0];
+                popup_816691515bbc324e13a6c25b95144282.setContent(html_46e5096f838e9ad7d353a856b342e49f);
+            
+        
+
+        circle_marker_bcfc550f4eb0e0ead7bfca744a9ad443.bindPopup(popup_816691515bbc324e13a6c25b95144282)
+        ;
+
+        
+    
+    
+            circle_marker_bcfc550f4eb0e0ead7bfca744a9ad443.bindTooltip(
+                `<div>
+                     escuela llano subercaseaux
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b2533f5fa05511bb637fc7ff91d333ac = L.marker(
+                [-33.4858, -70.6565],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_b229b32e462b87203b5983fc9521d691 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e31\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_b2533f5fa05511bb637fc7ff91d333ac.setIcon(div_icon_b229b32e462b87203b5983fc9521d691);
+        
+    
+            var circle_marker_d4a91058a0f607c17ee70860131dbf13 = L.circleMarker(
+                [-33.50714, -70.65149],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecb67ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.136363636363637, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_5fc08b3f8ef024b2f2064e765109dcd7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cd4eb67ef872aff575da43f2e4892c11 = $(`<div id="html_cd4eb67ef872aff575da43f2e4892c11" style="width: 100.0%; height: 100.0%;"><b>escuela municipal</b><br>CARMEN MENA 906<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>26</b></div>`)[0];
+                popup_5fc08b3f8ef024b2f2064e765109dcd7.setContent(html_cd4eb67ef872aff575da43f2e4892c11);
+            
+        
+
+        circle_marker_d4a91058a0f607c17ee70860131dbf13.bindPopup(popup_5fc08b3f8ef024b2f2064e765109dcd7)
+        ;
+
+        
+    
+    
+            circle_marker_d4a91058a0f607c17ee70860131dbf13.bindTooltip(
+                `<div>
+                     escuela municipal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c98c098546d3b38323e5f5478cc9ddad = L.marker(
+                [-33.50714, -70.65149],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_bc7cde802c4a5288495e2c596462cb35 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e26\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c98c098546d3b38323e5f5478cc9ddad.setIcon(div_icon_bc7cde802c4a5288495e2c596462cb35);
+        
+    
+            var circle_marker_6edb2e5bc9880fd5cc38b010e64d0152 = L.circleMarker(
+                [-33.5139, -70.6386],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdf81ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.022727272727273, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_bc8071707b1c7ee231893f86d2f533e3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9f6e89b4247ead44fa215a7a5e4e8f45 = $(`<div id="html_9f6e89b4247ead44fa215a7a5e4e8f45" style="width: 100.0%; height: 100.0%;"><b>escuela santa fe</b><br>SANTA FE 528<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>19</b></div>`)[0];
+                popup_bc8071707b1c7ee231893f86d2f533e3.setContent(html_9f6e89b4247ead44fa215a7a5e4e8f45);
+            
+        
+
+        circle_marker_6edb2e5bc9880fd5cc38b010e64d0152.bindPopup(popup_bc8071707b1c7ee231893f86d2f533e3)
+        ;
+
+        
+    
+    
+            circle_marker_6edb2e5bc9880fd5cc38b010e64d0152.bindTooltip(
+                `<div>
+                     escuela santa fe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c4ee9bef788e30686e1123b1c5b460ca = L.marker(
+                [-33.5139, -70.6386],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_0c813d0fd656678507b7e734e8cc2a1b = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e19\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c4ee9bef788e30686e1123b1c5b460ca.setIcon(div_icon_0c813d0fd656678507b7e734e8cc2a1b);
+        
+    
+            var circle_marker_ec0b2174650de0af8b2da4cd5c078460 = L.circleMarker(
+                [-33.507, -70.6624],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecb67ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.136363636363637, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_ff441fef73c7abfc3214f2a1a3a9d709 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_222b1e6152b63674a352e16dbcc3f659 = $(`<div id="html_222b1e6152b63674a352e16dbcc3f659" style="width: 100.0%; height: 100.0%;"><b>escuela territorio antartico</b><br>TERCERA TRANSVERSAL 5950<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>26</b></div>`)[0];
+                popup_ff441fef73c7abfc3214f2a1a3a9d709.setContent(html_222b1e6152b63674a352e16dbcc3f659);
+            
+        
+
+        circle_marker_ec0b2174650de0af8b2da4cd5c078460.bindPopup(popup_ff441fef73c7abfc3214f2a1a3a9d709)
+        ;
+
+        
+    
+    
+            circle_marker_ec0b2174650de0af8b2da4cd5c078460.bindTooltip(
+                `<div>
+                     escuela territorio antartico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_abaf09f9634760f23c6e38386087fe01 = L.marker(
+                [-33.507, -70.6624],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_4667ad1f4aa4b9f01622121a2414f386 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e26\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_abaf09f9634760f23c6e38386087fe01.setIcon(div_icon_4667ad1f4aa4b9f01622121a2414f386);
+        
+    
+            var circle_marker_8a67091810bfbcb21b1e7de24adac042 = L.circleMarker(
+                [-33.49785, -70.66286],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe691ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.386363636363637, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_5151ce87fe0a77daab36e6563abdeaaa = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9c4b66422a49fd3512a724af3b08b7b2 = $(`<div id="html_9c4b66422a49fd3512a724af3b08b7b2" style="width: 100.0%; height: 100.0%;"><b>escuela villa san miguel</b><br>LAZO 1520<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>15</b></div>`)[0];
+                popup_5151ce87fe0a77daab36e6563abdeaaa.setContent(html_9c4b66422a49fd3512a724af3b08b7b2);
+            
+        
+
+        circle_marker_8a67091810bfbcb21b1e7de24adac042.bindPopup(popup_5151ce87fe0a77daab36e6563abdeaaa)
+        ;
+
+        
+    
+    
+            circle_marker_8a67091810bfbcb21b1e7de24adac042.bindTooltip(
+                `<div>
+                     escuela villa san miguel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_06e28fa4c10be02d9b46f0fd8d2ef2a1 = L.marker(
+                [-33.49785, -70.66286],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_ee5be537ec545f8b7b09c2b2ce1cd419 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e15\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_06e28fa4c10be02d9b46f0fd8d2ef2a1.setIcon(div_icon_ee5be537ec545f8b7b09c2b2ce1cd419);
+        
+    
+            var circle_marker_ea110e8e21c0f84f6ca5c75477a9cf97 = L.circleMarker(
+                [-33.4881, -70.6504],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb953ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.931818181818182, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_2f373566975c0348505bb975897ae83e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_47bd574548f5ab5a6cf0cf66b43a4e00 = $(`<div id="html_47bd574548f5ab5a6cf0cf66b43a4e00" style="width: 100.0%; height: 100.0%;"><b>instituto miguel leon prado</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 3696<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>31</b></div>`)[0];
+                popup_2f373566975c0348505bb975897ae83e.setContent(html_47bd574548f5ab5a6cf0cf66b43a4e00);
+            
+        
+
+        circle_marker_ea110e8e21c0f84f6ca5c75477a9cf97.bindPopup(popup_2f373566975c0348505bb975897ae83e)
+        ;
+
+        
+    
+    
+            circle_marker_ea110e8e21c0f84f6ca5c75477a9cf97.bindTooltip(
+                `<div>
+                     instituto miguel leon prado
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4c0f8a6312aa0ff22a0736007ef225f5 = L.marker(
+                [-33.4881, -70.6504],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_7c7995d3fc1ae18d0a7c068e4934cb4d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e31\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_4c0f8a6312aa0ff22a0736007ef225f5.setIcon(div_icon_7c7995d3fc1ae18d0a7c068e4934cb4d);
+        
+    
+            var circle_marker_8302650238f54bf65de34c62c1db1556 = L.circleMarker(
+                [-33.4901, -70.651],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdd7eff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.181818181818182, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_9536ab0c291bdb24c8562200888d2c7e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_19c4082fabd639640efdbe4d32920f57 = $(`<div id="html_19c4082fabd639640efdbe4d32920f57" style="width: 100.0%; height: 100.0%;"><b>instituto superior de comercio de chile</b><br>ALVAREZ DE TOLEDO 1060<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>20</b></div>`)[0];
+                popup_9536ab0c291bdb24c8562200888d2c7e.setContent(html_19c4082fabd639640efdbe4d32920f57);
+            
+        
+
+        circle_marker_8302650238f54bf65de34c62c1db1556.bindPopup(popup_9536ab0c291bdb24c8562200888d2c7e)
+        ;
+
+        
+    
+    
+            circle_marker_8302650238f54bf65de34c62c1db1556.bindTooltip(
+                `<div>
+                     instituto superior de comercio de chile
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c926b3b81c2d7fc0a0adf13513e1f6cd = L.marker(
+                [-33.4901, -70.651],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_3f84a3e99dd7d059be61753e951e6ecf = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e20\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c926b3b81c2d7fc0a0adf13513e1f6cd.setIcon(div_icon_3f84a3e99dd7d059be61753e951e6ecf);
+        
+    
+            var circle_marker_422e41c85cfa58f5023b682ae6005935 = L.circleMarker(
+                [-33.4866, -70.653],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7c37ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.477272727272727, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_41736d182ddb9f3e77cf29a0a2b574e0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7bff7f974ec44cd991c19f9a36c27cee = $(`<div id="html_7bff7f974ec44cd991c19f9a36c27cee" style="width: 100.0%; height: 100.0%;"><b>liceo andres bello</b><br>SOTO AGUILAR 1241<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>47</b></div>`)[0];
+                popup_41736d182ddb9f3e77cf29a0a2b574e0.setContent(html_7bff7f974ec44cd991c19f9a36c27cee);
+            
+        
+
+        circle_marker_422e41c85cfa58f5023b682ae6005935.bindPopup(popup_41736d182ddb9f3e77cf29a0a2b574e0)
+        ;
+
+        
+    
+    
+            circle_marker_422e41c85cfa58f5023b682ae6005935.bindTooltip(
+                `<div>
+                     liceo andres bello
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c431b775a4657d80cd59b628e546aa7c = L.marker(
+                [-33.4866, -70.653],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_a4bb438d4924e3f696ad18fe52783c6f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e47\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c431b775a4657d80cd59b628e546aa7c.setIcon(div_icon_a4bb438d4924e3f696ad18fe52783c6f);
+        
+    
+            var circle_marker_38f41dc2214b13ec357571787f1defaa = L.circleMarker(
+                [-33.48978, -70.65599],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd542bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.590909090909093, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_342be80df31b5080dddd1df6d2558a92 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a4957970b679c56fa6a623234352ff86 = $(`<div id="html_a4957970b679c56fa6a623234352ff86" style="width: 100.0%; height: 100.0%;"><b>liceo betsabe hormazabal de alarcon l1</b><br>GASPAR BANDA 4047<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>54</b></div>`)[0];
+                popup_342be80df31b5080dddd1df6d2558a92.setContent(html_a4957970b679c56fa6a623234352ff86);
+            
+        
+
+        circle_marker_38f41dc2214b13ec357571787f1defaa.bindPopup(popup_342be80df31b5080dddd1df6d2558a92)
+        ;
+
+        
+    
+    
+            circle_marker_38f41dc2214b13ec357571787f1defaa.bindTooltip(
+                `<div>
+                     liceo betsabe hormazabal de alarcon l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7e462e77cd7e23d638c9d2320055a578 = L.marker(
+                [-33.48978, -70.65599],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_f1b5bc19378431822fbdbcb6abaf6c67 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:14px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e54\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_7e462e77cd7e23d638c9d2320055a578.setIcon(div_icon_f1b5bc19378431822fbdbcb6abaf6c67);
+        
+    
+            var circle_marker_ddd4ffdd0ad54349ceaec5ecb4c8a246 = L.circleMarker(
+                [-33.49214, -70.65141],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd873aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.15909090909091, "stroke": false, "weight": 3}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+        var popup_3c2a053fb95772f95f05fa487d926149 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8282ab8c4774d08e84ed2d808186767a = $(`<div id="html_8282ab8c4774d08e84ed2d808186767a" style="width: 100.0%; height: 100.0%;"><b>universidad de valparaiso</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 4160<br>Votos Lista PABLO IGNACIO ZOLA CORVALAN: <b>45</b></div>`)[0];
+                popup_3c2a053fb95772f95f05fa487d926149.setContent(html_8282ab8c4774d08e84ed2d808186767a);
+            
+        
+
+        circle_marker_ddd4ffdd0ad54349ceaec5ecb4c8a246.bindPopup(popup_3c2a053fb95772f95f05fa487d926149)
+        ;
+
+        
+    
+    
+            circle_marker_ddd4ffdd0ad54349ceaec5ecb4c8a246.bindTooltip(
+                `<div>
+                     universidad de valparaiso
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a13335884a1b0fe52ca7b76b03a548c8 = L.marker(
+                [-33.49214, -70.65141],
+                {"zIndexOffset": 9999}
+            ).addTo(map_e0ec81b322cec05463ffcfb54df12258);
+        
+    
+            var div_icon_3fba90a551ccc6dc767c3b79d901115c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6); line-height:1;\n                \"\u003e45\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_a13335884a1b0fe52ca7b76b03a548c8.setIcon(div_icon_3fba90a551ccc6dc767c3b79d901115c);
+        
+    
+            map_e0ec81b322cec05463ffcfb54df12258.fitBounds(
+                [[-33.49788, -70.64692], [-33.5068, -70.6519], [-33.50099, -70.65444], [-33.4867, -70.6495], [-33.50737, -70.65042], [-33.4893, -70.6577], [-33.4858, -70.6565], [-33.50714, -70.65149], [-33.5139, -70.6386], [-33.507, -70.6624], [-33.49785, -70.66286], [-33.4881, -70.6504], [-33.4901, -70.651], [-33.4866, -70.653], [-33.48978, -70.65599], [-33.49214, -70.65141]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>
