@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_588bafb0e8cec45f416aae96f30e3511 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_588bafb0e8cec45f416aae96f30e3511" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_588bafb0e8cec45f416aae96f30e3511 = L.map(
+                "map_588bafb0e8cec45f416aae96f30e3511",
+                {
+                    center: [-33.496715634755084, -70.65278408372832],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b34463a89e7e9f832bce2936a36c0d9a = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+        function geo_json_a36e11532c2ca5ae6b99f5018ad23660_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"color": "#2ecc71", "opacity": 0.9, "weight": 8};
+            }
+        }
+
+        function geo_json_a36e11532c2ca5ae6b99f5018ad23660_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_a36e11532c2ca5ae6b99f5018ad23660 = L.geoJson(null, {
+                onEachFeature: geo_json_a36e11532c2ca5ae6b99f5018ad23660_onEachFeature,
+            
+                style: geo_json_a36e11532c2ca5ae6b99f5018ad23660_styler,
+        });
+
+        function geo_json_a36e11532c2ca5ae6b99f5018ad23660_add (data) {
+            geo_json_a36e11532c2ca5ae6b99f5018ad23660
+                .addData(data)
+                .addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        }
+            geo_json_a36e11532c2ca5ae6b99f5018ad23660_add({"features": [{"geometry": {"coordinates": [[-70.65732, -33.48564], [-70.6573, -33.48561], [-70.65649, -33.48582], [-70.65563, -33.48604]], "type": "LineString"}, "properties": {"name": "Indicaciones de Soto Aguilar 1603, 8910135 San Miguel, Regi\u00f3n Metropolitana, Chile a San Ignacio de Loyola 3637, 8910355 San Miguel, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64658, -33.49087], [-70.64642, -33.49033], [-70.64626, -33.48975], [-70.64597, -33.48859]], "type": "LineString"}, "properties": {"name": "Indicaciones de \u00c1lvarez de Toledo 851, 8900150 San Miguel, Regi\u00f3n Metropolitana, Chile a Mar\u00eda Auxiliadora 861, San Miguel, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.66557, -33.49964], [-70.66514, -33.49975], [-70.6649, -33.49982], [-70.66462, -33.49989], [-70.66437, -33.49996], [-70.66405, -33.50004], [-70.6638, -33.50013], [-70.66355, -33.5002], [-70.66348, -33.50022], [-70.66313, -33.5003], [-70.66282, -33.50038], [-70.66254, -33.50045], [-70.66225, -33.50052], [-70.66166, -33.50069], [-70.6614, -33.5008], [-70.66115, -33.50089], [-70.66087, -33.50097], [-70.66058, -33.50105], [-70.6603, -33.50113], [-70.66014, -33.50118], [-70.66008, -33.5012], [-70.6598, -33.50128]], "type": "LineString"}, "properties": {"name": "Indicaciones de Pje. 8 5379, San Miguel, Regi\u00f3n Metropolitana, Chile a Gauss 5210, 8920154 San Miguel, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.66802, -33.50836], [-70.66748, -33.5085], [-70.66704, -33.50864], [-70.66698, -33.50866], [-70.66667, -33.50875], [-70.66656, -33.50879], [-70.66623, -33.50889], [-70.66584, -33.50901]], "type": "LineString"}, "properties": {"name": "Indicaciones de Quinta Transversal 6205, 8920440 San Miguel, Regi\u00f3n Metropolitana, Chile a Octava Avenida 1563, 8920400 San Miguel, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64989, -33.51036], [-70.64976, -33.50989], [-70.64942, -33.50879], [-70.64906, -33.50758], [-70.64891, -33.50708], [-70.6487, -33.50638]], "type": "LineString"}, "properties": {"name": "Indicaciones de Varas Mena 813, 8930326 San Miguel, Regi\u00f3n Metropolitana, Chile a Jose Miguel Luis Cerda 779, 8930222 San Miguel, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64711, -33.51091], [-70.64699, -33.51007], [-70.64688, -33.50929], [-70.64665, -33.50803], [-70.64646, -33.5068], [-70.64634, -33.50599], [-70.64627, -33.50556]], "type": "LineString"}, "properties": {"name": "Indicaciones de Chilo\u00e9 5890, 8930380 San Miguel, Regi\u00f3n Metropolitana, Chile a Av. Departamental 786, 8930148 Santiago, San Miguel, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            var circle_marker_47800bf6a9bb680859abf103ab5df1b4 = L.circleMarker(
+                [-33.497879, -70.646925],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_47800bf6a9bb680859abf103ab5df1b4.bindTooltip(
+                `<div>
+                     C.P.F de san miguel – 2 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_700a467d5faafc2e5b9aba12714ae64e = L.marker(
+                [-33.497879, -70.646925],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_2c058a0aba4af9e04060187d54c23a78 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    2\u003c/div\u003e"});
+            marker_700a467d5faafc2e5b9aba12714ae64e.setIcon(div_icon_2c058a0aba4af9e04060187d54c23a78);
+        
+    
+            var circle_marker_38cd273a65fa7a896c030bb0ee411c94 = L.circleMarker(
+                [-33.5068, -70.6519],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_38cd273a65fa7a896c030bb0ee411c94.bindTooltip(
+                `<div>
+                     colegio bicentenario santo cura de ars – 735 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ea64efb81725ce176ab9889eeb59adf4 = L.marker(
+                [-33.5068, -70.6519],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_74f22646156a45479a42ca583a557909 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    735\u003c/div\u003e"});
+            marker_ea64efb81725ce176ab9889eeb59adf4.setIcon(div_icon_74f22646156a45479a42ca583a557909);
+        
+    
+            var circle_marker_b7784e97583e1304ce6f71e5154af0ef = L.circleMarker(
+                [-33.50099315608137, -70.65444433965324],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_b7784e97583e1304ce6f71e5154af0ef.bindTooltip(
+                `<div>
+                     colegio chile – 764 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_993cf36256c5ea665bc7b33b1d245827 = L.marker(
+                [-33.50099315608137, -70.65444433965324],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_894095bcc7330528ef49d095b354108b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    764\u003c/div\u003e"});
+            marker_993cf36256c5ea665bc7b33b1d245827.setIcon(div_icon_894095bcc7330528ef49d095b354108b);
+        
+    
+            var circle_marker_32ea6b22663618306a7b4a3e3dcbef62 = L.circleMarker(
+                [-33.4867, -70.6495],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_32ea6b22663618306a7b4a3e3dcbef62.bindTooltip(
+                `<div>
+                     colegio parroquial san miguel – 897 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_35691c166777f9dcd0cf99d31c37e40d = L.marker(
+                [-33.4867, -70.6495],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_b204339c346922044f034c25bba49aa2 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    897\u003c/div\u003e"});
+            marker_35691c166777f9dcd0cf99d31c37e40d.setIcon(div_icon_b204339c346922044f034c25bba49aa2);
+        
+    
+            var circle_marker_ab879419aec13852a468e5ffeb23e7af = L.circleMarker(
+                [-33.507367, -70.650424],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_ab879419aec13852a468e5ffeb23e7af.bindTooltip(
+                `<div>
+                     colegio tomas moro – 574 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9305027aa9210d4959656bf2ecbaf41 = L.marker(
+                [-33.507367, -70.650424],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_ea2c3cb12799154fb28cac7bbbd45f31 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    574\u003c/div\u003e"});
+            marker_b9305027aa9210d4959656bf2ecbaf41.setIcon(div_icon_ea2c3cb12799154fb28cac7bbbd45f31);
+        
+    
+            var circle_marker_a97be648b0ef7dbd0caac6a806306058 = L.circleMarker(
+                [-33.4893, -70.6577],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_a97be648b0ef7dbd0caac6a806306058.bindTooltip(
+                `<div>
+                     escuela de la industria grafica hector gomez – 519 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_863f4d003d68fc707543c2f20433ee27 = L.marker(
+                [-33.4893, -70.6577],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_7aabe93305f36065c78f3ba401d4efb6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    519\u003c/div\u003e"});
+            marker_863f4d003d68fc707543c2f20433ee27.setIcon(div_icon_7aabe93305f36065c78f3ba401d4efb6);
+        
+    
+            var circle_marker_a09dfbbaa529e8f9f26dc79fb366f40c = L.circleMarker(
+                [-33.4858, -70.6565],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_a09dfbbaa529e8f9f26dc79fb366f40c.bindTooltip(
+                `<div>
+                     escuela llano subercaseaux – 813 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f11298609c3af99b8de83efd2e5a988 = L.marker(
+                [-33.4858, -70.6565],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_c6eb7cc744255ec83d0ff51c2678668e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    813\u003c/div\u003e"});
+            marker_1f11298609c3af99b8de83efd2e5a988.setIcon(div_icon_c6eb7cc744255ec83d0ff51c2678668e);
+        
+    
+            var circle_marker_1d3eb5b82e965a86c17957179e8b91df = L.circleMarker(
+                [-33.507144, -70.651494],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_1d3eb5b82e965a86c17957179e8b91df.bindTooltip(
+                `<div>
+                     escuela municipal – 623 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b20e1680281349945eae3332a0b34ea7 = L.marker(
+                [-33.507144, -70.651494],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_0bbb880ae174c1565005428dd11871c5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    623\u003c/div\u003e"});
+            marker_b20e1680281349945eae3332a0b34ea7.setIcon(div_icon_0bbb880ae174c1565005428dd11871c5);
+        
+    
+            var circle_marker_3f368b7806f159e7e035517ac618caf0 = L.circleMarker(
+                [-33.5139, -70.6386],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_3f368b7806f159e7e035517ac618caf0.bindTooltip(
+                `<div>
+                     escuela santa fe – 523 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_48489a4cc7d80ad432e89dcc891ed5ac = L.marker(
+                [-33.5139, -70.6386],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_b998db917863dbf1d049adc16a287813 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    523\u003c/div\u003e"});
+            marker_48489a4cc7d80ad432e89dcc891ed5ac.setIcon(div_icon_b998db917863dbf1d049adc16a287813);
+        
+    
+            var circle_marker_fc69da48d2f58e9513a21c4c0498c50a = L.circleMarker(
+                [-33.507, -70.6624],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_fc69da48d2f58e9513a21c4c0498c50a.bindTooltip(
+                `<div>
+                     escuela territorio antartico – 947 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1a5b1fff7e5031e188fb843dc584c8ca = L.marker(
+                [-33.507, -70.6624],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_fa68e94187cafc167a88c27528a832b4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    947\u003c/div\u003e"});
+            marker_1a5b1fff7e5031e188fb843dc584c8ca.setIcon(div_icon_fa68e94187cafc167a88c27528a832b4);
+        
+    
+            var circle_marker_a11ee50c6646260830e2df15e8182a6b = L.circleMarker(
+                [-33.49785, -70.662865],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_a11ee50c6646260830e2df15e8182a6b.bindTooltip(
+                `<div>
+                     escuela villa san miguel – 524 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d7f7e46b945289709a9432cf3cad9475 = L.marker(
+                [-33.49785, -70.662865],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_68f21dadec57928fda3ce7d70cf4a79a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    524\u003c/div\u003e"});
+            marker_d7f7e46b945289709a9432cf3cad9475.setIcon(div_icon_68f21dadec57928fda3ce7d70cf4a79a);
+        
+    
+            var circle_marker_fd3a3a5c97fbdb9d3ad0ffe4ac23bed4 = L.circleMarker(
+                [-33.4881, -70.6504],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_fd3a3a5c97fbdb9d3ad0ffe4ac23bed4.bindTooltip(
+                `<div>
+                     instituto miguel leon prado – 748 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99d20086bc777af0a68ce8235b0fa5d9 = L.marker(
+                [-33.4881, -70.6504],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_d1879aff34e19328b63082ef4b2a656b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    748\u003c/div\u003e"});
+            marker_99d20086bc777af0a68ce8235b0fa5d9.setIcon(div_icon_d1879aff34e19328b63082ef4b2a656b);
+        
+    
+            var circle_marker_ee71bbe780d6f2ff0aad9805dd43cf1b = L.circleMarker(
+                [-33.4901, -70.651],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_ee71bbe780d6f2ff0aad9805dd43cf1b.bindTooltip(
+                `<div>
+                     instituto superior de comercio de chile – 553 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f802cdfb9a1f5d07ee129bd70deda376 = L.marker(
+                [-33.4901, -70.651],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_2381fb084e4d2025fa96a7f502eefdf1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    553\u003c/div\u003e"});
+            marker_f802cdfb9a1f5d07ee129bd70deda376.setIcon(div_icon_2381fb084e4d2025fa96a7f502eefdf1);
+        
+    
+            var circle_marker_9b8b3313d9f8851cb852e705d5125bd9 = L.circleMarker(
+                [-33.4866, -70.653],
+                {"bubblingMouseEvents": true, "color": "#de2d26", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de2d26", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_9b8b3313d9f8851cb852e705d5125bd9.bindTooltip(
+                `<div>
+                     liceo andres bello – 1136 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b0a36e307c8ecd6f468ff03da7bc807f = L.marker(
+                [-33.4866, -70.653],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_d4c23cfd42dcd80c6d58a73ad14407d0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#de2d26;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    1136\u003c/div\u003e"});
+            marker_b0a36e307c8ecd6f468ff03da7bc807f.setIcon(div_icon_d4c23cfd42dcd80c6d58a73ad14407d0);
+        
+    
+            var circle_marker_081ad789dec7b09bddfadf3e01f51b77 = L.circleMarker(
+                [-33.489775, -70.655987],
+                {"bubblingMouseEvents": true, "color": "#de2d26", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de2d26", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_081ad789dec7b09bddfadf3e01f51b77.bindTooltip(
+                `<div>
+                     liceo betsabe hormazabal de alarcon l1 – 1289 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_50f1d8380ecf2370b9bcced155d59340 = L.marker(
+                [-33.489775, -70.655987],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_3b348ce8b60612020a5f8359672bf05d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#de2d26;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    1289\u003c/div\u003e"});
+            marker_50f1d8380ecf2370b9bcced155d59340.setIcon(div_icon_3b348ce8b60612020a5f8359672bf05d);
+        
+    
+            var circle_marker_9139a28d1bf3e6d9a1fb732cda87e9cf = L.circleMarker(
+                [-33.492142, -70.651406],
+                {"bubblingMouseEvents": true, "color": "#de2d26", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de2d26", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            circle_marker_9139a28d1bf3e6d9a1fb732cda87e9cf.bindTooltip(
+                `<div>
+                     universidad de valparaiso – 970 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_781d230af2f3f2afbecb036d3646d59a = L.marker(
+                [-33.492142, -70.651406],
+                {}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+    
+            var div_icon_e3221553eaa4414e437031237cb5ae81 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#de2d26;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    970\u003c/div\u003e"});
+            marker_781d230af2f3f2afbecb036d3646d59a.setIcon(div_icon_e3221553eaa4414e437031237cb5ae81);
+        
+    
+            map_588bafb0e8cec45f416aae96f30e3511.fitBounds(
+                [[-33.497879, -70.646925], [-33.5068, -70.6519], [-33.50099315608137, -70.65444433965324], [-33.4867, -70.6495], [-33.507367, -70.650424], [-33.4893, -70.6577], [-33.4858, -70.6565], [-33.507144, -70.651494], [-33.5139, -70.6386], [-33.507, -70.6624], [-33.49785, -70.662865], [-33.4881, -70.6504], [-33.4901, -70.651], [-33.4866, -70.653], [-33.489775, -70.655987], [-33.492142, -70.651406], [-33.48564, -70.65732], [-33.48561, -70.6573], [-33.48582, -70.65649], [-33.48604, -70.65563], [-33.49087, -70.64658], [-33.49033, -70.64642], [-33.48975, -70.64626], [-33.48859, -70.64597], [-33.49964, -70.66557], [-33.49975, -70.66514], [-33.49982, -70.6649], [-33.49989, -70.66462], [-33.49996, -70.66437], [-33.50004, -70.66405], [-33.50013, -70.6638], [-33.5002, -70.66355], [-33.50022, -70.66348], [-33.5003, -70.66313], [-33.50038, -70.66282], [-33.50045, -70.66254], [-33.50052, -70.66225], [-33.50069, -70.66166], [-33.5008, -70.6614], [-33.50089, -70.66115], [-33.50097, -70.66087], [-33.50105, -70.66058], [-33.50113, -70.6603], [-33.50118, -70.66014], [-33.5012, -70.66008], [-33.50128, -70.6598], [-33.50836, -70.66802], [-33.5085, -70.66748], [-33.50864, -70.66704], [-33.50866, -70.66698], [-33.50875, -70.66667], [-33.50879, -70.66656], [-33.50889, -70.66623], [-33.50901, -70.66584], [-33.51036, -70.64989], [-33.50989, -70.64976], [-33.50879, -70.64942], [-33.50758, -70.64906], [-33.50708, -70.64891], [-33.50638, -70.6487], [-33.51091, -70.64711], [-33.51007, -70.64699], [-33.50929, -70.64688], [-33.50803, -70.64665], [-33.5068, -70.64646], [-33.50599, -70.64634], [-33.50556, -70.64627]],
+                {}
+            );
+        
+    
+            var layer_control_8d06e6de09d6ad5d5dfdb5a40762e82f = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_b34463a89e7e9f832bce2936a36c0d9a,
+                },
+                overlays :  {
+                    "Ferias" : geo_json_a36e11532c2ca5ae6b99f5018ad23660,
+                },
+            };
+            L.control.layers(
+                layer_control_8d06e6de09d6ad5d5dfdb5a40762e82f.base_layers,
+                layer_control_8d06e6de09d6ad5d5dfdb5a40762e82f.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_588bafb0e8cec45f416aae96f30e3511);
+        
+</script>
+</html>

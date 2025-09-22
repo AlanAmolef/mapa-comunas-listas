@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_0cf2c5d6510acde635ea486fc596895e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_0cf2c5d6510acde635ea486fc596895e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_0cf2c5d6510acde635ea486fc596895e = L.map(
+                "map_0cf2c5d6510acde635ea486fc596895e",
+                {
+                    center: [-33.56336713890135, -70.67519344919879],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9593a83083e45ef87d950c7cdfde8261 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+        function geo_json_16be67dfcca99669cd7c5fb0c804b793_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2ecc71", "opacity": 0.9, "weight": 8};
+            }
+        }
+
+        function geo_json_16be67dfcca99669cd7c5fb0c804b793_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_16be67dfcca99669cd7c5fb0c804b793 = L.geoJson(null, {
+                onEachFeature: geo_json_16be67dfcca99669cd7c5fb0c804b793_onEachFeature,
+            
+                style: geo_json_16be67dfcca99669cd7c5fb0c804b793_styler,
+        });
+
+        function geo_json_16be67dfcca99669cd7c5fb0c804b793_add (data) {
+            geo_json_16be67dfcca99669cd7c5fb0c804b793
+                .addData(data)
+                .addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        }
+            geo_json_16be67dfcca99669cd7c5fb0c804b793_add({"features": [{"geometry": {"coordinates": [[-70.68106, -33.54071], [-70.68112, -33.54082], [-70.68143, -33.54141], [-70.6816, -33.54172], [-70.68177, -33.54206], [-70.68195, -33.54237], [-70.68217, -33.54275]], "type": "LineString"}, "id": "0", "properties": {"name": "Indicaciones de Los Nogales 9511, 7990356 El Bosque, Regi\u00f3n Metropolitana, Chile a Dieciocho de Septiembre 899, 8020024 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.68784, -33.54954], [-70.6878, -33.54955], [-70.68728, -33.54963], [-70.68638, -33.54979], [-70.68632, -33.5498], [-70.68535, -33.54998], [-70.68515, -33.55002], [-70.6845, -33.55015]], "type": "LineString"}, "id": "1", "properties": {"name": "Indicaciones de PG1459-Indio Jer\u00f3nimo / esq. Central, 8020397 El Bosque, Regi\u00f3n Metropolitana, Chile a Luis Barros Borgo\u00f1o 994, 8020468 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.68264, -33.54713], [-70.68209, -33.54724], [-70.68135, -33.54736], [-70.68081, -33.54744], [-70.68018, -33.54754], [-70.67958, -33.54763], [-70.67881, -33.54777], [-70.67838, -33.54784], [-70.67795, -33.54792], [-70.67779, -33.54796], [-70.67752, -33.54799], [-70.67727, -33.54804], [-70.67703, -33.54807], [-70.67672, -33.54812], [-70.67662, -33.54814], [-70.67619, -33.54821], [-70.67575, -33.54827], [-70.67558, -33.5483], [-70.6753, -33.54835], [-70.67478, -33.54843], [-70.67435, -33.5485], [-70.67414, -33.54855], [-70.67391, -33.54858]], "type": "LineString"}, "id": "2", "properties": {"name": "Indicaciones de Victor Pl. Mayorga 941, El Bosque, Regi\u00f3n Metropolitana, Chile a Victor Pl. Mayorga 240, El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.67205, -33.55048], [-70.67111, -33.55065], [-70.66994, -33.55088], [-70.66987, -33.55089], [-70.66905, -33.55105], [-70.66903, -33.55105], [-70.66809, -33.55124], [-70.66805, -33.55125], [-70.66801, -33.55126]], "type": "LineString"}, "id": "3", "properties": {"name": "Indicaciones de Capit\u00e1n Avalos 9, El Bosque, Regi\u00f3n Metropolitana, Chile a Av. Padre Hurtado 9857, 8030210 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.65405, -33.54864], [-70.65415, -33.54899], [-70.65419, -33.54917], [-70.65438, -33.54985]], "type": "LineString"}, "id": "4", "properties": {"name": "Indicaciones de Nva Pte. 9497, 8000129 La Cisterna, Regi\u00f3n Metropolitana, Chile a C. Tte Thomas Yavar 1098, El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.66072, -33.55336], [-70.66103, -33.55486], [-70.66114, -33.55536], [-70.66133, -33.55623], [-70.66144, -33.55677], [-70.66154, -33.55718], [-70.66155, -33.55722], [-70.66162, -33.55752], [-70.66163, -33.55756], [-70.66169, -33.55779], [-70.66171, -33.55789], [-70.66174, -33.55796], [-70.6618, -33.55812], [-70.66182, -33.55822], [-70.66182, -33.55827], [-70.6618, -33.55833], [-70.6617, -33.55861], [-70.66166, -33.55871], [-70.66164, -33.55879], [-70.66165, -33.55885], [-70.66166, -33.55893], [-70.6617, -33.55929]], "type": "LineString"}, "id": "5", "properties": {"name": "Indicaciones de PG817-Julio Covarrubias / esq. Los Aviadores, 8030228 El Bosque, Regi\u00f3n Metropolitana, Chile a Julio Covarrubias 10458, El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.67047, -33.56023], [-70.67042, -33.56023], [-70.67026, -33.56026], [-70.66996, -33.5603], [-70.66975, -33.56034], [-70.66925, -33.56042], [-70.66902, -33.56046], [-70.6688, -33.56049], [-70.6683, -33.56057], [-70.66825, -33.56058], [-70.6675, -33.5607], [-70.66738, -33.56071], [-70.66682, -33.56081], [-70.66614, -33.56092], [-70.66602, -33.56095], [-70.66565, -33.561], [-70.66528, -33.56107], [-70.66499, -33.56111], [-70.66446, -33.56121], [-70.66437, -33.56122], [-70.66371, -33.56132], [-70.66362, -33.56133], [-70.66322, -33.56138], [-70.66299, -33.56143], [-70.6624, -33.56152], [-70.66219, -33.56155]], "type": "LineString"}, "id": "6", "properties": {"name": "Indicaciones de Av. Observatorio 586, El Bosque, Regi\u00f3n Metropolitana, Chile a Av. Observatorio 1155, 8031004 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.67066, -33.56308], [-70.6704, -33.56313], [-70.6702, -33.56316], [-70.66975, -33.56327], [-70.66966, -33.56328], [-70.66886, -33.56339], [-70.66813, -33.56352], [-70.66785, -33.56357], [-70.66735, -33.56366], [-70.66686, -33.56375], [-70.66659, -33.56379], [-70.66639, -33.56383], [-70.6659, -33.56392], [-70.66507, -33.56405]], "type": "LineString"}, "id": "7", "properties": {"name": "Indicaciones de C. Los Sauces 630, 8031049 El Bosque, Regi\u00f3n Metropolitana, Chile a Los Avellanos 994, 8031104 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.67822, -33.57699], [-70.67714, -33.5774], [-70.67613, -33.57776], [-70.67607, -33.57778], [-70.67545, -33.57796]], "type": "LineString"}, "id": "8", "properties": {"name": "Indicaciones de Cam. del Inca 843, 8011843 El Bosque, Regi\u00f3n Metropolitana, Chile a Cam. del Inca 991, 8011863 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.68304, -33.571], [-70.6826, -33.57114], [-70.68247, -33.57119], [-70.68214, -33.57132], [-70.68193, -33.57139], [-70.68169, -33.57148], [-70.68139, -33.57158], [-70.68121, -33.57165], [-70.68027, -33.57197], [-70.67895, -33.5724], [-70.6788, -33.57245], [-70.6786, -33.57251], [-70.67803, -33.5727], [-70.67779, -33.57278], [-70.67761, -33.57284], [-70.67727, -33.57295], [-70.67707, -33.57301], [-70.67673, -33.57312], [-70.67653, -33.57318], [-70.67605, -33.57334], [-70.67599, -33.57335], [-70.67574, -33.57343], [-70.67548, -33.57351]], "type": "LineString"}, "id": "9", "properties": {"name": "Indicaciones de Los Carolinos 335, 8010569 El Bosque, Regi\u00f3n Metropolitana, Chile a Los Sauces 12475, 8010692 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.66072, -33.55336], [-70.66103, -33.55486], [-70.66114, -33.55536], [-70.66133, -33.55623], [-70.66144, -33.55677], [-70.66154, -33.55718], [-70.66155, -33.55722], [-70.66162, -33.55752], [-70.66163, -33.55756], [-70.66169, -33.55779], [-70.66171, -33.55789], [-70.66174, -33.55796], [-70.6618, -33.55812], [-70.66182, -33.55822], [-70.66182, -33.55827], [-70.6618, -33.55833], [-70.6617, -33.55861], [-70.66166, -33.55871], [-70.66164, -33.55879], [-70.66165, -33.55885], [-70.66166, -33.55893], [-70.6617, -33.55929]], "type": "LineString"}, "id": "10", "properties": {"name": "Indicaciones de PG817-Julio Covarrubias / esq. Los Aviadores, 8030228 El Bosque, Regi\u00f3n Metropolitana, Chile a Julio Covarrubias 10458, El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.67047, -33.56023], [-70.67042, -33.56023], [-70.67026, -33.56026], [-70.66996, -33.5603], [-70.66975, -33.56034], [-70.66925, -33.56042], [-70.66902, -33.56046], [-70.6688, -33.56049], [-70.6683, -33.56057], [-70.66825, -33.56058], [-70.6675, -33.5607], [-70.66738, -33.56071], [-70.66682, -33.56081], [-70.66614, -33.56092], [-70.66602, -33.56095], [-70.66565, -33.561], [-70.66528, -33.56107], [-70.66499, -33.56111], [-70.66446, -33.56121], [-70.66437, -33.56122], [-70.66371, -33.56132], [-70.66362, -33.56133], [-70.66322, -33.56138], [-70.66299, -33.56143], [-70.6624, -33.56152], [-70.66219, -33.56155]], "type": "LineString"}, "id": "11", "properties": {"name": "Indicaciones de Av. Observatorio 586, El Bosque, Regi\u00f3n Metropolitana, Chile a Av. Observatorio 1155, 8031004 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.67066, -33.56308], [-70.6704, -33.56313], [-70.6702, -33.56316], [-70.66975, -33.56327], [-70.66966, -33.56328], [-70.66886, -33.56339], [-70.66813, -33.56352], [-70.66785, -33.56357], [-70.66735, -33.56366], [-70.66686, -33.56375], [-70.66659, -33.56379], [-70.66639, -33.56383], [-70.6659, -33.56392], [-70.66507, -33.56405]], "type": "LineString"}, "id": "12", "properties": {"name": "Indicaciones de C. Los Sauces 630, 8031049 El Bosque, Regi\u00f3n Metropolitana, Chile a Los Avellanos 994, 8031104 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.67822, -33.57699], [-70.67714, -33.5774], [-70.67613, -33.57776], [-70.67607, -33.57778], [-70.67545, -33.57796]], "type": "LineString"}, "id": "13", "properties": {"name": "Indicaciones de Cam. del Inca 843, 8011843 El Bosque, Regi\u00f3n Metropolitana, Chile a Cam. del Inca 991, 8011863 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.68304, -33.571], [-70.6826, -33.57114], [-70.68247, -33.57119], [-70.68214, -33.57132], [-70.68193, -33.57139], [-70.68169, -33.57148], [-70.68139, -33.57158], [-70.68121, -33.57165], [-70.68027, -33.57197], [-70.67895, -33.5724], [-70.6788, -33.57245], [-70.6786, -33.57251], [-70.67803, -33.5727], [-70.67779, -33.57278], [-70.67761, -33.57284], [-70.67727, -33.57295], [-70.67707, -33.57301], [-70.67673, -33.57312], [-70.67653, -33.57318], [-70.67605, -33.57334], [-70.67599, -33.57335], [-70.67574, -33.57343], [-70.67548, -33.57351]], "type": "LineString"}, "id": "14", "properties": {"name": "Indicaciones de Los Carolinos 335, 8010569 El Bosque, Regi\u00f3n Metropolitana, Chile a Los Sauces 12475, 8010692 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.6701, -33.57463], [-70.67001, -33.57465], [-70.66939, -33.5748], [-70.66934, -33.57482], [-70.6686, -33.57497], [-70.66809, -33.57506], [-70.66768, -33.57514], [-70.6673, -33.57523], [-70.66688, -33.57531], [-70.66641, -33.57538], [-70.66606, -33.57542], [-70.66584, -33.57545], [-70.66576, -33.57546], [-70.66572, -33.57547], [-70.66567, -33.57548], [-70.66534, -33.5756], [-70.66521, -33.57565], [-70.66512, -33.57569], [-70.66506, -33.57572]], "type": "LineString"}, "id": "15", "properties": {"name": "Indicaciones de La Pampa 11877, 8010655 El Bosque, Regi\u00f3n Metropolitana, Chile a Las Canteras 930, 8010744 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.66628, -33.58127], [-70.66586, -33.58136], [-70.66571, -33.58139], [-70.66547, -33.58144], [-70.66456, -33.58162], [-70.66416, -33.5817], [-70.66388, -33.58176], [-70.66373, -33.58179], [-70.66329, -33.58188], [-70.66316, -33.5819], [-70.66293, -33.58196], [-70.66257, -33.58203], [-70.66246, -33.58205]], "type": "LineString"}, "id": "16", "properties": {"name": "Indicaciones de Vecinal Sur 1780, 8011399 San Bernardo, El Bosque, Regi\u00f3n Metropolitana, Chile a PG153-Av. San Francisco / esq. Vecinar Sur, 8011659 El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.67624, -33.58093], [-70.67502, -33.58116], [-70.67456, -33.58125], [-70.67393, -33.58139], [-70.67323, -33.58156], [-70.673, -33.58161], [-70.67282, -33.58166]], "type": "LineString"}, "id": "17", "properties": {"name": "Indicaciones de Las Parcelas 640, 8012075 Santiago, El Bosque, Regi\u00f3n Metropolitana, Chile a Las Parcelas 1113, 8011892 Santiago, El Bosque, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            var circle_marker_d35a6217e62a4017e13ce5ba6fcd1257 = L.circleMarker(
+                [-33.5571, -70.6637],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_d35a6217e62a4017e13ce5ba6fcd1257.bindTooltip(
+                `<div>
+                     centro civico el bosque – 323 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6186837bcaf5d5ea274aa320a399c089 = L.marker(
+                [-33.5571, -70.6637],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_0fdd75239b59d2ec9372f296b26b5508 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    323\u003c/div\u003e"});
+            marker_6186837bcaf5d5ea274aa320a399c089.setIcon(div_icon_0fdd75239b59d2ec9372f296b26b5508);
+        
+    
+            var circle_marker_63d333c769f9c36d6410da22cdb5c0ae = L.circleMarker(
+                [-33.5803, -70.6701],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_63d333c769f9c36d6410da22cdb5c0ae.bindTooltip(
+                `<div>
+                     colegio batalla de la concepcion – 553 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5f2631dc76fb149441c5dfc31f5f7c9f = L.marker(
+                [-33.5803, -70.6701],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_8452f38ab70c16fa65d65e9745d5cd7c = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    553\u003c/div\u003e"});
+            marker_5f2631dc76fb149441c5dfc31f5f7c9f.setIcon(div_icon_8452f38ab70c16fa65d65e9745d5cd7c);
+        
+    
+            var circle_marker_275c887644af4e49b56b65c430f2bd0c = L.circleMarker(
+                [-33.575843, -70.691996],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_275c887644af4e49b56b65c430f2bd0c.bindTooltip(
+                `<div>
+                     colegio santo tomas de aquino – 546 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d26a49d4267683ad0be1914352489bf9 = L.marker(
+                [-33.575843, -70.691996],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_70e08c111499dad0ab185f51090d4fb9 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    546\u003c/div\u003e"});
+            marker_d26a49d4267683ad0be1914352489bf9.setIcon(div_icon_70e08c111499dad0ab185f51090d4fb9);
+        
+    
+            var circle_marker_9220376f67489cbe9b03669154c9610c = L.circleMarker(
+                [-33.5603, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_9220376f67489cbe9b03669154c9610c.bindTooltip(
+                `<div>
+                     complejo educacional felipe herrera lane – 334 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c896078c57e9b100911af41fff748577 = L.marker(
+                [-33.5603, -70.6665],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_371df818f4244f77f4dddf59a31253d0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    334\u003c/div\u003e"});
+            marker_c896078c57e9b100911af41fff748577.setIcon(div_icon_371df818f4244f77f4dddf59a31253d0);
+        
+    
+            var circle_marker_820af08b5ac40f9ab2c663236d67cc03 = L.circleMarker(
+                [-33.5691, -70.67],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_820af08b5ac40f9ab2c663236d67cc03.bindTooltip(
+                `<div>
+                     complejo educacional las acacias – 553 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1474863fee446421aba34f0b6ff50998 = L.marker(
+                [-33.5691, -70.67],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_3ba70d426d454ce24cf5f6b1b7f94055 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    553\u003c/div\u003e"});
+            marker_1474863fee446421aba34f0b6ff50998.setIcon(div_icon_3ba70d426d454ce24cf5f6b1b7f94055);
+        
+    
+            var circle_marker_9a261cc51a435c12e485f8f7b0455f3f = L.circleMarker(
+                [-33.5501, -70.6645],
+                {"bubblingMouseEvents": true, "color": "#de2d26", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de2d26", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_9a261cc51a435c12e485f8f7b0455f3f.bindTooltip(
+                `<div>
+                     escuela aviadores – 615 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c88b8392979d3cd2e1972a66adad4aa0 = L.marker(
+                [-33.5501, -70.6645],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_9b7e87b79a9f21ac5dd54356d42554c5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#de2d26;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    615\u003c/div\u003e"});
+            marker_c88b8392979d3cd2e1972a66adad4aa0.setIcon(div_icon_9b7e87b79a9f21ac5dd54356d42554c5);
+        
+    
+            var circle_marker_66ae089c234da1ec62b73f910b1eb9c3 = L.circleMarker(
+                [-33.5622, -70.6754],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_66ae089c234da1ec62b73f910b1eb9c3.bindTooltip(
+                `<div>
+                     escuela base el bosque – 329 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7156fae2f17495615ca600e93787a791 = L.marker(
+                [-33.5622, -70.6754],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_4a985b5d96d1bce594587ad3291cec32 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    329\u003c/div\u003e"});
+            marker_7156fae2f17495615ca600e93787a791.setIcon(div_icon_4a985b5d96d1bce594587ad3291cec32);
+        
+    
+            var circle_marker_e583e92bc7473257cf72cc18254f9423 = L.circleMarker(
+                [-33.5561, -70.6571],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_e583e92bc7473257cf72cc18254f9423.bindTooltip(
+                `<div>
+                     escuela ciudad de lyon – 466 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5656f4a51704d1fc4d13070588eb1272 = L.marker(
+                [-33.5561, -70.6571],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_b573548129f73bb1f0119f7b540999e4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    466\u003c/div\u003e"});
+            marker_5656f4a51704d1fc4d13070588eb1272.setIcon(div_icon_b573548129f73bb1f0119f7b540999e4);
+        
+    
+            var circle_marker_fdbc09f0a53874dcb5b8ed197576a28a = L.circleMarker(
+                [-33.5717, -70.6808],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_fdbc09f0a53874dcb5b8ed197576a28a.bindTooltip(
+                `<div>
+                     escuela claudio arrau leon – 344 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9a4af8df1fd0cb6e3d2614d779bf13ad = L.marker(
+                [-33.5717, -70.6808],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_7b07a87195aa640f56692e44ac0b75d8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    344\u003c/div\u003e"});
+            marker_9a4af8df1fd0cb6e3d2614d779bf13ad.setIcon(div_icon_7b07a87195aa640f56692e44ac0b75d8);
+        
+    
+            var circle_marker_71c80b67030b1d60246abd30348d6a06 = L.circleMarker(
+                [-33.579813, -70.678921],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_71c80b67030b1d60246abd30348d6a06.bindTooltip(
+                `<div>
+                     escuela club hipico – 460 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_469bdb70fdb97668a02732ca50e787b4 = L.marker(
+                [-33.579813, -70.678921],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_83b438771cae9d59e6368e50ac7b6b4d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    460\u003c/div\u003e"});
+            marker_469bdb70fdb97668a02732ca50e787b4.setIcon(div_icon_83b438771cae9d59e6368e50ac7b6b4d);
+        
+    
+            var circle_marker_5b8a0d86e578dba22f053b473c421f7d = L.circleMarker(
+                [-33.566206, -70.681017],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_5b8a0d86e578dba22f053b473c421f7d.bindTooltip(
+                `<div>
+                     escuela general alberto bachelet – 428 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4428c4381b5087e60b162e95250bf83 = L.marker(
+                [-33.566206, -70.681017],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_8fc6df2d415de3e37adff44452e8387e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    428\u003c/div\u003e"});
+            marker_d4428c4381b5087e60b162e95250bf83.setIcon(div_icon_8fc6df2d415de3e37adff44452e8387e);
+        
+    
+            var circle_marker_38e4fbb6d5e50bf661e9818e0b2ce660 = L.circleMarker(
+                [-33.5418, -70.6841],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_38e4fbb6d5e50bf661e9818e0b2ce660.bindTooltip(
+                `<div>
+                     escuela jose marti – 158 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5be7909943bdf34562a55491813b62a0 = L.marker(
+                [-33.5418, -70.6841],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_f481dc12db670c2808ca2eaea3b03baf = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    158\u003c/div\u003e"});
+            marker_5be7909943bdf34562a55491813b62a0.setIcon(div_icon_f481dc12db670c2808ca2eaea3b03baf);
+        
+    
+            var circle_marker_6825842767d051cfe1350ceba4dd9b97 = L.circleMarker(
+                [-33.5705603629965, -70.6874583706156],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_6825842767d051cfe1350ceba4dd9b97.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari – 112 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f26ba1fc85c69ea1842ab9b8d7b84d34 = L.marker(
+                [-33.5705603629965, -70.6874583706156],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_1787fb5e03a31fb87bad24b0541dabc7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    112\u003c/div\u003e"});
+            marker_f26ba1fc85c69ea1842ab9b8d7b84d34.setIcon(div_icon_1787fb5e03a31fb87bad24b0541dabc7);
+        
+    
+            var circle_marker_a11e09dd37e80c67e5aaada6f41df699 = L.circleMarker(
+                [-33.5705603629965, -70.68745837061557],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_a11e09dd37e80c67e5aaada6f41df699.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari – 295 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07fbefe104dbbfa2bb766e8e3eee0be2 = L.marker(
+                [-33.5705603629965, -70.68745837061557],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_6057cb798ccba66bd23e1e39412709df = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    295\u003c/div\u003e"});
+            marker_07fbefe104dbbfa2bb766e8e3eee0be2.setIcon(div_icon_6057cb798ccba66bd23e1e39412709df);
+        
+    
+            var circle_marker_4f77fccd2c6dd5b7f862c30f9a556853 = L.circleMarker(
+                [-33.5628, -70.6647],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_4f77fccd2c6dd5b7f862c30f9a556853.bindTooltip(
+                `<div>
+                     escuela mario arce gatica – 389 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ba783fc544853c7a90d305dd946ea156 = L.marker(
+                [-33.5628, -70.6647],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_b3431d7cf22f8a1cb536f81417aa7f13 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    389\u003c/div\u003e"});
+            marker_ba783fc544853c7a90d305dd946ea156.setIcon(div_icon_b3431d7cf22f8a1cb536f81417aa7f13);
+        
+    
+            var circle_marker_714b80628b46c6049f0afdc1815c476d = L.circleMarker(
+                [-33.585284, -70.699379],
+                {"bubblingMouseEvents": true, "color": "#de2d26", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de2d26", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_714b80628b46c6049f0afdc1815c476d.bindTooltip(
+                `<div>
+                     escuela nemesio antunez l1 – 941 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_66a91062f28f1a087af50fef040c933d = L.marker(
+                [-33.585284, -70.699379],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_bf0857c5de81fc3c797703d4266cee57 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#de2d26;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    941\u003c/div\u003e"});
+            marker_66a91062f28f1a087af50fef040c933d.setIcon(div_icon_bf0857c5de81fc3c797703d4266cee57);
+        
+    
+            var circle_marker_b079887d576f8f92861c26b244cba3d3 = L.circleMarker(
+                [-33.5521, -70.6878],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_b079887d576f8f92861c26b244cba3d3.bindTooltip(
+                `<div>
+                     escuela orlando letelier – 300 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_45f60443ee92622eb72fb5ac7c205491 = L.marker(
+                [-33.5521, -70.6878],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_a82b11f1d96dd803bc0e6cbaccda37a4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    300\u003c/div\u003e"});
+            marker_45f60443ee92622eb72fb5ac7c205491.setIcon(div_icon_a82b11f1d96dd803bc0e6cbaccda37a4);
+        
+    
+            var circle_marker_612ad2e179518220e678b2d5376e01ff = L.circleMarker(
+                [-33.5670343298367, -70.66031514114242],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_612ad2e179518220e678b2d5376e01ff.bindTooltip(
+                `<div>
+                     escuela paul harris – 406 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_594b9dd265f5bbfc5d3e427978fdeea6 = L.marker(
+                [-33.5670343298367, -70.66031514114242],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_34cb20e9ebeb4dc7a3b126e466a1fd20 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    406\u003c/div\u003e"});
+            marker_594b9dd265f5bbfc5d3e427978fdeea6.setIcon(div_icon_34cb20e9ebeb4dc7a3b126e466a1fd20);
+        
+    
+            var circle_marker_8bbf6ddfec8af4e3bc88d12a397505f9 = L.circleMarker(
+                [-33.5651, -70.6669],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_8bbf6ddfec8af4e3bc88d12a397505f9.bindTooltip(
+                `<div>
+                     escuela villa santa elena – 286 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7422effd1bac167ab0b82374bf294635 = L.marker(
+                [-33.5651, -70.6669],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_38f76d82abe0d9324f4a20350e43109a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    286\u003c/div\u003e"});
+            marker_7422effd1bac167ab0b82374bf294635.setIcon(div_icon_38f76d82abe0d9324f4a20350e43109a);
+        
+    
+            var circle_marker_246124fa2697af47245708f785ea93ec = L.circleMarker(
+                [-33.54865, -70.670533],
+                {"bubblingMouseEvents": true, "color": "#de2d26", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de2d26", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_246124fa2697af47245708f785ea93ec.bindTooltip(
+                `<div>
+                     liceo christia mc auliffe l1 – 1006 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f3ebf7a4b19e8ee905ef5e1c960c1bf0 = L.marker(
+                [-33.54865, -70.670533],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_e852f5bf1091d4f406fa2b0b3a8d7e08 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#de2d26;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    1006\u003c/div\u003e"});
+            marker_f3ebf7a4b19e8ee905ef5e1c960c1bf0.setIcon(div_icon_e852f5bf1091d4f406fa2b0b3a8d7e08);
+        
+    
+            var circle_marker_3cd935d79469856e6d59842e5289d47a = L.circleMarker(
+                [-33.549175, -70.670834],
+                {"bubblingMouseEvents": true, "color": "#de2d26", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de2d26", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_3cd935d79469856e6d59842e5289d47a.bindTooltip(
+                `<div>
+                     liceo juan gomez milla – 580 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b6522bd0145b2ac348dfd682b73cfed3 = L.marker(
+                [-33.549175, -70.670834],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_14dc1c38c357cd6c33e18b77aed7ea43 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#de2d26;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    580\u003c/div\u003e"});
+            marker_b6522bd0145b2ac348dfd682b73cfed3.setIcon(div_icon_14dc1c38c357cd6c33e18b77aed7ea43);
+        
+    
+            var circle_marker_825925940a2075a96e23da61b4a119f8 = L.circleMarker(
+                [-33.552251, -70.674744],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            circle_marker_825925940a2075a96e23da61b4a119f8.bindTooltip(
+                `<div>
+                     liceo nuestra señora maria inmaculada – 384 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eea3b2f6955db1c883d679dee12a8f66 = L.marker(
+                [-33.552251, -70.674744],
+                {}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+    
+            var div_icon_4dba409e2c059b16d2f69d24d5d739d7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d;color:#fff;width:24px;height:24px;border-radius:50%;\n                    text-align:center;line-height:24px;font-size:11px;font-weight:700;border:2px solid white;\"\u003e\n                    384\u003c/div\u003e"});
+            marker_eea3b2f6955db1c883d679dee12a8f66.setIcon(div_icon_4dba409e2c059b16d2f69d24d5d739d7);
+        
+    
+            map_0cf2c5d6510acde635ea486fc596895e.fitBounds(
+                [[-33.5571, -70.6637], [-33.5803, -70.6701], [-33.575843, -70.691996], [-33.5603, -70.6665], [-33.5691, -70.67], [-33.5501, -70.6645], [-33.5622, -70.6754], [-33.5561, -70.6571], [-33.5717, -70.6808], [-33.579813, -70.678921], [-33.566206, -70.681017], [-33.5418, -70.6841], [-33.5705603629965, -70.6874583706156], [-33.5705603629965, -70.68745837061557], [-33.5628, -70.6647], [-33.585284, -70.699379], [-33.5521, -70.6878], [-33.5670343298367, -70.66031514114242], [-33.5651, -70.6669], [-33.54865, -70.670533], [-33.549175, -70.670834], [-33.552251, -70.674744], [-33.54071, -70.68106], [-33.54082, -70.68112], [-33.54141, -70.68143], [-33.54172, -70.6816], [-33.54206, -70.68177], [-33.54237, -70.68195], [-33.54275, -70.68217], [-33.54954, -70.68784], [-33.54955, -70.6878], [-33.54963, -70.68728], [-33.54979, -70.68638], [-33.5498, -70.68632], [-33.54998, -70.68535], [-33.55002, -70.68515], [-33.55015, -70.6845], [-33.54713, -70.68264], [-33.54724, -70.68209], [-33.54736, -70.68135], [-33.54744, -70.68081], [-33.54754, -70.68018], [-33.54763, -70.67958], [-33.54777, -70.67881], [-33.54784, -70.67838], [-33.54792, -70.67795], [-33.54796, -70.67779], [-33.54799, -70.67752], [-33.54804, -70.67727], [-33.54807, -70.67703], [-33.54812, -70.67672], [-33.54814, -70.67662], [-33.54821, -70.67619], [-33.54827, -70.67575], [-33.5483, -70.67558], [-33.54835, -70.6753], [-33.54843, -70.67478], [-33.5485, -70.67435], [-33.54855, -70.67414], [-33.54858, -70.67391], [-33.55048, -70.67205], [-33.55065, -70.67111], [-33.55088, -70.66994], [-33.55089, -70.66987], [-33.55105, -70.66905], [-33.55105, -70.66903], [-33.55124, -70.66809], [-33.55125, -70.66805], [-33.55126, -70.66801], [-33.54864, -70.65405], [-33.54899, -70.65415], [-33.54917, -70.65419], [-33.54985, -70.65438], [-33.55336, -70.66072], [-33.55486, -70.66103], [-33.55536, -70.66114], [-33.55623, -70.66133], [-33.55677, -70.66144], [-33.55718, -70.66154], [-33.55722, -70.66155], [-33.55752, -70.66162], [-33.55756, -70.66163], [-33.55779, -70.66169], [-33.55789, -70.66171], [-33.55796, -70.66174], [-33.55812, -70.6618], [-33.55822, -70.66182], [-33.55827, -70.66182], [-33.55833, -70.6618], [-33.55861, -70.6617], [-33.55871, -70.66166], [-33.55879, -70.66164], [-33.55885, -70.66165], [-33.55893, -70.66166], [-33.55929, -70.6617], [-33.56023, -70.67047], [-33.56023, -70.67042], [-33.56026, -70.67026], [-33.5603, -70.66996], [-33.56034, -70.66975], [-33.56042, -70.66925], [-33.56046, -70.66902], [-33.56049, -70.6688], [-33.56057, -70.6683], [-33.56058, -70.66825], [-33.5607, -70.6675], [-33.56071, -70.66738], [-33.56081, -70.66682], [-33.56092, -70.66614], [-33.56095, -70.66602], [-33.561, -70.66565], [-33.56107, -70.66528], [-33.56111, -70.66499], [-33.56121, -70.66446], [-33.56122, -70.66437], [-33.56132, -70.66371], [-33.56133, -70.66362], [-33.56138, -70.66322], [-33.56143, -70.66299], [-33.56152, -70.6624], [-33.56155, -70.66219], [-33.56308, -70.67066], [-33.56313, -70.6704], [-33.56316, -70.6702], [-33.56327, -70.66975], [-33.56328, -70.66966], [-33.56339, -70.66886], [-33.56352, -70.66813], [-33.56357, -70.66785], [-33.56366, -70.66735], [-33.56375, -70.66686], [-33.56379, -70.66659], [-33.56383, -70.66639], [-33.56392, -70.6659], [-33.56405, -70.66507], [-33.57699, -70.67822], [-33.5774, -70.67714], [-33.57776, -70.67613], [-33.57778, -70.67607], [-33.57796, -70.67545], [-33.571, -70.68304], [-33.57114, -70.6826], [-33.57119, -70.68247], [-33.57132, -70.68214], [-33.57139, -70.68193], [-33.57148, -70.68169], [-33.57158, -70.68139], [-33.57165, -70.68121], [-33.57197, -70.68027], [-33.5724, -70.67895], [-33.57245, -70.6788], [-33.57251, -70.6786], [-33.5727, -70.67803], [-33.57278, -70.67779], [-33.57284, -70.67761], [-33.57295, -70.67727], [-33.57301, -70.67707], [-33.57312, -70.67673], [-33.57318, -70.67653], [-33.57334, -70.67605], [-33.57335, -70.67599], [-33.57343, -70.67574], [-33.57351, -70.67548], [-33.55336, -70.66072], [-33.55486, -70.66103], [-33.55536, -70.66114], [-33.55623, -70.66133], [-33.55677, -70.66144], [-33.55718, -70.66154], [-33.55722, -70.66155], [-33.55752, -70.66162], [-33.55756, -70.66163], [-33.55779, -70.66169], [-33.55789, -70.66171], [-33.55796, -70.66174], [-33.55812, -70.6618], [-33.55822, -70.66182], [-33.55827, -70.66182], [-33.55833, -70.6618], [-33.55861, -70.6617], [-33.55871, -70.66166], [-33.55879, -70.66164], [-33.55885, -70.66165], [-33.55893, -70.66166], [-33.55929, -70.6617], [-33.56023, -70.67047], [-33.56023, -70.67042], [-33.56026, -70.67026], [-33.5603, -70.66996], [-33.56034, -70.66975], [-33.56042, -70.66925], [-33.56046, -70.66902], [-33.56049, -70.6688], [-33.56057, -70.6683], [-33.56058, -70.66825], [-33.5607, -70.6675], [-33.56071, -70.66738], [-33.56081, -70.66682], [-33.56092, -70.66614], [-33.56095, -70.66602], [-33.561, -70.66565], [-33.56107, -70.66528], [-33.56111, -70.66499], [-33.56121, -70.66446], [-33.56122, -70.66437], [-33.56132, -70.66371], [-33.56133, -70.66362], [-33.56138, -70.66322], [-33.56143, -70.66299], [-33.56152, -70.6624], [-33.56155, -70.66219], [-33.56308, -70.67066], [-33.56313, -70.6704], [-33.56316, -70.6702], [-33.56327, -70.66975], [-33.56328, -70.66966], [-33.56339, -70.66886], [-33.56352, -70.66813], [-33.56357, -70.66785], [-33.56366, -70.66735], [-33.56375, -70.66686], [-33.56379, -70.66659], [-33.56383, -70.66639], [-33.56392, -70.6659], [-33.56405, -70.66507], [-33.57699, -70.67822], [-33.5774, -70.67714], [-33.57776, -70.67613], [-33.57778, -70.67607], [-33.57796, -70.67545], [-33.571, -70.68304], [-33.57114, -70.6826], [-33.57119, -70.68247], [-33.57132, -70.68214], [-33.57139, -70.68193], [-33.57148, -70.68169], [-33.57158, -70.68139], [-33.57165, -70.68121], [-33.57197, -70.68027], [-33.5724, -70.67895], [-33.57245, -70.6788], [-33.57251, -70.6786], [-33.5727, -70.67803], [-33.57278, -70.67779], [-33.57284, -70.67761], [-33.57295, -70.67727], [-33.57301, -70.67707], [-33.57312, -70.67673], [-33.57318, -70.67653], [-33.57334, -70.67605], [-33.57335, -70.67599], [-33.57343, -70.67574], [-33.57351, -70.67548], [-33.57463, -70.6701], [-33.57465, -70.67001], [-33.5748, -70.66939], [-33.57482, -70.66934], [-33.57497, -70.6686], [-33.57506, -70.66809], [-33.57514, -70.66768], [-33.57523, -70.6673], [-33.57531, -70.66688], [-33.57538, -70.66641], [-33.57542, -70.66606], [-33.57545, -70.66584], [-33.57546, -70.66576], [-33.57547, -70.66572], [-33.57548, -70.66567], [-33.5756, -70.66534], [-33.57565, -70.66521], [-33.57569, -70.66512], [-33.57572, -70.66506], [-33.58127, -70.66628], [-33.58136, -70.66586], [-33.58139, -70.66571], [-33.58144, -70.66547], [-33.58162, -70.66456], [-33.5817, -70.66416], [-33.58176, -70.66388], [-33.58179, -70.66373], [-33.58188, -70.66329], [-33.5819, -70.66316], [-33.58196, -70.66293], [-33.58203, -70.66257], [-33.58205, -70.66246], [-33.58093, -70.67624], [-33.58116, -70.67502], [-33.58125, -70.67456], [-33.58139, -70.67393], [-33.58156, -70.67323], [-33.58161, -70.673], [-33.58166, -70.67282]],
+                {}
+            );
+        
+    
+            var layer_control_d674d3741c394db76d6b1212141b7352 = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_9593a83083e45ef87d950c7cdfde8261,
+                },
+                overlays :  {
+                    "Ferias" : geo_json_16be67dfcca99669cd7c5fb0c804b793,
+                },
+            };
+            L.control.layers(
+                layer_control_d674d3741c394db76d6b1212141b7352.base_layers,
+                layer_control_d674d3741c394db76d6b1212141b7352.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_0cf2c5d6510acde635ea486fc596895e);
+        
+</script>
+</html>

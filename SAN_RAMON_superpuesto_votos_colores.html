@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e70ae8da8649dd158be64be62dabc9f3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e70ae8da8649dd158be64be62dabc9f3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e70ae8da8649dd158be64be62dabc9f3 = L.map(
+                "map_e70ae8da8649dd158be64be62dabc9f3",
+                {
+                    center: [-33.54126706666666, -70.6407448],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_48feb08ceb64fef46eb1dc5b9b643a6b = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+        function geo_json_fe74625710f998e0ac4e8c363f731d47_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"color": "#2ecc71", "opacity": 0.9, "weight": 8};
+            }
+        }
+
+        function geo_json_fe74625710f998e0ac4e8c363f731d47_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_fe74625710f998e0ac4e8c363f731d47 = L.geoJson(null, {
+                onEachFeature: geo_json_fe74625710f998e0ac4e8c363f731d47_onEachFeature,
+            
+                style: geo_json_fe74625710f998e0ac4e8c363f731d47_styler,
+        });
+
+        function geo_json_fe74625710f998e0ac4e8c363f731d47_add (data) {
+            geo_json_fe74625710f998e0ac4e8c363f731d47
+                .addData(data)
+                .addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        }
+            geo_json_fe74625710f998e0ac4e8c363f731d47_add({"features": [{"geometry": {"coordinates": [[-70.64268, -33.52044], [-70.64095, -33.5207], [-70.6399, -33.52086], [-70.6399, -33.52083]], "type": "LineString"}, "properties": {"name": "Indicaciones de Alvear 6551, 8860023 Santiago, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile a Rivadavia 6599, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64361, -33.52429], [-70.6437, -33.52466], [-70.64383, -33.5252], [-70.64407, -33.52631], [-70.6442, -33.52689], [-70.64423, -33.52708]], "type": "LineString"}, "properties": {"name": "Indicaciones de PG432-Santa Ana / esq. Alvear, 8860101 San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile a Av. Fern\u00e1ndez Albano 1395, 8860200 La Cisterna, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64272, -33.52941], [-70.64254, -33.52943], [-70.64229, -33.52947], [-70.64227, -33.52947], [-70.64199, -33.52951], [-70.64066, -33.52971], [-70.64018, -33.52979]], "type": "LineString"}, "properties": {"name": "Indicaciones de Rivadavia 7897, 8860335 San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile a Av. El Parr\u00f3n 1762, 8860354 Santiago, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64965, -33.53785], [-70.64931, -33.53638], [-70.64899, -33.53542], [-70.64883, -33.53494], [-70.64845, -33.53354], [-70.64843, -33.53349]], "type": "LineString"}, "properties": {"name": "Indicaciones de Bolivia 1473, 8870271 Santiago, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile a Paraguay 1303, 8870008 San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64259, -33.53912], [-70.64207, -33.53911], [-70.64162, -33.53918], [-70.64137, -33.53922], [-70.64117, -33.53925], [-70.64005, -33.5394], [-70.63956, -33.53947], [-70.6391, -33.53953], [-70.63817, -33.53967], [-70.63786, -33.53972], [-70.63766, -33.53975], [-70.63722, -33.5398], [-70.63704, -33.53982], [-70.63691, -33.53983], [-70.63672, -33.53983], [-70.63652, -33.53978], [-70.63638, -33.53974], [-70.6363, -33.53973], [-70.63624, -33.53972], [-70.6362, -33.53972]], "type": "LineString"}, "properties": {"name": "Indicaciones de Carlos D\u00e1vila 8697, 8870241 San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile a Bolivia 2025, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64661, -33.55218], [-70.64665, -33.55218], [-70.64664, -33.55211], [-70.64643, -33.55105], [-70.64633, -33.55061], [-70.64628, -33.5504], [-70.64608, -33.54938], [-70.64596, -33.54882], [-70.64591, -33.54861], [-70.64588, -33.54848], [-70.64587, -33.54838], [-70.64571, -33.54753], [-70.64562, -33.54709], [-70.64557, -33.5469], [-70.64554, -33.54673], [-70.64538, -33.54595], [-70.64536, -33.54585]], "type": "LineString"}, "properties": {"name": "Indicaciones de Juan Williams 1738, 8880478 Santiago, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile a Avda. La Bandera 9321, 8870668 San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64377, -33.54779], [-70.64254, -33.54796], [-70.64231, -33.54799], [-70.64201, -33.54803], [-70.64181, -33.54806], [-70.64155, -33.5481], [-70.64134, -33.54813], [-70.64106, -33.54817], [-70.64085, -33.5482], [-70.64056, -33.54824], [-70.63964, -33.54838], [-70.63939, -33.54841], [-70.63917, -33.54844], [-70.63893, -33.54848], [-70.63867, -33.54851], [-70.63839, -33.54855], [-70.63818, -33.54858], [-70.63791, -33.54862], [-70.63767, -33.54865], [-70.63661, -33.54881]], "type": "LineString"}, "properties": {"name": "Indicaciones de Almte. Latorre 9485, 8880039 San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile a Alpatacal 2059, 8880248 Santiago, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}, {"geometry": {"coordinates": [[-70.64347, -33.55478], [-70.64272, -33.55489], [-70.64185, -33.55502], [-70.64143, -33.55508], [-70.64101, -33.55514], [-70.64015, -33.55526], [-70.63914, -33.55541], [-70.63907, -33.55542], [-70.63723, -33.55569]], "type": "LineString"}, "properties": {"name": "Indicaciones de Sgto. Candelaria 1878, 8880698 Santiago, San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile a Pedro Aguirre Cerda 10271, 8880782 San Ram\u00f3n, Regi\u00f3n Metropolitana, Chile"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            var circle_marker_6ff75cccf5d4138609d25978f761199b = L.circleMarker(
+                [-33.5193, -70.6409],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_6ff75cccf5d4138609d25978f761199b.bindTooltip(
+                `<div>
+                     centro educacional mirador – 163 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bfa75fb5cc6476ea1f9401928ab6e39f = L.marker(
+                [-33.5193, -70.6409],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_5e5a443833cdabc4e8a460705e49c217 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e163\u003c/div\u003e"});
+            marker_bfa75fb5cc6476ea1f9401928ab6e39f.setIcon(div_icon_5e5a443833cdabc4e8a460705e49c217);
+        
+    
+            var circle_marker_9069719ff3554f28b0f2379ea2877c62 = L.circleMarker(
+                [-33.5518, -70.6448],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_9069719ff3554f28b0f2379ea2877c62.bindTooltip(
+                `<div>
+                     centro educacional paula jaraquemada – 342 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e50fcb63e348a80e335563849ccf3f1a = L.marker(
+                [-33.5518, -70.6448],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_65ee7c4fc3f675c0991c2c25c725005b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e342\u003c/div\u003e"});
+            marker_e50fcb63e348a80e335563849ccf3f1a.setIcon(div_icon_65ee7c4fc3f675c0991c2c25c725005b);
+        
+    
+            var circle_marker_f37ea20c12ae5289554eb46ed986e2fd = L.circleMarker(
+                [-33.5497, -70.6445],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_f37ea20c12ae5289554eb46ed986e2fd.bindTooltip(
+                `<div>
+                     centro educacional san ramon – 185 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c9d0595d63d11d57b4c760c19ec855f3 = L.marker(
+                [-33.5497, -70.6445],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_228c5b9099077da515393f349f54939e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e185\u003c/div\u003e"});
+            marker_c9d0595d63d11d57b4c760c19ec855f3.setIcon(div_icon_228c5b9099077da515393f349f54939e);
+        
+    
+            var circle_marker_6f4080e034f65702cfc8164c47339b03 = L.circleMarker(
+                [-33.5196, -70.6381],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_6f4080e034f65702cfc8164c47339b03.bindTooltip(
+                `<div>
+                     colegio alberto blest gana – 185 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6ae98da3925fef389c0d6083ea2dc026 = L.marker(
+                [-33.5196, -70.6381],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_da1ec7d9c6927478e7b78b959d6790c6 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e185\u003c/div\u003e"});
+            marker_6ae98da3925fef389c0d6083ea2dc026.setIcon(div_icon_da1ec7d9c6927478e7b78b959d6790c6);
+        
+    
+            var circle_marker_a94d016d2b1061cab976ee66fab55b54 = L.circleMarker(
+                [-33.5511, -70.6447],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_a94d016d2b1061cab976ee66fab55b54.bindTooltip(
+                `<div>
+                     escuela aliven – 185 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73bc42606572bbab9f7b3137a3459eb9 = L.marker(
+                [-33.5511, -70.6447],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_60c38e1a4564fb90acbb2f1d7adba6ea = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e185\u003c/div\u003e"});
+            marker_73bc42606572bbab9f7b3137a3459eb9.setIcon(div_icon_60c38e1a4564fb90acbb2f1d7adba6ea);
+        
+    
+            var circle_marker_326addbdbaa5a50586bd93935074d3b9 = L.circleMarker(
+                [-33.5484, -70.649],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_326addbdbaa5a50586bd93935074d3b9.bindTooltip(
+                `<div>
+                     escuela arturo matte larrain – 323 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e1146995a39887686f77f74134f7e043 = L.marker(
+                [-33.5484, -70.649],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_c83514f0dc5daf4a5ff33ada8862e847 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e323\u003c/div\u003e"});
+            marker_e1146995a39887686f77f74134f7e043.setIcon(div_icon_c83514f0dc5daf4a5ff33ada8862e847);
+        
+    
+            var circle_marker_c6d231e0ea8d9cd335377859afffc06a = L.circleMarker(
+                [-33.5376, -70.6401],
+                {"bubblingMouseEvents": true, "color": "#de2d26", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#de2d26", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_c6d231e0ea8d9cd335377859afffc06a.bindTooltip(
+                `<div>
+                     escuela educadores de chile – 510 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_54ee9dbd6134529be86f57fc52c01ade = L.marker(
+                [-33.5376, -70.6401],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_4b7fc4bfb501dade5fb996f625c16460 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#de2d26; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e510\u003c/div\u003e"});
+            marker_54ee9dbd6134529be86f57fc52c01ade.setIcon(div_icon_4b7fc4bfb501dade5fb996f625c16460);
+        
+    
+            var circle_marker_b00041f6b272df365227120a03c43c35 = L.circleMarker(
+                [-33.5458, -70.6437],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_b00041f6b272df365227120a03c43c35.bindTooltip(
+                `<div>
+                     escuela karelmapu – 379 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_167a77fb1d683e119393a92faf4abcdd = L.marker(
+                [-33.5458, -70.6437],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_5e7076e232ef14ccd1a4efd73a99e229 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e379\u003c/div\u003e"});
+            marker_167a77fb1d683e119393a92faf4abcdd.setIcon(div_icon_5e7076e232ef14ccd1a4efd73a99e229);
+        
+    
+            var circle_marker_d1192dc8182a8c8bc4ecdcbf23b3d641 = L.circleMarker(
+                [-33.5499, -70.6405],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_d1192dc8182a8c8bc4ecdcbf23b3d641.bindTooltip(
+                `<div>
+                     escuela nanihue – 357 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_db7a60224a6fa7e4a3dea30a1a2d6568 = L.marker(
+                [-33.5499, -70.6405],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_179aa8dd76dd8bb98ca56d8ac6ce165b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e357\u003c/div\u003e"});
+            marker_db7a60224a6fa7e4a3dea30a1a2d6568.setIcon(div_icon_179aa8dd76dd8bb98ca56d8ac6ce165b);
+        
+    
+            var circle_marker_32c4f5db3957af381e6590026f4507ca = L.circleMarker(
+                [-33.5265, -70.6387],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_32c4f5db3957af381e6590026f4507ca.bindTooltip(
+                `<div>
+                     escuela sendero del saber – 365 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f30addb9ce86be67ddda0778806d2988 = L.marker(
+                [-33.5265, -70.6387],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_1e63e45862b55240ca5870dacceb5594 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e365\u003c/div\u003e"});
+            marker_f30addb9ce86be67ddda0778806d2988.setIcon(div_icon_1e63e45862b55240ca5870dacceb5594);
+        
+    
+            var circle_marker_6a91f519cdc00d2ca3cb33ccd4bf099d = L.circleMarker(
+                [-33.5538, -70.6415],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_6a91f519cdc00d2ca3cb33ccd4bf099d.bindTooltip(
+                `<div>
+                     escuela tupahue – 337 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_be5625399e1fc0adeb766247c526009e = L.marker(
+                [-33.5538, -70.6415],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_929d5b9ac3cc22ed823778759b28ea8a = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e337\u003c/div\u003e"});
+            marker_be5625399e1fc0adeb766247c526009e.setIcon(div_icon_929d5b9ac3cc22ed823778759b28ea8a);
+        
+    
+            var circle_marker_da0b5ff122864c790c50a354ed24dcd5 = L.circleMarker(
+                [-33.5557, -70.6331],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_da0b5ff122864c790c50a354ed24dcd5.bindTooltip(
+                `<div>
+                     escuela villa la cultura – 384 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_33b10ec931e58d62860080606483f9c3 = L.marker(
+                [-33.5557, -70.6331],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_ff02af9677e310241c0da323be9549f0 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e384\u003c/div\u003e"});
+            marker_33b10ec931e58d62860080606483f9c3.setIcon(div_icon_ff02af9677e310241c0da323be9549f0);
+        
+    
+            var circle_marker_1b4dde7a41c9ea254e3e7520c721b74a = L.circleMarker(
+                [-33.534806, -70.637272],
+                {"bubblingMouseEvents": true, "color": "#41ab5d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#41ab5d", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_1b4dde7a41c9ea254e3e7520c721b74a.bindTooltip(
+                `<div>
+                     liceo araucania – 357 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_06a6d59ae203be0af974108576c29f2e = L.marker(
+                [-33.534806, -70.637272],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_50ebcbf7d8b34bbf5344b9892ab151b8 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#41ab5d; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e357\u003c/div\u003e"});
+            marker_06a6d59ae203be0af974108576c29f2e.setIcon(div_icon_50ebcbf7d8b34bbf5344b9892ab151b8);
+        
+    
+            var circle_marker_2f243657a5c8e83ceab8d03275dd1176 = L.circleMarker(
+                [-33.5377, -70.637],
+                {"bubblingMouseEvents": true, "color": "#fe9929", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9929", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_2f243657a5c8e83ceab8d03275dd1176.bindTooltip(
+                `<div>
+                     liceo comercial vate vicente huidrobro – 500 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fc2afe391803784ad3310f99de011cda = L.marker(
+                [-33.5377, -70.637],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_67e2d2b2689acd0b9f83c4e3b6d01c59 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#fe9929; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e500\u003c/div\u003e"});
+            marker_fc2afe391803784ad3310f99de011cda.setIcon(div_icon_67e2d2b2689acd0b9f83c4e3b6d01c59);
+        
+    
+            var circle_marker_a63afdf50157afd63fe7d2c971900f43 = L.circleMarker(
+                [-33.5373, -70.6373],
+                {"bubblingMouseEvents": true, "color": "#2b8cbe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2b8cbe", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 3}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            circle_marker_a63afdf50157afd63fe7d2c971900f43.bindTooltip(
+                `<div>
+                     liceo purkuyen – 294 votos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ba40f51c0b75b1773f0103cb517cec8a = L.marker(
+                [-33.5373, -70.6373],
+                {}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+    
+            var div_icon_bdc450272bfdfd06c7a68d55fafae831 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"background:#2b8cbe; color:#fff; width:24px; height:24px; \n                     border-radius:50%; text-align:center; line-height:24px; font-size:11px; \n                     font-weight:700; border:2px solid white;\"\u003e294\u003c/div\u003e"});
+            marker_ba40f51c0b75b1773f0103cb517cec8a.setIcon(div_icon_bdc450272bfdfd06c7a68d55fafae831);
+        
+    
+            var layer_control_65752229247b8502f35a1fe73657ea7f = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_48feb08ceb64fef46eb1dc5b9b643a6b,
+                },
+                overlays :  {
+                    "Ferias" : geo_json_fe74625710f998e0ac4e8c363f731d47,
+                },
+            };
+            L.control.layers(
+                layer_control_65752229247b8502f35a1fe73657ea7f.base_layers,
+                layer_control_65752229247b8502f35a1fe73657ea7f.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_e70ae8da8649dd158be64be62dabc9f3);
+        
+</script>
+</html>
