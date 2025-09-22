@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3268074c24cedb2cf0e9c86c2aed59f4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3268074c24cedb2cf0e9c86c2aed59f4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3268074c24cedb2cf0e9c86c2aed59f4 = L.map(
+                "map_3268074c24cedb2cf0e9c86c2aed59f4",
+                {
+                    center: [-33.563024285714285, -70.67460952380952],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_12ec94926dccdd587f2e52e53a2d6246 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_12ec94926dccdd587f2e52e53a2d6246.addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+    var color_map_9a7562dbae06442115fd7cc732f0c5be = {};
+
+    
+    color_map_9a7562dbae06442115fd7cc732f0c5be.color = d3.scale.threshold()
+              .domain([76.0, 76.90581162324649, 77.81162324649299, 78.71743486973948, 79.62324649298597, 80.52905811623246, 81.43486973947896, 82.34068136272545, 83.24649298597194, 84.15230460921843, 85.05811623246493, 85.96392785571142, 86.86973947895791, 87.7755511022044, 88.6813627254509, 89.5871743486974, 90.49298597194388, 91.39879759519039, 92.30460921843687, 93.21042084168337, 94.11623246492985, 95.02204408817636, 95.92785571142285, 96.83366733466934, 97.73947895791584, 98.64529058116233, 99.55110220440882, 100.45691382765531, 101.3627254509018, 102.2685370741483, 103.17434869739479, 104.08016032064128, 104.98597194388778, 105.89178356713427, 106.79759519038076, 107.70340681362725, 108.60921843687375, 109.51503006012024, 110.42084168336673, 111.32665330661322, 112.23246492985972, 113.13827655310621, 114.04408817635272, 114.9498997995992, 115.8557114228457, 116.76152304609218, 117.66733466933869, 118.57314629258516, 119.47895791583167, 120.38476953907815, 121.29058116232466, 122.19639278557113, 123.10220440881764, 124.00801603206412, 124.91382765531063, 125.8196392785571, 126.72545090180361, 127.63126252505009, 128.5370741482966, 129.4428857715431, 130.34869739478958, 131.25450901803606, 132.16032064128257, 133.06613226452907, 133.97194388777555, 134.87775551102203, 135.78356713426854, 136.68937875751504, 137.59519038076152, 138.501002004008, 139.4068136272545, 140.31262525050101, 141.2184368737475, 142.12424849699397, 143.03006012024048, 143.93587174348698, 144.84168336673346, 145.74749498997994, 146.65330661322645, 147.55911823647295, 148.46492985971943, 149.3707414829659, 150.27655310621242, 151.18236472945893, 152.08817635270543, 152.9939879759519, 153.8997995991984, 154.8056112224449, 155.7114228456914, 156.61723446893788, 157.52304609218436, 158.42885771543087, 159.33466933867737, 160.24048096192385, 161.14629258517033, 162.05210420841684, 162.95791583166334, 163.86372745490982, 164.7695390781563, 165.6753507014028, 166.5811623246493, 167.4869739478958, 168.39278557114227, 169.29859719438878, 170.20440881763528, 171.11022044088176, 172.01603206412824, 172.92184368737475, 173.82765531062125, 174.73346693386773, 175.6392785571142, 176.54509018036072, 177.45090180360722, 178.3567134268537, 179.26252505010018, 180.1683366733467, 181.0741482965932, 181.9799599198397, 182.88577154308618, 183.79158316633266, 184.69739478957916, 185.60320641282567, 186.50901803607215, 187.41482965931863, 188.32064128256513, 189.22645290581164, 190.13226452905812, 191.0380761523046, 191.9438877755511, 192.8496993987976, 193.7555110220441, 194.66132264529057, 195.56713426853707, 196.47294589178358, 197.37875751503006, 198.28456913827654, 199.19038076152304, 200.09619238476955, 201.00200400801603, 201.9078156312625, 202.81362725450902, 203.71943887775552, 204.625250501002, 205.5310621242485, 206.43687374749499, 207.3426853707415, 208.24849699398797, 209.15430861723448, 210.06012024048096, 210.96593186372746, 211.87174348697394, 212.77755511022045, 213.68336673346693, 214.58917835671343, 215.4949899799599, 216.40080160320642, 217.3066132264529, 218.2124248496994, 219.11823647294588, 220.0240480961924, 220.92985971943887, 221.83567134268537, 222.74148296593185, 223.64729458917836, 224.55310621242484, 225.45891783567134, 226.36472945891782, 227.27054108216433, 228.17635270541084, 229.0821643286573, 229.98797595190382, 230.8937875751503, 231.7995991983968, 232.70541082164328, 233.6112224448898, 234.51703406813627, 235.42284569138278, 236.32865731462925, 237.23446893787576, 238.14028056112224, 239.04609218436875, 239.95190380761522, 240.85771543086173, 241.7635270541082, 242.66933867735472, 243.5751503006012, 244.4809619238477, 245.38677354709418, 246.2925851703407, 247.19839679358716, 248.10420841683367, 249.01002004008015, 249.91583166332666, 250.82164328657313, 251.72745490981964, 252.63326653306612, 253.53907815631263, 254.4448897795591, 255.3507014028056, 256.25651302605206, 257.1623246492986, 258.0681362725451, 258.9739478957916, 259.8797595190381, 260.78557114228454, 261.6913827655311, 262.59719438877755, 263.50300601202406, 264.40881763527057, 265.314629258517, 266.2204408817635, 267.12625250501003, 268.0320641282565, 268.93787575150304, 269.8436873747495, 270.749498997996, 271.6553106212425, 272.56112224448896, 273.46693386773546, 274.37274549098197, 275.2785571142284, 276.184368737475, 277.09018036072143, 277.99599198396794, 278.90180360721445, 279.8076152304609, 280.7134268537074, 281.6192384769539, 282.52505010020036, 283.4308617234469, 284.3366733466934, 285.2424849699399, 286.1482965931864, 287.05410821643284, 287.9599198396794, 288.86573146292585, 289.77154308617236, 290.67735470941886, 291.5831663326653, 292.4889779559118, 293.3947895791583, 294.3006012024048, 295.20641282565134, 296.1122244488978, 297.0180360721443, 297.9238476953908, 298.82965931863725, 299.73547094188376, 300.64128256513027, 301.5470941883767, 302.4529058116233, 303.35871743486973, 304.26452905811624, 305.17034068136275, 306.0761523046092, 306.9819639278557, 307.8877755511022, 308.79358717434866, 309.6993987975952, 310.6052104208417, 311.5110220440882, 312.4168336673347, 313.32264529058114, 314.22845691382764, 315.13426853707415, 316.0400801603206, 316.94589178356716, 317.8517034068136, 318.7575150300601, 319.6633266533066, 320.5691382765531, 321.47494989979964, 322.3807615230461, 323.2865731462926, 324.1923847695391, 325.09819639278555, 326.00400801603206, 326.90981963927857, 327.815631262525, 328.7214428857716, 329.62725450901803, 330.53306613226454, 331.43887775551104, 332.3446893787575, 333.250501002004, 334.1563126252505, 335.062124248497, 335.96793587174346, 336.87374749498997, 337.7795591182365, 338.685370741483, 339.59118236472943, 340.49699398797594, 341.40280561122245, 342.30861723446895, 343.2144288577154, 344.1202404809619, 345.0260521042084, 345.9318637274549, 346.8376753507014, 347.7434869739479, 348.6492985971944, 349.5551102204409, 350.4609218436874, 351.36673346693385, 352.27254509018036, 353.17835671342687, 354.0841683366734, 354.9899799599198, 355.89579158316633, 356.80160320641284, 357.70741482965934, 358.6132264529058, 359.5190380761523, 360.4248496993988, 361.3306613226453, 362.23647294589176, 363.14228456913827, 364.0480961923848, 364.9539078156313, 365.85971943887773, 366.76553106212424, 367.67134268537075, 368.57715430861725, 369.4829659318637, 370.3887775551102, 371.2945891783567, 372.2004008016032, 373.1062124248497, 374.0120240480962, 374.9178356713427, 375.8236472945892, 376.72945891783564, 377.63527054108215, 378.54108216432866, 379.44689378757516, 380.35270541082167, 381.2585170340681, 382.1643286573146, 383.07014028056113, 383.97595190380764, 384.8817635270541, 385.7875751503006, 386.6933867735471, 387.5991983967936, 388.50501002004006, 389.41082164328657, 390.3166332665331, 391.2224448897796, 392.12825651302603, 393.03406813627254, 393.93987975951904, 394.84569138276555, 395.751503006012, 396.6573146292585, 397.563126252505, 398.4689378757515, 399.37474949899797, 400.2805611222445, 401.186372745491, 402.0921843687375, 402.99799599198394, 403.90380761523045, 404.80961923847696, 405.71543086172346, 406.6212424849699, 407.5270541082164, 408.4328657314629, 409.33867735470943, 410.24448897795594, 411.1503006012024, 412.0561122244489, 412.9619238476954, 413.8677354709419, 414.77354709418836, 415.67935871743487, 416.5851703406814, 417.4909819639279, 418.39679358717433, 419.30260521042084, 420.20841683366734, 421.11422845691385, 422.0200400801603, 422.9258517034068, 423.8316633266533, 424.7374749498998, 425.64328657314627, 426.5490981963928, 427.4549098196393, 428.3607214428858, 429.26653306613224, 430.17234468937875, 431.07815631262525, 431.98396793587176, 432.8897795591182, 433.7955911823647, 434.7014028056112, 435.60721442885773, 436.5130260521042, 437.4188376753507, 438.3246492985972, 439.2304609218437, 440.1362725450902, 441.04208416833666, 441.94789579158316, 442.85370741482967, 443.7595190380762, 444.6653306613226, 445.57114228456913, 446.47695390781564, 447.38276553106215, 448.2885771543086, 449.1943887775551, 450.1002004008016, 451.0060120240481, 451.91182364729457, 452.8176352705411, 453.7234468937876, 454.6292585170341, 455.53507014028054, 456.44088176352705, 457.34669338677355, 458.25250501002006, 459.1583166332665, 460.064128256513, 460.9699398797595, 461.87575150300603, 462.7815631262525, 463.687374749499, 464.5931863727455, 465.498997995992, 466.40480961923845, 467.31062124248496, 468.21643286573146, 469.12224448897797, 470.0280561122245, 470.9338677354709, 471.83967935871743, 472.74549098196394, 473.65130260521045, 474.5571142284569, 475.4629258517034, 476.3687374749499, 477.2745490981964, 478.18036072144287, 479.0861723446894, 479.9919839679359, 480.8977955911824, 481.80360721442884, 482.70941883767534, 483.61523046092185, 484.52104208416836, 485.4268537074148, 486.3326653306613, 487.2384769539078, 488.1442885771543, 489.0501002004008, 489.9559118236473, 490.8617234468938, 491.7675350701403, 492.67334669338675, 493.57915831663325, 494.48496993987976, 495.39078156312627, 496.2965931863727, 497.2024048096192, 498.10821643286573, 499.01402805611224, 499.91983967935874, 500.8256513026052, 501.7314629258517, 502.6372745490982, 503.5430861723447, 504.44889779559117, 505.3547094188377, 506.2605210420842, 507.1663326653307, 508.07214428857714, 508.97795591182364, 509.88376753507015, 510.78957915831666, 511.6953907815631, 512.6012024048096, 513.5070140280561, 514.4128256513027, 515.318637274549, 516.2244488977956, 517.1302605210421, 518.0360721442886, 518.941883767535, 519.8476953907816, 520.7535070140281, 521.6593186372745, 522.5651302605211, 523.4709418837675, 524.376753507014, 525.2825651302605, 526.188376753507, 527.0941883767534, 528.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_9a7562dbae06442115fd7cc732f0c5be.x = d3.scale.linear()
+              .domain([76.0, 528.0])
+              .range([0, 450 - 50]);
+
+    color_map_9a7562dbae06442115fd7cc732f0c5be.legend = L.control({position: 'topright'});
+    color_map_9a7562dbae06442115fd7cc732f0c5be.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_9a7562dbae06442115fd7cc732f0c5be.legend.addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+
+    color_map_9a7562dbae06442115fd7cc732f0c5be.xAxis = d3.svg.axis()
+        .scale(color_map_9a7562dbae06442115fd7cc732f0c5be.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([76.0, 132.5, 189.0, 245.5, 302.0, 358.5, 415.0, 471.5, 528.0]);
+
+    color_map_9a7562dbae06442115fd7cc732f0c5be.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_9a7562dbae06442115fd7cc732f0c5be.g = color_map_9a7562dbae06442115fd7cc732f0c5be.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_9a7562dbae06442115fd7cc732f0c5be.g.selectAll("rect")
+        .data(color_map_9a7562dbae06442115fd7cc732f0c5be.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_9a7562dbae06442115fd7cc732f0c5be.x(color_map_9a7562dbae06442115fd7cc732f0c5be.color.domain()[i - 1]) : color_map_9a7562dbae06442115fd7cc732f0c5be.x.range()[0],
+            x1: i < color_map_9a7562dbae06442115fd7cc732f0c5be.color.domain().length ? color_map_9a7562dbae06442115fd7cc732f0c5be.x(color_map_9a7562dbae06442115fd7cc732f0c5be.color.domain()[i]) : color_map_9a7562dbae06442115fd7cc732f0c5be.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_9a7562dbae06442115fd7cc732f0c5be.g.call(color_map_9a7562dbae06442115fd7cc732f0c5be.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Votos por local \u2014 EL BOSQUE");
+    
+            var circle_marker_2f47439582d953376155ad8c55d91253 = L.circleMarker(
+                [-33.5571, -70.6637],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdc7bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.283185840707965, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_f4fc96fb57821b440467519e5e704c19 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_506ed919f19c87a10d185d0d6660cb70 = $(`<div id="html_506ed919f19c87a10d185d0d6660cb70" style="width: 100.0%; height: 100.0%;"><b>centro civico el bosque</b><br>ELEUTERIO RAMIREZ 10264<br>Votos totales: <b>182</b></div>`)[0];
+                popup_f4fc96fb57821b440467519e5e704c19.setContent(html_506ed919f19c87a10d185d0d6660cb70);
+            
+        
+
+        circle_marker_2f47439582d953376155ad8c55d91253.bindPopup(popup_f4fc96fb57821b440467519e5e704c19)
+        ;
+
+        
+    
+    
+            circle_marker_2f47439582d953376155ad8c55d91253.bindTooltip(
+                `<div>
+                     centro civico el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5383a90d79f6ed2130fadc71163c403f = L.marker(
+                [-33.5571, -70.6637],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_19e889cc8726dd2dcd511fa0db8bb25e = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e182\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_5383a90d79f6ed2130fadc71163c403f.setIcon(div_icon_19e889cc8726dd2dcd511fa0db8bb25e);
+        
+    
+            var circle_marker_51ad1064b852ca1d72aca767bfd41d8d = L.circleMarker(
+                [-33.5803, -70.6701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec05aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.646017699115045, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_25ee3535e26fc5b7750695846fc6454c = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_3afb4a1f96a2be6f00fd94a5fbd5a296 = $(`<div id="html_3afb4a1f96a2be6f00fd94a5fbd5a296" style="width: 100.0%; height: 100.0%;"><b>colegio batalla de la concepcion</b><br>VECINAL SUR 1380<br>Votos totales: <b>226</b></div>`)[0];
+                popup_25ee3535e26fc5b7750695846fc6454c.setContent(html_3afb4a1f96a2be6f00fd94a5fbd5a296);
+            
+        
+
+        circle_marker_51ad1064b852ca1d72aca767bfd41d8d.bindPopup(popup_25ee3535e26fc5b7750695846fc6454c)
+        ;
+
+        
+    
+    
+            circle_marker_51ad1064b852ca1d72aca767bfd41d8d.bindTooltip(
+                `<div>
+                     colegio batalla de la concepcion
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9777a22c2e9450890f86c275e5a04c5e = L.marker(
+                [-33.5803, -70.6701],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_addd8c999438ae1cab348a08ad385624 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e226\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9777a22c2e9450890f86c275e5a04c5e.setIcon(div_icon_addd8c999438ae1cab348a08ad385624);
+        
+    
+            var circle_marker_c97a83a32c0698e3e5f2807bc647efc1 = L.circleMarker(
+                [-33.57584, -70.692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd7f38ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.402654867256636, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_07415ad52218f1dea8788c9cfc1468a9 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_a78c525c0646168f240eaea05ac5febc = $(`<div id="html_a78c525c0646168f240eaea05ac5febc" style="width: 100.0%; height: 100.0%;"><b>colegio santo tomas de aquino</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 13231<br>Votos totales: <b>315</b></div>`)[0];
+                popup_07415ad52218f1dea8788c9cfc1468a9.setContent(html_a78c525c0646168f240eaea05ac5febc);
+            
+        
+
+        circle_marker_c97a83a32c0698e3e5f2807bc647efc1.bindPopup(popup_07415ad52218f1dea8788c9cfc1468a9)
+        ;
+
+        
+    
+    
+            circle_marker_c97a83a32c0698e3e5f2807bc647efc1.bindTooltip(
+                `<div>
+                     colegio santo tomas de aquino
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e6abc79bbd5cc39ffe55d1dcd5dd8e1 = L.marker(
+                [-33.57584, -70.692],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_dabf29702c679c21563f8ecb15027e9c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e315\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0e6abc79bbd5cc39ffe55d1dcd5dd8e1.setIcon(div_icon_dabf29702c679c21563f8ecb15027e9c);
+        
+    
+            var circle_marker_0ef86ece91a98f24263a3af3542a46dd = L.circleMarker(
+                [-33.5603, -70.6665],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed470ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.747787610619469, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_5eaa75f72bfcc10307214d6f4982ce13 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_c4b06f2200dd99b2cf58c0b7cd807987 = $(`<div id="html_c4b06f2200dd99b2cf58c0b7cd807987" style="width: 100.0%; height: 100.0%;"><b>complejo educacional felipe herrera lane</b><br>LOS CUERVOS 866<br>Votos totales: <b>197</b></div>`)[0];
+                popup_5eaa75f72bfcc10307214d6f4982ce13.setContent(html_c4b06f2200dd99b2cf58c0b7cd807987);
+            
+        
+
+        circle_marker_0ef86ece91a98f24263a3af3542a46dd.bindPopup(popup_5eaa75f72bfcc10307214d6f4982ce13)
+        ;
+
+        
+    
+    
+            circle_marker_0ef86ece91a98f24263a3af3542a46dd.bindTooltip(
+                `<div>
+                     complejo educacional felipe herrera lane
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_267c34fc6e77f4fb79d72ebf7caf3d3a = L.marker(
+                [-33.5603, -70.6665],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_7c5302fd1aa2d4b7a21b7461873a76c4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e197\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_267c34fc6e77f4fb79d72ebf7caf3d3a.setIcon(div_icon_7c5302fd1aa2d4b7a21b7461873a76c4);
+        
+    
+            var circle_marker_b91bfd6fd0f11fc1e10e98df69a6d72a = L.circleMarker(
+                [-33.5691, -70.67],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb04bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.358407079646017, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_cd5897c7a60c45d99325bca13d5e7da4 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_909ffd0d174b839c49b19891ac23d35b = $(`<div id="html_909ffd0d174b839c49b19891ac23d35b" style="width: 100.0%; height: 100.0%;"><b>complejo educacional las acacias</b><br>LAS ESMERALDAS 11475<br>Votos totales: <b>249</b></div>`)[0];
+                popup_cd5897c7a60c45d99325bca13d5e7da4.setContent(html_909ffd0d174b839c49b19891ac23d35b);
+            
+        
+
+        circle_marker_b91bfd6fd0f11fc1e10e98df69a6d72a.bindPopup(popup_cd5897c7a60c45d99325bca13d5e7da4)
+        ;
+
+        
+    
+    
+            circle_marker_b91bfd6fd0f11fc1e10e98df69a6d72a.bindTooltip(
+                `<div>
+                     complejo educacional las acacias
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9298b9520434032044a9dbaed359642c = L.marker(
+                [-33.5691, -70.67],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_47da4b4998e77a7257c6f5c3263f8b72 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e249\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_9298b9520434032044a9dbaed359642c.setIcon(div_icon_47da4b4998e77a7257c6f5c3263f8b72);
+        
+    
+            var circle_marker_f846a91165cb416759e7305d4403f4e2 = L.circleMarker(
+                [-33.5501, -70.6645],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8a3bff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.0929203539823, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_eb70a6ea4bcdb3e9a11af5593c79c6cc = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_626f72d4ee689404c8f942ab9e4f421f = $(`<div id="html_626f72d4ee689404c8f942ab9e4f421f" style="width: 100.0%; height: 100.0%;"><b>escuela aviadores</b><br>BAQUEDANO 9820<br>Votos totales: <b>305</b></div>`)[0];
+                popup_eb70a6ea4bcdb3e9a11af5593c79c6cc.setContent(html_626f72d4ee689404c8f942ab9e4f421f);
+            
+        
+
+        circle_marker_f846a91165cb416759e7305d4403f4e2.bindPopup(popup_eb70a6ea4bcdb3e9a11af5593c79c6cc)
+        ;
+
+        
+    
+    
+            circle_marker_f846a91165cb416759e7305d4403f4e2.bindTooltip(
+                `<div>
+                     escuela aviadores
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ad6a118605dc702c7720508be70bd0fb = L.marker(
+                [-33.5501, -70.6645],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_87138476d06de53b168458cb247169bf = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:13px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e305\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ad6a118605dc702c7720508be70bd0fb.setIcon(div_icon_87138476d06de53b168458cb247169bf);
+        
+    
+            var circle_marker_4626a0a5b583c5d83d7afd2a4d73442f = L.circleMarker(
+                [-33.5622, -70.6754],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fead49ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.513274336283185, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_af7fceff164165ed65ce53ff83b831a1 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_6b60c0ba6495bd9132145de30cb0bc47 = $(`<div id="html_6b60c0ba6495bd9132145de30cb0bc47" style="width: 100.0%; height: 100.0%;"><b>escuela base el bosque</b><br>MARIANO LATORRE 11600<br>Votos totales: <b>254</b></div>`)[0];
+                popup_af7fceff164165ed65ce53ff83b831a1.setContent(html_6b60c0ba6495bd9132145de30cb0bc47);
+            
+        
+
+        circle_marker_4626a0a5b583c5d83d7afd2a4d73442f.bindPopup(popup_af7fceff164165ed65ce53ff83b831a1)
+        ;
+
+        
+    
+    
+            circle_marker_4626a0a5b583c5d83d7afd2a4d73442f.bindTooltip(
+                `<div>
+                     escuela base el bosque
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c8c38b82a38cbd60b58d3a91e7c8ffef = L.marker(
+                [-33.5622, -70.6754],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_968737c14d4451f01da38ace81c323f5 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e254\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_c8c38b82a38cbd60b58d3a91e7c8ffef.setIcon(div_icon_968737c14d4451f01da38ace81c323f5);
+        
+    
+            var circle_marker_8fb2f0052ddf474e6c2b3e3defc32f12 = L.circleMarker(
+                [-33.5561, -70.6571],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed976ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.5, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_3d447290e8eead0164918af21c0e3f57 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_0172d73502ce34e8114d97b4e2914eca = $(`<div id="html_0172d73502ce34e8114d97b4e2914eca" style="width: 100.0%; height: 100.0%;"><b>escuela ciudad de lyon</b><br>ALMIRANTE RIVEROS 10122<br>Votos totales: <b>189</b></div>`)[0];
+                popup_3d447290e8eead0164918af21c0e3f57.setContent(html_0172d73502ce34e8114d97b4e2914eca);
+            
+        
+
+        circle_marker_8fb2f0052ddf474e6c2b3e3defc32f12.bindPopup(popup_3d447290e8eead0164918af21c0e3f57)
+        ;
+
+        
+    
+    
+            circle_marker_8fb2f0052ddf474e6c2b3e3defc32f12.bindTooltip(
+                `<div>
+                     escuela ciudad de lyon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b84c1b5f4da9aea7e2758573074f95e = L.marker(
+                [-33.5561, -70.6571],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_99e0175c528b61ca38b838f1a3b80c53 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e189\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8b84c1b5f4da9aea7e2758573074f95e.setIcon(div_icon_99e0175c528b61ca38b838f1a3b80c53);
+        
+    
+            var circle_marker_c076ac12aae19ebeea97ba2d5e528df4 = L.circleMarker(
+                [-33.5717, -70.6808],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdf81ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.035398230088497, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_6686852c8cf2ac845b3f504db15631af = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_f50b73737538f60914be29a4dbaa8448 = $(`<div id="html_f50b73737538f60914be29a4dbaa8448" style="width: 100.0%; height: 100.0%;"><b>escuela claudio arrau leon</b><br>LOS CAROLINOS 530<br>Votos totales: <b>174</b></div>`)[0];
+                popup_6686852c8cf2ac845b3f504db15631af.setContent(html_f50b73737538f60914be29a4dbaa8448);
+            
+        
+
+        circle_marker_c076ac12aae19ebeea97ba2d5e528df4.bindPopup(popup_6686852c8cf2ac845b3f504db15631af)
+        ;
+
+        
+    
+    
+            circle_marker_c076ac12aae19ebeea97ba2d5e528df4.bindTooltip(
+                `<div>
+                     escuela claudio arrau leon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8644f219ecd8973f6687f308ffe4ea45 = L.marker(
+                [-33.5717, -70.6808],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_0a4e77cd47b51cef7e7e9cf30ce84fa0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e174\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_8644f219ecd8973f6687f308ffe4ea45.setIcon(div_icon_0a4e77cd47b51cef7e7e9cf30ce84fa0);
+        
+    
+            var circle_marker_b14a46ae5870efe20a55956c922c6cec = L.circleMarker(
+                [-33.57981, -70.67892],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#febf5aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.676991150442479, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_1358185698a239b3fe25633bdaa95c56 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_1e8bf59a0460d2f6408d878225821b49 = $(`<div id="html_1e8bf59a0460d2f6408d878225821b49" style="width: 100.0%; height: 100.0%;"><b>escuela club hipico</b><br>RODRIGO ORDOÑEZ 13150<br>Votos totales: <b>227</b></div>`)[0];
+                popup_1358185698a239b3fe25633bdaa95c56.setContent(html_1e8bf59a0460d2f6408d878225821b49);
+            
+        
+
+        circle_marker_b14a46ae5870efe20a55956c922c6cec.bindPopup(popup_1358185698a239b3fe25633bdaa95c56)
+        ;
+
+        
+    
+    
+            circle_marker_b14a46ae5870efe20a55956c922c6cec.bindTooltip(
+                `<div>
+                     escuela club hipico
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dcb1f014ea9496ac0d24e6c97bd5cdd6 = L.marker(
+                [-33.57981, -70.67892],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_df1aaae61375073b5da5ce2bc27a0791 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e227\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_dcb1f014ea9496ac0d24e6c97bd5cdd6.setIcon(div_icon_df1aaae61375073b5da5ce2bc27a0791);
+        
+    
+            var circle_marker_5bb4135662e97dcef11a5b8f6425954d = L.circleMarker(
+                [-33.56621, -70.68102],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9f43ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.163716814159292, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_ab41c1bfb42cdf0db166555daf12f2fa = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_87e9cd04e25e0d762d9342575c4bafbe = $(`<div id="html_87e9cd04e25e0d762d9342575c4bafbe" style="width: 100.0%; height: 100.0%;"><b>escuela general alberto bachelet </b><br>ALBENIZ  12021<br>Votos totales: <b>275</b></div>`)[0];
+                popup_ab41c1bfb42cdf0db166555daf12f2fa.setContent(html_87e9cd04e25e0d762d9342575c4bafbe);
+            
+        
+
+        circle_marker_5bb4135662e97dcef11a5b8f6425954d.bindPopup(popup_ab41c1bfb42cdf0db166555daf12f2fa)
+        ;
+
+        
+    
+    
+            circle_marker_5bb4135662e97dcef11a5b8f6425954d.bindTooltip(
+                `<div>
+                     escuela general alberto bachelet 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e83df633973210d2044f9d274abc27f = L.marker(
+                [-33.56621, -70.68102],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_6fa2619e13de80a05a6c4c09d08d9cf8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:12px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e275\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_0e83df633973210d2044f9d274abc27f.setIcon(div_icon_6fa2619e13de80a05a6c4c09d08d9cf8);
+        
+    
+            var circle_marker_c05f8fa7d11c63cd13acf21cf12fc924 = L.circleMarker(
+                [-33.5418, -70.6841],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_1e4a16b4355602141501100b7aea42a5 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_0fa0440e192d70f5b812a17dae6374c6 = $(`<div id="html_0fa0440e192d70f5b812a17dae6374c6" style="width: 100.0%; height: 100.0%;"><b>escuela jose marti</b><br>18 DE SEPTIEMBRE 1080<br>Votos totales: <b>76</b></div>`)[0];
+                popup_1e4a16b4355602141501100b7aea42a5.setContent(html_0fa0440e192d70f5b812a17dae6374c6);
+            
+        
+
+        circle_marker_c05f8fa7d11c63cd13acf21cf12fc924.bindPopup(popup_1e4a16b4355602141501100b7aea42a5)
+        ;
+
+        
+    
+    
+            circle_marker_c05f8fa7d11c63cd13acf21cf12fc924.bindTooltip(
+                `<div>
+                     escuela jose marti
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ea054144e1f8c9cf2a91c021f973b480 = L.marker(
+                [-33.5418, -70.6841],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_4901c743d88baeec2e0db38f00fb08ff = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e76\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_ea054144e1f8c9cf2a91c021f973b480.setIcon(div_icon_4901c743d88baeec2e0db38f00fb08ff);
+        
+    
+            var circle_marker_e3e668271826a487630635e4e958fe75 = L.circleMarker(
+                [-33.57056, -70.68746],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#febc56ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.831858407079647, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_76088c65160527595ce5b80e66bd33c9 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_24ba8b60c409becf286f14de2b4bf422 = $(`<div id="html_24ba8b60c409becf286f14de2b4bf422" style="width: 100.0%; height: 100.0%;"><b>escuela marcial martinez ferrari</b><br>GRAN AVENIDA JOSE MIGUEL CARRERA 12552<br>Votos totales: <b>232</b></div>`)[0];
+                popup_76088c65160527595ce5b80e66bd33c9.setContent(html_24ba8b60c409becf286f14de2b4bf422);
+            
+        
+
+        circle_marker_e3e668271826a487630635e4e958fe75.bindPopup(popup_76088c65160527595ce5b80e66bd33c9)
+        ;
+
+        
+    
+    
+            circle_marker_e3e668271826a487630635e4e958fe75.bindTooltip(
+                `<div>
+                     escuela marcial martinez ferrari
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_62238701badd6081e32339002f66f573 = L.marker(
+                [-33.57056, -70.68746],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_c07be72a6890935766646c1d6676d63f = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:11px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e232\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_62238701badd6081e32339002f66f573.setIcon(div_icon_c07be72a6890935766646c1d6676d63f);
+        
+    
+            var circle_marker_e4dedddab6c28a0d0c61862d1fc9bdc5 = L.circleMarker(
+                [-33.5628, -70.6647],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe083ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.942477876106194, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_870dd0643e8b915993575d914f4edb43 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_78703f7dc8d08759edf0adf43a9b070c = $(`<div id="html_78703f7dc8d08759edf0adf43a9b070c" style="width: 100.0%; height: 100.0%;"><b>escuela mario arce gatica</b><br>LOS AVELLANOS 10958<br>Votos totales: <b>171</b></div>`)[0];
+                popup_870dd0643e8b915993575d914f4edb43.setContent(html_78703f7dc8d08759edf0adf43a9b070c);
+            
+        
+
+        circle_marker_e4dedddab6c28a0d0c61862d1fc9bdc5.bindPopup(popup_870dd0643e8b915993575d914f4edb43)
+        ;
+
+        
+    
+    
+            circle_marker_e4dedddab6c28a0d0c61862d1fc9bdc5.bindTooltip(
+                `<div>
+                     escuela mario arce gatica
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_923242c72b111eb5041027d2d839dd9c = L.marker(
+                [-33.5628, -70.6647],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_c15e4c2b61e334523ade352187520f36 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e171\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_923242c72b111eb5041027d2d839dd9c.setIcon(div_icon_c15e4c2b61e334523ade352187520f36);
+        
+    
+            var circle_marker_0887a86a87071a960913604570c2172f = L.circleMarker(
+                [-33.58528, -70.69938],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e3191cff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.530973451327434, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_b1f3c4111f944651dcc14c5d732f3a9f = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_913ec19a02b112845af3c013ef5a6ae1 = $(`<div id="html_913ec19a02b112845af3c013ef5a6ae1" style="width: 100.0%; height: 100.0%;"><b>escuela nemesio antunez l1</b><br>El Libertador 1001<br>Votos totales: <b>416</b></div>`)[0];
+                popup_b1f3c4111f944651dcc14c5d732f3a9f.setContent(html_913ec19a02b112845af3c013ef5a6ae1);
+            
+        
+
+        circle_marker_0887a86a87071a960913604570c2172f.bindPopup(popup_b1f3c4111f944651dcc14c5d732f3a9f)
+        ;
+
+        
+    
+    
+            circle_marker_0887a86a87071a960913604570c2172f.bindTooltip(
+                `<div>
+                     escuela nemesio antunez l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_edb8bb1170654165012c3a230ad48b53 = L.marker(
+                [-33.58528, -70.69938],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_3b911dc229d982e3ab27fa8debde17e1 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:16px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e416\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_edb8bb1170654165012c3a230ad48b53.setIcon(div_icon_3b911dc229d982e3ab27fa8debde17e1);
+        
+    
+            var circle_marker_f908ab2e4551a9a6a6f84e4aed7c4e38 = L.circleMarker(
+                [-33.5521, -70.6878],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe58fff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.446902654867257, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_9054ccbc2ac08e8feddc680ac32d6e28 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_e770e884aa05a2d54e279f97e8dd9c92 = $(`<div id="html_e770e884aa05a2d54e279f97e8dd9c92" style="width: 100.0%; height: 100.0%;"><b>escuela orlando letelier</b><br>EL PILLAN 1214<br>Votos totales: <b>155</b></div>`)[0];
+                popup_9054ccbc2ac08e8feddc680ac32d6e28.setContent(html_e770e884aa05a2d54e279f97e8dd9c92);
+            
+        
+
+        circle_marker_f908ab2e4551a9a6a6f84e4aed7c4e38.bindPopup(popup_9054ccbc2ac08e8feddc680ac32d6e28)
+        ;
+
+        
+    
+    
+            circle_marker_f908ab2e4551a9a6a6f84e4aed7c4e38.bindTooltip(
+                `<div>
+                     escuela orlando letelier
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e0d9e84a05508dc1581e6045feb895a8 = L.marker(
+                [-33.5521, -70.6878],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_5dc418d5df7d634495beeb86c4001247 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e155\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_e0d9e84a05508dc1581e6045feb895a8.setIcon(div_icon_5dc418d5df7d634495beeb86c4001247);
+        
+    
+            var circle_marker_2c252936ba585ff5b1267a2f32b46779 = L.circleMarker(
+                [-33.56703, -70.66032],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe691ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.38495575221239, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_ed35750f9c278affe4c6f8e5592e8ca8 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_d9622d180b47177c6bbefb4310366f7c = $(`<div id="html_d9622d180b47177c6bbefb4310366f7c" style="width: 100.0%; height: 100.0%;"><b>escuela paul harris</b><br>SANTA AGUEDA 1382<br>Votos totales: <b>153</b></div>`)[0];
+                popup_ed35750f9c278affe4c6f8e5592e8ca8.setContent(html_d9622d180b47177c6bbefb4310366f7c);
+            
+        
+
+        circle_marker_2c252936ba585ff5b1267a2f32b46779.bindPopup(popup_ed35750f9c278affe4c6f8e5592e8ca8)
+        ;
+
+        
+    
+    
+            circle_marker_2c252936ba585ff5b1267a2f32b46779.bindTooltip(
+                `<div>
+                     escuela paul harris
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9b5731389bce0fa233b46996ca8bf44 = L.marker(
+                [-33.56703, -70.66032],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_f56f4b9e96cd073b99f2e5157e640ba0 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e153\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d9b5731389bce0fa233b46996ca8bf44.setIcon(div_icon_f56f4b9e96cd073b99f2e5157e640ba0);
+        
+    
+            var circle_marker_341750fc45305e459ee875712e3ea129 = L.circleMarker(
+                [-33.5651, -70.6669],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe894ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.261061946902654, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_e1f0a398eb64e3547b7093796e7074dc = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_6b6aab5472acd270804eb7ffee3be8b6 = $(`<div id="html_6b6aab5472acd270804eb7ffee3be8b6" style="width: 100.0%; height: 100.0%;"><b>escuela villa santa elena</b><br>PASAJE LOS PLATINOS 11169<br>Votos totales: <b>149</b></div>`)[0];
+                popup_e1f0a398eb64e3547b7093796e7074dc.setContent(html_6b6aab5472acd270804eb7ffee3be8b6);
+            
+        
+
+        circle_marker_341750fc45305e459ee875712e3ea129.bindPopup(popup_e1f0a398eb64e3547b7093796e7074dc)
+        ;
+
+        
+    
+    
+            circle_marker_341750fc45305e459ee875712e3ea129.bindTooltip(
+                `<div>
+                     escuela villa santa elena
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73075497855af8c794ee2688dc537cd7 = L.marker(
+                [-33.5651, -70.6669],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_ac5653c18e92d13da5403b86221438fc = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e149\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_73075497855af8c794ee2688dc537cd7.setIcon(div_icon_ac5653c18e92d13da5403b86221438fc);
+        
+    
+            var circle_marker_7edb61db01bbdde368e2fda7de99144c = L.circleMarker(
+                [-33.54865, -70.67053],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_f7f9867d4b117b167eea72638f3d52f5 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_8d87c0c84b4580eeb4a159be446e07cc = $(`<div id="html_8d87c0c84b4580eeb4a159be446e07cc" style="width: 100.0%; height: 100.0%;"><b>liceo christia mc auliffe l1</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9730<br>Votos totales: <b>528</b></div>`)[0];
+                popup_f7f9867d4b117b167eea72638f3d52f5.setContent(html_8d87c0c84b4580eeb4a159be446e07cc);
+            
+        
+
+        circle_marker_7edb61db01bbdde368e2fda7de99144c.bindPopup(popup_f7f9867d4b117b167eea72638f3d52f5)
+        ;
+
+        
+    
+    
+            circle_marker_7edb61db01bbdde368e2fda7de99144c.bindTooltip(
+                `<div>
+                     liceo christia mc auliffe l1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_16afdb1613770f35ea756f9657ea333e = L.marker(
+                [-33.54865, -70.67053],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_41f1dfff0ed73bdf5c6fc9c73f737859 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:19px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e528\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_16afdb1613770f35ea756f9657ea333e.setIcon(div_icon_41f1dfff0ed73bdf5c6fc9c73f737859);
+        
+    
+            var circle_marker_1bf4bac92d5c8c221d4b39196722ae7a = L.circleMarker(
+                [-33.54918, -70.67083],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd512aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.672566371681416, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_1696a210a39d1efa48d6598dff906ade = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_30a5066ce071c93ffa943c2962b698b4 = $(`<div id="html_30a5066ce071c93ffa943c2962b698b4" style="width: 100.0%; height: 100.0%;"><b>liceo juan gomez milla</b><br>GRAN AV. JOSÉ MIGUEL CARRERA 9740<br>Votos totales: <b>356</b></div>`)[0];
+                popup_1696a210a39d1efa48d6598dff906ade.setContent(html_30a5066ce071c93ffa943c2962b698b4);
+            
+        
+
+        circle_marker_1bf4bac92d5c8c221d4b39196722ae7a.bindPopup(popup_1696a210a39d1efa48d6598dff906ade)
+        ;
+
+        
+    
+    
+            circle_marker_1bf4bac92d5c8c221d4b39196722ae7a.bindTooltip(
+                `<div>
+                     liceo juan gomez milla
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d6aaeed4b696f7f803e90e2e2c966b08 = L.marker(
+                [-33.54918, -70.67083],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_b29e9ca37af1b3b466e65491bb6020e4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:15px;\n                    color:white;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e356\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_d6aaeed4b696f7f803e90e2e2c966b08.setIcon(div_icon_b29e9ca37af1b3b466e65491bb6020e4);
+        
+    
+            var circle_marker_1a646d270374756b96b039fc7a882d16 = L.circleMarker(
+                [-33.55225, -70.67474],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fece6aff", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.995575221238937, "stroke": false, "weight": 3}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+        var popup_081a956d0b805871f4aa8509c1ecc3d4 = L.popup({"maxWidth": 320});
+
+        
+            
+                var html_12b3aaa09fadb240a70a1de32f63204c = $(`<div id="html_12b3aaa09fadb240a70a1de32f63204c" style="width: 100.0%; height: 100.0%;"><b>liceo nuestra señora maria inmaculada</b><br>LUIS BARROS BORGOÑO 92<br>Votos totales: <b>205</b></div>`)[0];
+                popup_081a956d0b805871f4aa8509c1ecc3d4.setContent(html_12b3aaa09fadb240a70a1de32f63204c);
+            
+        
+
+        circle_marker_1a646d270374756b96b039fc7a882d16.bindPopup(popup_081a956d0b805871f4aa8509c1ecc3d4)
+        ;
+
+        
+    
+    
+            circle_marker_1a646d270374756b96b039fc7a882d16.bindTooltip(
+                `<div>
+                     liceo nuestra señora maria inmaculada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2eeb10b9a0a83a2ceb174991f441c0eb = L.marker(
+                [-33.55225, -70.67474],
+                {}
+            ).addTo(map_3268074c24cedb2cf0e9c86c2aed59f4);
+        
+    
+            var div_icon_6a9f976f275e1362b271fcf5c4ab740c = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    transform: translate(-50%, -50%);\n                    font-weight:700;\n                    font-size:10px;\n                    color:black;\n                    text-shadow:0 0 2px rgba(0,0,0,.6);\n                    white-space:nowrap;\n                \"\u003e205\u003c/div\u003e\n                ", "iconAnchor": [0, 0], "iconSize": [0, 0]});
+            marker_2eeb10b9a0a83a2ceb174991f441c0eb.setIcon(div_icon_6a9f976f275e1362b271fcf5c4ab740c);
+        
+    
+            map_3268074c24cedb2cf0e9c86c2aed59f4.fitBounds(
+                [[-33.5571, -70.6637], [-33.5803, -70.6701], [-33.57584, -70.692], [-33.5603, -70.6665], [-33.5691, -70.67], [-33.5501, -70.6645], [-33.5622, -70.6754], [-33.5561, -70.6571], [-33.5717, -70.6808], [-33.57981, -70.67892], [-33.56621, -70.68102], [-33.5418, -70.6841], [-33.57056, -70.68746], [-33.5628, -70.6647], [-33.58528, -70.69938], [-33.5521, -70.6878], [-33.56703, -70.66032], [-33.5651, -70.6669], [-33.54865, -70.67053], [-33.54918, -70.67083], [-33.55225, -70.67474]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>
